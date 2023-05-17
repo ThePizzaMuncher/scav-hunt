@@ -1,2 +1,2 @@
 # scav-hunt
-Web system for participants in a scavenger hunt
+by wwwqr-000, ThePizzaMuncher, Dimitree and ValeraZSD
