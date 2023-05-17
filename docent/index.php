@@ -1,6 +1,6 @@
 <?php
-/*
-if ($_SESSION["login"] == "true") {
+/* Even een voorbeeld van dat de docent eerst moet ingelogd zijn etc...
+if ($_SESSION["login_docent"] == "true") {
 
 }
 else {
@@ -14,12 +14,11 @@ echo <<< main
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../access/js/script.js" defer></script>
     <title>Docent pagina</title>
+    <script src="../access/js/docent.js" defer></script>
 </head>
 <body>
-    <p>x:<span id="x"></span></p>
-    <p>y:<span id="y"></span></p>
+    <p id="input"></p>
 </body>
 </html>
 main;
