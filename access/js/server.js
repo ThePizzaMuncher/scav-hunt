@@ -7,10 +7,13 @@ server.on("connection", (socket) => {
     sockets.push(socket);
     ++onlineCounter;
     console.log("Mensen online: " + onlineCounter + ". " + Date());
-    socket.on("message", (msg_) => {
-        const msg = msg_.toString();
-        sockets.forEach(cmd => {
-            cmd.send(msg);
+    socket.on("message", (txt) => {
+        txt = txt.toString();
+        console.log(txt); //Log
+        sockets.forEach(r => {
+            if(r.readyState === ws.OPEN && r !== socket) {//Verstuurd data naar alle andere clients behalve degene die hem gestuurd had.
+                r.send(txt);
+            }
         });
     });
     socket.on("close", () => {
