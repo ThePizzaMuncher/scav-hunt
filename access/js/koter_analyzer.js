@@ -1,11 +1,11 @@
 //Koter analyzer * begin
 const ws = new WebSocket("ws://localhost:8079");
 ws.onopen = () => {
-    //Hier moet nog iets komen dat de naam en het nummer van het groepje bekent is. Mischien iets met nodejs -> Ajax.
+    //Hier moet nog iets komen dat de naam en het nummer van het groepje bekent is. Mischien iets met jquery -> Ajax.
     let name = "Koters";
     let number = 0;
     ws.send("Client joined the server. " + Date());
-    function locatie_update() {
+    setInterval(() => {//Stuurt elke seconde een ping naar de server met de data.
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         }
@@ -15,10 +15,8 @@ ws.onopen = () => {
         function showPosition(position) {
             let x = position.coords.latitude;
             let y = position.coords.longitude;
-            ws.send(name + "{[:]}" + number + "{[:]}" + x + "{[:]}" + y);
+            ws.send(name + "{[:]}" + number + "{[:]}" + x + "{[:]}" + y + "{[:]}" + Date());
         }
-        locatie_update();
-    }
-    locatie_update();
+    }, 1000);
 }
 //Koter analyzer * end
