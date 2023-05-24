@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>ValeraZSD Portfolio</title>
+  <title>Scav Hunt</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -49,7 +49,7 @@
         <div class="col-1">
           <div class="profile">
 
-            <h1 class="text-light"><a href="index.php">Scav Hunt</a></h1>
+            <h1 class="text-light"><a href="index.php">| Scav Hunt |</a></h1>
             <div class="social-links mt-3 text-center">
               <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
               <a href="" target="_blank"><i class="fa-brands fa-youtube"></i></a>
