@@ -1,2 +1,2 @@
 # scav-hunt
-by wwwqr-000, ThePizzaMuncher, Dimitree and ValeraZSD
+Made with love by wwwqr-000, ThePizzaMuncher, Dimitree and Valerii Kozhevets (ZSD)
