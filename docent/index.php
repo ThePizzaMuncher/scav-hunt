@@ -15,9 +15,9 @@ echo <<< main
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docenten pagina</title>
-    <script src="../access/js/libs/OL_lib/OpenLayers.js" defer></script>
-    <script src="../access/js/docent.js" defer></script>
-    <link rel="stylesheet" href="../access/css/koter_analyzer.css">
+    <script src="../assets/js/libs/OL_lib/OpenLayers.js" defer></script>
+    <script src="../assets/js/docent.js" defer></script>
+    <link rel="stylesheet" href="../assets/css/koter_analyzer.css">
 </head>
 <body>
     <p>Naam: <span id="name"></span></p>
