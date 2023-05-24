@@ -17,7 +17,7 @@ echo <<< main
     <title>Docenten pagina</title>
     <script src="../access/js/libs/OL_lib/OpenLayers.js" defer></script>
     <script src="../access/js/docent.js" defer></script>
-    <link rel="stylesheet" href="../access/css/style.css">
+    <link rel="stylesheet" href="../access/css/koter_analyzer.css">
 </head>
 <body>
     <p>Naam: <span id="name"></span></p>
