@@ -19,7 +19,6 @@
     } catch (Exception $e) {
         echo "Stupid error (👉ﾟヮﾟ)👉 " . $e->getMessage();
     }
-
         
     // Check cookie
     if (isset($_COOKIE['visitor_id'])) {
