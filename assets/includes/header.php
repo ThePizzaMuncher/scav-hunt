@@ -41,7 +41,6 @@
   <header id="header">
     <div class="container">
       <div class="row">
-
         <div class="col-0">
           <a href="index.php"><img src="assets/img/5787-minecraft.png" alt="" class="img-fluid rounded-circle"></a>
         </div>
@@ -61,7 +60,7 @@
         <div class="col-2">
         <div class="col-lg-6">
         <h4><?php 
-        require_once("connection.php");        ;
+        require_once("connection.php");
         session_start() ?></h4>
         </div>
         <div class="col-lg-6">
