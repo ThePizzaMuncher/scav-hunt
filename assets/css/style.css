@@ -7,6 +7,7 @@
   --color-primary: #832e00;
   --color-secondary: #ff9335;
   --color-secondary-light: #ffb57c;
+  --color-secondary-ultra-light: #ffecdd;
   --color-grey-ultra-light: #fdf8f5;
   --color-grey-light: #a8a9b4;
   --color-grey: #6f7180;
@@ -152,10 +153,12 @@ h6 {
 #header .profile h1 a {
   color: var(--color-secondary-light);
   text-decoration: none;
+  transition: 0.3s;
 }
 
 #header .profile h1 a:hover {
-  color: white;
+  color: var(--color-secondary-ultra-light);
+  text-shadow: 0 0 20px var(--color-secondary-light);
 }
 
 #header .profile .social-links a {
@@ -338,28 +341,29 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-.about {
-  height: 90vh;
+#about {
+  height: 70vh;
   justify-content: center !important;
 }
 
-.about .content h3 {
+#about .content h3 {
   font-weight: 700;
   font-size: 26px;
   color: #173b6c;
 }
 
-.about .button {
+.about button {
   background: var(--color-secondary);
   border-radius: 5px;
   height: 25px;
   width: 300px;
-  transition: 1s;
+  transition: 0.3s;
   text-align: center;
   overflow: hidden;
+  border: none;
 }
 
-.about .button:hover {
+.about button:hover {
   background: var(--color-secondary-light);
   box-shadow: 0 0 10px var(--color-secondary);
 }
@@ -390,7 +394,26 @@ section {
 }
 
 .section-50 {
-  width: 60%;
+  width: 80%;
   background-color: var(--color-grey-ultra-light);
-  border-radius: 10vh;
+  border-radius: 5vh;
+  box-shadow: inset 0 0 100px var(--color-secondary-ultra-light);
+}
+
+
+.block {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 2vh;
+  box-shadow: 0 0 20px var(--color-secondary-ultra-light);
+  height: 100%;
+}
+
+.full-width-block {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 2vh;
+  box-shadow: 0 0 20px var(--color-secondary-ultra-light);
 }
