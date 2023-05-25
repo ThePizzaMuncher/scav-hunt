@@ -41,9 +41,8 @@
   <header id="header">
     <div class="container">
       <div class="row">
-
         <div class="col-0">
-          <a href="index.php"><img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle"></a>
+          <a href="index.php"><img src="assets/img/5787-minecraft.png" alt="" class="img-fluid rounded-circle"></a>
         </div>
 
         <div class="col-1">
