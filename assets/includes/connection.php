@@ -2,10 +2,10 @@
     error_reporting(E_ALL & ~E_NOTICE);
     ini_set('display_errors', 1);
 
-    $server = "";
-    $username = "";
-    $password = "";
-    $dbname = "";
+    $server = "localhost";
+    $username = "kartel";
+    $password = "bremankartel";
+    $dbname = "kartel";
 
     try {
         $con = mysqli_connect($server, $username, $password);
@@ -28,4 +28,4 @@
         // Create new cookie for new visitor
         $visitor_id = uniqid();
         setcookie('visitor_id', $visitor_id, time() + 86400 * 365, '/');
-        }
+        } ?>
