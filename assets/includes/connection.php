@@ -28,4 +28,4 @@
         // Create new cookie for new visitor
         $visitor_id = uniqid();
         setcookie('visitor_id', $visitor_id, time() + 86400 * 365, '/');
-        }
+        } ?>

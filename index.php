@@ -1,6 +1,4 @@
-<?php include 'assets/includes/header.php'
-	echo  "<h1>ПАЦАНЫ КОЛБАСА ЗДЕСЬ";
-?>
+<?php include 'assets/includes/header.php' ?>
 
 <main id="main">
 
