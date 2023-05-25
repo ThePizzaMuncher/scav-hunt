@@ -1,4 +1,4 @@
-<?php include 'includes/header.php'
+<?php include 'assets/includes/header.php'
 	echo  "<h1>ПАЦАНЫ КОЛБАСА ЗДЕСЬ";
 ?>
 
@@ -12,4 +12,4 @@
 </div>
 </section> <!-- End About Section -->
 
-<?php include "includes/footer.php"?>
+<?php include "assets/includes/footer.php"?>
