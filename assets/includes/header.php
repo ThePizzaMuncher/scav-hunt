@@ -60,7 +60,7 @@
         <div class="col-2">
         <div class="col-lg-6">
         <h4><?php 
-        require_once("includes/connection.php");
+        require_once("connection.php");
         session_start() ?></h4>
         </div>
         <div class="col-lg-6">
