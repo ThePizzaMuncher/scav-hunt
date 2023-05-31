@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link
@@ -19,17 +19,17 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <script src="https://kit.fontawesome.com/51b9333b7a.js" crossorigin="anonymous"></script>
 
   <!-- Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
   
 <body>
   <div id="box"></div>
@@ -66,6 +66,11 @@
         <div class="col-lg-6">
         <nav id="navbar" class="nav-menu navbar">
             <a href="index.php#" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a>
+            <a href="code-tonen.php">Code</a>
+            <a href="groepje-tonen.php">Groepjes</a>
+            <a href="winnaar-tonen.php">Winnaar</a>
+            <a href="locatie-tonen.php">Locaties</a>
+            <a href="vragen-aanpassen.php">Vragen bijwerken</a>
             <a href="index.php#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a>
           </nav><!-- .nav-menu -->
         </div>

@@ -8,13 +8,13 @@
     $dbname = "kartel";
 
     try {
-        $con = mysqli_connect($server, $username, $password);
+        $conn = mysqli_connect($server, $username, $password);
         
-        if (!$con) {
+        if (!$conn) {
             throw new Exception("Error while connecting: " . mysqli_connect_error());
         }
 
-        mysqli_select_db($con, $dbname) or die("Cannot select DB");
+        mysqli_select_db($conn, $dbname) or die("Cannot select DB");
 
     } catch (Exception $e) {
         echo "Stupid error (👉ﾟヮﾟ)👉 " . $e->getMessage();
@@ -29,3 +29,4 @@
         $visitor_id = uniqid();
         setcookie('visitor_id', $visitor_id, time() + 86400 * 365, '/');
         } ?>
+        
