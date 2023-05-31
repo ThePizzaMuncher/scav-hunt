@@ -91,8 +91,8 @@ if (isset($_POST['submit']))
 	if (is_numeric($_POST['id']))     // confirm that the 'id' value is a valid integer before getting the form data
 	{
 	    $id = $_POST['id']; 	     // get form data, making sure it is valid
-        $naam = mysqli_real_escape_string($conn,$_POST['leerlingnummer']);
-        $opleiding = mysqli_real_escape_string($conn,$_POST['voornaam']);
+        $naam = mysqli_real_escape_string($conn, htmlspecialchars($_POST['leerlingnummer']));
+        $opleiding = mysqli_real_escape_string($conn, htmlspecialchars($_POST['voornaam']));
     
 	    // checken of volgende velden zijn gevuld
         if ($naam == '' || $opleiding == '')
