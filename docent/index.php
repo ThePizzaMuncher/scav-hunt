@@ -111,5 +111,5 @@ echo <<< main
 	</body>
 </html>
 main;
-
+require_once("../assets/includes/footer.php");
 ?>
