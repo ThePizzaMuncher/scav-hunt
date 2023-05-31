@@ -398,6 +398,7 @@ section {
   background-color: var(--color-grey-ultra-light);
   border-radius: 5vh;
   box-shadow: inset 0 0 100px var(--color-secondary-ultra-light);
+  align-items: center;
 }
 
 
