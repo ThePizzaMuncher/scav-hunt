@@ -145,8 +145,6 @@ echo '  <thead>
             <th>ID</th>
             <th>Voornaam</th>
             <th>Achternaam</th>
-            <th>Vakken</th>	
-            <th>Ziek?</th>
             <th>Bewerken</th>
             <th>Verwijderen</th>
         </tr>
