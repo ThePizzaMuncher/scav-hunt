@@ -172,7 +172,7 @@ while($row = mysqli_fetch_row($leerlingen))
 
 	}
 	$id= $row[0];
-    	echo '<td><a href="docenten_edit.php?id=' . $id . '">Bewerk</a></td>';
+    	echo '<td><a href="edit.php?id=' . $id . '">Bewerk</a></td>';
     	echo '<td><a href="docenten_delete.php?id=' . $id . '">Verwijder</a></td>';
 	echo '</tr>';
 }

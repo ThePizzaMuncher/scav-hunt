@@ -1,14 +1,6 @@
 <?php
 require_once('../assets/includes/conn.php');
 session_start();
-/* if(isset($_SESSION['admin'])) {
-	header('location:./');
-	die();
-} */
-if(!isset($_POST)) {
-	header('location:./');
-	die();
-}
 $user = htmlspecialchars($_POST['user']);
 $pw = htmlspecialchars($_POST['pw']);
 $pull = $conn->query('SELECT * FROM docent');
@@ -32,4 +24,5 @@ if ($checkDocent) {
 	header('location:../docent');
 	die();
 }
+header('location:../');
 ?>
