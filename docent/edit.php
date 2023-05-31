@@ -91,8 +91,8 @@ if (isset($_POST['submit']))
 	if (is_numeric($_POST['id']))     // confirm that the 'id' value is a valid integer before getting the form data
 	{
 	    $id = $_POST['id']; 	     // get form data, making sure it is valid
-        $naam = mysqli_real_escape_string($con,$_POST['leerlingnummer']);
-        $opleiding = mysqli_real_escape_string($con,$_POST['voornaam']);
+        $naam = mysqli_real_escape_string($conn,$_POST['leerlingnummer']);
+        $opleiding = mysqli_real_escape_string($conn,$_POST['voornaam']);
     
 	    // checken of volgende velden zijn gevuld
         if ($naam == '' || $opleiding == '')
@@ -111,7 +111,7 @@ if (isset($_POST['submit']))
 
 
 	$sql_query = "UPDATE leerling SET naam='$naam', opleiding='$opleiding' WHERE id='$id'" or die ("this stuffed up");
-	$retval = mysqli_query( $con,$sql_query );
+	$retval = mysqli_query( $conn,$sql_query );
            
     if(! $retval ) {
         die('Could not enter data: ');
@@ -154,7 +154,7 @@ else
         //$Klas_id= $klas_id["klas"]
 	      
 		// show form
-		renderForm( $id, $naam, $opleiding);
+		renderForm($id, $naam, $opleiding);
        
 		}
 		else
