@@ -417,3 +417,8 @@ section {
   border-radius: 2vh;
   box-shadow: 0 0 20px var(--color-secondary-ultra-light);
 }
+/* Test css for basic */
+.gordel {
+  width: 100%;
+  background-color: red;
+}

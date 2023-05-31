@@ -1,32 +1,26 @@
 <?php
-/* Even een voorbeeld van dat de docent eerst moet ingelogd zijn etc...
-if ($_SESSION["login_docent"] == "true") {
+session_start();
 
+if(!isset($_SESSION['docent'])) {
+	header('location:../');
+	// die();
 }
-else {
-    header("location: ../");//Als je niet bent ingelogd, ga dan weer terug.
-}
-*/
+
 echo <<< main
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docenten pagina</title>
-    <script src="../assets/js/libs/OL_lib/OpenLayers.js" defer></script>
-    <script src="../assets/js/docent.js" defer></script>
-    <link rel="stylesheet" href="../assets/css/koter_analyzer.css">
-</head>
-<body>
-    <p>Naam: <span id="name"></span></p>
-    <p>Nummer: <span id="number"></span></p>
-    <p>x: <span id="x"></span></p>
-    <p>y: <span id="y"></span></p>
-    <p>Datum: <span id="date"></span></p>
-    <div id="map"></div>
-</body>
+<html>
+	<head>
+		<link rel="stylesheet" href="assets/css/style.css">
+	</head>
+	<body>
+		<div class="gordel">
+		<!-- Code tonen pagina voor de koters -->
+			<div class="code-pagina-knop">
+				<a href="code-tonen.php"><button type="button">Code tonen</button></a>
+			</div>
+		</div>
+	</body>
 </html>
 main;
+
 ?>
