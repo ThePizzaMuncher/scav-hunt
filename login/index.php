@@ -1,5 +1,12 @@
 <?php require_once("../assets/includes/header.php");
-/* Hier miss nog iets zodat de gebruiker meteen naar de desboard gaat waneer hij al is ingelogd. */
+if (isset($_SESSION["admin"]) || isset($_SESSION["docent"])) {
+    if ($_SESSION["admin"]) {
+        header("location: ../admin");
+    }
+    if ($_SESSION["docent"]) {
+        header("location: ../docent");
+    }
+}
 echo <<< inlog
 <!DOCTYPE html>
 <html>
