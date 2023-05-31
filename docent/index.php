@@ -4,9 +4,10 @@
 	die();
 } */
 
-require_once("../assets/includes/header.php");
+// require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
 ?>
+
 
 
 <?php
