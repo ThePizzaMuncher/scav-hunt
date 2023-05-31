@@ -144,7 +144,7 @@ echo '  <thead>
 	<tr>    
             <th>ID</th>
             <th>Voornaam</th>
-            <th>Achternaam</th>
+            <th>Opleiding</th>
             <th>Bewerken</th>
             <th>Verwijderen</th>
         </tr>
