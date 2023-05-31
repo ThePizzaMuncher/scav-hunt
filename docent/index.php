@@ -124,7 +124,7 @@ EFFE TESTE
 
 
 	
-echo '<div class="container">
+echo '<div class="scrollable">
 		<div class="row">
 			<div class="col-xs-8"></div>
   
@@ -139,7 +139,7 @@ echo '<div class="container">
 
    ' 
 ;
-echo "<table border='1' cellpadding='10'>";
+echo "<div class='scrollable'><table border='1' cellpadding='10'>";
 echo '  <thead>     
 	<tr>    
             <th>ID</th>
@@ -149,7 +149,7 @@ echo '  <thead>
             <th>Verwijderen</th>
         </tr>
 	</thead>
-    '
+    </div>'
 ;
 
 $num_rows = mysqli_num_fields($leerlingen);
