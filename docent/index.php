@@ -1,12 +1,8 @@
 <?php
 $reLogin = "location: ../login";
-if(!isset($_SESSION['docent'])) {
-	header($reLogin);
-	die();
-}
 if (isset($_SESSION["docent"])) {
 	$dc = htmlspecialchars($_SESSION["docent"]);
-	if (!$dc) {//if 
+	if ($dc != 1) {
 		header($reLogin);
 	}
 }
