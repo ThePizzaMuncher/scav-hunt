@@ -4,25 +4,25 @@ session_start();
 $user = htmlspecialchars($_POST['user']);
 $pw = htmlspecialchars($_POST['pw']);
 $pull = $conn->query('SELECT * FROM docent');
-$checkAdmin = false;
-$checkDocent = false;
+$checkAdmin = 0;
+$checkDocent = 0;
 while($row = $pull->fetch_assoc()) {
 	if($user == 'admin' && $pw == $row['wachtwoord']) {
-		$checkAdmin = true;
+		$checkAdmin = 1;
 		break;
 	}
 	else if($user == $row['naam'] && $pw == $row['wachtwoord']) {
-		$checkDocent = true;
+		$checkDocent = 1;
 		break;
 	}
 }
-if($checkAdmin == true) {
-	$_SESSION['admin'] = true;
+if($checkAdmin == 1) {
+	$_SESSION['admin'] = 1;
 	header('location:../admin');
 	die();
 }
-if ($checkDocent == true) {
-	$_SESSION['docent'] = true;
+if ($checkDocent == 1) {
+	$_SESSION['docent'] = 1;
 	header('location:../docent');
 	die();
 }

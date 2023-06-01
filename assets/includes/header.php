@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="scav-hunt/assets/img/favicon.png" rel="icon">
+  <link href="scav-hunt/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link
@@ -19,17 +19,17 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="scav-hunt/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="scav-hunt/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="scav-hunt/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="scav-hunt/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="scav-hunt/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="scav-hunt/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <script src="https://kit.fontawesome.com/51b9333b7a.js" crossorigin="anonymous"></script>
 
   <!-- Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="scav-hunt/assets/css/style.css" rel="stylesheet">
   
 <body>
   <div id="box"></div>
@@ -42,7 +42,7 @@
     <div class="container">
       <div class="row">
         <div class="col-0">
-          <a href="index.php"><img src="assets/img/5787-minecraft.png" alt="" class="img-fluid rounded-circle"></a>
+          <a href="index.php"><img src="scav-hunt/assets/img/5787-minecraft.png" alt="" class="img-fluid rounded-circle"></a>
         </div>
 
         <div class="col-1">

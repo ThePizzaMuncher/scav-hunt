@@ -20,7 +20,6 @@
 <tr>
 <?php
 require_once("../assets/includes/conn.php");
-
 // Get all the categories from category table
     $sql_klasid = "SELECT * FROM `leerling`";
     $KlassenID = mysqli_query($conn,$sql_klasid);
@@ -42,9 +41,7 @@ require_once("../assets/includes/conn.php");
                 // While loop must be terminated
             ?>
         </select>
-
 </tr></td>
-
 </table>
  <p>* Required</p>
 
@@ -57,11 +54,8 @@ require_once("../assets/includes/conn.php");
  </html>
  <?php
  }
-
  // connect to the database
-
  require_once("../assets/includes/conn.php");
-
 
 echo '<div class="container">
 		<div class="row">
