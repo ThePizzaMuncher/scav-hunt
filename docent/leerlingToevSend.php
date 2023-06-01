@@ -5,6 +5,10 @@ if (isset($_POST["submit"])) {
     $klas = htmlspecialchars($_POST["naam"]);
     $op = htmlspecialchars($_POST["opleiding"]);
     echo $op . "|" . $klas;
-    $conn->query("INSERT INTO leerling(naam, opleiding, groep_ID) VALUES (" . $klas . ", " . $op . ", 1)");
+    $one = 1;
+    $check = $conn->query("INSERT INTO leerling (naam, opleiding, groep_ID) VALUES (" . $klas . ", " . $op . ", " . $one . ")");
+    if (!$check) {
+        echo "<br>Dikke error!";
+    }
 }
 ?>
