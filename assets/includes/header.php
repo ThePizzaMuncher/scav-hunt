@@ -39,43 +39,43 @@
   <div class="header-box"></div>
   <!-- ======= Header ======= -->
   <header id="header">
-  <div class="container">
-    <div class="row">
-      <div class="col-3">
-        <a href="index.php"><img src="/~fp245787/kartel/assets/img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
-      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-0">
+          <a href="index.php"><img src="/~fp245787/kartel/assets/img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
+        </div>
 
-      <div class="col-6">
-        <div class="profile">
-          <h1 class="text-light"><a href="index.php">| Scav Hunt |</a></h1>
-          <div class="social-links mt-3 text-center">
-            <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-            <a href="" target="_blank"><i class="fa-brands fa-artstation"></i></a>
+        <div class="col-1">
+          <div class="profile">
+
+            <h1 class="text-light"><a href="index.php">| Scav Hunt |</a></h1>
+            <div class="social-links mt-3 text-center">
+              <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+              <a href="" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+              <a href="" target="_blank"><i class="fa-brands fa-artstation"></i></a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-3">
+        <div class="col-2">
         <div class="col-lg-6">
-          <h4><?php 
-          // require_once("connection.php");
-          session_start() ?></h4>
+        <h4><?php 
+        // require_once("connection.php");
+        session_start() ?></h4>
         </div>
         <div class="col-lg-6">
-          <nav id="navbar" class="nav-menu navbar">
-            <ul>
-              <li><a href="/~fp245787/kartel/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
-              <li><a href="code-tonen.php"><i class="bx bx-code"></i> Code</a></li>
-              <li><a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>
-              <li><a href="winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>
-              <li><a href="locatie-tonen.php"><i class="bx bx-map"></i> Locaties</a></li>
-              <li><a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>
-              <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li>
-            </ul>
-          </nav><!-- .nav-menu -->
+        <nav id="navbar" class="nav-menu navbar">
+          <a href="/~fp245787/kartel/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a>
+          <a href="code-tonen.php"><i class="bx bx-code"></i> Code</a>
+          <a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a>
+          <a href="winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a>
+          <a href="locatie-tonen.php"><i class="bx bx-map"></i> Locaties</a>
+          <a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a>
+          <a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a>
+        </nav><!-- .nav-menu -->
+        </div>
+
         </div>
       </div>
     </div>
-  </div>
-</header><!-- End Header -->
+  </header><!-- End Header -->
