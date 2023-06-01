@@ -5,6 +5,6 @@ $usr = htmlspecialchars($_POST["user"]);
 $pw = htmlspecialchars($_POST["pw"]);
 $pull = $conn->query("SELECT * FROM docent");
 while ($row = $pull->fetch_assoc()) {
-	echo "<p>" .  . "</p>"
+	echo "<p>" . $row["naam"] . "</p>";
 }
 ?>
