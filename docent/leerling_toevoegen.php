@@ -83,7 +83,7 @@ echo '<div class="container">
    	}
    */
    	echo "Entered data successfully\n";
-    $conn->query("INSERT INTO leerling(naam, opleiding) VALUES ($naam, $opleiding)");
+    $conn->query("INSERT INTO leerling(naam, opleiding, groep_ID) VALUES ($naam, $opleiding, 1)");
  	
 }
  else

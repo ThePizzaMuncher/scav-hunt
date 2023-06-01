@@ -134,7 +134,7 @@ h6 {
 #header .col-0 img {
   margin: 10px auto;
   display: block;
-  border: 5px solid var(--color-grey-dark);
+  border: 2px solid var(--color-secondary-red);
   transition: 1s;
   scale: 100%;
 }
@@ -289,7 +289,7 @@ h6 {
 .nav-menu a:focus {
   display: flex;
   align-items: center;
-  color: var(--color-grey-light);
+  color: var(--color-grey);
   padding: 12px 15px;
   margin-bottom: 8px;
   transition: 0.3s;
@@ -316,7 +316,7 @@ h6 {
 .nav-menu .active i,
 .nav-menu .active:focus i,
 .nav-menu li:hover>a i {
-  color: var(--color-secondary);
+  color: var(--color-secondary-red);
   text-shadow: 0 0 20px var(--color-secondary-light);
 }
 
