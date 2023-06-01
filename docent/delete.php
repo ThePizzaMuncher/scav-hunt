@@ -20,12 +20,12 @@
  $conn->query("DELETE FROM leerling WHERE id=$id");
  
  // redirect back to the view page
- header("Location: index.php");
+ header("Location: ../docent");
  }
  else
  // if id isn't set, or isn't valid, redirect back to view page
  {
- header("Location: index.php");
+ header("Location: ../docent");
  }
  
 ?>

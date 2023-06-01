@@ -44,6 +44,7 @@ echo '  <thead>
             <th>ID</th>
             <th>Voornaam</th>
             <th>Opleiding</th>
+			<th>Groeps_ID</th>
             <th>Bewerken</th>
             <th>Verwijderen</th>
         </tr>
