@@ -39,7 +39,7 @@
 body {
   background: var(--color-default);
   font-family: "Open Sans", sans-serif;
-  color: var(--color-default);
+  color: black;
 }
 
 a {
@@ -298,10 +298,11 @@ h6 {
 /* Desktop Navigation */
 .nav-menu {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 .nav-menu>li {
@@ -374,6 +375,7 @@ h6 {
 .mobile-nav-active #header {
   left: 0;
 }
+
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
@@ -426,8 +428,7 @@ section {
 
 .about button, .about .button-red {
   border-radius: 5px;
-  height: 40px;
-  width: 300px;
+  padding: 10px 5px;
   transition: 0.3s;
   text-align: center;
   overflow: hidden;
@@ -501,6 +502,7 @@ section {
   border-radius: 2vh;
   box-shadow: 0 0 20px var(--color-secondary-ultra-light);
   height: 100%;
+  color: black;
 }
 
 .full-width-block {
@@ -524,7 +526,6 @@ section {
 table {
   width: 100%;
   border-collapse: collapse;
-  color: black;
 }
 
 table a {
