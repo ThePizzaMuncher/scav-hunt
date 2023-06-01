@@ -17,6 +17,7 @@ if (isset($_SESSION["admin"]) || isset($_SESSION["docent"])) {
 
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
   <section id="about" class="section-50 d-flex flex-column align-items-center">
+    <h3>Login to get access to nice functions!</h3>
     <form method="post" action="send.php">
       <input type="text" name="user" placeholder="Username">
       <input type="password" name="pw" placeholder="Password">

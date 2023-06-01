@@ -74,17 +74,16 @@ echo '<div class="container">
 		 
 
  	// save the data to the database
-	/*$sql_query = "INSERT INTO leerling(naam, opleiding) VALUES ($naam, $opleiding)";
+	$sql_query = "INSERT INTO leerling(ID,naam, opleiding,groep_ID) VALUES ($id,$naam, $opleiding,1)";
 
 	$retval = mysqli_query($conn, $sql_query);
    
    	if(! $retval ) {
       	die('Could not enter data: ');
    	}
-   */
-   	echo "Entered data successfully\n";
-    $conn->query("INSERT INTO leerling(naam, opleiding, groep_ID) VALUES ($naam, $opleiding, 1)");
- 	
+   
+   /*	echo "Entered data successfully\n";
+    $conn->query("INSERT INTO leerling(ID,naam, opleiding, groep_ID) VALUES ($id,$naam, $opleiding, 1)"); */
 }
  else
  	// if the form hasn't been submitted, display the form
