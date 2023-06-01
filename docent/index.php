@@ -6,6 +6,9 @@ if (isset($_SESSION["docent"])) {
 		header($reLogin);
 	}
 }
+else {
+	header($reLogin);
+}
 
 // require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
