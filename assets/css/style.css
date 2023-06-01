@@ -531,11 +531,17 @@ section {
 table {
   width: 100%;
   border-collapse: collapse;
+  color: black;
+}
+
+table a {
+  background: var(--color-grey);
+  border-radius: 5px;
 }
 
 th {
   background-color: var(--color-secondary);
-  color: #333;
+  color: white;
   font-weight: bold;
   padding: 8px;
   text-align: left;
