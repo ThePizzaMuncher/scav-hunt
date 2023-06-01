@@ -1,4 +1,14 @@
 <?php
+session_start();
+if (isset($_SESSION["docent"])) { 
+	if ($_SESSION["docent"] != 1) {
+		header("location:../login");
+	}
+}
+else {
+	header("location:../login");
+}
+
 /* 
  .PHP
  Allows user to create a new entry in the database
@@ -12,6 +22,11 @@ $groep_ID='1';
  function renderForm($id, $naam, $opleiding, $groep_ID)
  {
  ?>
+ <style>
+    .hidden {
+        display: none;
+    }
+    </style>
   
  
  <form action="" method="post">
@@ -23,9 +38,11 @@ $groep_ID='1';
 <tr>
 <td> <strong>opleiding: </strong></td><td>  <input type='text' name='opleiding' value='<?php echo $opleiding; ?>'/>*</td>
 </tr>
+ <div class="hidden">
 <tr>
 <td> <strong>Groep_ID: </strong></td><td>  <input hidden readonly type='text' name='groep_ID' value='1'/></td>
 </tr>
+ </div>
 
 <?php
 
@@ -51,7 +68,7 @@ echo '<div class="container">
   
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h3 class="panel-title">Nieuwe Docent toevoegen</h3>
+						<h3 class="panel-title">Nieuwe Leerling toevoegen</h3>
 					</div>
 				</div>
 			

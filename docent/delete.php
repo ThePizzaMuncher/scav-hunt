@@ -1,4 +1,13 @@
 <?php
+session_start();
+if (isset($_SESSION["docent"])) { 
+	if ($_SESSION["docent"] != 1) {
+		header("location:../login");
+	}
+}
+else {
+	header("location:../login");
+}
 /* 
  delete.PHP
  Deletes a specific entry from the 'leerling' table

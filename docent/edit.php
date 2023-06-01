@@ -1,4 +1,13 @@
 <?php
+session_start();
+if (isset($_SESSION["docent"])) { 
+	if ($_SESSION["docent"] != 1) {
+		header("location:../login");
+	}
+}
+else {
+	header("location:../login");
+}
 /* 
  docenten_edit.PHP
  Allows user to edit specific entry in database
