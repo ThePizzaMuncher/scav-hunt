@@ -69,7 +69,7 @@
           <a href="code-tonen.php"><i class="bx bx-code"></i> Code</a>
           <a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a>
           <a href="winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a>
-          <a href="locatie-tonen.php"><i class="bx bx-map"></i> Locaties</a>
+          <a href="/~fp245787/kartel/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a>
           <a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a>
           <a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a>
         </nav><!-- .nav-menu -->
