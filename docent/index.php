@@ -1,5 +1,5 @@
 <?php
-/*$reLogin = "location: ../login";
+$reLogin = "location: ../login";
 if (isset($_SESSION["docent"])) {
 	$dc = htmlspecialchars($_SESSION["docent"]);
 	if ($dc != 1) {
@@ -8,7 +8,7 @@ if (isset($_SESSION["docent"])) {
 }
 else {
 	header($reLogin);
-}*/
+}
 
 require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
