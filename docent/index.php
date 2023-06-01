@@ -82,27 +82,3 @@ while($row = mysqli_fetch_row($leerlingen))
 
 </section>
 </section>
-
-<?php
-$pull = $conn->query("SELECT * FROM leerling");
-
-while ($row = $pull->fetch_assoc()) {
-	
-}
-
-$variabele = $conn->query('SELECT naam FROM leerling');
-
-if (isset($_SESSION["admin"])) {
-	$ad = htmlspecialchars($_SESSION["admin"]);
-	if ($ad == 1) {
-		echo <<< admin
-		<div></div>
-		admin;
-	}
-}
-
-
-
-
-require_once("../assets/includes/footer.php");
-?>

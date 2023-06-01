@@ -128,7 +128,7 @@ h6 {
   height: 100px;
 }
 
-#header .col-0 .image {
+#header .image {
   margin: 10px auto;
   display: block;
   border: 2px solid var(--color-secondary-red);

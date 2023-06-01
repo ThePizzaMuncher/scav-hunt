@@ -74,7 +74,7 @@
                     <li><a href="winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>
                     <li><a href="/~fp245787/kartel/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>
                     <li><a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>
-                    <li><a href="docent.php"><i class="bx bx-chalkboard-teacher"></i> Docent</a></li>
+                    <li><a href="/docent"><i class="bx bx-chalkboard-teacher"></i> Docent</a></li>
                     docent;
                   }
                 }
