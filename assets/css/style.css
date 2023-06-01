@@ -431,8 +431,7 @@ section {
   background-size: 100% 5px;
 }
 
-.about button {
-  background: var(--color-secondary-red);
+.about button, .about .button-red {
   border-radius: 5px;
   height: 40px;
   width: 300px;
@@ -443,6 +442,12 @@ section {
   color: white;
   cursor: pointer;
   margin: 10px 10px;
+}
+.about button {
+  background: var(--color-secondary);
+}
+.about .button-red {
+  background: var(--color-secondary-red);
 }
 
 .about button:hover {
