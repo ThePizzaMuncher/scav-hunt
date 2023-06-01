@@ -1,4 +1,5 @@
 <?php
+require_once("../assets/includes/header.php");
 session_start();
 if (isset($_SESSION["docent"])) { 
 	if ($_SESSION["docent"] != 1) {
