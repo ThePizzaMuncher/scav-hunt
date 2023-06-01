@@ -1,4 +1,8 @@
-<?php include 'assets/includes/header.php' ?>
+<?php
+session_start();
+$_SESSION["pagina"] = "home";
+include 'assets/includes/header.php';
+?>
 
 <main id="main">
 

@@ -57,24 +57,46 @@
 
           <nav id="navbar" class="nav-menu navbar">
             <ul class="nav-menu">
-              <li><a href="/~fp245787/kartel/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
-
               <?php
               if (isset($_SESSION["docent"])) {
                 $dc = htmlspecialchars($_SESSION["docent"]);
                 if ($dc == 1) {
                   echo <<< docent
+                    <li><a href="/~fp245787/kartel/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
                     <li><a href="code-tonen.php"><i class="bx bx-code"></i>Login</a></li>
                     <li><a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>
                     <li><a href="winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>
                     <li><a href="/~fp245787/kartel/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>
                     <li><a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>
                     <li><a href="docent/"><i class="bx bx-chalkboard-teacher"></i> Docent</a></li>
+                    <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li>
                     docent;
                 }
               }
+              else {
+                function default_bar() {//De default pagina bar's voor een pagina header.
+                    echo <<< default
+                    <li><a href="/~fp245787/kartel/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
+                    <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li>
+                    default;
+                }
+                if (isset($_SESSION["pagina"])) {//Just yeet a session of 'pagina' by every page so we can detect witch buttons need to be displayed.
+                  $pn = $_SESSION["pagina"];
+                  if ($pn == "home") {
+                    echo <<< home
+                    <li><a href="/~fp245787/kartel/login" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Docent login</a></li>
+                    <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>
+                    home;
+                  }
+                  else {
+                    default_bar();
+                  }
+                }
+                else {
+                  default_bar();
+                }
+              }
               ?>
-              <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li>
             </ul>
           </nav>
         </div>
