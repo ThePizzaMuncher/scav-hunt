@@ -76,7 +76,7 @@ while($row = mysqli_fetch_row($leerlingen))
 }
 
 	echo "</table></div>";
-	echo "<a href='leerling_toevoegen.php'><button>Toevoegen</button></a>";
+	echo "<a href='leerling_toevoegen.php'><button>Toevoegen</button></a><a href='logout.php'><button>Log Out</button></a>";
 ?>
 
 </section>
@@ -99,4 +99,8 @@ if (isset($_SESSION["admin"])) {
 		admin;
 	}
 }
+
+$nummer = $conn->query('SELECT COUNT(naam) FROM leerling');
+echo $nummer;
+
 ?>
