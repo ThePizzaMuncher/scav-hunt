@@ -1,7 +1,5 @@
 <?php require_once("../assets/includes/header.php");
 
-echo $_SERVER['DOCUMENT_ROOT'];
-
 if (isset($_SESSION["admin"]) || isset($_SESSION["docent"])) {
     if ($_SESSION["admin"] == 1) {
         header("location:../admin");

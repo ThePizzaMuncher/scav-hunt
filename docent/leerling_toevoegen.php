@@ -3,7 +3,7 @@
  .PHP
  Allows user to create a new entry in the database
 */
-require_once("../assets/includes/conn.php");
+/*require_once("../assets/includes/conn.php");
 $id='';
 $naam='';
 $opleiding='';
@@ -12,9 +12,9 @@ $opleiding='';
  function renderForm($id,$naam,$opleiding)
  {
  ?>
-  
+*/
  
- <form action="" method="post">
+ <form action="leerlingToevSend.php" method="post">
  <div>
 <table border='1' cellpadding='10' width='100%'>
 <tr>
@@ -32,7 +32,7 @@ $opleiding='';
  <?php 
  }
 
-
+/*
  // connect to the database
  require_once("../assets/includes/conn.php");
  
@@ -56,14 +56,13 @@ echo '<div class="container">
  if (isset($_POST['submit']))
  	{ 
         require_once("../assets/includes/conn.php");
- 	// get form data, making sure it is valid
-//	$id = $_POST['id']; 	     // get form data, making sure it is valid
+         // get form data, making sure it is valid
 	$naam = mysqli_real_escape_string($conn,$_POST['klas']);
     $opleiding = mysqli_real_escape_string($conn,$_POST['opleiding']);
    
  
  // check to make sure both fields are entered
- if ($naam == '')
+ if ($naam == '' || $opleiding == '')
  	{
  	// generate error message
  	$error = 'ERROR: Please fill in all required fields!';
@@ -74,24 +73,21 @@ echo '<div class="container">
 		 
 
  	// save the data to the database
-	/*$sql_query = "INSERT INTO leerling(naam, opleiding,groep_ID) VALUES ($naam, $opleiding,1)";
+	$sql_query = "INSERT INTO leerling(naam, opleiding,groep_ID) VALUES ('$naam', $opleiding,1)";
 
 	$retval = mysqli_query($conn, $sql_query);
    
-   	if(! $retval ) {
+   	if(!$retval ) {
       	die('Could not enter data: ');
    	}
-    */
     
-    //Dit moet werken
-    $conn->query("INSERT INTO leerling(naam, opleiding, groep_ID) VALUES ('test', 'Software developer', 1)");
    
-   /*	echo "Entered data successfully\n";
-    $conn->query("INSERT INTO leerling(ID,naam, opleiding, groep_ID) VALUES ($id,$naam, $opleiding, 1)"); */
+	echo "Entered data successfully\n";
+   
 }
  else
  	// if the form hasn't been submitted, display the form
  	{
  	renderForm('','','');
  	}
-?>
+?> */

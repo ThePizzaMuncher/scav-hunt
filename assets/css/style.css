@@ -209,6 +209,7 @@ h6 {
 }
 
 @media (max-width: 1199px) {
+  /* Styles made by Valerii Kozhevets */
   #header {
     left: -1200px;
     width: 80%;
@@ -368,10 +369,10 @@ section {
   justify-content: center !important;
 }
 
-#about .content h3 {
+#about h3 {
   font-weight: 700;
   font-size: 26px;
-  color: #173b6c;
+  color: var(--color-secondary);
 }
 
 .about form {
@@ -386,8 +387,13 @@ section {
   height: 40px;
   margin-bottom: 10px;
   padding: 5px;
-  border: 1px solid var(--color-secondary-light-red);
+  border: 1px solid var(--color-grey-light);
   border-radius: 5px;
+}
+
+.about input[type="text"]:focus,
+.about input[type="password"]:focus {
+  border: 1px solid var(--color-secondary-light);
 }
 
 .about button {
@@ -405,7 +411,8 @@ section {
 
 .about button:hover {
   background: var(--color-secondary-light-red);
-  box-shadow: 0 0 10px var(--color-secondary-red);
+  box-shadow: 0 0 20px var(--color-secondary-light-red),
+  0 -10px 10px var(--color-grey);
 }
 
 /*--------------------------------------------------------------

@@ -65,14 +65,14 @@
         </div>
         <div class="col-lg-6">
         <nav id="navbar" class="nav-menu navbar">
-            <a href="index.php#" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a>
-            <a href="code-tonen.php">Code</a>
-            <a href="groepje-tonen.php">Groepjes</a>
-            <a href="winnaar-tonen.php">Winnaar</a>
-            <a href="locatie-tonen.php">Locaties</a>
-            <a href="vragen-aanpassen.php">Vragen bijwerken</a>
-            <a href="index.php#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a>
-          </nav><!-- .nav-menu -->
+          <a href="/~fp245787/kartel/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a>
+          <a href="code-tonen.php"><i class="bx bx-code"></i> Code</a>
+          <a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a>
+          <a href="winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a>
+          <a href="locatie-tonen.php"><i class="bx bx-map"></i> Locaties</a>
+          <a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a>
+          <a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a>
+        </nav><!-- .nav-menu -->
         </div>
 
         </div>
