@@ -27,6 +27,5 @@ if ($checkDocent == 1) {
 	die();
 }
 //lfb = Login Feedback
-$_SESSION["lfb"] = "Inlog gegevens onjuist";
-header('location:./');
+header('location:../login');
 ?>
