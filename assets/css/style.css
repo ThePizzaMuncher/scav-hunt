@@ -133,6 +133,7 @@ h6 {
   display: block;
   border: 2px solid var(--color-secondary-red);
   transition: 1s;
+  height: fit-content;
   scale: 100%;
 }
 

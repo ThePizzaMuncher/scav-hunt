@@ -40,7 +40,7 @@
   <header id="header">
     <div class="container">
       <div class="row">
-        <div class="col-md-2 vert">
+        <div class="col-md-2">
           <a href="/~fp245787/kartel/index.php"><img src="/~fp245787/kartel/assets/img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
         </div>
 
@@ -55,7 +55,7 @@
           </div>
         </div>
 
-        <div class="col-md-7">
+        <div class="col-md-7 vert">
           <div class="col-lg-6">
             <h4><?php session_start(); ?></h4>
           </div>
@@ -74,7 +74,7 @@
                     <li><a href="winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>
                     <li><a href="/~fp245787/kartel/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>
                     <li><a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>
-                    <li><a href="docent.php"><i class="bx bx-chalkboard-teacher"></i> Docent</a></li>
+                    <li><a href="docent/"><i class="bx bx-chalkboard-teacher"></i> Docent</a></li>
                     docent;
                   }
                 }
