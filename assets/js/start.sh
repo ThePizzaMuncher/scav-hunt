@@ -1,1 +1,1 @@
-htop node server.js
+node server.js
