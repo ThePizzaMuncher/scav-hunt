@@ -173,7 +173,7 @@ h6 {
 }
 
 #header .profile h1 a {
-  color: var(--color-secondary);
+  color: var(--color-grey-dark);
   text-decoration: none;
   transition: 0.3s;
 }

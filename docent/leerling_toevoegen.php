@@ -7,7 +7,7 @@ require '../assets/includes/conn.php';
 $id='';
 $naam='';
 $opleiding='';
-$groep_ID='';
+$groep_ID='1';
 
  function renderForm($id, $naam, $opleiding, $groep_ID)
  {
@@ -24,7 +24,7 @@ $groep_ID='';
 <td> <strong>opleiding: </strong></td><td>  <input type='text' name='opleiding' value='<?php echo $opleiding; ?>'/>*</td>
 </tr>
 <tr>
-<td> <strong>Groep_ID: </strong></td><td>  <input type='text' name='groep_ID' value='<?php echo $groep_ID; ?>'/></td>
+<td> <strong>Groep_ID: </strong></td><td>  <input readonly type='text' name='groep_ID' value='<?php echo $groep_ID; ?>'/></td>
 </tr>
 
 <?php
