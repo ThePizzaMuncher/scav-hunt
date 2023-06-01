@@ -370,18 +370,13 @@ section {
 /*--------------------------------------------------------------
 # Login
 --------------------------------------------------------------*/
-#login {
-  background: red;
+#login button {
+  transition: 1s;
 }
-
-.post {
-  background: blue;
+#login button:hover {
+  scale: 110%;
+  box-shadow: 0 0 10px var(--color-secondary-light);
 }
-
-.post button {
-  height: 100px;
-}
-
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

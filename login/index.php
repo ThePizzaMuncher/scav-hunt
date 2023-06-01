@@ -20,7 +20,7 @@ if (isset($_SESSION["admin"]) || isset($_SESSION["docent"])) {
     <form method="post" action="send.php">
         <input type="text" name="user">
         <input type="password" name="pw">
-        <button type="submit" name="submit" alt="text">
+        <button type="submit" name="submit">Login!</button>
     </form>
      </section>
      </section>

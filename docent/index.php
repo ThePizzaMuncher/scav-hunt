@@ -78,4 +78,5 @@ while($row = mysqli_fetch_row($leerlingen))
 }
 
 	echo "</table>";
+	echo "<a href='leerling_toevoegen.php'><button>Toevoegen</button></a>";
 ?>

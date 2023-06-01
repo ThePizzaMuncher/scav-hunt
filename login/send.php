@@ -7,9 +7,14 @@ $pull = $conn->query("SELECT * FROM docent");
 while ($row = $pull->fetch_assoc()) {
 	if ($usr == "admin" && $pw == $row["wachtwoord"]) {
 		$_SESSION["admin"] = 1;
-		header("location: ../login"); // gaat weer terug naar de login, waar de gebruiker wordt doorgejaagd
+		header("location: ../admin");
 		die();
 	}
-	if ()
+	if ($usr == $row["naam"] && $pw == $row["wachtwoord"]) {
+		$_SESSION["docent"] = 1;
+		header("location: ../docent");
+		die();
+	}
 }
+echo "Er ging iets fout! DX";
 ?>
