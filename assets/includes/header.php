@@ -84,7 +84,7 @@
                   $pn = $_SESSION["pagina"];
                   if ($pn == "home") {
                     echo <<< home
-                    <li><a href="/~fp245787/kartel/login" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Docent login</a></li>
+                    <li><a href="/~fp245787/kartel/login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>
                     <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>
                     home;
                   }
