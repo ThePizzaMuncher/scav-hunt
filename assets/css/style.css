@@ -128,10 +128,6 @@ h6 {
   height: 100px;
 }
 
-#header .col-0 {
-  width: 100px;
-}
-
 #header .col-0 img {
   margin: 10px auto;
   display: block;
@@ -147,13 +143,8 @@ h6 {
   scale: 110%;
 }
 
-#header .col-1 {
-  width: 200px;
-}
-
 #header .col-2 {
   margin-top: 20px;
-  width: 750px;
 }
 
 #header h4 {
@@ -191,15 +182,13 @@ h6 {
 }
 
 #header .profile h1 a::before {
-
+  top: 50%;
   left: -6px;
-  transform: translateY(-50%);
 }
 
 #header .profile h1 a::after {
   top: 50%;
   right: -6px;
-  
 }
 
 #header .profile h1 a:hover::before,

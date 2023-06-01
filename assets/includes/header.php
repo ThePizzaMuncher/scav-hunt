@@ -40,11 +40,11 @@
   <header id="header">
     <div class="container">
       <div class="row">
-        <div class="col-0">
+        <div class="col-md-3 col-0">
           <a href="/~fp245787/kartel/index.php"><img src="/~fp245787/kartel/assets/img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
         </div>
 
-        <div class="col-1">
+        <div class="col-md-4 col-1">
           <div class="profile">
             <h1 class="text-light"><a href="/~fp245787/kartel/index.php">Scav Hunt</a></h1>
             <div class="social-links mt-3 text-center">
@@ -55,7 +55,7 @@
           </div>
         </div>
 
-        <div class="col-2">
+        <div class="col-md-5 col-2">
           <div class="col-lg-6">
             <h4><?php session_start(); ?></h4>
           </div>
