@@ -100,7 +100,8 @@ if (isset($_SESSION["admin"])) {
 	}
 }
 
-$nummer = $conn->query('SELECT COUNT(naam) FROM leerling');
-echo $nummer;
 
+
+
+require_once("../assets/includes/footer.php");
 ?>
