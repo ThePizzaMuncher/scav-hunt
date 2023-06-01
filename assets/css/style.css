@@ -187,10 +187,11 @@ h6 {
   height: 0;
   background-color: var(--color-secondary-light);
   transition: 0.3s;
+  bottom: 0;
 }
 
 #header .profile h1 a::before {
-  top: 50%;
+
   left: -6px;
   transform: translateY(-50%);
 }
@@ -198,7 +199,7 @@ h6 {
 #header .profile h1 a::after {
   top: 50%;
   right: -6px;
-  transform: translateY(-50%);
+  
 }
 
 #header .profile h1 a:hover::before,
