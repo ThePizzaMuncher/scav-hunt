@@ -14,9 +14,7 @@
   <link href="/~fp245787/kartel/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="/~fp245787/kartel/assets/vendor/aos/aos.css" rel="stylesheet">
@@ -30,8 +28,8 @@
 
   <!-- Main CSS File -->
   <link href="/~fp245787/kartel/assets/css/style.css" rel="stylesheet">
-  
-  <body>
+
+<body>
   <div id="box"> <?php include_once("../../filedir.php") ?> </div>
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
@@ -54,21 +52,18 @@
             </div>
           </div>
         </div>
-
         <div class="col-md-7 vert">
-          <div class="col-lg-6">
-            <h4><?php session_start(); ?></h4>
-          </div>
-          <div class="col-lg-6">
-            <nav id="navbar" class="nav-menu navbar">
-              <ul class="nav-menu">
-                <li><a href="/~fp245787/kartel/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
-                
-                <?php
-                if (isset($_SESSION["docent"])) {
-                  $dc = htmlspecialchars($_SESSION["docent"]);
-                  if ($dc == 1) {
-                    echo <<< docent
+          <h4><?php session_start(); ?></h4>
+
+          <nav id="navbar" class="nav-menu navbar">
+            <ul class="nav-menu">
+              <li><a href="/~fp245787/kartel/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
+
+              <?php
+              if (isset($_SESSION["docent"])) {
+                $dc = htmlspecialchars($_SESSION["docent"]);
+                if ($dc == 1) {
+                  echo <<< docent
                     <li><a href="code-tonen.php"><i class="bx bx-code"></i>Login</a></li>
                     <li><a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>
                     <li><a href="winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>
@@ -76,13 +71,12 @@
                     <li><a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>
                     <li><a href="docent/"><i class="bx bx-chalkboard-teacher"></i> Docent</a></li>
                     docent;
-                  }
                 }
-                ?>
-                <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li>
-              </ul>
-            </nav>
-          </div>
+              }
+              ?>
+              <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
