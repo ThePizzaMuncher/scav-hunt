@@ -61,7 +61,7 @@
           </div>
           <div class="col-lg-6">
             <nav id="navbar" class="nav-menu navbar">
-              <ul class="nav-list">
+              <ul class="nav-menu">
                 <li><a href="/~fp245787/kartel/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
                 <li><a href="code-tonen.php"><i class="bx bx-code"></i> Code</a></li>
                 <li><a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>

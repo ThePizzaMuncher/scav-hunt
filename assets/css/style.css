@@ -305,7 +305,7 @@ h6 {
 }
 
 .nav-menu>li {
-  margin: 0 10px;
+  margin: 0;
 }
 
 .nav-menu a,
@@ -314,7 +314,7 @@ h6 {
   align-items: center;
   color: black;
   padding: 12px 15px;
-  margin-bottom: 0;
+  margin: 0 10px;
   transition: 0.3s;
   font-size: 15px;
   white-space: nowrap;
@@ -528,15 +528,16 @@ table {
 }
 
 table a {
-  background: var(--color-grey-ultra-light);
+  background: var(--color-secondary-ultra-light);
   border-radius: 5px;
   padding: 5px 5px;
   transition: 0.3s;
 }
 
 table a:hover {
-  background: var(--color-secondary-ultra-light);
+  background: var(--color-secondary-light);
   scale: 110%;
+  color: white;
 }
 
 th {
