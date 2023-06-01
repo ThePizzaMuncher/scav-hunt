@@ -85,8 +85,14 @@
                   if ($pn == "home") {
                     echo <<< home
                     <li><a href="/~fp245787/kartel/login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>
-                    <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>
+                    <li><a href="/~fp245787/kartel/student_code.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>
                     home;
+                  }
+                  else if ($pn == "login") {
+                    echo <<< login
+                    <li><a href="/~fp245787/kartel/" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Home</a></li>
+                    <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li>
+                    login;
                   }
                   else {
                     default_bar();
