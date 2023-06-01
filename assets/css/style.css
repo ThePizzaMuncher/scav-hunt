@@ -84,7 +84,7 @@ h6 {
 
 .back-to-top:hover {
   background: white;
-  box-shadow: 0 0 20px 5px var(--color-secondary-red);
+  box-shadow: 0 0 20px var(--color-secondary-red);
   font-size: 50px;
   color: var(--color-primary-red);
 
@@ -117,7 +117,7 @@ h6 {
   z-index: 9997;
   padding: 0 15px;
   background: var(--color-default);
-  box-shadow: 0 0 10px var(--color-grey-dark);
+  box-shadow: 0 0 10px var(--color-grey-ultra-light);
 }
 
 #header .container {
@@ -173,7 +173,7 @@ h6 {
 }
 
 #header .profile h1 a {
-  color: var(--color-secondary-light);
+  color: var(--color-secondary);
   text-decoration: none;
   transition: 0.3s;
 }
@@ -273,34 +273,32 @@ h6 {
 --------------------------------------------------------------*/
 /* Desktop Navigation */
 .nav-menu {
-  width: auto; /* Измените на auto */
-  padding-top: 0;
-  padding-bottom: 0;
+  display: flex;
+  align-items: center;
 }
 
-.nav-menu * {
+.nav-menu ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
-.nav-menu>li {
-  position: relative;
-  white-space: nowrap;
+.nav-menu li {
+  margin-right: 15px;
 }
 
-.nav-menu a,
-.nav-menu a:focus {
+.nav-menu a {
   display: flex;
   align-items: center;
   color: black;
   padding: 12px 15px;
-  margin-bottom: 8px;
   transition: 0.3s;
   font-size: 15px;
-  white-space: nowrap; /* Добавьте перенос слов */
+  text-decoration: none;
 }
 
-.nav-menu a i,
-.nav-menu a:focus i {
+.nav-menu a i {
   font-size: 24px;
   padding-right: 8px;
   color: black;
@@ -311,16 +309,15 @@ h6 {
 .nav-menu .active,
 .nav-menu .active:focus,
 .nav-menu li:hover>a {
-  text-decoration: none;
   color: white;
+  background-color: var(--color-secondary-red);
 }
 
 .nav-menu a:hover i,
 .nav-menu .active i,
 .nav-menu .active:focus i,
 .nav-menu li:hover>a i {
-  color: var(--color-secondary-red);
-  text-shadow: 0 0 20px var(--color-secondary-light);
+  color: white;
 }
 
 /* Mobile Navigation */
@@ -373,8 +370,8 @@ section {
 
 #about h3 {
   font-weight: 700;
-  font-size: 26px;
-  color: var(--color-secondary);
+  font-size: 24px;
+  color: var(--color-grey-dark);
 }
 
 .about form {
@@ -414,7 +411,7 @@ section {
 .about button:hover {
   background: var(--color-secondary-light-red);
   box-shadow: 0 0 20px var(--color-secondary-light-red),
-  0 -10px 10px var(--color-grey);
+  0 5px 10px var(--color-grey);
 }
 
 /*--------------------------------------------------------------
