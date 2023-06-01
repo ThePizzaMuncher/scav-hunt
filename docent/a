@@ -1,1 +1,14 @@
-INSERT INTO `leerling` VALUES(`Jonathan`, `Software developer`, 0); INSERT INTO `leerling` VALUES(`Валерій`, `Software developer`, 0); INSERT INTO `leerling` VALUES(`Nick`, `Software developer`, 0); INSERT INTO `leerling` VALUES(`Damian`, `Software developer`, 0); INSERT INTO `leerling` VALUES(`Owen`, `Software developer`, 0); INSERT INTO `leerling` VALUES(`Oden`, `Software developer`, 0); INSERT INTO `leerling` VALUES(`Łukasz`, `Software developer`, 0); INSERT INTO `leerling` VALUES(`Bogusz`, `Software developer`, 0); INSERT INTO `leerling` VALUES(`Marcel`, `Software developer`, 0); INSERT INTO `leerling` VALUES(`Kylian`, `Software developer`, 0); INSERT INTO `leerling` VALUES(`Julia`, `Software developer`, 0);
+INSERT INTO `leerling`(naam, opleiding, groep_ID) VALUES (`Jonathan`, `Software developer`, 0);
+INSERT INTO `leerling`(naam, opleiding, groep_ID) VALUES (`Валерій`, `Software developer`, 0);
+INSERT INTO `leerling`(naam, opleiding, groep_ID) VALUES (`Nick`, `Software developer`, 0);
+INSERT INTO `leerling`(naam, opleiding, groep_ID) VALUES (`Damian`, `Software developer`, 0);
+INSERT INTO `leerling`(naam, opleiding, groep_ID) VALUES (`Owen`, `Software developer`, 0);
+INSERT INTO `leerling`(naam, opleiding, groep_ID) VALUES (`Oden`, `Software developer`, 0);
+INSERT INTO `leerling`(naam, opleiding, groep_ID) VALUES (`Łukasz`, `Software developer`, 0);
+INSERT INTO `leerling`(naam, opleiding, groep_ID) VALUES (`Bogusz`, `Software developer`, 0);
+INSERT INTO `leerling`(naam, opleiding, groep_ID) VALUES (`Marcel`, `Software developer`, 0);
+INSERT INTO `leerling`(naam, opleiding, groep_ID) VALUES (`Kylian`, `Software developer`, 0);
+INSERT INTO `leerling`(naam, opleiding, groep_ID) VALUES (`Julia`, `Software developer`, 0);
+
+
+INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Jonathan', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Валерій', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Nick', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Damian', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Owen', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('oden', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Łukasz', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Bogusz', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Marcel', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Kylian', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Julia', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Tyra', 'Software developer', 0); INSERT INTO `leerling`(leerling, opleiding, groep_ID) VALUES ('Ryan', 'Software developer', 0)

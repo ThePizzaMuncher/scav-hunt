@@ -128,12 +128,16 @@ h6 {
   height: 100px;
 }
 
-#header .col-0 img {
+#header .col-0 .image {
   margin: 10px auto;
   display: block;
   border: 2px solid var(--color-secondary-red);
   transition: 1s;
   scale: 100%;
+  background-image: url("/~fp245787/kartel/assets/img/ScavHunt.png");
+  border-radius: 50%;
+  height: 130px;
+  width: auto;
 }
 
 #header .col-0 img:hover {
