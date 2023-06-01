@@ -1,11 +1,15 @@
 <?php require_once("../assets/includes/header.php");
 
+echo $_SERVER['DOCUMENT_ROOT'];
+
 if (isset($_SESSION["admin"]) || isset($_SESSION["docent"])) {
     if ($_SESSION["admin"] == 1) {
-        header("location: ../admin");
+        header("location:../admin");
+        die();
     }
     if ($_SESSION["docent"] == 1) {
-        header("location: ../docent");
+        header("location:../docent");
+        die();
     }
 } ?>
 
@@ -16,7 +20,7 @@ if (isset($_SESSION["admin"]) || isset($_SESSION["docent"])) {
     <form method="post" action="send.php">
         <input type="text" name="user">
         <input type="password" name="pw">
-        <button type="submit" name="submit">
+        <button type="submit" name="submit" alt="text">
     </form>
      </section>
      </section>
