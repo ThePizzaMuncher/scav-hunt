@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="/~fp245787/kartel/assets/img/favicon.png" rel="icon">
+  <link href="/~fp245787/kartel/assets/img/android-chrome-512x512.png" rel="icon">
   <link href="/~fp245787/kartel/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->

@@ -13,7 +13,8 @@ require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
 ?>
 
-
+<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
+  <section id="about" class="section-50 d-flex flex-column align-items-center">
 
 <?php
 	// vullen variabele programs met inhoud van database
@@ -80,6 +81,8 @@ while($row = mysqli_fetch_row($leerlingen))
 	echo "<a href='leerling_toevoegen.php'><button>Toevoegen</button></a>";
 ?>
 
+</section>
+</section>
 
 <?php
 $pull = $conn->query("SELECT * FROM leerling");
@@ -89,4 +92,13 @@ while ($row = $pull->fetch_assoc()) {
 }
 
 $variabele = $conn->query('SELECT naam FROM leerling');
+
+if (isset($_SESSION["admin"])) {
+	$ad = htmlspecialchars($_SESSION["admin"]);
+	if ($ad == 1) {
+		echo <<< admin
+		<div></div>
+		admin;
+	}
+}
 ?>
