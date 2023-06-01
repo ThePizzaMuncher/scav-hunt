@@ -87,4 +87,6 @@ $arr = [];
 while ($row = $pull->fetch_assoc()) {
 	array_push($arr, $row["naam"]);
 }
+
+$variabele = $conn->query('SELECT naam FROM leerling');
 ?>

@@ -176,11 +176,35 @@ h6 {
   color: var(--color-grey-dark);
   text-decoration: none;
   transition: 0.3s;
+  position: relative;
 }
 
-#header .profile h1 a:hover {
-  color: var(--color-secondary-light);
-  text-shadow: 0 0 20px var(--color-secondary);
+#header .profile h1 a::before,
+#header .profile h1 a::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 0;
+  background-color: var(--color-secondary-light);
+  transition: height 0.3s, top 0.3s;
+}
+
+#header .profile h1 a::before {
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+}
+
+#header .profile h1 a::after {
+  top: 50%;
+  right: -6px;
+  transform: translateY(-50%);
+}
+
+#header .profile h1 a:hover::before,
+#header .profile h1 a:hover::after {
+  height: 100%;
+  top: 0;
 }
 
 #header .profile .social-links a {
