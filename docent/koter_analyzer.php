@@ -1,12 +1,13 @@
 <?php
-/* Even een voorbeeld van dat de docent eerst moet ingelogd zijn etc...
-if ($_SESSION["login_docent"] == "true") {
-
+session_start();
+if (isset($_SESSION["docent"])) { 
+	if ($_SESSION["docent"] != 1) {
+		header("location:../login");
+	}
 }
 else {
-    header("location: ../");//Als je niet bent ingelogd, ga dan weer terug.
+	header("location:../login");
 }
-*/
 echo <<< main
 <!DOCTYPE html>
 <html lang="en">

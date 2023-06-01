@@ -41,12 +41,12 @@
     <div class="container">
       <div class="row">
         <div class="col-0">
-          <a href="index.php"><img src="/~fp245787/kartel/assets/img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
+          <a href="/~fp245787/kartel/index.php"><img src="/~fp245787/kartel/assets/img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
         </div>
 
         <div class="col-1">
           <div class="profile">
-            <h1 class="text-light"><a href="index.php">Scav Hunt</a></h1>
+            <h1 class="text-light"><a href="/~fp245787/kartel/index.php">Scav Hunt</a></h1>
             <div class="social-links mt-3 text-center">
               <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
               <a href="" target="_blank"><i class="fa-brands fa-youtube"></i></a>
@@ -62,6 +62,22 @@
           <div class="col-lg-6">
             <nav id="navbar" class="nav-menu navbar">
               <ul class="nav-menu">
+                <?php
+                if (isset($_SESSION["docent"])) {
+                  $dc = htmlspecialchars($_SESSION["docent"]);
+                  if ($dc == 1) {
+                    echo <<< docent
+                    <li><a href="/~fp245787/kartel/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
+                    <li><a href="code-tonen.php"><i class="bx bx-code"></i> Code</a></li>
+                    <li><a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>
+                    <li><a href="winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>
+                    <li><a href="/~fp245787/kartel/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>
+                    <li><a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>
+                    <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li>
+                    docent;
+                  }
+                }
+                ?>
                 <li><a href="/~fp245787/kartel/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
                 <li><a href="code-tonen.php"><i class="bx bx-code"></i> Code</a></li>
                 <li><a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>
