@@ -24,7 +24,7 @@ $groep_ID='1';
 <td> <strong>opleiding: </strong></td><td>  <input type='text' name='opleiding' value='<?php echo $opleiding; ?>'/>*</td>
 </tr>
 <tr>
-<td> <strong>Groep_ID: </strong></td><td>  <input readonly type='text' name='groep_ID' value='<?php echo $groep_ID; ?>'/>1</td>
+<td> <strong>Groep_ID: </strong></td><td>  <input readonly type='text' name='groep_ID' value='1'/></td>
 </tr>
 
 <?php
@@ -69,10 +69,7 @@ echo '<div class="container">
 //	$id = $_POST['id']; 	     // get form data, making sure it is valid
 	$naam = mysqli_real_escape_string($conn,$_POST['naam']);
 	$opleiding = mysqli_real_escape_string($conn,$_POST['opleiding']);
-	$groep_ID = mysqli_real_escape_string($conn,$_POST['groep_ID']);
-	//$ziek = mysqli_real_escape_string($conn,$_POST['ziek']);
-
-   // $klas = mysqli_real_escape_string($conn,$_POST['klas']);
+	//$groep_ID = mysqli_real_escape_string($conn,$_POST['groep_ID']);
    
  
  // check to make sure both fields are entered

@@ -417,16 +417,16 @@ section {
   border: 1px solid var(--color-grey-light);
   border-radius: 5px;
   transition: 1s;
-  background: linear-gradient(to right, var(--color-secondary-light) 0%, var(--color-secondary-light) 0%);
-  background-size: 200% 100%;
-  background-position: right center;
+  background-image: linear-gradient(to right, var(--color-secondary-light) 0%, var(--color-secondary-light) 0%);
+  background-position: bottom left;
+  background-size: 0% 2px;
   background-repeat: no-repeat;
 }
 
 .about input[type="text"]:focus,
 .about input[type="password"]:focus {
   border: 1px solid var(--color-secondary-light);
-  animation: fillBackground 1s forwards;
+  background-size: 100% 2px;
 }
 
 @keyframes fillBackground {
