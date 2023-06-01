@@ -16,5 +16,5 @@ while ($row = $pull->fetch_assoc()) {
 		die();
 	}
 }
-echo "Er ging iets fout! DX";
+header("location ../login");
 ?>
