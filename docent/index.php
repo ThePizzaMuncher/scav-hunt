@@ -1,8 +1,15 @@
 <?php
-/* if(!isset($_SESSION['docent'])) {
-	header('location:../login');
+$reLogin = "location: ../login";
+if(!isset($_SESSION['docent'])) {
+	header($reLogin);
 	die();
-} */
+}
+if (isset($_SESSION["docent"])) {
+	$dc = htmlspecialchars($_SESSION["docent"]);
+	if (!$dc) {//if 
+		header($reLogin);
+	}
+}
 
 // require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
@@ -66,7 +73,7 @@ while($row = mysqli_fetch_row($leerlingen))
 	}
 	$id= $row[0];
     	echo '<td><a href="edit.php?id=' . $id . '">Bewerk</a></td>';
-    	echo '<td><a href="docenten_delete.php?id=' . $id . '">Verwijder</a></td>';
+    	echo '<td><a href="delete.php?id=' . $id . '">Verwijder</a></td>';
 	echo '</tr>';
 }
 
