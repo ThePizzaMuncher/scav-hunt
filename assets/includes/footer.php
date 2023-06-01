@@ -6,7 +6,7 @@
         <p>All Rights Maybe Reserved</p>
       </div>
       <div class="credits">
-        Made by <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">Valerii, Wieger, Jonathan, Dimitry </a>
+        Made by <a href="" target="_blank">Valerii, Wieger, Jonathan, Dimitry </a>
       </div>
     </div>
   </footer><!-- End  Footer -->

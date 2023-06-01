@@ -6,12 +6,14 @@ $pw = htmlspecialchars($_POST['pw']);
 $pull = $conn->query('SELECT * FROM docent');
 $checkAdmin = false;
 $checkDocent = false;
-while($row = $pull->fetch_assoc() && !$checkAdmin && !$checkDocent) {
+while($row = $pull->fetch_assoc()) {
 	if($user == 'admin' && $pw == $row['wachtwoord']) {
 		$checkAdmin = true;
+		break;
 	}
 	else if($user == $row['naam'] && $pw == $row['wachtwoord']) {
 		$checkDocent = true;
+		break;
 	}
 }
 if($checkAdmin) {
