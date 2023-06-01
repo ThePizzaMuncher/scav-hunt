@@ -425,17 +425,8 @@ section {
 
 .about input[type="text"]:focus,
 .about input[type="password"]:focus {
-  border: 1px solid var(--color-secondary-light);
+  border: 3px solid var(--color-secondary-light);
   background-size: 100% 2px;
-}
-
-@keyframes fillBackground {
-  0% {
-    background-position: right center;
-  }
-  100% {
-    background-position: left center;
-  }
 }
 
 .about button {

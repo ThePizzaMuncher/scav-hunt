@@ -24,7 +24,7 @@ $groep_ID='1';
 <td> <strong>opleiding: </strong></td><td>  <input type='text' name='opleiding' value='<?php echo $opleiding; ?>'/>*</td>
 </tr>
 <tr>
-<td> <strong>Groep_ID: </strong></td><td>  <input readonly type='text' name='groep_ID' value='1'/></td>
+<td> <strong>Groep_ID: </strong></td><td>  <input hidden readonly type='text' name='groep_ID' value='1'/></td>
 </tr>
 
 <?php
@@ -96,6 +96,7 @@ echo '<div class="container">
    	}
    
    	echo "Entered data successfully\n";
+    header("Location: index.php");
  
  	}
 }

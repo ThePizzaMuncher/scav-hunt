@@ -48,7 +48,7 @@
         <div class="col-1">
           <div class="profile">
 
-            <h1 class="text-light"><a href="index.php">| Scav Hunt |</a></h1>
+            <h1 class="text-light"><a href="index.php">Scav Hunt</a></h1>
             <div class="social-links mt-3 text-center">
               <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
               <a href="" target="_blank"><i class="fa-brands fa-youtube"></i></a>
