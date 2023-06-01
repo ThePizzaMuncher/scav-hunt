@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-primary: "Montserrat", sans-serif;
   --font-secondary: "Poppins", sans-serif;
@@ -13,8 +13,23 @@
   --color-grey: #6f7180;
   --color-grey-dark: #3f2c2c;
   scroll-behavior: smooth;
-}
+} */
+:root {
+  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Montserrat", sans-serif;
+  --font-secondary: "Poppins", sans-serif;
 
+  --color-default: rgb(223, 234, 236);
+  --color-primary: #830000;
+  --color-secondary: #ff3535;
+  --color-secondary-light: #7cd3ff;
+  --color-secondary-ultra-light: #ddf7ff;
+  --color-grey-ultra-light: #f5f9fd;
+  --color-grey-light: #a8a9b4;
+  --color-grey: #6f7180;
+  --color-grey-dark: rgb(44, 49, 63);
+  scroll-behavior: smooth;
+}
 body {
   background: var(--color-default);
   font-family: "Open Sans", sans-serif;

@@ -5,7 +5,7 @@ if (isset($_SESSION["docent"])) {
 	}
 }
 else {
-	//header("location:../login");
+	header("location:../login");
 }
 
 require_once("../assets/includes/header.php");
