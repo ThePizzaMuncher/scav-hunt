@@ -297,22 +297,15 @@ h6 {
 --------------------------------------------------------------*/
 /* Desktop Navigation */
 .nav-menu {
-  width: auto; /* Измените на auto */
-  padding-top: 0;
-  padding-bottom: 0;
-  display: flex; /* Добавьте */
-  justify-content: center; /* Добавьте */
-  align-items: center; /* Добавьте */
-}
-
-.nav-menu * {
-  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-menu>li {
-  position: relative;
-  white-space: nowrap;
-  margin: 0 10px; /* Добавьте отступы между элементами меню */
+  margin: 0 10px;
 }
 
 .nav-menu a,
@@ -321,10 +314,10 @@ h6 {
   align-items: center;
   color: black;
   padding: 12px 15px;
-  margin-bottom: 8px;
+  margin-bottom: 0;
   transition: 0.3s;
   font-size: 15px;
-  white-space: nowrap; /* Добавьте перенос слов */
+  white-space: nowrap;
 }
 
 .nav-menu a i,
@@ -535,8 +528,15 @@ table {
 }
 
 table a {
-  background: var(--color-grey);
+  background: var(--color-grey-ultra-light);
   border-radius: 5px;
+  padding: 5px 5px;
+  transition: 0.3s;
+}
+
+table a:hover {
+  background: var(--color-secondary-ultra-light);
+  scale: 110%;
 }
 
 th {
