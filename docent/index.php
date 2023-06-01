@@ -79,3 +79,12 @@ while($row = mysqli_fetch_row($leerlingen))
 	echo "</table>";
 	echo "<a href='leerling_toevoegen.php'><button>Toevoegen</button></a>";
 ?>
+
+
+<?php
+$pull = $conn->query("SELECT * FROM leerling");
+$arr = [];
+while ($row = $pull->fetch_assoc()) {
+	array_push($arr, $row["naam"]);
+}
+?>
