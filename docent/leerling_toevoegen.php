@@ -81,9 +81,8 @@ echo '<div class="container">
    	if(! $retval ) {
       	die('Could not enter data: ');
    	}
-   
+   */
    	echo "Entered data successfully\n";
-    */
     $conn->query("INSERT INTO leerling(naam, opleiding) VALUES ($naam, $opleiding)");
  	
 }
