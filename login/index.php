@@ -7,6 +7,14 @@ if (isset($_SESSION["admin"]) || isset($_SESSION["docent"])) {
         header("location: ../docent");
     }
 }
+if (isset($_SESSION["lfb"])) {
+    $lfb = htmlspecialchars($_SESSION["lfb"]);
+    if ($lfb != "") {
+        echo <<< lfb
+        <script>window.alert("$_SESSION[lfb]")</script>
+        lfb;
+    }
+}
 echo <<< inlog
 <!DOCTYPE html>
 <html>
