@@ -71,7 +71,7 @@ h6 {
   right: 25px;
   bottom: 25px;
   z-index: 996;
-  background: var(--color-secondary);
+  background: var(--color-secondary-red);
   width: 40px;
   height: 40px;
   border-radius: 50px;
@@ -84,9 +84,9 @@ h6 {
 
 .back-to-top:hover {
   background: white;
-  box-shadow: 0 0 20px 5px var(--color-secondary);
+  box-shadow: 0 0 20px 5px var(--color-secondary-red);
   font-size: 50px;
-  color: var(--color-primary);
+  color: var(--color-primary-red);
 
 }
 
@@ -390,7 +390,7 @@ section {
 }
 
 .about button {
-  background: var(--color-secondary);
+  background: var(--color-secondary-red);
   border-radius: 5px;
   height: 40px;
   width: 300px;
@@ -403,8 +403,8 @@ section {
 }
 
 .about button:hover {
-  background: var(--color-secondary-light);
-  box-shadow: 0 0 10px var(--color-secondary);
+  background: var(--color-secondary-light-red);
+  box-shadow: 0 0 10px var(--color-secondary-red);
 }
 
 /*--------------------------------------------------------------
