@@ -6,7 +6,7 @@
 */
 
  // connect to the database
- include('database.php');
+ require_once("../assets/includes/conn.php");
  
 
  
@@ -17,9 +17,7 @@
  $id = $_GET['id'];
  
  // delete the entry
- $result = mysqli_query($conn, "DELETE FROM leerling WHERE id=$id")
- 
- or die(); 
+ $conn->query("DELETE FROM leerling WHERE id=$id");
  
  // redirect back to the view page
  header("Location: index.php");
