@@ -104,7 +104,7 @@ h6 {
   bottom: 0;
   height: 100px;
   width: 100%;
-  background: var(--color-primary);
+  background: white;
 }
 
 #header {

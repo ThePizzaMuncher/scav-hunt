@@ -74,7 +74,7 @@ echo '<div class="container">
 		 
 
  	// save the data to the database
-	$sql_query = "INSERT INTO leerling(ID,naam, opleiding,groep_ID) VALUES ($id,$naam, $opleiding,1)";
+	$sql_query = "INSERT INTO leerling(naam, opleiding,groep_ID) VALUES ($naam, $opleiding,1)";
 
 	$retval = mysqli_query($conn, $sql_query);
    
