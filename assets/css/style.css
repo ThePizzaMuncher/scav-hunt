@@ -392,11 +392,26 @@ section {
   padding: 5px;
   border: 1px solid var(--color-grey-light);
   border-radius: 5px;
+  transition: 1s;
+  background: linear-gradient(to right, var(--color-secondary-light) 0%, var(--color-secondary-light) 0%);
+  background-size: 200% 100%;
+  background-position: right center;
+  background-repeat: no-repeat;
 }
 
 .about input[type="text"]:focus,
 .about input[type="password"]:focus {
   border: 1px solid var(--color-secondary-light);
+  animation: fillBackground 1s forwards;
+}
+
+@keyframes fillBackground {
+  0% {
+    background-position: right center;
+  }
+  100% {
+    background-position: left center;
+  }
 }
 
 .about button {
