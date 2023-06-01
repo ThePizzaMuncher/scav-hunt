@@ -63,8 +63,6 @@ require_once("../assets/includes/conn.php");
  require_once("../assets/includes/conn.php");
 
 
-
-
 echo '<div class="container">
 		<div class="row">
 			<div class="col-md-8"></div>
@@ -74,13 +72,10 @@ echo '<div class="container">
 						<h3 class="panel-title">Leerling Wijzigen</h3>
 					</div>
 				</div>
-			
 		</div>
 	</div>
-
-   ' 
+ ' 
 ;
-
  // check if the form has been submitted. If it has, process the form and save it to the database
 if (isset($_POST['submit']))
 {
@@ -97,32 +92,27 @@ if (isset($_POST['submit']))
 		    // generate error message
 		    $error = 'ERROR: Please fill in all required fields!';
 		    //error, display form
-		    // renderForm($id, $firstname, $lastname, $error);
 		    renderForm($id,$naam, $opleiding);
 		}
 	    else
 		{
 		    
-		     	// save the data to the database
-
-
+	// save the data to the database
 	$sql_query = "UPDATE leerling SET naam='$naam', opleiding='$opleiding' WHERE id='$id'" or die ("this stuffed up");
-	$retval = mysqli_query( $conn,$sql_query );
-           
+	$retval = mysqli_query( $conn,$sql_query );   
     if(! $retval ) {
         die('Could not enter data: ');
      }
-
 		    // once saved, redirect back to the view page
 		    header("Location: index.php"); 
 		}
+
 	}
 	else
 	    {
 	    // if the 'id' isn't valid, display an error
 	    echo 'Error!';
 	    }
-	
 }
 else
     // if the form hasn't been submitted, get the data from the db and display the form

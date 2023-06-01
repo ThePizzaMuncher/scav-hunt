@@ -16,15 +16,15 @@ while($row = $pull->fetch_assoc()) {
 		break;
 	}
 }
-if($checkAdmin) {
+if($checkAdmin == true) {
 	$_SESSION['admin'] = true;
 	header('location:../admin');
 	die();
 }
-if ($checkDocent) {
+if ($checkDocent == true) {
 	$_SESSION['docent'] = true;
 	header('location:../docent');
 	die();
 }
-header('location:../');
+//header('location:../');
 ?>
