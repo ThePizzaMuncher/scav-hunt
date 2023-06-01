@@ -179,8 +179,8 @@ h6 {
 }
 
 #header .profile h1 a:hover {
-  color: var(--color-secondary-ultra-light);
-  text-shadow: 0 0 20px var(--color-secondary-light);
+  color: var(--color-secondary-light);
+  text-shadow: 0 0 20px var(--color-secondary);
 }
 
 #header .profile .social-links a {

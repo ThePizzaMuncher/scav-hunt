@@ -10,7 +10,7 @@
     <form method="post" action="leerlingToevSend.php">
         <input type="text" name="naam">
         <input type="text" name="opleiding">
-        <button type="submit" name="submit" value="submit">
+        <input type="submit" name="submit" value="Verstuur">
     </form>
 </body>
 </html>
