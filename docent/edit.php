@@ -3,10 +3,6 @@
  docenten_edit.PHP
  Allows user to edit specific entry in database
 */
-
-
-
- 
  function renderForm($id, $naam, $opleiding)
  {
  ?>
@@ -146,16 +142,8 @@ else
 		// get data from db
 		$naam = $row['naam'];
 		$opleiding = $row['opleiding'];
-		//$klas_id = $row['klas_id'];
-
-        //$sql_klasid = "SELECT * FROM `klassen` where id=$klas_iddb";
-        //$KlassenID = mysqli_query($con,$sql_klasid);
-        //$klas_id = mysqli_fetch_array($KlassenID);
-        //$Klas_id= $klas_id["klas"]
-	      
 		// show form
 		renderForm($id, $naam, $opleiding);
-       
 		}
 		else
 		// if no match, display result
