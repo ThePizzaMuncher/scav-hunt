@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?php echo $_SERVER['DOCUMENT_ROOT'];?>/assets/img/favicon.png" rel="icon">
-  <link href="<?php echo $_SERVER['DOCUMENT_ROOT'];?>/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/~fp245787/kartel/assets/img/favicon.png" rel="icon">
+  <link href="/~fp245787/kartel/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link
@@ -19,17 +19,17 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<?php echo $_SERVER['DOCUMENT_ROOT'];?>/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="<?php echo $_SERVER['DOCUMENT_ROOT'];?>/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?php echo $_SERVER['DOCUMENT_ROOT'];?>/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?php echo $_SERVER['DOCUMENT_ROOT'];?>/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<?php echo $_SERVER['DOCUMENT_ROOT'];?>/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="<?php echo $_SERVER['DOCUMENT_ROOT'];?>/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="/~fp245787/kartel/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/~fp245787/kartel/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/~fp245787/kartel/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/~fp245787/kartel/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/~fp245787/kartel/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/~fp245787/kartel/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <script src="https://kit.fontawesome.com/51b9333b7a.js" crossorigin="anonymous"></script>
 
   <!-- Main CSS File -->
-  <link href="<?php echo $_SERVER['DOCUMENT_ROOT']; ?>/assets/css/style.css" rel="stylesheet">
+  <link href="/~fp245787/kartel/assets/css/style.css" rel="stylesheet">
   
 <body>
   <div id="box"></div>
@@ -42,7 +42,7 @@
     <div class="container">
       <div class="row">
         <div class="col-0">
-          <a href="index.php"><img src="<?php echo $_SERVER['DOCUMENT_ROOT']; ?>/assets/img/5787-minecraft.png" alt="" class="img-fluid rounded-circle"></a>
+          <a href="index.php"><img src="/~fp245787/kartel/assets/img/5787-minecraft.png" alt="" class="img-fluid rounded-circle"></a>
         </div>
 
         <div class="col-1">

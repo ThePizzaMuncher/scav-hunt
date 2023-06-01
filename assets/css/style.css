@@ -370,7 +370,15 @@ section {
 /*--------------------------------------------------------------
 # Login
 --------------------------------------------------------------*/
-#login button {
+#login {
+  background: red;
+}
+
+.post {
+  background: blue;
+}
+
+.post button {
   height: 100px;
 }
 
