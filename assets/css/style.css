@@ -451,6 +451,12 @@ section {
 }
 
 .about button:hover {
+  background: var(--color-secondary-light);
+  box-shadow: 0 0 20px var(--color-secondary-light),
+  0 5px 5px var(--color-grey);
+}
+
+.about .button-red:hover {
   background: var(--color-secondary-light-red);
   box-shadow: 0 0 20px var(--color-secondary-light-red),
   0 5px 5px var(--color-grey);
