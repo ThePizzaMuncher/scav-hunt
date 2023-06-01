@@ -210,8 +210,8 @@ h6 {
 #header .profile .social-links a {
   font-size: 16px;
   display: inline-block;
-  background: var(--color-secondary-ultra-light);
-  color: white;
+  background: var(--color-default);
+  color: var(--color-grey);
   vertical-align: center;
   border-radius: 50%;
   width: 36px;
@@ -300,6 +300,9 @@ h6 {
   width: auto; /* Измените на auto */
   padding-top: 0;
   padding-bottom: 0;
+  display: flex; /* Добавьте */
+  justify-content: center; /* Добавьте */
+  align-items: center; /* Добавьте */
 }
 
 .nav-menu * {
@@ -309,6 +312,7 @@ h6 {
 .nav-menu>li {
   position: relative;
   white-space: nowrap;
+  margin: 0 10px; /* Добавьте отступы между элементами меню */
 }
 
 .nav-menu a,
@@ -377,8 +381,6 @@ h6 {
 .mobile-nav-active #header {
   left: 0;
 }
-
-
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
@@ -440,6 +442,7 @@ section {
   border: none;
   color: white;
   cursor: pointer;
+  margin: 10px 10px;
 }
 
 .about button:hover {

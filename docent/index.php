@@ -23,19 +23,17 @@ require_once("../assets/includes/conn.php");
 
 
 	
-echo '<div class="scrollable">
-		<div class="row">
-			<div class="col-xs-8"></div>
-  
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title">Lijst met Leerlingen</h3>
-					</div>
-				</div>
-			
-		</div>
-	</div>
+echo '
+	<div class="row">
+		<div class="col-xs-8"></div>
 
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Lijst met Leerlingen</h3>
+				</div>
+			</div>
+		
+	</div>
    ' 
 ;
 echo "<div class='scrollable'><table border='1' cellpadding='10'>";
@@ -77,7 +75,7 @@ while($row = mysqli_fetch_row($leerlingen))
 	echo '</tr>';
 }
 
-	echo "</table>";
+	echo "</table></div>";
 	echo "<a href='leerling_toevoegen.php'><button>Toevoegen</button></a>";
 ?>
 
