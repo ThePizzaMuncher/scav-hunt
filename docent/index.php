@@ -1,13 +1,11 @@
 <?php
-$reLogin = "location: ../login";
-if (isset($_SESSION["docent"])) {
-	$dc = htmlspecialchars($_SESSION["docent"]);
-	if ($dc != 1) {
-		header($reLogin);
+if (isset($_SESSION["docent"])) { 
+	if ($_SESSION["docent"] != 1) {
+		header("location:../login");
 	}
 }
 else {
-	header($reLogin);
+	header("location:../login");
 }
 
 require_once("../assets/includes/header.php");
