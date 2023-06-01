@@ -183,10 +183,10 @@ h6 {
 #header .profile h1 a::after {
   content: "";
   position: absolute;
-  width: 2px;
+  width: 5px;
   height: 0;
   background-color: var(--color-secondary-light);
-  transition: height 0.3s, top 0.3s;
+  transition: 0.3s;
 }
 
 #header .profile h1 a::before {

@@ -22,11 +22,6 @@ $groep_ID='1';
  function renderForm($id, $naam, $opleiding, $groep_ID)
  {
  ?>
- <style>
-    .hidden {
-        display: none;
-    }
-    </style>
   
  
  <form action="" method="post">
@@ -38,11 +33,7 @@ $groep_ID='1';
 <tr>
 <td> <strong>opleiding: </strong></td><td>  <input type='text' name='opleiding' value='<?php echo $opleiding; ?>'/>*</td>
 </tr>
- <div class="hidden">
-<tr>
-<td> <strong>Groep_ID: </strong></td><td>  <input hidden readonly type='text' name='groep_ID' value='1'/></td>
-</tr>
- </div>
+<input hidden readonly type='text' name='groep_ID' value='1'/></td>
 
 <?php
 
