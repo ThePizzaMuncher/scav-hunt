@@ -16,5 +16,5 @@ while ($row = $pull->fetch_assoc()) {
 		die();
 	}
 }
-header("location ../login");
+header("location: ../login");
 ?>

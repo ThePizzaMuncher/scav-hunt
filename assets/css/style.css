@@ -19,11 +19,17 @@
   --font-primary: "Montserrat", sans-serif;
   --font-secondary: "Poppins", sans-serif;
 
-  --color-default: rgb(223, 234, 236);
-  --color-primary: #830000;
-  --color-secondary: #ff3535;
+  --color-default: rgb(224, 240, 243);
+  --color-primary: #001483;
+  --color-secondary: #3561ff;
   --color-secondary-light: #7cd3ff;
   --color-secondary-ultra-light: #ddf7ff;
+
+  --color-primary-red: #830000;
+  --color-secondary-red: #ff3535;
+  --color-secondary-light-red: #ff7c7c;
+  --color-secondary-ultra-light-red: #ffdddd;
+
   --color-grey-ultra-light: #f5f9fd;
   --color-grey-light: #a8a9b4;
   --color-grey: #6f7180;
