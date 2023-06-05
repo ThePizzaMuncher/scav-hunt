@@ -6,15 +6,15 @@ $pw = htmlspecialchars($_POST["pw"]);
 $pull = $conn->query("SELECT * FROM docent");
 while ($row = $pull->fetch_assoc()) {
 	if ($usr == "admin" && $pw == $row["wachtwoord"]) {
-		$_SESSION["admin"] = 1;
-		header("location: ../admin");
+		$_SESSION['admin'] = 1;
+		header("location:../admin");
 		die();
 	}
 	if ($usr == $row["naam"] && $pw == $row["wachtwoord"]) {
 		$_SESSION["docent"] = 1;
-		header("location: ../docent");
+		header("location:../docent");
 		die();
 	}
 }
-header("location: ../login");
+header("location:../login");
 ?>
