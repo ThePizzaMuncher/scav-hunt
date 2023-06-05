@@ -66,7 +66,7 @@
                     <li><a href="winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>
                     <li><a href="/~fp245787/kartel/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>
                     <li><a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>
-                    <li><a href="docent/"><i class="bx bx-chalkboard-teacher"><i class="bx bx-user"></i> Docent</a></li>
+                    <li><a href="docent/"><i class="bx bx-user"></i> Docent</a></li>
                     <li><a href="/~fp245787/kartel/#about" class="nav-link scrollto hover-sound"><i class="bx bx-info"></i> About</a></li>
                     docent;
               } elseif (isset($_SESSION["admin"])) {
