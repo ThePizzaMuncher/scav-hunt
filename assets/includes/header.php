@@ -46,9 +46,9 @@
           <div class="profile">
             <h1 class="text-light"><a href="/~fp241754/scav-hunt/index.php">Scav Hunt</a></h1>
             <div class="social-links mt-3 text-center">
-              <a href="" target="_blank"><i class="fa-brands fa-info"></i></a>
-              <a href="" target="_blank"><i class="fa-brands fa-text"></i></a>
-              <a href="" target="_blank"><i class="fa-brands fa-code"></i></a>
+              <a href="" target="_blank"><i class="fa fa-info" aria-hidden="true"></i></a>
+              <a href="" target="_blank"><i class="fa fa-address-book" aria-hidden="true"></i></a>
+              <a href="" target="_blank"><i class="fa fa-map" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -75,7 +75,6 @@
               function default_bar() {
                 echo '<li><a href="code-tonen.php"><i class="bx bx-code"></i>Login</a></li>';
               }
-			}
               if (isset($_SESSION["pagina"])) {
                 $pn = $_SESSION["pagina"];
                 if ($pn == "home") {
@@ -87,6 +86,7 @@
               } else {
                 default_bar();
               }
+			}
             ?>
             <li><a href="/~fp241754/scav-hunt/#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li>
           </ul>
