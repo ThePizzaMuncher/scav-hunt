@@ -1,4 +1,4 @@
 <?php
-$rootPath = dirname(__FILE__);
-$rootPath2 = __DIR__;
+$rootPath2 = dirname(__FILE__);
+$rootPath = __DIR__;
 ?>
