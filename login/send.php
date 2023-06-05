@@ -19,4 +19,5 @@ while ($row = $docent->fetch_assoc()) {
 	}
 }
 header('location:../login');
+die();
 ?>
