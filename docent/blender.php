@@ -21,4 +21,5 @@ require_once('../assets/includes/conn.php');
 
 <?php
 	$leerlingen = mysqli_query($conn, 'SELECT * FROM leerling');
+	
 ?>

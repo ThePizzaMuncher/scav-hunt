@@ -101,7 +101,7 @@ if (isset($_POST['submit']))
 		{
 		    
 	// save the data to the database
-	$sql_query = "UPDATE leerling SET naam='$naam', opleiding='$opleiding' WHERE id='$id'" or die ("this stuffed up");
+	$sql_query = "UPDATE leerling SET naam='$naam', opleiding='$opleiding' WHERE id='$id'"; // or die("this stuffed up");
 	$retval = mysqli_query( $conn,$sql_query );   
     if(! $retval ) {
         die('Could not enter data: ');
