@@ -1,20 +1,24 @@
 <?php
 require_once('../assets/includes/conn.php');
 session_start();
-$usr = htmlspecialchars($_POST["user"]);
-$pw = htmlspecialchars($_POST["pw"]);
-$pull = $conn->query("SELECT * FROM docent");
-while ($row = $pull->fetch_assoc()) {
-	if ($usr == "admin" && $pw == $row["wachtwoord"]) {
-		$_SESSION['admin'] = 1;
-		header("location:../admin");
+$usr = htmlspecialchars($_POST['user']);
+$pw = htmlspecialchars($_POST['pw']);
+// $docent = $conn->query('SELECT * FROM docent');
+// $admin = $conn->query('SELECT * FROM admin');
+// while ($row = $docent->fetch_assoc()) {
+while ($row = $conn->query('SELECT * FROM docent')->fetch_assoc()) {
+	if ($usr == $row['naam'] && $pw == $row['wachtwoord']) {
+		$_SESSION['docent'] = 1;
+		header('location:../docent');
 		die();
 	}
-	if ($usr == $row["naam"] && $pw == $row["wachtwoord"]) {
-		$_SESSION["docent"] = 1;
-		header("location:../docent");
+// } while ($row = $admin->fetch_assoc()) {
+} while ($row = $conn->query('SELECT * FROM docent')->fetch_assoc()) {
+	if ($usr == $row['naam'] && $pw == $row['wachtwoord']) {
+		$_SESSION['admin'] = 1;
+		header('location:../admin');
 		die();
 	}
 }
-header("location:../login");
+header('location:../login');
 ?>
