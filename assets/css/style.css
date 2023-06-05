@@ -135,6 +135,7 @@ h6 {
   transition: 1s;
   height: fit-content;
   scale: 100%;
+  width: 80px;
 }
 
 #header img:hover {
@@ -565,4 +566,7 @@ td {
 
 .scrollable::-webkit-scrollbar-thumb:hover {
   background-color: #999;
+}
+#ul {
+  flex-wrap: wrap;
 }
