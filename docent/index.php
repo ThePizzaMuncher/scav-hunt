@@ -15,6 +15,7 @@ require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
 ?>
 
+<h1>ПАЦАНЫ КОЛБАСА ЗДЕСЬ</h1>
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
   <section id="about" class="section-50 d-flex flex-column align-items-center">
 
@@ -22,7 +23,6 @@ require_once("../assets/includes/conn.php");
 	// vullen variabele programs met inhoud van database
 	$leerlingen = mysqli_query($conn, "SELECT * FROM leerling");
 ?>
-<h1>ПАЦАНЫ КОЛБАСА ЗДЕСЬ</h1>
 <div class="row">
 	<div class="col-xs-8"></div>
 		<div class="panel panel-info">
