@@ -19,23 +19,17 @@ require_once("../assets/includes/conn.php");
 <?php
 	// vullen variabele programs met inhoud van database
 	$leerlingen = mysqli_query($conn, "SELECT * FROM leerling");
-
-
-
-	
-echo '
-	<div class="row">
-		<div class="col-xs-8"></div>
-
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<h3 class="panel-title">Lijst met Leerlingen</h3>
-				</div>
+?>
+<div class="row">
+	<div class="col-xs-8"></div>
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Lijst met Leerlingen</h3>
 			</div>
-		
-	</div>
-   ' 
-;
+		</div>
+	
+</div>
+<?php
 echo "<div class='scrollable'><table border='1' cellpadding='10'>";
 echo '  <thead>     
 	<tr>    

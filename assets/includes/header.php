@@ -46,9 +46,9 @@
           <div class="profile">
             <h1 class="text-light"><a href="/~fp241754/scav-hunt/index.php">Scav Hunt</a></h1>
             <div class="social-links mt-3 text-center">
-              <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-              <a href="" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-              <a href="" target="_blank"><i class="fa-brands fa-artstation"></i></a>
+              <a href="" target="_blank"><i class="fa-brands fa-info"></i></a>
+              <a href="" target="_blank"><i class="fa-brands fa-text"></i></a>
+              <a href="" target="_blank"><i class="fa-brands fa-code"></i></a>
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@
           <h4><?php session_start(); ?></h4>
           <nav id="navbar" class="nav-menu navbar">
           <ul class="nav-menu">
-          <li><a href="/~fp241754/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
+          <li><a href="/~fp241754/scav-hunt/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
             <?php
             if (isset($_SESSION["docent"])) {
               echo '<li><a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
