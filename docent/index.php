@@ -3,10 +3,12 @@ session_start();
 if (isset($_SESSION["docent"])) { 
 	if ($_SESSION["docent"] != 1) {
 		header("location:../login");
+		die();
 	}
 }
 else {
 	header("location:../login");
+	die();
 }
 
 require_once("../assets/includes/header.php");
@@ -20,6 +22,7 @@ require_once("../assets/includes/conn.php");
 	// vullen variabele programs met inhoud van database
 	$leerlingen = mysqli_query($conn, "SELECT * FROM leerling");
 ?>
+<h1>ПАЦАНЫ КОЛБАСА ЗДЕСЬ</h1>
 <div class="row">
 	<div class="col-xs-8"></div>
 		<div class="panel panel-info">
