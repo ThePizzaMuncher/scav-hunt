@@ -329,7 +329,9 @@ h6 {
 .nav-menu li:hover>a {
   text-decoration: none;
   color: white;
-  text-shadow: 0 0 5px var(--color-grey);
+  text-shadow: 0 0 10px var(--color-grey);
+  background-color: var(--color-secondary-light-red);
+  border-radius: 10px;
 }
 
 .nav-menu a:hover i,
