@@ -64,7 +64,7 @@
 								echo '<li><a href="/~fp241754/scav-hunt/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
 								echo '<li><a href="/~fp241754/scav-hunt/docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
 								echo '<li><a href="/~fp241754/scav-hunt/docent/"><i class="bx bx-user"></i> Docent</a></li>';
-								echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
+								// echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 							} else if (isset($_SESSION["admin"])) {
 								echo '<li><a href="code-tonen.php"><i class="bx bx-code"></i>Login</a></li>';
 								echo '<li><a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
@@ -72,9 +72,9 @@
 								echo '<li><a href="/~fp241754/scav-hunt/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
 								echo '<li><a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
 								echo '<li><a href="docent_toevoegen.php"><i class="bx bx-code"><i class="bx bx-user"></i>Docent toevoegen</a></li>';
-								echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
+								// echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 							} else {
-								if ($_SESSION["pagina"] == 'home') {
+								if ($_SESSION['pagina'] == 'home') {
 									echo '<li><a href="/~fp241754/scav-hunt/login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>';
 									echo '<li><a href="/~fp241754/scav-hunt/student_code.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>';
 								} else echo '<li><a href="code-tonen.php"><i class="bx bx-code"></i>Login</a></li>';

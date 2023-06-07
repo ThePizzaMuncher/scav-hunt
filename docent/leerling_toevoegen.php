@@ -1,12 +1,12 @@
 <?php
 session_start();
-if (isset($_SESSION["docent"])) { 
-	if ($_SESSION["docent"] != 1) {
-		header("location:../login");
+if (isset($_SESSION['docent'])) {
+	if ($_SESSION['docent'] != 1) {
+		header('location:../login');
 	}
 }
 else {
-	header("location:../login");
+	header('location:../login');
 }
 
 /* 
@@ -24,7 +24,7 @@ $groep_ID='1';
  ?>
   
  
- <form action="" method="post">
+ <form action='' method='post'>
  <div>
 <table border='1' cellpadding='10' width='100%'>
 <tr>
@@ -41,7 +41,7 @@ $groep_ID='1';
 
 </table>
 <p>* required</p>
- <input type="submit" name="submit" value="submit">
+ <input type='submit' name='submit' value='submit'>
  </div>
  </form> 
 
