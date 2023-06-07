@@ -361,8 +361,8 @@ h6 {
 
 .nav-menu li:hover ul {
   display: block;
-  background: var(--color-grey-light);
-  border-bottom: solid 2px var(--color-secondary-light);
+  background: var(--color-default);
+  border-bottom: solid 5px var(--color-secondary-light-red);
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   width: 100%;
@@ -371,7 +371,7 @@ h6 {
 /* Change the background color of dropdown links on hover */
 .nav-menu ul ul li a:hover {
   background-color: var(--color-secondary-ultra-light-red);
-  
+  border-radius: 20px;
 }
 
 /* Mobile Navigation */
