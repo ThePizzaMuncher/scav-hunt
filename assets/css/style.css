@@ -371,7 +371,7 @@ h6 {
 
 /* Change the background color of dropdown links on hover */
 .nav-menu ul ul li a:hover {
-  background-color: var(--color-secondary);
+  background-color: var(--color-secondary-light);
 }
 
 /* Mobile Navigation */
