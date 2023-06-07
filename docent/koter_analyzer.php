@@ -1,17 +1,14 @@
 <?php
 require_once("../assets/includes/header.php");
-session_start();
-if (isset($_SESSION["docent"])) { 
-	if ($_SESSION["docent"] != 1) {
-		header("location:../login");
-	}
+if (isset($_SESSION["docent"])) {
+    if ($_SESSION["docent"] != 1) {
+        header("location:../login");
+    }
+} else {
+    header("location:../login");
 }
-else {
-	header("location:../login");
-}
-echo <<< main
-<!DOCTYPE html>
-<html lang="en">
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,14 +18,16 @@ echo <<< main
     <script src="../assets/js/docent.js" defer></script>
     <link rel="stylesheet" href="../assets/css/koter_analyzer.css">
 </head>
-<body>
-    <p>Naam: <span id="name"></span></p>
-    <p>Nummer: <span id="number"></span></p>
-    <p>x: <span id="x"></span></p>
-    <p>y: <span id="y"></span></p>
-    <p>Datum: <span id="date"></span></p>
-    <div id="map"></div>
-</body>
-</html>
-main;
-?>
+<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
+    <section id="about" class="section-50 d-flex flex-column align-items-center">
+        <div class="docent-information">
+            <p>Naam: <span id="name"></span></p>
+            <p>Nummer: <span id="number"></span></p>
+            <p>x: <span id="x"></span></p>
+            <p>y: <span id="y"></span></p>
+            <p>Datum: <span id="date"></span></p>
+            <div id="map"></div>
+        </div>
+    </section>
+</section>
+<?php require_once("../assets/includes/footer.php"); ?>
