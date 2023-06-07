@@ -1,4 +1,4 @@
-<?php require_once("../assets/includes/header.php"); ?>
+<?php require_once("assets/includes/header.php"); ?>
 
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
 	<section id="about" class="section-50 d-flex flex-column align-items-center">
@@ -34,4 +34,4 @@
 	</section>
 </section>
 
-<?php require_once("../assets/includes/footer.php"); ?>
+<?php require_once("assets/includes/footer.php"); ?>
