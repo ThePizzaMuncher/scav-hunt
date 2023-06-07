@@ -60,10 +60,9 @@
 						<?php
 						if (isset($_SESSION["docent"])) {
 							echo '<li><a href="/~fp241754/scav-hunt/docent/"><i class="bx bx-user"></i> Docent</a></li>';
-							echo '<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
 							?>
 							<li>
-								<a href="#">Dropdown</a>
+							<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>
 								<ul>
 									<li><a href="/~fp241754/scav-hunt/docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>
 									<li><a href="/~fp241754/scav-hunt/docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>
