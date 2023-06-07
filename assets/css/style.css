@@ -359,15 +359,16 @@ h6 {
   display: block;
 }
 
-.nav-menu li:hover ul {
+.nav-menu li ul {
   display: block;
   height: 0;
   overflow: hidden;
   background: var(--color-default);
   box-shadow: 0px 10px 10px var(--color-secondary-light-red);
   border-bottom-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  padding: 0 10px;
+  border-bottom-right-radius: 30px;
+  padding: 10px 0;
+  transition: 1s;
 }
 
 
