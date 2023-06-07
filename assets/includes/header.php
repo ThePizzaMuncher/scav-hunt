@@ -66,7 +66,7 @@
 								<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>
 									<ul>
 									<li><a href="../../scav-hunt/docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>
-									// <li><a href="/~fp241754/scav-hunt/docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>
+									<!-- <li><a href="/~fp241754/scav-hunt/docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li> -->
 										<li><a href="/~fp241754/scav-hunt/docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>
 										<li><a href="/~fp241754/scav-hunt/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>
 										<li><a href="/~fp241754/scav-hunt/docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>

@@ -619,5 +619,5 @@ td {
 }
 
 th {
-  border-radius: 10px;
+  position: fixed;
 }
