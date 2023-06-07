@@ -39,7 +39,7 @@ $isadmin='';
 <td> <strong>wachtwoord: </strong></td><td>  <input type='text' name='wachtwoord' value='<?php echo $wachtwoord; ?>'/>*</td>
 </tr>
 <tr>
-<td> <strong>isAdmin: </strong></td><td>  <input type='text' name='isadmin' value='<?php echo $isadmin; ?>'/></td>
+<td> <strong>Admin: </strong></td><td>  <input type='checkbox' name='isadmin'/></td>
 </tr>
 
 <?php
@@ -84,7 +84,13 @@ echo '<div class="container">
 	$naam = mysqli_real_escape_string($conn,$_POST['naam']);
 	$opleiding = mysqli_real_escape_string($conn,$_POST['opleiding']);
 	$wachtwoord = mysqli_real_escape_string($conn,$_POST['wachtwoord']);
-    $isadmin = mysqli_real_escape_string($conn,$_POST['isadmin']);
+    if (isset($_POST['isadmin'])) {
+        $isadmin = '1';
+        // Checkbox is selected
+    } else {
+        $isadmin = '0';
+       // Alternate code
+    }
    
  
  // check to make sure both fields are entered
