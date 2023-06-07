@@ -56,7 +56,7 @@
 				<div class="col-md-9 vert">
 					<h4>
 						<?php session_start();
-					require_once("../assets/includes/conn.php");?></h4>
+					require_once("../../assets/includes/conn.php");?></h4>
 					<nav id="navbar" class="nav-menu navbar">
 						<ul class="nav-menu">
 							<li><a href="/~fp241754/scav-hunt" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
