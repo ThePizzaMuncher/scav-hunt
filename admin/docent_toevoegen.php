@@ -1,8 +1,8 @@
 <?php
 require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
-if (isset($_SESSION['docent'])) {
-	if ($_SESSION['docent'] != 1) {
+if (isset($_SESSION['admin'])) {
+	if ($_SESSION['admin'] != 1) {
 		header('location:../login');
 	}
 }
@@ -19,7 +19,7 @@ $id='';
 $naam='';
 $opleiding='';
 $wachtwoord='';
-$isadmin='0';
+$isadmin='';
 
  function renderForm($id, $naam, $opleiding, $wachtwoord,$isadmin)
  {
@@ -80,8 +80,7 @@ echo '<div class="container">
  	{ 
        
 
- 	// get form data, making sure it is valid
-//	$id = $_POST['id']; 	     // get form data, making sure it is valid
+    // get form data, making sure it is valid
 	$naam = mysqli_real_escape_string($conn,$_POST['naam']);
 	$opleiding = mysqli_real_escape_string($conn,$_POST['opleiding']);
 	$wachtwoord = mysqli_real_escape_string($conn,$_POST['wachtwoord']);
@@ -119,6 +118,6 @@ echo '<div class="container">
  else
  	// if the form hasn't been submitted, display the form
  	{
- 	renderForm('','','','');
+ 	renderForm('','','','','');
  	}
 require_once("../assets/includes/footer.php"); ?>
