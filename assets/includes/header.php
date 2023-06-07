@@ -62,8 +62,8 @@
 							<li><a href="/~fp241754/scav-hunt" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
 							<?php
 							if (isset($_SESSION["docent"])) {
-								echo '<li><a href="/~fp241754/scav-hunt/docent/"><i class="bx bx-user"></i> Docent</a></li>';
-							?>
+								echo <<< bar
+								<li><a href="/~fp241754/scav-hunt/docent/"><i class="bx bx-user"></i> Docent</a></li>
 								<li>
 								<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>
 									<ul>
@@ -74,8 +74,8 @@
 										<li><a href="/~fp241754/scav-hunt/docent/code-tonen.php"><i class="bx bx-code"></i> Code tonen</a></li>
 									</ul>
 								</li>
-							<?php
-								echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
+								<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
+								bar;
 							} else if (isset($_SESSION["admin"])) {
 								echo '<li><a href="/~fp241754/scav-hunt/docent/"><i class="bx bx-user"></i> Docent</a></li>';
 								echo '<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
