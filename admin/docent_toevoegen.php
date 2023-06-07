@@ -1,7 +1,7 @@
 <?php
 require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
-/*if (isset($_SESSION['docent'])) {
+if (isset($_SESSION['docent'])) {
 	if ($_SESSION['docent'] != 1) {
 		header('location:../login');
 	}
@@ -9,7 +9,7 @@ require_once("../assets/includes/conn.php");
 else {
 	header('location:../login');
 }
-*/
+
 /* 
  .PHP
  Allows user to create a new entry in the database
