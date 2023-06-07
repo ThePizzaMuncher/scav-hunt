@@ -10,7 +10,7 @@ if (isset($_SESSION["docent"])) {
 }
 
 require_once("../assets/includes/header.php");
-
+require_once("../assets/includes/conn.php");
 ?>
 
 <!-- <h1>ПАЦАНЫ КОЛБАСА ЗДЕСЬ ( Ням-ням ^.^ )</h1> -->
