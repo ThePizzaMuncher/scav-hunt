@@ -18,9 +18,10 @@ else {
 $id='';
 $naam='';
 $opleiding='';
-$groep_ID='1';
+$wachtwoord='';
+$isadmin='0';
 
- function renderForm($id, $naam, $opleiding, $groep_ID)
+ function renderForm($id, $naam, $opleiding, $wachtwoord,$isadmin)
  {
  ?>
   
@@ -29,12 +30,17 @@ $groep_ID='1';
  <div>
 <table border='1' cellpadding='10' width='100%'>
 <tr>
-<td> <strong>voornaam: </strong></td><td>  <input type='text' name='naam' value='<?php echo $naam; ?>'/>*</td>
+<td> <strong>naam: </strong></td><td>  <input type='text' name='naam' value='<?php echo $naam; ?>'/>*</td>
 </tr>
 <tr>
 <td> <strong>opleiding: </strong></td><td>  <input type='text' name='opleiding' value='<?php echo $opleiding; ?>'/>*</td>
 </tr>
-<input hidden readonly type='text' name='groep_ID' value='1'/></td>
+<tr>
+<td> <strong>wachtwoord: </strong></td><td>  <input type='text' name='wachtwoord' value='<?php echo $wachtwoord; ?>'/>*</td>
+</tr>
+<tr>
+<td> <strong>isAdmin: </strong></td><td>  <input type='text' name='isadmin' value='<?php echo $isadmin; ?>'/></td>
+</tr>
 
 <?php
 
@@ -60,7 +66,7 @@ echo '<div class="container">
   
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h3 class="panel-title">Nieuwe Leerling toevoegen</h3>
+						<h3 class="panel-title">Nieuwe Docent / Admin toevoegen</h3>
 					</div>
 				</div>
 			
@@ -78,11 +84,12 @@ echo '<div class="container">
 //	$id = $_POST['id']; 	     // get form data, making sure it is valid
 	$naam = mysqli_real_escape_string($conn,$_POST['naam']);
 	$opleiding = mysqli_real_escape_string($conn,$_POST['opleiding']);
-	//$groep_ID = mysqli_real_escape_string($conn,$_POST['groep_ID']);
+	$wachtwoord = mysqli_real_escape_string($conn,$_POST['wachtwoord']);
+    $isadmin = mysqli_real_escape_string($conn,$_POST['isadmin']);
    
  
  // check to make sure both fields are entered
- if ($naam == '' || $opleiding == '' || $groep_ID == '')
+ if ($naam == '' || $opleiding == '' || $wachtwoord == '')
  	{
  	// generate error message
  	$error = 'ERROR: Please fill in all required fields!';

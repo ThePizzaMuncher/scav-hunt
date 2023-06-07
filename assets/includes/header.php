@@ -38,13 +38,13 @@
 <header id="header">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2">
-				<a href="/~fp241754/scav-hunt/index.php"><img src="/~fp241754/scav-hunt/assets/img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
+			<div class="col-md-1">
+				<a href="/~fp241754/scav-hunt"><img src="/~fp241754/scav-hunt/assets/img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<div class="profile">
-					<h1 class="text-light"><a href="/~fp241754/scav-hunt/index.php">Scav Hunt</a></h1>
+					<h1 class="text-light"><a href="/~fp241754/scav-hunt">Scav Hunt</a></h1>
 					<div class="social-links mt-3 text-center">
 						<a href="" target="_blank"><i class="fa fa-info" aria-hidden="true"></i></a>
 						<a href="" target="_blank"><i class="fa fa-address-book" aria-hidden="true"></i></a>
@@ -52,27 +52,28 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-7 vert">
+			<div class="col-md-9 vert">
 				<h4><?php session_start(); ?></h4>
 				<nav id="navbar" class="nav-menu navbar">
 					<ul class="nav-menu">
-						<li><a href="/~fp241754/scav-hunt/index.php" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
+						<li><a href="/~fp241754/scav-hunt" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
 						<?php
 							if (isset($_SESSION["docent"])) {
 								echo '<li><a href="/~fp241754/scav-hunt/docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
 								echo '<li><a href="/~fp241754/scav-hunt/docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
 								echo '<li><a href="/~fp241754/scav-hunt/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
 								echo '<li><a href="/~fp241754/scav-hunt/docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
+								echo '<li><a href="/~fp241754/scav-hunt/docent/code-tonen.php"><i class="bx bx-code"></i> Code tonen</a></li>';
 								echo '<li><a href="/~fp241754/scav-hunt/docent/"><i class="bx bx-user"></i> Docent</a></li>';
-								// echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
+								echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 							} else if (isset($_SESSION["admin"])) {
-								echo '<li><a href="code-tonen.php"><i class="bx bx-code"></i>Login</a></li>';
-								echo '<li><a href="groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
-								echo '<li><a href="winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
+								echo '<li><a href="/~fp241754/scav-hunt/docent/code-tonen.php"><i class="bx bx-code"></i> Code tonen</a></li>';
+								echo '<li><a href="/~fp241754/scav-hunt/docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
+								echo '<li><a href="/~fp241754/scav-hunt/docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
 								echo '<li><a href="/~fp241754/scav-hunt/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
-								echo '<li><a href="vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
-								// echo '<li><a href="docent_toevoegen.php"><i class="bx bx-code"><i class="bx bx-user"></i>Docent toevoegen</a></li>';
-								// echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
+								echo '<li><a href="/~fp241754/scav-hunt/docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
+								echo '<li><a href="docent_toevoegen.php"><i class="bx bx-code"><i class="bx bx-user"></i>Docent toevoegen</a></li>';
+								echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 							} else {
 								if ($_SESSION['pagina'] == 'home') {
 									echo '<li><a href="/~fp241754/scav-hunt/login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>';

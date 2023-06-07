@@ -128,6 +128,11 @@ h6 {
   height: 100px;
 }
 
+#header .row:first-child {
+  height: 100px;
+  padding: 0;
+}
+
 #header img {
   margin: 10px auto;
   display: block;
@@ -247,6 +252,7 @@ h6 {
 
   #header .nav-menu {
     width: 150px;
+    height: 100%;
   }
 
   #header .col-0,
@@ -565,4 +571,8 @@ td {
 }
 #ul {
   flex-wrap: wrap;
+}
+
+th {
+  border-radius: 10px;
 }
