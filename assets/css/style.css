@@ -346,7 +346,6 @@ h6 {
 
 .nav-menu li a {
   display: block;
-  padding: 10px 20px;
   text-decoration: none;
 }
 
@@ -362,8 +361,8 @@ h6 {
 
 .nav-menu li:hover ul {
   display: block;
-  background: var(--color-default);
-  box-shadow: 0 0 10px var(--color-secondary-light);
+  background: var(--color-grey-light);
+  border-bottom: solid 2px var(--color-secondary-light);
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   width: 100%;
@@ -371,7 +370,8 @@ h6 {
 
 /* Change the background color of dropdown links on hover */
 .nav-menu ul ul li a:hover {
-  background-color: var(--color-secondary-light);
+  background-color: var(--color-secondary-ultra-light-red);
+  
 }
 
 /* Mobile Navigation */
