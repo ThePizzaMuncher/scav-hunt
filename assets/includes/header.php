@@ -72,7 +72,7 @@
 								echo '<li><a href="/~fp241754/scav-hunt/docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
 								echo '<li><a href="/~fp241754/scav-hunt/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
 								echo '<li><a href="/~fp241754/scav-hunt/docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
-								echo '<li><a href="docent_toevoegen.php"><i class="bx bx-code"><i class="bx bx-user"></i>Docent toevoegen</a></li>';
+								echo '<li><a href="docent_toevoegen.php"><i class="bx bx-user"></i>Docent toevoegen</a></li>';
 								echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 							} else {
 								if ($_SESSION['pagina'] == 'home') {
