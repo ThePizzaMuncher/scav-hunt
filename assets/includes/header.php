@@ -72,7 +72,7 @@
 										<li><a href="/~fp241754/scav-hunt/docent/code-tonen.php"><i class="bx bx-code"></i> Code tonen</a></li>
 									</ul>
 								</li>
-								<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
+								<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>
 								bar;
 							} else if (isset($_SESSION["admin"])) {
 								echo '<li><a href="/~fp241754/scav-hunt/docent/"><i class="bx bx-user"></i> Docent</a></li>';
