@@ -19,7 +19,7 @@
   --font-primary: "Montserrat", sans-serif;
   --font-secondary: "Poppins", sans-serif;
 
-  --color-default: rgb(224, 240, 243);
+  --color-default: #e0e6f1;
   --color-primary: #001483;
   --color-secondary: #3561ff;
   --color-secondary-light: #7cd3ff;
@@ -340,43 +340,42 @@ h6 {
   text-shadow: 0 0 20px var(--color-secondary-light);
 }
 
-.nav-menu .active ul,
-.nav-menu .dropdown:hover .dropdown-menu {
-  display: block;
+.nav-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: black;
 }
 
-.nav-menu li:hover .dropdown-menu {
-  display: block;
+.nav-menu li {
+  display: inline-block;
 }
 
-.nav-menu .dropdown-menu {
-  display: none;
+.nav-menu li a {
+  color: white;
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* Style the dropdown menu */
+.nav-menu ul ul {
   position: absolute;
   top: 100%;
-  left: 0;
-  z-index: 99;
-  padding: 0;
-  margin: 0;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: none;
 }
 
-.nav-menu .dropdown-menu li {
-  width: 100%;
-}
-
-.nav-menu .dropdown-menu li a {
-  color: black;
-  padding: 12px 15px;
-  margin: 0;
+.nav-menu ul ul li {
   display: block;
-  font-size: 15px;
-  white-space: nowrap;
 }
 
-.nav-menu .dropdown-menu li a:hover {
-  background-color: #f0f0f0;
-  color: var(--color-secondary-red);
+.nav-menu li:hover ul {
+  display: block;
+}
+
+/* Change the background color of dropdown links on hover */
+.nav-menu ul ul li a:hover {
+  background-color: #555;
 }
 
 /* Mobile Navigation */

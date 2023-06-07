@@ -61,14 +61,18 @@
 						if (isset($_SESSION["docent"])) {
 							echo '<li><a href="/~fp241754/scav-hunt/docent/"><i class="bx bx-user"></i> Docent</a></li>';
 							echo '<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
-							echo '<ul>';
-							echo '<li><a href="/~fp241754/scav-hunt/docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
-							echo '<li><a href="/~fp241754/scav-hunt/docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
-							echo '<li><a href="/~fp241754/scav-hunt/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
-							echo '<li><a href="/~fp241754/scav-hunt/docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
-							echo '<li><a href="/~fp241754/scav-hunt/docent/code-tonen.php"><i class="bx bx-code"></i> Code tonen</a></li>';
-							echo '</ul>';
-							echo '</li>';
+							?>
+							<li>
+								<a href="#">Dropdown</a>
+								<ul>
+									<li><a href="/~fp241754/scav-hunt/docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>
+									<li><a href="/~fp241754/scav-hunt/docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>
+									<li><a href="/~fp241754/scav-hunt/docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>
+									<li><a href="/~fp241754/scav-hunt/docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>
+									<li><a href="/~fp241754/scav-hunt/docent/code-tonen.php"><i class="bx bx-code"></i> Code tonen</a></li>
+								</ul>
+							</li>
+							<?php
 							echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 						} else if (isset($_SESSION["admin"])) {
 							echo '<li><a href="/~fp241754/scav-hunt/docent/"><i class="bx bx-user"></i> Docent</a></li>';
@@ -88,7 +92,7 @@
 								echo '<li><a href="/~fp241754/scav-hunt/login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>';
 								echo '<li><a href="/~fp241754/scav-hunt/student_code.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>';
 							} else {
-								echo '<li><a href="code-tonen.php"><i class="bx bx-code"></i>Login</a></li>';
+								echo '<li><a href="/~fp241754/scav-hunt/docent/code-tonen.php"><i class="bx bx-code"></i>Login</a></li>';
 							}
 						}
 							// the below commented code can be deleted if this works
