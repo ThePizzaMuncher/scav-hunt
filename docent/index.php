@@ -1,12 +1,12 @@
 <?php
-if (isset($_SESSION["docent"])) {
+/* if (isset($_SESSION["docent"])) {
 	if ($_SESSION["docent"] != 1) {
 		header("location:../login");
 		die();
 	}
 } else {
 	header("location:../login");
-	die();
+	die(); */
 }
 
 require_once("../assets/includes/header.php");
