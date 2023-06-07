@@ -1,10 +1,10 @@
 <?php
 session_start();
 if (isset($_SESSION["docent"])) {
-    $_SESSION["docent"] = 0;
+    unset($_SESSION["docent"]);
 }
 if (isset($_SESSION["admin"])) {
-    $_SESSION["admin"] = 0;
+    unset($_SESSION["admin"]);
 }
 header("location: ../login");
 ?>
