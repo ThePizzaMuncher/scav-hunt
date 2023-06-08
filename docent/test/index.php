@@ -39,7 +39,7 @@ if(!empty($_GET['status'])){
         </div>
     </div>
     <!-- CSV file upload form -->
-    <div class="col-md-12" id="importFrm" style="display: none;">
+    <div class="col-md-12" id="importFrm">
         <form action="upload.php" method="post" enctype="multipart/form-data">
             <input type="file" name="file" />
             <input type="submit" class="btn btn-primary" name="importSubmit" value="IMPORT">
