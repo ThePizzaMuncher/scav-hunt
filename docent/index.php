@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!isset($_SESSION['docent'])) {
 	echo 'bestaat niet';
 	// header('location:../login'); die();
