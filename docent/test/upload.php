@@ -32,7 +32,9 @@ if(isset($_POST['importSubmit'])){
             
             // Parse data from CSV file line by line
             while(($line = fgetcsv($csvFile)) !== FALSE){
+                var_dump($line);
                 $data = explode(";", $line);
+                var_dump($data);
                 // Get row data
                 $naam   = $data[0];
                 $opleiding  = $data[1];
