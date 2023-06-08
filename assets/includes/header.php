@@ -27,7 +27,7 @@
 	<script src="https://kit.fontawesome.com/51b9333b7a.js" crossorigin="anonymous"></script>
 
 	<!-- Main CSS File -->
-	<link href="/~fp241754/public_html/scav-hunt/assets/css/style.css" rel="stylesheet">
+	<link href="/~fp241754/scav-hunt/assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
