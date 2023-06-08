@@ -110,6 +110,6 @@ echo '<div class="container">
  else
  	// if the form hasn't been submitted, display the form
  	{
- 	renderForm('','','','');
+ 	renderForm('','','','','');
  	}
 require_once("../assets/includes/footer.php"); ?>
