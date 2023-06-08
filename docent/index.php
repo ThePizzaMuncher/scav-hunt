@@ -1,8 +1,10 @@
 <?php
 if (!isset($_SESSION['docent'])) {
-	header('location:../login'); die();
+	echo 'bestaat niet';
+	// header('location:../login'); die();
 } if ($_SESSION['docent'] != 1) {
-	header('location:../login'); die();
+	echo 'is niet 1';
+	// header('location:../login'); die();
 }
 /* if (isset($_SESSION["docent"])) {
 	if ($_SESSION["docent"] != 1) {
