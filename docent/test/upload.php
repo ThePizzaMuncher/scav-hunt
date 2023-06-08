@@ -33,7 +33,7 @@ if(isset($_POST['importSubmit'])){
             // Parse data from CSV file line by line
             while(($line = fgetcsv($csvFile)) !== FALSE){
                 var_dump($line);
-                $data = explode(";", $line);
+                $data = explode(';', $line);
                 var_dump($data);
                 // Get row data
                 $naam   = $data[0];
@@ -51,7 +51,7 @@ if(isset($_POST['importSubmit'])){
                 }else{
                     // Insert member data in the database
                     */
-                $conn->query("INSERT INTO leerling (naam, opleiding, leerjaar, groep_ID) VALUES ('$naam', '$opleiding', '$leerjaar','$groep_ID')");
+                $conn->query("INSERT INTO leerling (naam, opleiding, leerjaar, groep_ID) VALUES ('$naam', '$opleiding', $leerjaar,$groep_ID)");
               //  }
             }
             
