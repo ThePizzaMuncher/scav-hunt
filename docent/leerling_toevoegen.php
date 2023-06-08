@@ -3,7 +3,7 @@
 require_once("../assets/includes/conn.php");
 if (!isset($_SESSION['docent'])) {
 	header('location:../login'); die();
-} if (!$_SESSION['docent']) {
+} if ($_SESSION['docent'] != 1) {
 	header('location:../login'); die();
 }
 
