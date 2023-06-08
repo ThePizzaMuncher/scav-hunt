@@ -4,8 +4,9 @@ $_SESSION['pagina'] = 'login';
 require_once("../assets/includes/header.php");
 
 if (isset($_SESSION['docent'])) {
-	header('location:../');
-	die();
+	echo $_SESSION['docent'];
+	// header('location:../');
+	// die();
 } ?>
 
 <main id="main">
