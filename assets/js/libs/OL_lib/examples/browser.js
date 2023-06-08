@@ -16,17 +16,17 @@ var isEventSupported = (function(undef) {
 
         var isSupported = (eventName in element);
 
-        if (!isSupported) {
+        if(!isSupported) {
             // if it has no `setAttribute` (i.e. doesn't implement Node interface), try generic element
-            if (!element.setAttribute) {
+            if(!element.setAttribute) {
                 element = document.createElement('div');
             }
-            if (element.setAttribute && element.removeAttribute) {
+            if(element.setAttribute && element.removeAttribute) {
                 element.setAttribute(eventName, '');
                 isSupported = typeof element[eventName] == 'function';
 
                 // if property was created, "remove it" (by setting value to `undefined`)
-                if (typeof element[eventName] != 'undefined') {
+                if(typeof element[eventName] != 'undefined') {
                     element[eventName] = undef;
                 }
                 element.removeAttribute(eventName);
@@ -72,7 +72,7 @@ function log(title, detail) {
 }
 
 function inspect(obj) {
-    if (typeof obj === "undefined") {
+    if(typeof obj === "undefined") {
         return "undefined";
     }
     var _props = [];
@@ -84,96 +84,96 @@ function inspect(obj) {
 }
 
 function click(e) {
-    if (document.getElementById("clickID").checked) {
+    if(document.getElementById("clickID").checked) {
         var box = document.getElementById("box");
         log(e.type, inspect(e));
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function dblclick(e) {
-    if (document.getElementById("dblclickID").checked) {
+    if(document.getElementById("dblclickID").checked) {
         var box = document.getElementById("box");
         log(e.type, inspect(e));
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function mousedown(e) {
-    if (document.getElementById("mousedownID").checked) {
+    if(document.getElementById("mousedownID").checked) {
         var box = document.getElementById("box");
         log(e.type, inspect(e));
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function mouseup(e) {
-    if (document.getElementById("mouseupID").checked) {
+    if(document.getElementById("mouseupID").checked) {
         var box = document.getElementById("box");
         log(e.type, inspect(e));
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function mouseover(e) {
-    if (document.getElementById("mouseoverID").checked) {
+    if(document.getElementById("mouseoverID").checked) {
         var box = document.getElementById("box");
         log(e.type, inspect(e));
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function mousemove(e) {
-    if (document.getElementById("mousemoveID").checked) {
+    if(document.getElementById("mousemoveID").checked) {
         var box = document.getElementById("box");
         log(e.type, inspect(e));
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function mouseout(e) {
-    if (document.getElementById("mouseoutID").checked) {
+    if(document.getElementById("mouseoutID").checked) {
         var box = document.getElementById("box");
         log(e.type, inspect(e));
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function touchstart(e) {
-    if (document.getElementById("touchstartID").checked) {
+    if(document.getElementById("touchstartID").checked) {
         var box = document.getElementById("box");
         var result = inspect(e);
         for (var i = 0; i < e.touches.length; i++) {
             result = result + "<br> Touches nr." + i + " <br>" + inspect(e.touches[i]);
         }
         log(e.type, result);
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function touchend(e) {
-    if (document.getElementById("touchendID").checked) {
+    if(document.getElementById("touchendID").checked) {
         var box = document.getElementById("box");
         var result = inspect(e);
         for (var i = 0; i < e.touches.length; i++) {
             result = result + "<br> Touches nr." + i + " <br>" + inspect(e.touches[i]);
         }
         log(e.type, result);
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function touchmove(e) {
-    if (document.getElementById("touchmoveID").checked) {
+    if(document.getElementById("touchmoveID").checked) {
         var targetEvent = e.touches.item(0);
         var box = document.getElementById("box");
         box.style.left = targetEvent.clientX + "px";
@@ -183,54 +183,54 @@ function touchmove(e) {
             result = result + "<br> Touches nr." + i + " <br>" + inspect(e.touches[i]);
         }
         log(e.type, result);
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function touchcancel(e) {
-    if (document.getElementById("touchcancelID").checked) {
+    if(document.getElementById("touchcancelID").checked) {
         var box = document.getElementById("box");
         var result = inspect(e);
         for (var i = 0; i < e.touches.length; i++) {
             result = result + "<br> Touches nr." + i + " <br>" + inspect(e.touches[i]);
         }
         log(e.type, result);
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function gesturestart(e) {
-    if (document.getElementById("gesturestartID").checked) {
+    if(document.getElementById("gesturestartID").checked) {
         var box = document.getElementById("box");
         log(e.type, inspect(e));
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function gesturechange(e) {
-    if (document.getElementById("gesturechangeID").checked) {
+    if(document.getElementById("gesturechangeID").checked) {
         var box = document.getElementById("box");
         log(e.type, inspect(e));
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function gestureend(e) {
-    if (document.getElementById("gestureendID").checked) {
+    if(document.getElementById("gestureendID").checked) {
         var box = document.getElementById("box");
         log(e.type, inspect(e));
-        if (e.preventDefault) e.preventDefault();
+        if(e.preventDefault) e.preventDefault();
     }
     return false;
 }
 
 function toggle_visibility(id) {
     var e = document.getElementById(id);
-    if (e.style.display == 'block') {
+    if(e.style.display == 'block') {
         e.style.display = 'none';
     } else {
         e.style.display = 'block';

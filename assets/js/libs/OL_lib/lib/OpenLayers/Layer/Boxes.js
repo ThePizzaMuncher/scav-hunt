@@ -43,14 +43,14 @@ OpenLayers.Layer.Boxes = OpenLayers.Class(OpenLayers.Layer.Markers, {
             lon: marker.bounds.right,
             lat: marker.bounds.bottom
         });
-        if (botright == null || topleft == null) {
+        if(botright == null || topleft == null) {
             marker.display(false);
         } else {
             var markerDiv = marker.draw(topleft, {
                 w: Math.max(1, botright.x - topleft.x),
                 h: Math.max(1, botright.y - topleft.y)
             });
-            if (!marker.drawn) {
+            if(!marker.drawn) {
                 this.div.appendChild(markerDiv);
                 marker.drawn = true;
             }
@@ -66,7 +66,7 @@ OpenLayers.Layer.Boxes = OpenLayers.Class(OpenLayers.Layer.Markers, {
      */
     removeMarker: function(marker) {
         OpenLayers.Util.removeItem(this.markers, marker);
-        if ((marker.div != null) &&
+        if((marker.div != null) &&
             (marker.div.parentNode == this.div) ) {
             this.div.removeChild(marker.div);    
         }

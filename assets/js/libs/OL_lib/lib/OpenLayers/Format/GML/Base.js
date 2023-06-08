@@ -213,14 +213,14 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
     readNode: function(node, obj, first) {
         // on subsequent calls of format.read(), we want to reset auto-
         // configured properties and auto-configure again.
-        if (first === true && this.autoConfig === true) {
+        if(first === true && this.autoConfig === true) {
             this.featureType = null;
             delete this.namespaceAlias[this.featureNS];
             delete this.namespaces["feature"];
             this.featureNS = null;
         }
         // featureType auto-configuration
-        if (!this.featureNS && (!(node.prefix in this.namespaces) &&
+        if(!this.featureNS && (!(node.prefix in this.namespaces) &&
                 node.parentNode.namespaceURI == this.namespaces["gml"] &&
                 this.regExes.featureMember.test(node.parentNode.nodeName))) {
             this.featureType = node.nodeName.split(":").pop();
@@ -279,7 +279,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 var points = new Array(numPoints);
                 for(var i=0; i<numPoints; ++i) {
                     coords = pointList[i].split(",");
-                    if (this.xy) {
+                    if(this.xy) {
                         points[i] = new OpenLayers.Geometry.Point(
                             coords[0], coords[1], coords[2]
                         );
@@ -397,8 +397,8 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 // we only want to read the node as a feature if the parent
                 // node can have feature nodes as children.  In this case, the
                 // obj.features property is set.
-                if (obj.features) {
-                    if (!this.singleFeatureType &&
+                if(obj.features) {
+                    if(!this.singleFeatureType &&
                         (OpenLayers.Util.indexOf(this.featureType, local) !== -1)) {
                         name = "_typeName";
                     } else if(local === this.featureType) {
@@ -430,7 +430,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 var feature = new OpenLayers.Feature.Vector(
                     container.components[0], container.attributes
                 );
-                if (!this.singleFeatureType) {
+                if(!this.singleFeatureType) {
                     feature.type = node.nodeName.split(":").pop();
                     feature.namespace = node.namespaceURI;
                 }
@@ -451,7 +451,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 obj.features.push(feature);
             },
             "_geometry": function(node, obj) {
-                if (!this.geometryName) {
+                if(!this.geometryName) {
                     this.geometryName = node.nodeName.split(":").pop();
                 }
                 this.readChildNodes(node, obj);

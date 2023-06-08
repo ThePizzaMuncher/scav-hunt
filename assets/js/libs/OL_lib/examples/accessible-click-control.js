@@ -48,8 +48,8 @@ OpenLayers.Control.KeyboardClick = OpenLayers.Class(OpenLayers.Control, {
             "keydown",
             OpenLayers.Function.bindAsEventListener(
                 function(evt) {
-                    if (evt.keyCode == 73) { // "i"
-                        if (this.active) {
+                    if(evt.keyCode == 73) { // "i"
+                        if(this.active) {
                             this.deactivate();
                         } else {
                             this.activate();
@@ -73,7 +73,7 @@ OpenLayers.Control.KeyboardClick = OpenLayers.Class(OpenLayers.Control, {
         // deactivate any KeyboardDefaults control
         var keyboardDefaults = this.map.getControlsByClass(
                 'OpenLayers.Control.KeyboardDefaults')[0];
-        if (keyboardDefaults) {
+        if(keyboardDefaults) {
             keyboardDefaults.deactivate();
         }
         return true;
@@ -86,7 +86,7 @@ OpenLayers.Control.KeyboardClick = OpenLayers.Class(OpenLayers.Control, {
         // reactivate any KeyboardDefaults control
         var keyboardDefaults = this.map.getControlsByClass(
                 'OpenLayers.Control.KeyboardDefaults')[0];
-        if (keyboardDefaults) {
+        if(keyboardDefaults) {
             keyboardDefaults.activate();
         }
         return true;
@@ -130,7 +130,7 @@ OpenLayers.Handler.KeyboardPoint = OpenLayers.Class(OpenLayers.Handler, {
     },
 
     deactivate: function() {
-        if (!OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
+        if(!OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
             return false;
         }
         for (var i=0, len=this.KEY_EVENTS.length; i<len; i++) {

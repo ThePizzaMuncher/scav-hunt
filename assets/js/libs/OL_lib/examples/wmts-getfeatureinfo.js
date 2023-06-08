@@ -49,14 +49,14 @@ function init() {
             getfeatureinfo: function(evt) {
                 var text;
                 var match = evt.text.match(/<body[^>]*>([\s\S]*)<\/body>/);
-                if (match && !match[1].match(/^\s*$/)) {
+                if(match && !match[1].match(/^\s*$/)) {
                     text = match[1];
                 } else {
                     text = "No " + evt.layer.name + " features in that area.<br>";
                 }
                 var popupId = evt.xy.x + "," + evt.xy.y;
                 var popup = popups[popupId];
-                if (!popup || !popup.map) {
+                if(!popup || !popup.map) {
                     popup = new OpenLayers.Popup.FramedCloud(
                         popupId, 
                         map.getLonLatFromPixel(evt.xy),

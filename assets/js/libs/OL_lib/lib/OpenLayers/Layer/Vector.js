@@ -244,17 +244,17 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         OpenLayers.Layer.prototype.initialize.apply(this, arguments);
 
         // allow user-set renderer, otherwise assign one
-        if (!this.renderer || !this.renderer.supported()) {  
+        if(!this.renderer || !this.renderer.supported()) {  
             this.assignRenderer();
         }
 
         // if no valid renderer found, display error
-        if (!this.renderer || !this.renderer.supported()) {
+        if(!this.renderer || !this.renderer.supported()) {
             this.renderer = null;
             this.displayError();
         } 
 
-        if (!this.styleMap) {
+        if(!this.styleMap) {
             this.styleMap = new OpenLayers.StyleMap();
         }
 
@@ -276,7 +276,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
      * Destroy this layer
      */
     destroy: function() {
-        if (this.strategies) {
+        if(this.strategies) {
             var strategy, i, len;
             for(i=0, len=this.strategies.length; i<len; i++) {
                 strategy = this.strategies[i];
@@ -286,7 +286,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             }
             this.strategies = null;
         }
-        if (this.protocol) {
+        if(this.protocol) {
             if(this.protocol.autoDestroy) {
                 this.protocol.destroy();
             }
@@ -296,7 +296,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         this.features = null;
         this.selectedFeatures = null;
         this.unrenderedFeatures = null;
-        if (this.renderer) {
+        if(this.renderer) {
             this.renderer.destroy();
         }
         this.renderer = null;
@@ -316,7 +316,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
      */
     clone: function (obj) {
         
-        if (obj == null) {
+        if(obj == null) {
             obj = new OpenLayers.Layer.Vector(this.name, this.getOptions());
         }
 
@@ -361,7 +361,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             var renderer = (typeof rendererClass == "function") ?
                 rendererClass :
                 OpenLayers.Renderer[rendererClass];
-            if (renderer && renderer.prototype.supported()) {
+            if(renderer && renderer.prototype.supported()) {
                 this.renderer = new renderer(this.div, this.rendererOptions);
                 break;
             }  
@@ -373,7 +373,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
      * Let the user know their browser isn't supported.
      */
     displayError: function() {
-        if (this.reportError) {
+        if(this.reportError) {
             OpenLayers.Console.userError(OpenLayers.i18n("browserNotSupported", 
                                      {renderers: this. renderers.join('\n')}));
         }    
@@ -392,7 +392,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
     setMap: function(map) {        
         OpenLayers.Layer.prototype.setMap.apply(this, arguments);
 
-        if (!this.renderer) {
+        if(!this.renderer) {
             this.map.removeLayer(this);
         } else {
             this.renderer.map = this.map;
@@ -475,7 +475,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         OpenLayers.Layer.prototype.moveTo.apply(this, arguments);
         
         var coordSysUnchanged = true;
-        if (!dragging) {
+        if(!dragging) {
             this.renderer.root.style.visibility = 'hidden';
 
             var viewSize = this.map.getSize(),
@@ -499,18 +499,18 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             // Force a reflow on gecko based browsers to prevent jump/flicker.
             // This seems to happen on only certain configurations; it was originally
             // noticed in FF 2.0 and Linux.
-            if (OpenLayers.IS_GECKO === true) {
+            if(OpenLayers.IS_GECKO === true) {
                 this.div.scrollLeft = this.div.scrollLeft;
             }
             
-            if (!zoomChanged && coordSysUnchanged) {
+            if(!zoomChanged && coordSysUnchanged) {
                 for (var i in this.unrenderedFeatures) {
                     var feature = this.unrenderedFeatures[i];
                     this.drawFeature(feature);
                 }
             }
         }
-        if (!this.drawn || zoomChanged || !coordSysUnchanged) {
+        if(!this.drawn || zoomChanged || !coordSysUnchanged) {
             this.drawn = true;
             var feature;
             for(var i=0, len=this.features.length; i<len; i++) {
@@ -547,7 +547,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
      * options - {Object}
      */
     addFeatures: function(features, options) {
-        if (!(OpenLayers.Util.isArray(features))) {
+        if(!(OpenLayers.Util.isArray(features))) {
             features = [features];
         }
         
@@ -565,14 +565,14 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         // beforefeatureadded can veto single features.
         var featuresAdded = [];
         for (var i=0, len=features.length; i<len; i++) {
-            if (i != (features.length - 1)) {
+            if(i != (features.length - 1)) {
                 this.renderer.locked = true;
             } else {
                 this.renderer.locked = false;
             }    
             var feature = features[i];
             
-            if (this.geometryType &&
+            if(this.geometryType &&
               !(feature.geometry instanceof this.geometryType)) {
                 throw new TypeError('addFeatures: component should be an ' +
                                     this.geometryType.prototype.CLASS_NAME);
@@ -581,11 +581,11 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             //give feature reference to its layer
             feature.layer = this;
 
-            if (!feature.style && this.style) {
+            if(!feature.style && this.style) {
                 feature.style = OpenLayers.Util.extend({}, this.style);
             }
 
-            if (notify) {
+            if(notify) {
                 if(this.events.triggerEvent("beforefeatureadded",
                                             {feature: feature}) === false) {
                     continue;
@@ -597,7 +597,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             this.features.push(feature);
             this.drawFeature(feature);
             
-            if (notify) {
+            if(notify) {
                 this.events.triggerEvent("featureadded", {
                     feature: feature
                 });
@@ -632,19 +632,19 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         if(!features || features.length === 0) {
             return;
         }
-        if (features === this.features) {
+        if(features === this.features) {
             return this.removeAllFeatures(options);
         }
-        if (!(OpenLayers.Util.isArray(features))) {
+        if(!(OpenLayers.Util.isArray(features))) {
             features = [features];
         }
-        if (features === this.selectedFeatures) {
+        if(features === this.selectedFeatures) {
             features = features.slice();
         }
 
         var notify = !options || !options.silent;
         
-        if (notify) {
+        if(notify) {
             this.events.triggerEvent(
                 "beforefeaturesremoved", {features: features}
             );
@@ -659,7 +659,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             // is a possible gratiutious unlocking to save a loop through the rest 
             // of the list checking the remaining features every time. So long as
             // null geoms are rare, this is probably okay.    
-            if (i != 0 && features[i-1].geometry) {
+            if(i != 0 && features[i-1].geometry) {
                 this.renderer.locked = true;
             } else {
                 this.renderer.locked = false;
@@ -668,7 +668,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             var feature = features[i];
             delete this.unrenderedFeatures[feature.id];
 
-            if (notify) {
+            if(notify) {
                 this.events.triggerEvent("beforefeatureremoved", {
                     feature: feature
                 });
@@ -678,24 +678,24 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             // feature has no layer at this point
             feature.layer = null;
 
-            if (feature.geometry) {
+            if(feature.geometry) {
                 this.renderer.eraseFeatures(feature);
             }
                     
             //in the case that this feature is one of the selected features, 
             // remove it from that array as well.
-            if (OpenLayers.Util.indexOf(this.selectedFeatures, feature) != -1){
+            if(OpenLayers.Util.indexOf(this.selectedFeatures, feature) != -1){
                 OpenLayers.Util.removeItem(this.selectedFeatures, feature);
             }
 
-            if (notify) {
+            if(notify) {
                 this.events.triggerEvent("featureremoved", {
                     feature: feature
                 });
             }
         }
 
-        if (notify) {
+        if(notify) {
             this.events.triggerEvent("featuresremoved", {features: features});
         }
     },
@@ -714,7 +714,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
     removeAllFeatures: function(options) {
         var notify = !options || !options.silent;
         var features = this.features;
-        if (notify) {
+        if(notify) {
             this.events.triggerEvent(
                 "beforefeaturesremoved", {features: features}
             );
@@ -722,13 +722,13 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         var feature;
         for (var i = features.length-1; i >= 0; i--) {
             feature = features[i];
-            if (notify) {
+            if(notify) {
                 this.events.triggerEvent("beforefeatureremoved", {
                     feature: feature
                 });
             }
             feature.layer = null;
-            if (notify) {
+            if(notify) {
                 this.events.triggerEvent("featureremoved", {
                     feature: feature
                 });
@@ -738,7 +738,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         this.features = [];
         this.unrenderedFeatures = {};
         this.selectedFeatures = [];
-        if (notify) {
+        if(notify) {
             this.events.triggerEvent("featuresremoved", {features: features});
         }
     },
@@ -788,23 +788,23 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
     drawFeature: function(feature, style) {
         // don't try to draw the feature with the renderer if the layer is not 
         // drawn itself
-        if (!this.drawn) {
+        if(!this.drawn) {
             return;
         }
-        if (typeof style != "object") {
+        if(typeof style != "object") {
             if(!style && feature.state === OpenLayers.State.DELETE) {
                 style = "delete";
             }
             var renderIntent = style || feature.renderIntent;
             style = feature.style || this.style;
-            if (!style) {
+            if(!style) {
                 style = this.styleMap.createSymbolizer(feature, renderIntent);
             }
         }
         
         var drawn = this.renderer.drawFeature(feature, style);
         //TODO remove the check for null when we get rid of Renderer.SVG
-        if (drawn === false || drawn === null) {
+        if(drawn === false || drawn === null) {
             this.unrenderedFeatures[feature.id] = feature;
         } else {
             delete this.unrenderedFeatures[feature.id];
@@ -834,7 +834,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
      * {<OpenLayers.Feature.Vector>} A feature if one was under the event.
      */
     getFeatureFromEvent: function(evt) {
-        if (!this.renderer) {
+        if(!this.renderer) {
             throw new Error('getFeatureFromEvent called on layer with no ' +
                             'renderer. This usually means you destroyed a ' +
                             'layer, but not some handler which is associated ' +
@@ -842,8 +842,8 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         }
         var feature = null;
         var featureId = this.renderer.getFeatureIdFromEvent(evt);
-        if (featureId) {
-            if (typeof featureId === "string") {
+        if(featureId) {
+            if(typeof featureId === "string") {
                 feature = this.getFeatureById(featureId);
             } else {
                 feature = featureId;
@@ -928,7 +928,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         for(i = 0; i < len; i++) {            
             feature = this.features[i];
             if(feature && feature.attributes) {
-                if (feature.attributes[attrName] === attrValue) {
+                if(feature.attributes[attrName] === attrValue) {
                     foundFeatures.push(feature);
                 }
             }
@@ -992,8 +992,8 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             var geometry = null;
             for(var i=0, len=features.length; i<len; i++) {
                 geometry = features[i].geometry;
-                if (geometry) {
-                    if (maxExtent === null) {
+                if(geometry) {
+                    if(maxExtent === null) {
                         maxExtent = new OpenLayers.Bounds();
                     }
                     maxExtent.extend(geometry.getBounds());

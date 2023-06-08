@@ -54,7 +54,7 @@ OpenLayers.Control.Scale = OpenLayers.Class(OpenLayers.Control, {
      */    
     draw: function() {
         OpenLayers.Control.prototype.draw.apply(this, arguments);
-        if (!this.element) {
+        if(!this.element) {
             this.element = document.createElement("div");
             this.div.appendChild(this.element);
         }
@@ -80,13 +80,13 @@ OpenLayers.Control.Scale = OpenLayers.Class(OpenLayers.Control, {
             scale = this.map.getScale();
         }
             
-        if (!scale) {
+        if(!scale) {
             return;
         }
 
-        if (scale >= 9500 && scale <= 950000) {
+        if(scale >= 9500 && scale <= 950000) {
             scale = Math.round(scale / 1000) + "K";
-        } else if (scale >= 950000) {
+        } else if(scale >= 950000) {
             scale = Math.round(scale / 1000000) + "M";
         } else {
             scale = Math.round(scale);

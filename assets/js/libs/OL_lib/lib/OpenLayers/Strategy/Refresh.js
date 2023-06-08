@@ -119,7 +119,7 @@ OpenLayers.Strategy.Refresh = OpenLayers.Class(OpenLayers.Strategy, {
      * Tell the strategy to refresh which will refresh the layer.
      */
     refresh: function() {
-        if (this.layer && this.layer.refresh && 
+        if(this.layer && this.layer.refresh && 
             typeof this.layer.refresh == "function") {
 
             this.layer.refresh({force: this.force});

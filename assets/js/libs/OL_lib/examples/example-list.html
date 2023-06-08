@@ -192,7 +192,7 @@
                             var r;
                             for (idx in info.index) {
                                r = new RegExp(word);
-                               if (r.test(idx)) {
+                               if(r.test(idx)) {
                                     dict = info.index[idx];
                                     updateScores();
                                }

@@ -39,7 +39,7 @@ OpenLayers.Class = function() {
         F.initialize :
         function(){ P.prototype.initialize.apply(this, arguments); };
 
-    if (len > 1) {
+    if(len > 1) {
         var newArgs = [C, P].concat(
                 Array.prototype.slice.call(arguments).slice(1, len-1), F);
         OpenLayers.inherit.apply(null, newArgs);
@@ -89,10 +89,10 @@ OpenLayers.inherit = function(C, P) {
 OpenLayers.Util = OpenLayers.Util || {};
 OpenLayers.Util.extend = function(destination, source) {
     destination = destination || {};
-    if (source) {
+    if(source) {
         for (var property in source) {
             var value = source[property];
-            if (value !== undefined) {
+            if(value !== undefined) {
                 destination[property] = value;
             }
         }
@@ -112,7 +112,7 @@ OpenLayers.Util.extend = function(destination, source) {
         var sourceIsEvt = typeof window.Event == "function"
                           && source instanceof window.Event;
 
-        if (!sourceIsEvt
+        if(!sourceIsEvt
            && source.hasOwnProperty && source.hasOwnProperty("toString")) {
             destination.toString = source.toString;
         }

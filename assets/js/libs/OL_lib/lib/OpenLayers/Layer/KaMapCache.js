@@ -133,7 +133,7 @@ OpenLayers.Layer.KaMapCache = OpenLayers.Class(OpenLayers.Layer.KaMap, {
 
         var url = this.url;
 
-        if (OpenLayers.Util.isArray(url)) {
+        if(OpenLayers.Util.isArray(url)) {
             url = this.selectUrl(components.join(''), url);
         }
         return url + components.join("");

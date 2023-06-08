@@ -186,11 +186,11 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
             data = node.xml;
         } else {
             var serializer = new XMLSerializer();
-            if (node.nodeType == 1) {
+            if(node.nodeType == 1) {
                 // Add nodes to a document before serializing. Everything else
                 // is serialized as is. This may need more work. See #1218 .
                 var doc = document.implementation.createDocument("", "", null);
-                if (doc.importNode) {
+                if(doc.importNode) {
                     node = doc.importNode(node, true);
                 }
                 doc.appendChild(node);
@@ -242,7 +242,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     createDocumentFragment: function() {
         var element;
-        if (this.xmldom) {
+        if(this.xmldom) {
             element = this.xmldom.createDocumentFragment();
         } else {
             element = document.createDocumentFragment();
@@ -264,7 +264,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     createTextNode: function(text) {
         var node;
-        if (typeof text !== "string") {
+        if(typeof text !== "string") {
             text = String(text);
         }
         if(this.xmldom) {
@@ -846,11 +846,11 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      * {XMLDocument}
      */
     getXMLDoc: function() {
-        if (!OpenLayers.Format.XML.document && !this.xmldom) {
-            if (document.implementation && document.implementation.createDocument) {
+        if(!OpenLayers.Format.XML.document && !this.xmldom) {
+            if(document.implementation && document.implementation.createDocument) {
                 OpenLayers.Format.XML.document =
                     document.implementation.createDocument("", "", null);
-            } else if (!this.xmldom && window.ActiveXObject) {
+            } else if(!this.xmldom && window.ActiveXObject) {
                 this.xmldom = new ActiveXObject("Microsoft.XMLDOM");
             }
         }

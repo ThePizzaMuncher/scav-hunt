@@ -39,7 +39,7 @@
     cXMLHttpRequest.prototype    = fXMLHttpRequest.prototype;
 
     // BUGFIX: Firefox with Firebug installed would break pages if not executed
-    if (bGecko && oXMLHttpRequest.wrapped)
+    if(bGecko && oXMLHttpRequest.wrapped)
         cXMLHttpRequest.wrapped    = oXMLHttpRequest.wrapped;
 
     // Constants
@@ -74,7 +74,7 @@
         delete this._headers;
 
         // When bAsync parameter value is omitted, use true as default
-        if (arguments.length < 3)
+        if(arguments.length < 3)
             bAsync    = true;
 
         // Save async parameter for fixing Gecko bug with missing readystatechange in synchronous requests
@@ -86,9 +86,9 @@
             fOnUnload;
 
         // BUGFIX: IE - memory leak on page unload (inter-page leak)
-        if (bIE && bAsync) {
+        if(bIE && bAsync) {
             fOnUnload = function() {
-                if (nState != cXMLHttpRequest.DONE) {
+                if(nState != cXMLHttpRequest.DONE) {
                     fCleanTransport(oRequest);
                     // Safe to abort here since onreadystatechange handler removed
                     oRequest.abort();
@@ -98,13 +98,13 @@
         }
 
         // Add method sniffer
-        if (cXMLHttpRequest.onopen)
+        if(cXMLHttpRequest.onopen)
             cXMLHttpRequest.onopen.apply(this, arguments);
 
-        if (arguments.length > 4)
+        if(arguments.length > 4)
             this._object.open(sMethod, sUrl, bAsync, sUser, sPassword);
         else
-        if (arguments.length > 3)
+        if(arguments.length > 3)
             this._object.open(sMethod, sUrl, bAsync, sUser);
         else
             this._object.open(sMethod, sUrl, bAsync);
@@ -113,7 +113,7 @@
         fReadyStateChange(this);
 
         this._object.onreadystatechange    = function() {
-            if (bGecko && !bAsync)
+            if(bGecko && !bAsync)
                 return;
 
             // Synchronize state
@@ -123,7 +123,7 @@
             fSynchronizeValues(oRequest);
 
             // BUGFIX: Firefox fires unnecessary DONE when aborting
-            if (oRequest._aborted) {
+            if(oRequest._aborted) {
                 // Reset readyState to UNSENT
                 oRequest.readyState    = cXMLHttpRequest.UNSENT;
 
@@ -131,17 +131,17 @@
                 return;
             }
 
-            if (oRequest.readyState == cXMLHttpRequest.DONE) {
+            if(oRequest.readyState == cXMLHttpRequest.DONE) {
                 // Free up queue
                 delete oRequest._data;
-/*                if (bAsync)
+/*                if(bAsync)
                     fQueue_remove(oRequest);*/
                 //
                 fCleanTransport(oRequest);
 // Uncomment this block if you need a fix for IE cache
 /*
                 // BUGFIX: IE - cache issue
-                if (!oRequest._object.getResponseHeader("Date")) {
+                if(!oRequest._object.getResponseHeader("Date")) {
                     // Save object to cache
                     oRequest._cached    = oRequest._object;
 
@@ -149,8 +149,8 @@
                     cXMLHttpRequest.call(oRequest);
 
                     // Re-send request
-                    if (sUser) {
-                         if (sPassword)
+                    if(sUser) {
+                         if(sPassword)
                             oRequest._object.open(sMethod, sUrl, bAsync, sUser, sPassword);
                         else
                             oRequest._object.open(sMethod, sUrl, bAsync, sUser);
@@ -159,16 +159,16 @@
                         oRequest._object.open(sMethod, sUrl, bAsync);
                     oRequest._object.setRequestHeader("If-Modified-Since", oRequest._cached.getResponseHeader("Last-Modified") || new window.Date(0));
                     // Copy headers set
-                    if (oRequest._headers)
+                    if(oRequest._headers)
                         for (var sHeader in oRequest._headers)
-                            if (typeof oRequest._headers[sHeader] == "string")    // Some frameworks prototype objects with functions
+                            if(typeof oRequest._headers[sHeader] == "string")    // Some frameworks prototype objects with functions
                                 oRequest._object.setRequestHeader(sHeader, oRequest._headers[sHeader]);
 
                     oRequest._object.onreadystatechange    = function() {
                         // Synchronize state
                         oRequest.readyState        = oRequest._object.readyState;
 
-                        if (oRequest._aborted) {
+                        if(oRequest._aborted) {
                             //
                             oRequest.readyState    = cXMLHttpRequest.UNSENT;
 
@@ -176,12 +176,12 @@
                             return;
                         }
 
-                        if (oRequest.readyState == cXMLHttpRequest.DONE) {
+                        if(oRequest.readyState == cXMLHttpRequest.DONE) {
                             // Clean Object
                             fCleanTransport(oRequest);
 
                             // get cached request
-                            if (oRequest.status == 304)
+                            if(oRequest.status == 304)
                                 oRequest._object    = oRequest._cached;
 
                             //
@@ -194,7 +194,7 @@
                             fReadyStateChange(oRequest);
 
                             // BUGFIX: IE - memory leak in interrupted
-                            if (bIE && bAsync)
+                            if(bIE && bAsync)
                                 window.detachEvent("onunload", fOnUnload);
                         }
                     };
@@ -205,12 +205,12 @@
                 };
 */
                 // BUGFIX: IE - memory leak in interrupted
-                if (bIE && bAsync)
+                if(bIE && bAsync)
                     window.detachEvent("onunload", fOnUnload);
             }
 
             // BUGFIX: Some browsers (Internet Explorer, Gecko) fire OPEN readystate twice
-            if (nState != oRequest.readyState)
+            if(nState != oRequest.readyState)
                 fReadyStateChange(oRequest);
 
             nState    = oRequest.readyState;
@@ -220,7 +220,7 @@
         oRequest._object.send(oRequest._data);
 
         // BUGFIX: Gecko - missing readystatechange calls in synchronous requests
-        if (bGecko && !oRequest._async) {
+        if(bGecko && !oRequest._async) {
             oRequest.readyState    = cXMLHttpRequest.OPENED;
 
             // Synchronize state
@@ -231,43 +231,43 @@
                 oRequest.readyState++;
                 fReadyStateChange(oRequest);
                 // Check if we are aborted
-                if (oRequest._aborted)
+                if(oRequest._aborted)
                     return;
             }
         }
     };
     cXMLHttpRequest.prototype.send    = function(vData) {
         // Add method sniffer
-        if (cXMLHttpRequest.onsend)
+        if(cXMLHttpRequest.onsend)
             cXMLHttpRequest.onsend.apply(this, arguments);
 
-        if (!arguments.length)
+        if(!arguments.length)
             vData    = null;
 
         // BUGFIX: Safari - fails sending documents created/modified dynamically, so an explicit serialization required
         // BUGFIX: IE - rewrites any custom mime-type to "text/xml" in case an XMLNode is sent
         // BUGFIX: Gecko - fails sending Element (this is up to the implementation either to standard)
-        if (vData && vData.nodeType) {
+        if(vData && vData.nodeType) {
             vData    = window.XMLSerializer ? new window.XMLSerializer().serializeToString(vData) : vData.xml;
-            if (!this._headers["Content-Type"])
+            if(!this._headers["Content-Type"])
                 this._object.setRequestHeader("Content-Type", "application/xml");
         }
 
         this._data    = vData;
 /*
         // Add to queue
-        if (this._async)
+        if(this._async)
             fQueue_add(this);
         else*/
             fXMLHttpRequest_send(this);
     };
     cXMLHttpRequest.prototype.abort    = function() {
         // Add method sniffer
-        if (cXMLHttpRequest.onabort)
+        if(cXMLHttpRequest.onabort)
             cXMLHttpRequest.onabort.apply(this, arguments);
 
         // BUGFIX: Gecko - unnecessary DONE when aborting
-        if (this.readyState > cXMLHttpRequest.UNSENT)
+        if(this.readyState > cXMLHttpRequest.UNSENT)
             this._aborted    = true;
 
         this._object.abort();
@@ -278,7 +278,7 @@
         this.readyState    = cXMLHttpRequest.UNSENT;
 
         delete this._data;
-/*        if (this._async)
+/*        if(this._async)
             fQueue_remove(this);*/
     };
     cXMLHttpRequest.prototype.getAllResponseHeaders    = function() {
@@ -289,7 +289,7 @@
     };
     cXMLHttpRequest.prototype.setRequestHeader    = function(sName, sValue) {
         // BUGFIX: IE - cache issue
-        if (!this._headers)
+        if(!this._headers)
             this._headers    = {};
         this._headers[sName]    = sValue;
 
@@ -299,7 +299,7 @@
     // EventTarget interface implementation
     cXMLHttpRequest.prototype.addEventListener    = function(sName, fHandler, bUseCapture) {
         for (var nIndex = 0, oListener; oListener = this._listeners[nIndex]; nIndex++)
-            if (oListener[0] == sName && oListener[1] == fHandler && oListener[2] == bUseCapture)
+            if(oListener[0] == sName && oListener[1] == fHandler && oListener[2] == bUseCapture)
                 return;
         // Add listener
         this._listeners.push([sName, fHandler, bUseCapture]);
@@ -307,10 +307,10 @@
 
     cXMLHttpRequest.prototype.removeEventListener    = function(sName, fHandler, bUseCapture) {
         for (var nIndex = 0, oListener; oListener = this._listeners[nIndex]; nIndex++)
-            if (oListener[0] == sName && oListener[1] == fHandler && oListener[2] == bUseCapture)
+            if(oListener[0] == sName && oListener[1] == fHandler && oListener[2] == bUseCapture)
                 break;
         // Remove listener
-        if (oListener)
+        if(oListener)
             this._listeners.splice(nIndex, 1);
     };
 
@@ -329,12 +329,12 @@
         };
 
         // Execute onreadystatechange
-        if (oEventPseudo.type == "readystatechange" && this.onreadystatechange)
+        if(oEventPseudo.type == "readystatechange" && this.onreadystatechange)
             (this.onreadystatechange.handleEvent || this.onreadystatechange).apply(this, [oEventPseudo]);
 
         // Execute listeners
         for (var nIndex = 0, oListener; oListener = this._listeners[nIndex]; nIndex++)
-            if (oListener[0] == oEventPseudo.type && !oListener[2])
+            if(oListener[0] == oEventPseudo.type && !oListener[2])
                 (oListener[1].handleEvent || oListener[1]).apply(this, [oEventPseudo]);
     };
 
@@ -350,7 +350,7 @@
     // Helper function
     function fReadyStateChange(oRequest) {
         // Sniffing code
-        if (cXMLHttpRequest.onreadystatechange)
+        if(cXMLHttpRequest.onreadystatechange)
             cXMLHttpRequest.onreadystatechange.apply(oRequest);
 
         // Fake event
@@ -366,15 +366,15 @@
         var oDocument    = oRequest.responseXML,
             sResponse    = oRequest.responseText;
         // Try parsing responseText
-        if (bIE && sResponse && oDocument && !oDocument.documentElement && oRequest.getResponseHeader("Content-Type").match(/[^\/]+\/[^\+]+\+xml/)) {
+        if(bIE && sResponse && oDocument && !oDocument.documentElement && oRequest.getResponseHeader("Content-Type").match(/[^\/]+\/[^\+]+\+xml/)) {
             oDocument    = new window.ActiveXObject("Microsoft.XMLDOM");
             oDocument.async                = false;
             oDocument.validateOnParse    = false;
             oDocument.loadXML(sResponse);
         }
         // Check if there is no error in document
-        if (oDocument)
-            if ((bIE && oDocument.parseError != 0) || !oDocument.documentElement || (oDocument.documentElement && oDocument.documentElement.tagName == "parsererror"))
+        if(oDocument)
+            if((bIE && oDocument.parseError != 0) || !oDocument.documentElement || (oDocument.documentElement && oDocument.documentElement.tagName == "parsererror"))
                 return null;
         return oDocument;
     };
@@ -402,21 +402,21 @@
 
     function fQueue_remove(oRequest) {
         for (var nIndex = 0, bFound    = false; nIndex < aQueueRunning.length; nIndex++)
-            if (bFound)
+            if(bFound)
                 aQueueRunning[nIndex - 1]    = aQueueRunning[nIndex];
             else
-            if (aQueueRunning[nIndex] == oRequest)
+            if(aQueueRunning[nIndex] == oRequest)
                 bFound    = true;
-        if (bFound)
+        if(bFound)
             aQueueRunning.length--;
         //
         setTimeout(fQueue_process);
     };
 
     function fQueue_process() {
-        if (aQueueRunning.length < 6) {
+        if(aQueueRunning.length < 6) {
             for (var sPriority in oQueuePending) {
-                if (oQueuePending[sPriority].length) {
+                if(oQueuePending[sPriority].length) {
                     var oRequest    = oQueuePending[sPriority][0];
                     oQueuePending[sPriority]    = oQueuePending[sPriority].slice(1);
                     //
@@ -430,9 +430,9 @@
     };
 */
     // Internet Explorer 5.0 (missing apply)
-    if (!window.Function.prototype.apply) {
+    if(!window.Function.prototype.apply) {
         window.Function.prototype.apply    = function(oRequest, oArguments) {
-            if (!oArguments)
+            if(!oArguments)
                 oArguments    = [];
             oRequest.__func    = this;
             oRequest.__func(oArguments[0], oArguments[1], oArguments[2], oArguments[3], oArguments[4]);
@@ -447,7 +447,7 @@
      *     XMLHttpRequest object.  From
      *     http://code.google.com/p/xmlhttprequest/.
      */
-    if (!OpenLayers.Request) {
+    if(!OpenLayers.Request) {
         /**
          * This allows for OpenLayers/Request.js to be included
          * before or after this script.

@@ -114,7 +114,7 @@ OpenLayers.Strategy.Fixed = OpenLayers.Class(OpenLayers.Strategy, {
         var layer = this.layer;
         layer.destroyFeatures();
         var features = resp.features;
-        if (features && features.length > 0) {
+        if(features && features.length > 0) {
             var remote = layer.projection;
             var local = layer.map.getProjectionObject();
             if(!local.equals(remote)) {

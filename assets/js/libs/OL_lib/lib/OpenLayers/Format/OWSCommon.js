@@ -52,7 +52,7 @@ OpenLayers.Format.OWSCommon = OpenLayers.Class(OpenLayers.Format.XML.VersionedOG
             var uri = root.getAttribute("xmlns:ows");
             // the above will fail if the namespace prefix is different than
             // ows and if the namespace is declared on a different element
-            if (uri && uri.substring(uri.lastIndexOf("/")+1) === "1.1") {
+            if(uri && uri.substring(uri.lastIndexOf("/")+1) === "1.1") {
                 version ="1.1.0";
             } 
             if(!version) {

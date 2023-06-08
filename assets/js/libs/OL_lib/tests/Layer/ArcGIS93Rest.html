@@ -16,7 +16,7 @@
         t.plan( 14 );
 
         var trans_format = "png";
-        if (OpenLayers.Util.alphaHack()) { trans_format = "gif"; } 
+        if(OpenLayers.Util.alphaHack()) { trans_format = "gif"; } 
         
         layer = new OpenLayers.Layer.ArcGIS93Rest(name, url, params);
         t.ok( layer instanceof OpenLayers.Layer.ArcGIS93Rest, "new OpenLayers.Layer.ArcGIS93Rest returns object" );

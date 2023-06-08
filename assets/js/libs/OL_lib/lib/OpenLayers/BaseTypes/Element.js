@@ -162,21 +162,21 @@ OpenLayers.Element = {
         element = OpenLayers.Util.getElement(element);
 
         var value = null;
-        if (element && element.style) {
+        if(element && element.style) {
             value = element.style[OpenLayers.String.camelize(style)];
-            if (!value) {
-                if (document.defaultView && 
+            if(!value) {
+                if(document.defaultView && 
                     document.defaultView.getComputedStyle) {
                     
                     var css = document.defaultView.getComputedStyle(element, null);
                     value = css ? css.getPropertyValue(style) : null;
-                } else if (element.currentStyle) {
+                } else if(element.currentStyle) {
                     value = element.currentStyle[OpenLayers.String.camelize(style)];
                 }
             }
         
             var positions = ['left', 'top', 'right', 'bottom'];
-            if (window.opera &&
+            if(window.opera &&
                 (OpenLayers.Util.indexOf(positions,style) != -1) &&
                 (OpenLayers.Element.getStyle(element, 'position') == 'static')) { 
                 value = 'auto';

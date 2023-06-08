@@ -39,7 +39,7 @@
             map.addControl(new OpenLayers.Control.LayerSwitcher());
             map.addControl(new OpenLayers.Control.MousePosition());
             
-            if (console && console.log) {
+            if(console && console.log) {
                 function report(event) {
                     console.log(event.type, event.feature ? event.feature.id : event.components);
                 }
@@ -85,7 +85,7 @@
             if(resize) {
                 controls.modify.mode |= OpenLayers.Control.ModifyFeature.RESIZE;
                 var keepAspectRatio = document.getElementById("keepAspectRatio").checked;
-                if (keepAspectRatio) {
+                if(keepAspectRatio) {
                     controls.modify.mode &= ~OpenLayers.Control.ModifyFeature.RESHAPE;
                 }
             }
@@ -93,7 +93,7 @@
             if(drag) {
                 controls.modify.mode |= OpenLayers.Control.ModifyFeature.DRAG;
             }
-            if (rotate || drag) {
+            if(rotate || drag) {
                 controls.modify.mode &= ~OpenLayers.Control.ModifyFeature.RESHAPE;
             }
             controls.modify.createVertices = document.getElementById("createVertices").checked;

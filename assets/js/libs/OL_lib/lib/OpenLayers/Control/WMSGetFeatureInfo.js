@@ -253,7 +253,7 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
      * Cancel callback for the hover handler
      */
     cancelHover: function() {
-        if (this.hoverRequest) {
+        if(this.hoverRequest) {
             this.hoverRequest.abort();
             this.hoverRequest = null;
         }
@@ -326,7 +326,7 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
     buildWMSOptions: function(url, layers, clickPosition, format) {
         var layerNames = [], styleNames = [];
         for (var i = 0, len = layers.length; i < len; i++) {
-            if (layers[i].params.LAYERS != null) {
+            if(layers[i].params.LAYERS != null) {
                 layerNames = layerNames.concat(layers[i].params.LAYERS);
                 styleNames = styleNames.concat(this.getStyleNames(layers[i]));
             }
@@ -336,7 +336,7 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
         // this assumes that all layers will be available in this projection
         var projection = this.map.getProjection();
         var layerProj = firstLayer.projection;
-        if (layerProj && layerProj.equals(this.map.getProjectionObject())) {
+        if(layerProj && layerProj.equals(this.map.getProjectionObject())) {
             projection = layerProj.getCode();
         }
         var params = OpenLayers.Util.extend({
@@ -363,7 +363,7 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
                 y: parseInt(clickPosition.y)
             }
         );
-        if (layerNames.length != 0) {
+        if(layerNames.length != 0) {
             params = OpenLayers.Util.extend({
                 layers: layerNames,
                 query_layers: layerNames,
@@ -398,10 +398,10 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
         // the default style for each of the layers.  We can't just leave it
         // blank as we may be including other layers that do specify styles.
         var styleNames;
-        if (layer.params.STYLES) {
+        if(layer.params.STYLES) {
             styleNames = layer.params.STYLES;
         } else {
-            if (OpenLayers.Util.isArray(layer.params.LAYERS)) {
+            if(OpenLayers.Util.isArray(layer.params.LAYERS)) {
                 styleNames = new Array(layer.params.LAYERS.length);
             } else { // Assume it's a String
                 styleNames = layer.params.LAYERS.replace(/[^,]/g, "");
@@ -437,7 +437,7 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
                 clickPosition, layers[0].params.FORMAT);
             var request = OpenLayers.Request.GET(wmsOptions);
 
-            if (options.hover === true) {
+            if(options.hover === true) {
                 this.hoverRequest = request;
             }
         } else {
@@ -508,18 +508,18 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
             doc = request.responseText;
         }
         var features = this.format.read(doc);
-        if (this.drillDown === false) {
+        if(this.drillDown === false) {
             this.triggerGetFeatureInfo(request, xy, features);
         } else {
             this._requestCount++;
-            if (this.output === "object") {
+            if(this.output === "object") {
                 this._features = (this._features || []).concat(
                     {url: url, features: features}
                 );
             } else {
             this._features = (this._features || []).concat(features);
             }
-            if (this._requestCount === this._numRequests) {
+            if(this._requestCount === this._numRequests) {
                 this.triggerGetFeatureInfo(request, xy, this._features.concat());
                 delete this._features;
                 delete this._requestCount;

@@ -124,7 +124,7 @@ OpenLayers.Control.PinchZoom = OpenLayers.Class(OpenLayers.Control, {
     pinchDone: function(evt, start, last) {
         this.map.applyTransform();
         var zoom = this.map.getZoomForResolution(this.map.getResolution() / last.scale, true);
-        if (zoom !== this.map.getZoom() || !this.currentCenter.equals(this.pinchOrigin)) {
+        if(zoom !== this.map.getZoom() || !this.currentCenter.equals(this.pinchOrigin)) {
             var resolution = this.map.getResolutionForZoom(zoom);
 
             var location = this.map.getLonLatFromPixel(this.pinchOrigin);

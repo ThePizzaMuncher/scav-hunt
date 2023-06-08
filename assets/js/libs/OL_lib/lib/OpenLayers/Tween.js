@@ -113,7 +113,7 @@ OpenLayers.Tween = OpenLayers.Class({
         this.startTime = new Date().getTime();
         OpenLayers.Animation.stop(this.animationId);
         this.animationId = null;
-        if (this.callbacks && this.callbacks.start) {
+        if(this.callbacks && this.callbacks.start) {
             this.callbacks.start.call(this, this.begin);
         }
         this.animationId = OpenLayers.Animation.start(
@@ -127,11 +127,11 @@ OpenLayers.Tween = OpenLayers.Class({
      *     Doesn't do anything if animation is already finished
      */
     stop: function() {
-        if (!this.playing) {
+        if(!this.playing) {
             return;
         }
         
-        if (this.callbacks && this.callbacks.done) {
+        if(this.callbacks && this.callbacks.done) {
             this.callbacks.done.call(this, this.finish);
         }
         OpenLayers.Animation.stop(this.animationId);
@@ -148,7 +148,7 @@ OpenLayers.Tween = OpenLayers.Class({
         for (var i in this.begin) {
             var b = this.begin[i];
             var f = this.finish[i];
-            if (b == null || f == null || isNaN(b) || isNaN(f)) {
+            if(b == null || f == null || isNaN(b) || isNaN(f)) {
                 throw new TypeError('invalid value for Tween');
             }
 
@@ -157,14 +157,14 @@ OpenLayers.Tween = OpenLayers.Class({
         }
         this.time++;
         
-        if (this.callbacks && this.callbacks.eachStep) {
+        if(this.callbacks && this.callbacks.eachStep) {
             // skip frames if frame rate drops below threshold
-            if ((new Date().getTime() - this.startTime) / this.time <= 1000 / this.minFrameRate) {
+            if((new Date().getTime() - this.startTime) / this.time <= 1000 / this.minFrameRate) {
                 this.callbacks.eachStep.call(this, value);
             }
         }
         
-        if (this.time > this.duration) {
+        if(this.time > this.duration) {
             this.stop();
         }
     },
@@ -294,9 +294,9 @@ OpenLayers.Easing.Expo = {
      * {Float}
      */
     easeInOut: function(t, b, c, d) {
-        if (t==0) return b;
-        if (t==d) return b+c;
-        if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+        if(t==0) return b;
+        if(t==d) return b+c;
+        if((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
         return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
     },
 
@@ -353,7 +353,7 @@ OpenLayers.Easing.Quad = {
      * {Float}
      */
     easeInOut: function(t, b, c, d) {
-        if ((t/=d/2) < 1) return c/2*t*t + b;
+        if((t/=d/2) < 1) return c/2*t*t + b;
         return -c/2 * ((--t)*(t-2) - 1) + b;
     },
 

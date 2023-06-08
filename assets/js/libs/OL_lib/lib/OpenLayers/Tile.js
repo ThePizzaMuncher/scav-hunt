@@ -138,7 +138,7 @@ OpenLayers.Tile = OpenLayers.Class({
         this.position = position.clone();
         this.setBounds(bounds);
         this.url = url;
-        if (size) {
+        if(size) {
             this.size = size.clone();
         }
 
@@ -148,7 +148,7 @@ OpenLayers.Tile = OpenLayers.Class({
         OpenLayers.Util.extend(this, options);
 
         this.events = new OpenLayers.Events(this);
-        if (this.eventListeners instanceof Object) {
+        if(this.eventListeners instanceof Object) {
             this.events.on(this.eventListeners);
         }
     },
@@ -161,7 +161,7 @@ OpenLayers.Tile = OpenLayers.Class({
      * still loading.
      */
     unload: function() {
-       if (this.isLoading) { 
+       if(this.isLoading) { 
            this.isLoading = false; 
            this.events.triggerEvent("unload"); 
        }
@@ -177,7 +177,7 @@ OpenLayers.Tile = OpenLayers.Class({
         this.size = null;
         this.position = null;
         
-        if (this.eventListeners) {
+        if(this.eventListeners) {
             this.events.un(this.eventListeners);
         }
         this.events.destroy();
@@ -203,12 +203,12 @@ OpenLayers.Tile = OpenLayers.Class({
      *     if a beforedraw listener returned false.
      */
     draw: function(force) {
-        if (!force) {
+        if(!force) {
             //clear tile's contents and mark as not drawn
             this.clear();
         }
         var draw = this.shouldDraw();
-        if (draw && !force && this.events.triggerEvent("beforedraw") === false) {
+        if(draw && !force && this.events.triggerEvent("beforedraw") === false) {
             draw = null;
         }
         return draw;
@@ -226,10 +226,10 @@ OpenLayers.Tile = OpenLayers.Class({
     shouldDraw: function() {        
         var withinMaxExtent = false,
             maxExtent = this.layer.maxExtent;
-        if (maxExtent) {
+        if(maxExtent) {
             var map = this.layer.map;
             var worldBounds = map.baseLayer.wrapDateLine && map.getMaxExtent();
-            if (this.bounds.intersectsBounds(maxExtent, {inclusive: false, worldBounds: worldBounds})) {
+            if(this.bounds.intersectsBounds(maxExtent, {inclusive: false, worldBounds: worldBounds})) {
                 withinMaxExtent = true;
             }
         }
@@ -246,7 +246,7 @@ OpenLayers.Tile = OpenLayers.Class({
      */
     setBounds: function(bounds) {
         bounds = bounds.clone();
-        if (this.layer.map.baseLayer.wrapDateLine) {
+        if(this.layer.map.baseLayer.wrapDateLine) {
             var worldExtent = this.layer.map.getMaxExtent(),
                 tolerance = this.layer.map.getResolution();
             bounds = bounds.wrapDateLine(worldExtent, {
@@ -268,13 +268,13 @@ OpenLayers.Tile = OpenLayers.Class({
      *     Default is true
      */
     moveTo: function (bounds, position, redraw) {
-        if (redraw == null) {
+        if(redraw == null) {
             redraw = true;
         }
 
         this.setBounds(bounds);
         this.position = position.clone();
-        if (redraw) {
+        if(redraw) {
             this.draw();
         }
     },

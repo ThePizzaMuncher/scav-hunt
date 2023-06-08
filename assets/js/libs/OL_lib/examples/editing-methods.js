@@ -26,7 +26,7 @@ document.getElementById("insertXY").onclick = function() {
             "Enter map coordinates for new point (e.g. '-111, 46')", "x, y"
         )
     );
-    if (values != null) {
+    if(values != null) {
         draw.insertXY(values[0], values[1]);
     }
 };
@@ -36,7 +36,7 @@ document.getElementById("insertDeltaXY").onclick = function() {
             "Enter offset values for new point (e.g. '15, -10')", "dx, dy"
         )
     );
-    if (values != null) {
+    if(values != null) {
         draw.insertDeltaXY(values[0], values[1]);
     }
 };
@@ -46,7 +46,7 @@ document.getElementById("insertDirectionLength").onclick = function() {
             "Enter direction and length offset values for new point (e.g. '-45, 10')", "direction, length"
         )
     );
-    if (values != null) {
+    if(values != null) {
         draw.insertDirectionLength(values[0], values[1]);
     }
 };
@@ -56,7 +56,7 @@ document.getElementById("insertDeflectionLength").onclick = function() {
             "Enter deflection and length offset values for new point (e.g. '15, 20')", "deflection, length"
         )
     );
-    if (values != null) {
+    if(values != null) {
         draw.insertDeflectionLength(values[0], values[1]);
     }
 };
@@ -69,12 +69,12 @@ document.getElementById("finishSketch").onclick = function() {
 
 function parseInput(text) {
     var values = text.split(",");
-    if (values.length !== 2) {
+    if(values.length !== 2) {
         values = null;
     } else {
         values[0] = parseFloat(values[0]);
         values[1] = parseFloat(values[1]);
-        if (isNaN(values[0]) || isNaN(values[1])) {
+        if(isNaN(values[0]) || isNaN(values[1])) {
             window.alert("The two values must be numeric.");
             values = null;
         }

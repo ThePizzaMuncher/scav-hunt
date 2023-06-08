@@ -128,7 +128,7 @@
      * OpenLayers library code as it will be appended at the end of this file.
      */
     if(!singleFile) {
-        if (!jsFiles) {
+        if(!jsFiles) {
             jsFiles = [
                 "OpenLayers/BaseTypes/Class.js",
                 "OpenLayers/Util.js",
@@ -412,7 +412,7 @@
             scriptTags[i] = "<script src='" + host + jsFiles[i] +
                                    "'></script>"; 
         }
-        if (scriptTags.length > 0) {
+        if(scriptTags.length > 0) {
             document.write(scriptTags.join(""));
         }
     }

@@ -190,7 +190,7 @@ OpenLayers.Control = OpenLayers.Class({
         if(this.eventListeners instanceof Object) {
             this.events.on(this.eventListeners);
         }
-        if (this.id == null) {
+        if(this.id == null) {
             this.id = OpenLayers.Util.createUniqueID(this.CLASS_NAME + "_");
         }
     },
@@ -212,7 +212,7 @@ OpenLayers.Control = OpenLayers.Class({
         this.eventListeners = null;
 
         // eliminate circular references
-        if (this.handler) {
+        if(this.handler) {
             this.handler.destroy();
             this.handler = null;
         }
@@ -225,7 +225,7 @@ OpenLayers.Control = OpenLayers.Class({
             }
             this.handlers = null;
         }
-        if (this.map) {
+        if(this.map) {
             this.map.removeControl(this);
             this.map = null;
         }
@@ -243,7 +243,7 @@ OpenLayers.Control = OpenLayers.Class({
      */
     setMap: function(map) {
         this.map = map;
-        if (this.handler) {
+        if(this.handler) {
             this.handler.setMap(map);
         }
     },
@@ -263,19 +263,19 @@ OpenLayers.Control = OpenLayers.Class({
      * {DOMElement} A reference to the DIV DOMElement containing the control
      */
     draw: function (px) {
-        if (this.div == null) {
+        if(this.div == null) {
             this.div = OpenLayers.Util.createDiv(this.id);
             this.div.className = this.displayClass;
-            if (!this.allowSelection) {
+            if(!this.allowSelection) {
                 this.div.className += " olControlNoSelect";
                 this.div.setAttribute("unselectable", "on", 0);
                 this.div.onselectstart = OpenLayers.Function.False; 
             }    
-            if (this.title != "") {
+            if(this.title != "") {
                 this.div.title = this.title;
             }
         }
-        if (px != null) {
+        if(px != null) {
             this.position = px.clone();
         }
         this.moveTo(this.position);
@@ -291,7 +291,7 @@ OpenLayers.Control = OpenLayers.Class({
      * px - {<OpenLayers.Pixel>}
      */
     moveTo: function (px) {
-        if ((px != null) && (this.div != null)) {
+        if((px != null) && (this.div != null)) {
             this.div.style.left = px.x + "px";
             this.div.style.top = px.y + "px";
         }
@@ -308,10 +308,10 @@ OpenLayers.Control = OpenLayers.Class({
      *            false if the control was already active.
      */
     activate: function () {
-        if (this.active) {
+        if(this.active) {
             return false;
         }
-        if (this.handler) {
+        if(this.handler) {
             this.handler.activate();
         }
         this.active = true;
@@ -335,8 +335,8 @@ OpenLayers.Control = OpenLayers.Class({
      *           if the control was already inactive.
      */
     deactivate: function () {
-        if (this.active) {
-            if (this.handler) {
+        if(this.active) {
+            if(this.handler) {
                 this.handler.deactivate();
             }
             this.active = false;

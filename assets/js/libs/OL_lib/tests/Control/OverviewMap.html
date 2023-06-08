@@ -90,7 +90,7 @@
         control.destroy();
         t.eq(log_drag.length, 2,
             "destroy() destroys drag handler twice, expected");
-        if (log_drag.length == 2) {
+        if(log_drag.length == 2) {
             t.eq(log_drag[0].map, true,
                 "destroy() destroys drag handler before ovmap is destroyed (0)");
             t.eq(log_drag[1].map, false,
@@ -98,7 +98,7 @@
         }
         t.eq(log_click.length, 2,
             "destroy() destroys click handler twice, expected");
-        if (log_click.length == 2) {
+        if(log_click.length == 2) {
             t.eq(log_click[0].map, true,
                 "destroy() destroys click handler before ovmap is destroyed (0)");
             t.eq(log_click[1].map, false,

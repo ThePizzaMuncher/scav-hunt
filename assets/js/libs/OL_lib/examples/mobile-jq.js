@@ -10,12 +10,12 @@ function fixContentHeight() {
         viewHeight = $(window).height(),
         contentHeight = viewHeight - footer.outerHeight();
 
-    if ((content.outerHeight() + footer.outerHeight()) !== viewHeight) {
+    if((content.outerHeight() + footer.outerHeight()) !== viewHeight) {
         contentHeight -= (content.outerHeight() - content.height() + 1);
         content.height(contentHeight);
     }
 
-    if (window.map && window.map instanceof OpenLayers.Map) {
+    if(window.map && window.map instanceof OpenLayers.Map) {
         map.updateSize();
     } else {
         // initialize map
@@ -39,7 +39,7 @@ $("#minus").live('click', function(){
 
 $("#locate").live('click',function(){
     var control = map.getControlsBy("id", "locate-control")[0];
-    if (control.active) {
+    if(control.active) {
         control.getCurrentLocation();
     } else {
         control.activate();
@@ -67,7 +67,7 @@ $('#popup').live('pageshow',function(event, ui){
 $('#searchpage').live('pageshow',function(event, ui){
     $('#query').bind('change', function(e){
         $('#search_results').empty();
-        if ($('#query')[0].value === '') {
+        if($('#query')[0].value === '') {
             return;
         }
         $.mobile.showPageLoadingMsg();
@@ -143,7 +143,7 @@ function addLayerToList(layer) {
         })
             .click(function() {
                 $.mobile.changePage('#mappage');
-                if (layer.isBaseLayer) {
+                if(layer.isBaseLayer) {
                     layer.map.setBaseLayer(layer);
                 } else {
                     layer.setVisibility(!layer.getVisibility());

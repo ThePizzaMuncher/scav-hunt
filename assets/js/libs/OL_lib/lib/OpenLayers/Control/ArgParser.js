@@ -70,7 +70,7 @@ OpenLayers.Control.ArgParser = OpenLayers.Class(OpenLayers.Control, {
 
         // If we have an anchor in the url use it to split the url
         var index = url.indexOf('#');
-        if (index > 0) {
+        if(index > 0) {
             // create an url to parse on the getParameters
             url = '?' + url.substring(index + 1, url.length);
 
@@ -93,24 +93,24 @@ OpenLayers.Control.ArgParser = OpenLayers.Class(OpenLayers.Control, {
         //make sure we dont already have an arg parser attached
         for(var i=0, len=this.map.controls.length; i<len; i++) {
             var control = this.map.controls[i];
-            if ( (control != this) &&
+            if( (control != this) &&
                  (control.CLASS_NAME == "OpenLayers.Control.ArgParser") ) {
                 
                 // If a second argparser is added to the map, then we 
                 // override the displayProjection to be the one added to the
                 // map. 
-                if (control.displayProjection != this.displayProjection) {
+                if(control.displayProjection != this.displayProjection) {
                     this.displayProjection = control.displayProjection;
                 }    
                 
                 break;
             }
         }
-        if (i == this.map.controls.length) {
+        if(i == this.map.controls.length) {
 
             var args = this.getParameters();
             // Be careful to set layer first, to not trigger unnecessary layer loads
-            if (args.layers) {
+            if(args.layers) {
                 this.layers = args.layers;
     
                 // when we add a new layer, set its visibility 
@@ -118,10 +118,10 @@ OpenLayers.Control.ArgParser = OpenLayers.Class(OpenLayers.Control, {
                                          this.configureLayers);
                 this.configureLayers();
             }
-            if (args.lat && args.lon) {
+            if(args.lat && args.lon) {
                 this.center = new OpenLayers.LonLat(parseFloat(args.lon),
                                                     parseFloat(args.lat));
-                if (args.zoom) {
+                if(args.zoom) {
                     this.zoom = parseFloat(args.zoom);
                 }
     
@@ -140,12 +140,12 @@ OpenLayers.Control.ArgParser = OpenLayers.Class(OpenLayers.Control, {
      */
     setCenter: function() {
         
-        if (this.map.baseLayer) {
+        if(this.map.baseLayer) {
             //dont need to listen for this one anymore
             this.map.events.unregister('changebaselayer', this, 
                                        this.setCenter);
             
-            if (this.displayProjection) {
+            if(this.displayProjection) {
                 this.center.transform(this.displayProjection, 
                                       this.map.getProjectionObject()); 
             }      
@@ -161,7 +161,7 @@ OpenLayers.Control.ArgParser = OpenLayers.Class(OpenLayers.Control, {
      */
     configureLayers: function() {
 
-        if (this.layers.length == this.map.layers.length) { 
+        if(this.layers.length == this.map.layers.length) { 
             this.map.events.unregister('addlayer', this, this.configureLayers);
 
             for(var i=0, len=this.layers.length; i<len; i++) {
@@ -169,9 +169,9 @@ OpenLayers.Control.ArgParser = OpenLayers.Class(OpenLayers.Control, {
                 var layer = this.map.layers[i];
                 var c = this.layers.charAt(i);
                 
-                if (c == "B") {
+                if(c == "B") {
                     this.map.setBaseLayer(layer);
-                } else if ( (c == "T") || (c == "F") ) {
+                } else if( (c == "T") || (c == "F") ) {
                     layer.setVisibility(c == "T");
                 }
             }

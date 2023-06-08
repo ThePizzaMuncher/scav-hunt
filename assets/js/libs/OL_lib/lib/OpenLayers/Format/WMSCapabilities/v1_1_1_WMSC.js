@@ -60,7 +60,7 @@ OpenLayers.Format.WMSCapabilities.v1_1_1_WMSC = OpenLayers.Class(
             "Resolutions": function(node, tileset) {
                 var res = this.getChildValue(node).split(" ");
                 for (var i=0, len=res.length; i<len; i++) {
-                    if (res[i] != "") {
+                    if(res[i] != "") {
                         tileset.resolutions.push(parseFloat(res[i]));
                     }
                 }

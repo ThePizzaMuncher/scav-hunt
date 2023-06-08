@@ -204,7 +204,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
     insertDeltaXY: function(dx, dy) {
         var previousIndex = this.getCurrentPointIndex() - 1;
         var p0 = this.line.geometry.components[previousIndex];
-        if (p0 && !isNaN(p0.x) && !isNaN(p0.y)) {
+        if(p0 && !isNaN(p0.x) && !isNaN(p0.y)) {
             this.insertXY(p0.x + dx, p0.y + dy);
         }
     },
@@ -236,7 +236,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      */
     insertDeflectionLength: function(deflection, length) {
         var previousIndex = this.getCurrentPointIndex() - 1;
-        if (previousIndex > 0) {
+        if(previousIndex > 0) {
             var p1 = this.line.geometry.components[previousIndex];
             var p0 = this.line.geometry.components[previousIndex-1];
             var theta = Math.atan2(p1.y - p0.y, p1.x - p0.x);
@@ -270,10 +270,10 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
         var index = this.getCurrentPointIndex() - 1;
         var target = components[index];
         var undone = geometry.removeComponent(target);
-        if (undone) {
+        if(undone) {
             // On touch devices, set the current ("mouse location") point to
             // match the last digitized point.
-            if (this.touch && index > 0) {
+            if(this.touch && index > 0) {
                 components = geometry.components; // safety
                 var lastpt = components[index - 1];
                 var curptidx = this.getCurrentPointIndex();
@@ -281,7 +281,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
                 curpt.x = lastpt.x;
                 curpt.y = lastpt.y;
             }
-            if (!this.redoStack) {
+            if(!this.redoStack) {
                 this.redoStack = [];
             }
             this.redoStack.push(target);
@@ -300,7 +300,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      */
     redo: function() {
         var target = this.redoStack && this.redoStack.pop();
-        if (target) {
+        if(target) {
             this.line.geometry.addComponent(target, this.getCurrentPointIndex());
             this.drawFeature();
         }
@@ -387,7 +387,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      * {boolean} allow event propagation
      */
     touchstart: function(evt) {
-        if (this.timerId &&
+        if(this.timerId &&
             this.passesTolerance(this.lastTouchPx, evt.xy,
                                  this.doubleTouchTolerance)) {
             // double-tap, finalize the geometry
@@ -396,7 +396,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
             this.timerId = null;
             return false;
         } else {
-            if (this.timerId) {
+            if(this.timerId) {
                 window.clearTimeout(this.timerId);
                 this.timerId = null;
             }
@@ -423,12 +423,12 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
         var stopDown = this.stopDown;
         if(this.freehandMode(evt)) {
             stopDown = true;
-            if (this.touch) {
+            if(this.touch) {
                 this.modifyFeature(evt.xy, !!this.lastUp);
                 OpenLayers.Event.stop(evt);
             }
         }
-        if (!this.touch && (!this.lastDown ||
+        if(!this.touch && (!this.lastDown ||
                             !this.passesTolerance(this.lastDown, evt.xy,
                                                   this.pixelTolerance))) {
             this.modifyFeature(evt.xy, !!this.lastUp);
@@ -464,7 +464,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
             }
             return false;
         }
-        if (!this.touch && (!this.mouseDown || this.stoppedDown)) {
+        if(!this.touch && (!this.mouseDown || this.stoppedDown)) {
             this.modifyFeature(evt.xy, !!this.lastUp);
         }
         return true;
@@ -482,17 +482,17 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      * {Boolean} Allow event propagation
      */
     up: function (evt) {
-        if (this.mouseDown && (!this.lastUp || !this.lastUp.equals(evt.xy))) {
+        if(this.mouseDown && (!this.lastUp || !this.lastUp.equals(evt.xy))) {
             if(this.stoppedDown && this.freehandMode(evt)) {
-                if (this.persist) {
+                if(this.persist) {
                     this.destroyPersistedFeature();
                 }
                 this.removePoint();
                 this.finalize();
             } else {
-                if (this.passesTolerance(this.lastDown, evt.xy,
+                if(this.passesTolerance(this.lastDown, evt.xy,
                                          this.pixelTolerance)) {
-                    if (this.touch) {
+                    if(this.touch) {
                         this.modifyFeature(evt.xy);
                     }
                     if(this.lastUp == null && this.persist) {

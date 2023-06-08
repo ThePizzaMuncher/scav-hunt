@@ -25,7 +25,7 @@ function init() {
                 textSpan = document.createElement('span');
             iconSpan.innerHTML = '&nbsp;';
             button.appendChild(iconSpan);
-            if (control.text) {
+            if(control.text) {
                 textSpan.innerHTML = control.text;
             }
             button.appendChild(textSpan);

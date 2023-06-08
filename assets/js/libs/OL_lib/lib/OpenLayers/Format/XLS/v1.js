@@ -227,19 +227,19 @@ OpenLayers.Format.XLS.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                         countryCode: address.countryCode
                     }
                 });
-                if (address.freeFormAddress) {
+                if(address.freeFormAddress) {
                     this.writeNode("freeFormAddress", address.freeFormAddress, node);
                 } else {
-                    if (address.street) {
+                    if(address.street) {
                         this.writeNode("StreetAddress", address, node);
                     }
-                    if (address.municipality) {
+                    if(address.municipality) {
                         this.writeNode("Municipality", address.municipality, node);
                     }
-                    if (address.countrySubdivision) {
+                    if(address.countrySubdivision) {
                         this.writeNode("CountrySubdivision", address.countrySubdivision, node);
                     }
-                    if (address.postalCode) {
+                    if(address.postalCode) {
                         this.writeNode("PostalCode", address.postalCode, node);
                     }
                 }
@@ -251,11 +251,11 @@ OpenLayers.Format.XLS.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
             },
             "StreetAddress": function(address) {
                 var node = this.createElementNSPlus("xls:StreetAddress");
-                if (address.building) {
+                if(address.building) {
                     this.writeNode(node, "Building", address.building);
                 }
                 var street = address.street;
-                if (!(OpenLayers.Util.isArray(street))) {
+                if(!(OpenLayers.Util.isArray(street))) {
                     street = [street];
                 }
                 for (var i=0, len=street.length; i < len; i++) {

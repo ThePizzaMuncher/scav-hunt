@@ -25,7 +25,7 @@ var map = new OpenLayers.Map({
                             atts = {};
                             for (var j = 0; j < row.length; j++) {
                                 // 'location's are json objects, other types are strings
-                                if (typeof row[j] === "object") {
+                                if(typeof row[j] === "object") {
                                     feature.geometry = this.parseGeometry(row[j].geometry);
                                 } else {
                                     atts[cols[j]] = row[j];
@@ -33,7 +33,7 @@ var map = new OpenLayers.Map({
                             }
                             feature.attributes = atts;
                             // if no geometry, not much point in continuing with this row
-                            if (feature.geometry) {
+                            if(feature.geometry) {
                                 features.push(feature);
                             }
                         }

@@ -88,7 +88,7 @@ OpenLayers.Layer.WorldWind = OpenLayers.Class(OpenLayers.Layer.Grid, {
         var deg = this.lzd/Math.pow(2,this.getZoom());
         var x = Math.floor((bounds.left - extent.left)/deg);
         var y = Math.floor((bounds.bottom - extent.bottom)/deg);
-        if (this.map.getResolution() <= (this.lzd/512)
+        if(this.map.getResolution() <= (this.lzd/512)
             && this.getZoom() <= this.zoomLevels) {
             return this.getFullRequestString(
               { L: zoom, 

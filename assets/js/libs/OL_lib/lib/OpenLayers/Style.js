@@ -191,7 +191,7 @@ OpenLayers.Style = OpenLayers.Class({
             style.display = "none";
         }
         
-        if (style.label != null && typeof style.label !== "string") {
+        if(style.label != null && typeof style.label !== "string") {
             style.label = String(style.label);
         }
         
@@ -302,7 +302,7 @@ OpenLayers.Style = OpenLayers.Class({
             symbolizer = rules[i].symbolizer;
             for (var key in symbolizer) {
                 value = symbolizer[key];
-                if (typeof value == "object") {
+                if(typeof value == "object") {
                     // symbolizer key is "Point", "Line" or "Polygon"
                     this.addPropertyStyles(propertyStyles, value);
                 } else {
@@ -330,7 +330,7 @@ OpenLayers.Style = OpenLayers.Class({
         var property;
         for (var key in symbolizer) {
             property = symbolizer[key];
-            if (typeof property == "string" &&
+            if(typeof property == "string" &&
                     property.match(/\$\{\w+\}/)) {
                 propertyStyles[key] = true;
             }
@@ -376,7 +376,7 @@ OpenLayers.Style = OpenLayers.Class({
     getSymbolizerPrefix: function(geometry) {
         var prefixes = OpenLayers.Style.SYMBOLIZER_PREFIXES;
         for (var i=0, len=prefixes.length; i<len; i++) {
-            if (geometry.CLASS_NAME.indexOf(prefixes[i]) != -1) {
+            if(geometry.CLASS_NAME.indexOf(prefixes[i]) != -1) {
                 return prefixes[i];
             }
         }
@@ -432,7 +432,7 @@ OpenLayers.Style = OpenLayers.Class({
  * attribute named "bar" with the value "valueOfBar".
  */
 OpenLayers.Style.createLiteral = function(value, context, feature, property) {
-    if (typeof value == "string" && value.indexOf("${") != -1) {
+    if(typeof value == "string" && value.indexOf("${") != -1) {
         value = OpenLayers.String.format(value, context, [feature, property]);
         value = (isNaN(value) || !value) ? value : parseFloat(value);
     }

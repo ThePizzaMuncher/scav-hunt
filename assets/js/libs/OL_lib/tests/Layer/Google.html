@@ -41,7 +41,7 @@
     }
     
     function test_clone(t) {
-        if (validkey) {
+        if(validkey) {
             t.plan(2);
             var layer, clone;
             
@@ -260,7 +260,7 @@
             var opacityCheck = function(opacity) {
                 var style = container.style;
                 var current = style.opacity === "" ? 1 : parseFloat(style.opacity);
-                if (style.filter && !style.opacity) {
+                if(style.filter && !style.opacity) {
                     current = Number(style.filter.replace(/alpha\(opacity=(.+?)\)/, "$1"));
                 }
                 return (current === opacity);
@@ -326,7 +326,7 @@
     
     function test_sphericalMercator(t) {
 
-        if (validkey) {        
+        if(validkey) {        
             t.plan(4);
             var map, layer;
 

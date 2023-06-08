@@ -104,13 +104,13 @@ OpenLayers.Control.Panel = OpenLayers.Class(OpenLayers.Control, {
      * APIMethod: destroy
      */
     destroy: function() {
-        if (this.map) {
+        if(this.map) {
             this.map.events.unregister("buttonclick", this, this.onButtonClick);
         }
         OpenLayers.Control.prototype.destroy.apply(this, arguments);
         for (var ctl, i = this.controls.length - 1; i >= 0; i--) {
             ctl = this.controls[i];
-            if (ctl.events) {
+            if(ctl.events) {
                 ctl.events.un({
                     activate: this.iconOn,
                     deactivate: this.iconOff
@@ -125,16 +125,16 @@ OpenLayers.Control.Panel = OpenLayers.Class(OpenLayers.Control, {
      * APIMethod: activate
      */
     activate: function() {
-        if (OpenLayers.Control.prototype.activate.apply(this, arguments)) {
+        if(OpenLayers.Control.prototype.activate.apply(this, arguments)) {
             var control;
             for (var i=0, len=this.controls.length; i<len; i++) {
                 control = this.controls[i];
-                if (control === this.defaultControl ||
+                if(control === this.defaultControl ||
                             (this.saveState && this.activeState[control.id])) {
                     control.activate();
                 }
             }    
-            if (this.saveState === true) {
+            if(this.saveState === true) {
                 this.defaultControl = null;
             }
             this.redraw();
@@ -148,7 +148,7 @@ OpenLayers.Control.Panel = OpenLayers.Class(OpenLayers.Control, {
      * APIMethod: deactivate
      */
     deactivate: function() {
-        if (OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
+        if(OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
             var control;
             for (var i=0, len=this.controls.length; i<len; i++) {
                 control = this.controls[i];
@@ -169,7 +169,7 @@ OpenLayers.Control.Panel = OpenLayers.Class(OpenLayers.Control, {
      */    
     draw: function() {
         OpenLayers.Control.prototype.draw.apply(this, arguments);
-        if (this.outsideViewport) {
+        if(this.outsideViewport) {
             this.events.attachToElement(this.div);
             this.events.register("buttonclick", this, this.onButtonClick);
         } else {
@@ -187,7 +187,7 @@ OpenLayers.Control.Panel = OpenLayers.Class(OpenLayers.Control, {
             this.div.removeChild(this.div.childNodes[i]);
         }
         this.div.innerHTML = "";
-        if (this.active) {
+        if(this.active) {
             for (var i=0, len=this.controls.length; i<len; i++) {
                 this.div.appendChild(this.controls[i].panel_div);
             }
@@ -203,26 +203,26 @@ OpenLayers.Control.Panel = OpenLayers.Class(OpenLayers.Control, {
      * control - {<OpenLayers.Control>}
      */
     activateControl: function (control) {
-        if (!this.active) { return false; }
-        if (control.type == OpenLayers.Control.TYPE_BUTTON) {
+        if(!this.active) { return false; }
+        if(control.type == OpenLayers.Control.TYPE_BUTTON) {
             control.trigger();
             return;
         }
-        if (control.type == OpenLayers.Control.TYPE_TOGGLE) {
-            if (control.active) {
+        if(control.type == OpenLayers.Control.TYPE_TOGGLE) {
+            if(control.active) {
                 control.deactivate();
             } else {
                 control.activate();
             }
             return;
         }
-        if (this.allowDepress && control.active) {
+        if(this.allowDepress && control.active) {
             control.deactivate();
         } else {
             var c;
             for (var i=0, len=this.controls.length; i<len; i++) {
                 c = this.controls[i];
-                if (c != control &&
+                if(c != control &&
                    (c.type === OpenLayers.Control.TYPE_TOOL || c.type == null)) {
                     c.deactivate();
                 }
@@ -241,7 +241,7 @@ OpenLayers.Control.Panel = OpenLayers.Class(OpenLayers.Control, {
      * controls - {<OpenLayers.Control>} Controls to add in the panel.
      */    
     addControls: function(controls) {
-        if (!(OpenLayers.Util.isArray(controls))) {
+        if(!(OpenLayers.Util.isArray(controls))) {
             controls = [controls];
         }
         this.controls = this.controls.concat(controls);
@@ -252,13 +252,13 @@ OpenLayers.Control.Panel = OpenLayers.Class(OpenLayers.Control, {
             OpenLayers.Element.addClass(element, 
                                         control.displayClass + "ItemInactive");
             OpenLayers.Element.addClass(element, "olButton");
-            if (control.title != ""  && !element.title) {
+            if(control.title != ""  && !element.title) {
                 element.title = control.title;
             }
             control.panel_div = element;
         }
 
-        if (this.map) { // map.addControl() has already been called on the panel
+        if(this.map) { // map.addControl() has already been called on the panel
             this.addControlsToMap(controls);
             this.redraw();
         }
@@ -279,7 +279,7 @@ OpenLayers.Control.Panel = OpenLayers.Class(OpenLayers.Control, {
      *     createControlMarkup: function(control) {
      *         var button = document.createElement('button'),
      *             span = document.createElement('span');
-     *         if (control.text) {
+     *         if(control.text) {
      *             span.innerHTML = control.text;
      *         }
      *         return button;
@@ -309,7 +309,7 @@ OpenLayers.Control.Panel = OpenLayers.Class(OpenLayers.Control, {
         var control;
         for (var i=0, len=controls.length; i<len; i++) {
             control = controls[i];
-            if (control.autoActivate === true) {
+            if(control.autoActivate === true) {
                 control.autoActivate = false;
                 this.map.addControl(control);
                 control.autoActivate = true;
@@ -354,7 +354,7 @@ OpenLayers.Control.Panel = OpenLayers.Class(OpenLayers.Control, {
         var controls = this.controls,
             button = evt.buttonElement;
         for (var i=controls.length-1; i>=0; --i) {
-            if (controls[i].panel_div === button) {
+            if(controls[i].panel_div === button) {
                 this.activateControl(controls[i]);
                 break;
             }

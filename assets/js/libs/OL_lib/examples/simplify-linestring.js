@@ -547,8 +547,8 @@ var map, map2;
         var max = 1;
         var givenVal= parseFloat(document.getElementById('tolerance').value);
         var useVal = lastValue;
-        if (!isNaN(givenVal)) {
-            if (givenVal >= min && givenVal <= max) {
+        if(!isNaN(givenVal)) {
+            if(givenVal >= min && givenVal <= max) {
                 useVal = givenVal;
             } else {
                 useVal = (givenVal < min) ? min : max;
@@ -573,12 +573,12 @@ var map, map2;
     
     var animationInterval;
     var animationHandler = function(){
-        if (this.value === 'Start animation') {
+        if(this.value === 'Start animation') {
             document.getElementById('simplify').disabled = true;
             document.getElementById('animation').value = "Stop animation";
             animationInterval = window.setInterval(function(){
                 var tolerance = parseFloat(document.getElementById('tolerance').value);
-                if (tolerance < 1) {
+                if(tolerance < 1) {
                     tolerance+=0.02;
                 } else {
                     tolerance = 0.02;
@@ -588,7 +588,7 @@ var map, map2;
             }, 500);
             simplify();
         } else {
-            if (animationInterval) {
+            if(animationInterval) {
                 window.clearInterval(animationInterval);
             }
             document.getElementById('simplify').disabled = false;

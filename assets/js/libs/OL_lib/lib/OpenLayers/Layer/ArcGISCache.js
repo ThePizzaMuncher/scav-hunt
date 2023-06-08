@@ -116,7 +116,7 @@ OpenLayers.Layer.ArcGISCache = OpenLayers.Class(OpenLayers.Layer.XYZ, {
     initialize: function(name, url, options) { 
         OpenLayers.Layer.XYZ.prototype.initialize.apply(this, arguments);
 
-        if (this.resolutions) {        
+        if(this.resolutions) {        
             this.serverResolutions = this.resolutions;
             this.maxExtent = this.getMaxExtentForResolution(this.resolutions[0]);
         }
@@ -124,7 +124,7 @@ OpenLayers.Layer.ArcGISCache = OpenLayers.Class(OpenLayers.Layer.XYZ, {
         // this block steps through translating the values from the server layer JSON 
         // capabilities object into values that we can use.  This is also a helpful
         // reference when configuring this layer directly.
-        if (this.layerInfo) {
+        if(this.layerInfo) {
             // alias the object
             var info = this.layerInfo;
             
@@ -146,7 +146,7 @@ OpenLayers.Layer.ArcGISCache = OpenLayers.Class(OpenLayers.Layer.XYZ, {
 
             // optional extended section based on whether or not the server returned
             // specific tile information
-            if (!!info.tileInfo) {            
+            if(!!info.tileInfo) {            
                 // either set the tiles based on rows/columns, or specific width/height
                 this.tileSize = new OpenLayers.Size(
                     info.tileInfo.width || info.tileInfo.cols, 
@@ -169,7 +169,7 @@ OpenLayers.Layer.ArcGISCache = OpenLayers.Class(OpenLayers.Layer.XYZ, {
                     startingTileExtent.bottom
                 );            
                 
-                if (this.useScales) {
+                if(this.useScales) {
                     this.scales = [];
                 } else {
                     this.resolutions = [];
@@ -177,9 +177,9 @@ OpenLayers.Layer.ArcGISCache = OpenLayers.Class(OpenLayers.Layer.XYZ, {
                 
                 this.lods = [];
                 for(var key in info.tileInfo.lods) {
-                    if (info.tileInfo.lods.hasOwnProperty(key)) {
+                    if(info.tileInfo.lods.hasOwnProperty(key)) {
                         var lod = info.tileInfo.lods[key];
-                        if (this.useScales) {
+                        if(this.useScales) {
                             this.scales.push(lod.scale);
                         } else {
                             this.resolutions.push(lod.resolution);
@@ -198,7 +198,7 @@ OpenLayers.Layer.ArcGISCache = OpenLayers.Class(OpenLayers.Layer.XYZ, {
 
                 this.maxExtent = this.calculateMaxExtentWithLOD(this.lods[0]);
                 this.serverResolutions = this.resolutions;
-                if (this.overrideDPI && info.tileInfo.dpi) {
+                if(this.overrideDPI && info.tileInfo.dpi) {
                     // see comment above for 'overrideDPI'
                     OpenLayers.DOTS_PER_INCH = info.tileInfo.dpi;
                 }
@@ -357,7 +357,7 @@ OpenLayers.Layer.ArcGISCache = OpenLayers.Class(OpenLayers.Layer.XYZ, {
     * {<OpenLayers.Layer.ArcGISCache>} clone of this instance 
     */ 
     clone: function (obj) { 
-        if (obj == null) { 
+        if(obj == null) { 
             obj = new OpenLayers.Layer.ArcGISCache(this.name, this.url, this.options);
         }
         return OpenLayers.Layer.XYZ.prototype.clone.apply(this, [obj]);
@@ -395,7 +395,7 @@ OpenLayers.Layer.ArcGISCache = OpenLayers.Class(OpenLayers.Layer.XYZ, {
      * {<OpenLayers.LonLat>} The tile origin.
      */
     getTileOrigin: function() {
-        if (!this._tileOrigin) {
+        if(!this._tileOrigin) {
             var extent = this.getMaxExtent();
             this._tileOrigin = new OpenLayers.LonLat(extent.left, extent.bottom);
         }
@@ -431,9 +431,9 @@ OpenLayers.Layer.ArcGISCache = OpenLayers.Class(OpenLayers.Layer.XYZ, {
         var z = this.map.getZoom();
 
         // this prevents us from getting pink tiles (non-existant tiles)
-        if (this.lods) {        
+        if(this.lods) {        
             var lod = this.lods[this.map.getZoom()];
-            if ((x < lod.startTileCol || x > lod.endTileCol) 
+            if((x < lod.startTileCol || x > lod.endTileCol) 
                 || (y < lod.startTileRow || y > lod.endTileRow)) {
                     return null;
             }
@@ -441,7 +441,7 @@ OpenLayers.Layer.ArcGISCache = OpenLayers.Class(OpenLayers.Layer.XYZ, {
         else {
             var start = this.getUpperLeftTileCoord(res);
             var end = this.getLowerRightTileCoord(res);
-            if ((x < start.x || x >= end.x)
+            if((x < start.x || x >= end.x)
                 || (y < start.y || y >= end.y)) {
                     return null;
             }        
@@ -451,13 +451,13 @@ OpenLayers.Layer.ArcGISCache = OpenLayers.Class(OpenLayers.Layer.XYZ, {
         var url = this.url;
         var s = '' + x + y + z;
 
-        if (OpenLayers.Util.isArray(url)) {
+        if(OpenLayers.Util.isArray(url)) {
             url = this.selectUrl(s, url);
         }
 
         // Accessing tiles through ArcGIS Server uses a different path
         // structure than direct access via the folder structure.
-        if (this.useArcGISServer) {
+        if(this.useArcGISServer) {
             // AGS MapServers have pretty url access to tiles
             url = url + '/tile/${z}/${y}/${x}';
         } else {

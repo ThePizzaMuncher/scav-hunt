@@ -51,7 +51,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
      * {<OpenLayers.Geometry.Point>} An exact clone of this OpenLayers.Geometry.Point
      */
     clone: function(obj) {
-        if (obj == null) {
+        if(obj == null) {
             obj = new OpenLayers.Geometry.Point(this.x, this.y);
         }
 
@@ -136,7 +136,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
      */
     equals: function(geom) {
         var equals = false;
-        if (geom != null) {
+        if(geom != null) {
             equals = ((this.x == geom.x && this.y == geom.y) ||
                       (isNaN(this.x) && isNaN(this.y) && isNaN(geom.x) && isNaN(geom.y)));
         }
@@ -254,7 +254,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
      * {<OpenLayers.Geometry>} 
      */
     transform: function(source, dest) {
-        if ((source && dest)) {
+        if((source && dest)) {
             OpenLayers.Projection.transform(
                 this, source, dest); 
             this.bounds = null;

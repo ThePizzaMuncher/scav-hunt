@@ -64,7 +64,7 @@ OpenLayers.Control.Zoom = OpenLayers.Class(OpenLayers.Control, {
             zoomOut = links.zoomOut,
             eventsInstance = this.map.events;
         
-        if (zoomOut.parentNode !== div) {
+        if(zoomOut.parentNode !== div) {
             eventsInstance = this.events;
             eventsInstance.attachToElement(zoomOut.parentNode);
         }
@@ -87,7 +87,7 @@ OpenLayers.Control.Zoom = OpenLayers.Class(OpenLayers.Control, {
     getOrCreateLinks: function(el) {
         var zoomIn = document.getElementById(this.zoomInId),
             zoomOut = document.getElementById(this.zoomOutId);
-        if (!zoomIn) {
+        if(!zoomIn) {
             zoomIn = document.createElement("a");
             zoomIn.href = "#zoomIn";
             zoomIn.appendChild(document.createTextNode(this.zoomInText));
@@ -95,7 +95,7 @@ OpenLayers.Control.Zoom = OpenLayers.Class(OpenLayers.Control, {
             el.appendChild(zoomIn);
         }
         OpenLayers.Element.addClass(zoomIn, "olButton");
-        if (!zoomOut) {
+        if(!zoomOut) {
             zoomOut = document.createElement("a");
             zoomOut.href = "#zoomOut";
             zoomOut.appendChild(document.createTextNode(this.zoomOutText));
@@ -114,9 +114,9 @@ OpenLayers.Control.Zoom = OpenLayers.Class(OpenLayers.Control, {
      */
     onZoomClick: function(evt) {
         var button = evt.buttonElement;
-        if (button === this.zoomInLink) {
+        if(button === this.zoomInLink) {
             this.map.zoomIn();
-        } else if (button === this.zoomOutLink) {
+        } else if(button === this.zoomOutLink) {
             this.map.zoomOut();
         }
     },
@@ -126,7 +126,7 @@ OpenLayers.Control.Zoom = OpenLayers.Class(OpenLayers.Control, {
      * Clean up.
      */
     destroy: function() {
-        if (this.map) {
+        if(this.map) {
             this.map.events.unregister("buttonclick", this, this.onZoomClick);
         }
         delete this.zoomInLink;

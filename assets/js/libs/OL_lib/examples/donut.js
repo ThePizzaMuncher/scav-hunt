@@ -35,7 +35,7 @@ map.layers[1].events.on({
 
 // add behavior to UI elements
 function toggleControl(element) {
-    if (element.value === "polygon" && element.checked) {
+    if(element.value === "polygon" && element.checked) {
         draw.activate();
     } else {
         draw.deactivate();

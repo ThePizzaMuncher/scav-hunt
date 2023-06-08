@@ -42,25 +42,25 @@ OpenLayers.Format.WFSCapabilities.v1_0_0 = OpenLayers.Class(
             },
             "Fees": function(node, service) {
                 var fees = this.getChildValue(node);
-                if (fees && fees.toLowerCase() != "none") {
+                if(fees && fees.toLowerCase() != "none") {
                     service.fees = fees;
                 }
             },
             "AccessConstraints": function(node, service) {
                 var constraints = this.getChildValue(node);
-                if (constraints && constraints.toLowerCase() != "none") {
+                if(constraints && constraints.toLowerCase() != "none") {
                     service.accessConstraints = constraints;
                 }
             },
             "OnlineResource": function(node, service) {
                 var onlineResource = this.getChildValue(node);
-                if (onlineResource && onlineResource.toLowerCase() != "none") {
+                if(onlineResource && onlineResource.toLowerCase() != "none") {
                     service.onlineResource = onlineResource;
                 }
             },
             "Keywords": function(node, service) {
                 var keywords = this.getChildValue(node);
-                if (keywords && keywords.toLowerCase() != "none") {
+                if(keywords && keywords.toLowerCase() != "none") {
                     service.keywords = keywords.split(', ');
                 }
             },
@@ -103,7 +103,7 @@ OpenLayers.Format.WFSCapabilities.v1_0_0 = OpenLayers.Class(
             },
             "SRS": function(node, obj) {
                 var srs = this.getChildValue(node);
-                if (srs) {
+                if(srs) {
                     obj.srs = srs;
                 }
             }

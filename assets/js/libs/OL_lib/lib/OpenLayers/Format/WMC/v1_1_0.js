@@ -59,7 +59,7 @@ OpenLayers.Format.WMC.v1_1_0 = OpenLayers.Class(
      */
     read_sld_MinScaleDenominator: function(layerContext, node) {
         var minScaleDenominator = parseFloat(this.getChildValue(node));
-        if (minScaleDenominator > 0) {
+        if(minScaleDenominator > 0) {
             layerContext.maxScale = minScaleDenominator;
         }
     },
@@ -80,7 +80,7 @@ OpenLayers.Format.WMC.v1_1_0 = OpenLayers.Class(
      * Method: read_wmc_SRS
      */
     read_wmc_SRS: function(layerContext, node) {
-        if (! ("srs" in layerContext)) {
+        if(! ("srs" in layerContext)) {
             layerContext.srs = {};
         }
         layerContext.srs[this.getChildValue(node)] = true;
@@ -120,7 +120,7 @@ OpenLayers.Format.WMC.v1_1_0 = OpenLayers.Class(
         }
 
         // optional SRS element(s)
-        if (context.srs) {
+        if(context.srs) {
             for(var name in context.srs) {
                 node.appendChild(this.createElementDefaultNS("SRS", name));
             }
@@ -133,7 +133,7 @@ OpenLayers.Format.WMC.v1_1_0 = OpenLayers.Class(
         node.appendChild(this.write_wmc_StyleList(context));
         
         // optional DimensionList element
-        if (context.dimensions) {
+        if(context.dimensions) {
             node.appendChild(this.write_wmc_DimensionList(context));
         }
 

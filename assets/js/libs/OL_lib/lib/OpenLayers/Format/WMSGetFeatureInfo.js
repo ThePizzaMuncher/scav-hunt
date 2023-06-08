@@ -104,17 +104,17 @@ OpenLayers.Format.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Format.XML, {
         var response = [];
         var layerNodes = this.getSiblingNodesByTagCriteria(data,
             this.layerIdentifier);
-        if (layerNodes) {
+        if(layerNodes) {
             for (var i=0, len=layerNodes.length; i<len; ++i) {
                 var node = layerNodes[i];
                 var layerName = node.nodeName;
-                if (node.prefix) {
+                if(node.prefix) {
                     layerName = layerName.split(':')[1];
                 }
                 var layerName = layerName.replace(this.layerIdentifier, '');
                 var featureNodes = this.getSiblingNodesByTagCriteria(node, 
                     this.featureIdentifier);
-                if (featureNodes) {
+                if(featureNodes) {
                     for (var j = 0; j < featureNodes.length; j++) {
                         var featureNode = featureNodes[j];
                         var geomInfo = this.parseGeometry(featureNode);
@@ -155,7 +155,7 @@ OpenLayers.Format.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Format.XML, {
             var attributes = {};
             var j;
             var jlen = featureNode.attributes.length;
-            if (jlen > 0) {
+            if(jlen > 0) {
                 for(j=0; j<jlen; j++) {
                     var attribute = featureNode.attributes[j];
                     attributes[attribute.nodeName] = attribute.nodeValue;
@@ -164,7 +164,7 @@ OpenLayers.Format.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Format.XML, {
                 var nodes = featureNode.childNodes;
                 for (j=0, jlen=nodes.length; j<jlen; ++j) {
                     var node = nodes[j];
-                    if (node.nodeType != 3) {
+                    if(node.nodeType != 3) {
                         attributes[node.getAttribute("name")] = 
                             node.getAttribute("value");
                     }
@@ -195,7 +195,7 @@ OpenLayers.Format.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Format.XML, {
     getSiblingNodesByTagCriteria: function(node, criteria){
         var nodes = [];
         var children, tagName, n, matchNodes, child;
-        if (node && node.hasChildNodes()) {
+        if(node && node.hasChildNodes()) {
             children = node.childNodes;
             n = children.length;
 
@@ -206,7 +206,7 @@ OpenLayers.Format.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Format.XML, {
                     k++;
                 }
                 tagName = (child ? child.nodeName : '');
-                if (tagName.length > 0 && tagName.indexOf(criteria) > -1) {
+                if(tagName.length > 0 && tagName.indexOf(criteria) > -1) {
                     nodes.push(child);
                 } else {
                     matchNodes = this.getSiblingNodesByTagCriteria(
@@ -238,20 +238,20 @@ OpenLayers.Format.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Format.XML, {
      */    
     parseAttributes: function(node){
         var attributes = {};
-        if (node.nodeType == 1) {
+        if(node.nodeType == 1) {
             var children = node.childNodes;
             var n = children.length;
             for (var i = 0; i < n; ++i) {
                 var child = children[i];
-                if (child.nodeType == 1) {
+                if(child.nodeType == 1) {
                     var grandchildren = child.childNodes;
                     var name = (child.prefix) ?
                         child.nodeName.split(":")[1] : child.nodeName;
-                    if (grandchildren.length == 0) {
+                    if(grandchildren.length == 0) {
                         attributes[name] = null;
-                    } else if (grandchildren.length == 1) {
+                    } else if(grandchildren.length == 1) {
                         var grandchild = grandchildren[0];
-                        if (grandchild.nodeType == 3 ||
+                        if(grandchild.nodeType == 3 ||
                             grandchild.nodeType == 4) {
                             var value = grandchild.nodeValue.replace(
                                 this.regExes.trimSpace, "");
@@ -278,12 +278,12 @@ OpenLayers.Format.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Format.XML, {
     parseGeometry: function(node) {
         // we need to use the old Format.GML parser since we do not know the 
         // geometry name
-        if (!this.gmlFormat) {
+        if(!this.gmlFormat) {
             this.gmlFormat = new OpenLayers.Format.GML();
         }
         var feature = this.gmlFormat.parseFeature(node);
         var geometry, bounds = null;
-        if (feature) {
+        if(feature) {
             geometry = feature.geometry && feature.geometry.clone();
             bounds = feature.bounds && feature.bounds.clone();
             feature.destroy();

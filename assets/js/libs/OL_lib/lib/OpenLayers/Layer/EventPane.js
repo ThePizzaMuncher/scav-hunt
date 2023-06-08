@@ -76,7 +76,7 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
      */
     initialize: function(name, options) {
         OpenLayers.Layer.prototype.initialize.apply(this, arguments);
-        if (this.pane == null) {
+        if(this.pane == null) {
             this.pane = OpenLayers.Util.createDiv(this.div.id + "_EventPane");
         }
     },
@@ -108,12 +108,12 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
         this.pane.style.display = this.div.style.display;
         this.pane.style.width="100%";
         this.pane.style.height="100%";
-        if (OpenLayers.BROWSER_NAME == "msie") {
+        if(OpenLayers.BROWSER_NAME == "msie") {
             this.pane.style.background = 
                 "url(" + OpenLayers.Util.getImageLocation("blank.gif") + ")";
         }
 
-        if (this.isFixed) {
+        if(this.isFixed) {
             this.map.viewPortDiv.appendChild(this.pane);
         } else {
             this.map.layerContainerDiv.appendChild(this.pane);
@@ -123,7 +123,7 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
         this.loadMapObject();
     
         // if map didn't load, display warning
-        if (this.mapObject == null) {
+        if(this.mapObject == null) {
             this.loadWarningMessage();
         }
     },
@@ -137,7 +137,7 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
      * map - {<OpenLayers.Map>}
      */
     removeMap: function(map) {
-        if (this.pane && this.pane.parentNode) {
+        if(this.pane && this.pane.parentNode) {
             this.pane.parentNode.removeChild(this.pane);
         }
         OpenLayers.Layer.prototype.removeMap.apply(this, arguments);
@@ -229,7 +229,7 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
     moveByPx: function(dx, dy) {
         OpenLayers.Layer.prototype.moveByPx.apply(this, arguments);
         
-        if (this.dragPanMapObject) {
+        if(this.dragPanMapObject) {
             this.dragPanMapObject(dx, -dy);
         } else {
             this.moveTo(this.map.getCachedCenter());
@@ -248,12 +248,12 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
     moveTo:function(bounds, zoomChanged, dragging) {
         OpenLayers.Layer.prototype.moveTo.apply(this, arguments);
 
-        if (this.mapObject != null) {
+        if(this.mapObject != null) {
 
             var newCenter = this.map.getCenter();
             var newZoom = this.map.getZoom();
 
-            if (newCenter != null) {
+            if(newCenter != null) {
 
                 var moOldCenter = this.getMapObjectCenter();
                 var oldCenter = this.getOLLonLatFromMapObjectLonLat(moOldCenter);
@@ -261,9 +261,9 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
                 var moOldZoom = this.getMapObjectZoom();
                 var oldZoom= this.getOLZoomFromMapObjectZoom(moOldZoom);
 
-                if (!(newCenter.equals(oldCenter)) || newZoom != oldZoom) {
+                if(!(newCenter.equals(oldCenter)) || newZoom != oldZoom) {
 
-                    if (!zoomChanged && oldCenter && this.dragPanMapObject && 
+                    if(!zoomChanged && oldCenter && this.dragPanMapObject && 
                         this.smoothDragPan) {
                         var oldPx = this.map.getViewPortPxFromLonLat(oldCenter);
                         var newPx = this.map.getViewPortPxFromLonLat(newCenter);
@@ -299,7 +299,7 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
      */
     getLonLatFromViewPortPx: function (viewPortPx) {
         var lonlat = null;
-        if ( (this.mapObject != null) && 
+        if( (this.mapObject != null) && 
              (this.getMapObjectCenter() != null) ) {
             var moPixel = this.getMapObjectPixelFromOLPixel(viewPortPx);
             var moLonLat = this.getMapObjectLonLatFromMapObjectPixel(moPixel);
@@ -323,7 +323,7 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
      */
     getViewPortPxFromLonLat: function (lonlat) {
         var viewPortPx = null;
-        if ( (this.mapObject != null) && 
+        if( (this.mapObject != null) && 
              (this.getMapObjectCenter() != null) ) {
 
             var moLonLat = this.getMapObjectLonLatFromOLLonLat(lonlat);
@@ -361,7 +361,7 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
      */
     getOLLonLatFromMapObjectLonLat: function(moLonLat) {
         var olLonLat = null;
-        if (moLonLat != null) {
+        if(moLonLat != null) {
             var lon = this.getLongitudeFromMapObjectLonLat(moLonLat);
             var lat = this.getLatitudeFromMapObjectLonLat(moLonLat);
             olLonLat = new OpenLayers.LonLat(lon, lat);
@@ -383,7 +383,7 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
      */
     getMapObjectLonLatFromOLLonLat: function(olLonLat) {
         var moLatLng = null;
-        if (olLonLat != null) {
+        if(olLonLat != null) {
             moLatLng = this.getMapObjectLonLatFromLonLat(olLonLat.lon,
                                                          olLonLat.lat);
         }
@@ -409,7 +409,7 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
      */
     getOLPixelFromMapObjectPixel: function(moPixel) {
         var olPixel = null;
-        if (moPixel != null) {
+        if(moPixel != null) {
             var x = this.getXFromMapObjectPixel(moPixel);
             var y = this.getYFromMapObjectPixel(moPixel);
             olPixel = new OpenLayers.Pixel(x, y);
@@ -431,7 +431,7 @@ OpenLayers.Layer.EventPane = OpenLayers.Class(OpenLayers.Layer, {
      */
     getMapObjectPixelFromOLPixel: function(olPixel) {
         var moPixel = null;
-        if (olPixel != null) {
+        if(olPixel != null) {
             moPixel = this.getMapObjectPixelFromXY(olPixel.x, olPixel.y);
         }
         return moPixel;

@@ -107,7 +107,7 @@ OpenLayers.Handler.Hover = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean} Continue propagating this event.
      */
     mouseout: function(evt) {
-        if (OpenLayers.Util.mouseLeft(evt, this.map.viewPortDiv)) {
+        if(OpenLayers.Util.mouseLeft(evt, this.map.viewPortDiv)) {
             this.clearTimer();
             this.callback('move', [evt]);
         }

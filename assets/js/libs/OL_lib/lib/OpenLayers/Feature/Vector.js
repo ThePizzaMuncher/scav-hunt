@@ -136,7 +136,7 @@ OpenLayers.Feature.Vector = OpenLayers.Class(OpenLayers.Feature, {
         this.geometry = geometry ? geometry : null;
         this.state = null;
         this.attributes = {};
-        if (attributes) {
+        if(attributes) {
             this.attributes = OpenLayers.Util.extend(this.attributes,
                                                      attributes);
         }
@@ -148,7 +148,7 @@ OpenLayers.Feature.Vector = OpenLayers.Class(OpenLayers.Feature, {
      * nullify references to prevent circular references and memory leaks
      */
     destroy: function() {
-        if (this.layer) {
+        if(this.layer) {
             this.layer.removeFeatures(this);
             this.layer = null;
         }
@@ -309,7 +309,7 @@ OpenLayers.Feature.Vector = OpenLayers.Class(OpenLayers.Feature, {
         }
 
         var pixel;
-        if (location.CLASS_NAME == "OpenLayers.LonLat") {
+        if(location.CLASS_NAME == "OpenLayers.LonLat") {
             pixel = this.layer.getViewPortPxFromLonLat(location);
         } else {
             pixel = location;
@@ -331,7 +331,7 @@ OpenLayers.Feature.Vector = OpenLayers.Class(OpenLayers.Feature, {
      * state - {String} 
      */
     toState: function(state) {
-        if (state == OpenLayers.State.UPDATE) {
+        if(state == OpenLayers.State.UPDATE) {
             switch (this.state) {
                 case OpenLayers.State.UNKNOWN:
                 case OpenLayers.State.DELETE:
@@ -341,7 +341,7 @@ OpenLayers.Feature.Vector = OpenLayers.Class(OpenLayers.Feature, {
                 case OpenLayers.State.INSERT:
                     break;
             }
-        } else if (state == OpenLayers.State.INSERT) {
+        } else if(state == OpenLayers.State.INSERT) {
             switch (this.state) {
                 case OpenLayers.State.UNKNOWN:
                     break;
@@ -349,7 +349,7 @@ OpenLayers.Feature.Vector = OpenLayers.Class(OpenLayers.Feature, {
                     this.state = state;
                     break;
             }
-        } else if (state == OpenLayers.State.DELETE) {
+        } else if(state == OpenLayers.State.DELETE) {
             switch (this.state) {
                 case OpenLayers.State.INSERT:
                     // the feature should be destroyed
@@ -361,7 +361,7 @@ OpenLayers.Feature.Vector = OpenLayers.Class(OpenLayers.Feature, {
                     this.state = state;
                     break;
             }
-        } else if (state == OpenLayers.State.UNKNOWN) {
+        } else if(state == OpenLayers.State.UNKNOWN) {
             this.state = state;
         }
     },

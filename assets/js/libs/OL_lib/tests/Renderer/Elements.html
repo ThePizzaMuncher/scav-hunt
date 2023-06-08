@@ -35,7 +35,7 @@
         
         rendererRoot = null;
         
-        if (id == null) {
+        if(id == null) {
             var el = document.createElement('div');
             document.body.appendChild(el);
             el.id = OpenLayers.Util.createUniqueID();
@@ -386,7 +386,7 @@
         OpenLayers.Util._getElement = OpenLayers.Util.getElement;
         OpenLayers.Util.getElement = function(id) {
             var retVal = null;
-            if (id != null) {
+            if(id != null) {
                 var hasBack = (id.indexOf(elements.BACKGROUND_ID_SUFFIX) != -1);
                 retVal = hasBack ? gBackElement : gElement;
             }

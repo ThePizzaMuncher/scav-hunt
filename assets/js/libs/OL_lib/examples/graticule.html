@@ -52,7 +52,7 @@
                     {layers: 'basic'}, {wrapDateLine: true} );
 
                 map1.addLayers([ol_wms]);
-                if (!map1.getCenter()) map1.zoomToMaxExtent();
+                if(!map1.getCenter()) map1.zoomToMaxExtent();
             };
             
             function initProjected(){
@@ -85,7 +85,7 @@
                   });
 
                 map2.addLayers([dm_wms]);
-                if (!map2.getCenter()) map2.zoomToExtent(extent);
+                if(!map2.getCenter()) map2.zoomToExtent(extent);
             }
         </script>
     </head>

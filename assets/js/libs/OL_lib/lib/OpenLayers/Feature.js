@@ -85,13 +85,13 @@ OpenLayers.Feature = OpenLayers.Class({
     destroy: function() {
 
         //remove the popup from the map
-        if ((this.layer != null) && (this.layer.map != null)) {
-            if (this.popup != null) {
+        if((this.layer != null) && (this.layer.map != null)) {
+            if(this.popup != null) {
                 this.layer.map.removePopup(this.popup);
             }
         }
         // remove the marker from the layer
-        if (this.layer != null && this.marker != null) {
+        if(this.layer != null && this.marker != null) {
             this.layer.removeMarker(this.marker);
         }
 
@@ -99,11 +99,11 @@ OpenLayers.Feature = OpenLayers.Class({
         this.id = null;
         this.lonlat = null;
         this.data = null;
-        if (this.marker != null) {
+        if(this.marker != null) {
             this.destroyMarker(this.marker);
             this.marker = null;
         }
-        if (this.popup != null) {
+        if(this.popup != null) {
             this.destroyPopup(this.popup);
             this.popup = null;
         }
@@ -119,7 +119,7 @@ OpenLayers.Feature = OpenLayers.Class({
     onScreen:function() {
         
         var onScreen = false;
-        if ((this.layer != null) && (this.layer.map != null)) {
+        if((this.layer != null) && (this.layer.map != null)) {
             var screenBounds = this.layer.map.getExtent();
             onScreen = screenBounds.containsLonLat(this.lonlat);
         }    
@@ -141,7 +141,7 @@ OpenLayers.Feature = OpenLayers.Class({
      */
     createMarker: function() {
 
-        if (this.lonlat != null) {
+        if(this.lonlat != null) {
             this.marker = new OpenLayers.Marker(this.lonlat, this.data.icon);
         }
         return this.marker;
@@ -184,8 +184,8 @@ OpenLayers.Feature = OpenLayers.Class({
      */
     createPopup: function(closeBox) {
 
-        if (this.lonlat != null) {
-            if (!this.popup) {
+        if(this.lonlat != null) {
+            if(!this.popup) {
                 var anchor = (this.marker) ? this.marker.icon : null;
                 var popupClass = this.popupClass ? 
                     this.popupClass : OpenLayers.Popup.Anchored;
@@ -196,7 +196,7 @@ OpenLayers.Feature = OpenLayers.Class({
                                             anchor, 
                                             closeBox); 
             }    
-            if (this.data.overflow != null) {
+            if(this.data.overflow != null) {
                 this.popup.contentDiv.style.overflow = this.data.overflow;
             }    
             
@@ -214,7 +214,7 @@ OpenLayers.Feature = OpenLayers.Class({
      *   should also be able to override the destruction
      */
     destroyPopup: function() {
-        if (this.popup) {
+        if(this.popup) {
             this.popup.feature = null;
             this.popup.destroy();
             this.popup = null;

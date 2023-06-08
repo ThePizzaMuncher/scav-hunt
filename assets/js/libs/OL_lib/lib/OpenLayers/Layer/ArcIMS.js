@@ -122,22 +122,22 @@ OpenLayers.Layer.ArcIMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
         );
 
         //layer is transparent        
-        if (this.transparent) {
+        if(this.transparent) {
             
             // unless explicitly set in options, make layer an overlay
-            if (!this.isBaseLayer) {
+            if(!this.isBaseLayer) {
                 this.isBaseLayer = false;
             } 
             
             // jpegs can never be transparent, so intelligently switch the 
             //  format, depending on the browser's capabilities
-            if (this.format == "image/jpeg") {
+            if(this.format == "image/jpeg") {
                 this.format = OpenLayers.Util.alphaHack() ? "image/gif" : "image/png";
             }
         }
 
         // create an empty layer list if no layers specified in the options
-        if (this.options.layers === null) {
+        if(this.options.layers === null) {
             this.options.layers = [];
         }
     },    
@@ -174,10 +174,10 @@ OpenLayers.Layer.ArcIMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
         });
         
         // if the response exists
-        if (req != null) {
+        if(req != null) {
             var doc = req.responseXML;
 
-            if (!doc || !doc.documentElement) {            
+            if(!doc || !doc.documentElement) {            
                 doc = req.responseText;
             }
 
@@ -223,7 +223,7 @@ OpenLayers.Layer.ArcIMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
                 // process the response from ArcIMS, and call the callback function
                 // to set the image URL
                 var doc = req.responseXML;
-                if (!doc || !doc.documentElement) {            
+                if(!doc || !doc.documentElement) {            
                     doc = req.responseText;
                 }
 
@@ -277,7 +277,7 @@ OpenLayers.Layer.ArcIMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
     setLayerQuery: function(id, querydef) {
         // find the matching layer, if it exists
         for (var lyr = 0; lyr < this.options.layers.length; lyr++) {
-            if (id == this.options.layers[lyr].id) {
+            if(id == this.options.layers[lyr].id) {
                 // replace this layer definition
                 this.options.layers[lyr].query = querydef;
                 return;
@@ -339,7 +339,7 @@ OpenLayers.Layer.ArcIMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
         // this is a feature request
         requestOptions.requesttype = "feature";
 
-        if (geometry instanceof OpenLayers.LonLat) {
+        if(geometry instanceof OpenLayers.LonLat) {
             // create an envelope if the geometry is really a lon/lat
             requestOptions.polygon = null;
             requestOptions.envelope = [ 
@@ -348,7 +348,7 @@ OpenLayers.Layer.ArcIMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
                 geometry.lon + buffer,
                 geometry.lat + buffer
             ];
-        } else if (geometry instanceof OpenLayers.Geometry.Polygon) {
+        } else if(geometry instanceof OpenLayers.Geometry.Polygon) {
             // use the polygon assigned, and empty the envelope
             requestOptions.envelope = null;
             requestOptions.polygon = geometry;
@@ -361,7 +361,7 @@ OpenLayers.Layer.ArcIMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
         OpenLayers.Util.extend(arcxml.request.get_feature, options);
 
         arcxml.request.get_feature.layer = layer.id;
-        if (typeof layer.query.accuracy == "number") {
+        if(typeof layer.query.accuracy == "number") {
             // set the accuracy if it was specified
             arcxml.request.get_feature.query.accuracy = layer.query.accuracy;
         } else {
@@ -387,7 +387,7 @@ OpenLayers.Layer.ArcIMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
                 // parse the arcxml response
                 var response = arcxml.parseResponse(request.responseText);
                 
-                if (!arcxml.iserror()) {
+                if(!arcxml.iserror()) {
                     // if the arcxml is not an error, call the callback with the features parsed
                     callback.call(scope, response.features);
                 } else {
@@ -407,7 +407,7 @@ OpenLayers.Layer.ArcIMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     clone: function (obj) {
 
-        if (obj == null) {
+        if(obj == null) {
             obj = new OpenLayers.Layer.ArcIMS(this.name,
                                            this.url,
                                            this.getOptions());

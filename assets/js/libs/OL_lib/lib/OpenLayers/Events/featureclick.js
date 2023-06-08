@@ -46,10 +46,10 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
      */
     initialize: function(target) {
         this.target = target;
-        if (target.object instanceof OpenLayers.Map) {
+        if(target.object instanceof OpenLayers.Map) {
             this.setMap(target.object);
-        } else if (target.object instanceof OpenLayers.Layer.Vector) {
-            if (target.object.map) {
+        } else if(target.object instanceof OpenLayers.Layer.Vector) {
+            if(target.object.map) {
                 this.setMap(target.object.map);
             } else {
                 target.object.events.register("added", this, function(evt) {
@@ -113,7 +113,7 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
      * evt - {<OpenLayers.Event>}
      */
     onClick: function(evt) {
-        if (!this.startEvt || evt.type !== "touchend" &&
+        if(!this.startEvt || evt.type !== "touchend" &&
                 !OpenLayers.Event.isLeftClick(evt)) {
             return;
         }
@@ -126,14 +126,14 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
             layer = feature.layer;
             clicked[layer.id] = true;
             more = this.triggerEvent("featureclick", {feature: feature});
-            if (more === false) {
+            if(more === false) {
                 break;
             }
         }
         // fire nofeatureclick events on all vector layers with no targets
         for (i=0, len=this.map.layers.length; i<len; ++i) {
             layer = this.map.layers[i];
-            if (layer instanceof OpenLayers.Layer.Vector && !clicked[layer.id]) {
+            if(layer instanceof OpenLayers.Layer.Vector && !clicked[layer.id]) {
                 this.triggerEvent("nofeatureclick", {layer: layer});
             }
         }
@@ -153,7 +153,7 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
         for (var i=0, len=features.length; i<len; ++i) {
             feature = features[i];
             over[feature.id] = feature;
-            if (!this.cache[feature.id]) {
+            if(!this.cache[feature.id]) {
                 newly.push(feature);
             }
         }
@@ -161,8 +161,8 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
         var out = [];
         for (var id in this.cache) {
             feature = this.cache[id];
-            if (feature.layer && feature.layer.map) {
-                if (!over[feature.id]) {
+            if(feature.layer && feature.layer.map) {
+                if(!over[feature.id]) {
                     out.push(feature);
                 }
             } else {
@@ -176,7 +176,7 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
             feature = newly[i];
             this.cache[feature.id] = feature;
             more = this.triggerEvent("featureover", {feature: feature});
-            if (more === false) {
+            if(more === false) {
                 break;
             }
         }
@@ -185,7 +185,7 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
             feature = out[i];
             delete this.cache[feature.id];
             more = this.triggerEvent("featureout", {feature: feature});
-            if (more === false) {
+            if(more === false) {
                 break;
             }
         }
@@ -205,7 +205,7 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
     triggerEvent: function(type, evt) {
         var layer = evt.feature ? evt.feature.layer : evt.layer,
             object = this.target.object;
-        if (object instanceof OpenLayers.Map || object === layer) {
+        if(object instanceof OpenLayers.Map || object === layer) {
             return this.target.triggerEvent(type, evt);
         }
     },
@@ -227,13 +227,13 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
         // go through all layers looking for targets
         for (i=this.map.layers.length-1; i>=0; --i) {
             layer = this.map.layers[i];
-            if (layer.div.style.display !== "none") {
-                if (layer.renderer instanceof OpenLayers.Renderer.Elements) {
-                    if (layer instanceof OpenLayers.Layer.Vector) {
+            if(layer.div.style.display !== "none") {
+                if(layer.renderer instanceof OpenLayers.Renderer.Elements) {
+                    if(layer instanceof OpenLayers.Layer.Vector) {
                         target = document.elementFromPoint(x, y);
                         while (target && target._featureId) {
                             feature = layer.getFeatureById(target._featureId);
-                            if (feature) {
+                            if(feature) {
                                 features.push(feature);
                                 target.style.display = "none";
                                 targets.push(target);
@@ -246,9 +246,9 @@ OpenLayers.Events.featureclick = OpenLayers.Class({
                     }
                     layers.push(layer);
                     layer.div.style.display = "none";
-                } else if (layer.renderer instanceof OpenLayers.Renderer.Canvas) {
+                } else if(layer.renderer instanceof OpenLayers.Renderer.Canvas) {
                     feature = layer.renderer.getFeatureIdFromEvent(evt);
-                    if (feature) {
+                    if(feature) {
                         features.push(feature);
                         layers.push(layer);
                     }

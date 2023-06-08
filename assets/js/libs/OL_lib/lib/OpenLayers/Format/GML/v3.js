@@ -94,7 +94,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
                 // SRSReferenceGroup attributes
                 var dim = parseInt(node.getAttribute("srsDimension"), 10) ||
                     (container && container.srsDimension);
-                if (dim) {
+                if(dim) {
                     obj.srsDimension = dim;
                 }
             },
@@ -154,7 +154,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
                     x = coords[i];
                     y = coords[i+1];
                     z = (dim == 2) ? undefined : coords[i+2];
-                    if (this.xy) {
+                    if(this.xy) {
                         points[i/dim] = new OpenLayers.Geometry.Point(x, y, z);
                     } else {
                         points[i/dim] = new OpenLayers.Geometry.Point(y, x, z);

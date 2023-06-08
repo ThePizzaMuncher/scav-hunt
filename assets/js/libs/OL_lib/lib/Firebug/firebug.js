@@ -1,5 +1,5 @@
 
-if (!window.console || !console.firebug) { (function()
+if(!window.console || !console.firebug) { (function()
 {
     window.console = 
     {
@@ -30,7 +30,7 @@ if (!window.console || !console.firebug) { (function()
         
         assert: function(truth, message)
         {
-            if (!truth)
+            if(!truth)
             {
                 var args = [];
                 for (var i = 1; i < arguments.length; ++i)
@@ -100,7 +100,7 @@ if (!window.console || !console.firebug) { (function()
         
         timeEnd: function(name)
         {
-            if (name in timeMap)
+            if(name in timeMap)
             {
                 var delta = (new Date()).getTime() - timeMap[name];
                 logFormatted([name+ ":", delta+"ms"]);
@@ -139,7 +139,7 @@ if (!window.console || !console.firebug) { (function()
         
         close: function()
         {
-            if (frameVisible)
+            if(frameVisible)
                 toggleConsole();
         }
     };
@@ -167,7 +167,7 @@ if (!window.console || !console.firebug) { (function()
     function toggleConsole(forceOpen)
     {
         frameVisible = forceOpen || !frameVisible;
-        if (consoleFrame)
+        if(consoleFrame)
             consoleFrame.style.visibility = frameVisible ? "visible" : "hidden";
         else
             waitForBody();
@@ -176,13 +176,13 @@ if (!window.console || !console.firebug) { (function()
     function focusCommandLine()
     {
         toggleConsole(true);
-        if (commandLine)
+        if(commandLine)
             commandLine.focus();
     }
 
     function waitForBody()
     {
-        if (document.body)
+        if(document.body)
             createFrame();
         else
             setTimeout(waitForBody, 200);
@@ -190,7 +190,7 @@ if (!window.console || !console.firebug) { (function()
 
     function createFrame()
     {
-        if (consoleFrame)
+        if(consoleFrame)
             return;
         
         window.onFirebugReady = function(doc)
@@ -230,7 +230,7 @@ if (!window.console || !console.firebug) { (function()
         var scripts = document.getElementsByTagName("script");
         for (var i = 0; i < scripts.length; ++i)
         {
-            if (scripts[i].src.indexOf("firebug.js") != -1)
+            if(scripts[i].src.indexOf("firebug.js") != -1)
             {
                 var lastSlash = scripts[i].src.lastIndexOf("/");
                 return scripts[i].src.substr(0, lastSlash);
@@ -270,7 +270,7 @@ if (!window.console || !console.firebug) { (function()
     
     function logRow(message, className, handler)
     {
-        if (consoleBody)
+        if(consoleBody)
             writeMessage(message, className, handler);
         else
         {
@@ -293,12 +293,12 @@ if (!window.console || !console.firebug) { (function()
         var isScrolledToBottom =
             consoleBody.scrollTop + consoleBody.offsetHeight >= consoleBody.scrollHeight;
 
-        if (!handler)
+        if(!handler)
             handler = writeRow;
         
         handler(message, className);
         
-        if (isScrolledToBottom)
+        if(isScrolledToBottom)
             consoleBody.scrollTop = consoleBody.scrollHeight - consoleBody.offsetHeight;
     }
     
@@ -343,7 +343,7 @@ if (!window.console || !console.firebug) { (function()
         var format = objects[0];
         var objIndex = 0;
 
-        if (typeof(format) != "string")
+        if(typeof(format) != "string")
         {
             format = "";
             objIndex = -1;
@@ -353,7 +353,7 @@ if (!window.console || !console.firebug) { (function()
         for (var i = 0; i < parts.length; ++i)
         {
             var part = parts[i];
-            if (part && typeof(part) == "object")
+            if(part && typeof(part) == "object")
             {
                 var object = objects[++objIndex];
                 part.appender(object, html);
@@ -367,7 +367,7 @@ if (!window.console || !console.firebug) { (function()
             appendText(" ", html);
             
             var object = objects[i];
-            if (typeof(object) == "string")
+            if(typeof(object) == "string")
                 appendText(object, html);
             else
                 appendObject(object, html);
@@ -474,19 +474,19 @@ if (!window.console || !console.firebug) { (function()
     {
         try
         {
-            if (object == undefined)
+            if(object == undefined)
                 appendNull("undefined", html);
-            else if (object == null)
+            else if(object == null)
                 appendNull("null", html);
-            else if (typeof object == "string")
+            else if(typeof object == "string")
                 appendString(object, html);
-            else if (typeof object == "number")
+            else if(typeof object == "number")
                 appendInteger(object, html);
-            else if (typeof object == "function")
+            else if(typeof object == "function")
                 appendFunction(object, html);
-            else if (object.nodeType == 1)
+            else if(object.nodeType == 1)
                 appendSelector(object, html);
-            else if (typeof object == "object")
+            else if(typeof object == "object")
                 appendObjectFormatted(object, html);
             else
                 appendText(object, html);
@@ -510,9 +510,9 @@ if (!window.console || !console.firebug) { (function()
         html.push('<span class="objectBox-selector">');
 
         html.push('<span class="selectorTag">', escapeHTML(object.nodeName.toLowerCase()), '</span>');
-        if (object.id)
+        if(object.id)
             html.push('<span class="selectorId">#', escapeHTML(object.id), '</span>');
-        if (object.className)
+        if(object.className)
             html.push('<span class="selectorClass">.', escapeHTML(object.className), '</span>');
 
         html.push('</span>');
@@ -520,7 +520,7 @@ if (!window.console || !console.firebug) { (function()
 
     function appendNode(node, html)
     {
-        if (node.nodeType == 1)
+        if(node.nodeType == 1)
         {
             html.push(
                 '<div class="objectBox-element">',
@@ -529,7 +529,7 @@ if (!window.console || !console.firebug) { (function()
             for (var i = 0; i < node.attributes.length; ++i)
             {
                 var attr = node.attributes[i];
-                if (!attr.specified)
+                if(!attr.specified)
                     continue;
                 
                 html.push('&nbsp;<span class="nodeName">', attr.nodeName.toLowerCase(),
@@ -537,7 +537,7 @@ if (!window.console || !console.firebug) { (function()
                     '</span>&quot;')
             }
 
-            if (node.firstChild)
+            if(node.firstChild)
             {
                 html.push('&gt;</div><div class="nodeChildren">');
 
@@ -550,7 +550,7 @@ if (!window.console || !console.firebug) { (function()
             else
                 html.push('/&gt;</div>');
         }
-        else if (node.nodeType == 3)
+        else if(node.nodeType == 3)
         {
             html.push('<div class="nodeText">', escapeHTML(node.nodeValue),
                 '</div>');
@@ -561,7 +561,7 @@ if (!window.console || !console.firebug) { (function()
     
     function addEvent(object, name, handler)
     {
-        if (document.all)
+        if(document.all)
             object.attachEvent("on"+name, handler);
         else
             object.addEventListener(name, handler, false);
@@ -569,7 +569,7 @@ if (!window.console || !console.firebug) { (function()
     
     function removeEvent(object, name, handler)
     {
-        if (document.all)
+        if(document.all)
             object.detachEvent("on"+name, handler);
         else
             object.removeEventListener(name, handler, false);
@@ -577,7 +577,7 @@ if (!window.console || !console.firebug) { (function()
     
     function cancelEvent(event)
     {
-        if (document.all)
+        if(document.all)
             event.cancelBubble = true;
         else
             event.stopPropagation();        
@@ -600,9 +600,9 @@ if (!window.console || !console.firebug) { (function()
 
     function onKeyDown(event)
     {
-        if (event.keyCode == 123)
+        if(event.keyCode == 123)
             toggleConsole();
-        else if ((event.keyCode == 108 || event.keyCode == 76) && event.shiftKey
+        else if((event.keyCode == 108 || event.keyCode == 76) && event.shiftKey
                  && (event.metaKey || event.ctrlKey))
             focusCommandLine();
         else
@@ -613,7 +613,7 @@ if (!window.console || !console.firebug) { (function()
 
     function onSplitterMouseDown(event)
     {
-        if (isSafari || isOpera)
+        if(isSafari || isOpera)
             return;
         
         addEvent(document, "mousemove", onSplitterMouseMove);
@@ -633,7 +633,7 @@ if (!window.console || !console.firebug) { (function()
             : event.target.ownerDocument.defaultView;
 
         var clientY = event.clientY;
-        if (win != win.parent)
+        if(win != win.parent)
             clientY += win.frameElement ? win.frameElement.offsetTop : 0;
         
         var height = consoleFrame.offsetTop + consoleFrame.clientHeight;
@@ -659,16 +659,16 @@ if (!window.console || !console.firebug) { (function()
     
     function onCommandLineKeyDown(event)
     {
-        if (event.keyCode == 13)
+        if(event.keyCode == 13)
             evalCommandLine();
-        else if (event.keyCode == 27)
+        else if(event.keyCode == 27)
             commandLine.value = "";
     }
     
     window.onerror = onError;
     addEvent(document, isIE || isSafari ? "keydown" : "keypress", onKeyDown);
     
-    if (document.documentElement.getAttribute("debug") == "true")
+    if(document.documentElement.getAttribute("debug") == "true")
         toggleConsole(true);
 })();
 }

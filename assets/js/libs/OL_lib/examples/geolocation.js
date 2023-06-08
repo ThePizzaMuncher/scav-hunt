@@ -24,7 +24,7 @@ var pulsate = function(feature) {
         grow = 'up';
 
     var resize = function(){
-        if (count>16) {
+        if(count>16) {
             clearInterval(window.resizeInterval);
         }
         var interval = radius * 0.03;
@@ -36,7 +36,7 @@ var pulsate = function(feature) {
             case 8:
                 grow = 'up'; break;
         }
-        if (grow!=='up') {
+        if(grow!=='up') {
             ratio = - Math.abs(ratio);
         }
         feature.geometry.resize(1+ratio, point);
@@ -82,7 +82,7 @@ geolocate.events.register("locationupdated",geolocate,function(e) {
         ),
         circle
     ]);
-    if (firstGeolocation) {
+    if(firstGeolocation) {
         map.zoomToExtent(vector.getDataExtent());
         pulsate(circle);
         firstGeolocation = false;
@@ -103,7 +103,7 @@ document.getElementById('locate').onclick = function() {
 document.getElementById('track').onclick = function() {
     vector.removeAllFeatures();
     geolocate.deactivate();
-    if (this.checked) {
+    if(this.checked) {
         geolocate.watch = true;
         firstGeolocation = true;
         geolocate.activate();

@@ -12,7 +12,7 @@
         var map, layer;
 
         function init() {
-            if (!OpenLayers.CANVAS_SUPPORTED) {
+            if(!OpenLayers.CANVAS_SUPPORTED) {
                 var unsupported = OpenLayers.Util.getElement('unsupported');
                 unsupported.innerHTML = 'Your browser does not support canvas, nothing to see here !';
             }
@@ -21,7 +21,7 @@
                 eventListeners: {
                     tileloaded: function(evt) {
                         var ctx = evt.tile.getCanvasContext();
-                        if (ctx) {
+                        if(ctx) {
                             var imgd = ctx.getImageData(0, 0, evt.tile.size.w, evt.tile.size.h);
                             var pix = imgd.data;
                             for (var i = 0, n = pix.length; i < n; i += 4) {

@@ -12,13 +12,13 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 
   /* http://imakewebthings.com/waypoints/api/waypoint */
   function Waypoint(options) {
-    if (!options) {
+    if(!options) {
       throw new Error('No options passed to Waypoint constructor')
     }
-    if (!options.element) {
+    if(!options.element) {
       throw new Error('No element option passed to Waypoint constructor')
     }
-    if (!options.handler) {
+    if(!options.handler) {
       throw new Error('No handler option passed to Waypoint constructor')
     }
 
@@ -36,7 +36,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     })
     this.context = Waypoint.Context.findOrCreateByElement(this.options.context)
 
-    if (Waypoint.offsetAliases[this.options.offset]) {
+    if(Waypoint.offsetAliases[this.options.offset]) {
       this.options.offset = Waypoint.offsetAliases[this.options.offset]
     }
     this.group.add(this)
@@ -52,10 +52,10 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 
   /* Private */
   Waypoint.prototype.trigger = function(args) {
-    if (!this.enabled) {
+    if(!this.enabled) {
       return
     }
-    if (this.callback) {
+    if(this.callback) {
       this.callback.apply(this, args)
     }
   }
@@ -200,7 +200,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     element.waypointContextKey = this.key
     contexts[element.waypointContextKey] = this
     keyCounter += 1
-    if (!Waypoint.windowContext) {
+    if(!Waypoint.windowContext) {
       Waypoint.windowContext = true
       Waypoint.windowContext = new Context(window)
     }
@@ -221,7 +221,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     var horizontalEmpty = this.Adapter.isEmptyObject(this.waypoints.horizontal)
     var verticalEmpty = this.Adapter.isEmptyObject(this.waypoints.vertical)
     var isWindow = this.element == this.element.window
-    if (horizontalEmpty && verticalEmpty && !isWindow) {
+    if(horizontalEmpty && verticalEmpty && !isWindow) {
       this.adapter.off('.waypoints')
       delete contexts[this.key]
     }
@@ -237,7 +237,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     }
 
     this.adapter.on('resize.waypoints', function() {
-      if (!self.didResize) {
+      if(!self.didResize) {
         self.didResize = true
         Waypoint.requestAnimationFrame(resizeHandler)
       }
@@ -253,7 +253,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     }
 
     this.adapter.on('scroll.waypoints', function() {
-      if (!self.didScroll || Waypoint.isTouch) {
+      if(!self.didScroll || Waypoint.isTouch) {
         self.didScroll = true
         Waypoint.requestAnimationFrame(scrollHandler)
       }
@@ -290,14 +290,14 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 
       for (var waypointKey in this.waypoints[axisKey]) {
         var waypoint = this.waypoints[axisKey][waypointKey]
-        if (waypoint.triggerPoint === null) {
+        if(waypoint.triggerPoint === null) {
           continue
         }
         var wasBeforeTriggerPoint = axis.oldScroll < waypoint.triggerPoint
         var nowAfterTriggerPoint = axis.newScroll >= waypoint.triggerPoint
         var crossedForward = wasBeforeTriggerPoint && nowAfterTriggerPoint
         var crossedBackward = !wasBeforeTriggerPoint && !nowAfterTriggerPoint
-        if (crossedForward || crossedBackward) {
+        if(crossedForward || crossedBackward) {
           waypoint.queueTrigger(direction)
           triggeredGroups[waypoint.group.id] = waypoint.group
         }
@@ -317,7 +317,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
   /* Private */
   Context.prototype.innerHeight = function() {
     /*eslint-disable eqeqeq */
-    if (this.element == this.element.window) {
+    if(this.element == this.element.window) {
       return Waypoint.viewportHeight()
     }
     /*eslint-enable eqeqeq */
@@ -333,7 +333,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
   /* Private */
   Context.prototype.innerWidth = function() {
     /*eslint-disable eqeqeq */
-    if (this.element == this.element.window) {
+    if(this.element == this.element.window) {
       return Waypoint.viewportWidth()
     }
     /*eslint-enable eqeqeq */
@@ -397,16 +397,16 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
         var contextModifier, wasBeforeScroll, nowAfterScroll
         var triggeredBackward, triggeredForward
 
-        if (waypoint.element !== waypoint.element.window) {
+        if(waypoint.element !== waypoint.element.window) {
           elementOffset = waypoint.adapter.offset()[axis.offsetProp]
         }
 
-        if (typeof adjustment === 'function') {
+        if(typeof adjustment === 'function') {
           adjustment = adjustment.apply(waypoint)
         }
-        else if (typeof adjustment === 'string') {
+        else if(typeof adjustment === 'string') {
           adjustment = parseFloat(adjustment)
-          if (waypoint.options.offset.indexOf('%') > - 1) {
+          if(waypoint.options.offset.indexOf('%') > - 1) {
             adjustment = Math.ceil(axis.contextDimension * adjustment / 100)
           }
         }
@@ -418,15 +418,15 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
         triggeredBackward = wasBeforeScroll && nowAfterScroll
         triggeredForward = !wasBeforeScroll && !nowAfterScroll
 
-        if (!freshWaypoint && triggeredBackward) {
+        if(!freshWaypoint && triggeredBackward) {
           waypoint.queueTrigger(axis.backward)
           triggeredGroups[waypoint.group.id] = waypoint.group
         }
-        else if (!freshWaypoint && triggeredForward) {
+        else if(!freshWaypoint && triggeredForward) {
           waypoint.queueTrigger(axis.forward)
           triggeredGroups[waypoint.group.id] = waypoint.group
         }
-        else if (freshWaypoint && axis.oldScroll >= waypoint.triggerPoint) {
+        else if(freshWaypoint && axis.oldScroll >= waypoint.triggerPoint) {
           waypoint.queueTrigger(axis.forward)
           triggeredGroups[waypoint.group.id] = waypoint.group
         }
@@ -461,7 +461,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
   }
 
   window.onload = function() {
-    if (oldWindowLoad) {
+    if(oldWindowLoad) {
       oldWindowLoad()
     }
     Context.refreshAll()
@@ -527,7 +527,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
       waypoints.sort(reverse ? byReverseTriggerPoint : byTriggerPoint)
       for (var i = 0, end = waypoints.length; i < end; i += 1) {
         var waypoint = waypoints[i]
-        if (waypoint.options.continuous || i === waypoints.length - 1) {
+        if(waypoint.options.continuous || i === waypoints.length - 1) {
           waypoint.trigger([direction])
         }
       }
@@ -558,7 +558,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
   /* Private */
   Group.prototype.remove = function(waypoint) {
     var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
-    if (index > -1) {
+    if(index > -1) {
       this.waypoints.splice(index, 1)
     }
   }
@@ -592,7 +592,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
   }
 
   function getWindow(element) {
-    if (isWindow(element)) {
+    if(isWindow(element)) {
       return element
     }
     return element.defaultView
@@ -617,7 +617,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     function removeListeners(element, listeners, handler) {
       for (var i = 0, end = listeners.length - 1; i < end; i++) {
         var listener = listeners[i]
-        if (!handler || handler === listener) {
+        if(!handler || handler === listener) {
           element.removeEventListener(listener)
         }
       }
@@ -628,17 +628,17 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     var namespace = eventParts[1]
     var element = this.element
 
-    if (namespace && this.handlers[namespace] && eventType) {
+    if(namespace && this.handlers[namespace] && eventType) {
       removeListeners(element, this.handlers[namespace][eventType], handler)
       this.handlers[namespace][eventType] = []
     }
-    else if (eventType) {
+    else if(eventType) {
       for (var ns in this.handlers) {
         removeListeners(element, this.handlers[ns][eventType] || [], handler)
         this.handlers[ns][eventType] = []
       }
     }
-    else if (namespace && this.handlers[namespace]) {
+    else if(namespace && this.handlers[namespace]) {
       for (var type in this.handlers[namespace]) {
         removeListeners(element, this.handlers[namespace][type], handler)
       }
@@ -648,7 +648,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 
   /* Adapted from jQuery 1.x offset() */
   NoFrameworkAdapter.prototype.offset = function() {
-    if (!this.element.ownerDocument) {
+    if(!this.element.ownerDocument) {
       return null
     }
 
@@ -659,7 +659,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
       left: 0
     }
 
-    if (this.element.getBoundingClientRect) {
+    if(this.element.getBoundingClientRect) {
       rect = this.element.getBoundingClientRect()
     }
 
@@ -684,7 +684,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     var height = this.innerHeight()
     var computedStyle
 
-    if (includeMargin && !isWindow(this.element)) {
+    if(includeMargin && !isWindow(this.element)) {
       computedStyle = window.getComputedStyle(this.element)
       height += parseInt(computedStyle.marginTop, 10)
       height += parseInt(computedStyle.marginBottom, 10)
@@ -697,7 +697,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     var width = this.innerWidth()
     var computedStyle
 
-    if (includeMargin && !isWindow(this.element)) {
+    if(includeMargin && !isWindow(this.element)) {
       computedStyle = window.getComputedStyle(this.element)
       width += parseInt(computedStyle.marginLeft, 10)
       width += parseInt(computedStyle.marginRight, 10)
@@ -720,9 +720,9 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     var args = Array.prototype.slice.call(arguments)
 
     function merge(target, obj) {
-      if (typeof target === 'object' && typeof obj === 'object') {
+      if(typeof target === 'object' && typeof obj === 'object') {
         for (var key in obj) {
-          if (obj.hasOwnProperty(key)) {
+          if(obj.hasOwnProperty(key)) {
             target[key] = obj[key]
           }
         }

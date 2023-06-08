@@ -133,13 +133,13 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
         
         this.layerAlphaHack = this.layer.alpha && OpenLayers.Util.alphaHack();
 
-        if (this.maxGetUrlLength != null || this.layer.gutter || this.layerAlphaHack) {
+        if(this.maxGetUrlLength != null || this.layer.gutter || this.layerAlphaHack) {
             // only create frame if it's needed
             this.frame = document.createElement("div");
             this.frame.style.position = "absolute";
             this.frame.style.overflow = "hidden";
         }
-        if (this.maxGetUrlLength != null) {
+        if(this.maxGetUrlLength != null) {
             OpenLayers.Util.extend(this, OpenLayers.Tile.Image.IFrame);
         }
     },
@@ -149,7 +149,7 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
      * nullify references to prevent circular references and memory leaks
      */
     destroy: function() {
-        if (this.imgDiv)  {
+        if(this.imgDiv)  {
             this.clear();
             this.imgDiv = null;
             this.frame = null;
@@ -169,13 +169,13 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
      */
     draw: function() {
         var shouldDraw = OpenLayers.Tile.prototype.draw.apply(this, arguments);
-        if (shouldDraw) {
+        if(shouldDraw) {
             // The layer's reproject option is deprecated.
-            if (this.layer != this.layer.map.baseLayer && this.layer.reproject) {
+            if(this.layer != this.layer.map.baseLayer && this.layer.reproject) {
                 // getBoundsFromBaseLayer is defined in deprecated.js.
                 this.bounds = this.getBoundsFromBaseLayer(this.position);
             }
-            if (this.isLoading) {
+            if(this.isLoading) {
                 //if we're already loading, send 'reload' instead of 'loadstart'.
                 this._loadEvent = "reload";
             } else {
@@ -184,7 +184,7 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
             }
             this.renderTile();
             this.positionTile();
-        } else if (shouldDraw === false) {
+        } else if(shouldDraw === false) {
             this.unload();
         }
         return shouldDraw;
@@ -196,12 +196,12 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
      *     position it correctly, and set its url.
      */
     renderTile: function() {
-        if (this.layer.async) {
+        if(this.layer.async) {
             // Asynchronous image requests call the asynchronous getURL method
             // on the layer to fetch an image that covers 'this.bounds'.
             var id = this.asyncRequestId = (this.asyncRequestId || 0) + 1;
             this.layer.getURLasync(this.bounds, function(url) {
-                if (id == this.asyncRequestId) {
+                if(id == this.asyncRequestId) {
                     this.url = url;
                     this.initImage();
                 }
@@ -224,7 +224,7 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
             size = this.frame ? this.size :
                 this.layer.getImageSize(this.bounds),
             ratio = 1;
-        if (this.layer instanceof OpenLayers.Layer.Grid) {
+        if(this.layer instanceof OpenLayers.Layer.Grid) {
             ratio = this.layer.getServerResolution() / this.layer.map.getResolution();
         }
         style.left = this.position.x + "px";
@@ -241,13 +241,13 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
     clear: function() {
         OpenLayers.Tile.prototype.clear.apply(this, arguments);
         var img = this.imgDiv;
-        if (img) {
+        if(img) {
             var tile = this.getTile();
-            if (tile.parentNode === this.layer.div) {
+            if(tile.parentNode === this.layer.div) {
                 this.layer.div.removeChild(tile);
             }
             this.setImgSrc();
-            if (this.layerAlphaHack === true) {
+            if(this.layerAlphaHack === true) {
                 img.style.filter = "";
             }
             OpenLayers.Element.removeClass(img, "olImageLoadError");
@@ -260,13 +260,13 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
      * Returns or creates and returns the tile image.
      */
     getImage: function() {
-        if (!this.imgDiv) {
+        if(!this.imgDiv) {
             this.imgDiv = OpenLayers.Tile.Image.IMAGE.cloneNode(false);
 
             var style = this.imgDiv.style;
-            if (this.frame) {
+            if(this.frame) {
                 var left = 0, top = 0;
-                if (this.layer.gutter) {
+                if(this.layer.gutter) {
                     left = this.layer.gutter / this.layer.tileSize.w * 100;
                     top = this.layer.gutter / this.layer.tileSize.h * 100;
                 }
@@ -277,19 +277,19 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
             }
             style.visibility = "hidden";
             style.opacity = 0;
-            if (this.layer.opacity < 1) {
+            if(this.layer.opacity < 1) {
                 style.filter = 'alpha(opacity=' +
                                (this.layer.opacity * 100) +
                                ')';
             }
             style.position = "absolute";
-            if (this.layerAlphaHack) {
+            if(this.layerAlphaHack) {
                 // move the image out of sight
                 style.paddingTop = style.height;
                 style.height = "0";
                 style.width = "100%";
             }
-            if (this.frame) {
+            if(this.frame) {
                 this.frame.appendChild(this.imgDiv);
             }
         }
@@ -314,7 +314,7 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
      * Creates the content for the frame on the tile.
      */
     initImage: function() {
-        if (!this.url && !this.imgDiv) {
+        if(!this.url && !this.imgDiv) {
             // fast path out - if there is no tile url and no previous image
             this.isLoading = false;
             return;
@@ -324,13 +324,13 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
         this.events.triggerEvent(this._loadEvent);
         var img = this.getImage();
         var src = img.getAttribute('src') || '';
-        if (this.url && OpenLayers.Util.isEquivalentUrl(src, this.url)) {
+        if(this.url && OpenLayers.Util.isEquivalentUrl(src, this.url)) {
             this._loadTimeout = window.setTimeout(
                 OpenLayers.Function.bind(this.onImageLoad, this), 0
             );
         } else {
             this.stopLoading();
-            if (this.crossOriginKeyword) {
+            if(this.crossOriginKeyword) {
                 img.removeAttribute("crossorigin");
             }
             OpenLayers.Event.observe(img, "load",
@@ -353,12 +353,12 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
      */
     setImgSrc: function(url) {
         var img = this.imgDiv;
-        if (url) {
+        if(url) {
             img.style.visibility = 'hidden';
             img.style.opacity = 0;
             // don't set crossOrigin if the url is a data URL
-            if (this.crossOriginKeyword) {
-                if (url.substr(0, 5) !== 'data:') {
+            if(this.crossOriginKeyword) {
+                if(url.substr(0, 5) !== 'data:') {
                     img.setAttribute("crossorigin", this.crossOriginKeyword);
                 } else {
                     img.removeAttribute("crossorigin");
@@ -370,7 +370,7 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
             // caching and garbage collection.
             this.stopLoading();
             this.imgDiv = null;
-            if (img.parentNode) {
+            if(img.parentNode) {
                 img.parentNode.removeChild(img);
             }
         }
@@ -398,11 +398,11 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
      * or if it's currently loading.
      */
     createBackBuffer: function() {
-        if (!this.imgDiv || this.isLoading) {
+        if(!this.imgDiv || this.isLoading) {
             return;
         }
         var backBuffer;
-        if (this.frame) {
+        if(this.frame) {
             backBuffer = this.frame.cloneNode(false);
             backBuffer.appendChild(this.imgDiv);
         } else {
@@ -425,7 +425,7 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
         this.canvasContext = null;
         this.events.triggerEvent("loadend");
 
-        if (this.layerAlphaHack === true) {
+        if(this.layerAlphaHack === true) {
             img.style.filter =
                 "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" +
                 img.src + "', sizingMethod='scale')";
@@ -438,9 +438,9 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
      */
     onImageError: function() {
         var img = this.imgDiv;
-        if (img.src != null) {
+        if(img.src != null) {
             this.imageReloadAttempts++;
-            if (this.imageReloadAttempts <= OpenLayers.IMAGE_RELOAD_ATTEMPTS) {
+            if(this.imageReloadAttempts <= OpenLayers.IMAGE_RELOAD_ATTEMPTS) {
                 this.setImgSrc(this.layer.getURL(this.bounds));
             } else {
                 OpenLayers.Element.addClass(img, "olImageLoadError");
@@ -471,7 +471,7 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
      * underlying canvas is still available in the 'canvas' property:
      * (code)
      * var context = tile.getCanvasContext();
-     * if (context) {
+     * if(context) {
      *     var data = context.canvas.toDataURL('image/jpeg');
      * }
      * (end)
@@ -480,8 +480,8 @@ OpenLayers.Tile.Image = OpenLayers.Class(OpenLayers.Tile, {
      * {Boolean}
      */
     getCanvasContext: function() {
-        if (OpenLayers.CANVAS_SUPPORTED && this.imgDiv && !this.isLoading) {
-            if (!this.canvasContext) {
+        if(OpenLayers.CANVAS_SUPPORTED && this.imgDiv && !this.isLoading) {
+            if(!this.canvasContext) {
                 var canvas = document.createElement("canvas");
                 canvas.width = this.size.w;
                 canvas.height = this.size.h;

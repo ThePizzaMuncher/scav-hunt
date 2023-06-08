@@ -50,7 +50,7 @@
         var pass = false;
         var handler = new OpenLayers.Handler.MouseWheel(control, {'up': 
           function (evt) { 
-                if (evt.xy) { pass = true; }
+                if(evt.xy) { pass = true; }
           }
         });
         handler.setMap(map);

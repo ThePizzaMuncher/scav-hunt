@@ -77,13 +77,13 @@
         }
 
         function removeLayerA() {
-            if (OpenLayers.Util.indexOf(map.layers, layerA) > -1) {
+            if(OpenLayers.Util.indexOf(map.layers, layerA) > -1) {
                 map.removeLayer(layerA);
             }
         }
         
         function toggleSelectControl1() {
-            if (selectControl1.active) {
+            if(selectControl1.active) {
                 selectControl1.deactivate();
                 alert("SelectFeature control for clicks deactivated.");
             } else {
@@ -93,7 +93,7 @@
         }
 
         function toggleSelectControl2() {
-            if (selectControl2.active) {
+            if(selectControl2.active) {
                 selectControl2.deactivate();
                 alert("SelectFeature control for hover deactivated.");
             } else {

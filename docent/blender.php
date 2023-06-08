@@ -1,14 +1,9 @@
 <?php
 session_start();
-if (isset($_SESSION['docent'])) { 
-	if ($_SESSION['docent'] != 1) {
-		header('location:../login');
-		die();
-	}
-}
-else {
-	header('location:../login');
-    die();
+if(!isset($_SESSION['docent'])) {
+	header('location:../login'); die();
+} if(!$_SESSION['docent']) {
+	header('location:../login'); die();
 }
 
 require_once('../assets/includes/header.php');

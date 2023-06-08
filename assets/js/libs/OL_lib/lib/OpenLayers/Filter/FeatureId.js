@@ -62,7 +62,7 @@ OpenLayers.Filter.FeatureId = OpenLayers.Class(OpenLayers.Filter, {
     evaluate: function(feature) {
         for (var i=0, len=this.fids.length; i<len; i++) {
             var fid = feature.fid || feature.id;
-            if (fid == this.fids[i]) {
+            if(fid == this.fids[i]) {
                 return true;
             }
         }

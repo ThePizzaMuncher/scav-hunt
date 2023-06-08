@@ -22,12 +22,12 @@ var map = new OpenLayers.Map({
 
 var callback = function(infoLookup) {
     var msg = "";
-    if (infoLookup) {
+    if(infoLookup) {
         var layer, info;
         for (var idx in infoLookup) {
             layer = map.layers[idx];
             info = infoLookup[idx];
-            if (info && info.data) {
+            if(info && info.data) {
                 msg += "<strong>" + layer.name + "</strong><br>";
                 msg += "feature id: " + info.id + "<br>";
                 for (var key in info.data) {

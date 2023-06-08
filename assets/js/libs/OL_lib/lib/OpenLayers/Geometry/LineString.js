@@ -40,7 +40,7 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
      */
     removeComponent: function(point) {
         var removed = this.components && (this.components.length > 2);
-        if (removed) {
+        if(removed) {
             OpenLayers.Geometry.Collection.prototype.removeComponent.apply(this, 
                                                                   arguments);
         }
@@ -408,7 +408,7 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
                 this.components[0],
                 this.components[this.components.length-1]
             ];
-        } else if (nodes === false) {
+        } else if(nodes === false) {
             vertices = this.components.slice(1, this.components.length-1);
         } else {
             vertices = this.components.slice();
@@ -563,9 +563,9 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
      * {OpenLayers.Geometry.LineString} the simplified LineString
      */
     simplify: function(tolerance){
-        if (this && this !== null) {
+        if(this && this !== null) {
             var points = this.getVertices();
-            if (points.length < 3) {
+            if(points.length < 3) {
                 return this;
             }
     
@@ -582,13 +582,13 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
     
                 for (var index = firstPoint, distance; index < lastPoint; index++) {
                     distance = perpendicularDistance(points[firstPoint], points[lastPoint], points[index]);
-                    if (distance > maxDistance) {
+                    if(distance > maxDistance) {
                         maxDistance = distance;
                         indexFarthest = index;
                     }
                 }
     
-                if (maxDistance > tolerance && indexFarthest != firstPoint) {
+                if(maxDistance > tolerance && indexFarthest != firstPoint) {
                     //Add the largest point that exceeds the tolerance
                     pointIndexsToKeep.push(indexFarthest);
                     douglasPeuckerReduction(points, firstPoint, indexFarthest, tolerance);

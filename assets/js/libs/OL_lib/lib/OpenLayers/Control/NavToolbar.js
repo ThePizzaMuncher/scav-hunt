@@ -47,7 +47,7 @@ OpenLayers.Control.NavToolbar = OpenLayers.Class(OpenLayers.Control.Panel, {
      */
     draw: function() {
         var div = OpenLayers.Control.Panel.prototype.draw.apply(this, arguments);
-        if (this.defaultControl === null) {
+        if(this.defaultControl === null) {
             this.defaultControl = this.controls[0];
         }
         return div;

@@ -40,7 +40,7 @@
         function requestSuccess(response) {
             var format = new OpenLayers.Format.XLS();
             var output = format.read(response.responseXML);
-            if (output.responseLists[0]) {
+            if(output.responseLists[0]) {
                 var geometry = output.responseLists[0].features[0].geometry;
                 var foundPosition = new OpenLayers.LonLat(geometry.x, geometry.y).transform(
                         new OpenLayers.Projection("EPSG:4326"),

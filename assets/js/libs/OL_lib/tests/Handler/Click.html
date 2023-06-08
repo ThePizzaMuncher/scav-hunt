@@ -381,12 +381,12 @@
         
         function handle(o) {
             var touches = [];
-            if (("x0" in o) && ("y0" in o)) {
+            if(("x0" in o) && ("y0" in o)) {
                 touches.push({
                     clientX: o.x0, clientY: o.y0
                 });
             }
-            if (("x1" in o) && ("y1" in o)) {
+            if(("x1" in o) && ("y1" in o)) {
                 touches.push({
                     clientX: o.x1, clientY: o.y1
                 });
@@ -635,7 +635,7 @@
         
         function handle(type, x, y) {
             var touches = [];
-            if (x !== undefined && y !== undefined) {
+            if(x !== undefined && y !== undefined) {
                 touches.push({
                     clientX: x, clientY: y
                 });

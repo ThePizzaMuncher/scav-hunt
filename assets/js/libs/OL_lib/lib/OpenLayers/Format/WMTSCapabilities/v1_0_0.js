@@ -136,7 +136,7 @@ OpenLayers.Format.WMTSCapabilities.v1_0_0 = OpenLayers.Class(
             "TileMatrixSet": function(node, obj) {
                 // node could be child of wmts:Contents or wmts:TileMatrixSetLink
                 // duck type wmts:Contents by looking for layers
-                if (obj.layers) {
+                if(obj.layers) {
                     // TileMatrixSet as object type in schema
                     var tileMatrixSet = {
                         matrixIds: []
@@ -163,7 +163,7 @@ OpenLayers.Format.WMTSCapabilities.v1_0_0 = OpenLayers.Class(
                 var coords = topLeftCorner.split(" ");
                 // decide on axis order for the given CRS
                 var yx;
-                if (obj.supportedCRS) {
+                if(obj.supportedCRS) {
                     // extract out version from URN
                     var crs = obj.supportedCRS.replace(
                         /urn:ogc:def:crs:(\w+):.+:(\w+)$/, 
@@ -171,7 +171,7 @@ OpenLayers.Format.WMTSCapabilities.v1_0_0 = OpenLayers.Class(
                     );
                     yx = !!this.yx[crs];
                 }
-                if (yx) {
+                if(yx) {
                     obj.topLeftCorner = new OpenLayers.LonLat(
                         coords[1], coords[0]
                     );
@@ -196,7 +196,7 @@ OpenLayers.Format.WMTSCapabilities.v1_0_0 = OpenLayers.Class(
             "ResourceURL": function(node, obj) {
                 obj.resourceUrl = obj.resourceUrl || {};
                 var resourceType = node.getAttribute("resourceType");
-                if (!obj.resourceUrls) {
+                if(!obj.resourceUrls) {
                     obj.resourceUrls = [];
                 }
                 var resourceUrl = obj.resourceUrl[resourceType] = {

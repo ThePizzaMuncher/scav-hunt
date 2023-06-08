@@ -52,7 +52,7 @@ OpenLayers.Format.OWSContext = OpenLayers.Class(OpenLayers.Format.Context,{
         var version = OpenLayers.Format.XML.VersionedOGC.prototype.getVersion.apply(
             this, arguments);
         // 0.3.1 is backwards compatible with 0.3.0
-        if (version === "0.3.0") {
+        if(version === "0.3.0") {
             version = this.defaultVersion;
         }
         return version;

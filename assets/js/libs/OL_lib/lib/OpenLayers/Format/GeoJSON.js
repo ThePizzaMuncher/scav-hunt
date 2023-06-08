@@ -70,7 +70,7 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
         type = (type) ? type : "FeatureCollection";
         var results = null;
         var obj = null;
-        if (typeof json == "string") {
+        if(typeof json == "string") {
             obj = OpenLayers.Format.JSON.prototype.read.apply(this,
                                                               [json, filter]);
         } else { 
@@ -214,7 +214,7 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
      * {<OpenLayers.Geometry>} A geometry.
      */
     parseGeometry: function(obj) {
-        if (obj == null) {
+        if(obj == null) {
             return null;
         }
         var geometry, collection = false;
@@ -249,7 +249,7 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
         }
         // We don't reproject collections because the children are reprojected
         // for us when they are created.
-        if (this.internalProjection && this.externalProjection && !collection) {
+        if(this.internalProjection && this.externalProjection && !collection) {
             geometry.transform(this.externalProjection, 
                                this.internalProjection); 
         }                       
@@ -274,7 +274,7 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
          * {<OpenLayers.Geometry>} A geometry.
          */
         "point": function(array) {
-            if (this.ignoreExtraDims == false && 
+            if(this.ignoreExtraDims == false && 
                   array.length != 2) {
                     throw "Only 2D points are supported: " + array;
             }
@@ -465,9 +465,9 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
                     this, [element]
                 );
             }
-        } else if (obj.CLASS_NAME.indexOf("OpenLayers.Geometry") == 0) {
+        } else if(obj.CLASS_NAME.indexOf("OpenLayers.Geometry") == 0) {
             geojson = this.extract.geometry.apply(this, [obj]);
-        } else if (obj instanceof OpenLayers.Feature.Vector) {
+        } else if(obj instanceof OpenLayers.Feature.Vector) {
             geojson = this.extract.feature.apply(this, [obj]);
             if(obj.layer && obj.layer.projection) {
                 geojson.crs = this.createCRSObject(obj);
@@ -491,9 +491,9 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
     createCRSObject: function(object) {
        var proj = object.layer.projection.toString();
        var crs = {};
-       if (proj.match(/epsg:/i)) {
+       if(proj.match(/epsg:/i)) {
            var code = parseInt(proj.substring(proj.indexOf(":") + 1));
-           if (code == 4326) {
+           if(code == 4326) {
                crs = {
                    "type": "name",
                    "properties": {
@@ -535,7 +535,7 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
                 "properties": feature.attributes,
                 "geometry": geom
             };
-            if (feature.fid != null) {
+            if(feature.fid != null) {
                 json.id = feature.fid;
             }
             return json;
@@ -552,10 +552,10 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
          * {Object} An object representing the geometry.
          */
         'geometry': function(geometry) {
-            if (geometry == null) {
+            if(geometry == null) {
                 return null;
             }
-            if (this.internalProjection && this.externalProjection) {
+            if(this.internalProjection && this.externalProjection) {
                 geometry = geometry.clone();
                 geometry.transform(this.internalProjection, 
                                    this.externalProjection);

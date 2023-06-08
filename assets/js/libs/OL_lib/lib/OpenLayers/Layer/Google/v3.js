@@ -56,12 +56,12 @@ OpenLayers.Layer.Google.v3 = {
      * Load the GMap and register appropriate event listeners.
      */
     loadMapObject: function() {
-        if (!this.type) {
+        if(!this.type) {
             this.type = google.maps.MapTypeId.ROADMAP;
         }
         var mapObject;
         var cache = OpenLayers.Layer.Google.cache[this.map.id];
-        if (cache) {
+        if(cache) {
             // there are already Google layers added to this map
             mapObject = cache.mapObject;
             // increment the layer count
@@ -109,7 +109,7 @@ OpenLayers.Layer.Google.v3 = {
      * APIMethod: onMapResize
      */
     onMapResize: function() {
-        if (this.visibility) {
+        if(this.visibility) {
             google.maps.event.trigger(this.mapObject, "resize");
         }
     },
@@ -124,13 +124,13 @@ OpenLayers.Layer.Google.v3 = {
     setGMapVisibility: function(visible) {
         var cache = OpenLayers.Layer.Google.cache[this.map.id];
         var map = this.map;
-        if (cache) {
+        if(cache) {
             var type = this.type;
             var layers = map.layers;
             var layer;
             for (var i=layers.length-1; i>=0; --i) {
                 layer = layers[i];
-                if (layer instanceof OpenLayers.Layer.Google &&
+                if(layer instanceof OpenLayers.Layer.Google &&
                             layer.visibility === true && layer.inRange === true) {
                     type = layer.type;
                     visible = true;
@@ -138,9 +138,9 @@ OpenLayers.Layer.Google.v3 = {
                 }
             }
             var container = this.mapObject.getDiv();
-            if (visible === true) {
-                if (container.parentNode !== map.div) {
-                    if (!cache.rendered) {
+            if(visible === true) {
+                if(container.parentNode !== map.div) {
+                    if(!cache.rendered) {
                         var me = this;
                         google.maps.event.addListenerOnce(this.mapObject, 'tilesloaded', function() {
                             cache.rendered = true;
@@ -154,7 +154,7 @@ OpenLayers.Layer.Google.v3 = {
                     }
                 }
                 this.mapObject.setMapTypeId(type);                
-            } else if (cache.googleControl.hasChildNodes()) {
+            } else if(cache.googleControl.hasChildNodes()) {
                 map.div.appendChild(map.viewPortDiv);
                 map.div.removeChild(container);
             }
@@ -187,7 +187,7 @@ OpenLayers.Layer.Google.v3 = {
      */
     getMapObjectBoundsFromOLBounds: function(olBounds) {
         var moBounds = null;
-        if (olBounds != null) {
+        if(olBounds != null) {
             var sw = this.sphericalMercator ? 
               this.inverseMercator(olBounds.bottom, olBounds.left) : 
               new OpenLayers.LonLat(olBounds.bottom, olBounds.left);
@@ -235,7 +235,7 @@ OpenLayers.Layer.Google.v3 = {
             lat - delta_y * res
         ); 
 
-        if (this.wrapDateLine) {
+        if(this.wrapDateLine) {
             lonlat = lonlat.wrapDateLine(this.maxExtent);
         }
         return this.getMapObjectLonLatFromLonLat(lonlat.lon, lonlat.lat);
@@ -269,7 +269,7 @@ OpenLayers.Layer.Google.v3 = {
      * zoom - {int} MapObject zoom format
      */
     setMapObjectCenter: function(center, zoom) {
-        if (this.animationEnabled === false && zoom != this.mapObject.zoom) {
+        if(this.animationEnabled === false && zoom != this.mapObject.zoom) {
             var mapContainer = this.getMapContainer();
             google.maps.event.addListenerOnce(
                 this.mapObject, 

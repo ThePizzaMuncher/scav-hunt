@@ -122,7 +122,7 @@ OpenLayers.Format.Context = OpenLayers.Class(OpenLayers.Format.XML.VersionedOGC,
             dimensions: layerContext.dimensions,
             metadataURL: layerContext.metadataURL
         };
-        if (this.layerOptions) {
+        if(this.layerOptions) {
             OpenLayers.Util.applyDefaults(options, this.layerOptions);
         }
 
@@ -131,21 +131,21 @@ OpenLayers.Format.Context = OpenLayers.Class(OpenLayers.Format.XML.VersionedOGC,
             transparent: layerContext.transparent,
             version: layerContext.version
         };
-        if (layerContext.formats && layerContext.formats.length>0) {
+        if(layerContext.formats && layerContext.formats.length>0) {
             // set default value for params if current attribute is not positionned
             params.format = layerContext.formats[0].value;
             for (i=0, len=layerContext.formats.length; i<len; i++) {
                 var format = layerContext.formats[i];
-                if (format.current == true) {
+                if(format.current == true) {
                     params.format = format.value;
                     break;
                 }
             }
         }
-        if (layerContext.styles && layerContext.styles.length>0) {
+        if(layerContext.styles && layerContext.styles.length>0) {
             for (i=0, len=layerContext.styles.length; i<len; i++) {
                 var style = layerContext.styles[i];
-                if (style.current == true) {
+                if(style.current == true) {
                     // three style types to consider
                     // 1) linked SLD
                     // 2) inline SLD
@@ -161,13 +161,13 @@ OpenLayers.Format.Context = OpenLayers.Class(OpenLayers.Format.XML.VersionedOGC,
                 }
             }
         }
-        if (this.layerParams) {
+        if(this.layerParams) {
             OpenLayers.Util.applyDefaults(params, this.layerParams);
         }
 
         var layer = null;
         var service = layerContext.service;
-        if (service == OpenLayers.Format.Context.serviceTypes.WFS) {
+        if(service == OpenLayers.Format.Context.serviceTypes.WFS) {
             options.strategies = [new OpenLayers.Strategy.BBOX()];
             options.protocol = new OpenLayers.Protocol.WFS({
                 url: layerContext.url,
@@ -180,7 +180,7 @@ OpenLayers.Format.Context = OpenLayers.Class(OpenLayers.Format.XML.VersionedOGC,
                 layerContext.title || layerContext.name,
                 options
             );
-        } else if (service == OpenLayers.Format.Context.serviceTypes.KML) {
+        } else if(service == OpenLayers.Format.Context.serviceTypes.KML) {
             // use a vector layer with an HTTP Protcol and a Fixed strategy
             options.strategies = [new OpenLayers.Strategy.Fixed()];
             options.protocol = new OpenLayers.Protocol.HTTP({
@@ -191,7 +191,7 @@ OpenLayers.Format.Context = OpenLayers.Class(OpenLayers.Format.XML.VersionedOGC,
                 layerContext.title || layerContext.name,
                 options
             );
-        } else if (service == OpenLayers.Format.Context.serviceTypes.GML) {
+        } else if(service == OpenLayers.Format.Context.serviceTypes.GML) {
             // use a vector layer with a HTTP Protocol and a Fixed strategy
             options.strategies = [new OpenLayers.Strategy.Fixed()];
             options.protocol = new OpenLayers.Protocol.HTTP({
@@ -202,14 +202,14 @@ OpenLayers.Format.Context = OpenLayers.Class(OpenLayers.Format.XML.VersionedOGC,
                 layerContext.title || layerContext.name,
                 options
             );
-        } else if (layerContext.features) {
+        } else if(layerContext.features) {
             // inline GML or KML features
             layer = new OpenLayers.Layer.Vector(
                 layerContext.title || layerContext.name,
                 options
             );
             layer.addFeatures(layerContext.features);
-        } else if (layerContext.categoryLayer !== true) {
+        } else if(layerContext.categoryLayer !== true) {
             layer = new OpenLayers.Layer.WMS(
                 layerContext.title || layerContext.name,
                 layerContext.url,
@@ -234,7 +234,7 @@ OpenLayers.Format.Context = OpenLayers.Class(OpenLayers.Format.XML.VersionedOGC,
         var layers = [];
         for (var i=0, len=layersContext.length; i<len; i++) {
             var layer = this.getLayerFromContext(layersContext[i]);
-            if (layer !== null) {
+            if(layer !== null) {
                 layers.push(layer);
             }
         }
@@ -259,7 +259,7 @@ OpenLayers.Format.Context = OpenLayers.Class(OpenLayers.Format.XML.VersionedOGC,
             units:      context.units
         }, options);
 
-        if (options.maxExtent) {
+        if(options.maxExtent) {
             options.maxResolution = 
                 options.maxExtent.getWidth() / OpenLayers.Map.TILE_WIDTH;
         }

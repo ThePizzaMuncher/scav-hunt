@@ -63,21 +63,21 @@ OpenLayers.Format.WMSDescribeLayer.v1_1_1 = OpenLayers.Class(
         for(var i=0; i<children.length; ++i) { 
             childNode = children[i];
             nodeName = childNode.nodeName; 
-            if (nodeName == 'LayerDescription') {
+            if(nodeName == 'LayerDescription') {
                 var layerName = childNode.getAttribute('name');
                 var owsType = '';
                 var owsURL = '';
                 var typeName = '';
                 // check for owsType and owsURL attributes
-                if (childNode.getAttribute('owsType')) {
+                if(childNode.getAttribute('owsType')) {
                   owsType = childNode.getAttribute('owsType');
                   owsURL = childNode.getAttribute('owsURL');
                 } else {
                     // look for wfs or wcs attribute
-                    if (childNode.getAttribute('wfs') != '') {
+                    if(childNode.getAttribute('wfs') != '') {
                         owsType = 'WFS';
                         owsURL = childNode.getAttribute('wfs');
-                    } else if (childNode.getAttribute('wcs') != '') {
+                    } else if(childNode.getAttribute('wcs') != '') {
                         owsType = 'WCS';
                         owsURL = childNode.getAttribute('wcs');
                     }
@@ -86,7 +86,7 @@ OpenLayers.Format.WMSDescribeLayer.v1_1_1 = OpenLayers.Class(
                 var query = childNode.getElementsByTagName('Query');
                 if(query.length > 0) {
                     typeName = query[0].getAttribute('typeName');
-                    if (!typeName) {
+                    if(!typeName) {
                         // because of Ionic bug
                         typeName = query[0].getAttribute('typename');
                     }
@@ -102,7 +102,7 @@ OpenLayers.Format.WMSDescribeLayer.v1_1_1 = OpenLayers.Class(
                 describelayer.length = describelayer.layerDescriptions.length;
                 describelayer[describelayer.length - 1] = layerDescription; 
                 
-            } else if (nodeName == 'ServiceException') {
+            } else if(nodeName == 'ServiceException') {
                 // an exception must have occurred, so parse it
                 var parser = new OpenLayers.Format.OGCExceptionReport();
                 return {

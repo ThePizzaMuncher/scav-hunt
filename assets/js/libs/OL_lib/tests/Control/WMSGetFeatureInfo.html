@@ -538,11 +538,11 @@
         var _request = OpenLayers.Request.GET;
         OpenLayers.Request.GET = function(options) {
             count++;
-            if (count == 2) {
+            if(count == 2) {
                 t.eq(options.params["INFO_FORMAT"], "application/vnd.ogc.gml", "Default info format of the control is used");
                 t.eq(options.params["QUERY_LAYERS"].join(","), "c,a", "Layers should be grouped by service url");
                 t.eq(options.url, "http://localhost/wms", "Correct url used for second request");
-            } else if (count == 1) {
+            } else if(count == 1) {
                 t.eq(options.params["INFO_FORMAT"], "text/xml", "Overridden info format is used instead of the control's infoFormat");
                 t.eq(options.url, "http://myhost/wms", "Correct url used for first request");
             }

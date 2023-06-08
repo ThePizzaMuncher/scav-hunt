@@ -144,7 +144,7 @@
         }
         t.ok(widthIsOk, "respects modified maxWidth at all zoom levels in dd");
 
-        if (validkey) {
+        if(validkey) {
             var map = new OpenLayers.Map('map');
             var layer = new OpenLayers.Layer.Google('Goog Layer');
             var control = new OpenLayers.Control.ScaleLine({topOutUnits : "mi", bottomOutUnits: "km", topInUnits: 'ft', bottomInUnits: 'm'});

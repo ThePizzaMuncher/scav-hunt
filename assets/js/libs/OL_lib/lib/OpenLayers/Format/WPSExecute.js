@@ -80,7 +80,7 @@ OpenLayers.Format.WPSExecute = OpenLayers.Class(OpenLayers.Format.XML,
      */
     write: function(options) {
         var doc;
-        if (window.ActiveXObject) {
+        if(window.ActiveXObject) {
             doc = new ActiveXObject("Microsoft.XMLDOM");
             this.xmldom = doc;
         } else {
@@ -138,10 +138,10 @@ OpenLayers.Format.WPSExecute = OpenLayers.Class(OpenLayers.Format.XML,
             },
             "ResponseForm": function(responseForm) {
                 var node = this.createElementNSPlus("wps:ResponseForm", {});
-                if (responseForm.rawDataOutput) {
+                if(responseForm.rawDataOutput) {
                     this.writeNode("wps:RawDataOutput", responseForm.rawDataOutput, node);
                 }
-                if (responseForm.responseDocument) {
+                if(responseForm.responseDocument) {
                     this.writeNode("wps:ResponseDocument", responseForm.responseDocument, node);
                 }
                 return node;
@@ -154,7 +154,7 @@ OpenLayers.Format.WPSExecute = OpenLayers.Class(OpenLayers.Format.XML,
                         status: responseDocument.status
                     }
                 });
-                if (responseDocument.outputs) {
+                if(responseDocument.outputs) {
                     for (var i = 0, len = responseDocument.outputs.length; i < len; i++) {
                         this.writeNode("wps:Output", responseDocument.outputs[i], node);
                     }
@@ -196,27 +196,27 @@ OpenLayers.Format.WPSExecute = OpenLayers.Class(OpenLayers.Format.XML,
             "Input": function(input) {
                 var node = this.createElementNSPlus("wps:Input", {});
                 this.writeNode("ows:Identifier", input.identifier, node);
-                if (input.title) {
+                if(input.title) {
                     this.writeNode("ows:Title", input.title, node);
                 }
-                if (input.data) {
+                if(input.data) {
                     this.writeNode("wps:Data", input.data, node);
                 }
-                if (input.reference) {
+                if(input.reference) {
                     this.writeNode("wps:Reference", input.reference, node);
                 }
-                if (input.boundingBoxData) {
+                if(input.boundingBoxData) {
                     this.writeNode("wps:BoundingBoxData", input.boundingBoxData, node);
                 }
                 return node;
             },
             "Data": function(data) {
                 var node = this.createElementNSPlus("wps:Data", {});
-                if (data.literalData) {
+                if(data.literalData) {
                     this.writeNode("wps:LiteralData", data.literalData, node);
-                } else if (data.complexData) {
+                } else if(data.complexData) {
                     this.writeNode("wps:ComplexData", data.complexData, node);
-                } else if (data.boundingBoxData) {
+                } else if(data.boundingBoxData) {
                     this.writeNode("ows:BoundingBox", data.boundingBoxData, node);
                 }
                 return node;
@@ -239,7 +239,7 @@ OpenLayers.Format.WPSExecute = OpenLayers.Class(OpenLayers.Format.XML,
                     } 
                 });
                 var data = complexData.value;
-                if (typeof data === "string") {
+                if(typeof data === "string") {
                     node.appendChild(
                         this.getXMLDoc().createCDATASection(complexData.value)
                     );
@@ -258,7 +258,7 @@ OpenLayers.Format.WPSExecute = OpenLayers.Class(OpenLayers.Format.XML,
                         schema: reference.schema
                     }
                 });
-                if (reference.body) {
+                if(reference.body) {
                     this.writeNode("wps:Body", reference.body, node);
                 }
                 return node;
@@ -268,10 +268,10 @@ OpenLayers.Format.WPSExecute = OpenLayers.Class(OpenLayers.Format.XML,
             },
             "Body": function(body) {
                 var node = this.createElementNSPlus("wps:Body", {});
-                if (body.wcs) {
+                if(body.wcs) {
                     this.writeNode("wcs:GetCoverage", body.wcs, node);
                 }
-                else if (body.wfs) {
+                else if(body.wfs) {
                     // OpenLayers.Format.WFST expects these to be on the 
                     // instance and not in the options
                     this.featureType = body.wfs.featureType;
@@ -358,7 +358,7 @@ OpenLayers.Format.WPSExecute = OpenLayers.Class(OpenLayers.Format.XML,
                 };
                 
                 // try to get *some* value, ignore the empty text values
-                if (this.isSimpleContent(node)) {
+                if(this.isSimpleContent(node)) {
                     var child;
                     for(child=node.firstChild; child; child=child.nextSibling) {
                         switch(child.nodeType) {
@@ -370,7 +370,7 @@ OpenLayers.Format.WPSExecute = OpenLayers.Class(OpenLayers.Format.XML,
                 }
                 else {
                     for(child=node.firstChild; child; child=child.nextSibling) {
-                        if (child.nodeType == 1) {
+                        if(child.nodeType == 1) {
                             output.complexData.value = child;
                         }
                     }

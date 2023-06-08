@@ -27,7 +27,7 @@
 
       let formData = new FormData( thisForm );
 
-      if ( recaptcha ) {
+      if( recaptcha ) {
         if(typeof grecaptcha !== "undefined" ) {
           grecaptcha.ready(function() {
             try {
@@ -60,7 +60,7 @@
     })
     .then(data => {
       thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
+      if(data.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
       } else {

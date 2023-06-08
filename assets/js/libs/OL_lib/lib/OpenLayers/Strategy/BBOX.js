@@ -124,7 +124,7 @@ OpenLayers.Strategy.BBOX = OpenLayers.Class(OpenLayers.Strategy, {
      */
     update: function(options) {
         var mapBounds = this.getMapBounds();
-        if (mapBounds !== null && ((options && options.force) ||
+        if(mapBounds !== null && ((options && options.force) ||
           (this.layer.visibility && this.layer.calculateInRange() && this.invalidBounds(mapBounds)))) {
             this.calculateBounds(mapBounds);
             this.resolution = this.layer.map.getResolution(); 
@@ -140,7 +140,7 @@ OpenLayers.Strategy.BBOX = OpenLayers.Class(OpenLayers.Strategy, {
      * {<OpenLayers.Bounds>} Map bounds in the projection of the layer.
      */
     getMapBounds: function() {
-        if (this.layer.map === null) {
+        if(this.layer.map === null) {
             return null;
         }
         var bounds = this.layer.map.getExtent();
@@ -213,7 +213,7 @@ OpenLayers.Strategy.BBOX = OpenLayers.Class(OpenLayers.Strategy, {
      *      returned by the layer protocol.
      */
     triggerRead: function(options) {
-        if (this.response && !(options && options.noAbort === true)) {
+        if(this.response && !(options && options.noAbort === true)) {
             this.layer.protocol.abort(this.response);
             this.layer.events.triggerEvent("loadend");
         }
@@ -242,7 +242,7 @@ OpenLayers.Strategy.BBOX = OpenLayers.Class(OpenLayers.Strategy, {
             value: this.bounds,
             projection: this.layer.projection
         });
-        if (this.layer.filter) {
+        if(this.layer.filter) {
             filter = new OpenLayers.Filter.Logical({
                 type: OpenLayers.Filter.Logical.AND,
                 filters: [this.layer.filter, filter]
@@ -263,7 +263,7 @@ OpenLayers.Strategy.BBOX = OpenLayers.Class(OpenLayers.Strategy, {
      */
     merge: function(resp) {
         this.layer.destroyFeatures();
-        if (resp.success()) {
+        if(resp.success()) {
             var features = resp.features;
             if(features && features.length > 0) {
                 var remote = this.layer.projection;

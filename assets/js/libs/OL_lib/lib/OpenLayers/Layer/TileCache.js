@@ -82,7 +82,7 @@ OpenLayers.Layer.TileCache = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     clone: function (obj) {
         
-        if (obj == null) {
+        if(obj == null) {
             obj = new OpenLayers.Layer.TileCache(this.name,
                                                  this.url,
                                                  this.layername,
@@ -129,7 +129,7 @@ OpenLayers.Layer.TileCache = OpenLayers.Class(OpenLayers.Layer.Grid, {
         ];
         var path = components.join('/'); 
         var url = this.url;
-        if (OpenLayers.Util.isArray(url)) {
+        if(OpenLayers.Util.isArray(url)) {
             url = this.selectUrl(path, url);
         }
         url = (url.charAt(url.length - 1) == '/') ? url : url + '/';

@@ -97,16 +97,16 @@ OpenLayers.Control.Geolocate = OpenLayers.Class(OpenLayers.Control, {
      * {Boolean} The control was effectively activated.
      */
     activate: function () {
-        if (this.available && !this.geolocation) {
+        if(this.available && !this.geolocation) {
             // set lazily to avoid IE9 memory leak
             this.geolocation = navigator.geolocation;
         }
-        if (!this.geolocation) {
+        if(!this.geolocation) {
             this.events.triggerEvent("locationuncapable");
             return false;
         }
-        if (OpenLayers.Control.prototype.activate.apply(this, arguments)) {
-            if (this.watch) {
+        if(OpenLayers.Control.prototype.activate.apply(this, arguments)) {
+            if(this.watch) {
                 this.watchId = this.geolocation.watchPosition(
                     OpenLayers.Function.bind(this.geolocate, this),
                     OpenLayers.Function.bind(this.failure, this),
@@ -128,7 +128,7 @@ OpenLayers.Control.Geolocate = OpenLayers.Class(OpenLayers.Control, {
      * {Boolean} The control was effectively deactivated.
      */
     deactivate: function () {
-        if (this.active && this.watchId !== null) {
+        if(this.active && this.watchId !== null) {
             this.geolocation.clearWatch(this.watchId);
         }
         return OpenLayers.Control.prototype.deactivate.apply(
@@ -149,7 +149,7 @@ OpenLayers.Control.Geolocate = OpenLayers.Class(OpenLayers.Control, {
             new OpenLayers.Projection("EPSG:4326"),
             this.map.getProjectionObject()
         );
-        if (this.bind) {
+        if(this.bind) {
             this.map.setCenter(center);
         }
         this.events.triggerEvent("locationupdated", {
@@ -168,7 +168,7 @@ OpenLayers.Control.Geolocate = OpenLayers.Class(OpenLayers.Control, {
      * registration)
      */
     getCurrentLocation: function() {
-        if (!this.active || this.watch) {
+        if(!this.active || this.watch) {
             return false;
         }
         this.geolocation.getCurrentPosition(

@@ -87,7 +87,7 @@ OpenLayers.Layer.Image = OpenLayers.Class(OpenLayers.Layer, {
      * Destroy this layer
      */
     destroy: function() {
-        if (this.tile) {
+        if(this.tile) {
             this.removeTileMonitoringHooks(this.tile);
             this.tile.destroy();
             this.tile = null;

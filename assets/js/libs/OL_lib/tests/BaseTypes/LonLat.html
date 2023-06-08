@@ -150,7 +150,7 @@
         try {
             for(var i = 0, len = checkArgs.length; i < len; i++ ){
                 returnedVal = OpenLayers.LonLat.fromArray( checkArgs[i] );
-                if (!(returnedVal instanceof OpenLayers.LonLat) ) {
+                if(!(returnedVal instanceof OpenLayers.LonLat) ) {
                     unexpectedResult = true;
                     break;
                 }

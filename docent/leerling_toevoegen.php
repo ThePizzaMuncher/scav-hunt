@@ -1,13 +1,10 @@
 <?php
 require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
-if (isset($_SESSION['docent'])) {
-	if ($_SESSION['docent'] != 1) {
-		header('location:../login');
-	}
-}
-else {
-	header('location:../login');
+if(!isset($_SESSION['docent'])) {
+	header('location:../login'); die();
+} if(!$_SESSION['docent']) {
+	header('location:../login'); die();
 }
 
 /* 
@@ -18,9 +15,10 @@ else {
 $id='';
 $naam='';
 $opleiding='';
+$leerjaar='';
 $groep_ID='1';
 
- function renderForm($id, $naam, $opleiding, $groep_ID)
+ function renderForm($id, $naam, $opleiding,$leerjaar, $groep_ID)
  {
  ?>
   
@@ -29,10 +27,13 @@ $groep_ID='1';
  <div>
 <table border='1' cellpadding='10' width='100%'>
 <tr>
-<td> <strong>voornaam: </strong></td><td>  <input type='text' name='naam' value='<?php echo $naam; ?>'/>*</td>
+<td> <strong>Voornaam: </strong></td><td>  <input type='text' name='naam' value='<?php echo $naam; ?>'/>*</td>
 </tr>
 <tr>
-<td> <strong>opleiding: </strong></td><td>  <input type='text' name='opleiding' value='<?php echo $opleiding; ?>'/>*</td>
+<td> <strong>Opleiding: </strong></td><td>  <input type='text' name='opleiding' value='<?php echo $opleiding; ?>'/>*</td>
+</tr>
+<tr>
+<td> <strong>Leerjaar: </strong></td><td>  <input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>'/>*</td>
 </tr>
 <input hidden readonly type='text' name='groep_ID' value='1'/></td>
 
@@ -70,7 +71,7 @@ echo '<div class="container">
    '
 ;
  // check if the form has been submitted. If it has, start to process the form and save it to the database
- if (isset($_POST['submit']))
+ if(isset($_POST['submit']))
  	{ 
        
 
@@ -78,16 +79,17 @@ echo '<div class="container">
 //	$id = $_POST['id']; 	     // get form data, making sure it is valid
 	$naam = mysqli_real_escape_string($conn,$_POST['naam']);
 	$opleiding = mysqli_real_escape_string($conn,$_POST['opleiding']);
+	$leerjaar = mysqli_real_escape_string($conn,$_POST['leerjaar']);
 	//$groep_ID = mysqli_real_escape_string($conn,$_POST['groep_ID']);
    
  
  // check to make sure both fields are entered
- if ($naam == '' || $opleiding == '' || $groep_ID == '')
+ if($naam == '' || $opleiding == '' || $groep_ID == '' || $leerjaar == '')
  	{
  	// generate error message
  	$error = 'ERROR: Please fill in all required fields!';
  	// if either field is blank, display the form again
- 	renderForm($naam, $opleiding, $groep_ID);
+ 	renderForm($naam, $opleiding,$leerjaar, $groep_ID);
 
  	}
  else
@@ -95,7 +97,7 @@ echo '<div class="container">
 		 
  	// save the data to the database
 
-	$sql_query = "INSERT INTO leerling (naam, opleiding, groep_ID) VALUES ('$naam', '$opleiding', '$groep_ID')";
+	$sql_query = "INSERT INTO leerling (naam, opleiding,leerjaar, groep_ID) VALUES ('$naam', '$opleiding','$leerjaar', '$groep_ID')";
 
 
 	$retval = mysqli_query($conn, $sql_query );

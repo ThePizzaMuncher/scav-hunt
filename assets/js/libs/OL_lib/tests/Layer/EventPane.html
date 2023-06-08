@@ -15,7 +15,7 @@
         t.eq( layer.CLASS_NAME, "OpenLayers.Layer.EventPane", "CLASS_NAME variable set correctly");
         t.eq( layer.name, "Test Layer", "layer.name is correct" );
         t.eq( layer.isBaseLayer, true, "EventPane layer is always base layer" );
-        if (!isMozilla) {
+        if(!isMozilla) {
             t.ok( true, "skipping element test outside of Mozilla");
         } else {
             t.ok( layer.pane instanceof HTMLDivElement, "layer.pane is an HTMLDivElement" );
@@ -57,7 +57,7 @@
 // MOUSEMOVE test does not seem to work... 
 //         t.plan( 2 );    
 
-        if (OpenLayers.BROWSER_NAME != "firefox" && OpenLayers.BROWSER_NAME != "mozilla") {
+        if(OpenLayers.BROWSER_NAME != "firefox" && OpenLayers.BROWSER_NAME != "mozilla") {
             t.plan(4);
         } else {
             t.plan(0);
@@ -91,7 +91,7 @@
             log.push(event);
         });
         
-        if (document.createEvent) { // Mozilla
+        if(document.createEvent) { // Mozilla
             var evObj = document.createEvent('MouseEvents');
             evObj.initEvent('mousemove', true, false);
             map.viewPortDiv.dispatchEvent(evObj);

@@ -93,7 +93,7 @@ OpenLayers.Format.JSON = OpenLayers.Class(OpenLayers.Format, {
      */
     read: function(json, filter) {
         var object;
-        if (this.nativeJSON) {
+        if(this.nativeJSON) {
             object = JSON.parse(json, filter);
         } else try {
             /**
@@ -104,7 +104,7 @@ OpenLayers.Format.JSON = OpenLayers.Class(OpenLayers.Format, {
              *     cause mutation. But just to be safe, we will reject all
              *     unexpected characters.
              */
-            if (/^[\],:{}\s]*$/.test(json.replace(/\\["\\\/bfnrtu]/g, '@').
+            if(/^[\],:{}\s]*$/.test(json.replace(/\\["\\\/bfnrtu]/g, '@').
                                 replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
                                 replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
 

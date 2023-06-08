@@ -15,7 +15,7 @@ var map;
         displayClass: "aerialButton",
         eventListeners: {
             activate: function() {
-                if (aerial) {map.setBaseLayer(aerial);}
+                if(aerial) {map.setBaseLayer(aerial);}
             }
         }
     });
@@ -24,7 +24,7 @@ var map;
         displayClass: "mapButton",
         eventListeners: {
             activate: function() {
-                if (fmzk) {map.setBaseLayer(fmzk);}
+                if(fmzk) {map.setBaseLayer(fmzk);}
             }
         }
     });
@@ -33,10 +33,10 @@ var map;
         displayClass: "labelButton",
         eventListeners: {
             activate: function() {
-                if (labels) {labels.setVisibility(true);}
+                if(labels) {labels.setVisibility(true);}
             },
             deactivate: function() {
-                if (labels) {labels.setVisibility(false);}
+                if(labels) {labels.setVisibility(false);}
             }
         }
     });
@@ -114,12 +114,12 @@ var map;
                 var ctr = map.getCenter();
                 window.location.hash = "x="+ctr.lon+"&y="+ctr.lat+"&z="+map.getZoom();
                 // switch to OSM when outside Vienna
-                if (!map.getExtent().intersectsBounds(fmzk.tileFullExtent)) {
-                    if (map.baseLayer !== osm) {
+                if(!map.getExtent().intersectsBounds(fmzk.tileFullExtent)) {
+                    if(map.baseLayer !== osm) {
                         map.addLayer(osm);
                         map.setBaseLayer(osm);
                     }
-                } else if (map.baseLayer === osm) {
+                } else if(map.baseLayer === osm) {
                     map.removeLayer(osm);
                 }
             }
@@ -239,7 +239,7 @@ var map;
         android = ~ua.indexOf('Android'),
         lastWidth = 0;
 
-    if (android) {
+    if(android) {
         // Android's browser adds the scroll position to the innerHeight, just to
         // make this really fucking difficult. Thus, once we are scrolled, the
         // page height value needs to be corrected in case the page is loaded
@@ -252,16 +252,16 @@ var map;
     var setupScroll = window.onload = function() {
         // Start out by adding the height of the location bar to the width, so that
         // we can scroll past it
-        if (ios) {
+        if(ios) {
             // iOS reliably returns the innerWindow size for documentElement.clientHeight
             // but window.innerHeight is sometimes the wrong value after rotating
             // the orientation
             var height = document.documentElement.clientHeight;
             // Only add extra padding to the height on iphone / ipod, since the ipad
             // browser doesn't scroll off the location bar.
-            if (iphone && !fullscreen) height += 60;
+            if(iphone && !fullscreen) height += 60;
             page.style.height = height + 'px';
-        } else if (android) {
+        } else if(android) {
             // The stock Android browser has a location bar height of 56 pixels, but
             // this very likely could be broken in other Android browsers.
             page.style.height = (window.innerHeight + 56) + 'px';
@@ -274,7 +274,7 @@ var map;
         var pageWidth = page.offsetWidth;
         // Android doesn't support orientation change, so check for when the width
         // changes to figure out when the orientation changes
-        if (lastWidth == pageWidth) return;
+        if(lastWidth == pageWidth) return;
         lastWidth = pageWidth;
         setupScroll();
     })();

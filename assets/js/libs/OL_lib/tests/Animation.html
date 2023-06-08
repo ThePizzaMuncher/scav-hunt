@@ -29,7 +29,7 @@
             // Test in an extra window in Firefox, and directly in other browsers.
             // This is needed because requestAnimationFrame does not work
             // correctly in Firefox in a hidden IFrame.
-            if (window.mozRequestAnimationFrame) {
+            if(window.mozRequestAnimationFrame) {
                 t.open_window("Animation.html", doIt);
             } else {
                 doIt(window);

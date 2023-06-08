@@ -77,7 +77,7 @@ OpenLayers.Pixel = OpenLayers.Class({
      */
     equals:function(px) {
         var equals = false;
-        if (px != null) {
+        if(px != null) {
             equals = ((this.x == px.x && this.y == px.y) ||
                       (isNaN(this.x) && isNaN(this.y) && isNaN(px.x) && isNaN(px.y)));
         }
@@ -114,7 +114,7 @@ OpenLayers.Pixel = OpenLayers.Class({
      * values passed in.
      */
     add:function(x, y) {
-        if ( (x == null) || (y == null) ) {
+        if( (x == null) || (y == null) ) {
             throw new TypeError('Pixel.add cannot receive null values');
         }
         return new OpenLayers.Pixel(this.x + x, this.y + y);
@@ -133,7 +133,7 @@ OpenLayers.Pixel = OpenLayers.Class({
     */
     offset:function(px) {
         var newPx = this.clone();
-        if (px) {
+        if(px) {
             newPx = this.add(px.x, px.y);
         }
         return newPx;

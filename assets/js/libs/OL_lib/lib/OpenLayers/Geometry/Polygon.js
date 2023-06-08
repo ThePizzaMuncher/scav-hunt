@@ -48,7 +48,7 @@ OpenLayers.Geometry.Polygon = OpenLayers.Class(
      */
     getArea: function() {
         var area = 0.0;
-        if ( this.components && (this.components.length > 0)) {
+        if( this.components && (this.components.length > 0)) {
             area += Math.abs(this.components[0].getArea());
             for (var i=1, len=this.components.length; i<len; i++) {
                 area -= Math.abs(this.components[i].getArea());

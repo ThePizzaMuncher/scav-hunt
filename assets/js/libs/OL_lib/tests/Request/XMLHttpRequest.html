@@ -22,7 +22,7 @@
         // Case 2: Request-B: open & send
             var requestB = new OpenLayers.Request.XMLHttpRequest();
             requestB.onreadystatechange = function() {
-                if (requestB.readyState == 4) {
+                if(requestB.readyState == 4) {
                     t.ok(true, "Request-B: triggered the event onreadystatechange when 4-DONE");
                 }
             };
@@ -34,7 +34,7 @@
         // Case 3: Request-C: open, send & abort
             var requestC = new OpenLayers.Request.XMLHttpRequest();
             requestC.onreadystatechange = function() {
-                if (requestC.readyState == 4) {
+                if(requestC.readyState == 4) {
                     t.fail("Request-C: triggered the event onreadystatechange when 4-DONE after abort");
                 }
             };

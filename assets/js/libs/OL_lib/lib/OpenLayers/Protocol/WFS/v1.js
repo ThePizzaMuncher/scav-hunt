@@ -128,7 +128,7 @@ OpenLayers.Protocol.WFS.v1 = OpenLayers.Class(OpenLayers.Protocol, {
                 schema: this.schema
             }, this.formatOptions));
         }
-        if (!options.geometryName && parseFloat(this.format.version) > 1.0) {
+        if(!options.geometryName && parseFloat(this.format.version) > 1.0) {
             this.setGeometryName(null);
         }
     },
@@ -254,8 +254,8 @@ OpenLayers.Protocol.WFS.v1 = OpenLayers.Class(OpenLayers.Protocol, {
             if(request.status >= 200 && request.status < 300) {
                 // success
                 var result = this.parseResponse(request, options.readOptions);
-                if (result && result.success !== false) { 
-                    if (options.readOptions && options.readOptions.output == "object") {
+                if(result && result.success !== false) { 
+                    if(options.readOptions && options.readOptions.output == "object") {
                         OpenLayers.Util.extend(response, result);
                     } else {
                         response.features = result;
@@ -298,12 +298,12 @@ OpenLayers.Protocol.WFS.v1 = OpenLayers.Class(OpenLayers.Protocol, {
         }
         var result = (this.readFormat !== null) ? this.readFormat.read(doc) : 
             this.format.read(doc, options);
-        if (!this.featureNS) {
+        if(!this.featureNS) {
             var format = this.readFormat || this.format;
             this.featureNS = format.featureNS;
             // no need to auto-configure again on subsequent reads
             format.autoConfig = false;
-            if (!this.geometryName) {
+            if(!this.geometryName) {
                 this.setGeometryName(format.geometryName);
             }
         }
@@ -374,7 +374,7 @@ OpenLayers.Protocol.WFS.v1 = OpenLayers.Class(OpenLayers.Protocol, {
             var obj = this.format.read(data) || {};
             
             response.insertIds = obj.insertIds || [];
-            if (obj.success) {
+            if(obj.success) {
                 response.code = OpenLayers.Protocol.Response.SUCCESS;
             } else {
                 response.code = OpenLayers.Protocol.Response.FAILURE;
@@ -444,7 +444,7 @@ OpenLayers.Protocol.WFS.v1 = OpenLayers.Class(OpenLayers.Protocol, {
      * response - {<OpenLayers.Protocol.Response>}
      */
     abort: function(response) {
-        if (response) {
+        if(response) {
             response.priv.abort();
         }
     },

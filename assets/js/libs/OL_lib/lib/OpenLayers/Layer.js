@@ -339,14 +339,14 @@ OpenLayers.Layer = OpenLayers.Class({
         
         options = OpenLayers.Util.extend({}, options);
         // make sure we respect alwaysInRange if set on the prototype
-        if (this.alwaysInRange != null) {
+        if(this.alwaysInRange != null) {
             options.alwaysInRange = this.alwaysInRange;
         }
         this.addOptions(options);
 
         this.name = name;
         
-        if (this.id == null) {
+        if(this.id == null) {
 
             this.id = OpenLayers.Util.createUniqueID(this.CLASS_NAME + "_");
 
@@ -373,10 +373,10 @@ OpenLayers.Layer = OpenLayers.Class({
      *     been destroyed.  Default is true.
      */
     destroy: function(setNewBaseLayer) {
-        if (setNewBaseLayer == null) {
+        if(setNewBaseLayer == null) {
             setNewBaseLayer = true;
         }
-        if (this.map != null) {
+        if(this.map != null) {
             this.map.removeLayer(this, setNewBaseLayer);
         }
         this.projection = null;
@@ -385,7 +385,7 @@ OpenLayers.Layer = OpenLayers.Class({
         this.div = null;
         this.options = null;
 
-        if (this.events) {
+        if(this.events) {
             if(this.eventListeners) {
                 this.events.un(this.eventListeners);
             }
@@ -406,7 +406,7 @@ OpenLayers.Layer = OpenLayers.Class({
     */
     clone: function (obj) {
         
-        if (obj == null) {
+        if(obj == null) {
             obj = new OpenLayers.Layer(this.name, this.getOptions());
         }
         
@@ -446,9 +446,9 @@ OpenLayers.Layer = OpenLayers.Class({
      * newName - {String} The new name.
      */
     setName: function(newName) {
-        if (newName != this.name) {
+        if(newName != this.name) {
             this.name = newName;
-            if (this.map != null) {
+            if(this.map != null) {
                 this.map.events.triggerEvent("changelayer", {
                     layer: this,
                     property: "name"
@@ -469,26 +469,26 @@ OpenLayers.Layer = OpenLayers.Class({
     */
     addOptions: function (newOptions, reinitialize) {
 
-        if (this.options == null) {
+        if(this.options == null) {
             this.options = {};
         }
         
-        if (newOptions) {
+        if(newOptions) {
             // make sure this.projection references a projection object
             if(typeof newOptions.projection == "string") {
                 newOptions.projection = new OpenLayers.Projection(newOptions.projection);
             }
-            if (newOptions.projection) {
+            if(newOptions.projection) {
                 // get maxResolution, units and maxExtent from projection defaults if
                 // they are not defined already
                 OpenLayers.Util.applyDefaults(newOptions,
                     OpenLayers.Projection.defaults[newOptions.projection.getCode()]);
             }
             // allow array for extents
-            if (newOptions.maxExtent && !(newOptions.maxExtent instanceof OpenLayers.Bounds)) {
+            if(newOptions.maxExtent && !(newOptions.maxExtent instanceof OpenLayers.Bounds)) {
                 newOptions.maxExtent = new OpenLayers.Bounds(newOptions.maxExtent);
             }
-            if (newOptions.minExtent && !(newOptions.minExtent instanceof OpenLayers.Bounds)) {
+            if(newOptions.minExtent && !(newOptions.minExtent instanceof OpenLayers.Bounds)) {
                 newOptions.minExtent = new OpenLayers.Bounds(newOptions.minExtent);
             }
         }
@@ -519,7 +519,7 @@ OpenLayers.Layer = OpenLayers.Class({
                    OpenLayers.Util.indexOf(properties, o) >= 0) {
 
                     this.initResolutions();
-                    if (reinitialize && this.map.baseLayer === this) {
+                    if(reinitialize && this.map.baseLayer === this) {
                         // update map position, and restore previous resolution
                         this.map.setCenter(this.map.getCenter(),
                             this.map.getZoomForResolution(resolution),
@@ -556,7 +556,7 @@ OpenLayers.Layer = OpenLayers.Class({
      */
     redraw: function() {
         var redrawn = false;
-        if (this.map) {
+        if(this.map) {
 
             // min/max Range may have changed
             this.inRange = this.calculateInRange();
@@ -564,7 +564,7 @@ OpenLayers.Layer = OpenLayers.Class({
             // map's center might not yet be set
             var extent = this.getExtent();
 
-            if (extent && this.inRange && this.visibility) {
+            if(extent && this.inRange && this.visibility) {
                 var zoomChanged = true;
                 this.moveTo(extent, zoomChanged, false);
                 this.events.triggerEvent("moveend",
@@ -586,7 +586,7 @@ OpenLayers.Layer = OpenLayers.Class({
      */
     moveTo:function(bounds, zoomChanged, dragging) {
         var display = this.visibility;
-        if (!this.isBaseLayer) {
+        if(!this.isBaseLayer) {
             display = display && this.inRange;
         }
         this.display(display);
@@ -616,7 +616,7 @@ OpenLayers.Layer = OpenLayers.Class({
      * map - {<OpenLayers.Map>}
      */
     setMap: function(map) {
-        if (this.map == null) {
+        if(this.map == null) {
         
             this.map = map;
             
@@ -626,7 +626,7 @@ OpenLayers.Layer = OpenLayers.Class({
             this.minExtent = this.minExtent || this.map.minExtent;
 
             this.projection = this.projection || this.map.projection;
-            if (typeof this.projection == "string") {
+            if(typeof this.projection == "string") {
                 this.projection = new OpenLayers.Projection(this.projection);
             }
 
@@ -637,7 +637,7 @@ OpenLayers.Layer = OpenLayers.Class({
             
             this.initResolutions();
             
-            if (!this.isBaseLayer) {
+            if(!this.isBaseLayer) {
                 this.inRange = this.calculateInRange();
                 var show = ((this.visibility) && (this.inRange));
                 this.div.style.display = show ? "" : "none";
@@ -739,11 +739,11 @@ OpenLayers.Layer = OpenLayers.Class({
      * visibility - {Boolean} Whether or not to display the layer (if in range)
      */
     setVisibility: function(visibility) {
-        if (visibility != this.visibility) {
+        if(visibility != this.visibility) {
             this.visibility = visibility;
             this.display(visibility);
             this.redraw();
-            if (this.map != null) {
+            if(this.map != null) {
                 this.map.events.triggerEvent("changelayer", {
                     layer: this,
                     property: "visibility"
@@ -763,7 +763,7 @@ OpenLayers.Layer = OpenLayers.Class({
      * display - {Boolean}
      */
     display: function(display) {
-        if (display != (this.div.style.display != "none")) {
+        if(display != (this.div.style.display != "none")) {
             this.div.style.display = (display && this.calculateInRange()) ? "block" : "none";
         }
     },
@@ -779,10 +779,10 @@ OpenLayers.Layer = OpenLayers.Class({
     calculateInRange: function() {
         var inRange = false;
 
-        if (this.alwaysInRange) {
+        if(this.alwaysInRange) {
             inRange = true;
         } else {
-            if (this.map) {
+            if(this.map) {
                 var resolution = this.map.getResolution();
                 inRange = ( (resolution >= this.minResolution) &&
                             (resolution <= this.maxResolution) );
@@ -798,9 +798,9 @@ OpenLayers.Layer = OpenLayers.Class({
      * isBaseLayer - {Boolean}
      */
     setIsBaseLayer: function(isBaseLayer) {
-        if (isBaseLayer != this.isBaseLayer) {
+        if(isBaseLayer != this.isBaseLayer) {
             this.isBaseLayer = isBaseLayer;
-            if (this.map != null) {
+            if(this.map != null) {
                 this.map.events.triggerEvent("changebaselayer", {
                     layer: this
                 });
@@ -1215,14 +1215,14 @@ OpenLayers.Layer = OpenLayers.Class({
             var diff;
             var minDiff = Number.POSITIVE_INFINITY;
             for(i=0, len=this.resolutions.length; i<len; i++) {            
-                if (closest) {
+                if(closest) {
                     diff = Math.abs(this.resolutions[i] - resolution);
-                    if (diff > minDiff) {
+                    if(diff > minDiff) {
                         break;
                     }
                     minDiff = diff;
                 } else {
-                    if (this.resolutions[i] < resolution) {
+                    if(this.resolutions[i] < resolution) {
                         break;
                     }
                 }
@@ -1247,14 +1247,14 @@ OpenLayers.Layer = OpenLayers.Class({
     getLonLatFromViewPortPx: function (viewPortPx) {
         var lonlat = null;
         var map = this.map;
-        if (viewPortPx != null && map.minPx) {
+        if(viewPortPx != null && map.minPx) {
             var res = map.getResolution();
             var maxExtent = map.getMaxExtent({restricted: true});
             var lon = (viewPortPx.x - map.minPx.x) * res + maxExtent.left;
             var lat = (map.minPx.y - viewPortPx.y) * res + maxExtent.top;
             lonlat = new OpenLayers.LonLat(lon, lat);
 
-            if (this.wrapDateLine) {
+            if(this.wrapDateLine) {
                 lonlat = lonlat.wrapDateLine(this.maxExtent);
             }
         }
@@ -1277,7 +1277,7 @@ OpenLayers.Layer = OpenLayers.Class({
      */
     getViewPortPxFromLonLat: function (lonlat, resolution) {
         var px = null; 
-        if (lonlat != null) {
+        if(lonlat != null) {
             resolution = resolution || this.map.getResolution();
             var extent = this.map.calculateBounds(null, resolution);
             px = new OpenLayers.Pixel(
@@ -1296,20 +1296,20 @@ OpenLayers.Layer = OpenLayers.Class({
      * opacity - {Float}
      */
     setOpacity: function(opacity) {
-        if (opacity != this.opacity) {
+        if(opacity != this.opacity) {
             this.opacity = opacity;
             var childNodes = this.div.childNodes;
             for(var i = 0, len = childNodes.length; i < len; ++i) {
                 var element = childNodes[i].firstChild || childNodes[i];
                 var lastChild = childNodes[i].lastChild;
                 //TODO de-uglify this
-                if (lastChild && lastChild.nodeName.toLowerCase() === "iframe") {
+                if(lastChild && lastChild.nodeName.toLowerCase() === "iframe") {
                     element = lastChild.parentNode;
                 }
                 OpenLayers.Util.modifyDOMElement(element, null, null, null, 
                                                  null, null, null, opacity);
             }
-            if (this.map != null) {
+            if(this.map != null) {
                 this.map.events.triggerEvent("changelayer", {
                     layer: this,
                     property: "opacity"
@@ -1351,7 +1351,7 @@ OpenLayers.Layer = OpenLayers.Class({
      */
     adjustBounds: function (bounds) {
 
-        if (this.gutter) {
+        if(this.gutter) {
             // Adjust the extent of a bounds in map units by the 
             // layer's gutter in pixels.
             var mapGutter = this.gutter * this.map.getResolution();
@@ -1361,7 +1361,7 @@ OpenLayers.Layer = OpenLayers.Class({
                                            bounds.top + mapGutter);
         }
 
-        if (this.wrapDateLine) {
+        if(this.wrapDateLine) {
             // wrap around the date line, within the limits of rounding error
             var wrappingOptions = { 
                 'rightTolerance':this.getResolution(),

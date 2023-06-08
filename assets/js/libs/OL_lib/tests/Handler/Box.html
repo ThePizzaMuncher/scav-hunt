@@ -65,14 +65,14 @@
         handler.startBox();
         offset = handler.getBoxOffsets();
         handler.moveBox({x: 10, y: 10});
-        if (testAll) {
+        if(testAll) {
             t.eq(parseInt(handler.zoomBox.style.left), 5 - offset.left, "x position of box correct");
             t.eq(parseInt(handler.zoomBox.style.top), 5 - offset.top, "y position of box correct");
             t.eq(parseInt(handler.zoomBox.style.width), 5 + offset.width + 1, "x dimension of box correct");
             t.eq(parseInt(handler.zoomBox.style.height), 5 + offset.height + 1, "y dimension of box correct");
         }
         handler.moveBox({x: 0, y: 0});
-        if (testAll) {
+        if(testAll) {
             t.eq(parseInt(handler.zoomBox.style.left), 0 - offset.left, "new x position of box correct");
             t.eq(parseInt(handler.zoomBox.style.top), 0 - offset.top, "new y position of box correct");
             t.eq(parseInt(handler.zoomBox.style.width), 5 + offset.width + 1, "x dimension of box still correct");

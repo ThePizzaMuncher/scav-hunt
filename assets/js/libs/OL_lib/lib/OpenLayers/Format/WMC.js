@@ -83,11 +83,11 @@ OpenLayers.Format.WMC = OpenLayers.Class(OpenLayers.Format.Context, {
         };
 
 
-        if (layer.metadata.servertitle) {
+        if(layer.metadata.servertitle) {
             layerContext.server.title = layer.metadata.servertitle;
         }
 
-        if (layer.metadata.formats && layer.metadata.formats.length > 0) {
+        if(layer.metadata.formats && layer.metadata.formats.length > 0) {
             for (var i=0, len=layer.metadata.formats.length; i<len; i++) {
                 var format = layer.metadata.formats[i];
                 layerContext.formats.push({
@@ -102,10 +102,10 @@ OpenLayers.Format.WMC = OpenLayers.Class(OpenLayers.Format.Context, {
             });
         }
 
-        if (layer.metadata.styles && layer.metadata.styles.length > 0) {
+        if(layer.metadata.styles && layer.metadata.styles.length > 0) {
             for (var i=0, len=layer.metadata.styles.length; i<len; i++) {
                 var style = layer.metadata.styles[i];
-                if ((style.href == layer.params["SLD"]) ||
+                if((style.href == layer.params["SLD"]) ||
                     (style.body == layer.params["SLD_BODY"]) ||
                     (style.name == layer.params["STYLES"])) {
                     style.current = true;
@@ -141,7 +141,7 @@ OpenLayers.Format.WMC = OpenLayers.Class(OpenLayers.Format.Context, {
     toContext: function(obj) {
         var context = {};
         var layers = obj.layers;
-        if (obj.CLASS_NAME == "OpenLayers.Map") {
+        if(obj.CLASS_NAME == "OpenLayers.Map") {
             var metadata = obj.metadata || {};
             context.size = obj.getSize();
             context.bounds = obj.getExtent();
@@ -156,20 +156,20 @@ OpenLayers.Format.WMC = OpenLayers.Class(OpenLayers.Format.Context, {
         } else {
             // copy all obj properties except the "layers" property
             OpenLayers.Util.applyDefaults(context, obj);
-            if (context.layers != undefined) {
+            if(context.layers != undefined) {
                 delete(context.layers);
             }
         }
 
-        if (context.layersContext == undefined) {
+        if(context.layersContext == undefined) {
             context.layersContext = [];
         }
 
         // let's convert layers into layersContext object (if any)
-        if (layers != undefined && OpenLayers.Util.isArray(layers)) {
+        if(layers != undefined && OpenLayers.Util.isArray(layers)) {
             for (var i=0, len=layers.length; i<len; i++) {
                 var layer = layers[i];
-                if (layer instanceof OpenLayers.Layer.WMS) {
+                if(layer instanceof OpenLayers.Layer.WMS) {
                     context.layersContext.push(this.layerToContext(layer));
                 }
             }

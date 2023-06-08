@@ -163,7 +163,7 @@ OpenLayers.Handler.Feature = OpenLayers.Class(OpenLayers.Handler, {
         // propagation of left-click mousedown events but not right-click mousedown events.
         // This mismatch causes problems when comparing the location of the down and up
         // events in the click function so it is important ignore right-clicks.
-        if (OpenLayers.Event.isLeftClick(evt) || OpenLayers.Event.isSingleTouch(evt)) {
+        if(OpenLayers.Event.isLeftClick(evt) || OpenLayers.Event.isSingleTouch(evt)) {
             this.down = evt.xy;
         }
         return this.handle(evt) ? !this.stopDown : true;
@@ -209,7 +209,7 @@ OpenLayers.Handler.Feature = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean}
      */
     mousemove: function(evt) {
-        if (!this.callbacks['over'] && !this.callbacks['out']) {
+        if(!this.callbacks['over'] && !this.callbacks['out']) {
             return true;
         }     
         this.handle(evt);
@@ -398,7 +398,7 @@ OpenLayers.Handler.Feature = OpenLayers.Class(OpenLayers.Handler, {
      * evt - {Object}
      */
     handleMapEvents: function(evt) {
-        if (evt.type == "removelayer" || evt.property == "order") {
+        if(evt.type == "removelayer" || evt.property == "order") {
             this.moveLayerToTop();
         }
     },
@@ -422,7 +422,7 @@ OpenLayers.Handler.Feature = OpenLayers.Class(OpenLayers.Handler, {
      */
     moveLayerBack: function() {
         var index = this.layer.getZIndex() - 1;
-        if (index >= this.map.Z_INDEX_BASE['Feature']) {
+        if(index >= this.map.Z_INDEX_BASE['Feature']) {
             this.layer.setZIndex(index);
         } else {
             this.map.setLayerZIndex(this.layer,

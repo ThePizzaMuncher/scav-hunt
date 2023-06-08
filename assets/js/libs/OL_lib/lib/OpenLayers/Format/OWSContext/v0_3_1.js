@@ -153,7 +153,7 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 if(l.metadata && l.metadata.nestingPath){
                     nPath = l.metadata.nestingPath.slice();
                 }
-                if (nTitle != "") {
+                if(nTitle != "") {
                     nPath.push(nTitle);
                 }
                 layerContext.metadata.nestingPath = nPath;
@@ -178,7 +178,7 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     decomposeNestingPath: function(nPath){
         var a = [];
-        if (OpenLayers.Util.isArray(nPath)) {
+        if(OpenLayers.Util.isArray(nPath)) {
             var path = nPath.slice();
             while (path.length > 0) {
                 a.push(path.slice());
@@ -231,11 +231,11 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
      * layer - {Object} layerContext object
      */
     processLayer: function(layerArray, layer) {
-        if (layer.layersContext) {
+        if(layer.layersContext) {
             for (var i=0, len = layer.layersContext.length; i<len; i++) {
                 var l = layer.layersContext[i];
                 layerArray.push(l);
-                if (l.layersContext) {
+                if(l.layersContext) {
                     this.processLayer(layerArray, l);
                 }
             }
@@ -308,7 +308,7 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
                     formats: [],
                     styles: []
                 };
-                if (!obj.layersContext) {
+                if(!obj.layersContext) {
                     obj.layersContext = [];
                 }
                 obj.layersContext.push(layerContext);
@@ -319,10 +319,10 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 var elements = this.getElementsByTagNameNS(node, 
                     this.namespaces.gml, "featureMember");
                 var el;
-                if (elements.length >= 1) {
+                if(elements.length >= 1) {
                     el = elements[0];
                 }
-                if (el && el.firstChild) {
+                if(el && el.firstChild) {
                     var featurenode = (el.firstChild.nextSibling) ? 
                         el.firstChild.nextSibling : el.firstChild;
                     this.setNamespace("feature", featurenode.namespaceURI);
@@ -333,7 +333,7 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
             },
             "Server": function(node, obj) {
                 // when having multiple Server types, we prefer WMS
-                if ((!obj.service && !obj.version) || 
+                if((!obj.service && !obj.version) || 
                     (obj.service != 
                         OpenLayers.Format.Context.serviceTypes.WMS)) {
                             obj.service = node.getAttribute("service");
@@ -425,7 +425,7 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
             "InlineGeometry": function(layer) {
                 var node = this.createElementNSPlus("InlineGeometry"),
                     dataExtent = layer.getDataExtent();
-                if (dataExtent !== null) {
+                if(dataExtent !== null) {
                     this.writeNode("gml:boundedBy", dataExtent, node);
                 }
                 for (var i=0, len=layer.features.length; i<len; i++) {
@@ -444,7 +444,7 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 var node = this.createElementNSPlus("Style");
                 this.writeNode("Name", style, node);
                 this.writeNode("Title", style, node);
-                if (style.legend) {
+                if(style.legend) {
                     this.writeNode("LegendURL", style, node);
                 }
                 return node;
@@ -476,7 +476,7 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 this.writeNode("Server", {service: 
                     OpenLayers.Format.Context.serviceTypes.WMS,
                     version: layer.params.VERSION, url: layer.url}, node);
-                if (layer.metadata.styles && layer.metadata.styles.length > 0) {
+                if(layer.metadata.styles && layer.metadata.styles.length > 0) {
                     this.writeNode("StyleList", layer.metadata.styles, node);
                 }
                 return node;
@@ -506,16 +506,16 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
                     return node;
                 } else {
                     // write out the actual layer
-                    if (layer instanceof OpenLayers.Layer.WMS) {
+                    if(layer instanceof OpenLayers.Layer.WMS) {
                         node = this.writeNode("_WMS", layer);
-                    } else if (layer instanceof OpenLayers.Layer.Vector) {
-                        if (layer.protocol instanceof OpenLayers.Protocol.WFS.v1) {
+                    } else if(layer instanceof OpenLayers.Layer.Vector) {
+                        if(layer.protocol instanceof OpenLayers.Protocol.WFS.v1) {
                             node = this.writeNode("_WFS", layer);
-                        } else if (layer.protocol instanceof OpenLayers.Protocol.HTTP) {
-                            if (layer.protocol.format instanceof OpenLayers.Format.GML) {
+                        } else if(layer.protocol instanceof OpenLayers.Protocol.HTTP) {
+                            if(layer.protocol.format instanceof OpenLayers.Format.GML) {
                                 layer.protocol.format.version = "2.1.2";
                                 node = this.writeNode("_GML", layer);
-                            } else if (layer.protocol.format instanceof OpenLayers.Format.KML) {
+                            } else if(layer.protocol.format instanceof OpenLayers.Format.KML) {
                                 layer.protocol.format.version = "2.2";
                                 node = this.writeNode("_KML", layer);
                             }
@@ -526,11 +526,11 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
                             node = this.writeNode("_InlineGeometry", layer);
                         }
                     }
-                    if (layer.options.maxScale) {
+                    if(layer.options.maxScale) {
                         this.writeNode("sld:MinScaleDenominator", 
                             layer.options.maxScale, node);
                     }
-                    if (layer.options.minScale) {
+                    if(layer.options.minScale) {
                         this.writeNode("sld:MaxScaleDenominator", 
                             layer.options.minScale, node);
                     }

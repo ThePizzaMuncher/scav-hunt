@@ -182,17 +182,17 @@ OpenLayers.Control.WMTSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
 
         OpenLayers.Control.prototype.initialize.apply(this, [options]);
         
-        if (!this.format) {
+        if(!this.format) {
             this.format = new OpenLayers.Format.WMSGetFeatureInfo(
                 options.formatOptions
             );
         }
         
-        if (this.drillDown === true) {
+        if(this.drillDown === true) {
             this.hover = false;
         }
 
-        if (this.hover) {
+        if(this.hover) {
             this.handler = new OpenLayers.Handler.Hover(
                 this, {
                     move: this.cancelHover,
@@ -238,9 +238,9 @@ OpenLayers.Control.WMTSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
      * Cancel callback for the hover handler
      */
     cancelHover: function() {
-        if (this.hoverRequest) {
+        if(this.hoverRequest) {
             --this.pending;
-            if (this.pending <= 0) {
+            if(this.pending <= 0) {
                 OpenLayers.Element.removeClass(this.map.viewPortDiv, "olCursorWait");
                 this.pending = 0;
             }            
@@ -260,11 +260,11 @@ OpenLayers.Control.WMTSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
         var layer;
         for (var i=candidates.length-1; i>=0; --i) {
             layer = candidates[i];
-            if (layer instanceof OpenLayers.Layer.WMTS &&
+            if(layer instanceof OpenLayers.Layer.WMTS &&
                 layer.requestEncoding === this.requestEncoding &&
                 (!this.queryVisible || layer.getVisibility())) {
                 layers.push(layer);
-                if (!this.drillDown || this.hover) {
+                if(!this.drillDown || this.hover) {
                     break;
                 }
             }
@@ -322,7 +322,7 @@ OpenLayers.Control.WMTSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
     request: function(xy, options) {
         options = options || {};
         var layers = this.findLayers();
-        if (layers.length > 0) {
+        if(layers.length > 0) {
             var issue, layer;
             for (var i=0, len=layers.length; i<len; i++) {
                 layer = layers[i];
@@ -330,16 +330,16 @@ OpenLayers.Control.WMTSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
                     xy: xy,
                     layer: layer
                 });
-                if (issue !== false) {
+                if(issue !== false) {
                     ++this.pending;
                     var requestOptions = this.buildRequestOptions(layer, xy);
                     var request = OpenLayers.Request.GET(requestOptions);
-                    if (options.hover === true) {
+                    if(options.hover === true) {
                         this.hoverRequest = request;
                     }
                 }
             }
-            if (this.pending > 0) {
+            if(this.pending > 0) {
                 OpenLayers.Element.addClass(this.map.viewPortDiv, "olCursorWait");
             }
         }
@@ -357,11 +357,11 @@ OpenLayers.Control.WMTSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
      */
     handleResponse: function(xy, request, layer) {
         --this.pending;
-        if (this.pending <= 0) {
+        if(this.pending <= 0) {
             OpenLayers.Element.removeClass(this.map.viewPortDiv, "olCursorWait");
             this.pending = 0;
         }
-        if (request.status && (request.status < 200 || request.status >= 300)) {
+        if(request.status && (request.status < 200 || request.status >= 300)) {
             this.events.triggerEvent("exception", {
                 xy: xy, 
                 request: request,
@@ -369,7 +369,7 @@ OpenLayers.Control.WMTSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
             });
         } else {
             var doc = request.responseXML;
-            if (!doc || !doc.documentElement) {
+            if(!doc || !doc.documentElement) {
                 doc = request.responseText;
             }
             var features, except;
@@ -384,7 +384,7 @@ OpenLayers.Control.WMTSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
                     layer: layer
                 });
             }
-            if (!except) {
+            if(!except) {
                 this.events.triggerEvent("getfeatureinfo", {
                     text: request.responseText,
                     features: features,

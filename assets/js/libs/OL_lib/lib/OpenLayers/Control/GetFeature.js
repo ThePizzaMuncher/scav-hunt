@@ -255,7 +255,7 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
      * {Boolean} The control was effectively activated.
      */
     activate: function () {
-        if (!this.active) {
+        if(!this.active) {
             for(var i in this.handlers) {
                 this.handlers[i].activate();
             }
@@ -273,7 +273,7 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
      * {Boolean} The control was effectively deactivated.
      */
     deactivate: function () {
-        if (this.active) {
+        if(this.active) {
             for(var i in this.handlers) {
                 this.handlers[i].deactivate();
             }
@@ -307,7 +307,7 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
      */
     selectBox: function(position) {
         var bounds;
-        if (position instanceof OpenLayers.Bounds) {
+        if(position instanceof OpenLayers.Bounds) {
             var minXY = this.map.getLonLatFromPixel({
                 x: position.left,
                 y: position.bottom
@@ -348,7 +348,7 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
      * Callback from the handlers.hover set up when <hover> selection is on
      */
     cancelHover: function() {
-        if (this.hoverResponse) {
+        if(this.hoverResponse) {
             this.protocol.abort(this.hoverResponse);
             this.hoverResponse = null;
 

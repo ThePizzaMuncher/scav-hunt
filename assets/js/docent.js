@@ -17,7 +17,7 @@ function ih(naam, txt) {
 }
 
 function updateMap(x, z, zoom, update) {
-    if (update != false) {
+    if(update != false) {
         markers.clearMarkers();
     }
     let fromProjection = new OpenLayers.Projection("EPSG:4326");

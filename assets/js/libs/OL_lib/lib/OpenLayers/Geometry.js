@@ -74,7 +74,7 @@ OpenLayers.Geometry = OpenLayers.Class({
      * bounds - {<OpenLayers.Bounds>} 
      */
     setBounds: function(bounds) {
-        if (bounds) {
+        if(bounds) {
             this.bounds = bounds.clone();
         }
     },
@@ -85,7 +85,7 @@ OpenLayers.Geometry = OpenLayers.Class({
      */
     clearBounds: function() {
         this.bounds = null;
-        if (this.parent) {
+        if(this.parent) {
             this.parent.clearBounds();
         }    
     },
@@ -100,7 +100,7 @@ OpenLayers.Geometry = OpenLayers.Class({
      */
     extendBounds: function(newBounds){
         var bounds = this.getBounds();
-        if (!bounds) {
+        if(!bounds) {
             this.setBounds(newBounds);
         } else {
             this.bounds.extend(newBounds);
@@ -116,7 +116,7 @@ OpenLayers.Geometry = OpenLayers.Class({
      * {<OpenLayers.Bounds>}
      */
     getBounds: function() {
-        if (this.bounds == null) {
+        if(this.bounds == null) {
             this.calculateBounds();
         }
         return this.bounds;
@@ -187,7 +187,7 @@ OpenLayers.Geometry = OpenLayers.Class({
     atPoint: function(lonlat, toleranceLon, toleranceLat) {
         var atPoint = false;
         var bounds = this.getBounds();
-        if ((bounds != null) && (lonlat != null)) {
+        if((bounds != null) && (lonlat != null)) {
 
             var dX = (toleranceLon != null) ? toleranceLon : 0;
             var dY = (toleranceLat != null) ? toleranceLat : 0;
@@ -252,7 +252,7 @@ OpenLayers.Geometry = OpenLayers.Class({
      */
     toString: function() {
         var string;
-        if (OpenLayers.Format && OpenLayers.Format.WKT) {
+        if(OpenLayers.Format && OpenLayers.Format.WKT) {
             string = OpenLayers.Format.WKT.prototype.write(
                 new OpenLayers.Feature.Vector(this)
             );
@@ -279,16 +279,16 @@ OpenLayers.Geometry = OpenLayers.Class({
  */
 OpenLayers.Geometry.fromWKT = function(wkt) {
     var geom;
-    if (OpenLayers.Format && OpenLayers.Format.WKT) {
+    if(OpenLayers.Format && OpenLayers.Format.WKT) {
         var format = OpenLayers.Geometry.fromWKT.format;
-        if (!format) {
+        if(!format) {
             format = new OpenLayers.Format.WKT();
             OpenLayers.Geometry.fromWKT.format = format;
         }
         var result = format.read(wkt);
-        if (result instanceof OpenLayers.Feature.Vector) {
+        if(result instanceof OpenLayers.Feature.Vector) {
             geom = result.geometry;
-        } else if (OpenLayers.Util.isArray(result)) {
+        } else if(OpenLayers.Util.isArray(result)) {
             var len = result.length;
             var components = new Array(len);
             for (var i=0; i<len; ++i) {

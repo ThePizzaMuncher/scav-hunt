@@ -170,7 +170,7 @@ def run (sourceDirectory, outputFilename = None, configFile = None,
                 if cfg and cfg.include:
                     if filepath in cfg.include or filepath in cfg.forceFirst:
                         allFiles.append(filepath)
-                elif (not cfg) or (not undesired(filepath, cfg.exclude)):
+                elif(not cfg) or (not undesired(filepath, cfg.exclude)):
                     allFiles.append(filepath)
 
     ## Header inserted at the start of each file in the output
@@ -225,7 +225,7 @@ def run (sourceDirectory, outputFilename = None, configFile = None,
         print "Re-ordering files..."
         order = cfg.forceFirst + [item
                      for item in order
-                     if ((item not in cfg.forceFirst) and
+                     if((item not in cfg.forceFirst) and
                          (item not in cfg.forceLast))] + cfg.forceLast
     
     print

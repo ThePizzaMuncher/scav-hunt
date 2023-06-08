@@ -10,7 +10,7 @@
     var atom_xml   = "./atom-1.0.xml";
 
     // if this test is running online, different rules apply
-    if (isMSIE) {
+    if(isMSIE) {
         georss_txt = "." + georss_txt;
         atom_xml = "." + atom_xml;
     }
@@ -173,7 +173,7 @@
     }
     function test_Layer_GeoRSS_loadend_Event(t) {
         var browserCode = OpenLayers.BROWSER_NAME;
-        if (browserCode == "msie") {
+        if(browserCode == "msie") {
             t.plan(1);
             t.ok(true, "IE fails the GeoRSS test. This could probably be fixed by someone with enough energy to fix it.");
         } else {

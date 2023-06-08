@@ -11,7 +11,7 @@
     var datafile_overflow = "./data_Layer_Text_textfile_overflow.txt";
 
     // if this test is running in IE, different rules apply
-    if (isMSIE) {
+    if(isMSIE) {
         datafile = "." + datafile;
         datafile2 = "." + datafile2;
         datafile_overflow = "." + datafile_overflow;
@@ -48,7 +48,7 @@
           map.setCenter(new OpenLayers.LonLat(0,0),0);
 
 /*
-            if (!isMozilla)
+            if(!isMozilla)
                 t.ok( true, "skipping element test outside of Mozilla");
             else
               t.ok( map.layers[0].div.firstChild instanceof HTMLImageElement, "Marker added to div" )

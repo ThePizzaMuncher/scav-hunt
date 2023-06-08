@@ -120,7 +120,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
         OpenLayers.Control.prototype.initialize.apply(this, [options]);
         var callbacks = {done: this.measureComplete,
             point: this.measurePartial};
-        if (this.immediate){
+        if(this.immediate){
             callbacks.modify = this.measureImmediate;
         }
         this.callbacks = OpenLayers.Util.extend(callbacks, this.callbacks);
@@ -158,7 +158,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
      */
     setImmediate: function(immediate) {
         this.immediate = immediate;
-        if (this.immediate){
+        if(this.immediate){
             this.callbacks.modify = this.measureImmediate;
         } else {
             delete this.callbacks.modify;
@@ -208,7 +208,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
         geometry = geometry.clone();
         // when we're wating for a dblclick, we have to trigger measurepartial
         // after some delay to deal with reflow issues in IE
-        if (this.handler.freehandMode(this.handler.evt)) {
+        if(this.handler.freehandMode(this.handler.evt)) {
             // no dblclick in freehand mode
             this.measure(geometry, "measurepartial");
         } else {
@@ -232,7 +232,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
      * drawing - {Boolean} Indicates whether we're currently drawing.
      */
     measureImmediate : function(point, feature, drawing) {
-        if (drawing && !this.handler.freehandMode(this.handler.evt)) {
+        if(drawing && !this.handler.freehandMode(this.handler.evt)) {
             this.cancelDelay();
             this.measure(feature.geometry, "measurepartial");
         }
@@ -243,7 +243,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
      * Cancels the delay measurement that measurePartial began.
      */
     cancelDelay: function() {
-        if (this.delayedTrigger !== null) {
+        if(this.delayedTrigger !== null) {
             window.clearTimeout(this.delayedTrigger);
             this.delayedTrigger = null;
         }

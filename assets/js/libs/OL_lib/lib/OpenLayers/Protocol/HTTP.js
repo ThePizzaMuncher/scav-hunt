@@ -125,7 +125,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
         this.headers = {};
         OpenLayers.Protocol.prototype.initialize.apply(this, arguments);
 
-        if (!this.filterToParams && OpenLayers.Format.QueryStringFilter) {
+        if(!this.filterToParams && OpenLayers.Format.QueryStringFilter) {
             var format = new OpenLayers.Format.QueryStringFilter({
                 wildcarded: this.wildcarded,
                 srsInBBOX: this.srsInBBOX
@@ -189,7 +189,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
         options.params = OpenLayers.Util.applyDefaults(
             options.params, this.options.params);
         options = OpenLayers.Util.applyDefaults(options, this.options);
-        if (options.filter && this.filterToParams) {
+        if(options.filter && this.filterToParams) {
             options.params = this.filterToParams(
                 options.filter, options.params
             );
@@ -366,7 +366,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
             callback: this.createCallback(this.handleDelete, resp, options),
             headers: options.headers
         };
-        if (this.deleteWithPOST) {
+        if(this.deleteWithPOST) {
             requestOptions.data = this.format.write(feature);
         }
         resp.priv = OpenLayers.Request[method](requestOptions);
@@ -428,10 +428,10 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
      */
     parseFeatures: function(request) {
         var doc = request.responseXML;
-        if (!doc || !doc.documentElement) {
+        if(!doc || !doc.documentElement) {
             doc = request.responseText;
         }
-        if (!doc || doc.length <= 0) {
+        if(!doc || doc.length <= 0) {
             return null;
         }
         return this.format.read(doc);
@@ -506,8 +506,8 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
             this.callUserCallback(response, options);
             success = success && response.success();
             nResponses++;
-            if (nResponses >= nRequests) {
-                if (options.callback) {
+            if(nResponses >= nRequests) {
+                if(options.callback) {
                     finalResponse.code = success ? 
                         OpenLayers.Protocol.Response.SUCCESS :
                         OpenLayers.Protocol.Response.FAILURE;
@@ -554,7 +554,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
      * response - {<OpenLayers.Protocol.Response>}
      */
     abort: function(response) {
-        if (response) {
+        if(response) {
             response.priv.abort();
         }
     },

@@ -173,7 +173,7 @@ OpenLayers.Popup = OpenLayers.Class({
      *     instead of an <OpenLayers.Bounds> object.
      */
     fixPadding: function() {
-        if (typeof this.padding == "number") {
+        if(typeof this.padding == "number") {
             this.padding = new OpenLayers.Bounds(
                 this.padding, this.padding, this.padding, this.padding
             );
@@ -232,7 +232,7 @@ OpenLayers.Popup = OpenLayers.Class({
     * closeBoxCallback - {Function}   Function to be called on closeBox click.
     */
     initialize:function(id, lonlat, contentSize, contentHTML, closeBox, closeBoxCallback) {
-        if (id == null) {
+        if(id == null) {
             id = OpenLayers.Util.createUniqueID(this.CLASS_NAME + "_");
         }
 
@@ -243,7 +243,7 @@ OpenLayers.Popup = OpenLayers.Class({
                                   : new OpenLayers.Size(
                                                    OpenLayers.Popup.WIDTH,
                                                    OpenLayers.Popup.HEIGHT);
-        if (contentHTML != null) { 
+        if(contentHTML != null) { 
              this.contentHTML = contentHTML;
         }
         this.backgroundColor = OpenLayers.Popup.COLOR;
@@ -266,7 +266,7 @@ OpenLayers.Popup = OpenLayers.Class({
         this.groupDiv.appendChild(this.contentDiv);
         this.div.appendChild(this.groupDiv);
 
-        if (closeBox) {
+        if(closeBox) {
             this.addCloseBox(closeBoxCallback);
         } 
 
@@ -288,14 +288,14 @@ OpenLayers.Popup = OpenLayers.Class({
         this.opacity = null;
         this.border = null;
         
-        if (this.closeOnMove && this.map) {
+        if(this.closeOnMove && this.map) {
             this.map.events.unregister("movestart", this, this.hide);
         }
 
         this.events.destroy();
         this.events = null;
         
-        if (this.closeDiv) {
+        if(this.closeDiv) {
             OpenLayers.Event.stopObservingElement(this.closeDiv); 
             this.groupDiv.removeChild(this.closeDiv);
         }
@@ -304,7 +304,7 @@ OpenLayers.Popup = OpenLayers.Class({
         this.div.removeChild(this.groupDiv);
         this.groupDiv = null;
 
-        if (this.map != null) {
+        if(this.map != null) {
             this.map.removePopup(this);
         }
         this.map = null;
@@ -328,33 +328,33 @@ OpenLayers.Popup = OpenLayers.Class({
     * {DOMElement} Reference to a div that contains the drawn popup
     */
     draw: function(px) {
-        if (px == null) {
-            if ((this.lonlat != null) && (this.map != null)) {
+        if(px == null) {
+            if((this.lonlat != null) && (this.map != null)) {
                 px = this.map.getLayerPxFromLonLat(this.lonlat);
             }
         }
 
         // this assumes that this.map already exists, which is okay because 
         // this.draw is only called once the popup has been added to the map.
-        if (this.closeOnMove) {
+        if(this.closeOnMove) {
             this.map.events.register("movestart", this, this.hide);
         }
         
         //listen to movestart, moveend to disable overflow (FF bug)
-        if (!this.disableFirefoxOverflowHack && OpenLayers.BROWSER_NAME == 'firefox') {
+        if(!this.disableFirefoxOverflowHack && OpenLayers.BROWSER_NAME == 'firefox') {
             this.map.events.register("movestart", this, function() {
                 var style = document.defaultView.getComputedStyle(
                     this.contentDiv, null
                 );
                 var currentOverflow = style.getPropertyValue("overflow");
-                if (currentOverflow != "hidden") {
+                if(currentOverflow != "hidden") {
                     this.contentDiv._oldOverflow = currentOverflow;
                     this.contentDiv.style.overflow = "hidden";
                 }
             });
             this.map.events.register("moveend", this, function() {
                 var oldOverflow = this.contentDiv._oldOverflow;
-                if (oldOverflow) {
+                if(oldOverflow) {
                     this.contentDiv.style.overflow = oldOverflow;
                     this.contentDiv._oldOverflow = null;
                 }
@@ -362,7 +362,7 @@ OpenLayers.Popup = OpenLayers.Class({
         }
 
         this.moveTo(px);
-        if (!this.autoSize && !this.size) {
+        if(!this.autoSize && !this.size) {
             this.setSize(this.contentSize);
         }
         this.setBackgroundColor();
@@ -370,7 +370,7 @@ OpenLayers.Popup = OpenLayers.Class({
         this.setBorder();
         this.setContentHTML();
         
-        if (this.panMapIfOutOfView) {
+        if(this.panMapIfOutOfView) {
             this.panIntoView();
         }    
 
@@ -383,9 +383,9 @@ OpenLayers.Popup = OpenLayers.Class({
      * then have it move itself to its proper position
      */
     updatePosition: function() {
-        if ((this.lonlat) && (this.map)) {
+        if((this.lonlat) && (this.map)) {
             var px = this.map.getLayerPxFromLonLat(this.lonlat);
-            if (px) {
+            if(px) {
                 this.moveTo(px);           
             }    
         }
@@ -398,7 +398,7 @@ OpenLayers.Popup = OpenLayers.Class({
      * px - {<OpenLayers.Pixel>} the top and left position of the popup div. 
      */
     moveTo: function(px) {
-        if ((px != null) && (this.div != null)) {
+        if((px != null) && (this.div != null)) {
             this.div.style.left = px.x + "px";
             this.div.style.top = px.y + "px";
         }
@@ -419,7 +419,7 @@ OpenLayers.Popup = OpenLayers.Class({
      * Toggles visibility of the popup.
      */
     toggle: function() {
-        if (this.visible()) {
+        if(this.visible()) {
             this.hide();
         } else {
             this.show();
@@ -433,7 +433,7 @@ OpenLayers.Popup = OpenLayers.Class({
     show: function() {
         this.div.style.display = '';
 
-        if (this.panMapIfOutOfView) {
+        if(this.panMapIfOutOfView) {
             this.panIntoView();
         }    
     },
@@ -469,7 +469,7 @@ OpenLayers.Popup = OpenLayers.Class({
         hPadding += this.padding.top + this.padding.bottom;
 
         // make extra space for the close div
-        if (this.closeDiv) {
+        if(this.closeDiv) {
             var closeDivWidth = parseInt(this.closeDiv.style.width);
             wPadding += closeDivWidth + contentDivPadding.right;
         }
@@ -482,18 +482,18 @@ OpenLayers.Popup = OpenLayers.Class({
         //now if our browser is IE, we need to actually make the contents 
         // div itself bigger to take its own padding into effect. this makes 
         // me want to shoot someone, but so it goes.
-        if (OpenLayers.BROWSER_NAME == "msie") {
+        if(OpenLayers.BROWSER_NAME == "msie") {
             this.contentSize.w += 
                 contentDivPadding.left + contentDivPadding.right;
             this.contentSize.h += 
                 contentDivPadding.bottom + contentDivPadding.top;
         }
 
-        if (this.div != null) {
+        if(this.div != null) {
             this.div.style.width = this.size.w + "px";
             this.div.style.height = this.size.h + "px";
         }
-        if (this.contentDiv != null){
+        if(this.contentDiv != null){
             this.contentDiv.style.width = contentSize.w + "px";
             this.contentDiv.style.height = contentSize.h + "px";
         }
@@ -525,7 +525,7 @@ OpenLayers.Popup = OpenLayers.Class({
         var safeSize = this.getSafeContentSize(realSize);
 
         var newSize = null;
-        if (safeSize.equals(realSize)) {
+        if(safeSize.equals(realSize)) {
             //real size of content is small enough to fit on the map, 
             // so we use real size.
             newSize = realSize;
@@ -539,7 +539,7 @@ OpenLayers.Popup = OpenLayers.Class({
                 h: (safeSize.h < realSize.h) ? safeSize.h : null
             };
         
-            if (fixedSize.w && fixedSize.h) {
+            if(fixedSize.w && fixedSize.h) {
                 //content is too big in both directions, so we will use 
                 // max popup size (safeSize), knowing well that it will 
                 // overflow both ways.                
@@ -563,10 +563,10 @@ OpenLayers.Popup = OpenLayers.Class({
                 var currentOverflow = OpenLayers.Element.getStyle(
                     this.contentDiv, "overflow"
                 );
-                if ( (currentOverflow != "hidden") && 
+                if( (currentOverflow != "hidden") && 
                      (clippedSize.equals(safeSize)) ) {
                     var scrollBar = OpenLayers.Util.getScrollbarWidth();
-                    if (fixedSize.w) {
+                    if(fixedSize.w) {
                         clippedSize.h += scrollBar;
                     } else {
                         clippedSize.w += scrollBar;
@@ -587,11 +587,11 @@ OpenLayers.Popup = OpenLayers.Class({
      * color - {String} the background color.  eg "#FFBBBB"
      */
     setBackgroundColor:function(color) { 
-        if (color != undefined) {
+        if(color != undefined) {
             this.backgroundColor = color; 
         }
         
-        if (this.div != null) {
+        if(this.div != null) {
             this.div.style.backgroundColor = this.backgroundColor;
         }
     },  
@@ -604,11 +604,11 @@ OpenLayers.Popup = OpenLayers.Class({
      * opacity - {float} A value between 0.0 (transparent) and 1.0 (solid).   
      */
     setOpacity:function(opacity) { 
-        if (opacity != undefined) {
+        if(opacity != undefined) {
             this.opacity = opacity; 
         }
         
-        if (this.div != null) {
+        if(this.div != null) {
             // for Mozilla and Safari
             this.div.style.opacity = this.opacity;
 
@@ -625,11 +625,11 @@ OpenLayers.Popup = OpenLayers.Class({
      * border - {String} The border style value. eg 2px 
      */
     setBorder:function(border) { 
-        if (border != undefined) {
+        if(border != undefined) {
             this.border = border;
         }
         
-        if (this.div != null) {
+        if(this.div != null) {
             this.div.style.border = this.border;
         }
     },      
@@ -643,17 +643,17 @@ OpenLayers.Popup = OpenLayers.Class({
      */
     setContentHTML:function(contentHTML) {
 
-        if (contentHTML != null) {
+        if(contentHTML != null) {
             this.contentHTML = contentHTML;
         }
        
-        if ((this.contentDiv != null) && 
+        if((this.contentDiv != null) && 
             (this.contentHTML != null) &&
             (this.contentHTML != this.contentDiv.innerHTML)) {
        
             this.contentDiv.innerHTML = this.contentHTML;
        
-            if (this.autoSize) {
+            if(this.autoSize) {
                 
                 //if popup has images, listen for when they finish
                 // loading and resize accordingly
@@ -684,12 +684,12 @@ OpenLayers.Popup = OpenLayers.Class({
         // 'img' properties in the context.
         //
         var onImgLoad = function() {
-            if (this.popup.id === null) { // this.popup has been destroyed!
+            if(this.popup.id === null) { // this.popup has been destroyed!
                 return;
             }
             this.popup.updateSize();
      
-            if ( this.popup.visible() && this.popup.panMapIfOutOfView ) {
+            if( this.popup.visible() && this.popup.panMapIfOutOfView ) {
                 this.popup.panIntoView();
             }
 
@@ -706,7 +706,7 @@ OpenLayers.Popup = OpenLayers.Class({
         var images = this.contentDiv.getElementsByTagName("img");
         for (var i = 0, len = images.length; i < len; i++) {
             var img = images[i];
-            if (img.width == 0 || img.height == 0) {
+            if(img.width == 0 || img.height == 0) {
 
                 var context = {
                     'popup': this,
@@ -748,13 +748,13 @@ OpenLayers.Popup = OpenLayers.Class({
         wPadding += this.padding.left + this.padding.right;
         hPadding += this.padding.top + this.padding.bottom;
 
-        if (this.closeDiv) {
+        if(this.closeDiv) {
             var closeDivWidth = parseInt(this.closeDiv.style.width);
             wPadding += closeDivWidth + contentDivPadding.right;
         }
 
         // prevent the popup from being smaller than a specified minimal size
-        if (this.minSize) {
+        if(this.minSize) {
             safeContentSize.w = Math.max(safeContentSize.w, 
                 (this.minSize.w - wPadding));
             safeContentSize.h = Math.max(safeContentSize.h, 
@@ -762,7 +762,7 @@ OpenLayers.Popup = OpenLayers.Class({
         }
 
         // prevent the popup from being bigger than a specified maximum size
-        if (this.maxSize) {
+        if(this.maxSize) {
             safeContentSize.w = Math.min(safeContentSize.w, 
                 (this.maxSize.w - wPadding));
             safeContentSize.h = Math.min(safeContentSize.h, 
@@ -772,10 +772,10 @@ OpenLayers.Popup = OpenLayers.Class({
         //make sure the desired size to set doesn't result in a popup that 
         // is bigger than the map's viewport.
         //
-        if (this.map && this.map.size) {
+        if(this.map && this.map.size) {
             
             var extraX = 0, extraY = 0;
-            if (this.keepInMap && !this.panMapIfOutOfView) {
+            if(this.keepInMap && !this.panMapIfOutOfView) {
                 var px = this.map.getPixelFromLonLat(this.lonlat);
                 switch (this.relativePosition) {
                     case "tr":
@@ -836,9 +836,9 @@ OpenLayers.Popup = OpenLayers.Class({
 
         //use cached value if we have it
         var contentDivPadding = this._contentDivPadding;
-        if (!contentDivPadding) {
+        if(!contentDivPadding) {
 
-            if (this.div.parentNode == null) {
+            if(this.div.parentNode == null) {
                 //make the div invisible and add it to the page        
                 this.div.style.display = "none";
                 document.body.appendChild(this.div);
@@ -855,7 +855,7 @@ OpenLayers.Popup = OpenLayers.Class({
             //cache the value
             this._contentDivPadding = contentDivPadding;
 
-            if (this.div.parentNode == document.body) {
+            if(this.div.parentNode == document.body) {
                 //remove the div from the page and make it visible again
                 document.body.removeChild(this.div);
                 this.div.style.display = "";
@@ -913,18 +913,18 @@ OpenLayers.Popup = OpenLayers.Class({
         var newTL = origTL.clone();
     
         //new left (compare to margins, using this.size to calculate right)
-        if (origTL.x < this.map.paddingForPopups.left) {
+        if(origTL.x < this.map.paddingForPopups.left) {
             newTL.x = this.map.paddingForPopups.left;
         } else 
-        if ( (origTL.x + this.size.w) > (mapSize.w - this.map.paddingForPopups.right)) {
+        if( (origTL.x + this.size.w) > (mapSize.w - this.map.paddingForPopups.right)) {
             newTL.x = mapSize.w - this.map.paddingForPopups.right - this.size.w;
         }
         
         //new top (compare to margins, using this.size to calculate bottom)
-        if (origTL.y < this.map.paddingForPopups.top) {
+        if(origTL.y < this.map.paddingForPopups.top) {
             newTL.y = this.map.paddingForPopups.top;
         } else 
-        if ( (origTL.y + this.size.h) > (mapSize.h - this.map.paddingForPopups.bottom)) {
+        if( (origTL.y + this.size.h) > (mapSize.h - this.map.paddingForPopups.bottom)) {
             newTL.y = mapSize.h - this.map.paddingForPopups.bottom - this.size.h;
         }
         
@@ -999,7 +999,7 @@ OpenLayers.Popup = OpenLayers.Class({
      * evt - {Event} 
      */
     onmousemove: function (evt) {
-        if (this.mousedown) {
+        if(this.mousedown) {
             OpenLayers.Event.stop(evt, true);
         }
     },
@@ -1015,7 +1015,7 @@ OpenLayers.Popup = OpenLayers.Class({
      * evt - {Event} 
      */
     onmouseup: function (evt) {
-        if (this.mousedown) {
+        if(this.mousedown) {
             this.mousedown = false;
             OpenLayers.Event.stop(evt, true);
         }

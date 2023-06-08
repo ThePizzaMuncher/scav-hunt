@@ -68,7 +68,7 @@ if 1:
                     fail = new_fail
                     last_change = time.time()
                     
-                if (ok + fail) >= count:
+                if(ok + fail) >= count:
                     break 
                 if time.time() - last_change > MAX_TEST_LENGTH:
                     raise Exception("Failed: with %s okay and %s failed, ran out of time: %s is more than %s" % (ok, fail, (time.time() - last_change), MAX_TEST_LENGTH))      

@@ -21,7 +21,7 @@
         t.plan( 15 );
 
         var trans_format = "image/png";
-        if (OpenLayers.Util.alphaHack()) { trans_format = "image/gif"; }
+        if(OpenLayers.Util.alphaHack()) { trans_format = "image/gif"; }
 
         var url = "http://octo.metacarta.com/cgi-bin/mapserv";
         layer = new OpenLayers.Layer.WMS(name, url, params);
@@ -466,7 +466,7 @@
         for (var i=0, len=params.length; i<len; i++) {
             var param = params[i];
             var a = param.split('=');
-            if (a[0] === 'BBOX') {
+            if(a[0] === 'BBOX') {
                 bbox = a[1];
                 break;
             }
@@ -489,7 +489,7 @@
         for (var i=0, len=params.length; i<len; i++) {
             var param = params[i];
             var a = param.split('=');
-            if (a[0] === 'BBOX') {
+            if(a[0] === 'BBOX') {
                 bbox = a[1];
                 break;
             }
@@ -517,10 +517,10 @@
         for (var i=0, len=params.length; i<len; i++) {
             var param = params[i];
             var a = param.split('=');
-            if (a[0] === 'EXCEPTIONS') {
+            if(a[0] === 'EXCEPTIONS') {
                 exceptions = a[1];
             }
-            if (a[0] === 'BBOX') {
+            if(a[0] === 'BBOX') {
                 bbox = a[1];
             }
         }

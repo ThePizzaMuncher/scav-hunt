@@ -41,7 +41,7 @@ OpenLayers.Geometry.Curve = OpenLayers.Class(OpenLayers.Geometry.MultiPoint, {
      */
     getLength: function() {
         var length = 0.0;
-        if ( this.components && (this.components.length > 1)) {
+        if( this.components && (this.components.length > 1)) {
             for(var i=1, len=this.components.length; i<len; i++) {
                 length += this.components[i-1].distanceTo(this.components[i]);
             }

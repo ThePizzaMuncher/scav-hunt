@@ -118,7 +118,7 @@ OpenLayers.TileManager = OpenLayers.Class({
      * map - {<OpenLayers.Map>}
      */
     addMap: function(map) {
-        if (this._destroyed || !OpenLayers.Layer.Grid) {
+        if(this._destroyed || !OpenLayers.Layer.Grid) {
             return;
         }
         this.maps.push(map);
@@ -144,16 +144,16 @@ OpenLayers.TileManager = OpenLayers.Class({
      * map - {<OpenLayers.Map>}
      */
     removeMap: function(map) {
-        if (this._destroyed || !OpenLayers.Layer.Grid) {
+        if(this._destroyed || !OpenLayers.Layer.Grid) {
             return;
         }
         window.clearTimeout(this.tileQueueId[map.id]);
-        if (map.layers) {
+        if(map.layers) {
             for (var i=0, ii=map.layers.length; i<ii; ++i) {
                 this.removeLayer({layer: map.layers[i]});
             }
         }
-        if (map.events) {
+        if(map.events) {
             map.events.un({
                 move: this.move,
                 zoomend: this.zoomEnd,
@@ -198,7 +198,7 @@ OpenLayers.TileManager = OpenLayers.Class({
      * evt - {Object} Listener argument
      */
     changeLayer: function(evt) {
-        if (evt.property === 'visibility' || evt.property === 'params') {
+        if(evt.property === 'visibility' || evt.property === 'params') {
             this.updateTimeout(evt.object, 0);
         }
     },
@@ -212,7 +212,7 @@ OpenLayers.TileManager = OpenLayers.Class({
      */
     addLayer: function(evt) {
         var layer = evt.layer;
-        if (layer instanceof OpenLayers.Layer.Grid) {
+        if(layer instanceof OpenLayers.Layer.Grid) {
             layer.events.on({
                 addtile: this.addTile,
                 retile: this.clearTileQueue,
@@ -223,7 +223,7 @@ OpenLayers.TileManager = OpenLayers.Class({
                 for (j=layer.grid[i].length-1; j>=0; --j) {
                     tile = layer.grid[i][j];
                     this.addTile({tile: tile});
-                    if (tile.url && !tile.imgDiv) {
+                    if(tile.url && !tile.imgDiv) {
                         this.manageTileCache({object: tile});
                     }
                 }
@@ -240,16 +240,16 @@ OpenLayers.TileManager = OpenLayers.Class({
      */
     removeLayer: function(evt) {
         var layer = evt.layer;
-        if (layer instanceof OpenLayers.Layer.Grid) {
+        if(layer instanceof OpenLayers.Layer.Grid) {
             this.clearTileQueue({object: layer});
-            if (layer.events) {
+            if(layer.events) {
                 layer.events.un({
                     addtile: this.addTile,
                     retile: this.clearTileQueue,
                     scope: this
                 });
             }
-            if (layer.grid) {
+            if(layer.grid) {
                 var i, j, tile;
                 for (i=layer.grid.length-1; i>=0; --i) {
                     for (j=layer.grid[i].length-1; j>=0; --j) {
@@ -279,11 +279,11 @@ OpenLayers.TileManager = OpenLayers.Class({
     updateTimeout: function(map, delay, nice) {
         window.clearTimeout(this.tileQueueId[map.id]);
         var tileQueue = this.tileQueue[map.id];
-        if (!nice || tileQueue.length) {
+        if(!nice || tileQueue.length) {
             this.tileQueueId[map.id] = window.setTimeout(
                 OpenLayers.Function.bind(function() {
                     this.drawTilesFromQueue(map);
-                    if (tileQueue.length) {
+                    if(tileQueue.length) {
                         this.updateTimeout(map, this.frameDelay);
                     }
                 }, this), delay
@@ -299,7 +299,7 @@ OpenLayers.TileManager = OpenLayers.Class({
      * evt - {Object} The listener argument
      */
     addTile: function(evt) {
-        if (evt.tile instanceof OpenLayers.Tile.Image) {
+        if(evt.tile instanceof OpenLayers.Tile.Image) {
             evt.tile.events.on({
                 beforedraw: this.queueTileDraw,
                 beforeload: this.manageTileCache,
@@ -345,17 +345,17 @@ OpenLayers.TileManager = OpenLayers.Class({
         var layer = tile.layer;
         var url = layer.getURL(tile.bounds);
         var img = this.tileCache[url];
-        if (img && img.className !== 'olTileImage') {
+        if(img && img.className !== 'olTileImage') {
             // cached image no longer valid, e.g. because we're olTileReplacing
             delete this.tileCache[url];
             OpenLayers.Util.removeItem(this.tileCacheIndex, url);
             img = null;
         }
         // queue only if image with same url not cached already
-        if (layer.url && (layer.async || !img)) {
+        if(layer.url && (layer.async || !img)) {
             // add to queue only if not in queue already
             var tileQueue = this.tileQueue[layer.map.id];
-            if (!~OpenLayers.Util.indexOf(tileQueue, tile)) {
+            if(!~OpenLayers.Util.indexOf(tileQueue, tile)) {
                 tileQueue.push(tile);
             }
             queued = true;
@@ -387,15 +387,15 @@ OpenLayers.TileManager = OpenLayers.Class({
     manageTileCache: function(evt) {
         var tile = evt.object;
         var img = this.tileCache[tile.url];
-        if (img) {
+        if(img) {
           // if image is on its layer's backbuffer, remove it from backbuffer
-          if (img.parentNode &&
+          if(img.parentNode &&
                   OpenLayers.Element.hasClass(img.parentNode, 'olBackBuffer')) {
               img.parentNode.removeChild(img);
               img.id = null;
           }
           // only use image from cache if it is not on a layer already
-          if (!img.parentNode) {
+          if(!img.parentNode) {
               img.style.visibility = 'hidden';
               img.style.opacity = 0;
               tile.setImage(img);
@@ -415,9 +415,9 @@ OpenLayers.TileManager = OpenLayers.Class({
      */
     addToCache: function(evt) {
         var tile = evt.object;
-        if (!this.tileCache[tile.url]) {
-            if (!OpenLayers.Element.hasClass(tile.imgDiv, 'olImageLoadError')) {
-                if (this.tileCacheIndex.length >= this.cacheSize) {
+        if(!this.tileCache[tile.url]) {
+            if(!OpenLayers.Element.hasClass(tile.imgDiv, 'olImageLoadError')) {
+                if(this.tileCacheIndex.length >= this.cacheSize) {
                     delete this.tileCache[this.tileCacheIndex[0]];
                     this.tileCacheIndex.shift();
                 }
@@ -438,7 +438,7 @@ OpenLayers.TileManager = OpenLayers.Class({
         var layer = evt.object;
         var tileQueue = this.tileQueue[layer.map.id];
         for (var i=tileQueue.length-1; i>=0; --i) {
-            if (tileQueue[i].layer === layer) {
+            if(tileQueue[i].layer === layer) {
                 tileQueue.splice(i, 1);
             }
         }

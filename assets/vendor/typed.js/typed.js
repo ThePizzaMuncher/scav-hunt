@@ -69,9 +69,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if(protoProps) defineProperties(Constructor.prototype, protoProps); if(staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	function _classCallCheck(instance, Constructor) { if(!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
 	var _initializerJs = __webpack_require__(1);
 	
@@ -112,8 +112,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'stop',
 	    value: function stop() {
-	      if (this.typingComplete) return;
-	      if (this.pause.status) return;
+	      if(this.typingComplete) return;
+	      if(this.pause.status) return;
 	      this.toggleBlinking(true);
 	      this.pause.status = true;
 	      this.options.onStop(this.arrayPos, this);
@@ -126,10 +126,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'start',
 	    value: function start() {
-	      if (this.typingComplete) return;
-	      if (!this.pause.status) return;
+	      if(this.typingComplete) return;
+	      if(!this.pause.status) return;
 	      this.pause.status = false;
-	      if (this.pause.typewrite) {
+	      if(this.pause.typewrite) {
 	        this.typewrite(this.pause.curString, this.pause.curStrPos);
 	      } else {
 	        this.backspace(this.pause.curString, this.pause.curStrPos);
@@ -160,14 +160,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      clearInterval(this.timeout);
 	      this.replaceText('');
-	      if (this.cursor && this.cursor.parentNode) {
+	      if(this.cursor && this.cursor.parentNode) {
 	        this.cursor.parentNode.removeChild(this.cursor);
 	        this.cursor = null;
 	      }
 	      this.strPos = 0;
 	      this.arrayPos = 0;
 	      this.curLoop = 0;
-	      if (restart) {
+	      if(restart) {
 	        this.insertCursor();
 	        this.options.onReset(this);
 	        this.begin();
@@ -187,10 +187,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.typingComplete = false;
 	      this.shuffleStringsIfNeeded(this);
 	      this.insertCursor();
-	      if (this.bindInputFocusEvents) this.bindFocusEvents();
+	      if(this.bindInputFocusEvents) this.bindFocusEvents();
 	      this.timeout = setTimeout(function () {
 	        // Check if there is some text in the element, if yes start by backspacing the default message
-	        if (!_this.currentElContent || _this.currentElContent.length === 0) {
+	        if(!_this.currentElContent || _this.currentElContent.length === 0) {
 	          _this.typewrite(_this.strings[_this.sequence[_this.arrayPos]], _this.strPos);
 	        } else {
 	          // Start typing
@@ -210,15 +210,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function typewrite(curString, curStrPos) {
 	      var _this2 = this;
 	
-	      if (this.fadeOut && this.el.classList.contains(this.fadeOutClass)) {
+	      if(this.fadeOut && this.el.classList.contains(this.fadeOutClass)) {
 	        this.el.classList.remove(this.fadeOutClass);
-	        if (this.cursor) this.cursor.classList.remove(this.fadeOutClass);
+	        if(this.cursor) this.cursor.classList.remove(this.fadeOutClass);
 	      }
 	
 	      var humanize = this.humanizer(this.typeSpeed);
 	      var numChars = 1;
 	
-	      if (this.pause.status === true) {
+	      if(this.pause.status === true) {
 	        this.setPauseStatus(curString, curStrPos, true);
 	        return;
 	      }
@@ -233,8 +233,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // check for an escape character before a pause value
 	        // format: \^\d+ .. eg: ^1000 .. should be able to print the ^ too using ^^
 	        // single ^ are removed from string
-	        if (substr.charAt(0) === '^') {
-	          if (/^\^\d+/.test(substr)) {
+	        if(substr.charAt(0) === '^') {
+	          if(/^\^\d+/.test(substr)) {
 	            var skip = 1; // skip at least 1
 	            substr = /\d+/.exec(substr)[0];
 	            skip += substr.length;
@@ -249,10 +249,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	        // check for skip characters formatted as
 	        // "this is a `string to print NOW` ..."
-	        if (substr.charAt(0) === '`') {
+	        if(substr.charAt(0) === '`') {
 	          while (curString.substr(curStrPos + numChars).charAt(0) !== '`') {
 	            numChars++;
-	            if (curStrPos + numChars > curString.length) break;
+	            if(curStrPos + numChars > curString.length) break;
 	          }
 	          // strip out the escape characters and append all the string in between
 	          var stringBeforeSkip = curString.substring(0, curStrPos);
@@ -268,13 +268,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	          _this2.toggleBlinking(false);
 	
 	          // We're done with this sentence!
-	          if (curStrPos >= curString.length) {
+	          if(curStrPos >= curString.length) {
 	            _this2.doneTyping(curString, curStrPos);
 	          } else {
 	            _this2.keepTyping(curString, curStrPos, numChars);
 	          }
 	          // end of character pause
-	          if (_this2.temporaryPause) {
+	          if(_this2.temporaryPause) {
 	            _this2.temporaryPause = false;
 	            _this2.options.onTypingResumed(_this2.arrayPos, _this2);
 	          }
@@ -294,7 +294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'keepTyping',
 	    value: function keepTyping(curString, curStrPos, numChars) {
 	      // call before functions if applicable
-	      if (curStrPos === 0) {
+	      if(curStrPos === 0) {
 	        this.toggleBlinking(false);
 	        this.options.preStringTyped(this.arrayPos, this);
 	      }
@@ -322,11 +322,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.options.onStringTyped(this.arrayPos, this);
 	      this.toggleBlinking(true);
 	      // is this the final string
-	      if (this.arrayPos === this.strings.length - 1) {
+	      if(this.arrayPos === this.strings.length - 1) {
 	        // callback that occurs on the last typed string
 	        this.complete();
 	        // quit if we wont loop back
-	        if (this.loop === false || this.curLoop === this.loopCount) {
+	        if(this.loop === false || this.curLoop === this.loopCount) {
 	          return;
 	        }
 	      }
@@ -346,11 +346,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function backspace(curString, curStrPos) {
 	      var _this4 = this;
 	
-	      if (this.pause.status === true) {
+	      if(this.pause.status === true) {
 	        this.setPauseStatus(curString, curStrPos, false);
 	        return;
 	      }
-	      if (this.fadeOut) return this.initFadeOut();
+	      if(this.fadeOut) return this.initFadeOut();
 	
 	      this.toggleBlinking(false);
 	      var humanize = this.humanizer(this.backSpeed);
@@ -362,10 +362,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _this4.replaceText(curStringAtPosition);
 	
 	        // if smartBack is enabled
-	        if (_this4.smartBackspace) {
+	        if(_this4.smartBackspace) {
 	          // the remaining part of the current string is equal of the same part of the new string
 	          var nextString = _this4.strings[_this4.arrayPos + 1];
-	          if (nextString && curStringAtPosition === nextString.substr(0, curStrPos)) {
+	          if(nextString && curStringAtPosition === nextString.substr(0, curStrPos)) {
 	            _this4.stopNum = curStrPos;
 	          } else {
 	            _this4.stopNum = 0;
@@ -374,17 +374,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	        // if the number (id of character in current string) is
 	        // less than the stop number, keep going
-	        if (curStrPos > _this4.stopNum) {
+	        if(curStrPos > _this4.stopNum) {
 	          // subtract characters one by one
 	          curStrPos--;
 	          // loop the function
 	          _this4.backspace(curString, curStrPos);
-	        } else if (curStrPos <= _this4.stopNum) {
+	        } else if(curStrPos <= _this4.stopNum) {
 	          // if the stop number has been reached, increase
 	          // array position to next string
 	          _this4.arrayPos++;
 	          // When looping, begin at the beginning after backspace complete
-	          if (_this4.arrayPos === _this4.strings.length) {
+	          if(_this4.arrayPos === _this4.strings.length) {
 	            _this4.arrayPos = 0;
 	            _this4.options.onLastStringBackspaced();
 	            _this4.shuffleStringsIfNeeded();
@@ -405,7 +405,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'complete',
 	    value: function complete() {
 	      this.options.onComplete(this);
-	      if (this.loop) {
+	      if(this.loop) {
 	        this.curLoop++;
 	      } else {
 	        this.typingComplete = true;
@@ -435,12 +435,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'toggleBlinking',
 	    value: function toggleBlinking(isBlinking) {
-	      if (!this.cursor) return;
+	      if(!this.cursor) return;
 	      // if in paused state, don't toggle blinking a 2nd time
-	      if (this.pause.status) return;
-	      if (this.cursorBlinking === isBlinking) return;
+	      if(this.pause.status) return;
+	      if(this.cursorBlinking === isBlinking) return;
 	      this.cursorBlinking = isBlinking;
-	      if (isBlinking) {
+	      if(isBlinking) {
 	        this.cursor.classList.add('typed-cursor--blink');
 	      } else {
 	        this.cursor.classList.remove('typed-cursor--blink');
@@ -465,7 +465,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'shuffleStringsIfNeeded',
 	    value: function shuffleStringsIfNeeded() {
-	      if (!this.shuffle) return;
+	      if(!this.shuffle) return;
 	      this.sequence = this.sequence.sort(function () {
 	        return Math.random() - 0.5;
 	      });
@@ -481,13 +481,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this5 = this;
 	
 	      this.el.className += ' ' + this.fadeOutClass;
-	      if (this.cursor) this.cursor.className += ' ' + this.fadeOutClass;
+	      if(this.cursor) this.cursor.className += ' ' + this.fadeOutClass;
 	      return setTimeout(function () {
 	        _this5.arrayPos++;
 	        _this5.replaceText('');
 	
 	        // Resets current string if end of loop reached
-	        if (_this5.strings.length > _this5.arrayPos) {
+	        if(_this5.strings.length > _this5.arrayPos) {
 	          _this5.typewrite(_this5.strings[_this5.sequence[_this5.arrayPos]], 0);
 	        } else {
 	          _this5.typewrite(_this5.strings[0], 0);
@@ -505,12 +505,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'replaceText',
 	    value: function replaceText(str) {
-	      if (this.attr) {
+	      if(this.attr) {
 	        this.el.setAttribute(this.attr, str);
 	      } else {
-	        if (this.isInput) {
+	        if(this.isInput) {
 	          this.el.value = str;
-	        } else if (this.contentType === 'html') {
+	        } else if(this.contentType === 'html') {
 	          this.el.innerHTML = str;
 	        } else {
 	          this.el.textContent = str;
@@ -528,12 +528,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function bindFocusEvents() {
 	      var _this6 = this;
 	
-	      if (!this.isInput) return;
+	      if(!this.isInput) return;
 	      this.el.addEventListener('focus', function (e) {
 	        _this6.stop();
 	      });
 	      this.el.addEventListener('blur', function (e) {
-	        if (_this6.el.value && _this6.el.value.length !== 0) {
+	        if(_this6.el.value && _this6.el.value.length !== 0) {
 	          return;
 	        }
 	        _this6.start();
@@ -547,8 +547,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'insertCursor',
 	    value: function insertCursor() {
-	      if (!this.showCursor) return;
-	      if (this.cursor) return;
+	      if(!this.showCursor) return;
+	      if(this.cursor) return;
 	      this.cursor = document.createElement('span');
 	      this.cursor.className = 'typed-cursor';
 	      this.cursor.setAttribute('aria-hidden', true);
@@ -573,13 +573,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if(Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if(protoProps) defineProperties(Constructor.prototype, protoProps); if(staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	function _classCallCheck(instance, Constructor) { if(!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
 	var _defaultsJs = __webpack_require__(2);
 	
@@ -607,7 +607,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    value: function load(self, options, elementId) {
 	      // chosen element to manipulate text
-	      if (typeof elementId === 'string') {
+	      if(typeof elementId === 'string') {
 	        self.el = document.querySelector(elementId);
 	      } else {
 	        self.el = elementId;
@@ -664,19 +664,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	
 	      // div containing strings
-	      if (typeof self.options.stringsElement === 'string') {
+	      if(typeof self.options.stringsElement === 'string') {
 	        self.stringsElement = document.querySelector(self.options.stringsElement);
 	      } else {
 	        self.stringsElement = self.options.stringsElement;
 	      }
 	
-	      if (self.stringsElement) {
+	      if(self.stringsElement) {
 	        self.strings = [];
 	        self.stringsElement.style.display = 'none';
 	        var strings = Array.prototype.slice.apply(self.stringsElement.children);
 	        var stringsLength = strings.length;
 	
-	        if (stringsLength) {
+	        if(stringsLength) {
 	          for (var i = 0; i < stringsLength; i += 1) {
 	            var stringEl = strings[i];
 	            self.strings.push(stringEl.innerHTML.trim());
@@ -729,11 +729,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'getCurrentElContent',
 	    value: function getCurrentElContent(self) {
 	      var elContent = '';
-	      if (self.attr) {
+	      if(self.attr) {
 	        elContent = self.el.getAttribute(self.attr);
-	      } else if (self.isInput) {
+	      } else if(self.isInput) {
 	        elContent = self.el.value;
-	      } else if (self.contentType === 'html') {
+	      } else if(self.contentType === 'html') {
 	        elContent = self.el.innerHTML;
 	      } else {
 	        elContent = self.el.textContent;
@@ -744,13 +744,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'appendAnimationCss',
 	    value: function appendAnimationCss(self) {
 	      var cssDataName = 'data-typed-js-css';
-	      if (!self.autoInsertCss) {
+	      if(!self.autoInsertCss) {
 	        return;
 	      }
-	      if (!self.showCursor && !self.fadeOut) {
+	      if(!self.showCursor && !self.fadeOut) {
 	        return;
 	      }
-	      if (document.querySelector('[' + cssDataName + ']')) {
+	      if(document.querySelector('[' + cssDataName + ']')) {
 	        return;
 	      }
 	
@@ -759,13 +759,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      css.setAttribute(cssDataName, true);
 	
 	      var innerCss = '';
-	      if (self.showCursor) {
+	      if(self.showCursor) {
 	        innerCss += '\n        .typed-cursor{\n          opacity: 1;\n        }\n        .typed-cursor.typed-cursor--blink{\n          animation: typedjsBlink 0.7s infinite;\n          -webkit-animation: typedjsBlink 0.7s infinite;\n                  animation: typedjsBlink 0.7s infinite;\n        }\n        @keyframes typedjsBlink{\n          50% { opacity: 0.0; }\n        }\n        @-webkit-keyframes typedjsBlink{\n          0% { opacity: 1; }\n          50% { opacity: 0.0; }\n          100% { opacity: 1; }\n        }\n      ';
 	      }
-	      if (self.fadeOut) {
+	      if(self.fadeOut) {
 	        innerCss += '\n        .typed-fade-out{\n          opacity: 0;\n          transition: opacity .25s;\n        }\n        .typed-cursor.typed-cursor--blink.typed-fade-out{\n          -webkit-animation: 0;\n          animation: 0;\n        }\n      ';
 	      }
-	      if (css.length === 0) {
+	      if(css.length === 0) {
 	        return;
 	      }
 	      css.innerHTML = innerCss;
@@ -965,9 +965,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if(protoProps) defineProperties(Constructor.prototype, protoProps); if(staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	function _classCallCheck(instance, Constructor) { if(!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
 	var HTMLParser = (function () {
 	  function HTMLParser() {
@@ -987,18 +987,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	
 	    value: function typeHtmlChars(curString, curStrPos, self) {
-	      if (self.contentType !== 'html') return curStrPos;
+	      if(self.contentType !== 'html') return curStrPos;
 	      var curChar = curString.substr(curStrPos).charAt(0);
-	      if (curChar === '<' || curChar === '&') {
+	      if(curChar === '<' || curChar === '&') {
 	        var endTag = '';
-	        if (curChar === '<') {
+	        if(curChar === '<') {
 	          endTag = '>';
 	        } else {
 	          endTag = ';';
 	        }
 	        while (curString.substr(curStrPos + 1).charAt(0) !== endTag) {
 	          curStrPos++;
-	          if (curStrPos + 1 > curString.length) {
+	          if(curStrPos + 1 > curString.length) {
 	            break;
 	          }
 	        }
@@ -1018,18 +1018,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'backSpaceHtmlChars',
 	    value: function backSpaceHtmlChars(curString, curStrPos, self) {
-	      if (self.contentType !== 'html') return curStrPos;
+	      if(self.contentType !== 'html') return curStrPos;
 	      var curChar = curString.substr(curStrPos).charAt(0);
-	      if (curChar === '>' || curChar === ';') {
+	      if(curChar === '>' || curChar === ';') {
 	        var endTag = '';
-	        if (curChar === '>') {
+	        if(curChar === '>') {
 	          endTag = '<';
 	        } else {
 	          endTag = '&';
 	        }
 	        while (curString.substr(curStrPos - 1).charAt(0) !== endTag) {
 	          curStrPos--;
-	          if (curStrPos < 0) {
+	          if(curStrPos < 0) {
 	            break;
 	          }
 	        }

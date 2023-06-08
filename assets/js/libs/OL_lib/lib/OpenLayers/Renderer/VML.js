@@ -48,10 +48,10 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      * containerID - {String} The id for the element that contains the renderer
      */
     initialize: function(containerID) {
-        if (!this.supported()) { 
+        if(!this.supported()) { 
             return; 
         }
-        if (!document.namespaces.olv) {
+        if(!document.namespaces.olv) {
             document.namespaces.add("olv", this.xmlns);
             var style = document.createStyleSheet();
             var shapes = ['shape','rect', 'oval', 'fill', 'stroke', 'imagedata', 'group','textbox']; 
@@ -95,7 +95,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
     
         var left = (extent.left/resolution) | 0;
         var top = (extent.top/resolution - this.size.h) | 0;
-        if (resolutionChanged || !this.offset) {
+        if(resolutionChanged || !this.offset) {
             this.offset = {x: left, y: top};
             left = 0;
             top = 0;
@@ -167,9 +167,9 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         var nodeType = null;
         switch (geometry.CLASS_NAME) {
             case "OpenLayers.Geometry.Point":
-                if (style.externalGraphic) {
+                if(style.externalGraphic) {
                     nodeType = "olv:rect";
-                } else if (this.isComplexSymbol(style.graphicName)) {
+                } else if(this.isComplexSymbol(style.graphicName)) {
                     nodeType = "olv:shape";
                 } else {
                     nodeType = "olv:oval";
@@ -208,12 +208,12 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         var fillColor = style.fillColor;
 
         var title = style.title || style.graphicTitle;
-        if (title) {
+        if(title) {
             node.title = title;
         } 
 
-        if (node._geometryClass === "OpenLayers.Geometry.Point") {
-            if (style.externalGraphic) {
+        if(node._geometryClass === "OpenLayers.Geometry.Point") {
+            if(style.externalGraphic) {
                 options.isFilled = true;
                 var width = style.graphicWidth || style.graphicHeight;
                 var height = style.graphicHeight || style.graphicWidth;
@@ -235,7 +235,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
                 // modify fillColor and options for stroke styling below
                 fillColor = "none";
                 options.isStroked = false;
-            } else if (this.isComplexSymbol(style.graphicName)) {
+            } else if(this.isComplexSymbol(style.graphicName)) {
                 var cache = this.importSymbol(style.graphicName);
                 node.path = cache.path;
                 node.coordorigin = cache.left + "," + cache.bottom;
@@ -249,48 +249,48 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         }
 
         // fill 
-        if (options.isFilled) { 
+        if(options.isFilled) { 
             node.fillcolor = fillColor; 
         } else { 
             node.filled = "false"; 
         }
         var fills = node.getElementsByTagName("fill");
         var fill = (fills.length == 0) ? null : fills[0];
-        if (!options.isFilled) {
-            if (fill) {
+        if(!options.isFilled) {
+            if(fill) {
                 node.removeChild(fill);
             }
         } else {
-            if (!fill) {
+            if(!fill) {
                 fill = this.createNode('olv:fill', node.id + "_fill");
             }
             fill.opacity = style.fillOpacity;
 
-            if (node._geometryClass === "OpenLayers.Geometry.Point" &&
+            if(node._geometryClass === "OpenLayers.Geometry.Point" &&
                     style.externalGraphic) {
 
                 // override fillOpacity
-                if (style.graphicOpacity) {
+                if(style.graphicOpacity) {
                     fill.opacity = style.graphicOpacity;
                 }
                 
                 fill.src = style.externalGraphic;
                 fill.type = "frame";
                 
-                if (!(style.graphicWidth && style.graphicHeight)) {
+                if(!(style.graphicWidth && style.graphicHeight)) {
                   fill.aspect = "atmost";
                 }                
             }
-            if (fill.parentNode != node) {
+            if(fill.parentNode != node) {
                 node.appendChild(fill);
             }
         }
 
         // additional rendering for rotated graphics or symbols
         var rotation = style.rotation;
-        if ((rotation !== undefined || node._rotation !== undefined)) {
+        if((rotation !== undefined || node._rotation !== undefined)) {
             node._rotation = rotation;
-            if (style.externalGraphic) {
+            if(style.externalGraphic) {
                 this.graphicRotate(node, xOffset, yOffset, style);
                 // make the fill fully transparent, because we now have
                 // the graphic as imagedata element. We cannot just remove
@@ -305,13 +305,13 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         // stroke 
         var strokes = node.getElementsByTagName("stroke");
         var stroke = (strokes.length == 0) ? null : strokes[0];
-        if (!options.isStroked) {
+        if(!options.isStroked) {
             node.stroked = false;
-            if (stroke) {
+            if(stroke) {
                 stroke.on = false;
             }
         } else {
-            if (!stroke) {
+            if(!stroke) {
                 stroke = this.createNode('olv:stroke', node.id + "_stroke");
                 node.appendChild(stroke);
             }
@@ -321,12 +321,12 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
             stroke.opacity = style.strokeOpacity;
             stroke.endcap = style.strokeLinecap == 'butt' ? 'flat' :
                 (style.strokeLinecap || 'round');
-            if (style.strokeDashstyle) {
+            if(style.strokeDashstyle) {
                 stroke.dashstyle = this.dashStyle(style);
             }
         }
         
-        if (style.cursor != "inherit" && style.cursor != null) {
+        if(style.cursor != "inherit" && style.cursor != null) {
             node.style.cursor = style.cursor;
         }
         return node;
@@ -357,7 +357,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         var rotation = style.rotation || 0;
         
         var aspectRatio, size;
-        if (!(style.graphicWidth && style.graphicHeight)) {
+        if(!(style.graphicWidth && style.graphicHeight)) {
             // load the image to determine its size
             var img = new Image();
             img.onreadystatechange = OpenLayers.Function.bind(function() {
@@ -397,7 +397,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         // - style the imagedata element with an AlphaImageLoader filter
         //   with empty src
         var image = document.getElementById(node.id + "_image");
-        if (!image) {
+        if(!image) {
             image = this.createNode("olv:imagedata", node.id + "_image");
             node.appendChild(image);
         }
@@ -420,7 +420,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
 
         // set the opacity (needed for the imagedata)
         var opacity = style.graphicOpacity || style.fillOpacity;
-        if (opacity && opacity != 1) {
+        if(opacity && opacity != 1) {
             filter += 
                 "progid:DXImageTransform.Microsoft.BasicImage(opacity=" + 
                 opacity+")\n";
@@ -456,11 +456,11 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         node.style.visibility = "visible";
         var fillColor = node._style.fillColor;
         var strokeColor = node._style.strokeColor;
-        if (fillColor == "none" &&
+        if(fillColor == "none" &&
                 node.fillcolor != fillColor) {
             node.fillcolor = fillColor;
         }
-        if (strokeColor == "none" &&
+        if(strokeColor == "none" &&
                 node.strokecolor != strokeColor) {
             node.strokecolor = strokeColor;
         }
@@ -521,12 +521,12 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
             default:
                 // very basic guessing of dash style patterns
                 var parts = dash.split(/[ ,]/);
-                if (parts.length == 2) {
-                    if (1*parts[0] >= 2*parts[1]) {
+                if(parts.length == 2) {
+                    if(1*parts[0] >= 2*parts[1]) {
                         return "longdash";
                     }
                     return (parts[0] == 1 || parts[1] == 1) ? "dot" : "dash";
-                } else if (parts.length == 4) {
+                } else if(parts.length == 4) {
                     return (1*parts[0] >= 2*parts[1]) ? "longdashdot" :
                         "dashdot";
                 }
@@ -547,7 +547,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      */
     createNode: function(type, id) {
         var node = document.createElement(type);
-        if (id) {
+        if(id) {
             node.id = id;
         }
         
@@ -575,14 +575,14 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         //split type
         var subType = type;
         var splitIndex = subType.indexOf(":");
-        if (splitIndex != -1) {
+        if(splitIndex != -1) {
             subType = subType.substr(splitIndex+1);
         }
 
         //split nodeName
         var nodeName = node.nodeName;
         splitIndex = nodeName.indexOf(":");
-        if (splitIndex != -1) {
+        if(splitIndex != -1) {
             nodeName = nodeName.substr(splitIndex+1);
         }
 
@@ -758,22 +758,22 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
                 y = (comp.y / resolution - this.offset.y) | 0;
                 pathComp = " " + x + "," + y;
                 path.push(pathComp);
-                if (i==0) {
+                if(i==0) {
                     path.push(" l");
                 }
-                if (!area) {
+                if(!area) {
                     // IE improperly renders sub-paths that have no area.
                     // Instead of checking the area of every ring, we confirm
                     // the ring has at least three distinct points.  This does
                     // not catch all non-zero area cases, but it greatly improves
                     // interior ring digitizing and is a minor performance hit
                     // when rendering rings with many points.
-                    if (!first) {
+                    if(!first) {
                         first = pathComp;
-                    } else if (first != pathComp) {
-                        if (!second) {
+                    } else if(first != pathComp) {
+                        if(!second) {
                             second = pathComp;
-                        } else if (second != pathComp) {
+                        } else if(second != pathComp) {
                             // stop looking
                             area = true;
                         }
@@ -829,25 +829,25 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
 
         textbox.innerText = style.label;
 
-        if (style.cursor != "inherit" && style.cursor != null) {
+        if(style.cursor != "inherit" && style.cursor != null) {
             textbox.style.cursor = style.cursor;
         }
-        if (style.fontColor) {
+        if(style.fontColor) {
             textbox.style.color = style.fontColor;
         }
-        if (style.fontOpacity) {
+        if(style.fontOpacity) {
             textbox.style.filter = 'alpha(opacity=' + (style.fontOpacity * 100) + ')';
         }
-        if (style.fontFamily) {
+        if(style.fontFamily) {
             textbox.style.fontFamily = style.fontFamily;
         }
-        if (style.fontSize) {
+        if(style.fontSize) {
             textbox.style.fontSize = style.fontSize;
         }
-        if (style.fontWeight) {
+        if(style.fontWeight) {
             textbox.style.fontWeight = style.fontWeight;
         }
-        if (style.fontStyle) {
+        if(style.fontStyle) {
             textbox.style.fontStyle = style.fontStyle;
         }
         if(style.labelSelect === true) {
@@ -868,7 +868,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         }
 
         var align = style.labelAlign || "cm";
-        if (align.length == 1) {
+        if(align.length == 1) {
             align += "m";
         }
         var xshift = textbox.clientWidth *
@@ -918,12 +918,12 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         
         // check if symbol already exists in the cache
         var cache = this.symbolCache[id];
-        if (cache) {
+        if(cache) {
             return cache;
         }
         
         var symbol = OpenLayers.Renderer.symbol[graphicName];
-        if (!symbol) {
+        if(!symbol) {
             throw new Error(graphicName + ' is not a valid symbol name');
         }
 
@@ -941,7 +941,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
 
             pathitems.push(x);
             pathitems.push(y);
-            if (i == 0) {
+            if(i == 0) {
                 pathitems.push("l");
             }
         }

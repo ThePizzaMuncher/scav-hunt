@@ -77,7 +77,7 @@
             var popupControl = new OpenLayers.Control.SelectFeature(markerLayer, {
               onSelect: function(feature) {
                   var pos = feature.geometry;
-                  if (popup) {
+                  if(popup) {
                       map.removePopup(popup);
                   }
                   popup = new OpenLayers.Popup("popup",

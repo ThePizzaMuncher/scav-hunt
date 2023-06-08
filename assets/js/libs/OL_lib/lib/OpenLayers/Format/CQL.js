@@ -39,10 +39,10 @@ OpenLayers.Format.CQL = (function() {
         BETWEEN: /^BETWEEN/i,
         GEOMETRY: function(text) {
             var type = /^(POINT|LINESTRING|POLYGON|MULTIPOINT|MULTILINESTRING|MULTIPOLYGON|GEOMETRYCOLLECTION)/.exec(text);
-            if (type) {
+            if(type) {
                 var len = text.length;
                 var idx = text.indexOf("(", type[0].length);
-                if (idx > -1) {
+                if(idx > -1) {
                     var depth = 1;
                     while (idx < len && depth > 0) {
                         idx++;
@@ -108,19 +108,19 @@ OpenLayers.Format.CQL = (function() {
 
     var i;
     for (i in operators) {
-        if (operators.hasOwnProperty(i)) {
+        if(operators.hasOwnProperty(i)) {
             operatorReverse[operators[i]] = i;
         }
     }
 
     for (i in logicals) {
-        if (logicals.hasOwnProperty(i)) {
+        if(logicals.hasOwnProperty(i)) {
             logicalReverse[logicals[i]] = i;
         }
     }
 
     function tryToken(text, pattern) {
-        if (pattern instanceof RegExp) {
+        if(pattern instanceof RegExp) {
             return pattern.exec(text);
         } else {
             return pattern(text);
@@ -133,7 +133,7 @@ OpenLayers.Format.CQL = (function() {
             token = tokens[i];
             var pat = patterns[token];
             var matches = tryToken(text, pat);
-            if (matches) {
+            if(matches) {
                 var match = matches[0];
                 var remainder = text.substr(match.length).replace(/^\s*/, "");
                 return {
@@ -161,7 +161,7 @@ OpenLayers.Format.CQL = (function() {
             token = nextToken(text, expect);
             text = token.remainder;
             expect = follows[token.type];
-            if (token.type != "END" && !expect) {
+            if(token.type != "END" && !expect) {
                 throw new Error("No follows list for " + token.type);
             }
             results.push(token);
@@ -209,7 +209,7 @@ OpenLayers.Format.CQL = (function() {
                     }
                     operatorStack.pop(); // toss out the LPAREN
 
-                    if (operatorStack.length > 0 &&
+                    if(operatorStack.length > 0 &&
                         operatorStack[operatorStack.length-1].type == "SPATIAL") {
                         postfix.push(operatorStack.pop());
                     }
@@ -269,7 +269,7 @@ OpenLayers.Format.CQL = (function() {
                     });
                 case "VALUE":
                     var match = tok.text.match(/^'(.*)'$/);
-                    if (match) {
+                    if(match) {
                         return match[1].replace(/''/g, "'");
                     } else {
                         return Number(tok.text);
@@ -333,7 +333,7 @@ OpenLayers.Format.CQL = (function() {
         }
 
         var result = buildTree();
-        if (postfix.length > 0) {
+        if(postfix.length > 0) {
             var msg = "Remaining tokens after building AST: \n";
             for (var i = postfix.length - 1; i >= 0; i--) {
                 msg += postfix[i].type + ": " + postfix[i].text + "\n";
@@ -357,7 +357,7 @@ OpenLayers.Format.CQL = (function() {
          */
         read: function(text) { 
             var result = buildAst(tokenize(text));
-            if (this.keepData) {
+            if(this.keepData) {
                 this.data = result;
             }
             return result;
@@ -374,7 +374,7 @@ OpenLayers.Format.CQL = (function() {
          * {String} A CQL string based on the filter.
          */
         write: function(filter) {
-            if (filter instanceof OpenLayers.Geometry) {
+            if(filter instanceof OpenLayers.Geometry) {
                 return filter.toString();
             }
             switch (filter.CLASS_NAME) {
@@ -406,7 +406,7 @@ OpenLayers.Format.CQL = (function() {
                             throw new Error("Unknown spatial filter type: " + filter.type);
                     }
                 case "OpenLayers.Filter.Logical":
-                    if (filter.type == OpenLayers.Filter.Logical.NOT) {
+                    if(filter.type == OpenLayers.Filter.Logical.NOT) {
                         // TODO: deal with precedence of logical operators to 
                         // avoid extra parentheses (not urgent)
                         return "NOT (" + this.write(filter.filters[0]) + ")";
@@ -414,7 +414,7 @@ OpenLayers.Format.CQL = (function() {
                         var res = "(";
                         var first = true;
                         for (var i = 0; i < filter.filters.length; i++) {
-                            if (first) {
+                            if(first) {
                                 first = false;
                             } else {
                                 res += ") " + logicalReverse[filter.type] + " (";
@@ -424,7 +424,7 @@ OpenLayers.Format.CQL = (function() {
                         return res + ")";
                     }
                 case "OpenLayers.Filter.Comparison":
-                    if (filter.type == OpenLayers.Filter.Comparison.BETWEEN) {
+                    if(filter.type == OpenLayers.Filter.Comparison.BETWEEN) {
                         return filter.property + " BETWEEN " + 
                             this.write(filter.lowerBoundary) + " AND " + 
                             this.write(filter.upperBoundary);
@@ -435,9 +435,9 @@ OpenLayers.Format.CQL = (function() {
                             " " + operatorReverse[filter.type];
                     }
                 case undefined:
-                    if (typeof filter === "string") {
+                    if(typeof filter === "string") {
                         return "'" + filter.replace(/'/g, "''") + "'";
-                    } else if (typeof filter === "number") {
+                    } else if(typeof filter === "number") {
                         return String(filter);
                     }
                 default:

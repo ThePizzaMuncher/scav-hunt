@@ -68,7 +68,7 @@
                             iconMask: true,
                             handler: function() {
                                 // this is the app
-                                if (!app.searchFormPopupPanel) {
+                                if(!app.searchFormPopupPanel) {
                                     app.searchFormPopupPanel = new App.SearchFormPopupPanel({
                                         map: map
                                     });
@@ -80,7 +80,7 @@
                             iconMask: true,
                             handler: function() {
                                 var geolocate = map.getControlsBy("id", "locate-control")[0];
-                                if (geolocate.active) {
+                                if(geolocate.active) {
                                     geolocate.getCurrentLocation();
                                 } else {
                                     geolocate.activate();
@@ -106,7 +106,7 @@
                             iconMask: true,
                             iconCls: "layers",
                             handler: function() {
-                                if (!app.popup) {
+                                if(!app.popup) {
                                     app.popup = new Ext.Panel({
                                         floating: true,
                                         modal: true,
@@ -136,11 +136,11 @@
                                     init(function(feature) {
                                         var htmlContent = "";
                                         for (var property in feature.data) {
-                                            if (feature.data[property] != 'undefined') {
+                                            if(feature.data[property] != 'undefined') {
                                                 htmlContent = htmlContent + feature.data[property] + "<br>";
                                             }
                                         }
-                                        if (self.featurePopup) {
+                                        if(self.featurePopup) {
                                             self.featurePopup.destroy();
                                         }
                                         self.featurePopup = new Ext.Panel({
@@ -156,7 +156,7 @@
                                     })
                                 },
                                 resize: function() {
-                                    if (window.map) {
+                                    if(window.map) {
                                         map.updateSize();
                                     }
                                 },

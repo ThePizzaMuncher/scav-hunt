@@ -177,7 +177,7 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      */
     touchend: function(evt) {
         // touchstart may not have been allowed to propagate
-        if (this.down) {
+        if(this.down) {
             evt.xy = this.last.xy;
             evt.lastTouches = this.last.touches;
             this.handleSingle(evt);
@@ -212,7 +212,7 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
         // Collect right mouse clicks from the mouseup
         //  IE - ignores the second right click in mousedown so using
         //  mouseup instead
-        if (this.checkModifiers(evt) && this.control.handleRightClicks &&
+        if(this.checkModifiers(evt) && this.control.handleRightClicks &&
            OpenLayers.Event.isRightClick(evt)) {
             propagate = this.rightclick(evt);
         }
@@ -264,7 +264,7 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      */
     delayedRightCall: function(evt) {
         this.rightclickTimerId = null;
-        if (evt) {
+        if(evt) {
            this.callback('rightclick', [evt]);
         }
     },
@@ -279,7 +279,7 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean} Continue propagating this event.
      */
     click: function(evt) {
-        if (!this.last) {
+        if(!this.last) {
             this.last = this.getEventInfo(evt);
         }
         this.handleSingle(evt);
@@ -307,8 +307,8 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      * Handle double-click sequence.
      */
     handleDouble: function(evt) {
-        if (this.passesDblclickTolerance(evt)) {
-            if (this["double"]) {
+        if(this.passesDblclickTolerance(evt)) {
+            if(this["double"]) {
                 this.callback("dblclick", [evt]);
             }
             // to prevent a dblclick from firing the click callback in IE
@@ -321,12 +321,12 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      * Handle single click sequence.
      */
     handleSingle: function(evt) {
-        if (this.passesTolerance(evt)) {
-            if (this.timerId != null) {
+        if(this.passesTolerance(evt)) {
+            if(this.timerId != null) {
                 // already received a click
-                if (this.last.touches && this.last.touches.length === 1) {
+                if(this.last.touches && this.last.touches.length === 1) {
                     // touch device, no dblclick event - this may be a double
-                    if (this["double"]) {
+                    if(this["double"]) {
                         // on Android don't let the browser zoom on the page
                         OpenLayers.Event.preventDefault(evt);
                     }
@@ -334,7 +334,7 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
                 }
                 // if we're not in a touch environment we clear the click timer
                 // if we've got a second touch, we'll get two touchend events
-                if (!this.last.touches || this.last.touches.length !== 2) {
+                if(!this.last.touches || this.last.touches.length !== 2) {
                     this.clearTimer();
                 }
             } else {
@@ -375,16 +375,16 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      */
     passesTolerance: function(evt) {
         var passes = true;
-        if (this.pixelTolerance != null && this.down && this.down.xy) {
+        if(this.pixelTolerance != null && this.down && this.down.xy) {
             passes = this.pixelTolerance >= this.down.xy.distanceTo(evt.xy);
             // for touch environments, we also enforce that all touches
             // start and end within the given tolerance to be considered a click
-            if (passes && this.touch && 
+            if(passes && this.touch && 
                 this.down.touches.length === this.last.touches.length) {
                 // the touchend event doesn't come with touches, so we check
                 // down and last
                 for (var i=0, ii=this.down.touches.length; i<ii; ++i) {
-                    if (this.getTouchDistance(
+                    if(this.getTouchDistance(
                             this.down.touches[i], 
                             this.last.touches[i]
                         ) > this.pixelTolerance) {
@@ -420,7 +420,7 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      */
     passesDblclickTolerance: function(evt) {
         var passes = true;
-        if (this.down && this.first) {
+        if(this.down && this.first) {
             passes = this.down.xy.distanceTo(this.first.xy) <= this.dblclickTolerance;
         }
         return passes;
@@ -431,11 +431,11 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      * Clear the timer and set <timerId> to null.
      */
     clearTimer: function() {
-        if (this.timerId != null) {
+        if(this.timerId != null) {
             window.clearTimeout(this.timerId);
             this.timerId = null;
         }
-        if (this.rightclickTimerId != null) {
+        if(this.rightclickTimerId != null) {
             window.clearTimeout(this.rightclickTimerId);
             this.rightclickTimerId = null;
         }
@@ -448,7 +448,7 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      */
     delayedCall: function(evt) {
         this.timerId = null;
-        if (evt) {
+        if(evt) {
             this.callback("click", [evt]);
         }
     },
@@ -464,7 +464,7 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      */
     getEventInfo: function(evt) {
         var touches;
-        if (evt.touches) {
+        if(evt.touches) {
             var len = evt.touches.length;
             touches = new Array(len);
             var touch;

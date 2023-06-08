@@ -1,5 +1,5 @@
 
-// This code comes from the December 2009 release of Google Prettify, which is Copyright © 2006 Google Inc.
+// This code comes from the December 2009 release of Google Prettify, which is Copyright ï¿½ 2006 Google Inc.
 // Minor modifications are marked with "ND Change" comments.
 // As part of Natural Docs, this code is licensed under version 3 of the GNU Affero General Public License (AGPL.)
 // However, it may also be obtained separately under version 2.0 of the Apache License.
@@ -262,21 +262,21 @@ window['_pr_isIE6'] = function () {
   /** unescapes html to plain text. */
   function htmlToText(html) {
     var pos = html.indexOf('&');
-    if (pos < 0) { return html; }
+    if(pos < 0) { return html; }
     // Handle numeric entities specially.  We can't use functional substitution
     // since that doesn't work in older versions of Safari.
     // These should be rare since most browsers convert them to normal chars.
     for (--pos; (pos = html.indexOf('&#', pos + 1)) >= 0;) {
       var end = html.indexOf(';', pos);
-      if (end >= 0) {
+      if(end >= 0) {
         var num = html.substring(pos + 3, end);
         var radix = 10;
-        if (num && num.charAt(0) === 'x') {
+        if(num && num.charAt(0) === 'x') {
           num = num.substring(1);
           radix = 16;
         }
         var codePoint = parseInt(num, radix);
-        if (!isNaN(codePoint)) {
+        if(!isNaN(codePoint)) {
           html = (html.substring(0, pos) + String.fromCharCode(codePoint) +
                   html.substring(end + 1));
         }
@@ -303,13 +303,13 @@ window['_pr_isIE6'] = function () {
   function isPreformatted(node, content) {
     // PRE means preformatted, and is a very common case, so don't create
     // unnecessary computed style objects.
-    if ('PRE' === node.tagName) { return true; }
-    if (!newlineRe.test(content)) { return true; }  // Don't care
+    if('PRE' === node.tagName) { return true; }
+    if(!newlineRe.test(content)) { return true; }  // Don't care
     var whitespace = '';
     // For disconnected nodes, IE has no currentStyle.
-    if (node.currentStyle) {
+    if(node.currentStyle) {
       whitespace = node.currentStyle.whiteSpace;
-    } else if (window.getComputedStyle) {
+    } else if(window.getComputedStyle) {
       // Firefox makes a best guess if node is disconnected whereas Safari
       // returns the empty string.
       whitespace = window.getComputedStyle(node, null).whiteSpace;
@@ -324,7 +324,7 @@ window['_pr_isIE6'] = function () {
         out.push('<', name);
         for (var i = 0; i < node.attributes.length; ++i) {
           var attr = node.attributes[i];
-          if (!attr.specified) { continue; }
+          if(!attr.specified) { continue; }
           out.push(' ');
           normalizedHtml(attr, out);
         }
@@ -332,7 +332,7 @@ window['_pr_isIE6'] = function () {
         for (var child = node.firstChild; child; child = child.nextSibling) {
           normalizedHtml(child, out);
         }
-        if (node.firstChild || !/^(?:br|link|img)$/.test(name)) {
+        if(node.firstChild || !/^(?:br|link|img)$/.test(name)) {
           out.push('<\/', name, '>');
         }
         break;
@@ -360,9 +360,9 @@ window['_pr_isIE6'] = function () {
     var ignoreCase = false;
     for (var i = 0, n = regexs.length; i < n; ++i) {
       var regex = regexs[i];
-      if (regex.ignoreCase) {
+      if(regex.ignoreCase) {
         ignoreCase = true;
-      } else if (/[a-z]/i.test(regex.source.replace(
+      } else if(/[a-z]/i.test(regex.source.replace(
                      /\\u[0-9a-f]{4}|\\x[0-9a-f]{2}|\\[^ux]/gi, ''))) {
         needToFoldCase = true;
         ignoreCase = false;
@@ -371,7 +371,7 @@ window['_pr_isIE6'] = function () {
     }
 
     function decodeEscape(charsetPart) {
-      if (charsetPart.charAt(0) !== '\\') { return charsetPart.charCodeAt(0); }
+      if(charsetPart.charAt(0) !== '\\') { return charsetPart.charCodeAt(0); }
       switch (charsetPart.charAt(1)) {
         case 'b': return 8;
         case 't': return 9;
@@ -390,11 +390,11 @@ window['_pr_isIE6'] = function () {
     }
 
     function encodeEscape(charCode) {
-      if (charCode < 0x20) {
+      if(charCode < 0x20) {
         return (charCode < 0x10 ? '\\x0' : '\\x') + charCode.toString(16);
       }
       var ch = String.fromCharCode(charCode);
-      if (ch === '\\' || ch === '-' || ch === '[' || ch === ']') {
+      if(ch === '\\' || ch === '-' || ch === '[' || ch === ']') {
         ch = '\\' + ch;
       }
       return ch;
@@ -426,7 +426,7 @@ window['_pr_isIE6'] = function () {
         }
         var start = decodeEscape(p);
         var end;
-        if (i + 2 < n && '-' === charsetParts[i + 1]) {
+        if(i + 2 < n && '-' === charsetParts[i + 1]) {
           end = decodeEscape(charsetParts[i + 2]);
           i += 2;
         } else {
@@ -434,11 +434,11 @@ window['_pr_isIE6'] = function () {
         }
         ranges.push([start, end]);
         // If the range might intersect letters, then expand it.
-        if (!(end < 65 || start > 122)) {
-          if (!(end < 65 || start > 90)) {
+        if(!(end < 65 || start > 122)) {
+          if(!(end < 65 || start > 90)) {
             ranges.push([Math.max(65, start) | 32, Math.min(end, 90) | 32]);
           }
-          if (!(end < 97 || start > 122)) {
+          if(!(end < 97 || start > 122)) {
             ranges.push([Math.max(97, start) & ~32, Math.min(end, 122) & ~32]);
           }
         }
@@ -451,7 +451,7 @@ window['_pr_isIE6'] = function () {
       var lastRange = [NaN, NaN];
       for (var i = 0; i < ranges.length; ++i) {
         var range = ranges[i];
-        if (range[0] <= lastRange[1] + 1) {
+        if(range[0] <= lastRange[1] + 1) {
           lastRange[1] = Math.max(lastRange[1], range[1]);
         } else {
           consolidatedRanges.push(lastRange = range);
@@ -459,13 +459,13 @@ window['_pr_isIE6'] = function () {
       }
 
       var out = ['['];
-      if (inverse) { out.push('^'); }
+      if(inverse) { out.push('^'); }
       out.push.apply(out, groups);
       for (var i = 0; i < consolidatedRanges.length; ++i) {
         var range = consolidatedRanges[i];
         out.push(encodeEscape(range[0]));
-        if (range[1] > range[0]) {
-          if (range[1] + 1 > range[0]) { out.push('-'); }
+        if(range[1] > range[0]) {
+          if(range[1] + 1 > range[0]) { out.push('-'); }
           out.push(encodeEscape(range[1]));
         }
       }
@@ -501,12 +501,12 @@ window['_pr_isIE6'] = function () {
       // mapping.
       for (var i = 0, groupIndex = 0; i < n; ++i) {
         var p = parts[i];
-        if (p === '(') {
+        if(p === '(') {
           // groups are 1-indexed, so max group index is count of '('
           ++groupIndex;
-        } else if ('\\' === p.charAt(0)) {
+        } else if('\\' === p.charAt(0)) {
           var decimalValue = +p.substring(1);
-          if (decimalValue && decimalValue <= groupIndex) {
+          if(decimalValue && decimalValue <= groupIndex) {
             capturedGroups[decimalValue] = -1;
           }
         }
@@ -515,20 +515,20 @@ window['_pr_isIE6'] = function () {
       // Renumber groups and reduce capturing groups to non-capturing groups
       // where possible.
       for (var i = 1; i < capturedGroups.length; ++i) {
-        if (-1 === capturedGroups[i]) {
+        if(-1 === capturedGroups[i]) {
           capturedGroups[i] = ++capturedGroupIndex;
         }
       }
       for (var i = 0, groupIndex = 0; i < n; ++i) {
         var p = parts[i];
-        if (p === '(') {
+        if(p === '(') {
           ++groupIndex;
-          if (capturedGroups[groupIndex] === undefined) {
+          if(capturedGroups[groupIndex] === undefined) {
             parts[i] = '(?:';
           }
-        } else if ('\\' === p.charAt(0)) {
+        } else if('\\' === p.charAt(0)) {
           var decimalValue = +p.substring(1);
-          if (decimalValue && decimalValue <= groupIndex) {
+          if(decimalValue && decimalValue <= groupIndex) {
             parts[i] = '\\' + capturedGroups[groupIndex];
           }
         }
@@ -537,18 +537,18 @@ window['_pr_isIE6'] = function () {
       // Remove any prefix anchors so that the output will match anywhere.
       // ^^ really does mean an anchored match though.
       for (var i = 0, groupIndex = 0; i < n; ++i) {
-        if ('^' === parts[i] && '^' !== parts[i + 1]) { parts[i] = ''; }
+        if('^' === parts[i] && '^' !== parts[i + 1]) { parts[i] = ''; }
       }
 
       // Expand letters to groupts to handle mixing of case-sensitive and
       // case-insensitive patterns if necessary.
-      if (regex.ignoreCase && needToFoldCase) {
+      if(regex.ignoreCase && needToFoldCase) {
         for (var i = 0; i < n; ++i) {
           var p = parts[i];
           var ch0 = p.charAt(0);
-          if (p.length >= 2 && ch0 === '[') {
+          if(p.length >= 2 && ch0 === '[') {
             parts[i] = caseFoldCharset(p);
-          } else if (ch0 !== '\\') {
+          } else if(ch0 !== '\\') {
             // TODO: handle letters in numeric escapes.
             parts[i] = p.replace(
                 /[a-zA-Z]/g,
@@ -566,7 +566,7 @@ window['_pr_isIE6'] = function () {
     var rewritten = [];
     for (var i = 0, n = regexs.length; i < n; ++i) {
       var regex = regexs[i];
-      if (regex.global || regex.multiline) { throw new Error('' + regex); }
+      if(regex.global || regex.multiline) { throw new Error('' + regex); }
       rewritten.push(
           '(?:' + allowAnywhereFoldCaseAndRenumberGroups(regex) + ')');
     }
@@ -579,19 +579,19 @@ window['_pr_isIE6'] = function () {
     // inner html is hopelessly broken in Safari 2.0.4 when the content is
     // an html description of well formed XML and the containing tag is a PRE
     // tag, so we detect that case and emulate innerHTML.
-    if (null === PR_innerHtmlWorks) {
+    if(null === PR_innerHtmlWorks) {
       var testNode = document.createElement('PRE');
       testNode.appendChild(
           document.createTextNode('<!DOCTYPE foo PUBLIC "foo bar">\n<foo />'));
       PR_innerHtmlWorks = !/</.test(testNode.innerHTML);
     }
 
-    if (PR_innerHtmlWorks) {
+    if(PR_innerHtmlWorks) {
       var content = node.innerHTML;
       // XMP tags contain unescaped entities so require special handling.
-      if (isRawContent(node)) {
+      if(isRawContent(node)) {
         content = textToHtml(content);
-      } else if (!isPreformatted(node, content)) {
+      } else if(!isPreformatted(node, content)) {
         content = content.replace(/(<br\s*\/?>)[\r\n]+/g, '$1')
             .replace(/(?:[\r\n]+[ \t]*)+/g, ' ');
       }
@@ -627,7 +627,7 @@ window['_pr_isIE6'] = function () {
 
         switch (ch) {
           case '\t':
-            if (!out) { out = []; }
+            if(!out) { out = []; }
             out.push(plainText.substring(pos, i));
             // calculate how much space we need in front of this part
             // nSpaces is the amount of padding -- the number of spaces needed
@@ -647,7 +647,7 @@ window['_pr_isIE6'] = function () {
             ++charInLine;
         }
       }
-      if (!out) { return plainText; }
+      if(!out) { return plainText; }
       out.push(plainText.substring(pos));
       return out.join('');
     };
@@ -682,22 +682,22 @@ window['_pr_isIE6'] = function () {
     var sourceBuf = [];
     var sourceBufLen = 0;
     var extractedTags = [];
-    if (matches) {
+    if(matches) {
       for (var i = 0, n = matches.length; i < n; ++i) {
         var match = matches[i];
-        if (match.length > 1 && match.charAt(0) === '<') {
-          if (pr_commentPrefix.test(match)) { continue; }
-          if (pr_cdataPrefix.test(match)) {
+        if(match.length > 1 && match.charAt(0) === '<') {
+          if(pr_commentPrefix.test(match)) { continue; }
+          if(pr_cdataPrefix.test(match)) {
             // strip CDATA prefix and suffix.  Don't unescape since it's CDATA
             sourceBuf.push(match.substring(9, match.length - 3));
             sourceBufLen += match.length - 12;
-          } else if (pr_brPrefix.test(match)) {
+          } else if(pr_brPrefix.test(match)) {
             // <br> tags are lexically significant so convert them to text.
             // This is undone later.
             sourceBuf.push('\n');
             ++sourceBufLen;
           } else {
-            if (match.indexOf(PR_NOCODE) >= 0 && isNoCodeTag(match)) {
+            if(match.indexOf(PR_NOCODE) >= 0 && isNoCodeTag(match)) {
               // A <span class="nocode"> will start a section that should be
               // ignored.  Continue walking the list until we see a matching end
               // tag.
@@ -707,15 +707,15 @@ window['_pr_isIE6'] = function () {
               end_tag_loop:
               for (j = i + 1; j < n; ++j) {
                 var name2 = matches[j].match(pr_tagNameRe);
-                if (name2 && name2[2] === name) {
-                  if (name2[1] === '/') {
-                    if (--depth === 0) { break end_tag_loop; }
+                if(name2 && name2[2] === name) {
+                  if(name2[1] === '/') {
+                    if(--depth === 0) { break end_tag_loop; }
                   } else {
                     ++depth;
                   }
                 }
               }
-              if (j < n) {
+              if(j < n) {
                 extractedTags.push(
                     sourceBufLen, matches.slice(i, j + 1).join(''));
                 i = j;
@@ -753,7 +753,7 @@ window['_pr_isIE6'] = function () {
    *    whose decorations are already present on out.
    */
   function appendDecorations(basePos, sourceCode, langHandler, out) {
-    if (!sourceCode) { return; }
+    if(!sourceCode) { return; }
     var job = {
       source: sourceCode,
       basePos: basePos
@@ -818,14 +818,14 @@ window['_pr_isIE6'] = function () {
       for (var i = 0, n = allPatterns.length; i < n; ++i) {
         var patternParts = allPatterns[i];
         var shortcutChars = patternParts[3];
-        if (shortcutChars) {
+        if(shortcutChars) {
           for (var c = shortcutChars.length; --c >= 0;) {
             shortcuts[shortcutChars.charAt(c)] = patternParts;
           }
         }
         var regex = patternParts[1];
         var k = '' + regex;
-        if (!regexKeys.hasOwnProperty(k)) {
+        if(!regexKeys.hasOwnProperty(k)) {
           allRegexs.push(regex);
           regexKeys[k] = null;
         }
@@ -866,47 +866,47 @@ window['_pr_isIE6'] = function () {
         var match = void 0;
 
         var isEmbedded;
-        if (typeof style === 'string') {
+        if(typeof style === 'string') {
           isEmbedded = false;
         } else {
           var patternParts = shortcuts[token.charAt(0)];
-          if (patternParts) {
+          if(patternParts) {
             match = token.match(patternParts[1]);
             style = patternParts[0];
           } else {
             for (var i = 0; i < nPatterns; ++i) {
               patternParts = fallthroughStylePatterns[i];
               match = token.match(patternParts[1]);
-              if (match) {
+              if(match) {
                 style = patternParts[0];
                 break;
               }
             }
 
-            if (!match) {  // make sure that we make progress
+            if(!match) {  // make sure that we make progress
               style = PR_PLAIN;
             }
           }
 
           isEmbedded = style.length >= 5 && 'lang-' === style.substring(0, 5);
-          if (isEmbedded && !(match && typeof match[1] === 'string')) {
+          if(isEmbedded && !(match && typeof match[1] === 'string')) {
             isEmbedded = false;
             style = PR_SOURCE;
           }
 
-          if (!isEmbedded) { styleCache[token] = style; }
+          if(!isEmbedded) { styleCache[token] = style; }
         }
 
         var tokenStart = pos;
         pos += token.length;
 
-        if (!isEmbedded) {
+        if(!isEmbedded) {
           decorations.push(basePos + tokenStart, style);
         } else {  // Treat group 1 as an embedded block of source code.
           var embeddedSource = match[1];
           var embeddedSourceStart = token.indexOf(embeddedSource);
           var embeddedSourceEnd = embeddedSourceStart + embeddedSource.length;
-          if (match[2]) {
+          if(match[2]) {
             // If embeddedSource can be blank, then it would match at the
             // beginning which would cause us to infinitely recurse on the
             // entire token, so we catch the right context in match[2].
@@ -954,12 +954,12 @@ window['_pr_isIE6'] = function () {
     */
   function sourceDecorator(options) {
     var shortcutStylePatterns = [], fallthroughStylePatterns = [];
-    if (options['tripleQuotedStrings']) {
+    if(options['tripleQuotedStrings']) {
       // '''multi-line-string''', 'single-line-string', and double-quoted
       shortcutStylePatterns.push(
           [PR_STRING,  /^(?:\'\'\'(?:[^\'\\]|\\[\s\S]|\'{1,2}(?=[^\']))*(?:\'\'\'|$)|\"\"\"(?:[^\"\\]|\\[\s\S]|\"{1,2}(?=[^\"]))*(?:\"\"\"|$)|\'(?:[^\\\']|\\[\s\S])*(?:\'|$)|\"(?:[^\\\"]|\\[\s\S])*(?:\"|$))/,
            null, '\'"']);
-    } else if (options['multiLineStrings']) {
+    } else if(options['multiLineStrings']) {
       // 'multi-line-string', "multi-line-string"
       shortcutStylePatterns.push(
           [PR_STRING,  /^(?:\'(?:[^\\\']|\\[\s\S])*(?:\'|$)|\"(?:[^\\\"]|\\[\s\S])*(?:\"|$)|\`(?:[^\\\`]|\\[\s\S])*(?:\`|$))/,
@@ -971,13 +971,13 @@ window['_pr_isIE6'] = function () {
            /^(?:\'(?:[^\\\'\r\n]|\\.)*(?:\'|$)|\"(?:[^\\\"\r\n]|\\.)*(?:\"|$))/,
            null, '"\'']);
     }
-    if (options['verbatimStrings']) {
+    if(options['verbatimStrings']) {
       // verbatim-string-literal production from the C# grammar.  See issue 93.
       fallthroughStylePatterns.push(
           [PR_STRING, /^@\"(?:[^\"]|\"\")*(?:\"|$)/, null]);
     }
-    if (options['hashComments']) {
-      if (options['cStyleComments']) {
+    if(options['hashComments']) {
+      if(options['cStyleComments']) {
         // Stop C preprocessor declarations at an unclosed open comment
         shortcutStylePatterns.push(
             [PR_COMMENT, /^#(?:(?:define|elif|else|endif|error|ifdef|include|ifndef|line|pragma|undef|warning)\b|[^\r\n]*)/,
@@ -990,12 +990,12 @@ window['_pr_isIE6'] = function () {
         shortcutStylePatterns.push([PR_COMMENT, /^#[^\r\n]*/, null, '#']);
       }
     }
-    if (options['cStyleComments']) {
+    if(options['cStyleComments']) {
       fallthroughStylePatterns.push([PR_COMMENT, /^\/\/[^\r\n]*/, null]);
       fallthroughStylePatterns.push(
           [PR_COMMENT, /^\/\*[\s\S]*?(?:\*\/|$)/, null]);
     }
-    if (options['regexLiterals']) {
+    if(options['regexLiterals']) {
       var REGEX_LITERAL = (
           // A regular expression literal starts with a slash that is
           // not followed by * or / so that it is not confused with
@@ -1016,7 +1016,7 @@ window['_pr_isIE6'] = function () {
     }
 
     var keywords = options['keywords'].replace(/^\s+|\s+$/g, '');
-    if (keywords.length) {
+    if(keywords.length) {
       fallthroughStylePatterns.push(
           [PR_KEYWORD,
            new RegExp('^(?:' + keywords.replace(/\s+/g, '|') + ')\\b'), null]);
@@ -1091,13 +1091,13 @@ window['_pr_isIE6'] = function () {
     // A helper function that is responsible for opening sections of decoration
     // and outputing properly escaped chunks of source
     function emitTextUpTo(sourceIdx) {
-      if (sourceIdx > outputIdx) {
-        if (openDecoration && openDecoration !== currentDecoration) {
+      if(sourceIdx > outputIdx) {
+        if(openDecoration && openDecoration !== currentDecoration) {
           // Close the current decoration
           html.push('</span>');
           openDecoration = null;
         }
-        if (!openDecoration && currentDecoration) {
+        if(!openDecoration && currentDecoration) {
           openDecoration = currentDecoration;
           html.push('<span class="', openDecoration, '">');
         }
@@ -1128,8 +1128,8 @@ window['_pr_isIE6'] = function () {
       // Determine if we're going to consume a tag this time around.  Otherwise
       // we consume a decoration or exit.
       var outputTag;
-      if (tagPos < extractedTags.length) {
-        if (decPos < decorations.length) {
+      if(tagPos < extractedTags.length) {
+        if(decPos < decorations.length) {
           // Pick one giving preference to extractedTags since we shouldn't open
           // a new style that we're going to have to immediately close in order
           // to output a tag.
@@ -1141,16 +1141,16 @@ window['_pr_isIE6'] = function () {
         outputTag = false;
       }
       // Consume either a decoration or a tag or exit.
-      if (outputTag) {
+      if(outputTag) {
         emitTextUpTo(extractedTags[tagPos]);
-        if (openDecoration) {
+        if(openDecoration) {
           // Close the current decoration
           html.push('</span>');
           openDecoration = null;
         }
         html.push(extractedTags[tagPos + 1]);
         tagPos += 2;
-      } else if (decPos < decorations.length) {
+      } else if(decPos < decorations.length) {
         emitTextUpTo(decorations[decPos]);
         currentDecoration = decorations[decPos + 1];
         decPos += 2;
@@ -1159,7 +1159,7 @@ window['_pr_isIE6'] = function () {
       }
     }
     emitTextUpTo(sourceText.length);
-    if (openDecoration) {
+    if(openDecoration) {
       html.push('</span>');
     }
     job.prettyPrintedHtml = html.join('');
@@ -1186,15 +1186,15 @@ window['_pr_isIE6'] = function () {
   function registerLangHandler(handler, fileExtensions) {
     for (var i = fileExtensions.length; --i >= 0;) {
       var ext = fileExtensions[i];
-      if (!langHandlerRegistry.hasOwnProperty(ext)) {
+      if(!langHandlerRegistry.hasOwnProperty(ext)) {
         langHandlerRegistry[ext] = handler;
-      } else if ('console' in window) {
+      } else if('console' in window) {
         console.warn('cannot override language handler %s', ext);
       }
     }
   }
   function langHandlerForExtension(extension, source) {
-    if (!(extension && langHandlerRegistry.hasOwnProperty(extension))) {
+    if(!(extension && langHandlerRegistry.hasOwnProperty(extension))) {
       // Treat it as markup if the first non whitespace character is a < and
       // the last non-whitespace character is a >.
       extension = /^\s*</.test(source)
@@ -1320,7 +1320,7 @@ window['_pr_isIE6'] = function () {
       // a decorated html string which is left in job.prettyPrintedHtml.
       recombineTagsAndDecorations(job);
     } catch (e) {
-      if ('console' in window) {
+      if('console' in window) {
         console.log(e);
         console.trace();
       }
@@ -1356,7 +1356,7 @@ window['_pr_isIE6'] = function () {
     codeSegments = null;
 
     var clock = Date;
-    if (!clock['now']) {
+    if(!clock['now']) {
       clock = { 'now': function () { return (new Date).getTime(); } };
     }
 
@@ -1371,26 +1371,26 @@ window['_pr_isIE6'] = function () {
                      Infinity);
       for (; k < elements.length && clock.now() < endTime; k++) {
         var cs = elements[k];
-        if (cs.className && cs.className.indexOf('prettyprint') >= 0) {
+        if(cs.className && cs.className.indexOf('prettyprint') >= 0) {
           // If the classes includes a language extensions, use it.
           // Language extensions can be specified like
           //     <pre class="prettyprint lang-cpp">
           // the language extension "cpp" is used to find a language handler as
           // passed to PR_registerLangHandler.
           var langExtension = cs.className.match(/\blang-(\w+)\b/);
-          if (langExtension) { langExtension = langExtension[1]; }
+          if(langExtension) { langExtension = langExtension[1]; }
 
           // make sure this is not nested in an already prettified element
           var nested = false;
           for (var p = cs.parentNode; p; p = p.parentNode) {
-            if ((p.tagName === 'pre' || p.tagName === 'code' ||
+            if((p.tagName === 'pre' || p.tagName === 'code' ||
                  p.tagName === 'xmp' || p.tagName === 'td') &&  /* ND Change: Add tables to support prototypes */
                 p.className && p.className.indexOf('prettyprint') >= 0) {
               nested = true;
               break;
             }
           }
-          if (!nested) {
+          if(!nested) {
             // fetch the content as a snippet of properly escaped HTML.
             // Firefox adds newlines at the end.
             var content = getInnerHtml(cs);
@@ -1410,17 +1410,17 @@ window['_pr_isIE6'] = function () {
           }
         }
       }
-      if (k < elements.length) {
+      if(k < elements.length) {
         // finish up in a continuation
         setTimeout(doWork, 250);
-      } else if (opt_whenDone) {
+      } else if(opt_whenDone) {
         opt_whenDone();
       }
     }
 
     function replaceWithPrettyPrintedHtml() {
       var newContent = prettyPrintingJob.prettyPrintedHtml;
-      if (!newContent) { return; }
+      if(!newContent) { return; }
 
       /* ND Change: Restore the preserved &nbsp;s.  */
 	  newContent = newContent.replace(/\x11/g, '&nbsp;');
@@ -1428,7 +1428,7 @@ window['_pr_isIE6'] = function () {
       var cs = prettyPrintingJob.sourceNode;
 
       // push the prettified html back into the tag.
-      if (!isRawContent(cs)) {
+      if(!isRawContent(cs)) {
         // just replace the old html with the new
         cs.innerHTML = newContent;
       } else {
@@ -1438,9 +1438,9 @@ window['_pr_isIE6'] = function () {
         var pre = document.createElement('PRE');
         for (var i = 0; i < cs.attributes.length; ++i) {
           var a = cs.attributes[i];
-          if (a.specified) {
+          if(a.specified) {
             var aname = a.name.toLowerCase();
-            if (aname === 'class') {
+            if(aname === 'class') {
               pre.className = a.value;  // For IE 6
             } else {
               pre.setAttribute(a.name, a.value);
@@ -1459,7 +1459,7 @@ window['_pr_isIE6'] = function () {
       // Doing this on other browsers breaks lots of stuff since \r\n is
       // treated as two newlines on Firefox, and doing this also slows
       // down rendering.
-      if (isIE678 && cs.tagName === 'PRE') {
+      if(isIE678 && cs.tagName === 'PRE') {
         var lineBreaks = cs.getElementsByTagName('br');
         for (var j = lineBreaks.length; --j >= 0;) {
           var lineBreak = lineBreaks[j];

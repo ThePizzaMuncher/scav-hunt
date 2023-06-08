@@ -37,12 +37,12 @@ var flag = document.getElementById("flag");
 
 var callback = function(infoLookup, loc, pixel) {
     var msg = "";
-    if (infoLookup) {
+    if(infoLookup) {
         var info;
         for (var idx in infoLookup) {
             // idx can be used to retrieve layer from map.layers[idx]
             info = infoLookup[idx];
-            if (info && info.data) {
+            if(info && info.data) {
                 output.innerHTML = info.data.admin;
                 flag.innerHTML = "<img src='data:image/png;base64," + info.data.flag_png + "'>";
                 flag.style.left = (pixel.x + 15) + "px";

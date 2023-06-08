@@ -29,7 +29,7 @@ function init() {
                         var fid, points = [], feature;
                         for (var i=0, len=e.features.length; i<len; i++) {
                             feature = e.features[i];
-                            if ((fid && feature.fid !== fid) || i === len-1) {
+                            if((fid && feature.fid !== fid) || i === len-1) {
                                 this.addNodes(points, {silent: true});
                                 points = [];
                             } else {

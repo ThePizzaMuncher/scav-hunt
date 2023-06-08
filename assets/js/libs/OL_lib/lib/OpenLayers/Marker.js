@@ -73,7 +73,7 @@ OpenLayers.Marker = OpenLayers.Class({
         this.lonlat = lonlat;
         
         var newIcon = (icon) ? icon : OpenLayers.Marker.defaultIcon();
-        if (this.icon == null) {
+        if(this.icon == null) {
             this.icon = newIcon;
         } else {
             this.icon.url = newIcon.url;
@@ -100,7 +100,7 @@ OpenLayers.Marker = OpenLayers.Class({
         this.events.destroy();
         this.events = null;
 
-        if (this.icon != null) {
+        if(this.icon != null) {
             this.icon.destroy();
             this.icon = null;
         }
@@ -126,7 +126,7 @@ OpenLayers.Marker = OpenLayers.Class({
     * Erases any drawn elements for this marker.
     */
     erase: function() {
-        if (this.icon != null) {
+        if(this.icon != null) {
             this.icon.erase();
         }
     }, 
@@ -140,7 +140,7 @@ OpenLayers.Marker = OpenLayers.Class({
     * An OpenLayers.Pixel or an object with a 'x' and 'y' properties.
     */
     moveTo: function (px) {
-        if ((px != null) && (this.icon != null)) {
+        if((px != null) && (this.icon != null)) {
             this.icon.moveTo(px);
         }           
         this.lonlat = this.map.getLonLatFromLayerPx(px);
@@ -166,7 +166,7 @@ OpenLayers.Marker = OpenLayers.Class({
     onScreen:function() {
         
         var onScreen = false;
-        if (this.map) {
+        if(this.map) {
             var screenBounds = this.map.getExtent();
             onScreen = screenBounds.containsLonLat(this.lonlat);
         }    
@@ -182,7 +182,7 @@ OpenLayers.Marker = OpenLayers.Class({
      *                   will double the size).
      */
     inflate: function(inflate) {
-        if (this.icon) {
+        if(this.icon) {
             this.icon.setSize({
                 w: this.icon.size.w * inflate,
                 h: this.icon.size.h * inflate

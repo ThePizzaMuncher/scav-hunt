@@ -159,7 +159,7 @@ $szBaseCacheDir =  "/var/cache/kamap/";
 /*****                                                                   *****/
 /*****  END OF CONFIGURABLE STUFF - unless you know what you are doing   *****/
 
-if (isset($_REQUEST['map']) && isset($aszMapFiles[$_REQUEST['map']]))
+if(isset($_REQUEST['map']) && isset($aszMapFiles[$_REQUEST['map']]))
 {
     $szMap = $_REQUEST['map'];
 }
@@ -257,7 +257,7 @@ function normalizeString($szString)
 $orig_umask = umask(0);
 
 /* create the main cache directory if necessary */
-if (!@is_dir($szMapCacheDir))
+if(!@is_dir($szMapCacheDir))
     makeDirs($szMapCacheDir);
 
 /* get the various request parameters 
@@ -296,14 +296,14 @@ $layers = isset( $_REQUEST['layers'] ) ? $_REQUEST['layers'] : "";
 
 // dynamic imageformat ----------------------------------------------
 //use the function in config.php to set the output format
-if (isset($_REQUEST['i']))
+if(isset($_REQUEST['i']))
    setOutputFormat( $_REQUEST['i'] );
 //----------------------------------------------------------------
 
 /* tileid=t#####l#### can be used instead of t+l parameters. Useful in
  * regenerating the cache for instance.
  */
-if (isset( $_REQUEST['tileid']) &&
+if(isset( $_REQUEST['tileid']) &&
     preg_match("/t(-?\d+)l(-?\d+)/", $_REQUEST['tileid'], $aMatch) )
 {
     $top = intval($aMatch[1]);
@@ -327,7 +327,7 @@ $szGroupDir = $groups != "" ? normalizeString($groups) : "def";
 $szLayerDir = $layers != "" ? normalizeString($layers) : "def"; 
 
 $szCacheDir = $szMapCacheDir."/".$scale."/".$szGroupDir."/".$szLayerDir."/".$szMetaTileId;
-if (!@is_dir($szCacheDir))
+if(!@is_dir($szCacheDir))
     makeDirs($szCacheDir);
 
 /* resolve cache hit - clear the os stat cache if necessary */
@@ -336,7 +336,7 @@ $szCacheFile = $szCacheDir."/".$szTileId.$szImageExtension;
 clearstatcache();
 
 $szMetaDir = $szCacheDir."/meta";
-if (!@is_Dir($szMetaDir))
+if(!@is_Dir($szMetaDir))
     makeDirs($szMetaDir);
 
 /* simple locking in case there are several requests for the same meta
@@ -344,7 +344,7 @@ if (!@is_Dir($szMetaDir))
 $szLockFile = $szMetaDir."/lock_".$metaTop."_".$metaLeft;
 $fpLockFile = fopen($szLockFile, "a+");
 clearstatcache();
-if (!file_exists($szCacheFile) || $bForce)
+if(!file_exists($szCacheFile) || $bForce)
 {
     flock($fpLockFile, LOCK_EX);
     fwrite($fpLockFile, ".");
@@ -352,18 +352,18 @@ if (!file_exists($szCacheFile) || $bForce)
     //check once more to see if the cache file was created while waiting for
     //the lock
     clearstatcache();
-    if (!file_exists($szCacheFile) || $bForce)
+    if(!file_exists($szCacheFile) || $bForce)
     {
-        if (!extension_loaded('MapScript'))
+        if(!extension_loaded('MapScript'))
         {
             dl( $szPHPMapScriptModule );
         }
-        if (!extension_loaded('gd'))
+        if(!extension_loaded('gd'))
         {
             dl( $szPHPGDModule);
         }
         
-        if (!@is_Dir($szMetaDir))
+        if(!@is_Dir($szMetaDir))
             makeDirs($szMetaDir);    
         
         $oMap = ms_newMapObj($szMapFile);
@@ -393,15 +393,15 @@ if (!file_exists($szCacheFile) || $bForce)
         $oMap->setExtent($minx,$miny,$maxx,$maxy);
         $oMap->selectOutputFormat( $szMapImageFormat );               
         $aszLayers = array();
-        if ($groups || $layers)
+        if($groups || $layers)
         {
             /* Draw only specified layers instead of default from mapfile*/
-            if ($layers)
+            if($layers)
             {
                 $aszLayers = explode(",", $layers);
             }
 
-            if ($groups)
+            if($groups)
             {
                 $aszGroups = explode(",", $groups);
             }
@@ -409,7 +409,7 @@ if (!file_exists($szCacheFile) || $bForce)
             for($i=0;$i<$nLayers;$i++)
             {
                 $oLayer = $oMap->getLayer($i);
-                if (($aszGroups && in_array($oLayer->group,$aszGroups)) ||
+                if(($aszGroups && in_array($oLayer->group,$aszGroups)) ||
                     ($aszLayers && in_array($oLayer->name,$aszLayers)) ||
                     ($aszGroups && $oLayer->group == '' && 
                      in_array( "__base__", $aszGroups)))
@@ -435,7 +435,7 @@ if (!file_exists($szCacheFile) || $bForce)
         $oImg->saveImage($szMetaImg);
         $oImg->free();
         eval("\$oGDImg = ".$szMapImageCreateFunction."('".$szMetaImg."');");
-        if ($bDebug)
+        if($bDebug)
         {
             $blue = imagecolorallocate($oGDImg, 0, 0, 255);
             imagerectangle($oGDImg, 0, 0, $tileWidth * $metaWidth - 1, $tileHeight * $metaHeight - 1, $blue );
@@ -447,7 +447,7 @@ if (!file_exists($szCacheFile) || $bForce)
                 eval("\$oTile = ".$szImageCreateFunction."( ".$tileWidth.",".$tileHeight." );");
                 // Allocate BG color for the tile (in case the metatile has transparent BG)
                 $nTransparent = imagecolorallocate($oTile, $oMap->imagecolor->red, $oMap->imagecolor->green, $oMap->imagecolor->blue);
-                //if ($oMap->outputformat->transparent == MS_ON)
+                //if($oMap->outputformat->transparent == MS_ON)
                 //{
                     imagecolortransparent( $oTile,$nTransparent);
                 //}
@@ -455,7 +455,7 @@ if (!file_exists($szCacheFile) || $bForce)
                 $tileLeft = $i*$tileWidth + $metaBuffer;
                 imagecopy( $oTile, $oGDImg, 0, 0, $tileLeft, $tileTop, $tileWidth, $tileHeight );
                 /* debugging stuff */
-                if ($bDebug)
+                if($bDebug)
                 {
                     $black = imagecolorallocate($oTile, 1, 1, 1);
                     $green = imagecolorallocate($oTile, 0, 128, 0 );
@@ -472,12 +472,12 @@ if (!file_exists($szCacheFile) || $bForce)
                 $oTile = null;
             }
         }
-        if ($oGDImg != null)
+        if($oGDImg != null)
         {   
             imagedestroy($oGDImg);
             $oGDImg = null;
         }
-        if (!$bDebug)
+        if(!$bDebug)
         {
             unlink( $szMetaImg );
         }

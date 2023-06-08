@@ -95,7 +95,7 @@ OpenLayers.Control.TouchNavigation = OpenLayers.Class(OpenLayers.Control, {
             this.dragPan.destroy();
         }
         this.dragPan = null;
-        if (this.pinchZoom) {
+        if(this.pinchZoom) {
             this.pinchZoom.destroy();
             delete this.pinchZoom;
         }

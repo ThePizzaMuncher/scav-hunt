@@ -74,12 +74,12 @@
     function assertEqual(got, expected, msg) {
         if(got === undefined) {
             got = "undefined";
-        } else if (got === null) {
+        } else if(got === null) {
             got = "null";
         }
         if(expected === undefined) {
             expected = "undefined";
-        } else if (expected === null) {
+        } else if(expected === null) {
             expected = "null";
         }
         if(got != expected) {
@@ -232,20 +232,20 @@
      */
     function getChildNodes(node, options) {
         //check whitespace
-        if (options && options.includeWhiteSpace) {
+        if(options && options.includeWhiteSpace) {
             return node.childNodes;
         }
         else {
            nodes = [];
            for (var i = 0; i < node.childNodes.length; i++ ) {
               var child = node.childNodes[i];
-              if (child.nodeType == 1) {
+              if(child.nodeType == 1) {
                  //element node, add it 
                  nodes.push(child);
               }
-              else if (child.nodeType == 3) {
+              else if(child.nodeType == 3) {
                  //text node, add if non empty
-                 if (child.nodeValue && 
+                 if(child.nodeValue && 
                        child.nodeValue.replace(/^\s*(.*?)\s*$/, "$1") != "" ) { 
 
                     nodes.push(child);

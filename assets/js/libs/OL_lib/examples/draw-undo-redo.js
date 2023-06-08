@@ -23,13 +23,13 @@ OpenLayers.Event.observe(document, "keydown", function(evt) {
     var handled = false;
     switch (evt.keyCode) {
         case 90: // z
-            if (evt.metaKey || evt.ctrlKey) {
+            if(evt.metaKey || evt.ctrlKey) {
                 draw.undo();
                 handled = true;
             }
             break;
         case 89: // y
-            if (evt.metaKey || evt.ctrlKey) {
+            if(evt.metaKey || evt.ctrlKey) {
                 draw.redo();
                 handled = true;
             }
@@ -39,7 +39,7 @@ OpenLayers.Event.observe(document, "keydown", function(evt) {
             handled = true;
             break;
     }
-    if (handled) {
+    if(handled) {
         OpenLayers.Event.stop(evt);
     }
 });

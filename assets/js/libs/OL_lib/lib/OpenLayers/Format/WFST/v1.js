@@ -232,7 +232,7 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                         "xsi:schemaLocation": this.schemaLocationAttr(options)
                     }
                 });
-                if (typeof this.featureType == "string") {
+                if(typeof this.featureType == "string") {
                     this.writeNode("Query", options, node);
                 } else {
                     for (var i=0,len = this.featureType.length; i<len; i++) { 
@@ -256,7 +256,7 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 var features = obj.features;
                 if(features) {
                     // temporarily re-assigning geometry types
-                    if (options.multi === true) {
+                    if(options.multi === true) {
                         OpenLayers.Util.extend(this.geometryTypes, {
                             "OpenLayers.Geometry.Point": "MultiPoint",
                             "OpenLayers.Geometry.LineString": (this.multiCurve === true) ? "MultiCurve": "MultiLineString",
@@ -275,11 +275,11 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                         }
                     }
                     // switch back to original geometry types assignment
-                    if (options.multi === true) {
+                    if(options.multi === true) {
                         this.setGeometryTypes();
                     }
                 }
-                if (options.nativeElements) {
+                if(options.nativeElements) {
                     for (i=0, len=options.nativeElements.length; i<len; ++i) {
                         this.writeNode("wfs:Native", 
                             options.nativeElements[i], node);
@@ -325,7 +325,7 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 
                 // add in geometry
                 var modified = feature.modified;
-                if (this.geometryName !== null && (!modified || modified.geometry !== undefined)) {
+                if(this.geometryName !== null && (!modified || modified.geometry !== undefined)) {
                     this.srsName = this.getSrsName(feature);
                     this.writeNode(
                         "Property", {name: this.geometryName, value: feature.geometry}, node

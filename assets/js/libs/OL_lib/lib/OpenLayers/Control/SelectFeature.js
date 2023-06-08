@@ -191,7 +191,7 @@ OpenLayers.Control.SelectFeature = OpenLayers.Class(OpenLayers.Control, {
             click: this.clickFeature,
             clickout: this.clickoutFeature
         };
-        if (this.hover) {
+        if(this.hover) {
             callbacks.over = this.overFeature;
             callbacks.out = this.outFeature;
         }
@@ -204,7 +204,7 @@ OpenLayers.Control.SelectFeature = OpenLayers.Class(OpenLayers.Control, {
             )
         };
 
-        if (this.box) {
+        if(this.box) {
             this.handlers.box = new OpenLayers.Handler.Box(
                 this, {done: this.selectBox},
                 {boxDivClassName: "olHandlerBoxSelectFeature"}
@@ -254,7 +254,7 @@ OpenLayers.Control.SelectFeature = OpenLayers.Class(OpenLayers.Control, {
      * {Boolean} The control was effectively activated.
      */
     activate: function () {
-        if (!this.active) {
+        if(!this.active) {
             if(this.layers) {
                 this.map.addLayer(this.layer);
             }
@@ -276,7 +276,7 @@ OpenLayers.Control.SelectFeature = OpenLayers.Class(OpenLayers.Control, {
      * {Boolean} The control was effectively deactivated.
      */
     deactivate: function () {
-        if (this.active) {
+        if(this.active) {
             this.handlers.feature.deactivate();
             if(this.handlers.box) {
                 this.handlers.box.deactivate();
@@ -553,7 +553,7 @@ OpenLayers.Control.SelectFeature = OpenLayers.Class(OpenLayers.Control, {
      * position - {<OpenLayers.Bounds> || <OpenLayers.Pixel> }  
      */
     selectBox: function(position) {
-        if (position instanceof OpenLayers.Bounds) {
+        if(position instanceof OpenLayers.Bounds) {
             var minXY = this.map.getLonLatFromPixel({
                 x: position.left,
                 y: position.bottom
@@ -567,7 +567,7 @@ OpenLayers.Control.SelectFeature = OpenLayers.Class(OpenLayers.Control, {
             );
             
             // if multiple is false, first deselect currently selected features
-            if (!this.multipleSelect()) {
+            if(!this.multipleSelect()) {
                 this.unselectAll();
             }
             
@@ -582,14 +582,14 @@ OpenLayers.Control.SelectFeature = OpenLayers.Class(OpenLayers.Control, {
                 for(var i=0, len = layer.features.length; i<len; ++i) {
                     var feature = layer.features[i];
                     // check if the feature is displayed
-                    if (!feature.getVisibility()) {
+                    if(!feature.getVisibility()) {
                         continue;
                     }
 
-                    if (this.geometryTypes == null || OpenLayers.Util.indexOf(
+                    if(this.geometryTypes == null || OpenLayers.Util.indexOf(
                             this.geometryTypes, feature.geometry.CLASS_NAME) > -1) {
-                        if (bounds.toGeometry().intersects(feature.geometry)) {
-                            if (OpenLayers.Util.indexOf(layer.selectedFeatures, feature) == -1) {
+                        if(bounds.toGeometry().intersects(feature.geometry)) {
+                            if(OpenLayers.Util.indexOf(layer.selectedFeatures, feature) == -1) {
                                 this.select(feature);
                             }
                         }
@@ -610,7 +610,7 @@ OpenLayers.Control.SelectFeature = OpenLayers.Class(OpenLayers.Control, {
      */
     setMap: function(map) {
         this.handlers.feature.setMap(map);
-        if (this.box) {
+        if(this.box) {
             this.handlers.box.setMap(map);
         }
         OpenLayers.Control.prototype.setMap.apply(this, arguments);
@@ -634,7 +634,7 @@ OpenLayers.Control.SelectFeature = OpenLayers.Class(OpenLayers.Control, {
         }
         this.initLayer(layers);
         this.handlers.feature.layer = this.layer;
-        if (isActive) {
+        if(isActive) {
             this.activate();
         }
     },

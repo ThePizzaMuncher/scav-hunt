@@ -138,12 +138,12 @@ OpenLayers.Renderer = OpenLayers.Class({
      */
     setExtent: function(extent, resolutionChanged) {
         this.extent = extent.clone();
-        if (this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
+        if(this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
             var ratio = extent.getWidth() / this.map.getExtent().getWidth(),
                 extent = extent.scale(1 / ratio);
             this.extent = extent.wrapDateLine(this.map.getMaxExtent()).scale(ratio);
         }
-        if (resolutionChanged) {
+        if(resolutionChanged) {
             this.resolution = null;
         }
         return true;
@@ -195,14 +195,14 @@ OpenLayers.Renderer = OpenLayers.Class({
         if(style == null) {
             style = feature.style;
         }
-        if (feature.geometry) {
+        if(feature.geometry) {
             var bounds = feature.geometry.getBounds();
             if(bounds) {
                 var worldBounds;
-                if (this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
+                if(this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
                     worldBounds = this.map.getMaxExtent();
                 }
-                if (!bounds.intersectsBounds(this.extent, {worldBounds: worldBounds})) {
+                if(!bounds.intersectsBounds(this.extent, {worldBounds: worldBounds})) {
                     style = {display: "none"};
                 } else {
                     this.calculateFeatureDx(bounds, worldBounds);
@@ -241,7 +241,7 @@ OpenLayers.Renderer = OpenLayers.Class({
      */
     calculateFeatureDx: function(bounds, worldBounds) {
         this.featureDx = 0;
-        if (worldBounds) {
+        if(worldBounds) {
             var worldWidth = worldBounds.getWidth(),
                 rendererCenterX = (this.extent.left + this.extent.right) / 2,
                 featureCenterX = (bounds.left + bounds.right) / 2,

@@ -125,7 +125,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
     initialize: function(control, callbacks, options) {
         OpenLayers.Handler.prototype.initialize.apply(this, arguments);
         
-        if (this.documentDrag === true) {
+        if(this.documentDrag === true) {
             var me = this;
             this._docMove = function(evt) {
                 me.mousemove({
@@ -153,7 +153,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
     dragstart: function (evt) {
         var propagate = true;
         this.dragging = false;
-        if (this.checkModifiers(evt) &&
+        if(this.checkModifiers(evt) &&
                (OpenLayers.Event.isLeftClick(evt) ||
                 OpenLayers.Event.isSingleTouch(evt))) {
             this.started = true;
@@ -195,7 +195,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
      */
     dragmove: function (evt) {
         this.lastMoveEvt = evt;
-        if (this.started && !this.timeoutId && (evt.xy.x != this.last.x ||
+        if(this.started && !this.timeoutId && (evt.xy.x != this.last.x ||
                                                 evt.xy.y != this.last.y)) {
             if(this.documentDrag === true && this.documentEvents) {
                 if(evt.element === document) {
@@ -207,7 +207,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
                     this.removeDocumentEvents();
                 }
             }
-            if (this.interval > 0) {
+            if(this.interval > 0) {
                 this.timeoutId = setTimeout(
                     OpenLayers.Function.bind(this.removeTimeout, this),
                     this.interval);
@@ -236,7 +236,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean} Let the event propagate.
      */
     dragend: function (evt) {
-        if (this.started) {
+        if(this.started) {
             if(this.documentDrag === true && this.documentEvents) {
                 this.adjustXY(evt);
                 this.removeDocumentEvents();
@@ -426,7 +426,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean} Let the event propagate.
      */
     mouseout: function (evt) {
-        if (this.started && OpenLayers.Util.mouseLeft(evt, this.map.viewPortDiv)) {
+        if(this.started && OpenLayers.Util.mouseLeft(evt, this.map.viewPortDiv)) {
             if(this.documentDrag === true) {
                 this.addDocumentEvents();
             } else {

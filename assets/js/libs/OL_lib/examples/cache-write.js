@@ -37,7 +37,7 @@ function init() {
     // update the number of cached tiles and detect local storage support
     map.layers[0].events.on({'tileloaded': updateStatus});
     function updateStatus() {
-        if (window.localStorage) {
+        if(window.localStorage) {
             status.innerHTML = localStorage.length + " entries in cache.";
         } else {
             status.innerHTML = "Local storage not supported. Try a different browser.";

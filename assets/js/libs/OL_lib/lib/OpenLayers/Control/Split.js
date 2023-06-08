@@ -278,7 +278,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
     afterFeatureModified: function(event) {
         if(event.modified) {
             var feature = event.feature;
-            if (typeof feature.geometry.split === "function") {
+            if(typeof feature.geometry.split === "function") {
                 this.feature = event.feature;
                 this.considerSplit(event.feature);
             }
@@ -313,7 +313,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
      * {Boolean} The target is eligible for splitting.
      */
     isEligible: function(target) {
-        if (!target.geometry) {
+        if(!target.geometry) {
             return false;
         } else {
             return (

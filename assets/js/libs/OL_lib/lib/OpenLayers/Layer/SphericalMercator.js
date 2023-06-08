@@ -47,7 +47,7 @@ OpenLayers.Layer.SphericalMercator = {
      */
     getExtent: function() {
         var extent = null;
-        if (this.sphericalMercator) {
+        if(this.sphericalMercator) {
             extent = this.map.calculateBounds();
         } else {
             extent = OpenLayers.Layer.FixedZoomLevels.prototype.getExtent.apply(this);

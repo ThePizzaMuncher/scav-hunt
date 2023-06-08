@@ -1,17 +1,11 @@
 <?php
 session_start();
-$_SESSION["pagina"] = "login";
+$_SESSION['pagina'] = 'login';
 require_once("../assets/includes/header.php");
 
-if (isset($_SESSION["admin"]) || isset($_SESSION["docent"])) {
-    if ($_SESSION["admin"] == 1) {
-        header("location:../admin");
-        die();
-    }
-    if ($_SESSION["docent"] == 1) {
-        header("location:../docent");
-        die();
-    }
+if(isset($_SESSION['docent'])) {
+	header('location:../');
+	die();
 } ?>
 
 <main id="main">

@@ -59,7 +59,7 @@ var map = new OpenLayers.Map({
 });
 
 function log(msg) {
-    if (!log.timer) {
+    if(!log.timer) {
         result.innerHTML = "";
         log.timer = window.setTimeout(function() {delete log.timer;}, 100);
     }

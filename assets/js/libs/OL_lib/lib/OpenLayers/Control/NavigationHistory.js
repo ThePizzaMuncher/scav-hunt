@@ -311,7 +311,7 @@ OpenLayers.Control.NavigationHistory = OpenLayers.Class(OpenLayers.Control, {
      */
     restore: function(state) {
         var center, zoom;
-        if (this.map.getProjectionObject() == state.projection) { 
+        if(this.map.getProjectionObject() == state.projection) { 
             zoom = this.map.getZoomForResolution(state.resolution);
             center = state.center;
         } else {

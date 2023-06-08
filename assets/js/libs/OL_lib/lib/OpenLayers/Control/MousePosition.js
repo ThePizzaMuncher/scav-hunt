@@ -117,7 +117,7 @@ OpenLayers.Control.MousePosition = OpenLayers.Class(OpenLayers.Control, {
      * APIMethod: activate
      */
     activate: function() {
-        if (OpenLayers.Control.prototype.activate.apply(this, arguments)) {
+        if(OpenLayers.Control.prototype.activate.apply(this, arguments)) {
             this.map.events.register('mousemove', this, this.redraw);
             this.map.events.register('mouseout', this, this.reset);
             this.redraw();
@@ -131,7 +131,7 @@ OpenLayers.Control.MousePosition = OpenLayers.Class(OpenLayers.Control, {
      * APIMethod: deactivate
      */
     deactivate: function() {
-        if (OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
+        if(OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
             this.map.events.unregister('mousemove', this, this.redraw);
             this.map.events.unregister('mouseout', this, this.reset);
             this.element.innerHTML = "";
@@ -148,7 +148,7 @@ OpenLayers.Control.MousePosition = OpenLayers.Class(OpenLayers.Control, {
     draw: function() {
         OpenLayers.Control.prototype.draw.apply(this, arguments);
 
-        if (!this.element) {
+        if(!this.element) {
             this.div.left = "";
             this.div.top = "";
             this.element = this.div;
@@ -164,11 +164,11 @@ OpenLayers.Control.MousePosition = OpenLayers.Class(OpenLayers.Control, {
 
         var lonLat;
 
-        if (evt == null) {
+        if(evt == null) {
             this.reset();
             return;
         } else {
-            if (this.lastXy == null ||
+            if(this.lastXy == null ||
                 Math.abs(evt.xy.x - this.lastXy.x) > this.granularity ||
                 Math.abs(evt.xy.y - this.lastXy.y) > this.granularity)
             {
@@ -177,11 +177,11 @@ OpenLayers.Control.MousePosition = OpenLayers.Class(OpenLayers.Control, {
             }
 
             lonLat = this.map.getLonLatFromPixel(evt.xy);
-            if (!lonLat) {
+            if(!lonLat) {
                 // map has not yet been properly initialized
                 return;
             }
-            if (this.displayProjection) {
+            if(this.displayProjection) {
                 lonLat.transform(this.map.getProjectionObject(),
                                  this.displayProjection );
             }
@@ -191,7 +191,7 @@ OpenLayers.Control.MousePosition = OpenLayers.Class(OpenLayers.Control, {
 
         var newHtml = this.formatOutput(lonLat);
 
-        if (newHtml != this.element.innerHTML) {
+        if(newHtml != this.element.innerHTML) {
             this.element.innerHTML = newHtml;
         }
     },
@@ -200,7 +200,7 @@ OpenLayers.Control.MousePosition = OpenLayers.Class(OpenLayers.Control, {
      * Method: reset
      */
     reset: function(evt) {
-        if (this.emptyString != null) {
+        if(this.emptyString != null) {
             this.element.innerHTML = this.emptyString;
         }
     },

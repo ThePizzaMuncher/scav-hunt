@@ -118,7 +118,7 @@ OpenLayers.Format.SOSGetFeatureOfInterest = OpenLayers.Class(
             "SamplingPoint": function(node, obj) {
                 // sampling point can also be without a featureMember if 
                 // there is only 1
-                if (!obj.attributes) {
+                if(!obj.attributes) {
                     var feature = {attributes: {}};
                     obj.features.push(feature);
                     obj = feature;
@@ -147,7 +147,7 @@ OpenLayers.Format.SOSGetFeatureOfInterest = OpenLayers.Class(
                 // we need to parse the srsName to get to the 
                 // externalProjection, that's why we cannot use
                 // GML v3 for this
-                if (!this.externalProjection) {
+                if(!this.externalProjection) {
                     this.externalProjection = new OpenLayers.Projection(
                         node.getAttribute("srsName"));
                 }

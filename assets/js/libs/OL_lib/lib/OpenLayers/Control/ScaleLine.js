@@ -89,7 +89,7 @@ OpenLayers.Control.ScaleLine = OpenLayers.Class(OpenLayers.Control, {
      */
     draw: function() {
         OpenLayers.Control.prototype.draw.apply(this, arguments);
-        if (!this.eTop) {
+        if(!this.eTop) {
             // stick in the top bar
             this.eTop = document.createElement("div");
             this.eTop.className = this.displayClass + "Top";
@@ -155,7 +155,7 @@ OpenLayers.Control.ScaleLine = OpenLayers.Class(OpenLayers.Control, {
      */
     update: function() {
         var res = this.map.getResolution();
-        if (!res) {
+        if(!res) {
             return;
         }
 
@@ -203,12 +203,12 @@ OpenLayers.Control.ScaleLine = OpenLayers.Class(OpenLayers.Control, {
         // now set the pixel widths
         // and the values inside them
         
-        if (this.eBottom.style.visibility == "visible"){
+        if(this.eBottom.style.visibility == "visible"){
             this.eBottom.style.width = Math.round(bottomPx) + "px"; 
             this.eBottom.innerHTML = bottomRounded + " " + bottomUnits ;
         }
             
-        if (this.eTop.style.visibility == "visible"){
+        if(this.eTop.style.visibility == "visible"){
             this.eTop.style.width = Math.round(topPx) + "px";
             this.eTop.innerHTML = topRounded + " " + topUnits;
         }

@@ -116,7 +116,7 @@ OpenLayers.Rule = OpenLayers.Class({
     initialize: function(options) {
         this.symbolizer = {};
         OpenLayers.Util.extend(this, options);
-        if (this.symbolizers) {
+        if(this.symbolizers) {
             delete this.symbolizer;
         }
         this.id = OpenLayers.Util.createUniqueID(this.CLASS_NAME + "_");
@@ -149,16 +149,16 @@ OpenLayers.Rule = OpenLayers.Class({
         var context = this.getContext(feature);
         var applies = true;
 
-        if (this.minScaleDenominator || this.maxScaleDenominator) {
+        if(this.minScaleDenominator || this.maxScaleDenominator) {
             var scale = feature.layer.map.getScale();
         }
         
         // check if within minScale/maxScale bounds
-        if (this.minScaleDenominator) {
+        if(this.minScaleDenominator) {
             applies = scale >= OpenLayers.Style.createLiteral(
                     this.minScaleDenominator, context);
         }
-        if (applies && this.maxScaleDenominator) {
+        if(applies && this.maxScaleDenominator) {
             applies = scale < OpenLayers.Style.createLiteral(
                     this.maxScaleDenominator, context);
         }
@@ -186,10 +186,10 @@ OpenLayers.Rule = OpenLayers.Class({
      */
     getContext: function(feature) {
         var context = this.context;
-        if (!context) {
+        if(!context) {
             context = feature.attributes || feature.data;
         }
-        if (typeof this.context == "function") {
+        if(typeof this.context == "function") {
             context = this.context(feature);
         }
         return context;
@@ -204,7 +204,7 @@ OpenLayers.Rule = OpenLayers.Class({
      */
     clone: function() {
         var options = OpenLayers.Util.extend({}, this);
-        if (this.symbolizers) {
+        if(this.symbolizers) {
             // clone symbolizers
             var len = this.symbolizers.length;
             options.symbolizers = new Array(len);

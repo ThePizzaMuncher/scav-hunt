@@ -1,12 +1,9 @@
 <?php
 session_start();
-if (isset($_SESSION["docent"])) { 
-	if ($_SESSION["docent"] != 1) {
-		header("location:../login");
-	}
-}
-else {
-	header("location:../login");
+if(!isset($_SESSION['docent'])) {
+	header('location:../login'); die();
+} if(!$_SESSION['docent']) {
+	header('location:../login'); die();
 }
 /* 
  docenten_edit.PHP
@@ -80,16 +77,16 @@ echo '<div class="container">
  ' 
 ;
  // check if the form has been submitted. If it has, process the form and save it to the database
-if (isset($_POST['submit']))
+if(isset($_POST['submit']))
 {
-	if (is_numeric($_POST['id']))     // confirm that the 'id' value is a valid integer before getting the form data
+	if(is_numeric($_POST['id']))     // confirm that the 'id' value is a valid integer before getting the form data
 	{
 	    $id = $_POST['id']; 	     // get form data, making sure it is valid
         $naam = mysqli_real_escape_string($conn, htmlspecialchars($_POST['leerlingnummer']));
         $opleiding = mysqli_real_escape_string($conn, htmlspecialchars($_POST['voornaam']));
     
 	    // checken of volgende velden zijn gevuld
-        if ($naam == '' || $opleiding == '')
+        if($naam == '' || $opleiding == '')
 
 		{
 		    // generate error message
@@ -121,7 +118,7 @@ else
     // if the form hasn't been submitted, get the data from the db and display the form
     {
 	// get the 'id' value from the URL (if it exists), making sure that it is valid (checing that it is numeric/larger than 0)
-	if (isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0)
+	if(isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0)
 	{
 	    // query db
 	    $id = $_GET['id'];

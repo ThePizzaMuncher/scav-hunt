@@ -131,7 +131,7 @@ class PageElement:
         return lastChild
 
     def insert(self, position, newChild):
-        if (isinstance(newChild, basestring)
+        if(isinstance(newChild, basestring)
             or isinstance(newChild, unicode)) \
             and not isinstance(newChild, NavigableString):
             newChild = NavigableString(newChild)        
@@ -730,7 +730,7 @@ class SoupStrainer:
         callFunctionWithTagData = callable(self.name) \
                                 and not isinstance(markupName, Tag)
 
-        if (not self.name) \
+        if(not self.name) \
                or callFunctionWithTagData \
                or (markup and self._matches(markup, self.name)) \
                or (not markup and self._matches(markupName, self.name)):
@@ -1093,12 +1093,12 @@ class BeautifulStoneSoup(Tag, SGMLParser):
         inclusive = True
         for i in range(len(self.tagStack)-1, 0, -1):
             p = self.tagStack[i]
-            if (not p or p.name == name) and not isNestable:
+            if(not p or p.name == name) and not isNestable:
                 #Non-nestable tags get popped to the top or to their
                 #last occurance.
                 popTo = name
                 break
-            if (nestingResetTriggers != None
+            if(nestingResetTriggers != None
                 and p.name in nestingResetTriggers) \
                 or (nestingResetTriggers == None and isResetNesting
                     and self.RESET_NESTING_TAGS.has_key(p.name)):
@@ -1452,7 +1452,7 @@ class BeautifulSOAP(BeautifulStoneSoup):
             tag = self.tagStack[-1]
             parent = self.tagStack[-2]
             parent._getAttrMap()
-            if (isinstance(tag, Tag) and len(tag.contents) == 1 and
+            if(isinstance(tag, Tag) and len(tag.contents) == 1 and
                 isinstance(tag.contents[0], NavigableString) and 
                 not parent.attrMap.has_key(tag.name)):
                 parent[tag.name] = tag.contents[0]
@@ -1598,11 +1598,11 @@ class UnicodeDammit:
         %encoding is a string recognized by encodings.aliases'''
 
         # strip Byte Order Mark (if present)
-        if (len(data) >= 4) and (data[:2] == '\xfe\xff') \
+        if(len(data) >= 4) and (data[:2] == '\xfe\xff') \
                and (data[2:4] != '\x00\x00'):
             encoding = 'utf-16be'
             data = data[2:]
-        elif (len(data) >= 4) and (data[:2] == '\xff\xfe') \
+        elif(len(data) >= 4) and (data[:2] == '\xff\xfe') \
                  and (data[2:4] != '\x00\x00'):
             encoding = 'utf-16le'
             data = data[2:]
@@ -1629,7 +1629,7 @@ class UnicodeDammit:
                 # UTF-16BE
                 sniffed_xml_encoding = 'utf-16be'
                 xml_data = unicode(xml_data, 'utf-16be').encode('utf-8')
-            elif (len(xml_data) >= 4) and (xml_data[:2] == '\xfe\xff') \
+            elif(len(xml_data) >= 4) and (xml_data[:2] == '\xfe\xff') \
                      and (xml_data[2:4] != '\x00\x00'):
                 # UTF-16BE with BOM
                 sniffed_xml_encoding = 'utf-16be'
@@ -1638,7 +1638,7 @@ class UnicodeDammit:
                 # UTF-16LE
                 sniffed_xml_encoding = 'utf-16le'
                 xml_data = unicode(xml_data, 'utf-16le').encode('utf-8')
-            elif (len(xml_data) >= 4) and (xml_data[:2] == '\xff\xfe') and \
+            elif(len(xml_data) >= 4) and (xml_data[:2] == '\xff\xfe') and \
                      (xml_data[2:4] != '\x00\x00'):
                 # UTF-16LE with BOM
                 sniffed_xml_encoding = 'utf-16le'

@@ -111,7 +111,7 @@ OpenLayers.Layer.OSM = OpenLayers.Class(OpenLayers.Layer.XYZ, {
      * Method: clone
      */
     clone: function(obj) {
-        if (obj == null) {
+        if(obj == null) {
             obj = new OpenLayers.Layer.OSM(
                 this.name, this.url, this.getOptions());
         }

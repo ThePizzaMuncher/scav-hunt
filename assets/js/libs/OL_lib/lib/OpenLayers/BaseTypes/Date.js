@@ -44,14 +44,14 @@ OpenLayers.Date = {
      *     before generating date strings.
      */
     toISOString: (function() {
-        if ("toISOString" in Date.prototype) {
+        if("toISOString" in Date.prototype) {
             return function(date) {
                 return date.toISOString();
             };
         } else {
             return function(date) {
                 var str;
-                if (isNaN(date.getTime())) {
+                if(isNaN(date.getTime())) {
                     // ECMA-262 says throw RangeError, Firefox returns
                     // "Invalid Date"
                     str = "Invalid Date";
@@ -93,14 +93,14 @@ OpenLayers.Date = {
     parse: function(str) {
         var date;
         var match = str.match(this.dateRegEx);
-        if (match && (match[1] || match[7])) { // must have at least year or time
+        if(match && (match[1] || match[7])) { // must have at least year or time
             var year = parseInt(match[1], 10) || 0;
             var month = (parseInt(match[2], 10) - 1) || 0;
             var day = parseInt(match[3], 10) || 1;
             date = new Date(Date.UTC(year, month, day));
             // optional time
             var type = match[7];
-            if (type) {
+            if(type) {
                 var hours = parseInt(match[4], 10);
                 var minutes = parseInt(match[5], 10);
                 var secFrac = parseFloat(match[6]);
@@ -108,7 +108,7 @@ OpenLayers.Date = {
                 var milliseconds = Math.round(1000 * (secFrac - seconds));
                 date.setUTCHours(hours, minutes, seconds, milliseconds);
                 // check offset
-                if (type !== "Z") {
+                if(type !== "Z") {
                     var hoursOffset = parseInt(type, 10);
                     var minutesOffset = parseInt(match[8], 10) || 0;
                     var offset = -1000 * (60 * (hoursOffset * 60) + minutesOffset * 60);

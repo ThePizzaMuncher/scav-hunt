@@ -20,7 +20,7 @@
 
 function runMVS() {
     OpenLayers.ProxyHost = '/proxy/?url='; 
-    if (document.location.protocol != "file:") {
+    if(document.location.protocol != "file:") {
         theArgs = OpenLayers.Util.getParameters();
     } else {
         theArgs = {};
@@ -107,12 +107,12 @@ function runMVS() {
     }
     theMVS.setCenter(new OpenLayers.LonLat(safeArgs.centerLon, safeArgs.centerLat), safeArgs.zoom);
 
-    if (safeArgs.marker) {
+    if(safeArgs.marker) {
         var m = new OpenLayers.Layer.Markers("Marker");
         m.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(safeArgs.centerLon, safeArgs.centerLat)));
         theMVS.addLayer(m);
     }
-    if (safeArgs.data) {
+    if(safeArgs.data) {
         theMVS.addLayer(new OpenLayers.Layer.Text("Data", {location: safeArgs.data}));
     }
 

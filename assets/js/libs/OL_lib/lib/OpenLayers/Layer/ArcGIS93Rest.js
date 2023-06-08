@@ -73,17 +73,17 @@ OpenLayers.Layer.ArcGIS93Rest = OpenLayers.Class(OpenLayers.Layer.Grid, {
                        );
                        
         //layer is transparent        
-        if (this.params.TRANSPARENT && 
+        if(this.params.TRANSPARENT && 
             this.params.TRANSPARENT.toString().toLowerCase() == "true") {
             
             // unless explicitly set in options, make layer an overlay
-            if ( (options == null) || (!options.isBaseLayer) ) {
+            if( (options == null) || (!options.isBaseLayer) ) {
                 this.isBaseLayer = false;
             } 
             
             // jpegs can never be transparent, so intelligently switch the 
             //  format, depending on the browser's capabilities
-            if (this.params.FORMAT == "jpg") {
+            if(this.params.FORMAT == "jpg") {
                 this.params.FORMAT = OpenLayers.Util.alphaHack() ? "gif"
                                                                  : "png";
             }
@@ -99,7 +99,7 @@ OpenLayers.Layer.ArcGIS93Rest = OpenLayers.Class(OpenLayers.Layer.Grid, {
          */
     clone: function (obj) {
         
-        if (obj == null) {
+        if(obj == null) {
             obj = new OpenLayers.Layer.ArcGIS93Rest(this.name,
                                            this.url,
                                            this.params,
@@ -144,12 +144,12 @@ OpenLayers.Layer.ArcGIS93Rest = OpenLayers.Class(OpenLayers.Layer.Grid, {
         };
 
         // Now add the filter parameters.
-        if (this.layerDefs) {
+        if(this.layerDefs) {
             var layerDefStrList = [];
             var layerID;
             for(layerID in this.layerDefs) {
-                if (this.layerDefs.hasOwnProperty(layerID)) {
-                    if (this.layerDefs[layerID]) {
+                if(this.layerDefs.hasOwnProperty(layerID)) {
+                    if(this.layerDefs[layerID]) {
                         layerDefStrList.push(layerID);
                         layerDefStrList.push(":");
                         layerDefStrList.push(this.layerDefs[layerID]);
@@ -157,7 +157,7 @@ OpenLayers.Layer.ArcGIS93Rest = OpenLayers.Class(OpenLayers.Layer.Grid, {
                     }
                 }
             }
-            if (layerDefStrList.length > 0) {
+            if(layerDefStrList.length > 0) {
                 newParams['LAYERDEFS'] = layerDefStrList.join("");
             }
         }
@@ -175,10 +175,10 @@ OpenLayers.Layer.ArcGIS93Rest = OpenLayers.Class(OpenLayers.Layer.Grid, {
      *                     documentation at http://sampleserver1.arcgisonline.com/ArcGIS/SDK/REST/export.html
      */
     setLayerFilter: function ( id, queryDef ) {
-        if (!this.layerDefs) {
+        if(!this.layerDefs) {
             this.layerDefs = {};
         }
-        if (queryDef) {
+        if(queryDef) {
             this.layerDefs[id] = queryDef;
         } else {
             delete this.layerDefs[id];
@@ -196,7 +196,7 @@ OpenLayers.Layer.ArcGIS93Rest = OpenLayers.Class(OpenLayers.Layer.Grid, {
      *               will be removed.
      */
     clearLayerFilter: function ( id ) {
-        if (id) {
+        if(id) {
             delete this.layerDefs[id];
         } else {
             delete this.layerDefs;

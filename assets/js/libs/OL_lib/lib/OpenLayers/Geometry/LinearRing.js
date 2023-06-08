@@ -93,7 +93,7 @@ OpenLayers.Geometry.LinearRing = OpenLayers.Class(
      */
     removeComponent: function(point) {
         var removed = this.components && (this.components.length > 3);
-        if (removed) {
+        if(removed) {
             //remove last point
             this.components.pop();
             
@@ -174,7 +174,7 @@ OpenLayers.Geometry.LinearRing = OpenLayers.Class(
      * {<OpenLayers.Geometry>} 
      */
     transform: function(source, dest) {
-        if (source && dest) {
+        if(source && dest) {
             for (var i=0, len=this.components.length; i<len - 1; i++) {
                 var component = this.components[i];
                 component.transform(source, dest);
@@ -191,17 +191,17 @@ OpenLayers.Geometry.LinearRing = OpenLayers.Class(
      * {<OpenLayers.Geometry.Point>} The centroid of the collection
      */
     getCentroid: function() {
-        if (this.components) {
+        if(this.components) {
             var len = this.components.length;
-            if (len > 0 && len <= 2) {
+            if(len > 0 && len <= 2) {
                 return this.components[0].clone();
-            } else if (len > 2) {
+            } else if(len > 2) {
                 var sumX = 0.0;
                 var sumY = 0.0;
                 var x0 = this.components[0].x;
                 var y0 = this.components[0].y;
                 var area = -1 * this.getArea();
-                if (area != 0) {
+                if(area != 0) {
                     for (var i = 0; i < len - 1; i++) {
                         var b = this.components[i];
                         var c = this.components[i+1];
@@ -235,7 +235,7 @@ OpenLayers.Geometry.LinearRing = OpenLayers.Class(
      */
     getArea: function() {
         var area = 0.0;
-        if ( this.components && (this.components.length > 2)) {
+        if( this.components && (this.components.length > 2)) {
             var sum = 0.0;
             for (var i=0, len=this.components.length; i<len - 1; i++) {
                 var b = this.components[i];

@@ -99,7 +99,7 @@ OpenLayers.Format.WCSGetCoverage = OpenLayers.Class(OpenLayers.Format.XML, {
             "DomainSubset": function(domainSubset) {
                 var node = this.createElementNSPlus("wcs:DomainSubset", {});
                 this.writeNode("ows:BoundingBox", domainSubset.boundingBox, node);
-                if (domainSubset.temporalSubset) {
+                if(domainSubset.temporalSubset) {
                     this.writeNode("wcs:TemporalSubset", domainSubset.temporalSubset, node);
                 }
                 return node;
@@ -115,7 +115,7 @@ OpenLayers.Format.WCSGetCoverage = OpenLayers.Class(OpenLayers.Format.XML, {
                 var node = this.createElementNSPlus("wcs:TimePeriod", {});
                 this.writeNode("wcs:BeginPosition", timePeriod.begin, node);
                 this.writeNode("wcs:EndPosition", timePeriod.end, node);
-                if (timePeriod.resolution) {
+                if(timePeriod.resolution) {
                     this.writeNode("wcs:TimeResolution", timePeriod.resolution, node);
                 }
                 return node;
@@ -145,7 +145,7 @@ OpenLayers.Format.WCSGetCoverage = OpenLayers.Class(OpenLayers.Format.XML, {
                         store: output.store
                     }
                 });
-                if (output.gridCRS) {
+                if(output.gridCRS) {
                     this.writeNode("wcs:GridCRS", output.gridCRS, node);
                 }
                 return node;
@@ -153,14 +153,14 @@ OpenLayers.Format.WCSGetCoverage = OpenLayers.Class(OpenLayers.Format.XML, {
             "GridCRS": function(gridCRS) {
                 var node = this.createElementNSPlus("wcs:GridCRS", {});
                 this.writeNode("wcs:GridBaseCRS", gridCRS.baseCRS, node);
-                if (gridCRS.type) {
+                if(gridCRS.type) {
                     this.writeNode("wcs:GridType", gridCRS.type, node);
                 }
-                if (gridCRS.origin) {
+                if(gridCRS.origin) {
                     this.writeNode("wcs:GridOrigin", gridCRS.origin, node);
                 }
                 this.writeNode("wcs:GridOffsets", gridCRS.offsets, node);
-                if (gridCRS.CS) {
+                if(gridCRS.CS) {
                     this.writeNode("wcs:GridCS", gridCRS.CS, node);
                 }
                 return node;

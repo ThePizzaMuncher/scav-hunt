@@ -99,27 +99,27 @@ OpenLayers.Control.UTFGrid = OpenLayers.Class(OpenLayers.Control, {
      *
      */
     resetHandler: function() {
-        if (this.handler) {
+        if(this.handler) {
             this.handler.deactivate();
             this.handler.destroy();
             this.handler = null;
         }
    
-        if (this.handlerMode == 'hover') {
+        if(this.handlerMode == 'hover') {
             // Handle this event on hover
             this.handler = new OpenLayers.Handler.Hover(
                 this,
                 {'pause': this.handleEvent, 'move': this.reset},
                 this.handlerOptions
             );
-        } else if (this.handlerMode == 'click') {
+        } else if(this.handlerMode == 'click') {
             // Handle this event on click
             this.handler = new OpenLayers.Handler.Click(
                 this, {
                     'click': this.handleEvent
                 }, this.handlerOptions
             );
-        } else if (this.handlerMode == 'move') {
+        } else if(this.handlerMode == 'move') {
             this.handler = new OpenLayers.Handler.Hover(
                 this,
                 // Handle this event while hovering OR moving
@@ -127,7 +127,7 @@ OpenLayers.Control.UTFGrid = OpenLayers.Class(OpenLayers.Control, {
                 this.handlerOptions
             );
         }
-        if (this.handler) {
+        if(this.handler) {
             return true;
         } else {
             return false;
@@ -163,18 +163,18 @@ OpenLayers.Control.UTFGrid = OpenLayers.Class(OpenLayers.Control, {
      * evt - {<OpenLayers.Event>} 
      */
     handleEvent: function(evt) {
-        if (evt == null) {
+        if(evt == null) {
             this.reset();
             return;
         }
 
         var lonLat = this.map.getLonLatFromPixel(evt.xy);
-        if (!lonLat) { 
+        if(!lonLat) { 
             return;
         }    
         
         var layers = this.findLayers();
-        if (layers.length > 0) {
+        if(layers.length > 0) {
             var infoLookup = {};
             var layer, idx;
             for (var i=0, len=layers.length; i<len; i++) {
@@ -229,7 +229,7 @@ OpenLayers.Control.UTFGrid = OpenLayers.Class(OpenLayers.Control, {
         var layer;
         for (var i=candidates.length-1; i>=0; --i) {
             layer = candidates[i];
-            if (layer instanceof OpenLayers.Layer.UTFGrid ) { 
+            if(layer instanceof OpenLayers.Layer.UTFGrid ) { 
                 layers.push(layer);
             }
         }

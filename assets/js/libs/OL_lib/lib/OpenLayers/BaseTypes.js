@@ -124,10 +124,10 @@ OpenLayers.String = {
             // 2 -> replacement = context[a][b][c];
             var subs = match.split(/\.+/);
             for (var i=0; i< subs.length; i++) {
-                if (i == 0) {
+                if(i == 0) {
                     replacement = context;
                 }
-                if (replacement === undefined) {
+                if(replacement === undefined) {
                     break;
                 }
                 replacement = replacement[subs[i]];
@@ -143,7 +143,7 @@ OpenLayers.String = {
             // This is a workaround for a bugs in browsers not properly 
             // dealing with non-participating groups in regular expressions:
             // http://blog.stevenlevithan.com/archives/npcg-javascript
-            if (typeof replacement == 'undefined') {
+            if(typeof replacement == 'undefined') {
                 return 'undefined';
             } else {
                 return replacement; 
@@ -199,7 +199,7 @@ OpenLayers.String = {
      */
     numericIf: function(value, trimWhitespace) {
         var originalValue = value;
-        if (trimWhitespace === true && value != null && value.replace) {
+        if(trimWhitespace === true && value != null && value.replace) {
             value = value.replace(/^\s*|\s*$/g, "");
         }
         return OpenLayers.String.isNumeric(value) ? parseFloat(value) : originalValue;
@@ -239,7 +239,7 @@ OpenLayers.Number = {
      */
     limitSigDigs: function(num, sig) {
         var fig = 0;
-        if (sig > 0) {
+        if(sig > 0) {
             fig = parseFloat(num.toPrecision(sig));
         }
         return fig;
@@ -268,18 +268,18 @@ OpenLayers.Number = {
         dsep = (typeof dsep != "undefined") ? dsep :
             OpenLayers.Number.decimalSeparator;
 
-        if (dec != null) {
+        if(dec != null) {
             num = parseFloat(num.toFixed(dec));
         }
 
         var parts = num.toString().split(".");
-        if (parts.length == 1 && dec == null) {
+        if(parts.length == 1 && dec == null) {
             // integer where we do not want to touch the decimals
             dec = 0;
         }
         
         var integer = parts[0];
-        if (tsep) {
+        if(tsep) {
             var thousands = /(-?[0-9]+)([0-9]{3})/; 
             while(thousands.test(integer)) { 
                 integer = integer.replace(thousands, "$1" + tsep + "$2"); 
@@ -287,11 +287,11 @@ OpenLayers.Number = {
         }
         
         var str;
-        if (dec == 0) {
+        if(dec == 0) {
             str = integer;
         } else {
             var rem = parts.length > 1 ? parts[1] : "0";
-            if (dec != null) {
+            if(dec != null) {
                 rem = rem + new Array(dec - rem.length + 1).join("0");
             }
             str = integer + dsep + rem;
@@ -441,17 +441,17 @@ OpenLayers.Array = {
      */
     filter: function(array, callback, caller) {
         var selected = [];
-        if (Array.prototype.filter) {
+        if(Array.prototype.filter) {
             selected = array.filter(callback, caller);
         } else {
             var len = array.length;
-            if (typeof callback != "function") {
+            if(typeof callback != "function") {
                 throw new TypeError();
             }
             for(var i=0; i<len; i++) {
-                if (i in array) {
+                if(i in array) {
                     var val = array[i];
-                    if (callback.call(caller, val, i, array)) {
+                    if(callback.call(caller, val, i, array)) {
                         selected.push(val);
                     }
                 }

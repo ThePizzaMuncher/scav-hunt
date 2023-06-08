@@ -152,7 +152,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
                 parser = this.parseGeometry[type.toLowerCase()];
                 if(parser) {
                     geometry = parser.apply(this, [nodeList[0]]);
-                    if (this.internalProjection && this.externalProjection) {
+                    if(this.internalProjection && this.externalProjection) {
                         geometry.transform(this.externalProjection, 
                                            this.internalProjection); 
                     }                       
@@ -279,7 +279,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
                 coords[2] = null;
             }
             
-            if (this.xy) {
+            if(this.xy) {
                 return new OpenLayers.Geometry.Point(coords[0], coords[1],
                                                  coords[2]);
             }
@@ -350,7 +350,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
                     x = coords[j];
                     y = coords[j+1];
                     z = (dim == 2) ? null : coords[j+2];
-                    if (this.xy) {
+                    if(this.xy) {
                         points.push(new OpenLayers.Geometry.Point(x, y, z));
                     } else {
                         points.push(new OpenLayers.Geometry.Point(y, x, z));
@@ -374,7 +374,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
                         if(coords.length == 2) {
                             coords[2] = null;
                         }
-                        if (this.xy) {
+                        if(this.xy) {
                             points.push(new OpenLayers.Geometry.Point(coords[0],
                                                                   coords[1],
                                                                   coords[2]));
@@ -489,7 +489,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             var envelope;
             
             var lpoint = this.getElementsByTagNameNS(node, this.gmlns, "lowerCorner");
-            if (lpoint.length > 0) {
+            if(lpoint.length > 0) {
                 var coords = [];
                 
                 if(lpoint.length > 0) {
@@ -501,7 +501,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
                 if(coords.length == 2) {
                     coords[2] = null;
                 }
-                if (this.xy) {
+                if(this.xy) {
                     var lowerPoint = new OpenLayers.Geometry.Point(coords[0], coords[1],coords[2]);
                 } else {
                     var lowerPoint = new OpenLayers.Geometry.Point(coords[1], coords[0],coords[2]);
@@ -509,7 +509,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             }
             
             var upoint = this.getElementsByTagNameNS(node, this.gmlns, "upperCorner");
-            if (upoint.length > 0) {
+            if(upoint.length > 0) {
                 var coords = [];
                 
                 if(upoint.length > 0) {
@@ -521,14 +521,14 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
                 if(coords.length == 2) {
                     coords[2] = null;
                 }
-                if (this.xy) {
+                if(this.xy) {
                     var upperPoint = new OpenLayers.Geometry.Point(coords[0], coords[1],coords[2]);
                 } else {
                     var upperPoint = new OpenLayers.Geometry.Point(coords[1], coords[0],coords[2]);
                 }
             }
             
-            if (lowerPoint && upperPoint) {
+            if(lowerPoint && upperPoint) {
                 components.push(new OpenLayers.Geometry.Point(lowerPoint.x, lowerPoint.y));
                 components.push(new OpenLayers.Geometry.Point(upperPoint.x, lowerPoint.y));
                 components.push(new OpenLayers.Geometry.Point(upperPoint.x, upperPoint.y));
@@ -557,15 +557,15 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
                                                    "coordinates");
             var coordString;
             var coords, beginPoint = null, endPoint = null;
-            if (nodeList.length > 0) {
+            if(nodeList.length > 0) {
                 coordString = nodeList[0].firstChild.nodeValue;
                 coords = coordString.split(" ");
-                if (coords.length == 2) {
+                if(coords.length == 2) {
                     beginPoint = coords[0].split(",");
                     endPoint = coords[1].split(",");
                 }
             }
-            if (beginPoint !== null && endPoint !== null) {
+            if(beginPoint !== null && endPoint !== null) {
                 return new OpenLayers.Bounds(parseFloat(beginPoint[0]),
                     parseFloat(beginPoint[1]),
                     parseFloat(endPoint[0]),
@@ -689,7 +689,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
      * APIMethod: buildGeometryNode
      */
     buildGeometryNode: function(geometry) {
-        if (this.externalProjection && this.internalProjection) {
+        if(this.externalProjection && this.internalProjection) {
             geometry = geometry.clone();
             geometry.transform(this.internalProjection, 
                                this.externalProjection);

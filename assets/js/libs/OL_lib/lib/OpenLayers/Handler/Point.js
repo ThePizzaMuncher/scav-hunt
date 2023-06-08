@@ -205,7 +205,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
         // in activate(), we can assume that if this.layer.map is null it means
         // that the layer has been destroyed (as a result of map.destroy() for
         // example.
-        if (this.layer.map != null) {
+        if(this.layer.map != null) {
             this.destroyFeature(true);
             this.layer.destroy(false);
         }
@@ -499,12 +499,12 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
             return true;
         }
         // ignore double-clicks
-        if (this.lastUp && this.lastUp.equals(evt.xy)) {
+        if(this.lastUp && this.lastUp.equals(evt.xy)) {
             return true;
         }
-        if (this.lastDown && this.passesTolerance(this.lastDown, evt.xy,
+        if(this.lastDown && this.passesTolerance(this.lastDown, evt.xy,
                                                   this.pixelTolerance)) {
-            if (this.touch) {
+            if(this.touch) {
                 this.modifyFeature(evt.xy);
             }
             if(this.persist) {
@@ -543,9 +543,9 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
     passesTolerance: function(pixel1, pixel2, tolerance) {
         var passes = true;
 
-        if (tolerance != null && pixel1 && pixel2) {
+        if(tolerance != null && pixel1 && pixel2) {
             var dist = pixel1.distanceTo(pixel2);
-            if (dist > tolerance) {
+            if(dist > tolerance) {
                 passes = false;
             }
         }

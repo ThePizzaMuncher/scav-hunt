@@ -109,7 +109,7 @@ function test_Pan_trigger (t) {
     oldCenter = map.getCenter().toString();
     
     for (controlKey in controls) {
-        if (controls.hasOwnProperty(controlKey)) {
+        if(controls.hasOwnProperty(controlKey)) {
             control = controls[controlKey];
             // trigger the control; nothing should change, we aren't added yet.
             control.trigger();
@@ -129,7 +129,7 @@ function test_Pan_trigger (t) {
     
     // now lets add the controls, and trigger them again
     for (controlKey in controls) {
-        if (controls.hasOwnProperty(controlKey)) {
+        if(controls.hasOwnProperty(controlKey)) {
             control = controls[controlKey];
             map.addControl(control);
             // trigger again, now ...
@@ -185,7 +185,7 @@ function test_Pan_trigger (t) {
     
     // tear down
     for (controlKey in controls) {
-        if (controls.hasOwnProperty(controlKey)) {
+        if(controls.hasOwnProperty(controlKey)) {
             control = controls[controlKey];
             control.destroy();
         }

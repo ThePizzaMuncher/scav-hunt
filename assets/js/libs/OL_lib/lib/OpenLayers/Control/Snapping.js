@@ -439,13 +439,13 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
      */
     testTarget: function(target, loc) {
         var resolution = this.layer.map.getResolution();
-        if ("minResolution" in target) {
-            if (resolution < target.minResolution) {
+        if("minResolution" in target) {
+            if(resolution < target.minResolution) {
                 return null;
             }
         }
-        if ("maxResolution" in target) {
-            if (resolution >= target.maxResolution) {
+        if("maxResolution" in target) {
+            if(resolution >= target.maxResolution) {
                 return null;
             }
         }

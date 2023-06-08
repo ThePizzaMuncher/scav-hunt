@@ -106,7 +106,7 @@ OpenLayers.Format.XML.VersionedOGC = OpenLayers.Class(OpenLayers.Format.XML, {
     getVersion: function(root, options) {
         var version;
         // read
-        if (root) {
+        if(root) {
             version = this.version;
             if(!version) {
                 version = root.getAttribute("version");
@@ -139,14 +139,14 @@ OpenLayers.Format.XML.VersionedOGC = OpenLayers.Class(OpenLayers.Format.XML, {
                 "v" + version.replace(/\./g, "_") + profile
             ];
             if(!format) {
-                if (profile !== "" && this.allowFallback) {
+                if(profile !== "" && this.allowFallback) {
                     // fallback to the non-profiled version of the parser
                     profile = "";
                     format = OpenLayers.Format[this.name][
                         "v" + version.replace(/\./g, "_")
                     ];
                 }
-                if (!format) {
+                if(!format) {
                     throw "Can't find a " + this.name + " parser for version " +
                           version + profile;
                 }
@@ -171,7 +171,7 @@ OpenLayers.Format.XML.VersionedOGC = OpenLayers.Class(OpenLayers.Format.XML, {
         var version = this.getVersion(null, options);
         this.parser = this.getParser(version);
         var root = this.parser.write(obj, options);
-        if (this.stringifyOutput === false) {
+        if(this.stringifyOutput === false) {
             return root;
         } else {
             return OpenLayers.Format.XML.prototype.write.apply(this, [root]);
@@ -199,7 +199,7 @@ OpenLayers.Format.XML.VersionedOGC = OpenLayers.Class(OpenLayers.Format.XML, {
         var obj = this.parser.read(data, options);      // Parse the data
 
         var errorProperty = this.parser.errorProperty || null;
-        if (errorProperty !== null && obj[errorProperty] === undefined) {
+        if(errorProperty !== null && obj[errorProperty] === undefined) {
             // an error must have happened, so parse it and report back
             var format = new OpenLayers.Format.OGCExceptionReport();
             obj.error = format.read(data);

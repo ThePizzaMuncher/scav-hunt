@@ -282,7 +282,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
         var cont = this.events.triggerEvent("beforesetfeature",
             {feature: feature}
         );
-        if (cont === false) {
+        if(cont === false) {
             return;
         }
 
@@ -323,7 +323,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
      * If the control is active, it will be deactivated first.
      */
     unsetFeature: function() {
-        if (this.active) {
+        if(this.active) {
             this.deactivate();
         } else {
             this.feature = null;
@@ -405,14 +405,14 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
             var dy1 = this.y - centerGeometry.y;
             var dx0 = dx1 - (this.x - oldGeom.x);
             var dy0 = dy1 - (this.y - oldGeom.y);
-            if (control.irregular && !control._setfeature) {
+            if(control.irregular && !control._setfeature) {
                dx1 -= (this.x - oldGeom.x) / 2;
                dy1 -= (this.y - oldGeom.y) / 2;
             }
             this.x = oldX;
             this.y = oldY;
             var scale, ratio = 1;
-            if (reshape) {
+            if(reshape) {
                 scale = Math.abs(dy0) < 0.00001 ? 1 : dy1 / dy0;
                 ratio = (Math.abs(dx0) < 0.00001 ? 1 : (dx1 / dx0)) / scale;
             } else {
@@ -430,7 +430,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
             control.box.geometry.resize(scale, centerGeometry, ratio);
             control.box.geometry.rotate(control.rotation, centerGeometry);
             control.transformFeature({scale: scale, ratio: ratio});
-            if (control.irregular && !control._setfeature) {
+            if(control.irregular && !control._setfeature) {
                var newCenter = centerGeometry.clone();
                newCenter.x += Math.abs(oldX - centerGeometry.x) < 0.00001 ? 0 : (this.x - oldX);
                newCenter.y += Math.abs(oldY - centerGeometry.y) < 0.00001 ? 0 : (this.y - oldY);

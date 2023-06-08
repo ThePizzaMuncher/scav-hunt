@@ -34,11 +34,11 @@ OpenLayers.Rico.Corner = {
         this._setOptions(options);
 
         var color = this.options.color;
-        if ( this.options.color == "fromElement" ) {
+        if( this.options.color == "fromElement" ) {
             color = this._background(e);
         }
         var bgColor = this.options.bgColor;
-        if ( this.options.bgColor == "fromParent" ) {
+        if( this.options.bgColor == "fromParent" ) {
             bgColor = this._background(e.offsetParent);
         }
         this._roundCornersImpl(e, color, bgColor);
@@ -173,7 +173,7 @@ OpenLayers.Rico.Corner = {
       inStyle.fontSize = "1px";
 
       var borderColor = this._borderColor(color,bgColor);
-      if ( this.options.border && n == 0 ) {
+      if( this.options.border && n == 0 ) {
          inStyle.borderTopStyle    = "solid";
          inStyle.borderTopWidth    = "1px";
          inStyle.borderLeftWidth   = "0px";
@@ -188,7 +188,7 @@ OpenLayers.Rico.Corner = {
          inStyle.borderWidth = "0px 1px";
       }
 
-      if ( !this.options.compact && (n == (this.options.numSlices-1)) ) {
+      if( !this.options.compact && (n == (this.options.numSlices-1)) ) {
          inStyle.height = "2px";
       }
       this._setMargin(slice, n, position);
@@ -208,31 +208,31 @@ OpenLayers.Rico.Corner = {
       OpenLayers.Util.extend(this.options, options || {});
 
       this.options.numSlices = this.options.compact ? 2 : 4;
-      if ( this._isTransparent() ) {
+      if( this._isTransparent() ) {
          this.options.blend = false;
       }
    },
 
    _whichSideTop: function() {
-      if ( this._hasString(this.options.corners, "all", "top") ) {
+      if( this._hasString(this.options.corners, "all", "top") ) {
          return "";
       }
-      if ( this.options.corners.indexOf("tl") >= 0 && this.options.corners.indexOf("tr") >= 0 ) {
+      if( this.options.corners.indexOf("tl") >= 0 && this.options.corners.indexOf("tr") >= 0 ) {
          return "";
       }
-      if (this.options.corners.indexOf("tl") >= 0) {
+      if(this.options.corners.indexOf("tl") >= 0) {
          return "left";
-      } else if (this.options.corners.indexOf("tr") >= 0) {
+      } else if(this.options.corners.indexOf("tr") >= 0) {
           return "right";
       }
       return "";
    },
 
    _whichSideBottom: function() {
-      if ( this._hasString(this.options.corners, "all", "bottom") ) {
+      if( this._hasString(this.options.corners, "all", "bottom") ) {
          return "";
       }
-      if ( this.options.corners.indexOf("bl")>=0 && this.options.corners.indexOf("br")>=0 ) {
+      if( this.options.corners.indexOf("bl")>=0 && this.options.corners.indexOf("br")>=0 ) {
          return "";
       }
 
@@ -245,11 +245,11 @@ OpenLayers.Rico.Corner = {
    },
 
    _borderColor : function(color,bgColor) {
-      if ( color == "transparent" ) {
+      if( color == "transparent" ) {
          return bgColor;
-      } else if ( this.options.border ) {
+      } else if( this.options.border ) {
          return this.options.border;
-      } else if ( this.options.blend ) {
+      } else if( this.options.blend ) {
          return this._blend( bgColor, color );
       } else {
          return "";
@@ -261,10 +261,10 @@ OpenLayers.Rico.Corner = {
       var marginSize = this._marginSize(n);
       var whichSide = corners == "top" ? this._whichSideTop() : this._whichSideBottom();
 
-      if ( whichSide == "left" ) {
+      if( whichSide == "left" ) {
          el.style.marginLeft = marginSize + "px"; el.style.marginRight = "0px";
       }
-      else if ( whichSide == "right" ) {
+      else if( whichSide == "right" ) {
          el.style.marginRight = marginSize + "px"; el.style.marginLeft  = "0px";
       }
       else {
@@ -275,22 +275,22 @@ OpenLayers.Rico.Corner = {
    _setBorder: function(el,n,corners) {
       var borderSize = this._borderSize(n);
       var whichSide = corners == "top" ? this._whichSideTop() : this._whichSideBottom();
-      if ( whichSide == "left" ) {
+      if( whichSide == "left" ) {
          el.style.borderLeftWidth = borderSize + "px"; el.style.borderRightWidth = "0px";
       }
-      else if ( whichSide == "right" ) {
+      else if( whichSide == "right" ) {
          el.style.borderRightWidth = borderSize + "px"; el.style.borderLeftWidth  = "0px";
       }
       else {
          el.style.borderLeftWidth = borderSize + "px"; el.style.borderRightWidth = borderSize + "px";
       }
-      if (this.options.border != false) {
+      if(this.options.border != false) {
         el.style.borderLeftWidth = borderSize + "px"; el.style.borderRightWidth = borderSize + "px";
       }
    },
 
    _marginSize: function(n) {
-      if ( this._isTransparent() ) {
+      if( this._isTransparent() ) {
          return 0;
       }
       var marginSizes          = [ 5, 3, 2, 1 ];
@@ -298,11 +298,11 @@ OpenLayers.Rico.Corner = {
       var compactMarginSizes   = [ 2, 1 ];
       var smBlendedMarginSizes = [ 1, 0 ];
 
-      if ( this.options.compact && this.options.blend ) {
+      if( this.options.compact && this.options.blend ) {
          return smBlendedMarginSizes[n];
-      } else if ( this.options.compact ) {
+      } else if( this.options.compact ) {
          return compactMarginSizes[n];
-      } else if ( this.options.blend ) {
+      } else if( this.options.blend ) {
          return blendedMarginSizes[n];
       } else {
          return marginSizes[n];
@@ -315,21 +315,21 @@ OpenLayers.Rico.Corner = {
       var compactBorderSizes     = [ 1, 0 ];
       var actualBorderSizes      = [ 0, 2, 0, 0 ];
 
-      if ( this.options.compact && (this.options.blend || this._isTransparent()) ) {
+      if( this.options.compact && (this.options.blend || this._isTransparent()) ) {
          return 1;
-      } else if ( this.options.compact ) {
+      } else if( this.options.compact ) {
          return compactBorderSizes[n];
-      } else if ( this.options.blend ) {
+      } else if( this.options.blend ) {
          return blendedBorderSizes[n];
-      } else if ( this.options.border ) {
+      } else if( this.options.border ) {
          return actualBorderSizes[n];
-      } else if ( this._isTransparent() ) {
+      } else if( this._isTransparent() ) {
          return transparentBorderSizes[n];
       }
       return 0;
    },
 
-   _hasString: function(str) { for(var i=1 ; i<arguments.length ; i++) if (str.indexOf(arguments[i]) >= 0) { return true; } return false; },
+   _hasString: function(str) { for(var i=1 ; i<arguments.length ; i++) if(str.indexOf(arguments[i]) >= 0) { return true; } return false; },
    _blend: function(c1, c2) { var cc1 = OpenLayers.Rico.Color.createFromHex(c1); cc1.blend(OpenLayers.Rico.Color.createFromHex(c2)); return cc1; },
    _background: function(el) { try { return OpenLayers.Rico.Color.createColorFromBackground(el).asHex(); } catch(err) { return "#ffffff"; } },
    _isTransparent: function() { return this.options.color == "transparent"; },

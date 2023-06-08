@@ -86,9 +86,9 @@ OpenLayers.Format.Filter.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                     switch(child.nodeType) {
                         case 1:
                             obj = this.readNode(child);
-                            if (obj.property) {
+                            if(obj.property) {
                                 value += "${" + obj.property + "}";
-                            } else if (obj.value !== undefined) {
+                            } else if(obj.value !== undefined) {
                                 value += obj.value;
                             }
                             break;
@@ -260,7 +260,7 @@ OpenLayers.Format.Filter.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      * {String} String representation of the provided value.
      */
     encodeLiteral: function(value) {
-        if (value instanceof Date) {
+        if(value instanceof Date) {
             value = OpenLayers.Date.toISOString(value);
         }
         return value;
@@ -279,7 +279,7 @@ OpenLayers.Format.Filter.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      * {DOMElement} Updated node element.
      */
     writeOgcExpression: function(value, node) {
-        if (value instanceof OpenLayers.Filter.Function){
+        if(value instanceof OpenLayers.Filter.Function){
             this.writeNode("Function", value, node);
         } else {
             this.writeNode("Literal", value, node);

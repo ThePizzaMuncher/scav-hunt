@@ -118,7 +118,7 @@
             OpenLayers.Tile.Image.prototype.destroy;
 
         OpenLayers.Tile.Image.prototype.destroy = function() {
-            if (!this.unhooked) {
+            if(!this.unhooked) {
                 allTilesUnhooked = false;
             }
             tilesDeleted++;
@@ -522,7 +522,7 @@
                 },
                 on: function(obj) {
                     for (var o in obj) {
-                        if (obj.hasOwnProperty(o)) {
+                        if(obj.hasOwnProperty(o)) {
                             tile.events.register(o, obj.scope, obj[o]);
                         }
                     }

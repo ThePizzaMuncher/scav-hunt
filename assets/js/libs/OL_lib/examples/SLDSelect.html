@@ -116,14 +116,14 @@
                 var layer = layers[key];
                 for (var i=0, len=elements.length; i<len; i++) {
                     var value = elements[i];
-                    if (value == key && element.checked) {
+                    if(value == key && element.checked) {
                         selectLayers.push(layer);
                     }
                 }
             }
             for (var i=0, len=this.map.controls.length; i<len; i++) {
                 var control = this.map.controls[i];
-                if (control instanceof OpenLayers.Control.SLDSelect) {
+                if(control instanceof OpenLayers.Control.SLDSelect) {
                     control.setLayers(selectLayers);
                 }
             }

@@ -112,7 +112,7 @@ OpenLayers.Rico.Color.createFromHex = function(hexCode) {
 shortHexCode.charAt(i)); 
     }
   }
-   if ( hexCode.indexOf('#') == 0 ) {
+   if( hexCode.indexOf('#') == 0 ) {
        hexCode = hexCode.substring(1);
    }
    var red   = hexCode.substring(0,2);
@@ -131,13 +131,13 @@ OpenLayers.Rico.Color.createColorFromBackground = function(elem) {
       OpenLayers.Element.getStyle(OpenLayers.Util.getElement(elem), 
                                         "backgroundColor");
 
-   if ( actualColor == "transparent" && elem.parentNode ) {
+   if( actualColor == "transparent" && elem.parentNode ) {
       return OpenLayers.Rico.Color.createColorFromBackground(elem.parentNode);
    }
-   if ( actualColor == null ) {
+   if( actualColor == null ) {
       return new OpenLayers.Rico.Color(255,255,255);
    }
-   if ( actualColor.indexOf("rgb(") == 0 ) {
+   if( actualColor.indexOf("rgb(") == 0 ) {
       var colors = actualColor.substring(4, actualColor.length - 1 );
       var colorArray = colors.split(",");
       return new OpenLayers.Rico.Color( parseInt( colorArray[0] ),
@@ -145,7 +145,7 @@ OpenLayers.Rico.Color.createColorFromBackground = function(elem) {
                             parseInt( colorArray[2] )  );
 
    }
-   else if ( actualColor.indexOf("#") == 0 ) {
+   else if( actualColor.indexOf("#") == 0 ) {
       return OpenLayers.Rico.Color.createFromHex(actualColor);
    }
    else {
@@ -159,7 +159,7 @@ OpenLayers.Rico.Color.HSBtoRGB = function(hue, saturation, brightness) {
     var green = 0;
     var blue  = 0;
 
-   if (saturation == 0) {
+   if(saturation == 0) {
       red = parseInt(brightness * 255.0 + 0.5);
        green = red;
        blue = red;
@@ -215,35 +215,35 @@ OpenLayers.Rico.Color.RGBtoHSB = function(r, g, b) {
    var brightness;
 
    var cmax = (r > g) ? r : g;
-   if (b > cmax) {
+   if(b > cmax) {
       cmax = b;
    }
    var cmin = (r < g) ? r : g;
-   if (b < cmin) {
+   if(b < cmin) {
       cmin = b;
    }
    brightness = cmax / 255.0;
-   if (cmax != 0) {
+   if(cmax != 0) {
       saturation = (cmax - cmin)/cmax;
    } else {
       saturation = 0;
    }
-   if (saturation == 0) {
+   if(saturation == 0) {
       hue = 0;
    } else {
       var redc   = (cmax - r)/(cmax - cmin);
         var greenc = (cmax - g)/(cmax - cmin);
         var bluec  = (cmax - b)/(cmax - cmin);
 
-        if (r == cmax) {
+        if(r == cmax) {
            hue = bluec - greenc;
-        } else if (g == cmax) {
+        } else if(g == cmax) {
            hue = 2.0 + redc - bluec;
       } else {
            hue = 4.0 + greenc - redc;
       }
         hue = hue / 6.0;
-        if (hue < 0) {
+        if(hue < 0) {
            hue = hue + 1.0;
         }
    }

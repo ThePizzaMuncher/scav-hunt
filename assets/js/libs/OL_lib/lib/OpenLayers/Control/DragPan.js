@@ -78,7 +78,7 @@ OpenLayers.Control.DragPan = OpenLayers.Class(OpenLayers.Control, {
      * <panMapDone> as callbacks.
      */    
     draw: function() {
-        if (this.enableKinetic && OpenLayers.Kinetic) {
+        if(this.enableKinetic && OpenLayers.Kinetic) {
             var config = {interval: this.kineticInterval};
             if(typeof this.enableKinetic === "object") {
                 config = OpenLayers.Util.extend(config, this.enableKinetic);
@@ -134,7 +134,7 @@ OpenLayers.Control.DragPan = OpenLayers.Class(OpenLayers.Control, {
     panMapDone: function(xy) {
         if(this.panned) {
             var res = null;
-            if (this.kinetic) {
+            if(this.kinetic) {
                 res = this.kinetic.end(xy);
             }
             this.map.pan(
@@ -142,7 +142,7 @@ OpenLayers.Control.DragPan = OpenLayers.Class(OpenLayers.Control, {
                 this.handler.last.y - xy.y,
                 {dragging: !!res, animate: false}
             );
-            if (res) {
+            if(res) {
                 var self = this;
                 this.kinetic.move(res, function(x, y, end) {
                     self.map.pan(x, y, {dragging: !end, animate: false});

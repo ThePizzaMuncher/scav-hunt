@@ -125,7 +125,7 @@ OpenLayers.Format.QueryStringFilter = (function() {
                     switch (filter.type) {
                         case OpenLayers.Filter.Spatial.BBOX:
                             params.bbox = filter.value.toArray();
-                            if (this.srsInBBOX && filter.projection) {
+                            if(this.srsInBBOX && filter.projection) {
                                 params.bbox.push(filter.projection.getCode());
                             }
                             break;
@@ -143,11 +143,11 @@ OpenLayers.Format.QueryStringFilter = (function() {
                     break;
                 case "Comparison":
                     var op = cmpToStr[filter.type];
-                    if (op !== undefined) {
+                    if(op !== undefined) {
                         var value = filter.value;
-                        if (filter.type == OpenLayers.Filter.Comparison.LIKE) {
+                        if(filter.type == OpenLayers.Filter.Comparison.LIKE) {
                             value = regex2value(value);
-                            if (this.wildcarded) {
+                            if(this.wildcarded) {
                                 value = "%" + value + "%";
                             }
                         }
@@ -160,7 +160,7 @@ OpenLayers.Format.QueryStringFilter = (function() {
                     }
                     break;
                 case "Logical":
-                    if (filter.type === OpenLayers.Filter.Logical.AND) {
+                    if(filter.type === OpenLayers.Filter.Logical.AND) {
                         for (var i=0,len=filter.filters.length; i<len; i++) {
                             params = this.write(filter.filters[i], params);
                         }

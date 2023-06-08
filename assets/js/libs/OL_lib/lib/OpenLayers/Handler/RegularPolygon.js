@@ -210,9 +210,9 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
             // to the map in activate(), we can assume that if this.layer.map
             // is null it means that the layer has been destroyed (as a result
             // of map.destroy() for example.
-            if (this.layer.map != null) {
+            if(this.layer.map != null) {
                 this.layer.destroy(false);
-                if (this.feature) {
+                if(this.feature) {
                     this.feature.destroy();
                 }
             }
@@ -298,7 +298,7 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
         // the mouseup method of superclass doesn't call the
         // "done" callback if there's been no move between
         // down and up
-        if (this.start == this.last) {
+        if(this.start == this.last) {
             this.callback("done", [evt.xy]);
         }
     },
@@ -396,7 +396,7 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
      *     is true).
      */
     clear: function() {
-        if (this.layer) {
+        if(this.layer) {
             this.layer.renderer.clear();
             this.layer.destroyFeatures();
         }
@@ -414,7 +414,7 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
      */
     callback: function (name, args) {
         // override the callback method to always send the polygon geometry
-        if (this.callbacks[name]) {
+        if(this.callbacks[name]) {
             this.callbacks[name].apply(this.control,
                                        [this.feature.geometry.clone()]);
         }

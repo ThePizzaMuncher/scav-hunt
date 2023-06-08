@@ -109,7 +109,7 @@ function report_results() {
     req.setRequestHeader("Content-Type", 'application/x-www-form-urlencoded');
     var results = document.getElementById('total').innerHTML;
     var test_text = "";
-    if (results.match("fail")) {
+    if(results.match("fail")) {
         test_text = document.getElementById("results").innerHTML;
     }    
     req.send("results="+escape(results)+"&test_text="+escape(test_text));
@@ -942,7 +942,7 @@ Test.AnotherWay._test_page_onload=function()
 					var fun_end=script_text.indexOf( '(' );
 					var fun_name=script_text.substring( "function ".length,  fun_end );
                                         var whitespace = fun_name.indexOf( ' ' );
-                                        if (whitespace >= 0)
+                                        if(whitespace >= 0)
                                             fun_name = fun_name.substring( 0, whitespace );
 					test_page.test_objects.push( new Test.AnotherWay._test_object_t( fun_name ) );
 					script_text=script_text.substring( fun_end, script_text.length );
@@ -952,7 +952,7 @@ Test.AnotherWay._test_page_onload=function()
 		}else { // otherwise (not IE) it ought to work like this
 			for( var i in Test.AnotherWay._g_test_iframe) {
 				// Hack to prevent failure in FF3.0b1 
-                if (i == "innerWidth" || i == "innerHeight") { continue; }
+                if(i == "innerWidth" || i == "innerHeight") { continue; }
 				if( typeof( Test.AnotherWay._g_test_iframe[i] )=='function' ) {
 					if( i.substring( 0, 4 )=="test" ) {
 						test_page.test_objects.push( new Test.AnotherWay._test_object_t( i ) );
@@ -2260,7 +2260,7 @@ onload=function()
 			}else if( param[0]=="testframe_no_clear" ) {
 				Test.AnotherWay._g_test_frame_no_clear=true;
 			}else if( param[0]=="windows" ) {
-                if (param[1] == "none") {
+                if(param[1] == "none") {
                 }
 			}else if( param[0]=="run" ) {
 				auto_run=true;

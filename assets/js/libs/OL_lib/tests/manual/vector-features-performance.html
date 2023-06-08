@@ -24,7 +24,7 @@
         
         function nextRun() {
             window.setTimeout(function() {
-                if (run < 5) {
+                if(run < 5) {
                     vectorLayer.removeFeatures(features);
                 }
             }, 900);
@@ -62,7 +62,7 @@
                 if(style == null) {
                     style = feature.style;
                 }
-                if (feature.geometry) {
+                if(feature.geometry) {
                     this.drawGeometry(feature.geometry, style, feature.id);
                 }
             };

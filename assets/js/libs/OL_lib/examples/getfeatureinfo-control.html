@@ -119,7 +119,7 @@
     }
 
     function showInfo(evt) {
-        if (evt.features && evt.features.length) {
+        if(evt.features && evt.features.length) {
              highlightLayer.destroyFeatures();
              highlightLayer.addFeatures(evt.features);
              highlightLayer.redraw();
@@ -131,7 +131,7 @@
     function toggleControl(element) {
         for (var key in infoControls) {
             var control = infoControls[key];
-            if (element.value == key && element.checked) {
+            if(element.value == key && element.checked) {
                 control.activate();
             } else {
                 control.deactivate();
@@ -149,7 +149,7 @@
     function toggleLayers(element) {
         for (var key in infoControls) {
             var control = infoControls[key];
-            if (element.value == 'Specified') {
+            if(element.value == 'Specified') {
                 control.layers = [water];
             } else {
                 control.layers = null;

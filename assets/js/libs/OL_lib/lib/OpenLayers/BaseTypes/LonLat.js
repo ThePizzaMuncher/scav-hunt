@@ -42,7 +42,7 @@ OpenLayers.LonLat = OpenLayers.Class({
      * location - {Array(Float)} [lon, lat]
      */
     initialize: function(lon, lat) {
-        if (OpenLayers.Util.isArray(lon)) {
+        if(OpenLayers.Util.isArray(lon)) {
             lat = lon[1];
             lon = lon[0];
         }
@@ -96,7 +96,7 @@ OpenLayers.LonLat = OpenLayers.Class({
      *                       lat passed-in added to this's. 
      */
     add:function(lon, lat) {
-        if ( (lon == null) || (lat == null) ) {
+        if( (lon == null) || (lat == null) ) {
             throw new TypeError('LonLat.add cannot receive null values');
         }
         return new OpenLayers.LonLat(this.lon + OpenLayers.Util.toFloat(lon), 
@@ -117,7 +117,7 @@ OpenLayers.LonLat = OpenLayers.Class({
      */
     equals:function(ll) {
         var equals = false;
-        if (ll != null) {
+        if(ll != null) {
             equals = ((this.lon == ll.lon && this.lat == ll.lat) ||
                       (isNaN(this.lon) && isNaN(this.lat) && isNaN(ll.lon) && isNaN(ll.lat)));
         }
@@ -159,7 +159,7 @@ OpenLayers.LonLat = OpenLayers.Class({
 
         var newLonLat = this.clone();
     
-        if (maxExtent) {
+        if(maxExtent) {
             //shift right?
             while (newLonLat.lon < maxExtent.left) {
                 newLonLat.lon +=  maxExtent.getWidth();

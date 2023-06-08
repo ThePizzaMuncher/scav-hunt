@@ -133,7 +133,7 @@ OpenLayers.Control.Graticule = OpenLayers.Class(OpenLayers.Control, {
     destroy: function() {
         this.deactivate();        
         OpenLayers.Control.prototype.destroy.apply(this, arguments);        
-        if (this.gratLayer) {
+        if(this.gratLayer) {
             this.gratLayer.destroy();
             this.gratLayer = null;
         }
@@ -149,7 +149,7 @@ OpenLayers.Control.Graticule = OpenLayers.Class(OpenLayers.Control, {
      */
     draw: function() {
         OpenLayers.Control.prototype.draw.apply(this, arguments);
-        if (!this.gratLayer) {
+        if(!this.gratLayer) {
             var gratStyle = new OpenLayers.Style({},{
                 rules: [new OpenLayers.Rule({'symbolizer':
                     {"Point":this.labelSymbolizer,
@@ -169,7 +169,7 @@ OpenLayers.Control.Graticule = OpenLayers.Class(OpenLayers.Control, {
      * APIMethod: activate
      */
     activate: function() {
-        if (OpenLayers.Control.prototype.activate.apply(this, arguments)) {
+        if(OpenLayers.Control.prototype.activate.apply(this, arguments)) {
             this.map.addLayer(this.gratLayer);
             this.map.events.register('moveend', this, this.update);     
             this.update();
@@ -183,7 +183,7 @@ OpenLayers.Control.Graticule = OpenLayers.Class(OpenLayers.Control, {
      * APIMethod: deactivate
      */
     deactivate: function() {
-        if (OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
+        if(OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
             this.map.events.unregister('moveend', this, this.update);
             this.map.removeLayer(this.gratLayer);
             return true;
@@ -202,7 +202,7 @@ OpenLayers.Control.Graticule = OpenLayers.Class(OpenLayers.Control, {
     update: function() {
         //wait for the map to be initialized before proceeding
         var mapBounds = this.map.getExtent();
-        if (!mapBounds) {
+        if(!mapBounds) {
             return;
         }
         
@@ -216,7 +216,7 @@ OpenLayers.Control.Graticule = OpenLayers.Class(OpenLayers.Control, {
         
         //if the map is in lon/lat, then the lines are straight and only one
         //point is required
-        if (mapProj.proj && mapProj.proj.projName == "longlat") {
+        if(mapProj.proj && mapProj.proj.projName == "longlat") {
             this.numPoints = 1;
         }
         
@@ -242,7 +242,7 @@ OpenLayers.Control.Graticule = OpenLayers.Class(OpenLayers.Control, {
             OpenLayers.Projection.transform(p1, llProj, mapProj); // convert them back to map projection
             OpenLayers.Projection.transform(p2, llProj, mapProj);
             var distSq = (p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y);
-            if (distSq <= testSq) {
+            if(distSq <= testSq) {
                 break;
             }
         }
@@ -307,11 +307,11 @@ OpenLayers.Control.Graticule = OpenLayers.Class(OpenLayers.Control, {
                 gridPoint.transform(llProj, mapProj);
                 pointList.push(gridPoint);
                 lat += latDelta;
-                if (gridPoint.y >= mapBounds.bottom && !labelPoint) {
+                if(gridPoint.y >= mapBounds.bottom && !labelPoint) {
                     labelPoint = gridPoint;
                 }
             }
-            if (this.labelled) {
+            if(this.labelled) {
                 //keep track of when this grid line crosses the map bounds to set
                 //the label position
                 //labels along the bottom, add 10 pixel offset up into the map
@@ -333,7 +333,7 @@ OpenLayers.Control.Graticule = OpenLayers.Class(OpenLayers.Control, {
         //now draw the lines of constant latitude
         for (var j=0; j < centerLonPoints.length; ++j) {
             lat = centerLonPoints[j].y;
-            if (lat<-90 || lat>90) {  //latitudes only valid between -90 and 90
+            if(lat<-90 || lat>90) {  //latitudes only valid between -90 and 90
                 continue;
             }
             var pointList = [];
@@ -347,11 +347,11 @@ OpenLayers.Control.Graticule = OpenLayers.Class(OpenLayers.Control, {
                 gridPoint.transform(llProj, mapProj);
                 pointList.push(gridPoint);
                 lon += lonDelta;
-                if (gridPoint.x < mapBounds.right) {
+                if(gridPoint.x < mapBounds.right) {
                     labelPoint = gridPoint;
                 }
             }
-            if (this.labelled) {
+            if(this.labelled) {
                 //keep track of when this grid line crosses the map bounds to set
                 //the label position
                 //labels along the right, 30 pixel offset left into the map

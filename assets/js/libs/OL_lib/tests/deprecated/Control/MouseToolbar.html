@@ -27,7 +27,7 @@
     }
     function test_Control_MouseToolbar_control_events (t) {
         t.plan( 1 );
-        if ((navigator.userAgent.indexOf("compatible") == -1)) { 
+        if((navigator.userAgent.indexOf("compatible") == -1)) { 
             var evt = {which: 1}; // control expects left-click
             map = new OpenLayers.Map('map');
             var layer = new OpenLayers.Layer.WMS("Test Layer", 

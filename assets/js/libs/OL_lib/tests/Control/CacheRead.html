@@ -48,7 +48,7 @@
     
     function test_fetch(t) {
 
-        if (!window.localStorage) {
+        if(!window.localStorage) {
             t.plan(1);
             var scope = {active: true};
             t.eq(OpenLayers.Control.CacheRead.prototype.fetch.call(scope), undefined, "no tiles fetched when localStorage is not supported.");

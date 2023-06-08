@@ -22,7 +22,7 @@
     }
     
     function test_Renderer_Canvas_constructor(t) {
-        if (!supported) { t.plan(0); return; }
+        if(!supported) { t.plan(0); return; }
         t.plan(2);
         var el = document.body;
         el.id = "foo";
@@ -34,7 +34,7 @@
     }
     
     function test_Renderer_Canvas_setextent(t) {
-        if (!supported) { t.plan(0); return; }
+        if(!supported) { t.plan(0); return; }
         t.plan(2);
         
         setUp();
@@ -50,7 +50,7 @@
     }
     
     function test_Renderer_Canvas_setsize(t) {
-        if (!supported) { t.plan(0); return; }
+        if(!supported) { t.plan(0); return; }
         t.plan(2);
         
         var el = document.body;
@@ -65,7 +65,7 @@
     }
     
     function test_Renderer_Canvas_getresolution(t) {
-        if (!supported) { t.plan(0); return; }
+        if(!supported) { t.plan(0); return; }
         t.plan(2);
         
         var el = document.body;
@@ -80,7 +80,7 @@
     }
 
     function test_featureIdToHex(t) {
-        if (!supported) {
+        if(!supported) {
             t.plan(0); 
             return;
         }
@@ -115,7 +115,7 @@
 
 
     function test_Renderer_Canvas_destroy(t) {
-        if (!supported) { t.plan(0); return; }
+        if(!supported) { t.plan(0); return; }
         t.plan(5);
 
         var el = document.body;
@@ -137,7 +137,7 @@
     }
 
     function test_drawFeature(t) {
-        if (!supported) {
+        if(!supported) {
             t.plan(0); 
             return; 
         }
@@ -206,7 +206,7 @@
 
 
     function test_pendingRedraw(t) {
-        if (!supported) {
+        if(!supported) {
             t.plan(0); 
             return; 
         }
@@ -268,7 +268,7 @@
     }
     
     function test_hitDetection(t) {
-        if (!supported) {
+        if(!supported) {
             t.plan(0); 
             return; 
         }
@@ -373,7 +373,7 @@
 
     // see http://trac.osgeo.org/openlayers/ticket/3264
     function test_externalGraphic_destroyFeatures(t) {
-        if (!supported) {
+        if(!supported) {
             t.plan(0);
             return;
         }
@@ -431,7 +431,7 @@
 
     // see http://trac.osgeo.org/openlayers/ticket/3264
     function test_externalGraphic_moveTo(t) {
-        if (!supported) {
+        if(!supported) {
             t.plan(0);
             return;
         }

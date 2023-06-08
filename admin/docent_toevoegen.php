@@ -1,13 +1,10 @@
 <?php
 require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
-if (isset($_SESSION['admin'])) {
-	if ($_SESSION['admin'] != 1) {
-		header('location:../login');
-	}
-}
-else {
-	header('location:../login');
+if(!isset($_SESSION['admin'])) {
+	header('location:../login'); die();
+} else if(!$_SESSION['admin']) {
+	header('location:../login'); die();
 }
 
 /* 
@@ -19,9 +16,9 @@ $id='';
 $naam='';
 $opleiding='';
 $wachtwoord='';
-$isadmin='';
+$isAdmin='';
 
- function renderForm($id, $naam, $opleiding, $wachtwoord,$isadmin)
+ function renderForm($id, $naam, $opleiding, $wachtwoord,$isAdmin)
  {
  ?>
   
@@ -39,7 +36,7 @@ $isadmin='';
 <td> <strong>wachtwoord: </strong></td><td>  <input type='text' name='wachtwoord' value='<?php echo $wachtwoord; ?>'/>*</td>
 </tr>
 <tr>
-<td> <strong>Admin: </strong></td><td>  <input type='checkbox' name='isadmin'/></td>
+<td> <strong>Admin: </strong></td><td>  <input type='checkbox' name='isAdmin'/></td>
 </tr>
 
 <?php
@@ -76,7 +73,7 @@ echo '<div class="container">
    '
 ;
  // check if the form has been submitted. If it has, start to process the form and save it to the database
- if (isset($_POST['submit']))
+ if(isset($_POST['submit']))
  	{ 
        
 
@@ -84,17 +81,15 @@ echo '<div class="container">
 	$naam = mysqli_real_escape_string($conn,$_POST['naam']);
 	$opleiding = mysqli_real_escape_string($conn,$_POST['opleiding']);
 	$wachtwoord = mysqli_real_escape_string($conn,$_POST['wachtwoord']);
-    if (isset($_POST['isadmin'])) {
-        $isadmin = '1';
-        // Checkbox is selected
-    } else {
-        $isadmin = '0';
-       // Alternate code
-    }
+	$isAdmin = (isset($_POST['isAdmin']) ? 1 : 0);
+    /* if(isset($_POST['isAdmin']))
+        $isAdmin = '1'; // Checkbox is selected
+    else
+        $isAdmin = '0'; // Alternate code */
    
  
  // check to make sure both fields are entered
- if ($naam == '' || $opleiding == '' || $wachtwoord == '')
+ if($naam == '' || $opleiding == '' || $wachtwoord == '')
  	{
  	// generate error message
  	$error = 'ERROR: Please fill in all required fields!';
@@ -107,7 +102,7 @@ echo '<div class="container">
 		 
  	// save the data to the database
 
-	$sql_query = "INSERT INTO docent (naam, opleiding, wachtwoord,isAdmin) VALUES ('$naam', '$opleiding', '$wachtwoord','$isadmin')";
+	$sql_query = "INSERT INTO docent (naam, opleiding, wachtwoord,isAdmin) VALUES ('$naam', '$opleiding', '$wachtwoord','$isAdmin')";
 
 
 	$retval = mysqli_query($conn, $sql_query );

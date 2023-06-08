@@ -159,7 +159,7 @@
              "node has correct namespace uri");
         
         var doc = format.read(text);
-        if (doc.importNode) {
+        if(doc.importNode) {
             node = doc.importNode(node, true);
         }    
         t.ok(doc.documentElement.appendChild(node),
@@ -229,7 +229,7 @@
              "[boolean] node has correct value");
 
         var doc = format.read(text);
-        if (doc.importNode) {
+        if(doc.importNode) {
             node = doc.importNode(node, true);
         }    
         t.ok(doc.documentElement.appendChild(node),

@@ -90,7 +90,7 @@
         map.setCenter(new OpenLayers.LonLat(0,0),0);
         t.ok( map.layers[0] == layer,
               "Marker layer added to map okay." );
-        if (!isMozilla)
+        if(!isMozilla)
             t.ok( true, "skipping element test outside of Mozilla");
         else
             t.ok( map.layers[0].div.firstChild instanceof HTMLImageElement,

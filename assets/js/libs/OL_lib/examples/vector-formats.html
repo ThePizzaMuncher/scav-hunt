@@ -147,7 +147,7 @@
                     features = [features];
                 }
                 for(var i=0; i<features.length; ++i) {
-                    if (!bounds) {
+                    if(!bounds) {
                         bounds = features[i].geometry.getBounds();
                     } else {
                         bounds.extend(features[i].geometry.getBounds());

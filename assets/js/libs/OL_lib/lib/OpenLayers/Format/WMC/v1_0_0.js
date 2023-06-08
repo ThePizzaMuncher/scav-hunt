@@ -50,7 +50,7 @@ OpenLayers.Format.WMC.v1_0_0 = OpenLayers.Class(
      */
     read_wmc_SRS: function(layerContext, node) {
         var srs    = this.getChildValue(node);
-        if (typeof layerContext.projections != "object") {
+        if(typeof layerContext.projections != "object") {
             layerContext.projections = {};
         }
         var values = srs.split(/ +/);
@@ -76,7 +76,7 @@ OpenLayers.Format.WMC.v1_0_0 = OpenLayers.Class(
         );
     
         // optional SRS element(s)
-        if (context.srs) {
+        if(context.srs) {
             var projections = [];
             for(var name in context.srs) {
                 projections.push(name);
@@ -91,7 +91,7 @@ OpenLayers.Format.WMC.v1_0_0 = OpenLayers.Class(
         node.appendChild(this.write_wmc_StyleList(context));
         
         // optional DimensionList element
-        if (context.dimensions) {
+        if(context.dimensions) {
             node.appendChild(this.write_wmc_DimensionList(context));
         }
 

@@ -68,7 +68,7 @@
         function inCache(img) {
             var search = img.src.split('?')[1];
             for (var s in tileManager.tileCache) {
-                if (s.split('?')[1] == search) {
+                if(s.split('?')[1] == search) {
                     return true;
                 }
             }

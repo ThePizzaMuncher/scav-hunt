@@ -52,7 +52,7 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
     initialize: function (components) {
         OpenLayers.Geometry.prototype.initialize.apply(this, arguments);
         this.components = [];
-        if (components != null) {
+        if(components != null) {
             this.addComponents(components);
         }
     },
@@ -110,14 +110,14 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
         this.bounds = null;
         var bounds = new OpenLayers.Bounds();
         var components = this.components;
-        if (components) {
+        if(components) {
             for (var i=0, len=components.length; i<len; i++) {
                 bounds.extend(components[i].getBounds());
             }
         }
         // to preserve old behavior, we only set bounds if non-null
         // in the future, we could add bounds.isEmpty()
-        if (bounds.left != null && bounds.bottom != null && 
+        if(bounds.left != null && bounds.bottom != null && 
             bounds.right != null && bounds.top != null) {
             this.setBounds(bounds);
         }
@@ -289,11 +289,11 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
      * {<OpenLayers.Geometry.Point>} The centroid of the collection
      */
     getCentroid: function(weighted) {
-        if (!weighted) {
+        if(!weighted) {
             return this.components.length && this.components[0].getCentroid();
         }
         var len = this.components.length;
-        if (!len) {
+        if(!len) {
             return false;
         }
         
@@ -306,7 +306,7 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
             component = this.components[i];
             var area = component.getArea();
             var centroid = component.getCentroid(true);
-            if (isNaN(area) || isNaN(centroid.x) || isNaN(centroid.y)) {
+            if(isNaN(area) || isNaN(centroid.x) || isNaN(centroid.y)) {
                 continue;
             }
             areas.push(area);
@@ -315,7 +315,7 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
             centroids.push(centroid);
         }
         len = areas.length;
-        if (areaSum === 0) {
+        if(areaSum === 0) {
             // all the components in this collection have 0 area
             // probably a collection of points -- weight all the points the same
             for (var i=0; i<len; ++i) {
@@ -504,7 +504,7 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
      * {<OpenLayers.Geometry>} 
      */
     transform: function(source, dest) {
-        if (source && dest) {
+        if(source && dest) {
             for (var i=0, len=this.components.length; i<len; i++) {  
                 var component = this.components[i];
                 component.transform(source, dest);

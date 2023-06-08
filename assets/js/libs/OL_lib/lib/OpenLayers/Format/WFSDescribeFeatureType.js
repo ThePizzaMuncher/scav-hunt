@@ -149,13 +149,13 @@ OpenLayers.Format.WFSDescribeFeatureType = OpenLayers.Class(
                 this.readChildNodes(node, obj.annotation);
             },
             "appinfo": function(node, obj) {
-                if (!obj.appinfo) {
+                if(!obj.appinfo) {
                     obj.appinfo = [];
                 }
                 obj.appinfo.push(this.getChildValue(node));
             },
             "documentation": function(node, obj) {
-                if (!obj.documentation) {
+                if(!obj.documentation) {
                     obj.documentation = [];
                 }
                 var value = this.getChildValue(node);
@@ -219,7 +219,7 @@ OpenLayers.Format.WFSDescribeFeatureType = OpenLayers.Class(
             data = data.documentElement;
         }
         var schema = {};
-        if (data.nodeName.split(":").pop() === 'ExceptionReport') {
+        if(data.nodeName.split(":").pop() === 'ExceptionReport') {
             // an exception must have occurred, so parse it
             var parser = new OpenLayers.Format.OGCExceptionReport();
             schema.error = parser.read(data);

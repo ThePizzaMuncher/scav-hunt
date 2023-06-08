@@ -112,7 +112,7 @@ OpenLayers.Popup.Anchored =
         
         //if this move has caused the popup to change its relative position, 
         // we need to make the appropriate cosmetic changes.
-        if (this.relativePosition != oldRelativePosition) {
+        if(this.relativePosition != oldRelativePosition) {
             this.updateRelativePosition();
         }
     },
@@ -127,7 +127,7 @@ OpenLayers.Popup.Anchored =
     setSize:function(contentSize) { 
         OpenLayers.Popup.prototype.setSize.apply(this, arguments);
 
-        if ((this.lonlat) && (this.map)) {
+        if((this.lonlat) && (this.map)) {
             var px = this.map.getLayerPxFromLonLat(this.lonlat);
             this.moveTo(px);
         }

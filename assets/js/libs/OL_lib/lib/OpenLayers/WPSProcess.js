@@ -118,16 +118,16 @@ OpenLayers.WPSProcess = OpenLayers.Class({
      */
     describe: function(options) {
         options = options || {};
-        if (!this.description) {
+        if(!this.description) {
             this.client.describeProcess(this.server, this.identifier, function(description) {
-                if (!this.description) {
+                if(!this.description) {
                     this.parseDescription(description);
                 }
-                if (options.callback) {
+                if(options.callback) {
                     options.callback.call(options.scope, this.description);
                 }
             }, this);
-        } else if (options.callback) {
+        } else if(options.callback) {
             var description = this.description;
             window.setTimeout(function() {
                 options.callback.call(options.scope, description);
@@ -166,7 +166,7 @@ OpenLayers.WPSProcess = OpenLayers.Class({
                     input = description.dataInputs[i];
                     this.setInputData(input, inputs[input.identifier]);
                 }
-                if (options.callback) {
+                if(options.callback) {
                     options.callback.call(options.scope);
                 }
             },
@@ -209,7 +209,7 @@ OpenLayers.WPSProcess = OpenLayers.Class({
                 me.setResponseForm({outputIndex: outputIndex});
                 (function callback() {
                     OpenLayers.Util.removeItem(me.executeCallbacks, callback);
-                    if (me.chained !== 0) {
+                    if(me.chained !== 0) {
                         // need to wait until chained processes have a
                         // description and configuration - see chainProcess
                         me.executeCallbacks.push(callback);
@@ -227,10 +227,10 @@ OpenLayers.WPSProcess = OpenLayers.Class({
                             );
                             //TODO For now we assume a spatial output
                             var features = me.formats[mimeType].read(response.responseText);
-                            if (features instanceof OpenLayers.Feature.Vector) {
+                            if(features instanceof OpenLayers.Feature.Vector) {
                                 features = [features];
                             }
-                            if (options.success) {
+                            if(options.success) {
                                 var outputs = {};
                                 outputs[options.output || 'result'] = features;
                                 options.success.call(options.scope, outputs);
@@ -304,7 +304,7 @@ OpenLayers.WPSProcess = OpenLayers.Class({
         // clear any previous data
         delete input.data;
         delete input.reference;
-        if (data instanceof OpenLayers.WPSProcess.ChainLink) {
+        if(data instanceof OpenLayers.WPSProcess.ChainLink) {
             ++this.chained;
             input.reference = {
                 method: 'POST',
@@ -321,7 +321,7 @@ OpenLayers.WPSProcess = OpenLayers.Class({
         } else {
             input.data = {};
             var complexData = input.complexData;
-            if (complexData) {
+            if(complexData) {
                 var format = this.findMimeType(complexData.supported.formats);
                 input.data.complexData = {
                     mimeType: format,
@@ -372,9 +372,9 @@ OpenLayers.WPSProcess = OpenLayers.Class({
      */
     getOutputIndex: function(outputs, identifier) {
         var output;
-        if (identifier) {
+        if(identifier) {
             for (var i=outputs.length-1; i>=0; --i) {
-                if (outputs[i].identifier === identifier) {
+                if(outputs[i].identifier === identifier) {
                     output = i;
                     break;
                 }
@@ -427,7 +427,7 @@ OpenLayers.WPSProcess = OpenLayers.Class({
      */
     toFeatures: function(source) {
         var isArray = OpenLayers.Util.isArray(source);
-        if (!isArray) {
+        if(!isArray) {
             source = [source];
         }
         var target = new Array(source.length),
@@ -457,7 +457,7 @@ OpenLayers.WPSProcess = OpenLayers.Class({
     findMimeType: function(sourceFormats, targetFormats) {
         targetFormats = targetFormats || this.formats;
         for (var f in sourceFormats) {
-            if (f in targetFormats) {
+            if(f in targetFormats) {
                 return f;
             }
         }
