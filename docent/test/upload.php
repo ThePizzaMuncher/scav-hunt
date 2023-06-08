@@ -48,7 +48,7 @@ if(isset($_POST['importSubmit'])){
                 }else{
                     // Insert member data in the database
                     */
-                    $conn->query("INSERT INTO members (naam, opleiding, leerjaar,groep_ID) VALUES ('".$naam."', '".$opleiding."', '".$leerjaar."','".$groep_ID."')");
+                    $conn->query("INSERT INTO leerling (naam, opleiding, leerjaar,groep_ID) VALUES ('$naam', '$opleiding', '$leerjaar','$groep_ID')");
               //  }
             }
             
