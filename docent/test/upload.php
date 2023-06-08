@@ -37,6 +37,7 @@ if(isset($_POST['importSubmit'])){
                 $opleiding  = rtrim($data[1], ',');
                 $leerjaar  = rtrim($data[2], ',');
                 $groep_ID = rtrim($data[3], ',');
+                echo "yes";
                 echo $naam . $opleiding . $leerjaar . $groep_ID;
                 // Check whether member already exists in the database with the same email
                /* $prevQuery = "SELECT id FROM leerling WHERE groep_ID = '".$line[1]."'";
