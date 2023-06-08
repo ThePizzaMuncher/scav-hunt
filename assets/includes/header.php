@@ -40,12 +40,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-1">
-					<a href="/~fp241754/scav-hunt/"><img src="../img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
+					<a href="/~fp241754/scav-hunt/"><img src="/~fp241754/assets/img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
 				</div>
 
 				<div class="col-md-2">
 					<div class="profile">
-						<h1 class="text-light"><a href="../..">Scav Hunt</a></h1>
+						<h1 class="text-light"><a href="/~fp241754/scav-hunt">Scav Hunt</a></h1>
 						<div class="social-links mt-3 text-center">
 							<a href="" target="_blank"><i class="fa fa-info" aria-hidden="true"></i></a>
 							<a href="" target="_blank"><i class="fa fa-address-book" aria-hidden="true"></i></a>
@@ -57,7 +57,7 @@
 						<?php session_start(); ?>
 					<nav id="navbar" class="nav-menu navbar">
 						<ul class="nav-menu">
-							<li><a href="../.." class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
+							<li><a href="/~fp241754/scav-hunt" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
 							<?php
 							if (isset($_SESSION['docent'])) {
 								// echo <<< bar
