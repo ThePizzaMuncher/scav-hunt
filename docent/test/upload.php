@@ -37,7 +37,7 @@ if(isset($_POST['importSubmit'])){
                 $opleiding  = $line[1];
                 $leerjaar  = $line[2];
                 $groep_ID = $line[3];
-                
+                echo $naam . $opleiding . $leerjaar . $groep_ID;
                 // Check whether member already exists in the database with the same email
                /* $prevQuery = "SELECT id FROM leerling WHERE groep_ID = '".$line[1]."'";
                 $prevResult = $db->query($prevQuery);
@@ -48,7 +48,7 @@ if(isset($_POST['importSubmit'])){
                 }else{
                     // Insert member data in the database
                     */
-                    $conn->query("INSERT INTO leerling (naam, opleiding, leerjaar,groep_ID) VALUES ('$naam', '$opleiding', '$leerjaar','$groep_ID')");
+                    $conn->query("INSERT INTO leerling (naam, opleiding, leerjaar, groep_ID) VALUES ('$naam', '$opleiding', '$leerjaar','$groep_ID')");
               //  }
             }
             
