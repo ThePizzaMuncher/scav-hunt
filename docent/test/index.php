@@ -10,21 +10,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
  
     <title>CSV in database importeren testje</title> 
- 
-    <style>
-        /*random styling ff snel*/
-        .custom-file-input.selected:lang(en)::after {
-            content: "" !important;
-        }
- 
-        .custom-file {
-            overflow: hidden;
-        }
- 
-        .custom-file-input {
-            white-space: nowrap;
-        }
-    </style>
 </head>
  
 <body>
