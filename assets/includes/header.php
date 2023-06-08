@@ -27,7 +27,7 @@
 	<script src="https://kit.fontawesome.com/51b9333b7a.js" crossorigin="anonymous"></script>
 
 	<!-- Main CSS File -->
-	<link href="../../assets/css/style.css" rel="stylesheet">
+	<link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-1">
-					<a href="../.."><img src="../../assets/img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
+					<a href="../../"><img src="../img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
 				</div>
 
 				<div class="col-md-2">
