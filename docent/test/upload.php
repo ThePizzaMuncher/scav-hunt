@@ -33,10 +33,10 @@ if(isset($_POST['importSubmit'])){
             // Parse data from CSV file line by line
             while(($line = fgetcsv($csvFile)) !== FALSE){
                 // Get row data
-                $naam   = rtrim($data[0], ',');
-                $opleiding  = rtrim($data[1], ',');
-                $leerjaar  = rtrim($data[2], ',');
-                $groep_ID = rtrim($data[3], ',');
+                $naam   = trim($data[0], ';');
+                $opleiding  = trim($data[1], ';');
+                $leerjaar  = trim($data[2], ';');
+                $groep_ID = trim($data[3], ';');
                 echo "yes";
                 echo $naam . $opleiding . $leerjaar . $groep_ID;
                 // Check whether member already exists in the database with the same email
