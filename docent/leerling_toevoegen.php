@@ -37,10 +37,6 @@ $groep_ID='1';
 </tr>
 <input hidden readonly type='text' name='groep_ID' value='1'/></td>
 
-<?php
-
-?>
-
 </table>
 <p>* required</p>
  <input type='submit' name='submit' value='submit'>
