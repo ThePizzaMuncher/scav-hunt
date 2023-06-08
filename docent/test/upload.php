@@ -32,12 +32,12 @@ if(isset($_POST['importSubmit'])){
             
             // Parse data from CSV file line by line
             while(($line = fgetcsv($csvFile)) !== FALSE){
-                $line = trim ( $line, ';' );
+                $data = explode(";", $line);
                 // Get row data
-                $naam   = $line[0];
-                $opleiding  = $line[1];
-                $leerjaar  = $line[2];
-                $groep_ID = $line[3];
+                $naam   = $data[0];
+                $opleiding  = $data[1];
+                $leerjaar  = $data[2];
+                $groep_ID = $data[3];
                 echo $naam . $opleiding . $leerjaar . $groep_ID;
                 // Check whether member already exists in the database with the same email
                /* $prevQuery = "SELECT id FROM leerling WHERE groep_ID = '".$line[1]."'";
