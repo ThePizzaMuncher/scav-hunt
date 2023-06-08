@@ -56,7 +56,7 @@ var select = document.getElementById("renderers");
 var renderers = OpenLayers.Layer.Vector.prototype.renderers;
 var option;
 for (var i=0, len=renderers.length; i<len; i++) {
-    if(OpenLayers.Renderer[renderers[i]].prototype.supported()) {
+    if (OpenLayers.Renderer[renderers[i]].prototype.supported()) {
         option = document.createElement("option");
         option.textContent = renderers[i];
         option.value = renderers[i];

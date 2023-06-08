@@ -51,7 +51,7 @@ OpenLayers.Format.Text = OpenLayers.Class(OpenLayers.Format, {
     initialize: function(options) {
         options = options || {};
 
-        if(options.extractStyles !== false) {
+        if (options.extractStyles !== false) {
             options.defaultStyle = {
                 'externalGraphic': OpenLayers.Util.getImageLocation("marker.png"),
                 'graphicWidth': 21,
@@ -82,9 +82,9 @@ OpenLayers.Format.Text = OpenLayers.Class(OpenLayers.Format, {
         for (var lcv = 0; lcv < (lines.length - 1); lcv++) {
             var currLine = lines[lcv].replace(/^\s*/,'').replace(/\s*$/,'');
         
-            if(currLine.charAt(0) != '#') { /* not a comment */
+            if (currLine.charAt(0) != '#') { /* not a comment */
             
-                if(!columns) {
+                if (!columns) {
                     //First line is columns
                     columns = currLine.split('\t');
                 } else {
@@ -97,34 +97,34 @@ OpenLayers.Format.Text = OpenLayers.Class(OpenLayers.Format, {
                     var icon, iconSize, iconOffset, overflow;
                     var set = false;
                     for (var valIndex = 0; valIndex < vals.length; valIndex++) {
-                        if(vals[valIndex]) {
-                            if(columns[valIndex] == 'point') {
+                        if (vals[valIndex]) {
+                            if (columns[valIndex] == 'point') {
                                 var coords = vals[valIndex].split(',');
                                 geometry.y = parseFloat(coords[0]);
                                 geometry.x = parseFloat(coords[1]);
                                 set = true;
-                            } else if(columns[valIndex] == 'lat') {
+                            } else if (columns[valIndex] == 'lat') {
                                 geometry.y = parseFloat(vals[valIndex]);
                                 set = true;
-                            } else if(columns[valIndex] == 'lon') {
+                            } else if (columns[valIndex] == 'lon') {
                                 geometry.x = parseFloat(vals[valIndex]);
                                 set = true;
-                            } else if(columns[valIndex] == 'title')
+                            } else if (columns[valIndex] == 'title')
                                 attributes['title'] = vals[valIndex];
-                            else if(columns[valIndex] == 'image' ||
+                            else if (columns[valIndex] == 'image' ||
                                      columns[valIndex] == 'icon' && style) {
                                 style['externalGraphic'] = vals[valIndex];
-                            } else if(columns[valIndex] == 'iconSize' && style) {
+                            } else if (columns[valIndex] == 'iconSize' && style) {
                                 var size = vals[valIndex].split(',');
                                 style['graphicWidth'] = parseFloat(size[0]);
                                 style['graphicHeight'] = parseFloat(size[1]);
-                            } else if(columns[valIndex] == 'iconOffset' && style) {
+                            } else if (columns[valIndex] == 'iconOffset' && style) {
                                 var offset = vals[valIndex].split(',');
                                 style['graphicXOffset'] = parseFloat(offset[0]);
                                 style['graphicYOffset'] = parseFloat(offset[1]);
-                            } else if(columns[valIndex] == 'description') {
+                            } else if (columns[valIndex] == 'description') {
                                 attributes['description'] = vals[valIndex];
-                            } else if(columns[valIndex] == 'overflow') {
+                            } else if (columns[valIndex] == 'overflow') {
                                 attributes['overflow'] = vals[valIndex];
                             } else {
                                 // For StyleMap filtering, allow additional
@@ -133,8 +133,8 @@ OpenLayers.Format.Text = OpenLayers.Class(OpenLayers.Format, {
                             }    
                         }
                     }
-                    if(set) {
-                      if(this.internalProjection && this.externalProjection) {
+                    if (set) {
+                      if (this.internalProjection && this.externalProjection) {
                           geometry.transform(this.externalProjection, 
                                              this.internalProjection); 
                       }

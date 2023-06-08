@@ -26,7 +26,7 @@ function init() {
         },
         success: function(request) {
             var doc = request.responseXML;
-            if(!doc || !doc.documentElement) {
+            if (!doc || !doc.documentElement) {
                 doc = request.responseText;
             }
             var capabilities = format.read(doc);

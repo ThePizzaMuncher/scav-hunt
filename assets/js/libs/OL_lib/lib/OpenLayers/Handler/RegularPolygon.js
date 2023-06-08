@@ -144,7 +144,7 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
      *     cancel callback will receive a geometry.
      */
     initialize: function(control, callbacks, options) {
-        if(!(options && options.layerOptions && options.layerOptions.styleMap)) {
+        if (!(options && options.layerOptions && options.layerOptions.styleMap)) {
             this.style = OpenLayers.Util.extend(OpenLayers.Feature.Vector.style['default'], {});
         }
 
@@ -173,7 +173,7 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
      */
     activate: function() {
         var activated = false;
-        if(OpenLayers.Handler.Drag.prototype.activate.apply(this, arguments)) {
+        if (OpenLayers.Handler.Drag.prototype.activate.apply(this, arguments)) {
             // create temporary vector layer for rendering geometry sketch
             var options = OpenLayers.Util.extend({
                 displayInLayerSwitcher: false,
@@ -200,9 +200,9 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
      */
     deactivate: function() {
         var deactivated = false;
-        if(OpenLayers.Handler.Drag.prototype.deactivate.apply(this, arguments)) {
+        if (OpenLayers.Handler.Drag.prototype.deactivate.apply(this, arguments)) {
             // call the cancel callback if mid-drawing
-            if(this.dragging) {
+            if (this.dragging) {
                 this.cancel();
             }
             // If a layer's map property is set to null, it means that that
@@ -210,9 +210,9 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
             // to the map in activate(), we can assume that if this.layer.map
             // is null it means that the layer has been destroyed (as a result
             // of map.destroy() for example.
-            if(this.layer.map != null) {
+            if (this.layer.map != null) {
                 this.layer.destroy(false);
-                if(this.feature) {
+                if (this.feature) {
                     this.feature.destroy();
                 }
             }
@@ -235,12 +235,12 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
         var maploc = this.layer.getLonLatFromViewPortPx(evt.xy); 
         this.origin = new OpenLayers.Geometry.Point(maploc.lon, maploc.lat);
         // create the new polygon
-        if(!this.fixedRadius || this.irregular) {
+        if (!this.fixedRadius || this.irregular) {
             // smallest radius should not be less one pixel in map units
             // VML doesn't behave well with smaller
             this.radius = this.map.getResolution();
         }
-        if(this.persist) {
+        if (this.persist) {
             this.clear();
         }
         this.feature = new OpenLayers.Feature.Vector();
@@ -260,10 +260,10 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
     move: function(evt) {
         var maploc = this.layer.getLonLatFromViewPortPx(evt.xy); 
         var point = new OpenLayers.Geometry.Point(maploc.lon, maploc.lat);
-        if(this.irregular) {
+        if (this.irregular) {
             var ry = Math.sqrt(2) * Math.abs(point.y - this.origin.y) / 2;
             this.radius = Math.max(this.map.getResolution() / 2, ry);
-        } else if(this.fixedRadius) {
+        } else if (this.fixedRadius) {
             this.origin = point;
         } else {
             this.calculateAngle(point, evt);
@@ -271,11 +271,11 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
                                    point.distanceTo(this.origin));
         }
         this.modifyGeometry();
-        if(this.irregular) {
+        if (this.irregular) {
             var dx = point.x - this.origin.x;
             var dy = point.y - this.origin.y;
             var ratio;
-            if(dy == 0) {
+            if (dy == 0) {
                 ratio = dx / (this.radius * Math.sqrt(2));
             } else {
                 ratio = dx / dy;
@@ -298,7 +298,7 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
         // the mouseup method of superclass doesn't call the
         // "done" callback if there's been no move between
         // down and up
-        if(this.start == this.last) {
+        if (this.start == this.last) {
             this.callback("done", [evt.xy]);
         }
     },
@@ -322,7 +322,7 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
      */
     createGeometry: function() {
         this.angle = Math.PI * ((1/this.sides) - (1/2));
-        if(this.snapAngle) {
+        if (this.snapAngle) {
             this.angle += this.snapAngle * (Math.PI / 180);
         }
         this.feature.geometry = OpenLayers.Geometry.Polygon.createRegularPolygon(
@@ -338,7 +338,7 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
         var angle, point;
         var ring = this.feature.geometry.components[0];
         // if the number of sides ever changes, create a new geometry
-        if(ring.components.length != (this.sides + 1)) {
+        if (ring.components.length != (this.sides + 1)) {
             this.createGeometry();
             ring = this.feature.geometry.components[0];
         }
@@ -362,7 +362,7 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
     calculateAngle: function(point, evt) {
         var alpha = Math.atan2(point.y - this.origin.y,
                                point.x - this.origin.x);
-        if(this.snapAngle && (this.snapToggle && !evt[this.snapToggle])) {
+        if (this.snapAngle && (this.snapToggle && !evt[this.snapToggle])) {
             var snapAngleRad = (Math.PI / 180) * this.snapAngle;
             this.angle = Math.round(alpha / snapAngleRad) * snapAngleRad;
         } else {
@@ -396,7 +396,7 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
      *     is true).
      */
     clear: function() {
-        if(this.layer) {
+        if (this.layer) {
             this.layer.renderer.clear();
             this.layer.destroyFeatures();
         }
@@ -414,13 +414,13 @@ OpenLayers.Handler.RegularPolygon = OpenLayers.Class(OpenLayers.Handler.Drag, {
      */
     callback: function (name, args) {
         // override the callback method to always send the polygon geometry
-        if(this.callbacks[name]) {
+        if (this.callbacks[name]) {
             this.callbacks[name].apply(this.control,
                                        [this.feature.geometry.clone()]);
         }
         // since sketch features are added to the temporary layer
         // they must be cleared here if done or cancel
-        if(!this.persist && (name == "done" || name == "cancel")) {
+        if (!this.persist && (name == "done" || name == "cancel")) {
             this.clear();
         }
     },

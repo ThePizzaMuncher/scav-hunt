@@ -44,11 +44,11 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     getNamespacePrefix: function(uri) {
         var prefix = null;
-        if(uri == null) {
+        if (uri == null) {
             prefix = this.namespaces[this.defaultPrefix];
         } else {
             for(prefix in this.namespaces) {
-                if(this.namespaces[prefix] == uri) {
+                if (this.namespaces[prefix] == uri) {
                     break;
                 }
             }
@@ -103,7 +103,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      * {Array} List of named layers.
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         var root = data.documentElement;
@@ -123,11 +123,11 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var childNode, processor, prefix, local;
         for(var i=0, len=children.length; i<len; ++i) {
             childNode = children[i];
-            if(childNode.nodeType == 1) {
+            if (childNode.nodeType == 1) {
                 prefix = this.getNamespacePrefix(childNode.namespaceURI);
                 local = childNode.nodeName.split(":").pop();
                 processor = this["read_" + prefix + "_" + local];
-                if(processor) {
+                if (processor) {
                     processor.apply(this, [obj, childNode]);
                 }
             }
@@ -276,7 +276,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var format = {
             value: this.getChildValue(node)
         };
-        if(node.getAttribute("current") == "1") {
+        if (node.getAttribute("current") == "1") {
             format.current = true;
         }
         layerContext.formats.push(format);
@@ -295,7 +295,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
     read_wmc_Style: function(layerContext, node) {
         var style = {};
         this.runChildNodes(style, node);
-        if(node.getAttribute("current") == "1") {
+        if (node.getAttribute("current") == "1") {
             style.current = true;
         }
         layerContext.styles.push(style);
@@ -339,7 +339,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     read_wmc_Name: function(obj, node) {
         var name = this.getChildValue(node);
-        if(name) {
+        if (name) {
             obj.name = name;
         }
     },
@@ -349,7 +349,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     read_wmc_Title: function(obj, node) {
         var title = this.getChildValue(node);
-        if(title) {
+        if (title) {
             obj.title = title;
         }
     },
@@ -381,7 +381,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     read_wmc_Abstract: function(obj, node) {
         var abst = this.getChildValue(node);
-        if(abst) {
+        if (abst) {
             obj["abstract"] = abst;
         }
     },
@@ -428,7 +428,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_ContactPerson: function(primaryPerson, node) {
          var person = this.getChildValue(node);
-         if(person) {
+         if (person) {
              primaryPerson.person = person;
          }
      },
@@ -438,7 +438,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_ContactOrganization: function(primaryPerson, node) {
          var organization = this.getChildValue(node);
-         if(organization) {
+         if (organization) {
              primaryPerson.organization = organization;
          }
      },
@@ -448,7 +448,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_ContactPosition: function(contact, node) {
          var position = this.getChildValue(node);
-         if(position) {
+         if (position) {
              contact.position = position;
          }
      },
@@ -467,7 +467,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_AddressType: function(contactAddress, node) {
          var type = this.getChildValue(node);
-         if(type) {
+         if (type) {
              contactAddress.type = type;
          }
      },
@@ -477,7 +477,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_Address: function(contactAddress, node) {
          var address = this.getChildValue(node);
-         if(address) {
+         if (address) {
              contactAddress.address = address;
          }
      },
@@ -487,7 +487,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_City: function(contactAddress, node) {
          var city = this.getChildValue(node);
-         if(city) {
+         if (city) {
              contactAddress.city = city;
          }
      },
@@ -497,7 +497,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_StateOrProvince: function(contactAddress, node) {
          var stateOrProvince = this.getChildValue(node);
-         if(stateOrProvince) {
+         if (stateOrProvince) {
              contactAddress.stateOrProvince = stateOrProvince;
          }
      },
@@ -507,7 +507,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_PostCode: function(contactAddress, node) {
          var postcode = this.getChildValue(node);
-         if(postcode) {
+         if (postcode) {
              contactAddress.postcode = postcode;
          }
      },
@@ -517,7 +517,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_Country: function(contactAddress, node) {
          var country = this.getChildValue(node);
-         if(country) {
+         if (country) {
              contactAddress.country = country;
          }
      },
@@ -527,7 +527,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_ContactVoiceTelephone: function(contact, node) {
          var phone = this.getChildValue(node);
-         if(phone) {
+         if (phone) {
              contact.phone = phone;
          }
      },
@@ -537,7 +537,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_ContactFacsimileTelephone: function(contact, node) {
          var fax = this.getChildValue(node);
-         if(fax) {
+         if (fax) {
              contact.fax = fax;
          }
      },
@@ -547,7 +547,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      read_wmc_ContactElectronicMailAddress: function(contact, node) {
          var email = this.getChildValue(node);
-         if(email) {
+         if (email) {
              contact.email = email;
          }
      },
@@ -653,10 +653,10 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
             this.namespaces[this.defaultPrefix],
             name
         );
-        if(childValue) {
+        if (childValue) {
             node.appendChild(this.createTextNode(childValue));
         }
-        if(attributes) {
+        if (attributes) {
             this.setAttributes(node, attributes);
         }
         return node;
@@ -675,7 +675,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var value;
         for(var name in obj) {
             value = obj[name].toString();
-            if(value.match(/[A-Z]/)) {
+            if (value.match(/[A-Z]/)) {
                 // safari lowercases attributes with setAttribute
                 this.setAttributeNS(node, null, name, value);
             } else {
@@ -698,7 +698,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var node = this.createElementDefaultNS("General");
 
         // optional Window element
-        if(context.size) {
+        if (context.size) {
             node.appendChild(this.createElementDefaultNS(
                 "Window", null,
                 {
@@ -727,29 +727,29 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         ));
         
          // optional KeywordList element
-         if(context.keywords) {
+         if (context.keywords) {
              node.appendChild(this.write_wmc_KeywordList(context.keywords));
          }
 
          // optional Abstract element
-         if(context["abstract"]) {
+         if (context["abstract"]) {
              node.appendChild(this.createElementDefaultNS(
                  "Abstract", context["abstract"]
              ));
          }
 
          // Optional LogoURL element
-         if(context.logo) {
+         if (context.logo) {
              node.appendChild(this.write_wmc_URLType("LogoURL", context.logo.href, context.logo));
          }
 
          // Optional DescriptionURL element
-         if(context.descriptionURL) {
+         if (context.descriptionURL) {
              node.appendChild(this.write_wmc_URLType("DescriptionURL", context.descriptionURL));
          }
 
          // Optional ContactInformation element
-         if(context.contactInformation) {
+         if (context.contactInformation) {
              node.appendChild(this.write_wmc_ContactInformation(context.contactInformation));
          }
 
@@ -778,28 +778,28 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      write_wmc_ContactInformation: function(contact) {
          var node = this.createElementDefaultNS("ContactInformation");
 
-         if(contact.personPrimary) {
+         if (contact.personPrimary) {
              node.appendChild(this.write_wmc_ContactPersonPrimary(contact.personPrimary));
          }
-         if(contact.position) {
+         if (contact.position) {
              node.appendChild(this.createElementDefaultNS(
                  "ContactPosition", contact.position
              ));
          }
-         if(contact.contactAddress) {
+         if (contact.contactAddress) {
              node.appendChild(this.write_wmc_ContactAddress(contact.contactAddress));
          }
-         if(contact.phone) {
+         if (contact.phone) {
              node.appendChild(this.createElementDefaultNS(
                  "ContactVoiceTelephone", contact.phone
              ));
          }
-         if(contact.fax) {
+         if (contact.fax) {
              node.appendChild(this.createElementDefaultNS(
                  "ContactFacsimileTelephone", contact.fax
              ));
          }
-         if(contact.email) {
+         if (contact.email) {
              node.appendChild(this.createElementDefaultNS(
                  "ContactElectronicMailAddress", contact.email
              ));
@@ -812,12 +812,12 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      write_wmc_ContactPersonPrimary: function(personPrimary) {
          var node = this.createElementDefaultNS("ContactPersonPrimary");
-         if(personPrimary.person) {
+         if (personPrimary.person) {
              node.appendChild(this.createElementDefaultNS(
                  "ContactPerson", personPrimary.person
              ));
          }
-         if(personPrimary.organization) {
+         if (personPrimary.organization) {
              node.appendChild(this.createElementDefaultNS(
                  "ContactOrganization", personPrimary.organization
              ));
@@ -830,32 +830,32 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
       */
      write_wmc_ContactAddress: function(contactAddress) {
          var node = this.createElementDefaultNS("ContactAddress");
-         if(contactAddress.type) {
+         if (contactAddress.type) {
              node.appendChild(this.createElementDefaultNS(
                  "AddressType", contactAddress.type
              ));
          }
-         if(contactAddress.address) {
+         if (contactAddress.address) {
              node.appendChild(this.createElementDefaultNS(
                  "Address", contactAddress.address
              ));
          }
-         if(contactAddress.city) {
+         if (contactAddress.city) {
              node.appendChild(this.createElementDefaultNS(
                  "City", contactAddress.city
              ));
          }
-         if(contactAddress.stateOrProvince) {
+         if (contactAddress.stateOrProvince) {
              node.appendChild(this.createElementDefaultNS(
                  "StateOrProvince", contactAddress.stateOrProvince
              ));
          }
-         if(contactAddress.postcode) {
+         if (contactAddress.postcode) {
              node.appendChild(this.createElementDefaultNS(
                  "PostCode", contactAddress.postcode
              ));
          }
-         if(contactAddress.country) {
+         if (contactAddress.country) {
              node.appendChild(this.createElementDefaultNS(
                  "Country", contactAddress.country
              ));
@@ -870,7 +870,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var node = this.createElementDefaultNS("Extension");
         
         var bounds = context.maxExtent;
-        if(bounds) {
+        if (bounds) {
             var maxExtent = this.createElementNS(
                 this.namespaces.ol, "ol:maxExtent"
             );
@@ -938,19 +938,19 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         ));
 
          // optional Abstract element
-         if(context["abstract"]) {
+         if (context["abstract"]) {
              node.appendChild(this.createElementDefaultNS(
                  "Abstract", context["abstract"]
              ));
          }
 
          // optional DataURL element
-         if(context.dataURL) {
+         if (context.dataURL) {
              node.appendChild(this.write_wmc_URLType("DataURL", context.dataURL));
          }
 
         // optional MetadataURL element
-        if(context.metadataURL) {
+        if (context.metadataURL) {
              node.appendChild(this.write_wmc_URLType("MetadataURL", context.metadataURL));
         }
         
@@ -982,7 +982,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         });
         node.appendChild(maxExtent);
         
-        if(context.tileSize && !context.singleTile) {
+        if (context.tileSize && !context.singleTile) {
             var size = this.createElementNS(
                 this.namespaces.ol, "ol:tileSize"
             );
@@ -997,7 +997,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var child;
         for(var i=0, len=properties.length; i<len; ++i) {
             child = this.createOLPropertyNode(context, properties[i]);
-            if(child) {
+            if (child) {
                 node.appendChild(child);
             }
         }
@@ -1019,7 +1019,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     createOLPropertyNode: function(obj, prop) {
         var node = null;
-        if(obj[prop] != null) {
+        if (obj[prop] != null) {
             node = this.createElementNS(this.namespaces.ol, "ol:" + prop);
             node.appendChild(this.createTextNode(obj[prop].toString()));
         }
@@ -1043,7 +1043,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
             service: "OGC:WMS",
              version: server.version
          };
-         if(server.title) {
+         if (server.title) {
              attributes.title = server.title;
          }
          this.setAttributes(node, attributes);
@@ -1069,10 +1069,10 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      write_wmc_URLType: function(elName, url, attr) {
          var node = this.createElementDefaultNS(elName);
          node.appendChild(this.write_wmc_OnlineResource(url));
-         if(attr) {
+         if (attr) {
              var optionalAttributes = ["width", "height", "format"];
              for (var i=0; i<optionalAttributes.length; i++) {
-                 if(optionalAttributes[i] in attr) {
+                 if (optionalAttributes[i] in attr) {
                      node.setAttribute(optionalAttributes[i], attr[optionalAttributes[i]]);
                  }
              }
@@ -1095,14 +1095,14 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
              var attributes = {};
              var dimension = context.dimensions[dim];
              for (var name in dimension) {
-                 if(typeof dimension[name] == "boolean") {
+                 if (typeof dimension[name] == "boolean") {
                      attributes[name] = Number(dimension[name]);
                  } else {
                      attributes[name] = dimension[name];
                  }
              }
              var values = "";
-             if(attributes.values) {
+             if (attributes.values) {
                  values = attributes.values.join(",");
                  delete attributes.values;
              }
@@ -1153,7 +1153,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var node = this.createElementDefaultNS("StyleList");
 
         var styles = layer.styles;
-        if(styles && OpenLayers.Util.isArray(styles)) {
+        if (styles && OpenLayers.Util.isArray(styles)) {
             var sld;
             for (var i=0, len=styles.length; i<len; i++) {
                 var s = styles[i];
@@ -1168,36 +1168,36 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                     (s.current && s.current == true) ?
                     {current: "1"} : null
                 );
-                if(s.href) { // [1]
+                if (s.href) { // [1]
                     sld = this.createElementDefaultNS("SLD");
                      // Name is optional.
-                     if(s.name) {
+                     if (s.name) {
                     sld.appendChild(this.createElementDefaultNS("Name", s.name));
                      }
                     // Title is optional.
-                    if(s.title) {
+                    if (s.title) {
                         sld.appendChild(this.createElementDefaultNS("Title", s.title));
                     }
                      // LegendURL is optional
-                     if(s.legend) {
+                     if (s.legend) {
                          sld.appendChild(this.write_wmc_URLType("LegendURL", s.legend.href, s.legend));
                      }
 
                      var link = this.write_wmc_OnlineResource(s.href);
                      sld.appendChild(link);
                     style.appendChild(sld);
-                } else if(s.body) { // [2]
+                } else if (s.body) { // [2]
                     sld = this.createElementDefaultNS("SLD");
                      // Name is optional.
-                     if(s.name) {
+                     if (s.name) {
                          sld.appendChild(this.createElementDefaultNS("Name", s.name));
                      }
                      // Title is optional.
-                     if(s.title) {
+                     if (s.title) {
                          sld.appendChild(this.createElementDefaultNS("Title", s.title));
                      }
                      // LegendURL is optional
-                     if(s.legend) {
+                     if (s.legend) {
                          sld.appendChild(this.write_wmc_URLType("LegendURL", s.legend.href, s.legend));
                      }
 
@@ -1205,7 +1205,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                     var doc = OpenLayers.Format.XML.prototype.read.apply(this, [s.body]);
                     // append to StyledLayerDescriptor node
                     var imported = doc.documentElement;
-                    if(sld.ownerDocument && sld.ownerDocument.importNode) {
+                    if (sld.ownerDocument && sld.ownerDocument.importNode) {
                         imported = sld.ownerDocument.importNode(imported, true);
                     }
                     sld.appendChild(imported);
@@ -1215,13 +1215,13 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                     style.appendChild(this.createElementDefaultNS("Name", s.name));
                     style.appendChild(this.createElementDefaultNS("Title", s.title));
                     // Abstract is optional
-                    if(s['abstract']) { // abstract is a js keyword
+                    if (s['abstract']) { // abstract is a js keyword
                         style.appendChild(this.createElementDefaultNS(
                             "Abstract", s['abstract']
                         ));
                     }
                      // LegendURL is optional
-                     if(s.legend) {
+                     if (s.legend) {
                          style.appendChild(this.write_wmc_URLType("LegendURL", s.legend.href, s.legend));
                 }
                  }
@@ -1255,7 +1255,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      getOnlineResource_href: function(node) {
          var object = {};
          var links = node.getElementsByTagName("OnlineResource");
-         if(links.length > 0) {
+         if (links.length > 0) {
              this.read_wmc_OnlineResource(object, links[0]);
          }
          return object.href;

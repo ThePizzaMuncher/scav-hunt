@@ -78,7 +78,7 @@ OpenLayers.Size = OpenLayers.Class({
      */
     equals:function(sz) {
         var equals = false;
-        if(sz != null) {
+        if (sz != null) {
             equals = ((this.w == sz.w && this.h == sz.h) ||
                       (isNaN(this.w) && isNaN(this.h) && isNaN(sz.w) && isNaN(sz.h)));
         }

@@ -55,7 +55,7 @@
                         },
                         radius: function(feature) {
                             var pix = 2;
-                            if(feature.cluster) {
+                            if (feature.cluster) {
                                 pix = Math.min(feature.attributes.count, 7) + 2;
                             }
                             return pix;
@@ -105,7 +105,7 @@
             function display(event) {
                 var f = event.feature;
                 var el = document.getElementById("output");
-                if(f.cluster) {
+                if (f.cluster) {
                     el.innerHTML = "cluster of " + f.attributes.count;
                 } else {
                     el.innerHTML = "unclustered " + f.geometry;

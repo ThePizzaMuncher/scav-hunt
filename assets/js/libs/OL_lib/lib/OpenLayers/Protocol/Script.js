@@ -134,11 +134,11 @@ OpenLayers.Protocol.Script = OpenLayers.Class(OpenLayers.Protocol, {
         this.params = {};
         this.pendingRequests = {};
         OpenLayers.Protocol.prototype.initialize.apply(this, arguments);
-        if(!this.format) {
+        if (!this.format) {
             this.format = new OpenLayers.Format.GeoJSON();
         }
 
-        if(!this.filterToParams && OpenLayers.Format.QueryStringFilter) {
+        if (!this.filterToParams && OpenLayers.Format.QueryStringFilter) {
             var format = new OpenLayers.Format.QueryStringFilter({
                 srsInBBOX: this.srsInBBOX
             });
@@ -174,7 +174,7 @@ OpenLayers.Protocol.Script = OpenLayers.Class(OpenLayers.Protocol, {
         options.params = OpenLayers.Util.applyDefaults(
             options.params, this.options.params
         );
-        if(options.filter && this.filterToParams) {
+        if (options.filter && this.filterToParams) {
             options.params = this.filterToParams(
                 options.filter, options.params
             );
@@ -249,7 +249,7 @@ OpenLayers.Protocol.Script = OpenLayers.Class(OpenLayers.Protocol, {
     destroyRequest: function(script) {
         OpenLayers.Protocol.Script.unregister(script.id.split("_").pop());
         delete this.pendingRequests[script.id];
-        if(script.parentNode) {
+        if (script.parentNode) {
             script.parentNode.removeChild(script);
         }
     },
@@ -279,8 +279,8 @@ OpenLayers.Protocol.Script = OpenLayers.Class(OpenLayers.Protocol, {
      *     or delete call.
      */
     handleResponse: function(response, options) {
-        if(options.callback) {
-            if(response.data) {
+        if (options.callback) {
+            if (response.data) {
                 response.features = this.parseFeatures(response.data);
                 response.code = OpenLayers.Protocol.Response.SUCCESS;
             } else {
@@ -316,7 +316,7 @@ OpenLayers.Protocol.Script = OpenLayers.Class(OpenLayers.Protocol, {
      *     from a <read> request.
      */
     abort: function(response) {
-        if(response) {
+        if (response) {
             this.destroyRequest(response.priv);
         } else {
             for (var key in this.pendingRequests) {

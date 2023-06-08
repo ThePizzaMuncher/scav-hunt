@@ -43,7 +43,7 @@
 
          // conditionally mock up proj4js
          var hasProj = !!window.Proj4js;
-         if(!hasProj) {
+         if (!hasProj) {
              window.Proj4js = {};
          }
          proj1.proj = {defData: "+title= WGS84 +foo=bar +x=0"};
@@ -57,7 +57,7 @@
          t.eq(proj1.equals(proj4), true, "EPSG:4326 and EPSG:4326 are equal with proj4js");
          t.eq(proj2.equals(proj5), false, "Projection.equals() returns false for unknown projections with proj4js");
          
-         if(!hasProj) {
+         if (!hasProj) {
              window.Proj4js = undefined;
          }
 

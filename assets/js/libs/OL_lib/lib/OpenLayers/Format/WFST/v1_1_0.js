@@ -156,10 +156,10 @@ OpenLayers.Format.WFST.v1_1_0 = OpenLayers.Class(
                         srsName: options.srsName
                     }
                 });
-                if(options.featureNS) {
+                if (options.featureNS) {
                     node.setAttribute("xmlns:" + prefix, options.featureNS);
                 }
-                if(options.propertyNames) {
+                if (options.propertyNames) {
                     for(var i=0,len = options.propertyNames.length; i<len; i++) {
                         this.writeNode(
                             "wfs:PropertyName", 
@@ -168,7 +168,7 @@ OpenLayers.Format.WFST.v1_1_0 = OpenLayers.Class(
                         );
                     }
                 }
-                if(options.filter) {
+                if (options.filter) {
                     OpenLayers.Format.WFST.v1_1_0.prototype.setFilterProperty.call(this, options.filter);
                     this.writeNode("ogc:Filter", options.filter, node);
                 }

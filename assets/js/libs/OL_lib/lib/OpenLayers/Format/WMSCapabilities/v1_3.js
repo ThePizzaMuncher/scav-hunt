@@ -102,7 +102,7 @@ OpenLayers.Format.WMSCapabilities.v1_3 = OpenLayers.Class(
                 // Make it an object with a value instead of a string?
                 var keyword = {value: this.getChildValue(node), 
                     vocabulary: node.getAttribute("vocabulary")};
-                if(obj.keywords) {
+                if (obj.keywords) {
                     obj.keywords.push(keyword);
                 }
             }

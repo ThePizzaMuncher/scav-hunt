@@ -86,7 +86,7 @@ OpenLayers.Format.WMTSCapabilities = OpenLayers.Class(OpenLayers.Format.XML.Vers
         var layer;
 
         // confirm required properties are supplied in config
-        if(!('layer' in config)) {
+        if (!('layer' in config)) {
             throw new Error("Missing property 'layer' in configuration.");
         }
 
@@ -96,29 +96,29 @@ OpenLayers.Format.WMTSCapabilities = OpenLayers.Class(OpenLayers.Format.XML.Vers
         var layers = contents.layers;
         var layerDef;
         for (var i=0, ii=contents.layers.length; i<ii; ++i) {
-            if(contents.layers[i].identifier === config.layer) {
+            if (contents.layers[i].identifier === config.layer) {
                 layerDef = contents.layers[i];
                 break;
             }
         }
-        if(!layerDef) {
+        if (!layerDef) {
             throw new Error("Layer not found");
         }
         
         var format = config.format;
-        if(!format && layerDef.formats && layerDef.formats.length) {
+        if (!format && layerDef.formats && layerDef.formats.length) {
             format = layerDef.formats[0];
         }
 
         // find the matrixSet definition
         var matrixSet;
-        if(config.matrixSet) {
+        if (config.matrixSet) {
             matrixSet = contents.tileMatrixSets[config.matrixSet];
-        } else if(layerDef.tileMatrixSetLinks.length >= 1) {
+        } else if (layerDef.tileMatrixSetLinks.length >= 1) {
             matrixSet = contents.tileMatrixSets[
                 layerDef.tileMatrixSetLinks[0].tileMatrixSet];
         }
-        if(!matrixSet) {
+        if (!matrixSet) {
             throw new Error("matrixSet not found");
         }
 
@@ -126,25 +126,25 @@ OpenLayers.Format.WMTSCapabilities = OpenLayers.Class(OpenLayers.Format.XML.Vers
         var style;
         for (var i=0, ii=layerDef.styles.length; i<ii; ++i) {
             style = layerDef.styles[i];
-            if(style.isDefault) {
+            if (style.isDefault) {
                 break;
             }
         }
 
         var requestEncoding = config.requestEncoding;
-        if(!requestEncoding) {
+        if (!requestEncoding) {
             requestEncoding = "KVP";
-            if(capabilities.operationsMetadata.GetTile.dcp.http) {
+            if (capabilities.operationsMetadata.GetTile.dcp.http) {
                 var http = capabilities.operationsMetadata.GetTile.dcp.http;
                 // Get first get method
-                if(http.get[0].constraints) {
+                if (http.get[0].constraints) {
                     var constraints = http.get[0].constraints;
                     var allowedValues = constraints.GetEncoding.allowedValues;
 
                     // The OGC documentation is not clear if we should use
                     // REST or RESTful, ArcGis use RESTful,
                     // and OpenLayers use REST.
-                    if(!allowedValues.KVP &&
+                    if (!allowedValues.KVP &&
                             (allowedValues.REST || allowedValues.RESTful)) {
                         requestEncoding = "REST";
                     }
@@ -159,7 +159,7 @@ OpenLayers.Format.WMTSCapabilities = OpenLayers.Class(OpenLayers.Format.XML.Vers
         for (var id = 0, ld = layerDef.dimensions.length ; id < ld ; id++) {
             var dimension = layerDef.dimensions[id];
             dimensions.push(dimension.identifier);
-            if(!params.hasOwnProperty(dimension.identifier)) {
+            if (!params.hasOwnProperty(dimension.identifier)) {
                 params[dimension.identifier] = dimension['default'];
             }
         }
@@ -171,7 +171,7 @@ OpenLayers.Format.WMTSCapabilities = OpenLayers.Class(OpenLayers.Format.XML.Vers
 
         var resolutions = [];
         for (var mid in matrixSet.matrixIds) {
-            if(matrixSet.matrixIds.hasOwnProperty(mid)) {
+            if (matrixSet.matrixIds.hasOwnProperty(mid)) {
                 resolutions.push(
                     matrixSet.matrixIds[mid].scaleDenominator * 0.28E-3 /
                         OpenLayers.METERS_PER_INCH /
@@ -180,13 +180,13 @@ OpenLayers.Format.WMTSCapabilities = OpenLayers.Class(OpenLayers.Format.XML.Vers
         }
 
         var url;
-        if(requestEncoding === "REST" && layerDef.resourceUrls) {
+        if (requestEncoding === "REST" && layerDef.resourceUrls) {
             url = [];
             var resourceUrls = layerDef.resourceUrls,
                 resourceUrl;
             for (var t = 0, tt = layerDef.resourceUrls.length; t < tt; ++t) {
                 resourceUrl = layerDef.resourceUrls[t];
-                if(resourceUrl.format === format && resourceUrl.resourceType === "tile") {
+                if (resourceUrl.format === format && resourceUrl.resourceType === "tile") {
                     url.push(resourceUrl.template);
                 }
             }
@@ -197,7 +197,7 @@ OpenLayers.Format.WMTSCapabilities = OpenLayers.Class(OpenLayers.Format.XML.Vers
             var constraint;
             for (var i = 0, ii = httpGet.length; i < ii; i++) {
                 constraint = httpGet[i].constraints;
-                if(!constraint || (constraint && constraint.
+                if (!constraint || (constraint && constraint.
                         GetEncoding.allowedValues[requestEncoding])) {
                     url.push(httpGet[i].url);
                 }

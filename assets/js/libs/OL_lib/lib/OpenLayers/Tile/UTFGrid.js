@@ -90,8 +90,8 @@ OpenLayers.Tile.UTFGrid = OpenLayers.Class(OpenLayers.Tile, {
      */
     draw: function() {
         var drawn = OpenLayers.Tile.prototype.draw.apply(this, arguments);
-        if(drawn) {
-            if(this.isLoading) {
+        if (drawn) {
+            if (this.isLoading) {
                 this.abortLoading();
                 //if we're already loading, send 'reload' instead of 'loadstart'.
                 this.events.triggerEvent("reload"); 
@@ -101,7 +101,7 @@ OpenLayers.Tile.UTFGrid = OpenLayers.Class(OpenLayers.Tile, {
             }
             this.url = this.layer.getURL(this.bounds);
 
-            if(this.layer.useJSONP) {
+            if (this.layer.useJSONP) {
                 // Use JSONP method to avoid xbrowser policy
                 var ols = new OpenLayers.Protocol.Script({
                     url: this.url,
@@ -121,7 +121,7 @@ OpenLayers.Tile.UTFGrid = OpenLayers.Class(OpenLayers.Tile, {
                     callback: function(response) {
                         this.isLoading = false;
                         this.events.triggerEvent("loadend");
-                        if(response.status === 200) {
+                        if (response.status === 200) {
                             this.parseData(response.responseText);
                         }
                     },
@@ -139,7 +139,7 @@ OpenLayers.Tile.UTFGrid = OpenLayers.Class(OpenLayers.Tile, {
      * Cancel a pending request.
      */
     abortLoading: function() {
-        if(this.request) {
+        if (this.request) {
             this.request.abort();
             delete this.request;
         }
@@ -163,9 +163,9 @@ OpenLayers.Tile.UTFGrid = OpenLayers.Class(OpenLayers.Tile, {
      */
     getFeatureInfo: function(i, j) {
         var info = null;
-        if(this.json) {
+        if (this.json) {
             var id = this.getFeatureId(i, j);
-            if(id !== null) {
+            if (id !== null) {
                 info = {id: id, data: this.json.data[id]};
             }
         }
@@ -186,14 +186,14 @@ OpenLayers.Tile.UTFGrid = OpenLayers.Class(OpenLayers.Tile, {
      */
     getFeatureId: function(i, j) {
         var id = null;
-        if(this.json) {
+        if (this.json) {
             var resolution = this.utfgridResolution;
             var row = Math.floor(j / resolution);
             var col = Math.floor(i / resolution);
             var charCode = this.json.grid[row].charCodeAt(col);
             var index = this.indexFromCharCode(charCode);
             var keys = this.json.keys;
-            if(!isNaN(index) && (index in keys)) {
+            if (!isNaN(index) && (index in keys)) {
                 id = keys[index];
             }
         }
@@ -213,10 +213,10 @@ OpenLayers.Tile.UTFGrid = OpenLayers.Class(OpenLayers.Tile, {
      * {Integer} Index for the feature id from the keys array.
      */
     indexFromCharCode: function(charCode) {
-        if(charCode >= 93) {
+        if (charCode >= 93) {
             charCode--;
         }
-        if(charCode >= 35) {
+        if (charCode >= 35) {
             charCode --;
         }
         return charCode - 32;
@@ -233,7 +233,7 @@ OpenLayers.Tile.UTFGrid = OpenLayers.Class(OpenLayers.Tile, {
      * {Object} parsed javascript data
      */
     parseData: function(str) {
-        if(!this.format) {
+        if (!this.format) {
             this.format = new OpenLayers.Format.JSON();
         }
         this.json = this.format.read(str);

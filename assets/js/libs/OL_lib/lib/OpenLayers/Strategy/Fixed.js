@@ -43,12 +43,12 @@ OpenLayers.Strategy.Fixed = OpenLayers.Class(OpenLayers.Strategy, {
      */
     activate: function() {
         var activated = OpenLayers.Strategy.prototype.activate.apply(this, arguments);
-        if(activated) {
+        if (activated) {
             this.layer.events.on({
                 "refresh": this.load,
                 scope: this
             });
-            if(this.layer.visibility == true || this.preload) {
+            if (this.layer.visibility == true || this.preload) {
                 this.load();
             } else {
                 this.layer.events.on({
@@ -69,7 +69,7 @@ OpenLayers.Strategy.Fixed = OpenLayers.Class(OpenLayers.Strategy, {
      */
     deactivate: function() {
         var deactivated = OpenLayers.Strategy.prototype.deactivate.call(this);
-        if(deactivated) {
+        if (deactivated) {
             this.layer.events.un({
                 "refresh": this.load,
                 "visibilitychanged": this.load,
@@ -114,14 +114,14 @@ OpenLayers.Strategy.Fixed = OpenLayers.Class(OpenLayers.Strategy, {
         var layer = this.layer;
         layer.destroyFeatures();
         var features = resp.features;
-        if(features && features.length > 0) {
+        if (features && features.length > 0) {
             var remote = layer.projection;
             var local = layer.map.getProjectionObject();
-            if(!local.equals(remote)) {
+            if (!local.equals(remote)) {
                 var geom;
                 for(var i=0, len=features.length; i<len; ++i) {
                     geom = features[i].geometry;
-                    if(geom) {
+                    if (geom) {
                         geom.transform(remote, local);
                     }
                 }

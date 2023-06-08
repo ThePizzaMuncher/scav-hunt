@@ -64,10 +64,10 @@ OpenLayers.Marker.Box = OpenLayers.Class(OpenLayers.Marker, {
      * width - {int} Default is 2
      */
     setBorder: function (color, width) {
-        if(!color) {
+        if (!color) {
             color = "red";
         }
-        if(!width) {
+        if (!width) {
             width = 2;
         }
         this.div.style.border = width + "px solid " + color;
@@ -97,7 +97,7 @@ OpenLayers.Marker.Box = OpenLayers.Class(OpenLayers.Marker, {
      */
     onScreen:function() {
         var onScreen = false;
-        if(this.map) {
+        if (this.map) {
             var screenBounds = this.map.getExtent();
             onScreen = screenBounds.containsBounds(this.bounds, true, true);
         }    

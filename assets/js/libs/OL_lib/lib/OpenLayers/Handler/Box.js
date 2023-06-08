@@ -73,7 +73,7 @@ OpenLayers.Handler.Box = OpenLayers.Class(OpenLayers.Handler, {
      */
     destroy: function() {
         OpenLayers.Handler.prototype.destroy.apply(this, arguments);
-        if(this.dragHandler) {
+        if (this.dragHandler) {
             this.dragHandler.destroy();
             this.dragHandler = null;
         }            
@@ -84,7 +84,7 @@ OpenLayers.Handler.Box = OpenLayers.Class(OpenLayers.Handler, {
      */
     setMap: function (map) {
         OpenLayers.Handler.prototype.setMap.apply(this, arguments);
-        if(this.dragHandler) {
+        if (this.dragHandler) {
             this.dragHandler.setMap(map);
         }
     },
@@ -133,7 +133,7 @@ OpenLayers.Handler.Box = OpenLayers.Class(OpenLayers.Handler, {
     */
     endBox: function(end) {
         var result;
-        if(Math.abs(this.dragHandler.start.x - end.x) > 5 ||    
+        if (Math.abs(this.dragHandler.start.x - end.x) > 5 ||    
             Math.abs(this.dragHandler.start.y - end.y) > 5) {   
             var start = this.dragHandler.start;
             var top = Math.min(start.y, end.y);
@@ -167,7 +167,7 @@ OpenLayers.Handler.Box = OpenLayers.Class(OpenLayers.Handler, {
      * Method: activate
      */
     activate: function () {
-        if(OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
+        if (OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
             this.dragHandler.activate();
             return true;
         } else {
@@ -179,9 +179,9 @@ OpenLayers.Handler.Box = OpenLayers.Class(OpenLayers.Handler, {
      * Method: deactivate
      */
     deactivate: function () {
-        if(OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
-            if(this.dragHandler.deactivate()) {
-                if(this.zoomBox) {
+        if (OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
+            if (this.dragHandler.deactivate()) {
+                if (this.zoomBox) {
                     this.removeBox();
                 }
             }
@@ -205,7 +205,7 @@ OpenLayers.Handler.Box = OpenLayers.Class(OpenLayers.Handler, {
      *     - height
      */
     getBoxOffsets: function() {
-        if(!this.boxOffsets) {
+        if (!this.boxOffsets) {
             // Determine the box model. If the testDiv's clientWidth is 3, then
             // the borders are outside and we are dealing with the w3c box
             // model. Otherwise, the browser uses the traditional box model and

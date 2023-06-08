@@ -63,7 +63,7 @@ OpenLayers.Protocol = OpenLayers.Class({
      */
     mergeWithDefaultFilter: function(filter) {
         var merged;
-        if(filter && this.defaultFilter) {
+        if (filter && this.defaultFilter) {
             merged = new OpenLayers.Filter.Logical({
                 type: OpenLayers.Filter.Logical.AND,
                 filters: [this.defaultFilter, filter]

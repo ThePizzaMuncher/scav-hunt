@@ -129,7 +129,7 @@ App.LayerList = Ext.extend(Ext.List, {
         });
         var data = [];
         Ext.each(this.map.layers, function(layer){
-            if(layer.displayInLayerSwitcher === true) {
+            if (layer.displayInLayerSwitcher === true) {
                 var visibility = layer.isBaseLayer ? (this.map.baseLayer == layer) : layer.getVisibility();
                 data.push({
                     id: layer.id,
@@ -161,7 +161,7 @@ App.LayerList = Ext.extend(Ext.List, {
             itemtap: function(dataview, index, item, e){
                 var record = dataview.getStore().getAt(index);
                 var layer = this.map.getLayersBy("id", record.get("id"))[0];
-                if(layer.isBaseLayer) {
+                if (layer.isBaseLayer) {
                     this.map.setBaseLayer(layer);
                 }
                 else {
@@ -180,7 +180,7 @@ App.LayerList = Ext.extend(Ext.List, {
     findLayerRecord: function(layer){
         var found;
         this.store.each(function(record){
-            if(record.get("id") === layer.id) {
+            if (record.get("id") === layer.id) {
                 found = record;
             }
         }, this);
@@ -188,7 +188,7 @@ App.LayerList = Ext.extend(Ext.List, {
     },
     
     onChangeLayer: function(evt){
-        if(evt.property == "visibility") {
+        if (evt.property == "visibility") {
             var record = this.findLayerRecord(evt.layer);
             record.set("visibility", evt.layer.getVisibility());
         }

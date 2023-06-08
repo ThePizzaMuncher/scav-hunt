@@ -77,7 +77,7 @@ OpenLayers.ElementsIndexer = OpenLayers.Class({
     insert: function(newNode) {
         // If the node is known to the indexer, remove it so we can
         // recalculate where it should go.
-        if(this.exists(newNode)) {
+        if (this.exists(newNode)) {
             this.remove(newNode);
         }
         
@@ -95,7 +95,7 @@ OpenLayers.ElementsIndexer = OpenLayers.Class({
             var placement = this.compare(this, newNode,
                 OpenLayers.Util.getElement(this.order[middle]));
             
-            if(placement > 0) {
+            if (placement > 0) {
                 leftIndex = middle;
             } else {
                 rightIndex = middle;
@@ -120,7 +120,7 @@ OpenLayers.ElementsIndexer = OpenLayers.Class({
     remove: function(node) {
         var nodeId = node.id;
         var arrayIndex = OpenLayers.Util.indexOf(this.order, nodeId);
-        if(arrayIndex >= 0) {
+        if (arrayIndex >= 0) {
             // Remove it from the order array, as well as deleting the node
             // from the indeces hash.
             this.order.splice(arrayIndex, 1);
@@ -128,7 +128,7 @@ OpenLayers.ElementsIndexer = OpenLayers.Class({
             
             // Reset the maxium z-index based on the last item in the 
             // order array.
-            if(this.order.length > 0) {
+            if (this.order.length > 0) {
                 var lastId = this.order[this.order.length - 1];
                 this.maxZIndex = this.indices[lastId];
             } else {
@@ -190,10 +190,10 @@ OpenLayers.ElementsIndexer = OpenLayers.Class({
         // node to succomb to drawing order. To enforce drawing order
         // over all indexing methods, we'll create a new z-index that's
         // greater than any currently in the indexer.
-        if(zIndex == null) {
+        if (zIndex == null) {
             zIndex = this.maxZIndex;
             node._style.graphicZIndex = zIndex; 
-        } else if(zIndex > this.maxZIndex) {
+        } else if (zIndex > this.maxZIndex) {
             this.maxZIndex = zIndex;
         }
     },
@@ -211,9 +211,9 @@ OpenLayers.ElementsIndexer = OpenLayers.Class({
      */
     getNextElement: function(index) {
         var nextIndex = index + 1;
-        if(nextIndex < this.order.length) {
+        if (nextIndex < this.order.length) {
             var nextElement = OpenLayers.Util.getElement(this.order[nextIndex]);
-            if(nextElement == undefined) {
+            if (nextElement == undefined) {
                 nextElement = this.getNextElement(nextIndex);
             }
             return nextElement;
@@ -252,7 +252,7 @@ OpenLayers.ElementsIndexer.IndexingMethods = {
         var newZIndex = indexer.getZIndex(newNode);
 
         var returnVal = 0;
-        if(nextNode) {
+        if (nextNode) {
             var nextZIndex = indexer.getZIndex(nextNode);
             returnVal = newZIndex - nextZIndex; 
         }
@@ -284,7 +284,7 @@ OpenLayers.ElementsIndexer.IndexingMethods = {
         
         // Make Z_ORDER subscribe to drawing order by pushing it above
         // all of the other nodes with the same z-index.
-        if(nextNode && returnVal == 0) {
+        if (nextNode && returnVal == 0) {
             returnVal = 1;
         }
         
@@ -317,7 +317,7 @@ OpenLayers.ElementsIndexer.IndexingMethods = {
             nextNode
         );
         
-        if(nextNode && returnVal === 0) {            
+        if (nextNode && returnVal === 0) {            
             var result = nextNode._boundsBottom - newNode._boundsBottom;
             returnVal = (result === 0) ? 1 : result;
         }
@@ -447,7 +447,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
         this.rendererRoot.appendChild(this.root);
         this.container.appendChild(this.rendererRoot);
         
-        if(options && (options.zIndexing || options.yOrdering)) {
+        if (options && (options.zIndexing || options.yOrdering)) {
             this.indexer = new OpenLayers.ElementsIndexer(options.yOrdering);
         }
     },
@@ -473,18 +473,18 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
     clear: function() {
         var child;
         var root = this.vectorRoot;
-        if(root) {
+        if (root) {
             while (child = root.firstChild) {
                 root.removeChild(child);
             }
         }
         root = this.textRoot;
-        if(root) {
+        if (root) {
             while (child = root.firstChild) {
                 root.removeChild(child);
             }
         }
-        if(this.indexer) {
+        if (this.indexer) {
             this.indexer.clear();
         }
     },
@@ -505,17 +505,17 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
     setExtent: function(extent, resolutionChanged) {
         var coordSysUnchanged = OpenLayers.Renderer.prototype.setExtent.apply(this, arguments);
         var resolution = this.getResolution();
-        if(this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
+        if (this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
             var rightOfDateLine,
                 ratio = extent.getWidth() / this.map.getExtent().getWidth(),
                 extent = extent.scale(1 / ratio),
                 world = this.map.getMaxExtent();
-            if(world.right > extent.left && world.right < extent.right) {
+            if (world.right > extent.left && world.right < extent.right) {
                 rightOfDateLine = true;
-            } else if(world.left > extent.left && world.left < extent.right) {
+            } else if (world.left > extent.left && world.left < extent.right) {
                 rightOfDateLine = false;
             }
-            if(rightOfDateLine !== this.rightOfDateLine || resolutionChanged) {
+            if (rightOfDateLine !== this.rightOfDateLine || resolutionChanged) {
                 coordSysUnchanged = false;
                 this.xOffset = rightOfDateLine === true ?
                     world.getWidth() / resolution : 0;
@@ -561,7 +561,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
     drawGeometry: function(geometry, style, featureId) {
         var className = geometry.CLASS_NAME;
         var rendered = true;
-        if((className == "OpenLayers.Geometry.Collection") ||
+        if ((className == "OpenLayers.Geometry.Collection") ||
             (className == "OpenLayers.Geometry.MultiPoint") ||
             (className == "OpenLayers.Geometry.MultiLineString") ||
             (className == "OpenLayers.Geometry.MultiPolygon")) {
@@ -574,8 +574,8 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
 
         rendered = false;
         var removeBackground = false;
-        if(style.display != "none") {
-            if(style.backgroundGraphic) {
+        if (style.display != "none") {
+            if (style.backgroundGraphic) {
                 this.redrawBackgroundNode(geometry.id, geometry, style,
                     featureId);
             } else {
@@ -584,19 +584,19 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
             rendered = this.redrawNode(geometry.id, geometry, style,
                 featureId);
         }
-        if(rendered == false) {
+        if (rendered == false) {
             var node = document.getElementById(geometry.id);
-            if(node) {
-                if(node._style.backgroundGraphic) {
+            if (node) {
+                if (node._style.backgroundGraphic) {
                     removeBackground = true;
                 }
                 node.parentNode.removeChild(node);
             }
         }
-        if(removeBackground) {
+        if (removeBackground) {
             var node = document.getElementById(
                 geometry.id + this.BACKGROUND_ID_SUFFIX);
-            if(node) {
+            if (node) {
                 node.parentNode.removeChild(node);
             }
         }
@@ -628,7 +628,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
         node._style = style;
 
         var drawResult = this.drawGeometryNode(node, geometry, style);
-        if(drawResult === false) {
+        if (drawResult === false) {
             return false;
         }
          
@@ -638,9 +638,9 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
         // place it. Note that this operation is O(log(n)). If there's a
         // performance problem (when dragging, for instance) this is
         // likely where it would be.
-        if(this.indexer) {
+        if (this.indexer) {
             var insert = this.indexer.insert(node);
-            if(insert) {
+            if (insert) {
                 this.vectorRoot.insertBefore(node, insert);
             } else {
                 this.vectorRoot.appendChild(node);
@@ -648,7 +648,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
         } else {
             // if there's no indexer, simply append the node to root,
             // but only if the node is a new one
-            if(node.parentNode !== this.vectorRoot){ 
+            if (node.parentNode !== this.vectorRoot){ 
                 this.vectorRoot.appendChild(node);
             }
         }
@@ -733,7 +733,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
         var drawn;
         switch (geometry.CLASS_NAME) {
             case "OpenLayers.Geometry.Point":
-                if(style.graphic === false) {
+                if (style.graphic === false) {
                     options.isFilled = false;
                     options.isStroked = false;
                 }
@@ -760,7 +760,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
 
         //set style
         //TBD simplify this
-        if(drawn != false) {
+        if (drawn != false) {
             return {
                 node: this.setStyle(node, style, options, geometry),
                 complete: drawn
@@ -882,11 +882,11 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
      */
     removeText: function(featureId) {
         var label = document.getElementById(featureId + this.LABEL_ID_SUFFIX);
-        if(label) {
+        if (label) {
             this.textRoot.removeChild(label);
         }
         var outline = document.getElementById(featureId + this.LABEL_OUTLINE_SUFFIX);
-        if(outline) {
+        if (outline) {
             this.textRoot.removeChild(outline);
         }
     },
@@ -919,7 +919,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
      * featureId - {String}
      */
     eraseGeometry: function(geometry, featureId) {
-        if((geometry.CLASS_NAME == "OpenLayers.Geometry.MultiPoint") ||
+        if ((geometry.CLASS_NAME == "OpenLayers.Geometry.MultiPoint") ||
             (geometry.CLASS_NAME == "OpenLayers.Geometry.MultiLineString") ||
             (geometry.CLASS_NAME == "OpenLayers.Geometry.MultiPolygon") ||
             (geometry.CLASS_NAME == "OpenLayers.Geometry.Collection")) {
@@ -928,21 +928,21 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
             }
         } else {    
             var element = OpenLayers.Util.getElement(geometry.id);
-            if(element && element.parentNode) {
-                if(element.geometry) {
+            if (element && element.parentNode) {
+                if (element.geometry) {
                     element.geometry.destroy();
                     element.geometry = null;
                 }
                 element.parentNode.removeChild(element);
 
-                if(this.indexer) {
+                if (this.indexer) {
                     this.indexer.remove(element);
                 }
                 
-                if(element._style.backgroundGraphic) {
+                if (element._style.backgroundGraphic) {
                     var backgroundId = geometry.id + this.BACKGROUND_ID_SUFFIX;
                     var bElem = OpenLayers.Util.getElement(backgroundId);
-                    if(bElem && bElem.parentNode) {
+                    if (bElem && bElem.parentNode) {
                         // No need to destroy the geometry since the element and the background
                         // node share the same geometry.
                         bElem.parentNode.removeChild(bElem);
@@ -968,8 +968,8 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
      */
     nodeFactory: function(id, type) {
         var node = OpenLayers.Util.getElement(id);
-        if(node) {
-            if(!this.nodeTypeCompare(node, type)) {
+        if (node) {
+            if (!this.nodeTypeCompare(node, type)) {
                 node.parentNode.removeChild(node);
                 node = this.nodeFactory(id, type);
             }
@@ -1014,7 +1014,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
      */
     moveRoot: function(renderer) {
         var root = this.root;
-        if(renderer.root.parentNode == this.rendererRoot) {
+        if (renderer.root.parentNode == this.rendererRoot) {
             root = renderer.root;
         }
         root.parentNode.removeChild(root);

@@ -33,7 +33,7 @@
         t.ok( OpenLayers.Element.hasClass(map.div, "olMap"), "Map div has olMap class");
 
         t.ok( map instanceof OpenLayers.Map, "new OpenLayers.Map returns object" );
-        if(!isMozilla) {
+        if (!isMozilla) {
             t.ok( true, "skipping element test outside of Mozilla");
             t.ok( true, "skipping element test outside of Mozilla");
             t.ok( true, "skipping element test outside of Mozilla");
@@ -308,7 +308,7 @@
         
         var found = false;
         for (var i=0; i < nodes.length; i++) {
-            if(nodes.item(i) == popup.div) {
+            if (nodes.item(i) == popup.div) {
                 found = true;
                 break;
             }
@@ -322,7 +322,7 @@
 
         var found = false;
         for (var i=0; i < nodes.length; i++) {
-            if(nodes.item(i) == popup.div) {
+            if (nodes.item(i) == popup.div) {
                 found = true;
                 break;
             }
@@ -1020,7 +1020,7 @@
         var gotNodes = 0;
         var themeNode = null;
         for(var i=0; i<links.length; ++i) {
-            if(OpenLayers.Util.isEquivalentUrl(map.theme, links.item(i).href)) {
+            if (OpenLayers.Util.isEquivalentUrl(map.theme, links.item(i).href)) {
                 gotNodes += 1;
                 themeNode = links.item(i);
             }
@@ -1049,7 +1049,7 @@
         var gotNodes = 0;
         var themeNode = null;
         for(var i=0; i<links.length; ++i) {
-            if(OpenLayers.Util.isEquivalentUrl(map.theme, links.item(i).href)) {
+            if (OpenLayers.Util.isEquivalentUrl(map.theme, links.item(i).href)) {
                 gotNodes += 1;
                 themeNode = links.item(i);
             }
@@ -1144,7 +1144,7 @@
         var foundDiv = false;
         for(var i=0; i < map1.viewPortDiv.childNodes.length; i++) {
             var childNode = map1.viewPortDiv.childNodes[i];
-            if(childNode == control.div) {
+            if (childNode == control.div) {
                 foundDiv = true;
             }
         }
@@ -1161,7 +1161,7 @@
         var foundDiv = false;
         for(var i=0; i < map1.viewPortDiv.childNodes.length; i++) {
             var childNode = map1.viewPortDiv.childNodes[i];
-            if(childNode == control.div) {
+            if (childNode == control.div) {
                 foundDiv = true;
             }
         }
@@ -1851,7 +1851,7 @@
         }
         t.ok(!!map, msg);
         
-        if(map) {
+        if (map) {
             map.destroy();
         }        
     }
@@ -1906,7 +1906,7 @@
         }
         t.ok(!failed, msg);
         
-        if(map) {
+        if (map) {
             map.destroy();
         }
         
@@ -2223,7 +2223,7 @@
             var obj = OpenLayers.Event.observers[key];
             for (var i=0, ii=obj.length; i<ii; ++i) {
                 var listener = obj[i];
-                if(listener.name === 'resize' && listener.element === window) {
+                if (listener.name === 'resize' && listener.element === window) {
                     resizeListener = true;
                 }
             }

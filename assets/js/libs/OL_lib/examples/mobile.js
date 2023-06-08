@@ -5,8 +5,8 @@ var map;
 var fixSize = function() {
     window.scrollTo(0,0);
     document.body.style.height = '100%';
-    if(!(/(iphone|ipod)/.test(navigator.userAgent.toLowerCase()))) {
-        if(document.body.parentNode) {
+    if (!(/(iphone|ipod)/.test(navigator.userAgent.toLowerCase()))) {
+        if (document.body.parentNode) {
             document.body.parentNode.style.height = '100%';
         }
     }

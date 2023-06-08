@@ -79,7 +79,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
      * Array({<OpenLayers.Feature.Vector>})
      */
     read: function(doc) {
-        if(typeof doc == "string") {
+        if (typeof doc == "string") {
             doc = OpenLayers.Format.XML.prototype.read.apply(this, [doc]);
         }
         return this.parseFeatures(doc);
@@ -98,7 +98,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     write: function(features) {
         var doc;
-        if(OpenLayers.Util.isArray(features)) {
+        if (OpenLayers.Util.isArray(features)) {
             doc = this.createElementNSPlus("atom:feed");
             doc.appendChild(
                 this.createElementNSPlus("atom:title", {
@@ -132,23 +132,23 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
                 type: content.type || null
             }
         });
-        if(content.src) {
+        if (content.src) {
             node.setAttribute("src", content.src);
         } else {
-            if(content.type == "text" || content.type == null) {
+            if (content.type == "text" || content.type == null) {
                 node.appendChild(
                     this.createTextNode(content.value)
                 );
-            } else if(content.type == "html") {
-                if(typeof content.value != "string") {
+            } else if (content.type == "html") {
+                if (typeof content.value != "string") {
                     throw "HTML content must be in form of an escaped string";
                 }
                 node.appendChild(
                     this.createTextNode(content.value)
                 );
-            } else if(content.type == "xhtml") {
+            } else if (content.type == "xhtml") {
                 node.appendChild(content.value);
-            } else if(content.type == "xhtml" ||
+            } else if (content.type == "xhtml" ||
                            content.type.match(/(\+|\/)xml$/)) {
                 node.appendChild(content.value);
             }
@@ -181,7 +181,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         var entryNode = this.createElementNSPlus("atom:entry");
         
         // atom:author
-        if(atomAttrib.authors) {
+        if (atomAttrib.authors) {
             var authors = OpenLayers.Util.isArray(atomAttrib.authors) ?
                 atomAttrib.authors : [atomAttrib.authors];
             for (var i=0, ii=authors.length; i<ii; i++) {
@@ -194,7 +194,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         }
         
         // atom:category
-        if(atomAttrib.categories) {
+        if (atomAttrib.categories) {
             var categories = OpenLayers.Util.isArray(atomAttrib.categories) ?
                 atomAttrib.categories : [atomAttrib.categories];
             var category;
@@ -213,12 +213,12 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         }
         
         // atom:content
-        if(atomAttrib.content) {
+        if (atomAttrib.content) {
             entryNode.appendChild(this.buildContentNode(atomAttrib.content));
         }
         
         // atom:contributor
-        if(atomAttrib.contributors) {
+        if (atomAttrib.contributors) {
             var contributors = OpenLayers.Util.isArray(atomAttrib.contributors) ?
                 atomAttrib.contributors : [atomAttrib.contributors];
             for (var i=0, ii=contributors.length; i<ii; i++) {
@@ -232,7 +232,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         }
         
         // atom:id
-        if(feature.fid) {
+        if (feature.fid) {
             entryNode.appendChild(
                 this.createElementNSPlus("atom:id", {
                     value: feature.fid
@@ -241,7 +241,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         }
         
         // atom:link
-        if(atomAttrib.links) {
+        if (atomAttrib.links) {
             var links = OpenLayers.Util.isArray(atomAttrib.links) ?
                 atomAttrib.links : [atomAttrib.links];
             var link;
@@ -263,7 +263,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         }
         
         // atom:published
-        if(atomAttrib.published) {
+        if (atomAttrib.published) {
             entryNode.appendChild(
                 this.createElementNSPlus("atom:published", {
                     value: atomAttrib.published
@@ -272,7 +272,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         }
         
         // atom:rights
-        if(atomAttrib.rights) {
+        if (atomAttrib.rights) {
             entryNode.appendChild(
                 this.createElementNSPlus("atom:rights", {
                     value: atomAttrib.rights
@@ -283,7 +283,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         // atom:source not implemented
         
         // atom:summary
-        if(atomAttrib.summary || attrib.description) {
+        if (atomAttrib.summary || attrib.description) {
             entryNode.appendChild(
                 this.createElementNSPlus("atom:summary", {
                     value: atomAttrib.summary || attrib.description
@@ -299,7 +299,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         );
         
         // atom:updated
-        if(atomAttrib.updated) {
+        if (atomAttrib.updated) {
             entryNode.appendChild(
                 this.createElementNSPlus("atom:updated", {
                     value: atomAttrib.updated
@@ -308,7 +308,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         }
         
         // georss:where
-        if(feature.geometry) {
+        if (feature.geometry) {
             var whereNode = this.createElementNSPlus("georss:where");
             whereNode.appendChild(
                 this.buildGeometryNode(feature.geometry)
@@ -343,7 +343,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
      * {DOMElement} A gml node.
      */
     buildGeometryNode: function(geometry) {
-        if(!this.gmlParser) {
+        if (!this.gmlParser) {
             this.initGmlParser();
         }
         var node = this.gmlParser.writeNode("feature:_geometry", geometry);
@@ -375,7 +375,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
             })
         );
         for (var i=0, ii=oNames.length; i<ii; i++) {
-            if(value[oNames[i]]) {
+            if (value[oNames[i]]) {
                 personNode.appendChild(
                     this.createElementNSPlus("atom:" + oNames[i], {
                         value: value[oNames[i]]
@@ -402,7 +402,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
     getFirstChildValue: function(node, nsuri, name, def) {
         var value;
         var nodes = this.getElementsByTagNameNS(node, nsuri, name);
-        if(nodes && nodes.length > 0) {
+        if (nodes && nodes.length > 0) {
             value = this.getChildValue(nodes[0], def);
         } else {
             value = def;
@@ -432,32 +432,32 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         
         // atomCategory*
         nodes = this.getElementsByTagNameNS(node, atomns, "category");
-        if(nodes.length > 0) {
+        if (nodes.length > 0) {
             atomAttrib.categories = [];
         }
         for (var i=0, ii=nodes.length; i<ii; i++) {
             value = {};
             value.term = nodes[i].getAttribute("term");
             attval = nodes[i].getAttribute("scheme");
-            if(attval) { value.scheme = attval; }
+            if (attval) { value.scheme = attval; }
             attval = nodes[i].getAttribute("label");
-            if(attval) { value.label = attval; }
+            if (attval) { value.label = attval; }
             atomAttrib.categories.push(value);
         }
         
         // atomContent?
         nodes = this.getElementsByTagNameNS(node, atomns, "content");
-        if(nodes.length > 0) {
+        if (nodes.length > 0) {
             value = {};
             attval = nodes[0].getAttribute("type");
-            if(attval) {
+            if (attval) {
                 value.type = attval;
             }
             attval = nodes[0].getAttribute("src");
-            if(attval) {
+            if (attval) {
                 value.src = attval;
             } else {
-                if(value.type == "text" || 
+                if (value.type == "text" || 
                     value.type == "html" || 
                     value.type == null ) {
                     value.value = this.getFirstChildValue(
@@ -466,7 +466,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
                                         "content",
                                         null
                                         );
-                } else if(value.type == "xhtml" ||
+                } else if (value.type == "xhtml" ||
                            value.type.match(/(\+|\/)xml$/)) {
                     value.value = this.getChildEl(nodes[0]);
                 } else { // MUST be base64 encoded
@@ -489,7 +489,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         
         // atomLink*
         nodes = this.getElementsByTagNameNS(node, atomns, "link");
-        if(nodes.length > 0) {
+        if (nodes.length > 0) {
             atomAttrib.links = new Array(nodes.length);
         }
         var oAtts = ["rel", "type", "hreflang", "title", "length"];
@@ -498,7 +498,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
             value.href = nodes[i].getAttribute("href");
             for (var j=0, jj=oAtts.length; j<jj; j++) {
                 attval = nodes[i].getAttribute(oAtts[j]);
-                if(attval) {
+                if (attval) {
                     value[oAtts[j]] = attval;
                 }
             }
@@ -507,13 +507,13 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         
         // atomPublished?
         value = this.getFirstChildValue(node, atomns, "published", null);
-        if(value) {
+        if (value) {
             atomAttrib.published = value;
         }
         
         // atomRights?
         value = this.getFirstChildValue(node, atomns, "rights", null);
-        if(value) {
+        if (value) {
             atomAttrib.rights = value;
         }
         
@@ -521,7 +521,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         
         // atomSummary?
         value = this.getFirstChildValue(node, atomns, "summary", null);
-        if(value) {
+        if (value) {
             atomAttrib.summary = value;
         }
         
@@ -561,7 +561,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         var entries = this.getElementsByTagNameNS(
             node, this.namespaces.atom, "entry"
         );
-        if(entries.length == 0) {
+        if (entries.length == 0) {
             entries = [node];
         }
         for (var i=0, ii=entries.length; i<ii; i++) {
@@ -585,8 +585,8 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
 
         var locations = {components: []};
         var where = this.getElementsByTagNameNS(node, georssns, "where");
-        if(where && where.length > 0) {
-            if(!this.gmlParser) {
+        if (where && where.length > 0) {
+            if (!this.gmlParser) {
                 this.initGmlParser();
             }
             for (var i=0, ii=where.length; i<ii; i++) {
@@ -596,12 +596,12 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         
         var components = locations.components;
         var point = this.getElementsByTagNameNS(node, georssns, "point");
-        if(point && point.length > 0) {
+        if (point && point.length > 0) {
             for (var i=0, ii=point.length; i<ii; i++) {
                 var xy = OpenLayers.String.trim(
                             point[i].firstChild.nodeValue
                             ).split(/\s+/);
-                if(xy.length !=2) {
+                if (xy.length !=2) {
                     xy = OpenLayers.String.trim(
                                 point[i].firstChild.nodeValue
                                 ).split(/\s*,\s*/);
@@ -611,7 +611,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         }
 
         var line = this.getElementsByTagNameNS(node, georssns, "line");
-        if(line && line.length > 0) {
+        if (line && line.length > 0) {
             var coords;
             var p;
             var points;
@@ -631,7 +631,7 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
         }        
 
         var polygon = this.getElementsByTagNameNS(node, georssns, "polygon");
-        if(polygon && polygon.length > 0) {
+        if (polygon && polygon.length > 0) {
             var coords;
             var p;
             var points;
@@ -652,9 +652,9 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
             }
         }
         
-        if(this.internalProjection && this.externalProjection) {
+        if (this.internalProjection && this.externalProjection) {
             for (var i=0, ii=components.length; i<ii; i++) {
-                if(components[i]) {
+                if (components[i]) {
                     components[i].transform(
                         this.externalProjection,
                         this.internalProjection
@@ -697,13 +697,13 @@ OpenLayers.Format.Atom = OpenLayers.Class(OpenLayers.Format.XML, {
                             atomns,
                             oAtts[j],
                             null);
-                if(attval) {
+                if (attval) {
                     value[oAtts[j]] = attval;
                 }
             }
             persons.push(value);
         }
-        if(persons.length > 0) {
+        if (persons.length > 0) {
             data[name + "s"] = persons;
         }
     },

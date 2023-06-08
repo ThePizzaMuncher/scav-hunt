@@ -23,7 +23,7 @@
 
         var trans_format = "image/png";
         var options = {singleTile:true};
-        if(OpenLayers.Util.alphaHack()) { trans_format = "image/gif"; } 
+        if (OpenLayers.Util.alphaHack()) { trans_format = "image/gif"; } 
         
         layer = new OpenLayers.Layer.MapGuide(name, url, paramsUntiled, options);
         t.ok( layer instanceof OpenLayers.Layer.MapGuide, "new OpenLayers.Layer.MapGuide returns object" );
@@ -52,7 +52,7 @@
 
         var trans_format = "image/png";
         var options = {singleTile:false};
-        if(OpenLayers.Util.alphaHack()) { trans_format = "image/gif"; } 
+        if (OpenLayers.Util.alphaHack()) { trans_format = "image/gif"; } 
         
         layer = new OpenLayers.Layer.MapGuide(name, url, paramsTiled, options);
         t.ok( layer instanceof OpenLayers.Layer.MapGuide, "new OpenLayers.Layer.MapGuide returns object" );

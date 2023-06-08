@@ -32,7 +32,7 @@ OpenLayers.Protocol.WFS = function(options) {
         options, OpenLayers.Protocol.WFS.DEFAULTS
     );
     var cls = OpenLayers.Protocol.WFS["v"+options.version.replace(/\./g, "_")];
-    if(!cls) {
+    if (!cls) {
         throw "Unsupported WFS version: " + options.version;
     }
     return new cls(options);
@@ -61,7 +61,7 @@ OpenLayers.Protocol.WFS.fromWMSLayer = function(layer, options) {
     var typeName, featurePrefix;
     var param = layer.params["LAYERS"];
     var parts = (OpenLayers.Util.isArray(param) ? param[0] : param).split(":");
-    if(parts.length > 1) {
+    if (parts.length > 1) {
         featurePrefix = parts[0];
     }
     typeName = parts.pop();

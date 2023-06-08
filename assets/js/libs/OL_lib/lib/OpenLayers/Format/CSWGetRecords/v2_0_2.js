@@ -162,10 +162,10 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
      * Parse the response from a GetRecords request.
      */
     read: function(data) {
-        if(typeof data == "string") { 
+        if (typeof data == "string") { 
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
         var obj = {};
@@ -187,7 +187,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
                 obj.records = [];
                 this.readChildNodes(node, obj);
                 var version = this.getAttributeNS(node, "", 'version');
-                if(version != "") {
+                if (version != "") {
                     obj.version = version;
                 }
             },
@@ -197,7 +197,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
             "SearchStatus": function(node, obj) {
                 obj.SearchStatus = {};
                 var timestamp = this.getAttributeNS(node, "", 'timestamp');
-                if(timestamp != "") {
+                if (timestamp != "") {
                     obj.SearchStatus.timestamp = timestamp;
                 }
             },
@@ -206,7 +206,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
                 var attrs = node.attributes;
                 var SearchResults = {};
                 for(var i=0, len=attrs.length; i<len; ++i) {
-                    if((attrs[i].name == "numberOfRecordsMatched") ||
+                    if ((attrs[i].name == "numberOfRecordsMatched") ||
                         (attrs[i].name == "numberOfRecordsReturned") ||
                         (attrs[i].name == "nextRecord")) {
                         SearchResults[attrs[i].name] = parseInt(attrs[i].nodeValue);
@@ -254,7 +254,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
             // rightsHolder, source, subject, title, type, URI
             "*": function(node, obj) {
                 var name = node.localName || node.nodeName.split(":").pop();
-                if(!(OpenLayers.Util.isArray(obj[name]))) {
+                if (!(OpenLayers.Util.isArray(obj[name]))) {
                     obj[name] = [];
                 }
                 var dc_element = {};
@@ -263,7 +263,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
                     dc_element[attrs[i].name] = attrs[i].nodeValue;
                 }
                 dc_element.value = this.getChildValue(node);
-                if(dc_element.value != "") {
+                if (dc_element.value != "") {
                     obj[name].push(dc_element);
                 }
             }
@@ -272,7 +272,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
             // abstract, modified, spatial
             "*": function(node, obj) {
                 var name = node.localName || node.nodeName.split(":").pop();
-                if(!(OpenLayers.Util.isArray(obj[name]))) {
+                if (!(OpenLayers.Util.isArray(obj[name]))) {
                     obj[name] = [];
                 }
                 obj[name].push(this.getChildValue(node));
@@ -280,7 +280,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
         },
         "ows": OpenLayers.Util.applyDefaults({
             "BoundingBox": function(node, obj) {
-                if(obj.bounds) {
+                if (obj.bounds) {
                     obj.BoundingBox = [{crs: obj.projection, value: 
                         [
                             obj.bounds.left, 
@@ -323,7 +323,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
     writers: {
         "csw": {
             "GetRecords": function(options) {
-                if(!options) {
+                if (!options) {
                     options = {};
                 }
                 var node = this.createElementNSPlus("csw:GetRecords", {
@@ -338,7 +338,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
                         maxRecords: options.maxRecords || this.maxRecords
                     }
                 });
-                if(options.DistributedSearch || this.DistributedSearch) {
+                if (options.DistributedSearch || this.DistributedSearch) {
                     this.writeNode(
                         "csw:DistributedSearch",
                         options.DistributedSearch || this.DistributedSearch,
@@ -346,7 +346,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
                     );
                 }
                 var ResponseHandler = options.ResponseHandler || this.ResponseHandler;
-                if(OpenLayers.Util.isArray(ResponseHandler) && ResponseHandler.length > 0) {
+                if (OpenLayers.Util.isArray(ResponseHandler) && ResponseHandler.length > 0) {
                     // ResponseHandler must be a non-empty array
                     for(var i=0, len=ResponseHandler.length; i<len; i++) {
                         this.writeNode(
@@ -374,7 +374,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
                 return node;
             },
             "Query": function(options) {
-                if(!options) {
+                if (!options) {
                     options = {};
                 }
                 var node = this.createElementNSPlus("csw:Query", {
@@ -383,7 +383,7 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
                     }
                 });
                 var ElementName = options.ElementName;
-                if(OpenLayers.Util.isArray(ElementName) && ElementName.length > 0) {
+                if (OpenLayers.Util.isArray(ElementName) && ElementName.length > 0) {
                     // ElementName must be a non-empty array
                     for(var i=0, len=ElementName.length; i<len; i++) {
                         this.writeNode(
@@ -399,14 +399,14 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
                         node
                     );
                 }
-                if(options.Constraint) {
+                if (options.Constraint) {
                     this.writeNode(
                         "csw:Constraint",
                         options.Constraint,
                         node
                     );
                 }
-                if(options.SortBy) {
+                if (options.SortBy) {
                     this.writeNode(
                         "ogc:SortBy",
                         options.SortBy,
@@ -436,12 +436,12 @@ OpenLayers.Format.CSWGetRecords.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML,
                         version: options.version
                     }
                 });
-                if(options.Filter) {
+                if (options.Filter) {
                     var format = new OpenLayers.Format.Filter({
                         version: options.version
                     });
                     node.appendChild(format.write(options.Filter));
-                } else if(options.CqlText) {
+                } else if (options.CqlText) {
                     var child = this.createElementNSPlus("CqlText", {
                         value: options.CqlText.value
                     });

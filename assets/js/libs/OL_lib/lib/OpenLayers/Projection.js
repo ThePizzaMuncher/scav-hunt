@@ -62,7 +62,7 @@ OpenLayers.Projection = OpenLayers.Class({
     initialize: function(projCode, options) {
         OpenLayers.Util.extend(this, options);
         this.projCode = projCode;
-        if(typeof Proj4js == "object") {
+        if (typeof Proj4js == "object") {
             this.proj = new Proj4js.Proj(projCode);
         }
     },
@@ -111,14 +111,14 @@ OpenLayers.Projection = OpenLayers.Class({
      */
     equals: function(projection) {
         var p = projection, equals = false;
-        if(p) {
-            if(!(p instanceof OpenLayers.Projection)) {
+        if (p) {
+            if (!(p instanceof OpenLayers.Projection)) {
                 p = new OpenLayers.Projection(p);
             }
-            if((typeof Proj4js == "object") && this.proj.defData && p.proj.defData) {
+            if ((typeof Proj4js == "object") && this.proj.defData && p.proj.defData) {
                 equals = this.proj.defData.replace(this.titleRegEx, "") ==
                     p.proj.defData.replace(this.titleRegEx, "");
-            } else if(p.getCode) {
+            } else if (p.getCode) {
                 var source = this.getCode(), target = p.getCode();
                 equals = source == target ||
                     !!OpenLayers.Projection.transforms[source] &&
@@ -200,13 +200,13 @@ OpenLayers.Projection.defaults = {
  *     in place.  The original point should be modified.
  */
 OpenLayers.Projection.addTransform = function(from, to, method) {
-    if(method === OpenLayers.Projection.nullTransform) {
+    if (method === OpenLayers.Projection.nullTransform) {
         var defaults = OpenLayers.Projection.defaults[from];
-        if(defaults && !OpenLayers.Projection.defaults[to]) {
+        if (defaults && !OpenLayers.Projection.defaults[to]) {
             OpenLayers.Projection.defaults[to] = defaults;
         }
     }
-    if(!OpenLayers.Projection.transforms[from]) {
+    if (!OpenLayers.Projection.transforms[from]) {
         OpenLayers.Projection.transforms[from] = {};
     }
     OpenLayers.Projection.transforms[from][to] = method;
@@ -227,20 +227,20 @@ OpenLayers.Projection.addTransform = function(from, to, method) {
  * point - {object} A transformed coordinate.  The original point is modified.
  */
 OpenLayers.Projection.transform = function(point, source, dest) {
-    if(source && dest) {
-        if(!(source instanceof OpenLayers.Projection)) {
+    if (source && dest) {
+        if (!(source instanceof OpenLayers.Projection)) {
             source = new OpenLayers.Projection(source);
         }
-        if(!(dest instanceof OpenLayers.Projection)) {
+        if (!(dest instanceof OpenLayers.Projection)) {
             dest = new OpenLayers.Projection(dest);
         }
-        if(source.proj && dest.proj) {
+        if (source.proj && dest.proj) {
             point = Proj4js.transform(source.proj, dest.proj, point);
         } else {
             var sourceCode = source.getCode();
             var destCode = dest.getCode();
             var transforms = OpenLayers.Projection.transforms;
-            if(transforms[sourceCode] && transforms[sourceCode][destCode]) {
+            if (transforms[sourceCode] && transforms[sourceCode][destCode]) {
                 transforms[sourceCode][destCode](point);
             }
         }

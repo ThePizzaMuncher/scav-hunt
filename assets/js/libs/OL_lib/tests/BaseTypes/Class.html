@@ -134,7 +134,7 @@
         
         var ChildClass = OpenLayers.Class(BaseClass1, BaseClass2, {
             initialize: function(arg) {
-                if(this.prop == "base1") {
+                if (this.prop == "base1") {
                     this.variable = "child";
                 }
                 t.ok(true,
@@ -204,7 +204,7 @@
 
     // the overwrite function under test
     function overwrite(C, o) {
-        if(typeof o.initialize === "function" &&
+        if (typeof o.initialize === "function" &&
             C === C.prototype.initialize) {
             // OL 2.11
 

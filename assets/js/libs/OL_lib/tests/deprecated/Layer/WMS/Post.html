@@ -44,7 +44,7 @@
         var pixel  = new OpenLayers.Pixel(5,6);
         var tile   = layer.addTile(bounds, pixel);
         
-        if(isMozilla || isOpera) {
+        if (isMozilla || isOpera) {
             t.ok(
                 tile instanceof OpenLayers.Tile.Image,
                 "tile is an instance of OpenLayers.Tile.Image");

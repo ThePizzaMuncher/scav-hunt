@@ -53,13 +53,13 @@ OpenLayers.Format.EncodedPolyline = OpenLayers.Class(OpenLayers.Format, {
      */
     read: function(encoded) {
         var geomType;
-        if(this.geometryType == "linestring")
+        if (this.geometryType == "linestring")
             geomType = OpenLayers.Geometry.LineString;
-        else if(this.geometryType == "linearring")
+        else if (this.geometryType == "linearring")
             geomType = OpenLayers.Geometry.LinearRing;
-        else if(this.geometryType == "multipoint")
+        else if (this.geometryType == "multipoint")
             geomType = OpenLayers.Geometry.MultiPoint;
-        else if(this.geometryType != "point" && this.geometryType != "polygon")
+        else if (this.geometryType != "point" && this.geometryType != "polygon")
             return null;
 
         var flatPoints = this.decodeDeltas(encoded, 2);
@@ -72,12 +72,12 @@ OpenLayers.Format.EncodedPolyline = OpenLayers.Class(OpenLayers.Format, {
         }
 
 
-        if(this.geometryType == "point")
+        if (this.geometryType == "point")
             return new OpenLayers.Feature.Vector(
                 pointGeometries[0]
             );
 
-        if(this.geometryType == "polygon")
+        if (this.geometryType == "polygon")
             return new OpenLayers.Feature.Vector(
                 new OpenLayers.Geometry.Polygon([
                     new OpenLayers.Geometry.LinearRing(pointGeometries)
@@ -134,7 +134,7 @@ OpenLayers.Format.EncodedPolyline = OpenLayers.Class(OpenLayers.Format, {
      */
     write: function(features) {
         var feature;
-        if(features.constructor == Array)
+        if (features.constructor == Array)
             feature = features[0];
         else
             feature = features;
@@ -143,13 +143,13 @@ OpenLayers.Format.EncodedPolyline = OpenLayers.Class(OpenLayers.Format, {
         var type = geometry.CLASS_NAME.split('.')[2].toLowerCase();
 
         var pointGeometries;
-        if(type == "point")
+        if (type == "point")
             pointGeometries = new Array(geometry);
-        else if(type == "linestring" ||
+        else if (type == "linestring" ||
                  type == "linearring" ||
                  type == "multipoint")
             pointGeometries = geometry.components;
-        else if(type == "polygon")
+        else if (type == "polygon")
             pointGeometries = geometry.components[0].components;
         else
             return null;
@@ -339,7 +339,7 @@ OpenLayers.Format.EncodedPolyline = OpenLayers.Class(OpenLayers.Format, {
         var num = numbers[i];
 
         var signedNum = num << 1;
-        if(num < 0) {
+        if (num < 0) {
           signedNum = ~(signedNum);
         }
 
@@ -417,7 +417,7 @@ OpenLayers.Format.EncodedPolyline = OpenLayers.Class(OpenLayers.Format, {
 
         current |= (b & 0x1f) << shift;
 
-        if(b < 0x20) {
+        if (b < 0x20) {
           numbers.push(current);
           current = 0;
           shift = 0;
@@ -477,7 +477,7 @@ OpenLayers.Format.EncodedPolyline = OpenLayers.Class(OpenLayers.Format, {
      */
     encodeSignedInteger: function(num) {
       var signedNum = num << 1;
-      if(num < 0) {
+      if (num < 0) {
         signedNum = ~(signedNum);
       }
 
@@ -544,7 +544,7 @@ OpenLayers.Format.EncodedPolyline = OpenLayers.Class(OpenLayers.Format, {
 
         result |= (b & 0x1f) << shift;
 
-        if(b < 0x20)
+        if (b < 0x20)
           break;
 
         shift += 5;

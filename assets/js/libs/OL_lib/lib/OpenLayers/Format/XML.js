@@ -81,7 +81,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      *     the object.
      */
     initialize: function(options) {
-        if(window.ActiveXObject) {
+        if (window.ActiveXObject) {
             this.xmldom = new ActiveXObject("Microsoft.XMLDOM");
         }
         OpenLayers.Format.prototype.initialize.apply(this, [options]);
@@ -127,7 +127,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     read: function(text) {
         var index = text.indexOf('<');
-        if(index > 0) {
+        if (index > 0) {
             text = text.substring(index);
         }
         var node = OpenLayers.Util.Try(
@@ -138,7 +138,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
                      * Since we want to be able to call this method on the prototype
                      * itself, this.xmldom may not exist even if in IE.
                      */
-                    if(window.ActiveXObject && !this.xmldom) {
+                    if (window.ActiveXObject && !this.xmldom) {
                         xmldom = new ActiveXObject("Microsoft.XMLDOM");
                     } else {
                         xmldom = this.xmldom;
@@ -155,7 +155,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
                 var req = new XMLHttpRequest();
                 req.open("GET", "data:" + "text/xml" +
                          ";charset=utf-8," + encodeURIComponent(text), false);
-                if(req.overrideMimeType) {
+                if (req.overrideMimeType) {
                     req.overrideMimeType("text/xml");
                 }
                 req.send(null);
@@ -163,7 +163,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
             }
         );
 
-        if(this.keepData) {
+        if (this.keepData) {
             this.data = node;
         }
 
@@ -182,15 +182,15 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     write: function(node) {
         var data;
-        if(this.xmldom) {
+        if (this.xmldom) {
             data = node.xml;
         } else {
             var serializer = new XMLSerializer();
-            if(node.nodeType == 1) {
+            if (node.nodeType == 1) {
                 // Add nodes to a document before serializing. Everything else
                 // is serialized as is. This may need more work. See #1218 .
                 var doc = document.implementation.createDocument("", "", null);
-                if(doc.importNode) {
+                if (doc.importNode) {
                     node = doc.importNode(node, true);
                 }
                 doc.appendChild(node);
@@ -218,8 +218,8 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     createElementNS: function(uri, name) {
         var element;
-        if(this.xmldom) {
-            if(typeof uri == "string") {
+        if (this.xmldom) {
+            if (typeof uri == "string") {
                 element = this.xmldom.createNode(1, name, uri);
             } else {
                 element = this.xmldom.createNode(1, name, "");
@@ -242,7 +242,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     createDocumentFragment: function() {
         var element;
-        if(this.xmldom) {
+        if (this.xmldom) {
             element = this.xmldom.createDocumentFragment();
         } else {
             element = document.createDocumentFragment();
@@ -264,10 +264,10 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     createTextNode: function(text) {
         var node;
-        if(typeof text !== "string") {
+        if (typeof text !== "string") {
             text = String(text);
         }
-        if(this.xmldom) {
+        if (this.xmldom) {
             node = this.xmldom.createTextNode(text);
         } else {
             node = document.createTextNode(text);
@@ -292,7 +292,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     getElementsByTagNameNS: function(node, uri, name) {
         var elements = [];
-        if(node.getElementsByTagNameNS) {
+        if (node.getElementsByTagNameNS) {
             elements = node.getElementsByTagNameNS(uri, name);
         } else {
             // brute force method
@@ -302,8 +302,8 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
                 potentialNode = allNodes[i];
                 fullName = (potentialNode.prefix) ?
                            (potentialNode.prefix + ":" + name) : name;
-                if((name == "*") || (fullName == potentialNode.nodeName)) {
-                    if((uri == "*") || (uri == potentialNode.namespaceURI)) {
+                if ((name == "*") || (fullName == potentialNode.nodeName)) {
+                    if ((uri == "*") || (uri == potentialNode.namespaceURI)) {
                         elements.push(potentialNode);
                     }
                 }
@@ -326,17 +326,17 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     getAttributeNodeNS: function(node, uri, name) {
         var attributeNode = null;
-        if(node.getAttributeNodeNS) {
+        if (node.getAttributeNodeNS) {
             attributeNode = node.getAttributeNodeNS(uri, name);
         } else {
             var attributes = node.attributes;
             var potentialNode, fullName;
             for(var i=0, len=attributes.length; i<len; ++i) {
                 potentialNode = attributes[i];
-                if(potentialNode.namespaceURI == uri) {
+                if (potentialNode.namespaceURI == uri) {
                     fullName = (potentialNode.prefix) ?
                                (potentialNode.prefix + ":" + name) : name;
-                    if(fullName == potentialNode.nodeName) {
+                    if (fullName == potentialNode.nodeName) {
                         attributeNode = potentialNode;
                         break;
                     }
@@ -360,11 +360,11 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     getAttributeNS: function(node, uri, name) {
         var attributeValue = "";
-        if(node.getAttributeNS) {
+        if (node.getAttributeNS) {
             attributeValue = node.getAttributeNS(uri, name) || "";
         } else {
             var attributeNode = this.getAttributeNodeNS(node, uri, name);
-            if(attributeNode) {
+            if (attributeNode) {
                 attributeValue = attributeNode.nodeValue;
             }
         }
@@ -387,7 +387,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     getChildValue: function(node, def) {
         var value = def || "";
-        if(node) {
+        if (node) {
             for(var child=node.firstChild; child; child=child.nextSibling) {
                 switch(child.nodeType) {
                     case 3: // text node
@@ -413,7 +413,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
     isSimpleContent: function(node) {
         var simple = true;
         for(var child=node.firstChild; child; child=child.nextSibling) {
-            if(child.nodeType === 1) {
+            if (child.nodeType === 1) {
                 simple = false;
                 break;
             }
@@ -448,16 +448,16 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
                 default:
                     simple = true;
             }
-            if(complex && simple) {
+            if (complex && simple) {
                 break;
             }
         }
         
-        if(complex && simple) {
+        if (complex && simple) {
             type = OpenLayers.Format.XML.CONTENT_TYPE.MIXED;
-        } else if(complex) {
+        } else if (complex) {
             return OpenLayers.Format.XML.CONTENT_TYPE.COMPLEX;
-        } else if(simple) {
+        } else if (simple) {
             return OpenLayers.Format.XML.CONTENT_TYPE.SIMPLE;
         }
         return type;
@@ -478,7 +478,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     hasAttributeNS: function(node, uri, name) {
         var found = false;
-        if(node.hasAttributeNS) {
+        if (node.hasAttributeNS) {
             found = node.hasAttributeNS(uri, name);
         } else {
             found = !!this.getAttributeNodeNS(node, uri, name);
@@ -498,11 +498,11 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      * value - {String} Attribute value.
      */
     setAttributeNS: function(node, uri, name, value) {
-        if(node.setAttributeNS) {
+        if (node.setAttributeNS) {
             node.setAttributeNS(uri, name, value);
         } else {
-            if(this.xmldom) {
-                if(uri) {
+            if (this.xmldom) {
+                if (uri) {
                     var attribute = node.ownerDocument.createNode(
                         2, name, uri
                     );
@@ -545,19 +545,19 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
         // 3. in the qualified name
         // 4. from the defaultPrefix
         var uri = options.uri || this.namespaces[options.prefix];
-        if(!uri) {
+        if (!uri) {
             var loc = name.indexOf(":");
             uri = this.namespaces[name.substring(0, loc)];
         }
-        if(!uri) {
+        if (!uri) {
             uri = this.namespaces[this.defaultPrefix];
         }
         var node = this.createElementNS(uri, name);
-        if(options.attributes) {
+        if (options.attributes) {
             this.setAttributes(node, options.attributes);
         }
         var value = options.value;
-        if(value != null) {
+        if (value != null) {
             node.appendChild(this.createTextNode(value));
         }
         return node;
@@ -578,7 +578,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
     setAttributes: function(node, obj) {
         var value, uri;
         for(var name in obj) {
-            if(obj[name] != null && obj[name].toString) {
+            if (obj[name] != null && obj[name].toString) {
                 value = obj[name].toString();
                 // check for qualified attribute name ("prefix:local")
                 uri = this.namespaces[name.substring(0, name.indexOf(":"))] || null;
@@ -601,14 +601,14 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      * {Object} The input object, modified (or a new one if none was provided).
      */
     readNode: function(node, obj) {
-        if(!obj) {
+        if (!obj) {
             obj = {};
         }
         var group = this.readers[node.namespaceURI ? this.namespaceAlias[node.namespaceURI]: this.defaultPrefix];
-        if(group) {
+        if (group) {
             var local = node.localName || node.nodeName.split(":").pop();
             var reader = group[local] || group["*"];
-            if(reader) {
+            if (reader) {
                 reader.apply(this, [node, obj]);
             }
         }
@@ -628,14 +628,14 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      * {Object} The input object, modified.
      */
     readChildNodes: function(node, obj) {
-        if(!obj) {
+        if (!obj) {
             obj = {};
         }
         var children = node.childNodes;
         var child;
         for(var i=0, len=children.length; i<len; ++i) {
             child = children[i];
-            if(child.nodeType == 1) {
+            if (child.nodeType == 1) {
                 this.readNode(child, obj);
             }
         }
@@ -665,11 +665,11 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
     writeNode: function(name, obj, parent) {
         var prefix, local;
         var split = name.indexOf(":");
-        if(split > 0) {
+        if (split > 0) {
             prefix = name.substring(0, split);
             local = name.substring(split + 1);
         } else {
-            if(parent) {
+            if (parent) {
                 prefix = this.namespaceAlias[parent.namespaceURI];
             } else {
                 prefix = this.defaultPrefix;
@@ -677,7 +677,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
             local = name;
         }
         var child = this.writers[prefix][local].apply(this, [obj]);
-        if(parent) {
+        if (parent) {
             parent.appendChild(child);
         }
         return child;
@@ -740,7 +740,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
         outer: for(var sibling=node; sibling; sibling=sibling.nextSibling) {
             switch(sibling.nodeType) {
                 case 1: // Element
-                    if((!name || name === (sibling.localName || sibling.nodeName.split(":").pop())) &&
+                    if ((!name || name === (sibling.localName || sibling.nodeName.split(":").pop())) &&
                        (!uri || uri === sibling.namespaceURI)) {
                         // matches
                         break outer;
@@ -748,7 +748,7 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
                     sibling = null;
                     break outer;
                 case 3: // Text
-                    if(/^\s*$/.test(sibling.nodeValue)) {
+                    if (/^\s*$/.test(sibling.nodeValue)) {
                         break;
                     }
                 case 4: // CDATA
@@ -786,25 +786,25 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      */
     lookupNamespaceURI: function(node, prefix) {
         var uri = null;
-        if(node) {
-            if(node.lookupNamespaceURI) {
+        if (node) {
+            if (node.lookupNamespaceURI) {
                 uri = node.lookupNamespaceURI(prefix);
             } else {
                 outer: switch(node.nodeType) {
                     case 1: // ELEMENT_NODE
-                        if(node.namespaceURI !== null && node.prefix === prefix) {
+                        if (node.namespaceURI !== null && node.prefix === prefix) {
                             uri = node.namespaceURI;
                             break outer;
                         }
                         var len = node.attributes.length;
-                        if(len) {
+                        if (len) {
                             var attr;
                             for(var i=0; i<len; ++i) {
                                 attr = node.attributes[i];
-                                if(attr.prefix === "xmlns" && attr.name === "xmlns:" + prefix) {
+                                if (attr.prefix === "xmlns" && attr.name === "xmlns:" + prefix) {
                                     uri = attr.value || null;
                                     break outer;
-                                } else if(attr.name === "xmlns" && prefix === null) {
+                                } else if (attr.name === "xmlns" && prefix === null) {
                                     uri = attr.value || null;
                                     break outer;
                                 }
@@ -846,11 +846,11 @@ OpenLayers.Format.XML = OpenLayers.Class(OpenLayers.Format, {
      * {XMLDocument}
      */
     getXMLDoc: function() {
-        if(!OpenLayers.Format.XML.document && !this.xmldom) {
-            if(document.implementation && document.implementation.createDocument) {
+        if (!OpenLayers.Format.XML.document && !this.xmldom) {
+            if (document.implementation && document.implementation.createDocument) {
                 OpenLayers.Format.XML.document =
                     document.implementation.createDocument("", "", null);
-            } else if(!this.xmldom && window.ActiveXObject) {
+            } else if (!this.xmldom && window.ActiveXObject) {
                 this.xmldom = new ActiveXObject("Microsoft.XMLDOM");
             }
         }

@@ -93,7 +93,7 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
      * Array({<OpenLayers.Feature.Vector>})
      */
     read: function(doc) {
-        if(typeof doc == "string") { 
+        if (typeof doc == "string") { 
             doc = OpenLayers.Format.XML.prototype.read.apply(this, [doc]);
         }
 
@@ -123,13 +123,13 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
                node.used = true; 
             }
             var geometry = null;
-            if(poly) { 
+            if (poly) { 
                 geometry = new OpenLayers.Geometry.Polygon(
                     new OpenLayers.Geometry.LinearRing(point_list));
             } else {    
                 geometry = new OpenLayers.Geometry.LineString(point_list);
             }
-            if(this.internalProjection && this.externalProjection) {
+            if (this.internalProjection && this.externalProjection) {
                 geometry.transform(this.externalProjection, 
                     this.internalProjection);
             }        
@@ -141,12 +141,12 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
         } 
         for (var node_id in nodes) {
             var node = nodes[node_id];
-            if(!node.used || this.checkTags) {
+            if (!node.used || this.checkTags) {
                 var tags = null;
                 
-                if(this.checkTags) {
+                if (this.checkTags) {
                     var result = this.getTags(node.node, true);
-                    if(node.used && !result[1]) {
+                    if (node.used && !result[1]) {
                         continue;
                     }
                     tags = result[0];
@@ -157,7 +157,7 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
                 var feat = new OpenLayers.Feature.Vector(
                     new OpenLayers.Geometry.Point(node['lon'], node['lat']),
                     tags);
-                if(this.internalProjection && this.externalProjection) {
+                if (this.internalProjection && this.externalProjection) {
                     feat.geometry.transform(this.externalProjection, 
                         this.internalProjection);
                 }        
@@ -247,8 +247,8 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
         for (var j = 0; j < tag_list.length; j++) {
             var key = tag_list[j].getAttribute("k");
             tags[key] = tag_list[j].getAttribute("v");
-            if(interesting_tags) {
-                if(!this.interestingTagsExclude[key]) {
+            if (interesting_tags) {
+                if (!this.interestingTagsExclude[key]) {
                     interesting = true;
                 }
             }    
@@ -268,12 +268,12 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
         var poly_shaped = false;
         var poly_tags = false;
         
-        if(way.nodes[0] == way.nodes[way.nodes.length - 1]) {
+        if (way.nodes[0] == way.nodes[way.nodes.length - 1]) {
             poly_shaped = true;
         }
-        if(this.checkTags) {
+        if (this.checkTags) {
             for(var key in way.tags) {
-                if(this.areaTags[key]) {
+                if (this.areaTags[key]) {
                     poly_tags = true;
                     break;
                 }
@@ -291,7 +291,7 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
      * features - {Array(<OpenLayers.Feature.Vector>)}
      */
     write: function(features) { 
-        if(!(OpenLayers.Util.isArray(features))) {
+        if (!(OpenLayers.Util.isArray(features))) {
             features = [features];
         }
         
@@ -328,7 +328,7 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
         var type = className.substring(className.lastIndexOf(".") + 1);
         type = type.toLowerCase();
         var builder = this.createXML[type];
-        if(builder) {
+        if (builder) {
             nodes = builder.apply(this, [feature]);
         }
         return nodes;
@@ -348,7 +348,7 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
             var id = null;
             var geometry = point.geometry ? point.geometry : point;
             
-            if(this.internalProjection && this.externalProjection) {
+            if (this.internalProjection && this.externalProjection) {
                 geometry = geometry.clone();
                 geometry.transform(this.internalProjection, 
                                    this.externalProjection);
@@ -356,16 +356,16 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
             
             var already_exists = false; // We don't return anything if the node
                                         // has already been created
-            if(point.osm_id) {
+            if (point.osm_id) {
                 id = point.osm_id;
-                if(this.created_nodes[id]) {
+                if (this.created_nodes[id]) {
                     already_exists = true;
                 }    
             } else {
                id = -this.osm_id;
                this.osm_id++; 
             }
-            if(already_exists) {
+            if (already_exists) {
                 node = this.created_nodes[id];
             } else {    
                 var node = this.createElementNS(null, "node");
@@ -374,7 +374,7 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
             node.setAttribute("id", id);
             node.setAttribute("lon", geometry.x); 
             node.setAttribute("lat", geometry.y);
-            if(point.attributes) {
+            if (point.attributes) {
                 this.serializeTags(point, node);
             }
             this.setState(point, node);
@@ -384,7 +384,7 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
             var id;
             var nodes = [];
             var geometry = feature.geometry;
-            if(feature.osm_id) {
+            if (feature.osm_id) {
                 id = feature.osm_id;
             } else {
                 id = -this.osm_id;
@@ -394,7 +394,7 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
             way.setAttribute("id", id);
             for (var i = 0; i < geometry.components.length; i++) {
                 var node = this.createXML['point'].apply(this, [geometry.components[i]]);
-                if(node.length) {
+                if (node.length) {
                     node = node[0];
                     var node_ref = node.getAttribute("id");
                     nodes.push(node);
@@ -447,7 +447,7 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
      * node - {DOMNode}
      */
     setState: function(feature, node) {
-        if(feature.state) {
+        if (feature.state) {
             var state = null;
             switch(feature.state) {
                 case OpenLayers.State.UPDATE:
@@ -455,7 +455,7 @@ OpenLayers.Format.OSM = OpenLayers.Class(OpenLayers.Format.XML, {
                 case OpenLayers.State.DELETE:
                     state = "delete";
             }
-            if(state) {
+            if (state) {
                 node.setAttribute("action", state);
             }
         }    

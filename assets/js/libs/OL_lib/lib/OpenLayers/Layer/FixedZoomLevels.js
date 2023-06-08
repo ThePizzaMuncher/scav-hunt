@@ -86,7 +86,7 @@ OpenLayers.Layer.FixedZoomLevels = OpenLayers.Class({
                                      : this.map[property];
         }
 
-        if( (this.minZoomLevel == null) ||
+        if ( (this.minZoomLevel == null) ||
              (this.minZoomLevel < this.MIN_ZOOM_LEVEL) ){
             this.minZoomLevel = this.MIN_ZOOM_LEVEL;
         }        
@@ -135,7 +135,7 @@ OpenLayers.Layer.FixedZoomLevels = OpenLayers.Class({
         // given the specified starting minimum zoom level.
         var limitZoomLevels = this.MAX_ZOOM_LEVEL - this.minZoomLevel + 1;
 
-        if( ((this.options.numZoomLevels == null) && 
+        if ( ((this.options.numZoomLevels == null) && 
               (this.options.maxZoomLevel != null)) // (2)
               ||
              ((this.numZoomLevels == null) &&
@@ -149,7 +149,7 @@ OpenLayers.Layer.FixedZoomLevels = OpenLayers.Class({
             desiredZoomLevels = this.numZoomLevels;
         }
 
-        if(desiredZoomLevels != null) {
+        if (desiredZoomLevels != null) {
             //Now that we know what we would *like* the number of zoom levels
             // to be, based on layer or map options, we have to make sure that
             // it does not conflict with the actual limit, as specified by 
@@ -167,7 +167,7 @@ OpenLayers.Layer.FixedZoomLevels = OpenLayers.Class({
         // we go back and re-calculate the 'maxZoomLevel'.
         this.maxZoomLevel = this.minZoomLevel + this.numZoomLevels - 1;
 
-        if(this.RESOLUTIONS != null) {
+        if (this.RESOLUTIONS != null) {
             var resolutionsIndex = 0;
             this.resolutions = [];
             for(var i= this.minZoomLevel; i <= this.maxZoomLevel; i++) {
@@ -187,7 +187,7 @@ OpenLayers.Layer.FixedZoomLevels = OpenLayers.Class({
      */
     getResolution: function() {
 
-        if(this.resolutions != null) {
+        if (this.resolutions != null) {
             return OpenLayers.Layer.prototype.getResolution.apply(this, arguments);
         } else {
             var resolution = null;
@@ -195,7 +195,7 @@ OpenLayers.Layer.FixedZoomLevels = OpenLayers.Class({
             var viewSize = this.map.getSize();
             var extent = this.getExtent();
             
-            if((viewSize != null) && (extent != null)) {
+            if ((viewSize != null) && (extent != null)) {
                 resolution = Math.max( extent.getWidth()  / viewSize.w,
                                        extent.getHeight() / viewSize.h );
             }
@@ -221,7 +221,7 @@ OpenLayers.Layer.FixedZoomLevels = OpenLayers.Class({
             x: size.w, y: size.h
         });
         
-        if((tl != null) && (br != null)) {
+        if ((tl != null) && (br != null)) {
             return new OpenLayers.Bounds(tl.lon, br.lat, br.lon, tl.lat);
         } else {
             return null;
@@ -241,7 +241,7 @@ OpenLayers.Layer.FixedZoomLevels = OpenLayers.Class({
      */
     getZoomForResolution: function(resolution) {
       
-        if(this.resolutions != null) {
+        if (this.resolutions != null) {
             return OpenLayers.Layer.prototype.getZoomForResolution.apply(this, arguments);
         } else {
             var extent = OpenLayers.Layer.prototype.getExtent.apply(this, []);
@@ -279,9 +279,9 @@ OpenLayers.Layer.FixedZoomLevels = OpenLayers.Class({
      */
     getOLZoomFromMapObjectZoom: function(moZoom) {
         var zoom = null;
-        if(moZoom != null) {
+        if (moZoom != null) {
             zoom = moZoom - this.minZoomLevel;
-            if(this.map.baseLayer !== this) {
+            if (this.map.baseLayer !== this) {
                 zoom = this.map.baseLayer.getZoomForResolution(
                     this.getResolutionForZoom(zoom)
                 );
@@ -303,9 +303,9 @@ OpenLayers.Layer.FixedZoomLevels = OpenLayers.Class({
      */
     getMapObjectZoomFromOLZoom: function(olZoom) {
         var zoom = null; 
-        if(olZoom != null) {
+        if (olZoom != null) {
             zoom = olZoom + this.minZoomLevel;
-            if(this.map.baseLayer !== this) {
+            if (this.map.baseLayer !== this) {
                 zoom = this.getZoomForResolution(
                     this.map.baseLayer.getResolutionForZoom(zoom)
                 );

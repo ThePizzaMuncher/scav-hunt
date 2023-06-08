@@ -63,11 +63,11 @@ OpenLayers.Format.WFSCapabilities.v1 = OpenLayers.Class(
      * {Array} List of named layers.
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         var raw = data;
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
         var capabilities = {};
@@ -101,23 +101,23 @@ OpenLayers.Format.WFSCapabilities.v1 = OpenLayers.Class(
             },
             "Name": function(node, obj) {
                 var name = this.getChildValue(node);
-                if(name) {
+                if (name) {
                     var parts = name.split(":");
                     obj.name = parts.pop();
-                    if(parts.length > 0) {
+                    if (parts.length > 0) {
                         obj.featureNS = this.lookupNamespaceURI(node, parts[0]);
                     }
                 }
             },
             "Title": function(node, obj) {
                 var title = this.getChildValue(node);
-                if(title) {
+                if (title) {
                     obj.title = title;
                 }
             },
             "Abstract": function(node, obj) {
                 var abst = this.getChildValue(node);
-                if(abst) {
+                if (abst) {
                     obj["abstract"] = abst;
                 }
             }

@@ -65,7 +65,7 @@ OpenLayers.Control.CacheRead = OpenLayers.Class(OpenLayers.Control, {
         for (i=layers.length-1; i>=0; --i) {
             this.addLayer({layer: layers[i]});
         }
-        if(!this.layers) {
+        if (!this.layers) {
             map.events.on({
                 addlayer: this.addLayer,
                 removeLayer: this.removeLayer,
@@ -109,20 +109,20 @@ OpenLayers.Control.CacheRead = OpenLayers.Class(OpenLayers.Control, {
      * evt - {Object} Event object with a tile property.
      */
     fetch: function(evt) {
-        if(this.active && window.localStorage &&
+        if (this.active && window.localStorage &&
                 evt.tile instanceof OpenLayers.Tile.Image) {
             var tile = evt.tile,
                 url = tile.url;
             // deal with modified tile urls when both CacheWrite and CacheRead
             // are active
-            if(!tile.layer.crossOriginKeyword && OpenLayers.ProxyHost &&
+            if (!tile.layer.crossOriginKeyword && OpenLayers.ProxyHost &&
                     url.indexOf(OpenLayers.ProxyHost) === 0) {
                 url = OpenLayers.Control.CacheWrite.urlMap[url];        
             }
             var dataURI = window.localStorage.getItem("olCache_" + url);
-            if(dataURI) {
+            if (dataURI) {
                 tile.url = dataURI;
-                if(evt.type === "tileerror") {
+                if (evt.type === "tileerror") {
                     tile.setImgSrc(dataURI);
                 }
             }
@@ -136,13 +136,13 @@ OpenLayers.Control.CacheRead = OpenLayers.Class(OpenLayers.Control, {
      * to prevent memory leaks.
      */
     destroy: function() {
-        if(this.layers || this.map) {
+        if (this.layers || this.map) {
             var i, layers = this.layers || this.map.layers;
             for (i=layers.length-1; i>=0; --i) {
                 this.removeLayer({layer: layers[i]});
             }
         }
-        if(this.map) {
+        if (this.map) {
             this.map.events.un({
                 addlayer: this.addLayer,
                 removeLayer: this.removeLayer,

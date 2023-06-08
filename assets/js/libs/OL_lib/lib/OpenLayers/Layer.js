@@ -339,14 +339,14 @@ OpenLayers.Layer = OpenLayers.Class({
         
         options = OpenLayers.Util.extend({}, options);
         // make sure we respect alwaysInRange if set on the prototype
-        if(this.alwaysInRange != null) {
+        if (this.alwaysInRange != null) {
             options.alwaysInRange = this.alwaysInRange;
         }
         this.addOptions(options);
 
         this.name = name;
         
-        if(this.id == null) {
+        if (this.id == null) {
 
             this.id = OpenLayers.Util.createUniqueID(this.CLASS_NAME + "_");
 
@@ -356,7 +356,7 @@ OpenLayers.Layer = OpenLayers.Class({
             this.div.dir = "ltr";
 
             this.events = new OpenLayers.Events(this, this.div);
-            if(this.eventListeners instanceof Object) {
+            if (this.eventListeners instanceof Object) {
                 this.events.on(this.eventListeners);
             }
 
@@ -373,10 +373,10 @@ OpenLayers.Layer = OpenLayers.Class({
      *     been destroyed.  Default is true.
      */
     destroy: function(setNewBaseLayer) {
-        if(setNewBaseLayer == null) {
+        if (setNewBaseLayer == null) {
             setNewBaseLayer = true;
         }
-        if(this.map != null) {
+        if (this.map != null) {
             this.map.removeLayer(this, setNewBaseLayer);
         }
         this.projection = null;
@@ -385,8 +385,8 @@ OpenLayers.Layer = OpenLayers.Class({
         this.div = null;
         this.options = null;
 
-        if(this.events) {
-            if(this.eventListeners) {
+        if (this.events) {
+            if (this.eventListeners) {
                 this.events.un(this.eventListeners);
             }
             this.events.destroy();
@@ -406,7 +406,7 @@ OpenLayers.Layer = OpenLayers.Class({
     */
     clone: function (obj) {
         
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer(this.name, this.getOptions());
         }
         
@@ -446,9 +446,9 @@ OpenLayers.Layer = OpenLayers.Class({
      * newName - {String} The new name.
      */
     setName: function(newName) {
-        if(newName != this.name) {
+        if (newName != this.name) {
             this.name = newName;
-            if(this.map != null) {
+            if (this.map != null) {
                 this.map.events.triggerEvent("changelayer", {
                     layer: this,
                     property: "name"
@@ -469,26 +469,26 @@ OpenLayers.Layer = OpenLayers.Class({
     */
     addOptions: function (newOptions, reinitialize) {
 
-        if(this.options == null) {
+        if (this.options == null) {
             this.options = {};
         }
         
-        if(newOptions) {
+        if (newOptions) {
             // make sure this.projection references a projection object
-            if(typeof newOptions.projection == "string") {
+            if (typeof newOptions.projection == "string") {
                 newOptions.projection = new OpenLayers.Projection(newOptions.projection);
             }
-            if(newOptions.projection) {
+            if (newOptions.projection) {
                 // get maxResolution, units and maxExtent from projection defaults if
                 // they are not defined already
                 OpenLayers.Util.applyDefaults(newOptions,
                     OpenLayers.Projection.defaults[newOptions.projection.getCode()]);
             }
             // allow array for extents
-            if(newOptions.maxExtent && !(newOptions.maxExtent instanceof OpenLayers.Bounds)) {
+            if (newOptions.maxExtent && !(newOptions.maxExtent instanceof OpenLayers.Bounds)) {
                 newOptions.maxExtent = new OpenLayers.Bounds(newOptions.maxExtent);
             }
-            if(newOptions.minExtent && !(newOptions.minExtent instanceof OpenLayers.Bounds)) {
+            if (newOptions.minExtent && !(newOptions.minExtent instanceof OpenLayers.Bounds)) {
                 newOptions.minExtent = new OpenLayers.Bounds(newOptions.minExtent);
             }
         }
@@ -501,25 +501,25 @@ OpenLayers.Layer = OpenLayers.Class({
         
         // get the units from the projection, if we have a projection
         // and it it has units
-        if(this.projection && this.projection.getUnits()) {
+        if (this.projection && this.projection.getUnits()) {
             this.units = this.projection.getUnits();
         }
 
         // re-initialize resolutions if necessary, i.e. if any of the
         // properties of the "properties" array defined below is set
         // in the new options
-        if(this.map) {
+        if (this.map) {
             // store current resolution so we can try to restore it later
             var resolution = this.map.getResolution();
             var properties = this.RESOLUTION_PROPERTIES.concat(
                 ["projection", "units", "minExtent", "maxExtent"]
             );
             for(var o in newOptions) {
-                if(newOptions.hasOwnProperty(o) &&
+                if (newOptions.hasOwnProperty(o) &&
                    OpenLayers.Util.indexOf(properties, o) >= 0) {
 
                     this.initResolutions();
-                    if(reinitialize && this.map.baseLayer === this) {
+                    if (reinitialize && this.map.baseLayer === this) {
                         // update map position, and restore previous resolution
                         this.map.setCenter(this.map.getCenter(),
                             this.map.getZoomForResolution(resolution),
@@ -556,7 +556,7 @@ OpenLayers.Layer = OpenLayers.Class({
      */
     redraw: function() {
         var redrawn = false;
-        if(this.map) {
+        if (this.map) {
 
             // min/max Range may have changed
             this.inRange = this.calculateInRange();
@@ -564,7 +564,7 @@ OpenLayers.Layer = OpenLayers.Class({
             // map's center might not yet be set
             var extent = this.getExtent();
 
-            if(extent && this.inRange && this.visibility) {
+            if (extent && this.inRange && this.visibility) {
                 var zoomChanged = true;
                 this.moveTo(extent, zoomChanged, false);
                 this.events.triggerEvent("moveend",
@@ -586,7 +586,7 @@ OpenLayers.Layer = OpenLayers.Class({
      */
     moveTo:function(bounds, zoomChanged, dragging) {
         var display = this.visibility;
-        if(!this.isBaseLayer) {
+        if (!this.isBaseLayer) {
             display = display && this.inRange;
         }
         this.display(display);
@@ -616,7 +616,7 @@ OpenLayers.Layer = OpenLayers.Class({
      * map - {<OpenLayers.Map>}
      */
     setMap: function(map) {
-        if(this.map == null) {
+        if (this.map == null) {
         
             this.map = map;
             
@@ -626,7 +626,7 @@ OpenLayers.Layer = OpenLayers.Class({
             this.minExtent = this.minExtent || this.map.minExtent;
 
             this.projection = this.projection || this.map.projection;
-            if(typeof this.projection == "string") {
+            if (typeof this.projection == "string") {
                 this.projection = new OpenLayers.Projection(this.projection);
             }
 
@@ -637,7 +637,7 @@ OpenLayers.Layer = OpenLayers.Class({
             
             this.initResolutions();
             
-            if(!this.isBaseLayer) {
+            if (!this.isBaseLayer) {
                 this.inRange = this.calculateInRange();
                 var show = ((this.visibility) && (this.inRange));
                 this.div.style.display = show ? "" : "none";
@@ -701,9 +701,9 @@ OpenLayers.Layer = OpenLayers.Class({
                                 ((this.tileSize) ? this.tileSize :
                                                    this.map.getTileSize());
         this.tileSize = tileSize;
-        if(this.gutter) {
+        if (this.gutter) {
           // layers with gutters need non-null tile sizes
-          //if(tileSize == null) {
+          //if (tileSize == null) {
           //    OpenLayers.console.error("Error in layer.setMap() for " +
           //                              this.name + ": layers with " +
           //                              "gutters need non-null tile sizes");
@@ -739,11 +739,11 @@ OpenLayers.Layer = OpenLayers.Class({
      * visibility - {Boolean} Whether or not to display the layer (if in range)
      */
     setVisibility: function(visibility) {
-        if(visibility != this.visibility) {
+        if (visibility != this.visibility) {
             this.visibility = visibility;
             this.display(visibility);
             this.redraw();
-            if(this.map != null) {
+            if (this.map != null) {
                 this.map.events.triggerEvent("changelayer", {
                     layer: this,
                     property: "visibility"
@@ -763,7 +763,7 @@ OpenLayers.Layer = OpenLayers.Class({
      * display - {Boolean}
      */
     display: function(display) {
-        if(display != (this.div.style.display != "none")) {
+        if (display != (this.div.style.display != "none")) {
             this.div.style.display = (display && this.calculateInRange()) ? "block" : "none";
         }
     },
@@ -779,10 +779,10 @@ OpenLayers.Layer = OpenLayers.Class({
     calculateInRange: function() {
         var inRange = false;
 
-        if(this.alwaysInRange) {
+        if (this.alwaysInRange) {
             inRange = true;
         } else {
-            if(this.map) {
+            if (this.map) {
                 var resolution = this.map.getResolution();
                 inRange = ( (resolution >= this.minResolution) &&
                             (resolution <= this.maxResolution) );
@@ -798,9 +798,9 @@ OpenLayers.Layer = OpenLayers.Class({
      * isBaseLayer - {Boolean}
      */
     setIsBaseLayer: function(isBaseLayer) {
-        if(isBaseLayer != this.isBaseLayer) {
+        if (isBaseLayer != this.isBaseLayer) {
             this.isBaseLayer = isBaseLayer;
-            if(this.map != null) {
+            if (this.map != null) {
                 this.map.events.triggerEvent("changebaselayer", {
                     layer: this
                 });
@@ -854,36 +854,36 @@ OpenLayers.Layer = OpenLayers.Class({
         for(i=0, len=this.RESOLUTION_PROPERTIES.length; i<len; i++) {
             p = this.RESOLUTION_PROPERTIES[i];
             props[p] = this.options[p];
-            if(alwaysInRange && this.options[p]) {
+            if (alwaysInRange && this.options[p]) {
                 alwaysInRange = false;
             }
         }
-        if(this.options.alwaysInRange == null) {
+        if (this.options.alwaysInRange == null) {
             this.alwaysInRange = alwaysInRange;
         }
 
         // if we don't have resolutions then attempt to derive them from scales
-        if(props.resolutions == null) {
+        if (props.resolutions == null) {
             props.resolutions = this.resolutionsFromScales(props.scales);
         }
 
         // if we still don't have resolutions then attempt to calculate them
-        if(props.resolutions == null) {
+        if (props.resolutions == null) {
             props.resolutions = this.calculateResolutions(props);
         }
 
         // if we couldn't calculate resolutions then we look at we have
         // in the map
-        if(props.resolutions == null) {
+        if (props.resolutions == null) {
             for(i=0, len=this.RESOLUTION_PROPERTIES.length; i<len; i++) {
                 p = this.RESOLUTION_PROPERTIES[i];
                 props[p] = this.options[p] != null ?
                     this.options[p] : this.map[p];
             }
-            if(props.resolutions == null) {
+            if (props.resolutions == null) {
                 props.resolutions = this.resolutionsFromScales(props.scales);
             }
-            if(props.resolutions == null) {
+            if (props.resolutions == null) {
                 props.resolutions = this.calculateResolutions(props);
             }
         }
@@ -892,27 +892,27 @@ OpenLayers.Layer = OpenLayers.Class({
 
         // get maxResolution from the config if it's defined there
         var maxResolution;
-        if(this.options.maxResolution &&
+        if (this.options.maxResolution &&
            this.options.maxResolution !== "auto") {
             maxResolution = this.options.maxResolution;
         }
-        if(this.options.minScale) {
+        if (this.options.minScale) {
             maxResolution = OpenLayers.Util.getResolutionFromScale(
                 this.options.minScale, this.units);
         }
 
         // get minResolution from the config if it's defined there
         var minResolution;
-        if(this.options.minResolution &&
+        if (this.options.minResolution &&
            this.options.minResolution !== "auto") {
             minResolution = this.options.minResolution;
         }
-        if(this.options.maxScale) {
+        if (this.options.maxScale) {
             minResolution = OpenLayers.Util.getResolutionFromScale(
                 this.options.maxScale, this.units);
         }
 
-        if(props.resolutions) {
+        if (props.resolutions) {
 
             //sort resolutions array descendingly
             props.resolutions.sort(function(a, b) {
@@ -921,20 +921,20 @@ OpenLayers.Layer = OpenLayers.Class({
 
             // if we still don't have a maxResolution get it from the
             // resolutions array
-            if(!maxResolution) {
+            if (!maxResolution) {
                 maxResolution = props.resolutions[0];
             }
 
             // if we still don't have a minResolution get it from the
             // resolutions array
-            if(!minResolution) {
+            if (!minResolution) {
                 var lastIdx = props.resolutions.length - 1;
                 minResolution = props.resolutions[lastIdx];
             }
         }
 
         this.resolutions = props.resolutions;
-        if(this.resolutions) {
+        if (this.resolutions) {
             len = this.resolutions.length;
             this.scales = new Array(len);
             for(i=0; i<len; i++) {
@@ -944,12 +944,12 @@ OpenLayers.Layer = OpenLayers.Class({
             this.numZoomLevels = len;
         }
         this.minResolution = minResolution;
-        if(minResolution) {
+        if (minResolution) {
             this.maxScale = OpenLayers.Util.getScaleFromResolution(
                 minResolution, this.units);
         }
         this.maxResolution = maxResolution;
-        if(maxResolution) {
+        if (maxResolution) {
             this.minScale = OpenLayers.Util.getScaleFromResolution(
                 maxResolution, this.units);
         }
@@ -966,7 +966,7 @@ OpenLayers.Layer = OpenLayers.Class({
      * {Array(Number)} Resolutions
      */
     resolutionsFromScales: function(scales) {
-        if(scales == null) {
+        if (scales == null) {
             return;
         }
         var resolutions, i, len;
@@ -995,11 +995,11 @@ OpenLayers.Layer = OpenLayers.Class({
 
         // determine maxResolution
         var maxResolution = props.maxResolution;
-        if(props.minScale != null) {
+        if (props.minScale != null) {
             maxResolution =
                 OpenLayers.Util.getResolutionFromScale(props.minScale,
                                                        this.units);
-        } else if(maxResolution == "auto" && this.maxExtent != null) {
+        } else if (maxResolution == "auto" && this.maxExtent != null) {
             viewSize = this.map.getSize();
             wRes = this.maxExtent.getWidth() / viewSize.w;
             hRes = this.maxExtent.getHeight() / viewSize.h;
@@ -1008,18 +1008,18 @@ OpenLayers.Layer = OpenLayers.Class({
 
         // determine minResolution
         var minResolution = props.minResolution;
-        if(props.maxScale != null) {
+        if (props.maxScale != null) {
             minResolution =
                 OpenLayers.Util.getResolutionFromScale(props.maxScale,
                                                        this.units);
-        } else if(props.minResolution == "auto" && this.minExtent != null) {
+        } else if (props.minResolution == "auto" && this.minExtent != null) {
             viewSize = this.map.getSize();
             wRes = this.minExtent.getWidth() / viewSize.w;
             hRes = this.minExtent.getHeight()/ viewSize.h;
             minResolution = Math.max(wRes, hRes);
         }
 
-        if(typeof maxResolution !== "number" &&
+        if (typeof maxResolution !== "number" &&
            typeof minResolution !== "number" &&
            this.maxExtent != null) {
             // maxResolution for default grid sets assumes that at zoom
@@ -1034,16 +1034,16 @@ OpenLayers.Layer = OpenLayers.Class({
         // determine numZoomLevels
         var maxZoomLevel = props.maxZoomLevel;
         var numZoomLevels = props.numZoomLevels;
-        if(typeof minResolution === "number" &&
+        if (typeof minResolution === "number" &&
            typeof maxResolution === "number" && numZoomLevels === undefined) {
             var ratio = maxResolution / minResolution;
             numZoomLevels = Math.floor(Math.log(ratio) / Math.log(2)) + 1;
-        } else if(numZoomLevels === undefined && maxZoomLevel != null) {
+        } else if (numZoomLevels === undefined && maxZoomLevel != null) {
             numZoomLevels = maxZoomLevel + 1;
         }
 
         // are we able to calculate resolutions?
-        if(typeof numZoomLevels !== "number" || numZoomLevels <= 0 ||
+        if (typeof numZoomLevels !== "number" || numZoomLevels <= 0 ||
            (typeof maxResolution !== "number" &&
                 typeof minResolution !== "number")) {
             return;
@@ -1054,7 +1054,7 @@ OpenLayers.Layer = OpenLayers.Class({
 
         var resolutions = new Array(numZoomLevels);
         var base = 2;
-        if(typeof minResolution == "number" &&
+        if (typeof minResolution == "number" &&
            typeof maxResolution == "number") {
             // if maxResolution and minResolution are set, we calculate
             // the base for exponential scaling that starts at
@@ -1067,7 +1067,7 @@ OpenLayers.Layer = OpenLayers.Class({
         }
 
         var i;
-        if(typeof maxResolution === "number") {
+        if (typeof maxResolution === "number") {
             for(i=0; i<numZoomLevels; i++) {
                 resolutions[i] = maxResolution / Math.pow(base, i);
             }
@@ -1156,7 +1156,7 @@ OpenLayers.Layer = OpenLayers.Class({
     getResolutionForZoom: function(zoom) {
         zoom = Math.max(0, Math.min(zoom, this.resolutions.length - 1));
         var resolution;
-        if(this.map.fractionalZoom) {
+        if (this.map.fractionalZoom) {
             var low = Math.floor(zoom);
             var high = Math.ceil(zoom);
             resolution = this.resolutions[low] -
@@ -1187,7 +1187,7 @@ OpenLayers.Layer = OpenLayers.Class({
      */
     getZoomForResolution: function(resolution, closest) {
         var zoom, i, len;
-        if(this.map.fractionalZoom) {
+        if (this.map.fractionalZoom) {
             var lowZoom = 0;
             var highZoom = this.resolutions.length - 1;
             var highRes = this.resolutions[lowZoom];
@@ -1195,18 +1195,18 @@ OpenLayers.Layer = OpenLayers.Class({
             var res;
             for(i=0, len=this.resolutions.length; i<len; ++i) {
                 res = this.resolutions[i];
-                if(res >= resolution) {
+                if (res >= resolution) {
                     highRes = res;
                     lowZoom = i;
                 }
-                if(res <= resolution) {
+                if (res <= resolution) {
                     lowRes = res;
                     highZoom = i;
                     break;
                 }
             }
             var dRes = highRes - lowRes;
-            if(dRes > 0) {
+            if (dRes > 0) {
                 zoom = lowZoom + ((highRes - resolution) / dRes);
             } else {
                 zoom = lowZoom;
@@ -1215,14 +1215,14 @@ OpenLayers.Layer = OpenLayers.Class({
             var diff;
             var minDiff = Number.POSITIVE_INFINITY;
             for(i=0, len=this.resolutions.length; i<len; i++) {            
-                if(closest) {
+                if (closest) {
                     diff = Math.abs(this.resolutions[i] - resolution);
-                    if(diff > minDiff) {
+                    if (diff > minDiff) {
                         break;
                     }
                     minDiff = diff;
                 } else {
-                    if(this.resolutions[i] < resolution) {
+                    if (this.resolutions[i] < resolution) {
                         break;
                     }
                 }
@@ -1247,14 +1247,14 @@ OpenLayers.Layer = OpenLayers.Class({
     getLonLatFromViewPortPx: function (viewPortPx) {
         var lonlat = null;
         var map = this.map;
-        if(viewPortPx != null && map.minPx) {
+        if (viewPortPx != null && map.minPx) {
             var res = map.getResolution();
             var maxExtent = map.getMaxExtent({restricted: true});
             var lon = (viewPortPx.x - map.minPx.x) * res + maxExtent.left;
             var lat = (map.minPx.y - viewPortPx.y) * res + maxExtent.top;
             lonlat = new OpenLayers.LonLat(lon, lat);
 
-            if(this.wrapDateLine) {
+            if (this.wrapDateLine) {
                 lonlat = lonlat.wrapDateLine(this.maxExtent);
             }
         }
@@ -1277,7 +1277,7 @@ OpenLayers.Layer = OpenLayers.Class({
      */
     getViewPortPxFromLonLat: function (lonlat, resolution) {
         var px = null; 
-        if(lonlat != null) {
+        if (lonlat != null) {
             resolution = resolution || this.map.getResolution();
             var extent = this.map.calculateBounds(null, resolution);
             px = new OpenLayers.Pixel(
@@ -1296,20 +1296,20 @@ OpenLayers.Layer = OpenLayers.Class({
      * opacity - {Float}
      */
     setOpacity: function(opacity) {
-        if(opacity != this.opacity) {
+        if (opacity != this.opacity) {
             this.opacity = opacity;
             var childNodes = this.div.childNodes;
             for(var i = 0, len = childNodes.length; i < len; ++i) {
                 var element = childNodes[i].firstChild || childNodes[i];
                 var lastChild = childNodes[i].lastChild;
                 //TODO de-uglify this
-                if(lastChild && lastChild.nodeName.toLowerCase() === "iframe") {
+                if (lastChild && lastChild.nodeName.toLowerCase() === "iframe") {
                     element = lastChild.parentNode;
                 }
                 OpenLayers.Util.modifyDOMElement(element, null, null, null, 
                                                  null, null, null, opacity);
             }
-            if(this.map != null) {
+            if (this.map != null) {
                 this.map.events.triggerEvent("changelayer", {
                     layer: this,
                     property: "opacity"
@@ -1351,7 +1351,7 @@ OpenLayers.Layer = OpenLayers.Class({
      */
     adjustBounds: function (bounds) {
 
-        if(this.gutter) {
+        if (this.gutter) {
             // Adjust the extent of a bounds in map units by the 
             // layer's gutter in pixels.
             var mapGutter = this.gutter * this.map.getResolution();
@@ -1361,7 +1361,7 @@ OpenLayers.Layer = OpenLayers.Class({
                                            bounds.top + mapGutter);
         }
 
-        if(this.wrapDateLine) {
+        if (this.wrapDateLine) {
             // wrap around the date line, within the limits of rounding error
             var wrappingOptions = { 
                 'rightTolerance':this.getResolution(),

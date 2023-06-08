@@ -57,23 +57,23 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
         this.request = new OpenLayers.Format.ArcXML.Request();
         this.response = new OpenLayers.Format.ArcXML.Response();
 
-        if(options) {
-            if(options.requesttype == "feature") {
+        if (options) {
+            if (options.requesttype == "feature") {
                 this.request.get_image = null;
             
                 var qry = this.request.get_feature.query;
                 this.addCoordSys(qry.featurecoordsys, options.featureCoordSys);
                 this.addCoordSys(qry.filtercoordsys, options.filterCoordSys);
             
-                if(options.polygon) {
+                if (options.polygon) {
                     qry.isspatial = true;
                     qry.spatialfilter.polygon = options.polygon;
-                } else if(options.envelope) {
+                } else if (options.envelope) {
                     qry.isspatial = true;
                     qry.spatialfilter.envelope = {minx:0, miny:0, maxx:0, maxy:0};
                     this.parseEnvelope(qry.spatialfilter.envelope, options.envelope);
                 }
-            } else if(options.requesttype == "image") {
+            } else if (options.requesttype == "image") {
                 this.request.get_feature = null;
             
                 var props = this.request.get_image.properties;
@@ -103,7 +103,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
      * arr - {Array(double)} An array of coordinates in the order: [ minx, miny, maxx, maxy ]
      */
     parseEnvelope: function(env, arr) {
-        if(arr && arr.length == 4) {          
+        if (arr && arr.length == 4) {          
             env.minx = arr[0];
             env.miny = arr[1];
             env.maxx = arr[2];
@@ -138,7 +138,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
      * olsize - {<OpenLayers.Size>} The image size to set.
      */
     addImageSize: function(imsize, olsize) {
-        if(olsize !== null) {
+        if (olsize !== null) {
             imsize.width = olsize.w;
             imsize.height = olsize.h;
             imsize.printwidth = olsize.w;
@@ -159,12 +159,12 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
      * from there.  If it's a filter or feature ArcXML structure, it is copied.
      */
     addCoordSys: function(featOrFilt, fsys) {
-        if(typeof fsys == "string") {
+        if (typeof fsys == "string") {
             featOrFilt.id = parseInt(fsys);
             featOrFilt.string = fsys;
         }
         // is this a proj4js instance?
-        else if(typeof fsys == "object" && fsys.proj !== null){
+        else if (typeof fsys == "object" && fsys.proj !== null){
             featOrFilt.id = fsys.proj.srsProjNumber;
             featOrFilt.string = fsys.proj.srsCode;
         } else {
@@ -186,7 +186,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
     iserror: function(data) {
         var ret = null; 
         
-        if(!data) {
+        if (!data) {
             ret = (this.response.error !== '');
         } else {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
@@ -209,13 +209,13 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
      *     data may change in the future. 
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         
         var arcNode = null;
-        if(data && data.documentElement) {
-            if(data.documentElement.nodeName == "ARCXML") {
+        if (data && data.documentElement) {
+            if (data.documentElement.nodeName == "ARCXML") {
                 arcNode = data.documentElement;
             } else {
                 arcNode = data.documentElement.getElementsByTagName("ARCXML")[0];
@@ -224,7 +224,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
           
         // in Safari, arcNode will be there but will have a child named 
         // parsererror
-        if(!arcNode || arcNode.firstChild.nodeName === 'parsererror') {
+        if (!arcNode || arcNode.firstChild.nodeName === 'parsererror') {
             var error, source;
             try {
                 error = data.firstChild.nodeValue;
@@ -251,7 +251,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
      * {String} A string representing the ArcXML document request.
      */
     write: function(request) {       
-        if(!request) {
+        if (!request) {
             request = this.request;
         }    
         var root = this.createElementNS("", "ARCXML");
@@ -259,7 +259,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
 
         var reqElem = this.createElementNS("", "REQUEST");
         
-        if(request.get_image != null) {
+        if (request.get_image != null) {
             var getElem = this.createElementNS("", "GET_IMAGE");
             reqElem.appendChild(getElem);
 
@@ -267,11 +267,11 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
             getElem.appendChild(propElem);
 
             var props = request.get_image.properties;
-            if(props.featurecoordsys != null) {
+            if (props.featurecoordsys != null) {
                 var feat = this.createElementNS("", "FEATURECOORDSYS");
                 propElem.appendChild(feat);
                 
-                if(props.featurecoordsys.id === 0) {
+                if (props.featurecoordsys.id === 0) {
                     feat.setAttribute("string", props.featurecoordsys['string']);
                 }
                 else {
@@ -279,11 +279,11 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                 }
             }
           
-            if(props.filtercoordsys != null) {
+            if (props.filtercoordsys != null) {
                 var filt = this.createElementNS("", "FILTERCOORDSYS");
                 propElem.appendChild(filt);
 
-                if(props.filtercoordsys.id === 0) {
+                if (props.filtercoordsys.id === 0) {
                     filt.setAttribute("string", props.filtercoordsys.string);
                 }
                 else {
@@ -291,7 +291,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                 }
             }
           
-            if(props.envelope != null) {
+            if (props.envelope != null) {
                 var env = this.createElementNS("", "ENVELOPE");
                 propElem.appendChild(env);
 
@@ -307,13 +307,13 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
             imagesz.setAttribute("height", props.imagesize.height);
             imagesz.setAttribute("width", props.imagesize.width);
           
-            if(props.imagesize.height != props.imagesize.printheight ||
+            if (props.imagesize.height != props.imagesize.printheight ||
                  props.imagesize.width != props.imagesize.printwidth) {
                 imagesz.setAttribute("printheight", props.imagesize.printheight);
                 imagesz.setArrtibute("printwidth", props.imagesize.printwidth);
             }
           
-            if(props.background != null) {
+            if (props.background != null) {
                 var backgrnd = this.createElementNS("", "BACKGROUND");
                 propElem.appendChild(backgrnd);
             
@@ -322,7 +322,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                     props.background.color.g + "," + 
                     props.background.color.b);
               
-                if(props.background.transcolor !== null) {
+                if (props.background.transcolor !== null) {
                     backgrnd.setAttribute("transcolor", 
                         props.background.transcolor.r + "," + 
                         props.background.transcolor.g + "," + 
@@ -330,7 +330,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                 }
             }
           
-            if(props.layerlist != null && props.layerlist.length > 0) {
+            if (props.layerlist != null && props.layerlist.length > 0) {
                 var layerlst = this.createElementNS("", "LAYERLIST");
                 propElem.appendChild(layerlst);
             
@@ -341,15 +341,15 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                     ldef.setAttribute("id", props.layerlist[ld].id);
                     ldef.setAttribute("visible", props.layerlist[ld].visible);
               
-                    if(typeof props.layerlist[ld].query == "object") {
+                    if (typeof props.layerlist[ld].query == "object") {
                         var query = props.layerlist[ld].query;
 
-                        if(query.where.length < 0) {
+                        if (query.where.length < 0) {
                             continue;
                         }
                   
                         var queryElem = null;
-                        if(typeof query.spatialfilter == "boolean" && query.spatialfilter) {
+                        if (typeof query.spatialfilter == "boolean" && query.spatialfilter) {
                             // handle spatial filter madness
                             queryElem = this.createElementNS("", "SPATIALQUERY");
                         }
@@ -359,78 +359,78 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                 
                         queryElem.setAttribute("where", query.where);
                 
-                        if(typeof query.accuracy == "number" && query.accuracy > 0) {
+                        if (typeof query.accuracy == "number" && query.accuracy > 0) {
                             queryElem.setAttribute("accuracy", query.accuracy);
                         }
-                        if(typeof query.featurelimit == "number" && query.featurelimit < 2000) {
+                        if (typeof query.featurelimit == "number" && query.featurelimit < 2000) {
                             queryElem.setAttribute("featurelimit", query.featurelimit);
                         }
-                        if(typeof query.subfields == "string" && query.subfields != "#ALL#") {
+                        if (typeof query.subfields == "string" && query.subfields != "#ALL#") {
                             queryElem.setAttribute("subfields", query.subfields);
                         }
-                        if(typeof query.joinexpression == "string" && query.joinexpression.length > 0) {
+                        if (typeof query.joinexpression == "string" && query.joinexpression.length > 0) {
                             queryElem.setAttribute("joinexpression", query.joinexpression);
                         }
-                        if(typeof query.jointables == "string" && query.jointables.length > 0) {
+                        if (typeof query.jointables == "string" && query.jointables.length > 0) {
                             queryElem.setAttribute("jointables", query.jointables);
                         }
 
                         ldef.appendChild(queryElem);
                     }
               
-                    if(typeof props.layerlist[ld].renderer == "object") {
+                    if (typeof props.layerlist[ld].renderer == "object") {
                         this.addRenderer(ldef, props.layerlist[ld].renderer);                  
                     }
                 }
             }
-        } else if(request.get_feature != null) {
+        } else if (request.get_feature != null) {
             var getElem = this.createElementNS("", "GET_FEATURES");
             getElem.setAttribute("outputmode", "newxml");
             getElem.setAttribute("checkesc", "true");
           
-            if(request.get_feature.geometry) {
+            if (request.get_feature.geometry) {
                 getElem.setAttribute("geometry", request.get_feature.geometry);
             }
             else {
                 getElem.setAttribute("geometry", "false");
             }
           
-            if(request.get_feature.compact) {
+            if (request.get_feature.compact) {
                 getElem.setAttribute("compact", request.get_feature.compact);
             }
           
-            if(request.get_feature.featurelimit == "number") {
+            if (request.get_feature.featurelimit == "number") {
                 getElem.setAttribute("featurelimit", request.get_feature.featurelimit);
             }
           
             getElem.setAttribute("globalenvelope", "true");
             reqElem.appendChild(getElem);
           
-            if(request.get_feature.layer != null && request.get_feature.layer.length > 0) {
+            if (request.get_feature.layer != null && request.get_feature.layer.length > 0) {
                 var lyrElem = this.createElementNS("", "LAYER");
                 lyrElem.setAttribute("id", request.get_feature.layer);
                 getElem.appendChild(lyrElem);
             }
           
             var fquery = request.get_feature.query;
-            if(fquery != null) {
+            if (fquery != null) {
                 var qElem = null;
-                if(fquery.isspatial) {
+                if (fquery.isspatial) {
                     qElem = this.createElementNS("", "SPATIALQUERY");
                 } else {
                     qElem = this.createElementNS("", "QUERY");
                 }
                 getElem.appendChild(qElem);
                 
-                if(typeof fquery.accuracy == "number") {
+                if (typeof fquery.accuracy == "number") {
                     qElem.setAttribute("accuracy", fquery.accuracy);
                 }
                 //qElem.setAttribute("featurelimit", "5");
             
-                if(fquery.featurecoordsys != null) {
+                if (fquery.featurecoordsys != null) {
                     var fcsElem1 = this.createElementNS("", "FEATURECOORDSYS");
               
-                    if(fquery.featurecoordsys.id == 0) {
+                    if (fquery.featurecoordsys.id == 0) {
                         fcsElem1.setAttribute("string", fquery.featurecoordsys.string);
                     } else {
                         fcsElem1.setAttribute("id", fquery.featurecoordsys.id);
@@ -438,10 +438,10 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                     qElem.appendChild(fcsElem1);
                 }
             
-                if(fquery.filtercoordsys != null) {
+                if (fquery.filtercoordsys != null) {
                     var fcsElem2 = this.createElementNS("", "FILTERCOORDSYS");
               
-                    if(fquery.filtercoordsys.id === 0) {
+                    if (fquery.filtercoordsys.id === 0) {
                         fcsElem2.setAttribute("string", fquery.filtercoordsys.string);
                     } else {
                         fcsElem2.setAttribute("id", fquery.filtercoordsys.id);
@@ -449,30 +449,30 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                     qElem.appendChild(fcsElem2);
                 }
             
-                if(fquery.buffer > 0) {   
+                if (fquery.buffer > 0) {   
                     var bufElem = this.createElementNS("", "BUFFER");
                     bufElem.setAttribute("distance", fquery.buffer);
                     qElem.appendChild(bufElem);
                 }
             
-                if(fquery.isspatial) {
+                if (fquery.isspatial) {
                     var spfElem = this.createElementNS("", "SPATIALFILTER");
                     spfElem.setAttribute("relation", fquery.spatialfilter.relation);
                     qElem.appendChild(spfElem);
               
-                    if(fquery.spatialfilter.envelope) {
+                    if (fquery.spatialfilter.envelope) {
                         var envElem = this.createElementNS("", "ENVELOPE"); 
                         envElem.setAttribute("minx", fquery.spatialfilter.envelope.minx);
                         envElem.setAttribute("miny", fquery.spatialfilter.envelope.miny);
                         envElem.setAttribute("maxx", fquery.spatialfilter.envelope.maxx);
                         envElem.setAttribute("maxy", fquery.spatialfilter.envelope.maxy);
                         spfElem.appendChild(envElem);
-                    } else if(typeof fquery.spatialfilter.polygon == "object") {
+                    } else if (typeof fquery.spatialfilter.polygon == "object") {
                         spfElem.appendChild(this.writePolygonGeometry(fquery.spatialfilter.polygon));                
                     }
                 }
             
-                if(fquery.where != null && fquery.where.length > 0) {
+                if (fquery.where != null && fquery.where.length > 0) {
                     qElem.setAttribute("where", fquery.where);
                 }
             }
@@ -496,19 +496,19 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
     
     
     addRenderer: function(topRelem, renderer) {
-        if(OpenLayers.Util.isArray(renderer)) {
+        if (OpenLayers.Util.isArray(renderer)) {
             this.addGroupRenderer(topRelem, renderer);
         } else {
             var renderElem = this.createElementNS("", renderer.type.toUpperCase() + "RENDERER");
             topRelem.appendChild(renderElem);
           
-            if(renderElem.tagName == "VALUEMAPRENDERER") {
+            if (renderElem.tagName == "VALUEMAPRENDERER") {
                 this.addValueMapRenderer(renderElem, renderer);
-            } else if(renderElem.tagName == "VALUEMAPLABELRENDERER") {
+            } else if (renderElem.tagName == "VALUEMAPLABELRENDERER") {
                 this.addValueMapLabelRenderer(renderElem, renderer);
-            } else if(renderElem.tagName == "SIMPLELABELRENDERER") {
+            } else if (renderElem.tagName == "SIMPLELABELRENDERER") {
                 this.addSimpleLabelRenderer(renderElem, renderer);
-            } else if(renderElem.tagName == "SCALEDEPENDENTRENDERER") {
+            } else if (renderElem.tagName == "SCALEDEPENDENTRENDERER") {
                 this.addScaleDependentRenderer(renderElem, renderer);
             }
         }             
@@ -516,10 +516,10 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
     
     
     addScaleDependentRenderer: function(renderElem, renderer) {
-        if(typeof renderer.lower == "string" || typeof renderer.lower == "number") {
+        if (typeof renderer.lower == "string" || typeof renderer.lower == "number") {
             renderElem.setAttribute("lower", renderer.lower);
         }
-        if(typeof renderer.upper == "string" || typeof renderer.upper == "number") {
+        if (typeof renderer.upper == "string" || typeof renderer.upper == "number") {
             renderElem.setAttribute("upper", renderer.upper);
         }
         
@@ -531,36 +531,36 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
         renderElem.setAttribute("lookupfield", renderer.lookupfield);
         renderElem.setAttribute("labelfield", renderer.labelfield);
       
-        if(typeof renderer.exacts == "object") {
+        if (typeof renderer.exacts == "object") {
             for (var ext=0, extlen=renderer.exacts.length; ext<extlen; ext++) {
                 var exact = renderer.exacts[ext];
           
                 var eelem = this.createElementNS("", "EXACT");
           
-                if(typeof exact.value == "string") {
+                if (typeof exact.value == "string") {
                     eelem.setAttribute("value", exact.value);
                 }
-                if(typeof exact.label == "string") {
+                if (typeof exact.label == "string") {
                     eelem.setAttribute("label", exact.label);
                 }
-                if(typeof exact.method == "string") {
+                if (typeof exact.method == "string") {
                     eelem.setAttribute("method", exact.method);
                 }
 
                 renderElem.appendChild(eelem);
             
-                if(typeof exact.symbol == "object") {
+                if (typeof exact.symbol == "object") {
                     var selem = null;
                 
-                    if(exact.symbol.type == "text") {
+                    if (exact.symbol.type == "text") {
                         selem = this.createElementNS("", "TEXTSYMBOL");
                     }
                 
-                    if(selem != null) {
+                    if (selem != null) {
                         var keys = this.fontStyleKeys;
                         for (var i = 0, len = keys.length; i < len; i++) {
                             var key = keys[i];
-                            if(exact.symbol[key]) {
+                            if (exact.symbol[key]) {
                                 selem.setAttribute(key, exact.symbol[key]);
                             }
                         }    
@@ -574,7 +574,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
     addValueMapRenderer: function(renderElem, renderer) {
         renderElem.setAttribute("lookupfield", renderer.lookupfield);
         
-        if(typeof renderer.ranges == "object") {
+        if (typeof renderer.ranges == "object") {
             for(var rng=0, rnglen=renderer.ranges.length; rng<rnglen; rng++) {
                 var range = renderer.ranges[rng];
                 
@@ -584,76 +584,76 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                 
                 renderElem.appendChild(relem);
                 
-                if(typeof range.symbol == "object") {
+                if (typeof range.symbol == "object") {
                     var selem = null;
               
-                    if(range.symbol.type == "simplepolygon") {
+                    if (range.symbol.type == "simplepolygon") {
                         selem = this.createElementNS("", "SIMPLEPOLYGONSYMBOL");
                     }
               
-                    if(selem != null) {
-                        if(typeof range.symbol.boundarycolor == "string") {
+                    if (selem != null) {
+                        if (typeof range.symbol.boundarycolor == "string") {
                             selem.setAttribute("boundarycolor", range.symbol.boundarycolor);
                         }
-                        if(typeof range.symbol.fillcolor == "string") {
+                        if (typeof range.symbol.fillcolor == "string") {
                             selem.setAttribute("fillcolor", range.symbol.fillcolor);
                         }
-                        if(typeof range.symbol.filltransparency == "number") {
+                        if (typeof range.symbol.filltransparency == "number") {
                             selem.setAttribute("filltransparency", range.symbol.filltransparency);
                         }
                         relem.appendChild(selem);
                     }   
                 }
             } // for each range
-        } else if(typeof renderer.exacts == "object") {
+        } else if (typeof renderer.exacts == "object") {
             for (var ext=0, extlen=renderer.exacts.length; ext<extlen; ext++) {
                 var exact = renderer.exacts[ext];
           
                 var eelem = this.createElementNS("", "EXACT");
-                if(typeof exact.value == "string") {
+                if (typeof exact.value == "string") {
                     eelem.setAttribute("value", exact.value);
                 }
-                if(typeof exact.label == "string") {
+                if (typeof exact.label == "string") {
                     eelem.setAttribute("label", exact.label);
                 }
-                if(typeof exact.method == "string") {
+                if (typeof exact.method == "string") {
                     eelem.setAttribute("method", exact.method);
                 }
             
                 renderElem.appendChild(eelem);
             
-                if(typeof exact.symbol == "object") {
+                if (typeof exact.symbol == "object") {
                     var selem = null;
             
-                    if(exact.symbol.type == "simplemarker") {
+                    if (exact.symbol.type == "simplemarker") {
                         selem = this.createElementNS("", "SIMPLEMARKERSYMBOL");
                     }
             
-                    if(selem != null) {
-                        if(typeof exact.symbol.antialiasing == "string") {
+                    if (selem != null) {
+                        if (typeof exact.symbol.antialiasing == "string") {
                             selem.setAttribute("antialiasing", exact.symbol.antialiasing);
                         }
-                        if(typeof exact.symbol.color == "string") {
+                        if (typeof exact.symbol.color == "string") {
                             selem.setAttribute("color", exact.symbol.color);
                         }
-                        if(typeof exact.symbol.outline == "string") {
+                        if (typeof exact.symbol.outline == "string") {
                             selem.setAttribute("outline", exact.symbol.outline);
                         }
-                        if(typeof exact.symbol.overlap == "string") {
+                        if (typeof exact.symbol.overlap == "string") {
                             selem.setAttribute("overlap", exact.symbol.overlap);
                         }
-                        if(typeof exact.symbol.shadow == "string") {
+                        if (typeof exact.symbol.shadow == "string") {
                             selem.setAttribute("shadow", exact.symbol.shadow);
                         }
-                        if(typeof exact.symbol.transparency == "number") {
+                        if (typeof exact.symbol.transparency == "number") {
                             selem.setAttribute("transparency", exact.symbol.transparency);
                         }
-                        //if(typeof exact.symbol.type == "string")
+                        //if (typeof exact.symbol.type == "string")
                         //    selem.setAttribute("type", exact.symbol.type);
-                        if(typeof exact.symbol.usecentroid == "string") {
+                        if (typeof exact.symbol.usecentroid == "string") {
                             selem.setAttribute("usecentroid", exact.symbol.usecentroid);
                         }
-                        if(typeof exact.symbol.width == "number") {
+                        if (typeof exact.symbol.width == "number") {
                             selem.setAttribute("width", exact.symbol.width);
                         }
                 
@@ -672,12 +672,12 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                     'rotationalangles'];
         for (var i=0, len=keys.length; i<len; i++) {
             var key = keys[i];
-            if(renderer[key]) {
+            if (renderer[key]) {
                 renderElem.setAttribute(key, renderer[key]);
             }
         }     
            
-        if(renderer.symbol.type == "text") {
+        if (renderer.symbol.type == "text") {
             var symbol = renderer.symbol;
             var selem = this.createElementNS("", "TEXTSYMBOL");
             renderElem.appendChild(selem);
@@ -685,7 +685,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
             var keys = this.fontStyleKeys;
             for (var i=0, len=keys.length; i<len; i++) {
                 var key = keys[i];
-                if(symbol[key]) {
+                if (symbol[key]) {
                     selem.setAttribute(key, renderer[key]);
                 }
             }    
@@ -693,7 +693,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
     },
     
     writePolygonGeometry: function(polygon) {
-        if(!(polygon instanceof OpenLayers.Geometry.Polygon)) {
+        if (!(polygon instanceof OpenLayers.Geometry.Polygon)) {
             throw { 
                 message:'Cannot write polygon geometry to ArcXML with an ' +
                     polygon.CLASS_NAME + ' object.',
@@ -732,7 +732,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
      * top level DOMElement of the response.
      */
     parseResponse: function(data) {
-        if(typeof data == "string") { 
+        if (typeof data == "string") { 
             var newData = new OpenLayers.Format.XML();
             data = newData.read(data);
         }
@@ -740,34 +740,34 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
         
         var errorNode = data.getElementsByTagName("ERROR");
         
-        if(errorNode != null && errorNode.length > 0) {
+        if (errorNode != null && errorNode.length > 0) {
             response.error = this.getChildValue(errorNode, "Unknown error.");
         } else {
             var responseNode = data.getElementsByTagName("RESPONSE");
           
-            if(responseNode == null || responseNode.length == 0) {
+            if (responseNode == null || responseNode.length == 0) {
                 response.error = "No RESPONSE tag found in ArcXML response.";
                 return response;
             }
           
             var rtype = responseNode[0].firstChild.nodeName;
-            if(rtype == "#text") {
+            if (rtype == "#text") {
                 rtype = responseNode[0].firstChild.nextSibling.nodeName;
             }
           
-            if(rtype == "IMAGE") {
+            if (rtype == "IMAGE") {
                 var envelopeNode = data.getElementsByTagName("ENVELOPE");
                 var outputNode = data.getElementsByTagName("OUTPUT");
                 
-                if(envelopeNode == null || envelopeNode.length == 0) {
+                if (envelopeNode == null || envelopeNode.length == 0) {
                     response.error = "No ENVELOPE tag found in ArcXML response.";
-                } else if(outputNode == null || outputNode.length == 0) {
+                } else if (outputNode == null || outputNode.length == 0) {
                     response.error = "No OUTPUT tag found in ArcXML response.";
                 } else {
                     var envAttr = this.parseAttributes(envelopeNode[0]);            
                     var outputAttr = this.parseAttributes(outputNode[0]);
                   
-                    if(typeof outputAttr.type == "string") {
+                    if (typeof outputAttr.type == "string") {
                         response.image = { 
                             envelope: envAttr, 
                             output: { 
@@ -779,14 +779,14 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                         response.image = { envelope: envAttr, output: outputAttr };
                     }
                 }
-            } else if(rtype == "FEATURES") {
+            } else if (rtype == "FEATURES") {
                 var features = responseNode[0].getElementsByTagName("FEATURES");
             
                 // get the feature count
                 var featureCount = features[0].getElementsByTagName("FEATURECOUNT");
                 response.features.featurecount = featureCount[0].getAttribute("count");
             
-                if(response.features.featurecount > 0) {
+                if (response.features.featurecount > 0) {
                     // get the feature envelope
                     var envelope = features[0].getElementsByTagName("ENVELOPE");
                     response.features.envelope = this.parseAttributes(envelope[0], typeof(0));
@@ -805,7 +805,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
 
                         var geom = featureList[fn].getElementsByTagName("POLYGON");
 
-                        if(geom.length > 0) {
+                        if (geom.length > 0) {
                             // if there is a polygon, create an openlayers polygon, and assign
                             // it to the .geometry property of the feature
                             var ring = geom[0].getElementsByTagName("RING");
@@ -825,7 +825,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                             }
                             ring = null;
                           
-                            if(polys.length == 1) {
+                            if (polys.length == 1) {
                                 feature.geometry = polys[0];
                             } else
                             {
@@ -856,7 +856,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
     parseAttributes: function(node,type) {
         var attributes = {};
         for(var attr = 0; attr < node.attributes.length; attr++) {
-            if(type == "number") {
+            if (type == "number") {
                 attributes[node.attributes[attr].nodeName] = parseFloat(node.attributes[attr].nodeValue);
             } else {
                 attributes[node.attributes[attr].nodeName] = node.attributes[attr].nodeValue;
@@ -879,7 +879,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
         var ringPoints = [];
         var coords = node.getElementsByTagName("COORDS");
 
-        if(coords.length > 0) {
+        if (coords.length > 0) {
             // if coords is present, it's the only coords item
             var coordArr = this.getChildValue(coords[0]);
             coordArr = coordArr.split(/;/);
@@ -890,7 +890,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
             coords = null;
         } else {
             var point = node.getElementsByTagName("POINT");
-            if(point.length > 0) {
+            if (point.length > 0) {
                 for (var pn = 0; pn < point.length; pn++) {
                     ringPoints.push(
                         new OpenLayers.Geometry.Point(

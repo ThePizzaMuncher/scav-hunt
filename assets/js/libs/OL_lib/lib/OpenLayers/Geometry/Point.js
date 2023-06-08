@@ -51,7 +51,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
      * {<OpenLayers.Geometry.Point>} An exact clone of this OpenLayers.Geometry.Point
      */
     clone: function(obj) {
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Geometry.Point(this.x, this.y);
         }
 
@@ -101,7 +101,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
         var edge = !(options && options.edge === false);
         var details = edge && options && options.details;
         var distance, x0, y0, x1, y1, result;
-        if(geometry instanceof OpenLayers.Geometry.Point) {
+        if (geometry instanceof OpenLayers.Geometry.Point) {
             x0 = this.x;
             y0 = this.y;
             x1 = geometry.x;
@@ -111,7 +111,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
                 distance : {x0: x0, y0: y0, x1: x1, y1: y1, distance: distance};
         } else {
             result = geometry.distanceTo(this, options);
-            if(details) {
+            if (details) {
                 // switch coord order since this geom is target
                 result = {
                     x0: result.x1, y0: result.y1,
@@ -136,7 +136,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
      */
     equals: function(geom) {
         var equals = false;
-        if(geom != null) {
+        if (geom != null) {
             equals = ((this.x == geom.x && this.y == geom.y) ||
                       (isNaN(this.x) && isNaN(this.y) && isNaN(geom.x) && isNaN(geom.y)));
         }
@@ -234,7 +234,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
      */
     intersects: function(geometry) {
         var intersect = false;
-        if(geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
+        if (geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
             intersect = this.equals(geometry);
         } else {
             intersect = geometry.intersects(this);
@@ -254,7 +254,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
      * {<OpenLayers.Geometry>} 
      */
     transform: function(source, dest) {
-        if((source && dest)) {
+        if ((source && dest)) {
             OpenLayers.Projection.transform(
                 this, source, dest); 
             this.bounds = null;

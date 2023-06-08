@@ -50,7 +50,7 @@
         var pass = false;
         var handler = new OpenLayers.Handler.MouseWheel(control, {'up': 
           function (evt) { 
-                if(evt.xy) { pass = true; }
+                if (evt.xy) { pass = true; }
           }
         });
         handler.setMap(map);
@@ -81,7 +81,7 @@
         var nonevents = ["dblclick", "resize", "focus", "blur"];
         map.events.registerPriority = function(type, obj, func) {
             var r = func();
-            if(typeof r == "string") {
+            if (typeof r == "string") {
                 t.eq(OpenLayers.Util.indexOf(nonevents, type), -1,
                      "registered method is not one of the events " +
                      "that should not be handled");

@@ -43,7 +43,7 @@ OpenLayers.Tile.Image.IFrame = {
      */
     draw: function() {
         var draw = OpenLayers.Tile.Image.prototype.shouldDraw.call(this);
-        if(draw) {
+        if (draw) {
 
             // this.url isn't set to the currect value yet, so we call getURL
             // on the layer and store the result in a local variable
@@ -57,7 +57,7 @@ OpenLayers.Tile.Image.IFrame = {
             var fromIFrame = usedIFrame && !this.useIFrame;
             var toIFrame = !usedIFrame && this.useIFrame;
 
-            if(fromIFrame || toIFrame) {
+            if (fromIFrame || toIFrame) {
 
                 // Switching between GET (image) and POST (iframe).
 
@@ -65,14 +65,14 @@ OpenLayers.Tile.Image.IFrame = {
                 // from the frame and set it to null to make sure initImage
                 // will call getImage.
 
-                if(this.imgDiv && this.imgDiv.parentNode === this.frame) {
+                if (this.imgDiv && this.imgDiv.parentNode === this.frame) {
                     this.frame.removeChild(this.imgDiv);
                 }
                 this.imgDiv = null;
 
                 // And if we had an iframe we also remove the event pane.
 
-                if(fromIFrame) {
+                if (fromIFrame) {
                     this.frame.removeChild(this.frame.firstChild);
                 }
             }
@@ -85,8 +85,8 @@ OpenLayers.Tile.Image.IFrame = {
      * Creates the content for the frame on the tile.
      */
     getImage: function() {
-        if(this.useIFrame === true) {
-            if(!this.frame.childNodes.length) {
+        if (this.useIFrame === true) {
+            if (!this.frame.childNodes.length) {
                 var eventPane = document.createElement("div"),
                     style = eventPane.style;
                 style.position = "absolute";
@@ -98,7 +98,7 @@ OpenLayers.Tile.Image.IFrame = {
             }
 
             var id = this.id + '_iFrame', iframe;
-            if(parseFloat(navigator.appVersion.split("MSIE")[1]) < 9) {
+            if (parseFloat(navigator.appVersion.split("MSIE")[1]) < 9) {
                 // Older IE versions do not set the name attribute of an iFrame 
                 // properly via DOM manipulation, so we need to do it on our own with
                 // this hack.
@@ -130,7 +130,7 @@ OpenLayers.Tile.Image.IFrame = {
             iframe.style.width    = "100%";
             iframe.style.height   = "100%";
 
-            if(this.layer.opacity < 1) {
+            if (this.layer.opacity < 1) {
                 OpenLayers.Util.modifyDOMElement(iframe, null, null, null,
                     null, null, null, this.layer.opacity);
             }
@@ -185,13 +185,13 @@ OpenLayers.Tile.Image.IFrame = {
      * url - {String}
      */
     setImgSrc: function(url) {
-        if(this.useIFrame === true) {
-            if(url) {
+        if (this.useIFrame === true) {
+            if (url) {
                 var form = this.createRequestForm();
                 this.frame.appendChild(form);
                 form.submit();
                 this.frame.removeChild(form);
-            } else if(this.imgDiv.parentNode === this.frame) {
+            } else if (this.imgDiv.parentNode === this.frame) {
                 // we don't reuse iframes to avoid caching issues
                 this.frame.removeChild(this.imgDiv);
                 this.imgDiv = null;
@@ -208,7 +208,7 @@ OpenLayers.Tile.Image.IFrame = {
     onImageLoad: function() {
         //TODO de-uglify opacity handling
         OpenLayers.Tile.Image.prototype.onImageLoad.apply(this, arguments);
-        if(this.useIFrame === true) {
+        if (this.useIFrame === true) {
             this.imgDiv.style.opacity = 1;
             this.frame.style.opacity = this.layer.opacity;
         }
@@ -225,7 +225,7 @@ OpenLayers.Tile.Image.IFrame = {
      */
     createBackBuffer: function() {
         var backBuffer;
-        if(this.useIFrame === false) {
+        if (this.useIFrame === false) {
             backBuffer = OpenLayers.Tile.Image.prototype.createBackBuffer.call(this);
         }
         return backBuffer;

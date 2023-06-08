@@ -68,10 +68,10 @@ OpenLayers.Control.ZoomBox = OpenLayers.Class(OpenLayers.Control, {
      * position - {<OpenLayers.Bounds>} or {<OpenLayers.Pixel>}
      */
     zoomBox: function (position) {
-        if(position instanceof OpenLayers.Bounds) {
+        if (position instanceof OpenLayers.Bounds) {
             var bounds,
                 targetCenterPx = position.getCenterPixel();
-            if(!this.out) {
+            if (!this.out) {
                 var minXY = this.map.getLonLatFromPixel({
                     x: position.left,
                     y: position.bottom
@@ -102,7 +102,7 @@ OpenLayers.Control.ZoomBox = OpenLayers.Class(OpenLayers.Control, {
                 zoom = this.map.getZoomForExtent(bounds),
                 oldRes = this.map.getResolution(),
                 newRes = this.map.getResolutionForZoom(zoom);
-            if(oldRes == newRes) {
+            if (oldRes == newRes) {
                 this.map.setCenter(this.map.getLonLatFromPixel(targetCenterPx));
             } else {
               var zoomOriginPx = {
@@ -113,11 +113,11 @@ OpenLayers.Control.ZoomBox = OpenLayers.Class(OpenLayers.Control, {
                 };
                 this.map.zoomTo(zoom, zoomOriginPx);
             }
-            if(lastZoom == this.map.getZoom() && this.alwaysZoom == true){ 
+            if (lastZoom == this.map.getZoom() && this.alwaysZoom == true){ 
                 this.map.zoomTo(lastZoom + (this.out ? -1 : 1)); 
             }
-        } else if(this.zoomOnClick) { // it's a pixel
-            if(!this.out) {
+        } else if (this.zoomOnClick) { // it's a pixel
+            if (!this.out) {
                 this.map.zoomTo(this.map.getZoom() + 1, position);
             } else {
                 this.map.zoomTo(this.map.getZoom() - 1, position);

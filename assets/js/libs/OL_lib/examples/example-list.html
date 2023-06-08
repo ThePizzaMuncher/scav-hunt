@@ -152,7 +152,7 @@
             
             var timerId;
             function inputChange() {
-                if(timerId) {
+                if (timerId) {
                     window.clearTimeout(timerId);
                 }
                 var text = this.value;
@@ -163,7 +163,7 @@
             
             function filterList(text) {
                 var examples;
-                if(text.length < 2) {
+                if (text.length < 2) {
                     examples = info.examples;
                 } else {
                     var words = text.split(/\W+/);
@@ -174,8 +174,8 @@
                         var updateScores = function() {
                             for(exIndex in dict) {
                                 var count = dict[exIndex];
-                                if(scores[exIndex]) {
-                                    if(scores[exIndex][word]) {
+                                if (scores[exIndex]) {
+                                    if (scores[exIndex][word]) {
                                         scores[exIndex][word] += count;
                                     } else {
                                         scores[exIndex][word] = count;
@@ -186,13 +186,13 @@
                                 }
                             }
                         };
-                        if(dict) {
+                        if (dict) {
                             updateScores();
                         } else {
                             var r;
                             for (idx in info.index) {
                                r = new RegExp(word);
-                               if(r.test(idx)) {
+                               if (r.test(idx)) {
                                     dict = info.index[idx];
                                     updateScores();
                                }
@@ -219,7 +219,7 @@
                             bScore += b.score[j];
                             bWords += 1;
                         }
-                        if(aWords == bWords) {
+                        if (aWords == bWords) {
                             cmp = bScore - aScore;
                         } else {
                             cmp = bWords - aWords;
@@ -240,11 +240,11 @@
                 var list = window.location.search.substring(1).split("&");
                 for(var i=0; i<list.length; ++i) {
                     var pair = list[i].split("=");
-                    if(pair.length == 2) {
+                    if (pair.length == 2) {
                         params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
                     }
                 }
-                if(params["q"]) {
+                if (params["q"]) {
                     var input = document.getElementById("keywords");
                     input.value = params["q"];
                     inputChange.call(input);

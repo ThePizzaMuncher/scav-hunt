@@ -48,8 +48,8 @@ OpenLayers.Control.KeyboardClick = OpenLayers.Class(OpenLayers.Control, {
             "keydown",
             OpenLayers.Function.bindAsEventListener(
                 function(evt) {
-                    if(evt.keyCode == 73) { // "i"
-                        if(this.active) {
+                    if (evt.keyCode == 73) { // "i"
+                        if (this.active) {
                             this.deactivate();
                         } else {
                             this.activate();
@@ -67,26 +67,26 @@ OpenLayers.Control.KeyboardClick = OpenLayers.Class(OpenLayers.Control, {
     },
 
     activate: function() {
-        if(!OpenLayers.Control.prototype.activate.apply(this, arguments)) {
+        if (!OpenLayers.Control.prototype.activate.apply(this, arguments)) {
             return false;
         }
         // deactivate any KeyboardDefaults control
         var keyboardDefaults = this.map.getControlsByClass(
                 'OpenLayers.Control.KeyboardDefaults')[0];
-        if(keyboardDefaults) {
+        if (keyboardDefaults) {
             keyboardDefaults.deactivate();
         }
         return true;
     },
 
     deactivate: function() {
-        if(!OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
+        if (!OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
             return false;
         }
         // reactivate any KeyboardDefaults control
         var keyboardDefaults = this.map.getControlsByClass(
                 'OpenLayers.Control.KeyboardDefaults')[0];
-        if(keyboardDefaults) {
+        if (keyboardDefaults) {
             keyboardDefaults.activate();
         }
         return true;
@@ -113,7 +113,7 @@ OpenLayers.Handler.KeyboardPoint = OpenLayers.Class(OpenLayers.Handler, {
     },
 
     activate: function() {
-        if(!OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
+        if (!OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
             return false;
         }
         this.layer = new OpenLayers.Layer.Vector(this.CLASS_NAME);
@@ -123,14 +123,14 @@ OpenLayers.Handler.KeyboardPoint = OpenLayers.Class(OpenLayers.Handler, {
             OpenLayers.Event.observe(
                 this.observeElement, this.KEY_EVENTS[i], this.eventListener);
         }
-        if(!this.point) {
+        if (!this.point) {
             this.createFeature();
         }
         return true;
     },
 
     deactivate: function() {
-        if(!OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
+        if (!OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
             return false;
         }
         for (var i=0, len=this.KEY_EVENTS.length; i<len; i++) {
@@ -166,7 +166,7 @@ OpenLayers.Handler.KeyboardPoint = OpenLayers.Class(OpenLayers.Handler, {
     },
 
     modifyFeature: function(lon, lat) {
-        if(!this.point) {
+        if (!this.point) {
             this.createFeature();
         }
         var resolution = this.map.getResolution();

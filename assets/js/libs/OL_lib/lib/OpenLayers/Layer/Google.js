@@ -109,19 +109,19 @@ OpenLayers.Layer.Google = OpenLayers.Class(
      */
     initialize: function(name, options) {
         options = options || {};
-        if(!options.version) {
+        if (!options.version) {
             options.version = typeof GMap2 === "function" ? "2" : "3";
         }
         var mixin = OpenLayers.Layer.Google["v" +
             options.version.replace(/\./g, "_")];
-        if(mixin) {
+        if (mixin) {
             OpenLayers.Util.applyDefaults(options, mixin);
         } else {
             throw "Unsupported Google Maps API version: " + options.version;
         }
 
         OpenLayers.Util.applyDefaults(options, mixin.DEFAULTS);
-        if(options.maxExtent) {
+        if (options.maxExtent) {
             options.maxExtent = options.maxExtent.clone();
         }
 
@@ -130,7 +130,7 @@ OpenLayers.Layer.Google = OpenLayers.Class(
         OpenLayers.Layer.FixedZoomLevels.prototype.initialize.apply(this, 
             [name, options]);
 
-        if(this.sphericalMercator) {
+        if (this.sphericalMercator) {
             OpenLayers.Util.extend(this, OpenLayers.Layer.SphericalMercator);
             this.initMercatorParameters();
         }    
@@ -185,7 +185,7 @@ OpenLayers.Layer.Google = OpenLayers.Class(
      * visible - {Boolean}
      */
     display: function(visible) {
-        if(!this._dragging) {
+        if (!this._dragging) {
             this.setGMapVisibility(visible);
         }
         OpenLayers.Layer.EventPane.prototype.display.apply(this, arguments);
@@ -214,8 +214,8 @@ OpenLayers.Layer.Google = OpenLayers.Class(
      * opacity - {Float}
      */
     setOpacity: function(opacity) {
-        if(opacity !== this.opacity) {
-            if(this.map != null) {
+        if (opacity !== this.opacity) {
+            if (this.map != null) {
                 this.map.events.triggerEvent("changelayer", {
                     layer: this,
                     property: "opacity"
@@ -225,7 +225,7 @@ OpenLayers.Layer.Google = OpenLayers.Class(
         }
         // Though this layer's opacity may not change, we're sharing a container
         // and need to update the opacity for the entire container.
-        if(this.getVisibility()) {
+        if (this.getVisibility()) {
             var container = this.getMapContainer();
             OpenLayers.Util.modifyDOMElement(
                 container, null, null, null, null, null, null, opacity
@@ -243,10 +243,10 @@ OpenLayers.Layer.Google = OpenLayers.Class(
          * deletes the mapObject reference before removing this layer from
          * the map.
          */
-        if(this.map) {
+        if (this.map) {
             this.setGMapVisibility(false);
             var cache = OpenLayers.Layer.Google.cache[this.map.id];
-            if(cache && cache.count <= 1) {
+            if (cache && cache.count <= 1) {
                 this.removeGMapElements();
             }            
         }
@@ -260,21 +260,21 @@ OpenLayers.Layer.Google = OpenLayers.Class(
      */
     removeGMapElements: function() {
         var cache = OpenLayers.Layer.Google.cache[this.map.id];
-        if(cache) {
+        if (cache) {
             // remove shared elements from dom
             var container = this.mapObject && this.getMapContainer();                
-            if(container && container.parentNode) {
+            if (container && container.parentNode) {
                 container.parentNode.removeChild(container);
             }
             var termsOfUse = cache.termsOfUse;
-            if(termsOfUse && termsOfUse.parentNode) {
+            if (termsOfUse && termsOfUse.parentNode) {
                 termsOfUse.parentNode.removeChild(termsOfUse);
             }
             var poweredBy = cache.poweredBy;
-            if(poweredBy && poweredBy.parentNode) {
+            if (poweredBy && poweredBy.parentNode) {
                 poweredBy.parentNode.removeChild(poweredBy);
             }
-            if(this.mapObject && window.google && google.maps &&
+            if (this.mapObject && window.google && google.maps &&
                     google.maps.event && google.maps.event.clearListeners) {
                 google.maps.event.clearListeners(this.mapObject, 'tilesloaded');
             }
@@ -290,13 +290,13 @@ OpenLayers.Layer.Google = OpenLayers.Class(
      */
     removeMap: function(map) {
         // hide layer before removing
-        if(this.visibility && this.mapObject) {
+        if (this.visibility && this.mapObject) {
             this.setGMapVisibility(false);
         }
         // check to see if last Google layer in this map
         var cache = OpenLayers.Layer.Google.cache[map.id];
-        if(cache) {
-            if(cache.count <= 1) {
+        if (cache) {
+            if (cache.count <= 1) {
                 this.removeGMapElements();
                 delete OpenLayers.Layer.Google.cache[map.id];
             } else {
@@ -329,10 +329,10 @@ OpenLayers.Layer.Google = OpenLayers.Class(
      */
     getOLBoundsFromMapObjectBounds: function(moBounds) {
         var olBounds = null;
-        if(moBounds != null) {
+        if (moBounds != null) {
             var sw = moBounds.getSouthWest();
             var ne = moBounds.getNorthEast();
-            if(this.sphericalMercator) {
+            if (this.sphericalMercator) {
                 sw = this.forwardMercator(sw.lng(), sw.lat());
                 ne = this.forwardMercator(ne.lng(), ne.lat());
             } else {
@@ -503,12 +503,12 @@ OpenLayers.Layer.Google.v2 = {
      *     load GMap2, then display a warning message.
      */
     loadMapObject:function() {
-        if(!this.type) {
+        if (!this.type) {
             this.type = G_NORMAL_MAP;
         }
         var mapObject, termsOfUse, poweredBy;
         var cache = OpenLayers.Layer.Google.cache[this.map.id];
-        if(cache) {
+        if (cache) {
             // there are already Google layers added to this map
             mapObject = cache.mapObject;
             termsOfUse = cache.termsOfUse;
@@ -563,19 +563,19 @@ OpenLayers.Layer.Google.v2 = {
         this.poweredBy = poweredBy;
         
         // ensure this layer type is one of the mapObject types
-        if(OpenLayers.Util.indexOf(this.mapObject.getMapTypes(),
+        if (OpenLayers.Util.indexOf(this.mapObject.getMapTypes(),
                                     this.type) === -1) {
             this.mapObject.addMapType(this.type);
         }
 
         //since v 2.93 getDragObject is now available.
-        if(typeof mapObject.getDragObject == "function") {
+        if (typeof mapObject.getDragObject == "function") {
             this.dragObject = mapObject.getDragObject();
         } else {
             this.dragPanMapObject = null;
         }
         
-        if(this.isBaseLayer === false) {
+        if (this.isBaseLayer === false) {
             this.setGMapVisibility(this.div.style.display !== "none");
         }
 
@@ -590,10 +590,10 @@ OpenLayers.Layer.Google.v2 = {
         // for the old div size, then checkResize(), and then call
         // layer.moveTo() to trigger GMap.setCenter() (which will finish
         // the GMap initialization).
-        if(this.visibility && this.mapObject.isLoaded()) {
+        if (this.visibility && this.mapObject.isLoaded()) {
             this.mapObject.checkResize();
         } else {
-            if(!this._resized) {
+            if (!this._resized) {
                 var layer = this;
                 var handle = GEvent.addListener(this.mapObject, "load", function() {
                     GEvent.removeListener(handle);
@@ -615,9 +615,9 @@ OpenLayers.Layer.Google.v2 = {
      */
     setGMapVisibility: function(visible) {
         var cache = OpenLayers.Layer.Google.cache[this.map.id];
-        if(cache) {
+        if (cache) {
             var container = this.mapObject.getContainer();
-            if(visible === true) {
+            if (visible === true) {
                 this.mapObject.setMapType(this.type);
                 container.style.display = "";
                 this.termsOfUse.style.left = "";
@@ -625,10 +625,10 @@ OpenLayers.Layer.Google.v2 = {
                 this.poweredBy.style.display = "";            
                 cache.displayed = this.id;
             } else {
-                if(cache.displayed === this.id) {
+                if (cache.displayed === this.id) {
                     delete cache.displayed;
                 }
-                if(!cache.displayed) {
+                if (!cache.displayed) {
                     container.style.display = "none";
                     this.termsOfUse.style.display = "none";
                     // move ToU far to the left in addition to setting display
@@ -669,7 +669,7 @@ OpenLayers.Layer.Google.v2 = {
      */
     getMapObjectBoundsFromOLBounds: function(olBounds) {
         var moBounds = null;
-        if(olBounds != null) {
+        if (olBounds != null) {
             var sw = this.sphericalMercator ? 
               this.inverseMercator(olBounds.bottom, olBounds.left) : 
               new OpenLayers.LonLat(olBounds.bottom, olBounds.left);
@@ -781,7 +781,7 @@ OpenLayers.Layer.Google.v2 = {
      */
     getMapObjectLonLatFromLonLat: function(lon, lat) {
         var gLatLng;
-        if(this.sphericalMercator) {
+        if (this.sphericalMercator) {
             var lonlat = this.inverseMercator(lon, lat);
             gLatLng = new GLatLng(lonlat.lat, lonlat.lon);
         } else {

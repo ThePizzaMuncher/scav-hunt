@@ -25,7 +25,7 @@
         } catch (err) {
             // some implementations throw RangeError
             // see https://bugzilla.mozilla.org/show_bug.cgi?id=649575
-            if(err instanceof RangeError) {
+            if (err instanceof RangeError) {
                 str = "Invalid Date";
             }
         }
@@ -147,7 +147,7 @@
             o = cases[str];
             got = OpenLayers.Date.parse(str);
             exp = new Date(Date.UTC(o.year || 0, o.month || 0, o.date || 1, o.hour || 0, o.minutes || 0, o.seconds || 0, o.milliseconds || 0));
-            if("year" in o) {
+            if ("year" in o) {
                 t.eq(got.getUTCFullYear(), exp.getUTCFullYear(), str + ": correct UTCFullYear");
                 t.eq(got.getUTCMonth(), exp.getUTCMonth(), str + ": correct UTCMonth");
                 t.eq(got.getUTCDate(), exp.getUTCDate(), str + ": correct UTCDate");
@@ -156,7 +156,7 @@
                 t.ok(true, str + ": ECMA doesn't specify how months are handled in time only strings");
                 t.ok(true, str + ": ECMA doesn't specify how days are handled in time only strings");
             }
-            if("hour" in o) {
+            if ("hour" in o) {
                 t.eq(got.getUTCHours(), exp.getUTCHours(), str + ": correct UTCHours");
                 t.eq(got.getUTCMinutes(), exp.getUTCMinutes(), str + ": correct UTCMinutes");
                 t.eq(got.getUTCSeconds(), exp.getUTCSeconds(), str + ": correct UTCSeconds");

@@ -56,7 +56,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      * containerID - {String}
      */
     initialize: function(containerID) {
-        if(!this.supported()) { 
+        if (!this.supported()) { 
             return; 
         }
         OpenLayers.Renderer.Elements.prototype.initialize.apply(this, 
@@ -122,7 +122,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
 
         // If the resolution has changed, start over changing the corner, because
         // the features will redraw.
-        if(resolutionChanged) {
+        if (resolutionChanged) {
             this.left = left;
             this.top = top;
             // Set the viewbox
@@ -133,7 +133,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
             return true;
         } else {
             var inRange = this.translate(left - this.left + this.xOffset, top - this.top);
-            if(!inRange) {
+            if (!inRange) {
                 // recenter the coordinate system
                 this.setExtent(extent, true);
             }
@@ -154,11 +154,11 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      *     range, false otherwise.
      */
     translate: function(x, y) {
-        if(!this.inValidRange(x, y, true)) {
+        if (!this.inValidRange(x, y, true)) {
             return false;
         } else {
             var transformString = "";
-            if(x || y) {
+            if (x || y) {
                 transformString = "translate(" + x + "," + y + ")";
             }
             this.root.setAttributeNS(null, "transform", transformString);
@@ -195,9 +195,9 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         var nodeType = null;
         switch (geometry.CLASS_NAME) {
             case "OpenLayers.Geometry.Point":
-                if(style.externalGraphic) {
+                if (style.externalGraphic) {
                     nodeType = "image";
-                } else if(this.isComplexSymbol(style.graphicName)) {
+                } else if (this.isComplexSymbol(style.graphicName)) {
                     nodeType = "svg";
                 } else {
                     nodeType = "circle";
@@ -241,12 +241,12 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         options = options || node._options;
 
         var title = style.title || style.graphicTitle;
-        if(title) {
+        if (title) {
             node.setAttributeNS(null, "title", title);
             //Standards-conformant SVG
             // Prevent duplicate nodes. See issue https://github.com/openlayers/openlayers/issues/92 
             var titleNode = node.getElementsByTagName("title");
-            if(titleNode.length > 0) {
+            if (titleNode.length > 0) {
                 titleNode[0].firstChild.textContent = title;
             } else {
                 var label = this.nodeFactory(null, "title");
@@ -258,13 +258,13 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         var r = parseFloat(node.getAttributeNS(null, "r"));
         var widthFactor = 1;
         var pos;
-        if(node._geometryClass == "OpenLayers.Geometry.Point" && r) {
+        if (node._geometryClass == "OpenLayers.Geometry.Point" && r) {
             node.style.visibility = "";
-            if(style.graphic === false) {
+            if (style.graphic === false) {
                 node.style.visibility = "hidden";
-            } else if(style.externalGraphic) {
+            } else if (style.externalGraphic) {
                 pos = this.getPosition(node);
-                if(style.graphicWidth && style.graphicHeight) {
+                if (style.graphicWidth && style.graphicHeight) {
                   node.setAttributeNS(null, "preserveAspectRatio", "none");
                 }
                 var width = style.graphicWidth || style.graphicHeight;
@@ -285,7 +285,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
                 node.setAttributeNS(this.xlinkns, "xlink:href", style.externalGraphic);
                 node.setAttributeNS(null, "style", "opacity: "+opacity);
                 node.onclick = OpenLayers.Event.preventDefault;
-            } else if(this.isComplexSymbol(style.graphicName)) {
+            } else if (this.isComplexSymbol(style.graphicName)) {
                 // the symbol viewBox is three times as large as the symbol
                 var offset = style.pointRadius * 3;
                 var size = offset * 2;
@@ -297,7 +297,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
                 // prevents various rendering issues in Safari and FF
                 var parent = node.parentNode;
                 var nextSibling = node.nextSibling;
-                if(parent) {
+                if (parent) {
                     parent.removeChild(node);
                 }
                 
@@ -318,9 +318,9 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
                 
                 // now that the node has all its new properties, insert it
                 // back into the dom where it was
-                if(nextSibling) {
+                if (nextSibling) {
                     parent.insertBefore(node, nextSibling);
-                } else if(parent) {
+                } else if (parent) {
                     parent.appendChild(node);
                 }
             } else {
@@ -329,10 +329,10 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
 
             var rotation = style.rotation;
             
-            if((rotation !== undefined || node._rotation !== undefined) && pos) {
+            if ((rotation !== undefined || node._rotation !== undefined) && pos) {
                 node._rotation = rotation;
                 rotation |= 0;
-                if(node.nodeName !== "svg") { 
+                if (node.nodeName !== "svg") { 
                     node.setAttributeNS(null, "transform", 
                         "rotate(" + rotation + " " + pos.x + " " + 
                         pos.y + ")"); 
@@ -346,14 +346,14 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
             }
         }
         
-        if(options.isFilled) {
+        if (options.isFilled) {
             node.setAttributeNS(null, "fill", style.fillColor);
             node.setAttributeNS(null, "fill-opacity", style.fillOpacity);
         } else {
             node.setAttributeNS(null, "fill", "none");
         }
 
-        if(options.isStroked) {
+        if (options.isStroked) {
             node.setAttributeNS(null, "stroke", style.strokeColor);
             node.setAttributeNS(null, "stroke-opacity", style.strokeOpacity);
             node.setAttributeNS(null, "stroke-width", style.strokeWidth * widthFactor);
@@ -367,11 +367,11 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
             node.setAttributeNS(null, "stroke", "none");
         }
         
-        if(style.pointerEvents) {
+        if (style.pointerEvents) {
             node.setAttributeNS(null, "pointer-events", style.pointerEvents);
         }
                 
-        if(style.cursor != null) {
+        if (style.cursor != null) {
             node.setAttributeNS(null, "cursor", style.cursor);
         }
         
@@ -421,7 +421,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      */
     createNode: function(type, id) {
         var node = document.createElementNS(this.xmlns, type);
-        if(id) {
+        if (id) {
             node.setAttributeNS(null, "id", id);
         }
         return node;    
@@ -516,7 +516,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         var x = ((geometry.x - this.featureDx) / resolution + this.left);
         var y = (this.top - geometry.y / resolution);
 
-        if(this.inValidRange(x, y)) { 
+        if (this.inValidRange(x, y)) { 
             node.setAttributeNS(null, "cx", x);
             node.setAttributeNS(null, "cy", y);
             node.setAttributeNS(null, "r", radius);
@@ -541,7 +541,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      */ 
     drawLineString: function(node, geometry) {
         var componentsResult = this.getComponentsString(geometry.components);
-        if(componentsResult.path) {
+        if (componentsResult.path) {
             node.setAttributeNS(null, "points", componentsResult.path);
             return (componentsResult.complete ? node : null);  
         } else {
@@ -563,7 +563,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      */ 
     drawLinearRing: function(node, geometry) {
         var componentsResult = this.getComponentsString(geometry.components);
-        if(componentsResult.path) {
+        if (componentsResult.path) {
             node.setAttributeNS(null, "points", componentsResult.path);
             return (componentsResult.complete ? node : null);  
         } else {
@@ -593,7 +593,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
             linearRingResult = this.getComponentsString(
                 geometry.components[j].components, " ");
             path = linearRingResult.path;
-            if(path) {
+            if (path) {
                 d += " " + path;
                 complete = linearRingResult.complete && complete;
             } else {
@@ -601,7 +601,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
             }
         }
         d += " z";
-        if(draw) {
+        if (draw) {
             node.setAttributeNS(null, "d", d);
             node.setAttributeNS(null, "fill-rule", "evenodd");
             return complete ? node : null;
@@ -626,7 +626,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         var x = ((geometry.x - this.featureDx) / resolution + this.left);
         var y = (this.top - geometry.y / resolution);
 
-        if(this.inValidRange(x, y)) { 
+        if (this.inValidRange(x, y)) { 
             node.setAttributeNS(null, "x", x);
             node.setAttributeNS(null, "y", y);
             node.setAttributeNS(null, "width", geometry.width / resolution);
@@ -650,12 +650,12 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         var drawOutline = (!!style.labelOutlineWidth);
         // First draw text in halo color and size and overlay the
         // normal text afterwards
-        if(drawOutline) {
+        if (drawOutline) {
             var outlineStyle = OpenLayers.Util.extend({}, style);
             outlineStyle.fontColor = outlineStyle.labelOutlineColor;
             outlineStyle.fontStrokeColor = outlineStyle.labelOutlineColor;
             outlineStyle.fontStrokeWidth = style.labelOutlineWidth;
-            if(style.labelOutlineOpacity) {
+            if (style.labelOutlineOpacity) {
                 outlineStyle.fontOpacity = style.labelOutlineOpacity;
             }
             delete outlineStyle.labelOutlineWidth;
@@ -673,31 +673,31 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         label.setAttributeNS(null, "x", x);
         label.setAttributeNS(null, "y", -y);
 
-        if(style.fontColor) {
+        if (style.fontColor) {
             label.setAttributeNS(null, "fill", style.fontColor);
         }
-        if(style.fontStrokeColor) {
+        if (style.fontStrokeColor) {
             label.setAttributeNS(null, "stroke", style.fontStrokeColor);
         }
-        if(style.fontStrokeWidth) {
+        if (style.fontStrokeWidth) {
             label.setAttributeNS(null, "stroke-width", style.fontStrokeWidth);
         }
-        if(style.fontOpacity) {
+        if (style.fontOpacity) {
             label.setAttributeNS(null, "opacity", style.fontOpacity);
         }
-        if(style.fontFamily) {
+        if (style.fontFamily) {
             label.setAttributeNS(null, "font-family", style.fontFamily);
         }
-        if(style.fontSize) {
+        if (style.fontSize) {
             label.setAttributeNS(null, "font-size", style.fontSize);
         }
-        if(style.fontWeight) {
+        if (style.fontWeight) {
             label.setAttributeNS(null, "font-weight", style.fontWeight);
         }
-        if(style.fontStyle) {
+        if (style.fontStyle) {
             label.setAttributeNS(null, "font-style", style.fontStyle);
         }
-        if(style.labelSelect === true) {
+        if (style.labelSelect === true) {
             label.setAttributeNS(null, "pointer-events", "visible");
             label._featureId = featureId;
         } else {
@@ -707,7 +707,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         label.setAttributeNS(null, "text-anchor",
             OpenLayers.Renderer.SVG.LABEL_ALIGN[align[0]] || "middle");
 
-        if(OpenLayers.IS_GECKO === true) {
+        if (OpenLayers.IS_GECKO === true) {
             label.setAttributeNS(null, "dominant-baseline",
                 OpenLayers.Renderer.SVG.LABEL_ALIGN[align[1]] || "central");
         }
@@ -719,19 +719,19 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         }
         for (var i = 0; i < numRows; i++) {
             var tspan = this.nodeFactory(featureId + suffix + "_tspan_" + i, "tspan");
-            if(style.labelSelect === true) {
+            if (style.labelSelect === true) {
                 tspan._featureId = featureId;
                 tspan._geometry = location;
                 tspan._geometryClass = location.CLASS_NAME;
             }
-            if(OpenLayers.IS_GECKO === false) {
+            if (OpenLayers.IS_GECKO === false) {
                 tspan.setAttributeNS(null, "baseline-shift",
                     OpenLayers.Renderer.SVG.LABEL_VSHIFT[align[1]] || "-35%");
             }
             tspan.setAttribute("x", x);
-            if(i == 0) {
+            if (i == 0) {
                 var vfactor = OpenLayers.Renderer.SVG.LABEL_VFACTOR[align[1]];
-                if(vfactor == null) {
+                if (vfactor == null) {
                      vfactor = -.5;
                 }
                 tspan.setAttribute("dy", (vfactor*(numRows-1)) + "em");
@@ -739,12 +739,12 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
                 tspan.setAttribute("dy", "1em");
             }
             tspan.textContent = (labelRows[i] === '') ? ' ' : labelRows[i];
-            if(!tspan.parentNode) {
+            if (!tspan.parentNode) {
                 label.appendChild(tspan);
             }
         }
 
-        if(!label.parentNode) {
+        if (!label.parentNode) {
             this.textRoot.appendChild(label);
         }
     },
@@ -771,21 +771,21 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
             component = components[i];
             renderCmp.push(component);
             str = this.getShortString(component);
-            if(str) {
+            if (str) {
                 strings.push(str);
             } else {
                 // The current component is outside the valid range. Let's
                 // see if the previous or next component is inside the range.
                 // If so, add the coordinate of the intersection with the
                 // valid range bounds.
-                if(i > 0) {
-                    if(this.getShortString(components[i - 1])) {
+                if (i > 0) {
+                    if (this.getShortString(components[i - 1])) {
                         strings.push(this.clipLine(components[i],
                             components[i-1]));
                     }
                 }
-                if(i < len - 1) {
-                    if(this.getShortString(components[i + 1])) {
+                if (i < len - 1) {
+                    if (this.getShortString(components[i + 1])) {
                         strings.push(this.clipLine(components[i],
                             components[i+1]));
                     }
@@ -817,7 +817,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      *     the same point.
      */
     clipLine: function(badComponent, goodComponent) {
-        if(goodComponent.equals(badComponent)) {
+        if (goodComponent.equals(badComponent)) {
             return "";
         }
         var resolution = this.getResolution();
@@ -828,12 +828,12 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         var x2 = (badComponent.x - this.featureDx) / resolution + this.left;
         var y2 = this.top - badComponent.y / resolution;
         var k;
-        if(x2 < -maxX || x2 > maxX) {
+        if (x2 < -maxX || x2 > maxX) {
             k = (y2 - y1) / (x2 - x1);
             x2 = x2 < 0 ? -maxX : maxX;
             y2 = y1 + (x2 - x1) * k;
         }
-        if(y2 < -maxY || y2 > maxY) {
+        if (y2 < -maxY || y2 > maxY) {
             k = (x2 - x1) / (y2 - y1);
             y2 = y2 < 0 ? -maxY : maxY;
             x2 = x1 + (y2 - y1) * k;
@@ -855,7 +855,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         var x = ((point.x - this.featureDx) / resolution + this.left);
         var y = (this.top - point.y / resolution);
 
-        if(this.inValidRange(x, y)) { 
+        if (this.inValidRange(x, y)) { 
             return x + "," + y;
         } else {
             return false;
@@ -891,7 +891,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      * {DOMElement} - the imported symbol
      */      
     importSymbol: function (graphicName)  {
-        if(!this.defs) {
+        if (!this.defs) {
             // create svg defs tag
             this.defs = this.createDefs();
         }
@@ -899,12 +899,12 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         
         // check if symbol already exists in the defs
         var existing = document.getElementById(id);
-        if(existing != null) {
+        if (existing != null) {
             return existing;
         }
         
         var symbol = OpenLayers.Renderer.symbol[graphicName];
-        if(!symbol) {
+        if (!symbol) {
             throw new Error(graphicName + ' is not a valid symbol name');
         }
 
@@ -956,7 +956,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      */
     getFeatureIdFromEvent: function(evt) {
         var featureId = OpenLayers.Renderer.Elements.prototype.getFeatureIdFromEvent.apply(this, arguments);
-        if(!featureId) {
+        if (!featureId) {
             var target = evt.target;
             featureId = target.parentNode && target != this.rendererRoot ?
                 target.parentNode._featureId : undefined;

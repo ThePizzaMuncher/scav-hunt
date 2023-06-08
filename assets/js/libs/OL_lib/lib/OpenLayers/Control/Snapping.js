@@ -177,14 +177,14 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
         this.options = options || {}; // TODO: this could be done by the super
         
         // set the editable layer if provided
-        if(this.options.layer) {
+        if (this.options.layer) {
             this.setLayer(this.options.layer);
         }
         // configure target layers
         var defaults = OpenLayers.Util.extend({}, this.options.defaults);
         this.defaults = OpenLayers.Util.applyDefaults(defaults, this.DEFAULTS);
         this.setTargets(this.options.targets);
-        if(this.targets.length === 0 && this.layer) {
+        if (this.targets.length === 0 && this.layer) {
             this.addTargetLayer(this.layer);
         }
 
@@ -202,7 +202,7 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
      * layer - {<OpenLayers.Layer.Vector>}  The new editable layer.
      */
     setLayer: function(layer) {
-        if(this.active) {
+        if (this.active) {
             this.deactivate();
             this.layer = layer;
             this.activate();
@@ -220,11 +220,11 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
      */
     setTargets: function(targets) {
         this.targets = [];
-        if(targets && targets.length) {
+        if (targets && targets.length) {
             var target;
             for(var i=0, len=targets.length; i<len; ++i) {
                 target = targets[i];
-                if(target instanceof OpenLayers.Layer.Vector) {
+                if (target instanceof OpenLayers.Layer.Vector) {
                     this.addTargetLayer(target);
                 } else {
                     this.addTarget(target);
@@ -270,7 +270,7 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
         var target;
         for(var i=this.targets.length-1; i>=0; --i) {
             target = this.targets[i];
-            if(target.layer === layer) {
+            if (target.layer === layer) {
                 this.removeTarget(target);
             }
         }
@@ -298,8 +298,8 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
      */
     activate: function() {
         var activated = OpenLayers.Control.prototype.activate.call(this);
-        if(activated) {
-            if(this.layer && this.layer.events) {
+        if (activated) {
+            if (this.layer && this.layer.events) {
                 this.layer.events.on({
                     sketchstarted: this.onSketchModified,
                     sketchmodified: this.onSketchModified,
@@ -318,8 +318,8 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
      */
     deactivate: function() {
         var deactivated = OpenLayers.Control.prototype.deactivate.call(this);
-        if(deactivated) {
-            if(this.layer && this.layer.events) {
+        if (deactivated) {
+            if (this.layer && this.layer.events) {
                 this.layer.events.un({
                     sketchstarted: this.onSketchModified,
                     sketchmodified: this.onSketchModified,
@@ -382,14 +382,14 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
         for(var i=0, len=this.targets.length; i<len; ++i) {
             target = this.targets[i];
             result = this.testTarget(target, loc);
-            if(result) {
-                if(this.greedy) {
+            if (result) {
+                if (this.greedy) {
                     best = result;
                     best.target = target; 
                     snapped = true;
                     break;
                 } else {
-                    if((result.rank < best.rank) ||
+                    if ((result.rank < best.rank) ||
                        (result.rank === best.rank && result.dist < best.dist)) {
                         best = result;
                         best.target = target;
@@ -398,12 +398,12 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
                 }
             }
         }
-        if(snapped) {
+        if (snapped) {
             var proceed = this.events.triggerEvent("beforesnap", {
                 point: point, x: best.x, y: best.y, distance: best.dist,
                 layer: best.target.layer, snapType: this.precedence[best.rank]
             });
-            if(proceed !== false) {
+            if (proceed !== false) {
                 point.x = best.x;
                 point.y = best.y;
                 this.point = point;
@@ -417,7 +417,7 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
                 snapped = false;
             }
         }
-        if(this.point && !snapped) {
+        if (this.point && !snapped) {
             point.x = loc.x;
             point.y = loc.y;
             this.point = null;
@@ -439,13 +439,13 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
      */
     testTarget: function(target, loc) {
         var resolution = this.layer.map.getResolution();
-        if("minResolution" in target) {
-            if(resolution < target.minResolution) {
+        if ("minResolution" in target) {
+            if (resolution < target.minResolution) {
                 return null;
             }
         }
-        if("maxResolution" in target) {
-            if(resolution >= target.maxResolution) {
+        if ("maxResolution" in target) {
+            if (resolution >= target.maxResolution) {
                 return null;
             }
         }
@@ -468,17 +468,17 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
         var ll = new OpenLayers.LonLat(loc.x, loc.y);
         for(var i=0, len=features.length; i<len; ++i) {
             feature = features[i];
-            if(feature !== this.feature && !feature._sketch &&
+            if (feature !== this.feature && !feature._sketch &&
                feature.state !== OpenLayers.State.DELETE &&
                (!target.filter || target.filter.evaluate(feature))) {
-                if(feature.atPoint(ll, maxTolerance, maxTolerance)) {
+                if (feature.atPoint(ll, maxTolerance, maxTolerance)) {
                     for(var j=0, stop=Math.min(result.rank+1, numTypes); j<stop; ++j) {
                         type = this.precedence[j];
-                        if(target[type]) {
-                            if(type === "edge") {
+                        if (target[type]) {
+                            if (type === "edge") {
                                 closest = feature.geometry.distanceTo(loc, {details: true});
                                 dist = closest.distance;
-                                if(dist <= tolerance[type] && dist < result.dist) {
+                                if (dist <= tolerance[type] && dist < result.dist) {
                                     result = {
                                         rank: j, dist: dist,
                                         x: closest.x0, y: closest.y0 // closest coords on feature
@@ -494,7 +494,7 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
                                 for(var k=0, klen=vertices.length; k<klen; ++k) {
                                     vertex = vertices[k];
                                     dist = vertex.distanceTo(loc);
-                                    if(dist <= tolerance[type] &&
+                                    if (dist <= tolerance[type] &&
                                        (j < result.rank || (j === result.rank && dist < result.dist))) {
                                         result = {
                                             rank: j, dist: dist,
@@ -504,7 +504,7 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
                                         found = true;
                                     }
                                 }
-                                if(found) {
+                                if (found) {
                                     // don't look for lower precedence types for this feature
                                     break;
                                 }
@@ -531,12 +531,12 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
      * {Number} A tolerance value in map units.
      */
     getGeoTolerance: function(tolerance, resolution) {
-        if(resolution !== this.resolution) {
+        if (resolution !== this.resolution) {
             this.resolution = resolution;
             this.geoToleranceCache = {};
         }
         var geoTolerance = this.geoToleranceCache[tolerance];
-        if(geoTolerance === undefined) {
+        if (geoTolerance === undefined) {
             geoTolerance = tolerance * resolution;
             this.geoToleranceCache[tolerance] = geoTolerance;
         }
@@ -548,7 +548,7 @@ OpenLayers.Control.Snapping = OpenLayers.Class(OpenLayers.Control, {
      * Clean up the control.
      */
     destroy: function() {
-        if(this.active) {
+        if (this.active) {
             this.deactivate(); // TODO: this should be handled by the super
         }
         delete this.layer;

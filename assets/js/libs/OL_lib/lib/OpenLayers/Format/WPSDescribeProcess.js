@@ -75,10 +75,10 @@ OpenLayers.Format.WPSDescribeProcess = OpenLayers.Class(
      * {Object}
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
         var info = {};
@@ -144,7 +144,7 @@ OpenLayers.Format.WPSDescribeProcess = OpenLayers.Class(
                 this.readChildNodes(node, input.boundingBoxData);
             },
             "CRS": function(node, obj) {
-                if(!obj.CRSs) {
+                if (!obj.CRSs) {
                     obj.CRSs = {};
                 }
                 obj.CRSs[this.getChildValue(node)] = true;
@@ -168,7 +168,7 @@ OpenLayers.Format.WPSDescribeProcess = OpenLayers.Class(
             "Format": function(node, obj) {
                 var format = {};
                 this.readChildNodes(node, format);
-                if(!obj.formats) {
+                if (!obj.formats) {
                     obj.formats = {};
                 }
                 obj.formats[format.mimeType] = true;

@@ -149,7 +149,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 for(var i=0, len=layer.userStyles.length; i<len; ++i) {
                     layer.userStyles[i].layerName = layer.name;
                 }
-                if(OpenLayers.Util.isArray(sld.namedLayers)) {
+                if (OpenLayers.Util.isArray(sld.namedLayers)) {
                     sld.namedLayers.push(layer);                
                 } else {
                     sld.namedLayers[layer.name] = layer;
@@ -165,7 +165,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 this.featureTypeCounter = -1;
                 this.readChildNodes(node, obj);
                 var style;
-                if(this.multipleSymbolizers) {
+                if (this.multipleSymbolizers) {
                     delete obj.defaultsPerSymbolizer;
                     style = new OpenLayers.Style2(obj);
                 } else {
@@ -174,7 +174,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 layer.userStyles.push(style);
             },
             "IsDefault": function(node, style) {
-                if(this.getChildValue(node) == "1") {
+                if (this.getChildValue(node) == "1") {
                     style.isDefault = true;
                 }
             },
@@ -184,13 +184,13 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                     rules: this.multipleSymbolizers ? style.rules : []
                 };
                 this.readChildNodes(node, obj);
-                if(!this.multipleSymbolizers) {
+                if (!this.multipleSymbolizers) {
                     style.rules = obj.rules;
                 }
             },
             "Rule": function(node, obj) {
                 var config;
-                if(this.multipleSymbolizers) {
+                if (this.multipleSymbolizers) {
                     config = {symbolizers: []};
                 }
                 var rule = new OpenLayers.Rule(config);
@@ -209,7 +209,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             "TextSymbolizer": function(node, rule) {
                 var config = {};
                 this.readChildNodes(node, config);
-                if(this.multipleSymbolizers) {
+                if (this.multipleSymbolizers) {
                     config.zIndex = this.featureTypeCounter;
                     rule.symbolizers.push(
                         new OpenLayers.Symbolizer.Text(config)
@@ -231,18 +231,18 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 var labelAlign,
                     x = symbolizer.labelAnchorPointX,
                     y = symbolizer.labelAnchorPointY;
-                if(x <= 1/3) {
+                if (x <= 1/3) {
                     labelAlign = 'l';
-                } else if(x > 1/3 && x < 2/3) {
+                } else if (x > 1/3 && x < 2/3) {
                     labelAlign = 'c';
-                } else if(x >= 2/3) {
+                } else if (x >= 2/3) {
                     labelAlign = 'r';
                 }
-                if(y <= 1/3) {
+                if (y <= 1/3) {
                     labelAlign += 'b';
-                } else if(y > 1/3 && y < 2/3) {
+                } else if (y > 1/3 && y < 2/3) {
                     labelAlign += 'm';
-                } else if(y >= 2/3) {
+                } else if (y >= 2/3) {
                     labelAlign += 't';
                 }
                 config.labelAlign = labelAlign;
@@ -254,14 +254,14 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             "AnchorPointX": function(node, symbolizer) {
                 var labelAnchorPointX = this.readers.ogc._expression.call(this, node);
                 // always string, could be empty string
-                if(labelAnchorPointX) {
+                if (labelAnchorPointX) {
                     symbolizer.labelAnchorPointX = labelAnchorPointX;
                 }
             },
             "AnchorPointY": function(node, symbolizer) {
                 var labelAnchorPointY = this.readers.ogc._expression.call(this, node);
                 // always string, could be empty string
-                if(labelAnchorPointY) {
+                if (labelAnchorPointY) {
                     symbolizer.labelAnchorPointY = labelAnchorPointY;
                 }
             },
@@ -271,14 +271,14 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             "DisplacementX": function(node, symbolizer) {
                 var labelXOffset = this.readers.ogc._expression.call(this, node);
                 // always string, could be empty string
-                if(labelXOffset) {
+                if (labelXOffset) {
                     symbolizer.labelXOffset = labelXOffset;
                 }
             },
             "DisplacementY": function(node, symbolizer) {
                 var labelYOffset = this.readers.ogc._expression.call(this, node);
                 // always string, could be empty string
-                if(labelYOffset) {
+                if (labelYOffset) {
                     symbolizer.labelYOffset = labelYOffset;
                 }
             },
@@ -288,13 +288,13 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             "PerpendicularOffset": function(node, symbolizer) {
                 var labelPerpendicularOffset = this.readers.ogc._expression.call(this, node);
                 // always string, could be empty string
-                if(labelPerpendicularOffset) {
+                if (labelPerpendicularOffset) {
                     symbolizer.labelPerpendicularOffset = labelPerpendicularOffset;
                 }
             },
             "Label": function(node, symbolizer) {
                 var value = this.readers.ogc._expression.call(this, node);
-                if(value) {
+                if (value) {
                     symbolizer.label = value;
                 }
             },
@@ -311,7 +311,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             },
             "Radius": function(node, symbolizer) {
                 var radius = this.readers.ogc._expression.call(this, node);
-                if(radius != null) {
+                if (radius != null) {
                     // radius is only used for halo
                     symbolizer.haloRadius = radius;
                 }
@@ -319,7 +319,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             "RasterSymbolizer": function(node, rule) {
                 var config = {};
                 this.readChildNodes(node, config);
-                if(this.multipleSymbolizers) {
+                if (this.multipleSymbolizers) {
                     config.zIndex = this.featureTypeCounter;
                     rule.symbolizers.push(
                         new OpenLayers.Symbolizer.Raster(config)
@@ -351,7 +351,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             "LineSymbolizer": function(node, rule) {
                 var config = {};
                 this.readChildNodes(node, config);
-                if(this.multipleSymbolizers) {
+                if (this.multipleSymbolizers) {
                     config.zIndex = this.featureTypeCounter;
                     rule.symbolizers.push(
                         new OpenLayers.Symbolizer.Line(config)
@@ -367,11 +367,11 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                     fill: false,
                     stroke: false
                 };
-                if(!this.multipleSymbolizers) {
+                if (!this.multipleSymbolizers) {
                     config = rule.symbolizer["Polygon"] || config;
                 }
                 this.readChildNodes(node, config);
-                if(this.multipleSymbolizers) {
+                if (this.multipleSymbolizers) {
                     config.zIndex = this.featureTypeCounter;
                     rule.symbolizers.push(
                         new OpenLayers.Symbolizer.Polygon(config)
@@ -386,11 +386,11 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                     stroke: false,
                     graphic: false
                 };
-                if(!this.multipleSymbolizers) {
+                if (!this.multipleSymbolizers) {
                     config = rule.symbolizer["Point"] || config;
                 }
                 this.readChildNodes(node, config);
-                if(this.multipleSymbolizers) {
+                if (this.multipleSymbolizers) {
                     config.zIndex = this.featureTypeCounter;
                     rule.symbolizers.push(
                         new OpenLayers.Symbolizer.Point(config)
@@ -412,18 +412,18 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 var symProperty = this.cssMap[cssProperty];
                 // for labels, fill should map to fontColor and fill-opacity 
                 // to fontOpacity
-                if(symbolizer.label) {
-                    if(cssProperty === 'fill') {
+                if (symbolizer.label) {
+                    if (cssProperty === 'fill') {
                         symProperty = "fontColor";
-                    } else if(cssProperty === 'fill-opacity') {
+                    } else if (cssProperty === 'fill-opacity') {
                         symProperty = "fontOpacity";
                     }
                 }
-                if(symProperty) {
+                if (symProperty) {
                     // Limited support for parsing of OGC expressions
                     var value = this.readers.ogc._expression.call(this, node);
                     // always string, could be an empty string
-                    if(value) {
+                    if (value) {
                         symbolizer[symProperty] = value;
                     }
                 }
@@ -443,27 +443,27 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 for(var i=0, len=properties.length; i<len; ++i) {
                     prop = properties[i];
                     value = graphic[prop];
-                    if(value != undefined) {
+                    if (value != undefined) {
                         symbolizer[prop] = value;
                     }
                 }
                 // set other generic properties with specific graphic property names
-                if(graphic.opacity != undefined) {
+                if (graphic.opacity != undefined) {
                     symbolizer.graphicOpacity = graphic.opacity;
                 }
-                if(graphic.size != undefined) {
+                if (graphic.size != undefined) {
                     var pointRadius = graphic.size / 2;
-                    if(isNaN(pointRadius)) {
+                    if (isNaN(pointRadius)) {
                         // likely a property name
                         symbolizer.graphicWidth = graphic.size;
                     } else {
                         symbolizer.pointRadius = graphic.size / 2;
                     }
                 }
-                if(graphic.href != undefined) {
+                if (graphic.href != undefined) {
                     symbolizer.externalGraphic = graphic.href;
                 }
-                if(graphic.rotation != undefined) {
+                if (graphic.rotation != undefined) {
                     symbolizer.rotation = graphic.rotation;
                 }
             },
@@ -479,21 +479,21 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             "Opacity": function(node, obj) {
                 var opacity = this.readers.ogc._expression.call(this, node);
                 // always string, could be empty string
-                if(opacity) {
+                if (opacity) {
                     obj.opacity = opacity;
                 }
             },
             "Size": function(node, obj) {
                 var size = this.readers.ogc._expression.call(this, node);
                 // always string, could be empty string
-                if(size) {
+                if (size) {
                     obj.size = size;
                 }
             },
             "Rotation": function(node, obj) {
                 var rotation = this.readers.ogc._expression.call(this, node);
                 // always string, could be empty string
-                if(rotation) {
+                if (rotation) {
                     obj.rotation = rotation;
                 }
             },
@@ -541,7 +541,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
     getCssProperty: function(sym) {
         var css = null;
         for(var prop in this.cssMap) {
-            if(this.cssMap[prop] == sym) {
+            if (this.cssMap[prop] == sym) {
                 css = prop;
                 break;
             }
@@ -565,7 +565,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
     getGraphicFormat: function(href) {
         var format, regex;
         for(var key in this.graphicFormats) {
-            if(this.graphicFormats[key].test(href)) {
+            if (this.graphicFormats[key].test(href)) {
                 format = key;
                 break;
             }
@@ -624,7 +624,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 for(var i=1, len=tokens.length; i<len; i++) {
                     item = tokens[i];
                     last = item.indexOf("}"); 
-                    if(last > 0) {
+                    if (last > 0) {
                         this.writeNode(
                             "ogc:PropertyName",
                             {property: item.substring(0, last)},
@@ -657,20 +657,20 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 root.setAttribute("xmlns:gml", this.namespaces.gml);
 
                 // add in optional name
-                if(sld.name) {
+                if (sld.name) {
                     this.writeNode("Name", sld.name, root);
                 }
                 // add in optional title
-                if(sld.title) {
+                if (sld.title) {
                     this.writeNode("Title", sld.title, root);
                 }
                 // add in optional description
-                if(sld.description) {
+                if (sld.description) {
                     this.writeNode("Abstract", sld.description, root);
                 }
                 // add in named layers
                 // allow namedLayers to be an array
-                if(OpenLayers.Util.isArray(sld.namedLayers)) {
+                if (OpenLayers.Util.isArray(sld.namedLayers)) {
                     for(var i=0, len=sld.namedLayers.length; i<len; ++i) {
                         this.writeNode("NamedLayer", sld.namedLayers[i], root);
                     }
@@ -701,7 +701,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 // optional sld:LayerFeatureConstraints here
 
                 // add in named styles
-                if(layer.namedStyles) {
+                if (layer.namedStyles) {
                     for(var i=0, len=layer.namedStyles.length; i<len; ++i) {
                         this.writeNode(
                             "NamedStyle", layer.namedStyles[i], node
@@ -710,7 +710,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 }
                 
                 // add in user styles
-                if(layer.userStyles) {
+                if (layer.userStyles) {
                     for(var i=0, len=layer.userStyles.length; i<len; ++i) {
                         this.writeNode(
                             "UserStyle", layer.userStyles[i], node
@@ -729,25 +729,25 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 var node = this.createElementNSPlus("sld:UserStyle");
 
                 // add in optional name
-                if(style.name) {
+                if (style.name) {
                     this.writeNode("Name", style.name, node);
                 }
                 // add in optional title
-                if(style.title) {
+                if (style.title) {
                     this.writeNode("Title", style.title, node);
                 }
                 // add in optional description
-                if(style.description) {
+                if (style.description) {
                     this.writeNode("Abstract", style.description, node);
                 }
                 
                 // add isdefault
-                if(style.isDefault) {
+                if (style.isDefault) {
                     this.writeNode("IsDefault", style.isDefault, node);
                 }
                 
                 // add FeatureTypeStyles
-                if(this.multipleSymbolizers && style.rules) {
+                if (this.multipleSymbolizers && style.rules) {
                     // group style objects by symbolizer zIndex
                     var rulesByZ = {
                         0: []
@@ -756,12 +756,12 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                     var rule, ruleMap, symbolizer, zIndex, clone;
                     for (var i=0, ii=style.rules.length; i<ii; ++i) {
                         rule = style.rules[i];
-                        if(rule.symbolizers) {
+                        if (rule.symbolizers) {
                             ruleMap = {};
                             for (var j=0, jj=rule.symbolizers.length; j<jj; ++j) {
                                 symbolizer = rule.symbolizers[j];
                                 zIndex = symbolizer.zIndex;
-                                if(!(zIndex in ruleMap)) {
+                                if (!(zIndex in ruleMap)) {
                                     clone = rule.clone();
                                     clone.symbolizers = [];
                                     ruleMap[zIndex] = clone;
@@ -769,7 +769,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                                 ruleMap[zIndex].symbolizers.push(symbolizer.clone());
                             }
                             for (zIndex in ruleMap) {
-                                if(!(zIndex in rulesByZ)) {
+                                if (!(zIndex in rulesByZ)) {
                                     zValues.push(zIndex);
                                     rulesByZ[zIndex] = [];
                                 }
@@ -785,7 +785,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                     var rules;
                     for (var i=0, ii=zValues.length; i<ii; ++i) {
                         rules = rulesByZ[zValues[i]];
-                        if(rules.length > 0) {
+                        if (rules.length > 0) {
                             clone = style.clone();
                             clone.rules = rulesByZ[zValues[i]];
                             this.writeNode("FeatureTypeStyle", clone, node);
@@ -820,41 +820,41 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 var node = this.createElementNSPlus("sld:Rule");
 
                 // add in optional name
-                if(rule.name) {
+                if (rule.name) {
                     this.writeNode("Name", rule.name, node);
                 }
                 // add in optional title
-                if(rule.title) {
+                if (rule.title) {
                     this.writeNode("Title", rule.title, node);
                 }
                 // add in optional description
-                if(rule.description) {
+                if (rule.description) {
                     this.writeNode("Abstract", rule.description, node);
                 }
                 
                 // add in LegendGraphic here
                 
                 // add in optional filters
-                if(rule.elseFilter) {
+                if (rule.elseFilter) {
                     this.writeNode("ElseFilter", null, node);
-                } else if(rule.filter) {
+                } else if (rule.filter) {
                     this.writeNode("ogc:Filter", rule.filter, node);
                 }
                 
                 // add in scale limits
-                if(rule.minScaleDenominator != undefined) {
+                if (rule.minScaleDenominator != undefined) {
                     this.writeNode(
                         "MinScaleDenominator", rule.minScaleDenominator, node
                     );
                 }
-                if(rule.maxScaleDenominator != undefined) {
+                if (rule.maxScaleDenominator != undefined) {
                     this.writeNode(
                         "MaxScaleDenominator", rule.maxScaleDenominator, node
                     );
                 }
                 
                 var type, symbolizer;
-                if(this.multipleSymbolizers && rule.symbolizers) {
+                if (this.multipleSymbolizers && rule.symbolizers) {
                     var symbolizer;
                     for (var i=0, ii=rule.symbolizers.length; i<ii; ++i) {
                         symbolizer = rule.symbolizers[i];
@@ -869,7 +869,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                     for(var i=0, len=types.length; i<len; ++i) {
                         type = types[i];
                         symbolizer = rule.symbolizer[type];
-                        if(symbolizer) {
+                        if (symbolizer) {
                             this.writeNode(
                                 type + "Symbolizer", symbolizer, node
                             );
@@ -904,28 +904,28 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 // GraphicStroke here
 
                 // add in CssParameters
-                if(symbolizer.strokeColor != undefined) {
+                if (symbolizer.strokeColor != undefined) {
                     this.writeNode(
                         "CssParameter",
                         {symbolizer: symbolizer, key: "strokeColor"},
                         node
                     );
                 }
-                if(symbolizer.strokeOpacity != undefined) {
+                if (symbolizer.strokeOpacity != undefined) {
                     this.writeNode(
                         "CssParameter",
                         {symbolizer: symbolizer, key: "strokeOpacity"},
                         node
                     );
                 }
-                if(symbolizer.strokeWidth != undefined) {
+                if (symbolizer.strokeWidth != undefined) {
                     this.writeNode(
                         "CssParameter",
                         {symbolizer: symbolizer, key: "strokeWidth"},
                         node
                     );
                 }
-                if(symbolizer.strokeDashstyle != undefined && symbolizer.strokeDashstyle !== "solid") {
+                if (symbolizer.strokeDashstyle != undefined && symbolizer.strokeDashstyle !== "solid") {
                     // assumes valid stroke-dasharray value
                     this.writeNode(
                         "CssParameter", 
@@ -933,7 +933,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                         node
                     );
                 }
-                if(symbolizer.strokeLinecap != undefined) {
+                if (symbolizer.strokeLinecap != undefined) {
                     this.writeNode(
                         "CssParameter", 
                         {symbolizer: symbolizer, key: "strokeLinecap"},
@@ -952,18 +952,18 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             "TextSymbolizer": function(symbolizer) {
                 var node = this.createElementNSPlus("sld:TextSymbolizer");
                 // add in optional Label
-                if(symbolizer.label != null) {
+                if (symbolizer.label != null) {
                     this.writeNode("Label", symbolizer.label, node);
                 }
                 // add in optional Font
-                if(symbolizer.fontFamily != null ||
+                if (symbolizer.fontFamily != null ||
                     symbolizer.fontSize != null ||
                     symbolizer.fontWeight != null ||
                     symbolizer.fontStyle != null) {
                         this.writeNode("Font", symbolizer, node);
                 }
                 // add in optional LabelPlacement
-                if(symbolizer.labelAnchorPointX != null ||
+                if (symbolizer.labelAnchorPointX != null ||
                     symbolizer.labelAnchorPointY != null || 
                     symbolizer.labelAlign != null ||
                     symbolizer.labelXOffset != null ||
@@ -973,13 +973,13 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                         this.writeNode("LabelPlacement", symbolizer, node);
                 }
                 // add in optional Halo
-                if(symbolizer.haloRadius != null ||
+                if (symbolizer.haloRadius != null ||
                     symbolizer.haloColor != null ||
                     symbolizer.haloOpacity != null) {
                         this.writeNode("Halo", symbolizer, node);
                 }
                 // add in optional Fill
-                if(symbolizer.fontColor != null ||
+                if (symbolizer.fontColor != null ||
                    symbolizer.fontOpacity != null) {
                     this.writeNode("Fill", {
                         fillColor: symbolizer.fontColor,
@@ -991,7 +991,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             "LabelPlacement": function(symbolizer) {
                 var node = this.createElementNSPlus("sld:LabelPlacement");
                 // PointPlacement and LinePlacement are choices, so don't output both
-                if((symbolizer.labelAnchorPointX != null ||
+                if ((symbolizer.labelAnchorPointX != null ||
                     symbolizer.labelAnchorPointY != null ||
                     symbolizer.labelAlign != null ||
                     symbolizer.labelXOffset != null ||
@@ -1000,7 +1000,7 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                     symbolizer.labelPerpendicularOffset == null) {
                         this.writeNode("PointPlacement", symbolizer, node);
                 }
-                if(symbolizer.labelPerpendicularOffset != null) {
+                if (symbolizer.labelPerpendicularOffset != null) {
                     this.writeNode("LinePlacement", symbolizer, node);
                 }
                 return node;
@@ -1017,16 +1017,16 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             },
             "PointPlacement": function(symbolizer) {
                 var node = this.createElementNSPlus("sld:PointPlacement");
-                if(symbolizer.labelAnchorPointX != null ||
+                if (symbolizer.labelAnchorPointX != null ||
                     symbolizer.labelAnchorPointY != null ||
                     symbolizer.labelAlign != null) {
                         this.writeNode("AnchorPoint", symbolizer, node);
                 }
-                if(symbolizer.labelXOffset != null ||
+                if (symbolizer.labelXOffset != null ||
                     symbolizer.labelYOffset != null) {
                         this.writeNode("Displacement", symbolizer, node);
                 }
-                if(symbolizer.labelRotation != null) {
+                if (symbolizer.labelRotation != null) {
                     this.writeNode("Rotation", symbolizer.labelRotation, node);
                 }
                 return node;
@@ -1035,27 +1035,27 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 var node = this.createElementNSPlus("sld:AnchorPoint");
                 var x = symbolizer.labelAnchorPointX,
                     y = symbolizer.labelAnchorPointY;
-                if(x != null) {
+                if (x != null) {
                     this.writeNode("AnchorPointX", x, node);
                 }
-                if(y != null) {
+                if (y != null) {
                     this.writeNode("AnchorPointY", y, node);
                 }
-                if(x == null && y == null) {
+                if (x == null && y == null) {
                     var xAlign = symbolizer.labelAlign.substr(0, 1),
                         yAlign = symbolizer.labelAlign.substr(1, 1);
-                    if(xAlign === "l") {
+                    if (xAlign === "l") {
                         x = 0;
-                    } else if(xAlign === "c") {
+                    } else if (xAlign === "c") {
                         x = 0.5;
-                    } else if(xAlign === "r") {
+                    } else if (xAlign === "r") {
                         x = 1;
                     }
-                    if(yAlign === "b") {
+                    if (yAlign === "b") {
                         y = 0;
-                    } else if(yAlign === "m") {
+                    } else if (yAlign === "m") {
                         y = 0.5;
-                    } else if(yAlign === "t") {
+                    } else if (yAlign === "t") {
                         y = 1;
                     }
                     this.writeNode("AnchorPointX", x, node);
@@ -1075,10 +1075,10 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             },
             "Displacement": function(symbolizer) {
                 var node = this.createElementNSPlus("sld:Displacement");
-                if(symbolizer.labelXOffset != null) {
+                if (symbolizer.labelXOffset != null) {
                     this.writeNode("DisplacementX", symbolizer.labelXOffset, node);
                 }
-                if(symbolizer.labelYOffset != null) {
+                if (symbolizer.labelYOffset != null) {
                     this.writeNode("DisplacementY", symbolizer.labelYOffset, node);
                 }
                 return node;
@@ -1096,28 +1096,28 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             "Font": function(symbolizer) {
                 var node = this.createElementNSPlus("sld:Font");
                 // add in CssParameters
-                if(symbolizer.fontFamily) {
+                if (symbolizer.fontFamily) {
                     this.writeNode(
                         "CssParameter",
                         {symbolizer: symbolizer, key: "fontFamily"},
                         node
                     );
                 }
-                if(symbolizer.fontSize) {
+                if (symbolizer.fontSize) {
                     this.writeNode(
                         "CssParameter",
                         {symbolizer: symbolizer, key: "fontSize"},
                         node
                     );
                 }
-                if(symbolizer.fontWeight) {
+                if (symbolizer.fontWeight) {
                     this.writeNode(
                         "CssParameter",
                         {symbolizer: symbolizer, key: "fontWeight"},
                         node
                     );
                 }
-                if(symbolizer.fontStyle) {
+                if (symbolizer.fontStyle) {
                     this.writeNode(
                         "CssParameter",
                         {symbolizer: symbolizer, key: "fontStyle"},
@@ -1133,10 +1133,10 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             },
             "Halo": function(symbolizer) {
                 var node = this.createElementNSPlus("sld:Halo");
-                if(symbolizer.haloRadius) {
+                if (symbolizer.haloRadius) {
                     this.writeNode("Radius", symbolizer.haloRadius, node);
                 }
-                if(symbolizer.haloColor || symbolizer.haloOpacity) {
+                if (symbolizer.haloColor || symbolizer.haloOpacity) {
                     this.writeNode("Fill", {
                         fillColor: symbolizer.haloColor,
                         fillOpacity: symbolizer.haloOpacity
@@ -1151,20 +1151,20 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             },
             "RasterSymbolizer": function(symbolizer) {
                 var node = this.createElementNSPlus("sld:RasterSymbolizer");
-                if(symbolizer.geometry) {
+                if (symbolizer.geometry) {
                     this.writeNode("Geometry", symbolizer.geometry, node);
                 }
-                if(symbolizer.opacity) {
+                if (symbolizer.opacity) {
                     this.writeNode("Opacity", symbolizer.opacity, node);
                 }
-                if(symbolizer.colorMap) {
+                if (symbolizer.colorMap) {
                     this.writeNode("ColorMap", symbolizer.colorMap, node);
                 }
                 return node;
             },
             "Geometry": function(geometry) {
                 var node = this.createElementNSPlus("sld:Geometry");
-                if(geometry.property) {
+                if (geometry.property) {
                     this.writeNode("ogc:PropertyName", geometry, node);
                 }
                 return node;
@@ -1189,10 +1189,10 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             },
             "PolygonSymbolizer": function(symbolizer) {
                 var node = this.createElementNSPlus("sld:PolygonSymbolizer");
-                if(symbolizer.fill !== false) {
+                if (symbolizer.fill !== false) {
                     this.writeNode("Fill", symbolizer, node);
                 }
-                if(symbolizer.stroke !== false) {
+                if (symbolizer.stroke !== false) {
                     this.writeNode("Stroke", symbolizer, node);
                 }
                 return node;
@@ -1203,14 +1203,14 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
                 // GraphicFill here
                 
                 // add in CssParameters
-                if(symbolizer.fillColor) {
+                if (symbolizer.fillColor) {
                     this.writeNode(
                         "CssParameter",
                         {symbolizer: symbolizer, key: "fillColor"},
                         node
                     );
                 }
-                if(symbolizer.fillOpacity != null) {
+                if (symbolizer.fillOpacity != null) {
                     this.writeNode(
                         "CssParameter",
                         {symbolizer: symbolizer, key: "fillOpacity"},
@@ -1226,21 +1226,21 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             },
             "Graphic": function(symbolizer) {
                 var node = this.createElementNSPlus("sld:Graphic");
-                if(symbolizer.externalGraphic != undefined) {
+                if (symbolizer.externalGraphic != undefined) {
                     this.writeNode("ExternalGraphic", symbolizer, node);
                 } else {
                     this.writeNode("Mark", symbolizer, node);
                 }
                 
-                if(symbolizer.graphicOpacity != undefined) {
+                if (symbolizer.graphicOpacity != undefined) {
                     this.writeNode("Opacity", symbolizer.graphicOpacity, node);
                 }
-                if(symbolizer.pointRadius != undefined) {
+                if (symbolizer.pointRadius != undefined) {
                     this.writeNode("Size", symbolizer.pointRadius * 2, node);
-                } else if(symbolizer.graphicWidth != undefined) {
+                } else if (symbolizer.graphicWidth != undefined) {
                     this.writeNode("Size", symbolizer.graphicWidth, node);
                 }
-                if(symbolizer.rotation != undefined) {
+                if (symbolizer.rotation != undefined) {
                     this.writeNode("Rotation", symbolizer.rotation, node);
                 }
                 return node;
@@ -1257,13 +1257,13 @@ OpenLayers.Format.SLD.v1 = OpenLayers.Class(OpenLayers.Format.Filter.v1_0_0, {
             },
             "Mark": function(symbolizer) {
                 var node = this.createElementNSPlus("sld:Mark");
-                if(symbolizer.graphicName) {
+                if (symbolizer.graphicName) {
                     this.writeNode("WellKnownName", symbolizer.graphicName, node);
                 }
-                if(symbolizer.fill !== false) {
+                if (symbolizer.fill !== false) {
                     this.writeNode("Fill", symbolizer, node);
                 }
-                if(symbolizer.stroke !== false) {
+                if (symbolizer.stroke !== false) {
                     this.writeNode("Stroke", symbolizer, node);
                 }
                 return node;

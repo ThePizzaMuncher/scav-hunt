@@ -155,7 +155,7 @@ OpenLayers.WPSClient = OpenLayers.Class({
             server: serverID,
             identifier: processID
         });
-        if(!this.lazy) {
+        if (!this.lazy) {
             process.describe();
         }
         return process;
@@ -172,8 +172,8 @@ OpenLayers.WPSClient = OpenLayers.Class({
      */
     describeProcess: function(serverID, processID, callback, scope) {
         var server = this.servers[serverID];
-        if(!server.processDescription[processID]) {
-            if(!(processID in server.processDescription)) {
+        if (!server.processDescription[processID]) {
+            if (!(processID in server.processDescription)) {
                 // set to null so we know a describeFeature request is pending
                 server.processDescription[processID] = null;
                 OpenLayers.Request.GET({
@@ -196,7 +196,7 @@ OpenLayers.WPSClient = OpenLayers.Class({
             } else {
                 // pending request
                 this.events.register('describeprocess', this, function describe(evt) {
-                    if(evt.identifier === processID) {
+                    if (evt.identifier === processID) {
                         this.events.unregister('describeprocess', this, describe);
                         callback.call(scope, evt.raw);
                     }

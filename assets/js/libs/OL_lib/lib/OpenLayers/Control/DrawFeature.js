@@ -96,11 +96,11 @@ OpenLayers.Control.DrawFeature = OpenLayers.Class(OpenLayers.Control, {
                 renderers: layer.renderers, rendererOptions: layer.rendererOptions
             }
         );
-        if(!("multi" in this.handlerOptions)) {
+        if (!("multi" in this.handlerOptions)) {
             this.handlerOptions.multi = this.multi;
         }
         var sketchStyle = this.layer.styleMap && this.layer.styleMap.styles.temporary;
-        if(sketchStyle) {
+        if (sketchStyle) {
             this.handlerOptions.layerOptions = OpenLayers.Util.applyDefaults(
                 this.handlerOptions.layerOptions,
                 {styleMap: new OpenLayers.StyleMap({"default": sketchStyle})}
@@ -117,7 +117,7 @@ OpenLayers.Control.DrawFeature = OpenLayers.Class(OpenLayers.Control, {
         var proceed = this.layer.events.triggerEvent(
             "sketchcomplete", {feature: feature}
         );
-        if(proceed !== false) {
+        if (proceed !== false) {
             feature.state = OpenLayers.State.INSERT;
             this.layer.addFeatures([feature]);
             this.featureAdded(feature);
@@ -134,7 +134,7 @@ OpenLayers.Control.DrawFeature = OpenLayers.Class(OpenLayers.Control, {
      * y - {Number} The y-coordinate of the point.
      */
     insertXY: function(x, y) {
-        if(this.handler && this.handler.line) {
+        if (this.handler && this.handler.line) {
             this.handler.insertXY(x, y);
         }
     },
@@ -148,7 +148,7 @@ OpenLayers.Control.DrawFeature = OpenLayers.Class(OpenLayers.Control, {
      * dy - {Number} The y-coordinate offset of the point.
      */
     insertDeltaXY: function(dx, dy) {
-        if(this.handler && this.handler.line) {
+        if (this.handler && this.handler.line) {
             this.handler.insertDeltaXY(dx, dy);
         }
     },
@@ -162,7 +162,7 @@ OpenLayers.Control.DrawFeature = OpenLayers.Class(OpenLayers.Control, {
      * length - {Number} Distance from the previously drawn point.
      */
     insertDirectionLength: function(direction, length) {
-        if(this.handler && this.handler.line) {
+        if (this.handler && this.handler.line) {
             this.handler.insertDirectionLength(direction, length);
         }
     },
@@ -178,7 +178,7 @@ OpenLayers.Control.DrawFeature = OpenLayers.Class(OpenLayers.Control, {
      * length - {Number} Distance from the previously drawn point.
      */
     insertDeflectionLength: function(deflection, length) {
-        if(this.handler && this.handler.line) {
+        if (this.handler && this.handler.line) {
             this.handler.insertDeflectionLength(deflection, length);
         }
     },

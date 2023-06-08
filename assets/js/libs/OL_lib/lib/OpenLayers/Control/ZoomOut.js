@@ -20,7 +20,7 @@ OpenLayers.Control.ZoomOut = OpenLayers.Class(OpenLayers.Control.Button, {
      * Method: trigger
      */
     trigger: function(){
-        if(this.map) {
+        if (this.map) {
             this.map.zoomOut();
         }
     },

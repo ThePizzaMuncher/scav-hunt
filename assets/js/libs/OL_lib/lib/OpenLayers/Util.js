@@ -33,10 +33,10 @@ OpenLayers.Util.getElement = function() {
 
     for (var i=0, len=arguments.length; i<len; i++) {
         var element = arguments[i];
-        if(typeof element == 'string') {
+        if (typeof element == 'string') {
             element = document.getElementById(element);
         }
-        if(arguments.length == 1) {
+        if (arguments.length == 1) {
             return element;
         }
         elements.push(element);
@@ -88,7 +88,7 @@ OpenLayers.Util.isArray = function(a) {
  */
 OpenLayers.Util.removeItem = function(array, item) {
     for(var i = array.length - 1; i >= 0; i--) {
-        if(array[i] == item) {
+        if (array[i] == item) {
             array.splice(i,1);
             //break;more than once??
         }
@@ -110,11 +110,11 @@ OpenLayers.Util.removeItem = function(array, item) {
  */
 OpenLayers.Util.indexOf = function(array, obj) {
     // use the build-in function if available.
-    if(typeof array.indexOf == "function") {
+    if (typeof array.indexOf == "function") {
         return array.indexOf(obj);
     } else {
         for (var i = 0, len = array.length; i < len; i++) {
-            if(array[i] == obj) {
+            if (array[i] == obj) {
                 return i;
             }
         }
@@ -161,30 +161,30 @@ OpenLayers.Util.dotless = /\./g;
 OpenLayers.Util.modifyDOMElement = function(element, id, px, sz, position, 
                                             border, overflow, opacity) {
 
-    if(id) {
+    if (id) {
         element.id = id.replace(OpenLayers.Util.dotless, "_");
     }
-    if(px) {
+    if (px) {
         element.style.left = px.x + "px";
         element.style.top = px.y + "px";
     }
-    if(sz) {
+    if (sz) {
         element.style.width = sz.w + "px";
         element.style.height = sz.h + "px";
     }
-    if(position) {
+    if (position) {
         element.style.position = position;
     }
-    if(border) {
+    if (border) {
         element.style.border = border;
     }
-    if(overflow) {
+    if (overflow) {
         element.style.overflow = overflow;
     }
-    if(parseFloat(opacity) >= 0.0 && parseFloat(opacity) < 1.0) {
+    if (parseFloat(opacity) >= 0.0 && parseFloat(opacity) < 1.0) {
         element.style.filter = 'alpha(opacity=' + (opacity * 100) + ')';
         element.style.opacity = opacity;
-    } else if(parseFloat(opacity) == 1.0) {
+    } else if (parseFloat(opacity) == 1.0) {
         element.style.filter = '';
         element.style.opacity = '';
     }
@@ -225,15 +225,15 @@ OpenLayers.Util.createDiv = function(id, px, sz, imgURL, position,
 
     var dom = document.createElement('div');
 
-    if(imgURL) {
+    if (imgURL) {
         dom.style.backgroundImage = 'url(' + imgURL + ')';
     }
 
     //set generic properties
-    if(!id) {
+    if (!id) {
         id = OpenLayers.Util.createUniqueID("OpenLayersDiv");
     }
-    if(!position) {
+    if (!position) {
         position = "absolute";
     }
     OpenLayers.Util.modifyDOMElement(dom, id, px, sz, position, 
@@ -271,16 +271,16 @@ OpenLayers.Util.createImage = function(id, px, sz, imgURL, position, border,
     var image = document.createElement("img");
 
     //set generic properties
-    if(!id) {
+    if (!id) {
         id = OpenLayers.Util.createUniqueID("OpenLayersDiv");
     }
-    if(!position) {
+    if (!position) {
         position = "relative";
     }
     OpenLayers.Util.modifyDOMElement(image, id, px, sz, position, 
                                      border, null, opacity);
 
-    if(delayDisplay) {
+    if (delayDisplay) {
         image.style.display = "none";
         function display() {
             image.style.display = "";
@@ -293,7 +293,7 @@ OpenLayers.Util.createImage = function(id, px, sz, imgURL, position, border,
     //set special properties
     image.style.alt = id;
     image.galleryImg = "no";
-    if(imgURL) {
+    if (imgURL) {
         image.src = imgURL;
     }
         
@@ -323,7 +323,7 @@ OpenLayers.Util.alphaHackNeeded = null;
  * {Boolean} true if the png alpha hack is necessary and possible, false otherwise.
  */
 OpenLayers.Util.alphaHack = function() {
-    if(OpenLayers.Util.alphaHackNeeded == null) {
+    if (OpenLayers.Util.alphaHackNeeded == null) {
         var arVersion = navigator.appVersion.split("MSIE");
         var version = parseFloat(arVersion[1]);
         var filter = false;
@@ -368,24 +368,24 @@ OpenLayers.Util.modifyAlphaImageDiv = function(div, id, px, sz, imgURL,
 
     var img = div.childNodes[0];
 
-    if(imgURL) {
+    if (imgURL) {
         img.src = imgURL;
     }
     OpenLayers.Util.modifyDOMElement(img, div.id + "_innerImage", null, sz, 
                                      "relative", border);
     
-    if(OpenLayers.Util.alphaHack()) {
-        if(div.style.display != "none") {
+    if (OpenLayers.Util.alphaHack()) {
+        if (div.style.display != "none") {
             div.style.display = "inline-block";
         }
-        if(sizing == null) {
+        if (sizing == null) {
             sizing = "scale";
         }
         
         div.style.filter = "progid:DXImageTransform.Microsoft" +
                            ".AlphaImageLoader(src='" + img.src + "', " +
                            "sizingMethod='" + sizing + "')";
-        if(parseFloat(div.style.opacity) >= 0.0 && 
+        if (parseFloat(div.style.opacity) >= 0.0 && 
             parseFloat(div.style.opacity) < 1.0) {
             div.style.filter += " alpha(opacity=" + div.style.opacity * 100 + ")";
         }
@@ -478,7 +478,7 @@ OpenLayers.Util.applyDefaults = function (to, from) {
                     && from instanceof window.Event;
 
     for (var key in from) {
-        if(to[key] === undefined ||
+        if (to[key] === undefined ||
             (!fromIsEvt && from.hasOwnProperty
              && from.hasOwnProperty(key) && !to.hasOwnProperty(key))) {
             to[key] = from[key];
@@ -489,7 +489,7 @@ OpenLayers.Util.applyDefaults = function (to, from) {
      * properties with the for(property in object) syntax.  Explicitly check if
      * the source has its own toString property.
      */
-    if(!fromIsEvt && from && from.hasOwnProperty
+    if (!fromIsEvt && from && from.hasOwnProperty
        && from.hasOwnProperty('toString') && !to.hasOwnProperty('toString')) {
         to.toString = from.toString;
     }
@@ -516,9 +516,9 @@ OpenLayers.Util.getParameterString = function(params) {
     
     for (var key in params) {
       var value = params[key];
-      if((value != null) && (typeof value != 'function')) {
+      if ((value != null) && (typeof value != 'function')) {
         var encodedValue;
-        if(typeof value == 'object' && value.constructor == Array) {
+        if (typeof value == 'object' && value.constructor == Array) {
           /* value is an array; encode items and separate with "," */
           var encodedItemArray = [];
           var item;
@@ -556,7 +556,7 @@ OpenLayers.Util.getParameterString = function(params) {
  */
 OpenLayers.Util.urlAppend = function(url, paramStr) {
     var newUrl = url;
-    if(paramStr) {
+    if (paramStr) {
         var parts = (url + " ").split(/[?&]/);
         newUrl += (parts.pop() === " " ?
             paramStr :
@@ -629,10 +629,10 @@ OpenLayers.Util.getXmlNodeValue = function(node) {
     OpenLayers.Util.Try( 
         function() {
             val = node.text;
-            if(!val) {
+            if (!val) {
                 val = node.textContent;
             }
-            if(!val) {
+            if (!val) {
                 val = node.firstChild.nodeValue;
             }
         }, 
@@ -696,10 +696,10 @@ OpenLayers.Util.DEFAULT_PRECISION = 14;
  * {Number} The cast, rounded number.
  */
 OpenLayers.Util.toFloat = function (number, precision) {
-    if(precision == null) {
+    if (precision == null) {
         precision = OpenLayers.Util.DEFAULT_PRECISION;
     }
-    if(typeof number !== "number") {
+    if (typeof number !== "number") {
         number = parseFloat(number);
     }
     return precision === 0 ? number :
@@ -768,7 +768,7 @@ OpenLayers.Util.distVincenty = function(p1, p2) {
         var sinLambda = Math.sin(lambda), cosLambda = Math.cos(lambda);
         var sinSigma = Math.sqrt((cosU2*sinLambda) * (cosU2*sinLambda) +
         (cosU1*sinU2-sinU1*cosU2*cosLambda) * (cosU1*sinU2-sinU1*cosU2*cosLambda));
-        if(sinSigma==0) {
+        if (sinSigma==0) {
             return 0;  // co-incident points
         }
         var cosSigma = sinU1*sinU2 + cosU1*cosU2*cosLambda;
@@ -781,7 +781,7 @@ OpenLayers.Util.distVincenty = function(p1, p2) {
         lambda = L + (1-C) * f * Math.sin(alpha) *
         (sigma + C*sinSigma*(cos2SigmaM+C*cosSigma*(-1+2*cos2SigmaM*cos2SigmaM)));
     }
-    if(iterLimit==0) {
+    if (iterLimit==0) {
         return NaN;  // formula failed to converge
     }
     var uSq = cosSqAlpha * (a*a - b*b) / (b*b);
@@ -882,7 +882,7 @@ OpenLayers.Util.getParameters = function(url, options) {
 
     //parse out parameters portion of url string
     var paramsString = "";
-    if(OpenLayers.String.contains(url, '?')) {
+    if (OpenLayers.String.contains(url, '?')) {
         var start = url.indexOf('?') + 1;
         var end = OpenLayers.String.contains(url, "#") ?
                     url.indexOf('#') : url.length;
@@ -893,7 +893,7 @@ OpenLayers.Util.getParameters = function(url, options) {
     var pairs = paramsString.split(/[&;]/);
     for(var i=0, len=pairs.length; i<len; ++i) {
         var keyValue = pairs[i].split('=');
-        if(keyValue[0]) {
+        if (keyValue[0]) {
 
             var key = keyValue[0];
             try {
@@ -912,12 +912,12 @@ OpenLayers.Util.getParameters = function(url, options) {
             }
             
             // follow OGC convention of comma delimited values
-            if(options.splitArgs !== false) {
+            if (options.splitArgs !== false) {
                 value = value.split(",");
             }
 
             //if there's only one value, do not return as array                    
-            if(value.length == 1) {
+            if (value.length == 1) {
                 value = value[0];
             }                
             
@@ -948,7 +948,7 @@ OpenLayers.Util.lastSeqID = 0;
  * {String} A unique id string, built on the passed in prefix.
  */
 OpenLayers.Util.createUniqueID = function(prefix) {
-    if(prefix == null) {
+    if (prefix == null) {
         prefix = "id_";
     } else {
         prefix = prefix.replace(OpenLayers.Util.dotless, "_");
@@ -1100,8 +1100,8 @@ OpenLayers.Util.normalizeScale = function (scale) {
  */
 OpenLayers.Util.getResolutionFromScale = function (scale, units) {
     var resolution;
-    if(scale) {
-        if(units == null) {
+    if (scale) {
+        if (units == null) {
             units = "degrees";
         }
         var normScale = OpenLayers.Util.normalizeScale(scale);
@@ -1125,7 +1125,7 @@ OpenLayers.Util.getResolutionFromScale = function (scale, units) {
  */
 OpenLayers.Util.getScaleFromResolution = function (resolution, units) {
 
-    if(units == null) {
+    if (units == null) {
         units = "degrees";
     }
 
@@ -1183,7 +1183,7 @@ OpenLayers.Util.pagePosition =  function(forElement) {
 
     var pos = [0, 0];
     var viewportElement = OpenLayers.Util.getViewportElement();
-    if(!forElement || forElement == window || forElement == viewportElement) {
+    if (!forElement || forElement == window || forElement == viewportElement) {
         // viewport is always at 0,0 as that defined the coordinate system for
         // this function - this avoids special case checks in the code below
         return pos;
@@ -1201,7 +1201,7 @@ OpenLayers.Util.pagePosition =  function(forElement) {
     var parent = null;
     var box;
 
-    if(forElement.getBoundingClientRect) { // IE
+    if (forElement.getBoundingClientRect) { // IE
         box = forElement.getBoundingClientRect();
         var scrollTop = window.pageYOffset || viewportElement.scrollTop;
         var scrollLeft = window.pageXOffset || viewportElement.scrollLeft;
@@ -1209,7 +1209,7 @@ OpenLayers.Util.pagePosition =  function(forElement) {
         pos[0] = box.left + scrollLeft;
         pos[1] = box.top + scrollTop;
 
-    } else if(document.getBoxObjectFor && !BUGGY_GECKO_BOX_OBJECT) { // gecko
+    } else if (document.getBoxObjectFor && !BUGGY_GECKO_BOX_OBJECT) { // gecko
         // Gecko ignores the scroll values for ancestors, up to 1.9.  See:
         // https://bugzilla.mozilla.org/show_bug.cgi?id=328881 and
         // https://bugzilla.mozilla.org/show_bug.cgi?id=330619
@@ -1223,7 +1223,7 @@ OpenLayers.Util.pagePosition =  function(forElement) {
         pos[0] = forElement.offsetLeft;
         pos[1] = forElement.offsetTop;
         parent = forElement.offsetParent;
-        if(parent != forElement) {
+        if (parent != forElement) {
             while (parent) {
                 pos[0] += parent.offsetLeft;
                 pos[1] += parent.offsetTop;
@@ -1234,7 +1234,7 @@ OpenLayers.Util.pagePosition =  function(forElement) {
         var browser = OpenLayers.BROWSER_NAME;
 
         // opera & (safari absolute) incorrectly account for body offsetTop
-        if(browser == "opera" || (browser == "safari" &&
+        if (browser == "opera" || (browser == "safari" &&
               OpenLayers.Element.getStyle(forElement, 'position') == 'absolute')) {
             pos[1] -= document.body.offsetTop;
         }
@@ -1244,7 +1244,7 @@ OpenLayers.Util.pagePosition =  function(forElement) {
         while (parent && parent != document.body) {
             pos[0] -= parent.scrollLeft;
             // see https://bugs.opera.com/show_bug.cgi?id=249965
-            if(browser != "opera" || parent.tagName != 'TR') {
+            if (browser != "opera" || parent.tagName != 'TR') {
                 pos[1] -= parent.scrollTop;
             }
             parent = parent.offsetParent;
@@ -1267,7 +1267,7 @@ OpenLayers.Util.pagePosition =  function(forElement) {
  */
 OpenLayers.Util.getViewportElement = function() {
     var viewportElement = arguments.callee.viewportElement;
-    if(viewportElement == undefined) {
+    if (viewportElement == undefined) {
         viewportElement = (OpenLayers.BROWSER_NAME == "msie" &&
             document.compatMode != 'CSS1Compat') ? document.body :
             document.documentElement;
@@ -1316,8 +1316,8 @@ OpenLayers.Util.isEquivalentUrl = function(url1, url2, options) {
 
     //compare all keys except for "args" (treated below)
     for(var key in urlObj1) {
-        if(key !== "args") {
-            if(urlObj1[key] != urlObj2[key]) {
+        if (key !== "args") {
+            if (urlObj1[key] != urlObj2[key]) {
                 return false;
             }
         }
@@ -1325,7 +1325,7 @@ OpenLayers.Util.isEquivalentUrl = function(url1, url2, options) {
 
     // compare search args - irrespective of order
     for(var key in urlObj1.args) {
-        if(urlObj1.args[key] != urlObj2.args[key]) {
+        if (urlObj1.args[key] != urlObj2.args[key]) {
             return false;
         }
         delete urlObj2.args[key];
@@ -1360,11 +1360,11 @@ OpenLayers.Util.createUrlObject = function(url, options) {
     options = options || {};
 
     // deal with relative urls first
-    if(!(/^\w+:\/\//).test(url)) {
+    if (!(/^\w+:\/\//).test(url)) {
         var loc = window.location;
         var port = loc.port ? ":" + loc.port : "";
         var fullUrl = loc.protocol + "//" + loc.host.split(":").shift() + port;
-        if(url.indexOf("/") === 0) {
+        if (url.indexOf("/") === 0) {
             // full pathname
             url = fullUrl + url;
         } else {
@@ -1375,7 +1375,7 @@ OpenLayers.Util.createUrlObject = function(url, options) {
         }
     }
   
-    if(options.ignoreCase) {
+    if (options.ignoreCase) {
         url = url.toLowerCase(); 
     }
 
@@ -1391,7 +1391,7 @@ OpenLayers.Util.createUrlObject = function(url, options) {
     urlObject.protocol = a.protocol;  
 
     //port (get uniform browser behavior with port 80 here)
-    if(options.ignorePort80) {
+    if (options.ignorePort80) {
         urlObject.port = (a.port == "80" || a.port == "0") ? "" : a.port;
     } else {
         urlObject.port = (a.port == "" || a.port == "0") ? "80" : a.port;
@@ -1402,7 +1402,7 @@ OpenLayers.Util.createUrlObject = function(url, options) {
     
     //args
     var queryString = a.search;
-    if(!queryString) {
+    if (!queryString) {
         var qMark = url.indexOf("?");
         queryString = (qMark != -1) ? url.substr(qMark) : "";
     }
@@ -1435,7 +1435,7 @@ OpenLayers.Util.removeTail = function(url) {
     var qMark = url.indexOf("?");
     var hashMark = url.indexOf("#");
 
-    if(qMark == -1) {
+    if (qMark == -1) {
         head = (hashMark != -1) ? url.substr(0,hashMark) : url;
     } else {
         head = (hashMark != -1) ? url.substr(0,Math.min(qMark, hashMark)) 
@@ -1476,14 +1476,14 @@ OpenLayers.CANVAS_SUPPORTED = (function() {
 OpenLayers.BROWSER_NAME = (function() {
     var name = "";
     var ua = navigator.userAgent.toLowerCase();
-    if(ua.indexOf("opera") != -1) {
+    if (ua.indexOf("opera") != -1) {
         name = "opera";
-    } else if(ua.indexOf("msie") != -1) {
+    } else if (ua.indexOf("msie") != -1) {
         name = "msie";
-    } else if(ua.indexOf("safari") != -1) {
+    } else if (ua.indexOf("safari") != -1) {
         name = "safari";
-    } else if(ua.indexOf("mozilla") != -1) {
-        if(ua.indexOf("firefox") != -1) {
+    } else if (ua.indexOf("mozilla") != -1) {
+        if (ua.indexOf("firefox") != -1) {
             name = "firefox";
         } else {
             name = "mozilla";
@@ -1555,15 +1555,15 @@ OpenLayers.Util.getRenderedDimensions = function(contentHTML, size, options) {
     var parent = containerElement;
     while (parent && parent.tagName.toLowerCase()!="body") {
         var parentPosition = OpenLayers.Element.getStyle(parent, "position");
-        if(parentPosition == "absolute") {
+        if (parentPosition == "absolute") {
             parentHasPositionAbsolute = true;
             break;
-        } else if(parentPosition && parentPosition != "static") {
+        } else if (parentPosition && parentPosition != "static") {
             break;
         }
         parent = parent.parentNode;
     }
-    if(parentHasPositionAbsolute && (containerElement.clientHeight === 0 || 
+    if (parentHasPositionAbsolute && (containerElement.clientHeight === 0 || 
                                      containerElement.clientWidth === 0) ){
         superContainer = document.createElement("div");
         superContainer.style.visibility = "hidden";
@@ -1576,18 +1576,18 @@ OpenLayers.Util.getRenderedDimensions = function(contentHTML, size, options) {
     container.style.position = "absolute";
 
     //fix a dimension, if specified.
-    if(size) {
-        if(size.w) {
+    if (size) {
+        if (size.w) {
             w = size.w;
             container.style.width = w + "px";
-        } else if(size.h) {
+        } else if (size.h) {
             h = size.h;
             container.style.height = h + "px";
         }
     }
 
     //add css classes, if specified
-    if(options && options.displayClass) {
+    if (options && options.displayClass) {
         container.className = options.displayClass;
     }
     
@@ -1597,9 +1597,9 @@ OpenLayers.Util.getRenderedDimensions = function(contentHTML, size, options) {
     
     // we need overflow visible when calculating the size
     content.style.overflow = "visible";
-    if(content.childNodes) {
+    if (content.childNodes) {
         for (var i=0, l=content.childNodes.length; i<l; i++) {
-            if(!content.childNodes[i].style) continue;
+            if (!content.childNodes[i].style) continue;
             content.childNodes[i].style.overflow = "visible";
         }
     }
@@ -1608,27 +1608,27 @@ OpenLayers.Util.getRenderedDimensions = function(contentHTML, size, options) {
     container.appendChild(content);
     
     // append container to body for rendering
-    if(superContainer) {
+    if (superContainer) {
         containerElement.appendChild(superContainer);
     } else {
         containerElement.appendChild(container);
     }
     
     // calculate scroll width of content and add corners and shadow width
-    if(!w) {
+    if (!w) {
         w = parseInt(content.scrollWidth);
     
         // update container width to allow height to adjust
         container.style.width = w + "px";
     }        
     // capture height and add shadow and corner image widths
-    if(!h) {
+    if (!h) {
         h = parseInt(content.scrollHeight);
     }
 
     // remove elements
     container.removeChild(content);
-    if(superContainer) {
+    if (superContainer) {
         superContainer.removeChild(container);
         containerElement.removeChild(superContainer);
     } else {
@@ -1657,7 +1657,7 @@ OpenLayers.Util.getScrollbarWidth = function() {
     
     var scrollbarWidth = OpenLayers.Util._scrollbarWidth;
     
-    if(scrollbarWidth == null) {
+    if (scrollbarWidth == null) {
         var scr = null;
         var inn = null;
         var wNoScroll = 0;
@@ -1719,7 +1719,7 @@ OpenLayers.Util.getScrollbarWidth = function() {
  * {String} the coordinate value formatted as a string
  */
 OpenLayers.Util.getFormattedLonLat = function(coordinate, axis, dmsOption) {
-    if(!dmsOption) {
+    if (!dmsOption) {
         dmsOption = 'dms';    //default to show degree, minutes, seconds
     }
 
@@ -1735,35 +1735,35 @@ OpenLayers.Util.getFormattedLonLat = function(coordinate, axis, dmsOption) {
     coordinateseconds =  Math.round(coordinateseconds*10);
     coordinateseconds /= 10;
 
-    if( coordinateseconds >= 60) { 
+    if ( coordinateseconds >= 60) { 
         coordinateseconds -= 60; 
         coordinateminutes += 1; 
-        if( coordinateminutes >= 60) { 
+        if ( coordinateminutes >= 60) { 
             coordinateminutes -= 60; 
             coordinatedegrees += 1; 
         } 
     }
     
-    if( coordinatedegrees < 10 ) {
+    if ( coordinatedegrees < 10 ) {
         coordinatedegrees = "0" + coordinatedegrees;
     }
     var str = coordinatedegrees + "\u00B0";
 
-    if(dmsOption.indexOf('dm') >= 0) {
-        if( coordinateminutes < 10 ) {
+    if (dmsOption.indexOf('dm') >= 0) {
+        if ( coordinateminutes < 10 ) {
             coordinateminutes = "0" + coordinateminutes;
         }
         str += coordinateminutes + "'";
   
-        if(dmsOption.indexOf('dms') >= 0) {
-            if( coordinateseconds < 10 ) {
+        if (dmsOption.indexOf('dms') >= 0) {
+            if ( coordinateseconds < 10 ) {
                 coordinateseconds = "0" + coordinateseconds;
             }
             str += coordinateseconds + '"';
         }
     }
     
-    if(axis == "lon") {
+    if (axis == "lon") {
         str += coordinate < 0 ? OpenLayers.i18n("W") : OpenLayers.i18n("E");
     } else {
         str += coordinate < 0 ? OpenLayers.i18n("S") : OpenLayers.i18n("N");

@@ -1,8 +1,8 @@
 <?php
 require_once("../assets/includes/header.php");
-if(!isset($_SESSION['docent'])) {
+if (!isset($_SESSION['docent'])) {
 	header('location:../login'); die();
-} if(!$_SESSION['docent']) {
+} if (!$_SESSION['docent']) {
 	header('location:../login'); die();
 }
 ?>

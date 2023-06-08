@@ -142,12 +142,12 @@
             var type = document.getElementById("formatType").value;
             var features = formats['in'][type].read(element.value);
             var bounds;
-            if(features) {
-                if(features.constructor != Array) {
+            if (features) {
+                if (features.constructor != Array) {
                     features = [features];
                 }
                 for(var i=0; i<features.length; ++i) {
-                    if(!bounds) {
+                    if (!bounds) {
                         bounds = features[i].geometry.getBounds();
                     } else {
                         bounds.extend(features[i].geometry.getBounds());

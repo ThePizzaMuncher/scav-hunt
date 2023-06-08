@@ -68,9 +68,9 @@ OpenLayers.Animation = (function(window) {
         var id = ++counter;
         var start = +new Date;
         loops[id] = function() {
-            if(loops[id] && +new Date - start <= duration) {
+            if (loops[id] && +new Date - start <= duration) {
                 callback();
-                if(loops[id]) {
+                if (loops[id]) {
                     requestFrame(loops[id], element);
                 }
             } else {

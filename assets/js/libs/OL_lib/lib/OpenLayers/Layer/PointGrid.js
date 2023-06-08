@@ -184,7 +184,7 @@ OpenLayers.Layer.PointGrid = OpenLayers.Class(OpenLayers.Layer.Vector, {
      * {<OpenLayers.LonLat>} The grid origin.
      */
     getOrigin: function() {
-        if(!this.origin) {
+        if (!this.origin) {
             this.origin = this.map.getExtent().getCenterLonLat();
         }
         return this.origin;
@@ -222,7 +222,7 @@ OpenLayers.Layer.PointGrid = OpenLayers.Class(OpenLayers.Layer.Vector, {
      */
     getViewBounds: function() {
         var bounds = this.map.getExtent();
-        if(this.rotation) {
+        if (this.rotation) {
             var origin = this.getOrigin();
             var rotationOrigin = new OpenLayers.Geometry.Point(origin.lon, origin.lat);
             var rect = bounds.toGeometry();
@@ -241,7 +241,7 @@ OpenLayers.Layer.PointGrid = OpenLayers.Class(OpenLayers.Layer.Vector, {
      *     valid.
      */
     updateGrid: function(force) {
-        if(force || this.invalidBounds()) {
+        if (force || this.invalidBounds()) {
             var viewBounds = this.getViewBounds();
             var origin = this.getOrigin();
             var rotationOrigin = new OpenLayers.Geometry.Point(origin.lon, origin.lat);
@@ -270,7 +270,7 @@ OpenLayers.Layer.PointGrid = OpenLayers.Class(OpenLayers.Layer.Vector, {
                 for (var j=0; j<rows; ++j) {
                     y = gridBottom + (j * this.dy);
                     point = new OpenLayers.Geometry.Point(x, y);
-                    if(this.rotation) {
+                    if (this.rotation) {
                         point.rotate(this.rotation, rotationOrigin);
                     }
                     features[(i*rows)+j] = new OpenLayers.Feature.Vector(point);

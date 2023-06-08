@@ -60,7 +60,7 @@ OpenLayers.Layer.HTTPRequest = OpenLayers.Class(OpenLayers.Layer, {
     initialize: function(name, url, params, options) {
         OpenLayers.Layer.prototype.initialize.apply(this, [name, options]);
         this.url = url;
-        if(!this.params) {
+        if (!this.params) {
             this.params = OpenLayers.Util.extend({}, params);
         }
     },
@@ -86,7 +86,7 @@ OpenLayers.Layer.HTTPRequest = OpenLayers.Class(OpenLayers.Layer, {
      */
     clone: function (obj) {
         
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer.HTTPRequest(this.name,
                                                    this.url,
                                                    this.params,
@@ -123,7 +123,7 @@ OpenLayers.Layer.HTTPRequest = OpenLayers.Class(OpenLayers.Layer, {
     mergeNewParams:function(newParams) {
         this.params = OpenLayers.Util.extend(this.params, newParams);
         var ret = this.redraw();
-        if(this.map != null) {
+        if (this.map != null) {
             this.map.events.triggerEvent("changelayer", {
                 layer: this,
                 property: "params"
@@ -143,7 +143,7 @@ OpenLayers.Layer.HTTPRequest = OpenLayers.Class(OpenLayers.Layer, {
      * {Boolean} The layer was redrawn.
      */
     redraw: function(force) { 
-        if(force) {
+        if (force) {
             return this.mergeNewParams({"_olSalt": Math.random()});
         } else {
             return OpenLayers.Layer.prototype.redraw.apply(this, []);
@@ -209,7 +209,7 @@ OpenLayers.Layer.HTTPRequest = OpenLayers.Class(OpenLayers.Layer, {
         // in which case we will deterministically select one of them in 
         // order to evenly distribute requests to different urls.
         //
-        if(OpenLayers.Util.isArray(url)) {
+        if (OpenLayers.Util.isArray(url)) {
             url = this.selectUrl(paramsString, url);
         }   
  
@@ -217,7 +217,7 @@ OpenLayers.Layer.HTTPRequest = OpenLayers.Class(OpenLayers.Layer, {
         var urlParams = 
             OpenLayers.Util.upperCaseObject(OpenLayers.Util.getParameters(url));
         for(var key in allParams) {
-            if(key.toUpperCase() in urlParams) {
+            if (key.toUpperCase() in urlParams) {
                 delete allParams[key];
             }
         }

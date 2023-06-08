@@ -43,9 +43,9 @@
         t.eq(obj.operationsMetadata.DescribeSensor.dcp.http.post[0].url, "http://v-swe.uni-muenster.de:8080/WeatherSOS/sos", "POST url for DescribeSensor correctly parsed");
         var counter = 0;
         for (var key in obj.operationsMetadata.DescribeSensor.parameters.procedure.allowedValues) {
-            if(counter == 0) {
+            if (counter == 0) {
                 t.eq(key, "urn:ogc:object:feature:OSIRIS-HWS:efeb807b-bd24-4128-a920-f6729bcdd111", "Allowed value (1) for procedure parameter in DescribeSensor request correctly parsed");
-            } else if(counter == 1) {
+            } else if (counter == 1) {
                 t.eq(key, "urn:ogc:object:feature:OSIRIS-HWS:3d3b239f-7696-4864-9d07-15447eae2b93", "Allowed value (2) for procedure parameter in DescribeSensor request correctly parsed");
             }
             counter++;

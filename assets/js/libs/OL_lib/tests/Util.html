@@ -119,7 +119,7 @@
         // making sure that the test iframe is visible
         var origDisplay;
         var parents = window.parent.document.getElementsByTagName('iframe');
-        if(parents.length) {
+        if (parents.length) {
             origDisplay = parents[1].parentNode.style.display;
             // span containing the test iframe is the invisible element
             parents[1].parentNode.style.display = "";
@@ -135,7 +135,7 @@
         t.eq(pp, beforeScrollPp, "Page position should work after page has been scrolled");
         
         // reset test iframe visibility
-        if(parents.length) {
+        if (parents.length) {
             parents[1].parentNode.style.display = origDisplay;
         }
     }
@@ -154,7 +154,7 @@
 
         var div = OpenLayers.Util.createDiv(id, px, sz, img, position, border, overflow, opacity);
 
-        if(!isMozilla)
+        if (!isMozilla)
             t.ok( true, "skipping element test outside of Mozilla");
         else
             t.ok( div instanceof HTMLDivElement, "createDiv creates a valid HTMLDivElement" );
@@ -172,7 +172,7 @@
 
         t.eq( div.style.position, position, "div.style.positionset correctly");    
         //Safari 3 separates the border style into separate entities when reading it
-        if(OpenLayers.BROWSER_NAME == 'safari') {
+        if (OpenLayers.BROWSER_NAME == 'safari') {
           var s = border.split(' ');
           t.ok(div.style.borderTopWidth == s[0] && div.style.borderTopStyle == s[1], "good default popup.border")
         } else {
@@ -191,7 +191,7 @@
         //test defaults
         var div = OpenLayers.Util.createDiv();
 
-        if(!isMozilla)
+        if (!isMozilla)
             t.ok( true, "skipping element test outside of Mozilla");
         else
             t.ok( div instanceof HTMLDivElement, "createDiv creates a valid HTMLDivElement" );
@@ -206,7 +206,7 @@
 
         t.eq( div.style.position, "absolute", "div.style.positionset correctly");    
         //Safari 3 separates the border style into separate entities when reading it
-        if(OpenLayers.BROWSER_NAME == 'safari') {
+        if (OpenLayers.BROWSER_NAME == 'safari') {
           t.ok(div.style.borderTopWidth == '' && div.style.borderTopStyle == '', "good default popup.border")
         } else {
           t.eq( div.style.border, "", "div.style.border set correctly");    
@@ -232,7 +232,7 @@
 
         var image = OpenLayers.Util.createImage(id, xy, sz, img, position, border, opacity);
 
-        if(!isMozilla)
+        if (!isMozilla)
             t.ok( true, "skipping element test outside of Mozilla");
         else
             t.ok( image.nodeName == "IMG", "createImage creates a valid HTMLImageElement" );
@@ -244,7 +244,7 @@
         t.eq( image.style.height, sz.h + "px", "image.style.height set correctly");    
 
         //Safari 3 separates the border style into separate entities when reading it
-        if(OpenLayers.BROWSER_NAME == 'safari') {
+        if (OpenLayers.BROWSER_NAME == 'safari') {
           var s = border.split(' ');
           t.ok(image.style.borderTopWidth == s[0] && image.style.borderTopStyle == s[1], "good default popup.border")
         } else {
@@ -261,7 +261,7 @@
         //test defaults
         var image = OpenLayers.Util.createImage();
 
-        if(!isMozilla)
+        if (!isMozilla)
             t.ok( true, "skipping element test outside of Mozilla");
         else
             t.ok( image.nodeName == "IMG", "createDiv creates a valid HTMLDivElement" );
@@ -411,7 +411,7 @@
 
         var imageDiv = OpenLayers.Util.createAlphaImageDiv(id, xy, sz, img, position, border, sizing, opacity);
 
-        if(!isMozilla)
+        if (!isMozilla)
             t.ok( true, "skipping element test outside of Mozilla");
         else
             t.ok( imageDiv instanceof HTMLDivElement, "createDiv creates a valid HTMLDivElement" );
@@ -427,7 +427,7 @@
         t.eq( parseFloat(imageDiv.style.opacity), opacity, "element.style.opacity set correctly");    
         
         var filterString;
-        if(OpenLayers.Util.alphaHack()) {
+        if (OpenLayers.Util.alphaHack()) {
             filterString = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://www.openlayers.org/images/OpenLayers.trac.png', sizingMethod='crop') alpha(opacity=50)";
         } else {
             //Some non-IE browsers don't return the alpha string for this value, which is okay
@@ -438,7 +438,7 @@
 
 
         image = imageDiv.firstChild;
-        if(!isMozilla)
+        if (!isMozilla)
             t.ok( true, "skipping element test outside of Mozilla");
         else
             t.ok( image.nodeName == "IMG", "createImage creates a valid HTMLImageElement" );
@@ -448,7 +448,7 @@
         t.eq( image.style.height, sz.h + "px", "image.style.height set correctly");    
 
         //Safari 3 separates the border style into separate entities when reading it
-        if(OpenLayers.BROWSER_NAME == 'safari') {
+        if (OpenLayers.BROWSER_NAME == 'safari') {
           var s = border.split(' ');
           t.ok(image.style.borderTopWidth == s[0] && image.style.borderTopStyle == s[1], "good default popup.border")
         } else {
@@ -457,7 +457,7 @@
         
         t.eq( image.style.position, "relative", "image.style.positionset correctly");    
 
-        if(OpenLayers.Util.alphaHack()) {
+        if (OpenLayers.Util.alphaHack()) {
         
             t.eq(imageDiv.style.display, "inline-block", "imageDiv.style.display set correctly");
 
@@ -476,7 +476,7 @@
         }
 
         var imageDiv = OpenLayers.Util.createAlphaImageDiv(id, xy, sz, img, position, border);
-        if(OpenLayers.Util.alphaHack()) {
+        if (OpenLayers.Util.alphaHack()) {
             var filter = "progid:DXImageTransform.Microsoft" +
                          ".AlphaImageLoader(src='" + img + "', " +
                          "sizingMethod='scale')";
@@ -563,7 +563,7 @@
 
         t.eq( element.style.position, position, "element.style.position set correctly");    
         //Safari 3 separates the border style into separate entities when reading it
-        if(OpenLayers.BROWSER_NAME == 'safari') {
+        if (OpenLayers.BROWSER_NAME == 'safari') {
           var s = border.split(' ');
           t.ok(element.style.borderTopWidth == s[0] && element.style.borderTopStyle == s[1], "good default popup.border")
         } else {
@@ -594,7 +594,7 @@
         var opacity = 0.5;
 
         OpenLayers.Util.modifyAlphaImageDiv(imageDiv, id, xy, sz, img, position, border, sizing, opacity);
-        if(OpenLayers.Util.alphaHack())
+        if (OpenLayers.Util.alphaHack())
             t.ok( true, "skipping element test outside of Mozilla");
         else
             t.ok( imageDiv.nodeName == "DIV", "createDiv creates a valid HTMLDivElement" );
@@ -614,7 +614,7 @@
         image = imageDiv.firstChild;
 
         var filterString;
-        if(OpenLayers.Util.alphaHack()) {
+        if (OpenLayers.Util.alphaHack()) {
             filterString = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://www.openlayers.org/images/OpenLayers.trac.png', sizingMethod='crop') alpha(opacity=50)";
             t.ok( true, "skipping element test outside of Mozilla");
         } else {
@@ -630,7 +630,7 @@
         t.eq( image.style.height, sz.h + "px", "image.style.height set correctly");    
 
         //Safari 3 separates the border style into separate entities when reading it
-        if(OpenLayers.BROWSER_NAME == 'safari') {
+        if (OpenLayers.BROWSER_NAME == 'safari') {
           var s = border.split(' ');
           t.ok(image.style.borderTopWidth == s[0] && image.style.borderTopStyle == s[1], "good default popup.border")
         } else {
@@ -640,7 +640,7 @@
         t.eq( image.style.position, "relative", "image.style.positionset correctly");    
         t.eq( image.src, img, "image.style.backgroundImage correctly");
         
-        if(OpenLayers.Util.alphaHack()) {
+        if (OpenLayers.Util.alphaHack()) {
         
             var filter = "progid:DXImageTransform.Microsoft" +
                          ".AlphaImageLoader(src='" + img + "', " +
@@ -665,7 +665,7 @@
         var display = "block";
         imageDiv.style.display = display;
         OpenLayers.Util.modifyAlphaImageDiv(imageDiv, id, xy, sz, img, position, border, sizing, opacity);
-        if(OpenLayers.Util.alphaHack()) {
+        if (OpenLayers.Util.alphaHack()) {
             t.eq(imageDiv.style.display, "inline-block", "imageDiv.style.display set correctly, if not 'none'");
         } else {
             t.ok(true, "inline-block is not part of CSS2 and is not supported by Firefox 2");
@@ -674,7 +674,7 @@
         
 
         var imageDiv = OpenLayers.Util.createAlphaImageDiv(id, xy, sz, img, position, border, "scale", opacity);
-        if(OpenLayers.Util.alphaHack()) {
+        if (OpenLayers.Util.alphaHack()) {
             var filter = "progid:DXImageTransform.Microsoft" +
                          ".AlphaImageLoader(src='" + img + "', " +
                          "sizingMethod='scale') alpha(opacity=" + opacity *100 + ")";
@@ -1165,7 +1165,7 @@
         } catch (e) {
             err = e;
         }
-        if(err) {
+        if (err) {
             t.fail("Failed to extend with an event: " + err.message);
         } else {
             t.eq(extended && extended.foo, "bar", "extended with event");

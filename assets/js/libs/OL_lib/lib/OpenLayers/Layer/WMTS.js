@@ -230,7 +230,7 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
             matrixSet: true
         };
         for (var prop in required) {
-            if(!(prop in config)) {
+            if (!(prop in config)) {
                 throw new Error("Missing property '" + prop + "' in layer configuration.");
             }
         }
@@ -241,14 +241,14 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
         
 
         // determine format suffix (for REST)
-        if(!this.formatSuffix) {
+        if (!this.formatSuffix) {
             this.formatSuffix = this.formatSuffixMap[this.format] || this.format.split("/").pop();            
         }
 
         // expand matrixIds (may be array of string or array of object)
-        if(this.matrixIds) {
+        if (this.matrixIds) {
             var len = this.matrixIds.length;
-            if(len && typeof this.matrixIds[0] === "string") {
+            if (len && typeof this.matrixIds[0] === "string") {
                 var ids = this.matrixIds;
                 this.matrixIds = new Array(len);
                 for (var i=0; i<len; ++i) {
@@ -272,21 +272,21 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     updateMatrixProperties: function() {
         this.matrix = this.getMatrix();
-        if(this.matrix) {
-            if(this.matrix.topLeftCorner) {
+        if (this.matrix) {
+            if (this.matrix.topLeftCorner) {
                 this.tileOrigin = this.matrix.topLeftCorner;
             }
-            if(this.matrix.tileWidth && this.matrix.tileHeight) {
+            if (this.matrix.tileWidth && this.matrix.tileHeight) {
                 this.tileSize = new OpenLayers.Size(
                     this.matrix.tileWidth, this.matrix.tileHeight
                 );
             }
-            if(!this.tileOrigin) { 
+            if (!this.tileOrigin) { 
                 this.tileOrigin = new OpenLayers.LonLat(
                     this.maxExtent.left, this.maxExtent.top
                 );
             }   
-            if(!this.tileFullExtent) { 
+            if (!this.tileFullExtent) { 
                 this.tileFullExtent = this.maxExtent;
             }
         }
@@ -302,7 +302,7 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
      * dragging - {Boolean}
      */
     moveTo:function(bounds, zoomChanged, dragging) {
-        if(zoomChanged || !this.matrix) {
+        if (zoomChanged || !this.matrix) {
             this.updateMatrixProperties();
         }
         return OpenLayers.Layer.Grid.prototype.moveTo.apply(this, arguments);
@@ -318,7 +318,7 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
      * {<OpenLayers.Layer.WMTS>} An exact clone of this <OpenLayers.Layer.WMTS>
      */
     clone: function(obj) {
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer.WMTS(this.options);
         }
         //get all additions from superclasses
@@ -341,11 +341,11 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     getMatrix: function() {
         var matrix;
-        if(!this.matrixIds || this.matrixIds.length === 0) {
+        if (!this.matrixIds || this.matrixIds.length === 0) {
             matrix = {identifier: this.getIdentifier()};
         } else {
             // get appropriate matrix given the map scale if possible
-            if("scaleDenominator" in this.matrixIds[0]) {
+            if ("scaleDenominator" in this.matrixIds[0]) {
                 // scale denominator calculation based on WMTS spec
                 var denom = 
                     OpenLayers.METERS_PER_INCH * 
@@ -355,7 +355,7 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
                 var delta;
                 for (var i=0, ii=this.matrixIds.length; i<ii; ++i) {
                     delta = Math.abs(1 - (this.matrixIds[i].scaleDenominator / denom));
-                    if(delta < diff) {
+                    if (delta < diff) {
                         diff = delta;
                         matrix = this.matrixIds[i];
                     }
@@ -410,14 +410,14 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
     getURL: function(bounds) {
         bounds = this.adjustBounds(bounds);
         var url = "";
-        if(!this.tileFullExtent || this.tileFullExtent.intersectsBounds(bounds)) {            
+        if (!this.tileFullExtent || this.tileFullExtent.intersectsBounds(bounds)) {            
 
             var center = bounds.getCenterLonLat();            
             var info = this.getTileInfo(center);
             var matrixId = this.matrix.identifier;
             var dimensions = this.dimensions, params;
 
-            if(OpenLayers.Util.isArray(this.url)) {
+            if (OpenLayers.Util.isArray(this.url)) {
                 url = this.selectUrl([
                     this.version, this.style, this.matrixSet,
                     this.matrix.identifier, info.row, info.col
@@ -426,9 +426,9 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
                 url = this.url;
             }
 
-            if(this.requestEncoding.toUpperCase() === "REST") {
+            if (this.requestEncoding.toUpperCase() === "REST") {
                 params = this.params;
-                if(url.indexOf("{") !== -1) {
+                if (url.indexOf("{") !== -1) {
                     var template = url.replace(/\{/g, "${");
                     var context = {
                         // spec does not make clear if capital S or not
@@ -438,7 +438,7 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
                         TileRow: info.row,
                         TileCol: info.col
                     };
-                    if(dimensions) {
+                    if (dimensions) {
                         var dimension, i;
                         for (i=dimensions.length-1; i>=0; --i) {
                             dimension = dimensions[i];
@@ -451,9 +451,9 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
                     var path = this.version + "/" + this.layer + "/" + this.style + "/";
 
                     // append optional dimension path elements
-                    if(dimensions) {
+                    if (dimensions) {
                         for (var i=0; i<dimensions.length; i++) {
-                            if(params[dimensions[i]]) {
+                            if (params[dimensions[i]]) {
                                 path = path + params[dimensions[i]] + "/";
                             }
                         }
@@ -463,12 +463,12 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
                     path = path + this.matrixSet + "/" + this.matrix.identifier + 
                         "/" + info.row + "/" + info.col + "." + this.formatSuffix;
 
-                    if(!url.match(/\/$/)) {
+                    if (!url.match(/\/$/)) {
                         url = url + "/";
                     }
                     url = url + path;
                 }
-            } else if(this.requestEncoding.toUpperCase() === "KVP") {
+            } else if (this.requestEncoding.toUpperCase() === "KVP") {
 
                 // assemble all required parameters
                 params = {
@@ -499,7 +499,7 @@ OpenLayers.Layer.WMTS = OpenLayers.Class(OpenLayers.Layer.Grid, {
      * newParams - {Object} Properties to extend to existing <params>.
      */
     mergeNewParams: function(newParams) {
-        if(this.requestEncoding.toUpperCase() === "KVP") {
+        if (this.requestEncoding.toUpperCase() === "KVP") {
             return OpenLayers.Layer.Grid.prototype.mergeNewParams.apply(
                 this, [OpenLayers.Util.upperCaseObject(newParams)]
             );

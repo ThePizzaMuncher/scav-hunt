@@ -153,7 +153,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
             displayInLayerSwitcher: false,
             tileOptions: {maxGetUrlLength: 2048}
         });
-        if(this.sketchStyle) {
+        if (this.sketchStyle) {
             this.handlerOptions.layerOptions = OpenLayers.Util.applyDefaults(
                 this.handlerOptions.layerOptions,
                 {styleMap: new OpenLayers.StyleMap({"default": this.sketchStyle})}
@@ -209,7 +209,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
     createSelectionLayer: function(source) {
         // check if we already have a selection layer for the source layer
         var selectionLayer;
-        if(!this.layerCache[source.id]) {
+        if (!this.layerCache[source.id]) {
             selectionLayer = new OpenLayers.Layer.WMS(source.name, 
                 source.url, source.params, 
                 OpenLayers.Util.applyDefaults(
@@ -220,7 +220,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
             // make sure the layers are coupled wrt visibility, but only
             // if they are not displayed in the layer switcher, because in
             // that case the user cannot control visibility.
-            if(this.layerOptions.displayInLayerSwitcher === false) {
+            if (this.layerOptions.displayInLayerSwitcher === false) {
                 source.events.on({
                     "visibilitychanged": this.coupleLayerVisiblity,
                     scope: selectionLayer});
@@ -253,11 +253,11 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
             sld.namedLayers[name] = {name: name, userStyles: []};
             var symbolizer = this.selectionSymbolizer;
             var geometryAttribute = geometryAttributes[i];
-            if(geometryAttribute.type.indexOf('Polygon') >= 0) {
+            if (geometryAttribute.type.indexOf('Polygon') >= 0) {
                 symbolizer = {Polygon: this.selectionSymbolizer['Polygon']};
-            } else if(geometryAttribute.type.indexOf('LineString') >= 0) {
+            } else if (geometryAttribute.type.indexOf('LineString') >= 0) {
                 symbolizer = {Line: this.selectionSymbolizer['Line']};
-            } else if(geometryAttribute.type.indexOf('Point') >= 0) {
+            } else if (geometryAttribute.type.indexOf('Point') >= 0) {
                 symbolizer = {Point: this.selectionSymbolizer['Point']};
             }
             var filter = filters[i];
@@ -280,7 +280,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
     parseDescribeLayer: function(request) {
         var format = new OpenLayers.Format.WMSDescribeLayer();
         var doc = request.responseXML;
-        if(!doc || !doc.documentElement) {
+        if (!doc || !doc.documentElement) {
             doc = request.responseText;
         }
         var describeLayer = format.read(doc);
@@ -288,7 +288,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
         var url = null;
         for (var i=0, len=describeLayer.length; i<len; i++) {
             // perform a WFS DescribeFeatureType request
-            if(describeLayer[i].owsType == "WFS") {
+            if (describeLayer[i].owsType == "WFS") {
                 typeNames.push(describeLayer[i].typeName);
                 url = describeLayer[i].owsURL;
             }
@@ -304,7 +304,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
             callback: function(request) {
                 var format = new OpenLayers.Format.WFSDescribeFeatureType();
                 var doc = request.responseXML;
-                if(!doc || !doc.documentElement) {
+                if (!doc || !doc.documentElement) {
                     doc = request.responseText;
                 }
                 var describeFeatureType = format.read(doc);
@@ -336,7 +336,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
             for (var j=0, lenj=properties.length; j < lenj; j++) {
                 var property = properties[j];
                 var type = property.type;
-                if((type.indexOf('LineString') >= 0) ||
+                if ((type.indexOf('LineString') >= 0) ||
                     (type.indexOf('GeometryAssociationType') >=0) ||
                     (type.indexOf('GeometryPropertyType') >= 0) ||
                     (type.indexOf('Point') >= 0) ||
@@ -357,10 +357,10 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
      */
     activate: function() {
         var activated = OpenLayers.Control.prototype.activate.call(this);
-        if(activated) {
+        if (activated) {
             for (var i=0, len=this.layers.length; i<len; i++) {
                 var layer = this.layers[i];
-                if(layer && !this.wfsCache[layer.id]) {
+                if (layer && !this.wfsCache[layer.id]) {
                     var options = {
                         url: layer.url,
                         params: {
@@ -386,13 +386,13 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
      */
     deactivate: function() {
         var deactivated = OpenLayers.Control.prototype.deactivate.call(this);
-        if(deactivated) {
+        if (deactivated) {
             for (var i=0, len=this.layers.length; i<len; i++) {
                 var layer = this.layers[i];
-                if(layer && this.clearOnDeactivate === true) {
+                if (layer && this.clearOnDeactivate === true) {
                     var layerCache = this.layerCache;
                     var selectionLayer = layerCache[layer.id];
-                    if(selectionLayer) {
+                    if (selectionLayer) {
                         layer.events.un({
                             "visibilitychanged": this.coupleLayerVisiblity,
                             scope: selectionLayer});
@@ -418,7 +418,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
      *     the selection should be performed.
      */
     setLayers: function(layers) {
-        if(this.active) {
+        if (this.active) {
             this.deactivate();
             this.layers = layers;
             this.activate();
@@ -441,9 +441,9 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
      */
     createFilter: function(geometryAttribute, geometry) {
         var filter = null;
-        if(this.handler instanceof OpenLayers.Handler.RegularPolygon) {
+        if (this.handler instanceof OpenLayers.Handler.RegularPolygon) {
             // box
-            if(this.handler.irregular === true) {
+            if (this.handler.irregular === true) {
                 filter = new OpenLayers.Filter.Spatial({
                     type: OpenLayers.Filter.Spatial.BBOX,
                     property: geometryAttribute.name,
@@ -456,15 +456,15 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
                     value: geometry}
                 );
             }
-        } else if(this.handler instanceof OpenLayers.Handler.Polygon) {
+        } else if (this.handler instanceof OpenLayers.Handler.Polygon) {
             filter = new OpenLayers.Filter.Spatial({
                 type: OpenLayers.Filter.Spatial.INTERSECTS,
                 property: geometryAttribute.name,
                 value: geometry}
             );
-        } else if(this.handler instanceof OpenLayers.Handler.Path) {
+        } else if (this.handler instanceof OpenLayers.Handler.Path) {
             // if source layer is point based, use DWITHIN instead
-            if(geometryAttribute.type.indexOf('Point') >= 0) {
+            if (geometryAttribute.type.indexOf('Point') >= 0) {
                 filter = new OpenLayers.Filter.Spatial({
                     type: OpenLayers.Filter.Spatial.DWITHIN,
                     property: geometryAttribute.name,
@@ -479,8 +479,8 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
                     value: geometry}
                 );
             }
-        } else if(this.handler instanceof OpenLayers.Handler.Click) {
-            if(geometryAttribute.type.indexOf('Polygon') >= 0) {
+        } else if (this.handler instanceof OpenLayers.Handler.Click) {
+            if (geometryAttribute.type.indexOf('Polygon') >= 0) {
                 filter = new OpenLayers.Filter.Spatial({
                     type: OpenLayers.Filter.Spatial.INTERSECTS,
                     property: geometryAttribute.name,
@@ -515,10 +515,10 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
                 var filters = [];
                 for (var j=0, lenj=geometryAttributes.length; j<lenj; j++) {
                     var geometryAttribute = geometryAttributes[j];
-                    if(geometryAttribute !== null) {
+                    if (geometryAttribute !== null) {
                         // from the click handler we will not get an actual 
                         // geometry so transform
-                        if(!(geometry instanceof OpenLayers.Geometry)) {
+                        if (!(geometry instanceof OpenLayers.Geometry)) {
                             var point = this.map.getLonLatFromPixel(
                                 geometry.xy);
                             geometry = new OpenLayers.Geometry.Point(
@@ -526,7 +526,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
                         }
                         var filter = this.createFilter(geometryAttribute,
                         geometry);
-                        if(filter !== null) {
+                        if (filter !== null) {
                             filters.push(filter);
                         }
                     }
@@ -555,7 +555,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
     applySelection: function() {
         var canApply = true;
         for (var i=0, len=this.layers.length; i<len; i++) {
-            if(!this.wfsCache[this.layers[i].id]) {
+            if (!this.wfsCache[this.layers[i].id]) {
                 canApply = false;
                 break;
             }

@@ -25,7 +25,7 @@ element = function(type) {
             this[attr] = value;
         },    
         'appendChild': function(element) {
-            if(this.childNodes.length) {
+            if (this.childNodes.length) {
                 this.childNodes[this.childNodes.length - 1].nextSibling = element;
             }  else {
                 this.firstChild = element;
@@ -46,7 +46,7 @@ element = function(type) {
             var uc = name.toUpperCase();
             var list = externalList || [];
             for(var i = 0; i < this.childNodes.length; i++) {
-                if(this.childNodes[i].tagName == uc) {
+                if (this.childNodes[i].tagName == uc) {
                     list.push(this.childNodes[i]);
                 }
                 this.childNodes[i].getElementsByTagName(name, list);
@@ -55,11 +55,11 @@ element = function(type) {
         },
         'getElementById': function(id) {
             for(var i = 0; i < this.childNodes.length; i++) {
-                if(this.childNodes[i].id == id) {
+                if (this.childNodes[i].id == id) {
                     return this.childNodes[i];
                 } else {
                     var elem = this.childNodes[i].getElementById(id);
-                    if(elem) { 
+                    if (elem) { 
                         return elem
                     }
                 }

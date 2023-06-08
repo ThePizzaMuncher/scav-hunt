@@ -62,14 +62,14 @@ OpenLayers.Format.OGCExceptionReport = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     read: function(data) {
         var result;
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         var root = data.documentElement;
         var exceptionInfo = {exceptionReport: null}; 
-        if(root) {
+        if (root) {
             this.readChildNodes(data, exceptionInfo);
-            if(exceptionInfo.exceptionReport === null) {
+            if (exceptionInfo.exceptionReport === null) {
                 // fall-back to OWSCommon since this is a common output format for exceptions
                 // we cannot easily use the ows readers directly since they differ for 1.0 and 1.1
                 exceptionInfo = new OpenLayers.Format.OWSCommon().read(data);

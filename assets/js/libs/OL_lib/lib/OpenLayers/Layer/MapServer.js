@@ -47,7 +47,7 @@ OpenLayers.Layer.MapServer = OpenLayers.Class(OpenLayers.Layer.Grid, {
 
         // unless explicitly set in options, if the layer is transparent, 
         // it will be an overlay
-        if(options == null || options.isBaseLayer == null) {
+        if (options == null || options.isBaseLayer == null) {
             this.isBaseLayer = ((this.params.transparent != "true") && 
                                 (this.params.transparent != true));
         }
@@ -61,7 +61,7 @@ OpenLayers.Layer.MapServer = OpenLayers.Class(OpenLayers.Layer.Grid, {
      * {<OpenLayers.Layer.MapServer>} An exact clone of this layer
      */
     clone: function (obj) {
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer.MapServer(this.name,
                                            this.url,
                                            this.params,
@@ -134,7 +134,7 @@ OpenLayers.Layer.MapServer = OpenLayers.Class(OpenLayers.Layer.Grid, {
         // if url is not a string, it should be an array of strings, 
         // in which case we will deterministically select one of them in 
         // order to evenly distribute requests to different urls.
-        if(OpenLayers.Util.isArray(url)) {
+        if (OpenLayers.Util.isArray(url)) {
             url = this.selectUrl(paramsString, url);
         }   
         
@@ -142,7 +142,7 @@ OpenLayers.Layer.MapServer = OpenLayers.Class(OpenLayers.Layer.Grid, {
         var urlParams = OpenLayers.Util.upperCaseObject(
                             OpenLayers.Util.getParameters(url));
         for(var key in allParams) {
-            if(key.toUpperCase() in urlParams) {
+            if (key.toUpperCase() in urlParams) {
                 delete allParams[key];
             }
         }
@@ -160,12 +160,12 @@ OpenLayers.Layer.MapServer = OpenLayers.Class(OpenLayers.Layer.Grid, {
         //
         paramsString = paramsString.replace(/,/g, "+");
         
-        if(paramsString != "") {
+        if (paramsString != "") {
             var lastServerChar = url.charAt(url.length - 1);
-            if((lastServerChar == "&") || (lastServerChar == "?")) {
+            if ((lastServerChar == "&") || (lastServerChar == "?")) {
                 requestString += paramsString;
             } else {
-                if(url.indexOf('?') == -1) {
+                if (url.indexOf('?') == -1) {
                     //serverPath has no ? -- add one
                     requestString += '?' + paramsString;
                 } else {

@@ -230,7 +230,7 @@
          * to a "feature id" using this heuristic:
          *
          *     // x and y are pixel offsets from top left of 256x256 tile
-         *     if(y < 255 || x < 222) {
+         *     if (y < 255 || x < 222) {
          *         id = (y * 256) + x
          *     } else {
          *         id = 65501; // max number of ids that can be encoded
@@ -266,19 +266,19 @@
         
         // wait for response and parsing, then make assertions
         t.delay_call(1, function() {
-            if(err) {
+            if (err) {
                 t.fail(err);
             } else {
                 var got, exp, failure;
                 outer: for (var y=0; y<256; ++y) {
                     for (var x=0; x<256; ++x) {
-                        if(y<255 || x<222) {
+                        if (y<255 || x<222) {
                             exp = String((y * 256) + x);
                         } else {
                             exp = "65501";
                         }
                         got = tile.getFeatureId(x, y);
-                        if(got !== exp) {
+                        if (got !== exp) {
                             failure = "Failed to get id for (" + x + ", " + y + "): " +
                                 "got " + got + " but expected " + exp;
                             
@@ -286,7 +286,7 @@
                         }
                     }
                 }
-                if(!failure) {
+                if (!failure) {
                     t.ok(true, "resolved feature ids for all data points");
                 } else {
                     t.fail(failure);

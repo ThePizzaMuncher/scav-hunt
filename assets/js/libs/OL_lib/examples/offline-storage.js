@@ -47,7 +47,7 @@ function init() {
         imageFormat: "image/jpeg",
         eventListeners: {
             cachefull: function() {
-                if(seeding) {
+                if (seeding) {
                     stopSeeding();
                 }
                 status.innerHTML = "Cache full.";
@@ -85,7 +85,7 @@ function init() {
         var tile = map.baseLayer.grid[0][0];
         try {
             var canvasContext = tile.getCanvasContext();
-            if(canvasContext) {
+            if (canvasContext) {
                 // will throw an exception if CORS image requests are not supported
                 canvasContext.canvas.toDataURL();
             } else {
@@ -101,12 +101,12 @@ function init() {
 
     // update the number of cache hits and detect missing CORS support
     function updateStatus(evt) {
-        if(window.localStorage) {
+        if (window.localStorage) {
             status.innerHTML = localStorage.length + " entries in cache.";
         } else {
             status.innerHTML = "Local storage not supported. Try a different browser.";
         }
-        if(evt && evt.tile.url.substr(0, 5) === "data:") {
+        if (evt && evt.tile.url.substr(0, 5) === "data:") {
             cacheHits++;
         }
         hits.innerHTML = cacheHits + " cache hits.";
@@ -114,7 +114,7 @@ function init() {
     
     // turn the cacheRead controls on and off
     function toggleRead() {
-        if(!this.checked) {
+        if (!this.checked) {
             cacheRead1.deactivate();
             cacheRead2.deactivate();
         } else {
@@ -135,7 +135,7 @@ function init() {
     
     // activate the cacheRead control that matches the desired fetch strategy
     function setType() {
-        if(tileloadstart.checked) {
+        if (tileloadstart.checked) {
             cacheRead1.activate();
         } else {
             cacheRead2.activate();
@@ -177,7 +177,7 @@ function init() {
         // adjust the layer's buffer size so we don't have to pan
         layer.buffer = Math.ceil((extentWidth / tileWidth - map.getSize().w / tileWidth) / 2);
         map.zoomIn();
-        if(nextZoom === layer.numZoomLevels-1) {
+        if (nextZoom === layer.numZoomLevels-1) {
             stopSeeding();
         }
     }
@@ -188,10 +188,10 @@ function init() {
         seeding.layer.events.unregister("loadend", null, seed);
         seeding.layer.buffer = seeding.buffer;
         map.setCenter(seeding.center, seeding.zoom);
-        if(!seeding.cacheWriteActive) {
+        if (!seeding.cacheWriteActive) {
             cacheWrite.deactivate();
         }
-        if(read.checked) {
+        if (read.checked) {
             setType();
         }
         seeding = false;

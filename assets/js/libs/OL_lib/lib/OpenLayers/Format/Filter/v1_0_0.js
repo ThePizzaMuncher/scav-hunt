@@ -136,7 +136,7 @@ OpenLayers.Format.Filter.v1_0_0 = OpenLayers.Class(
                 // featureNS.
                 filter.property && this.writeNode("PropertyName", filter, node);
                 var box = this.writeNode("gml:Box", filter.value, node);
-                if(filter.projection) {
+                if (filter.projection) {
                     box.setAttribute("srsName", filter.projection);
                 }
                 return node;
@@ -161,16 +161,16 @@ OpenLayers.Format.Filter.v1_0_0 = OpenLayers.Class(
     writeSpatial: function(filter, name) {
         var node = this.createElementNSPlus("ogc:"+name);
         this.writeNode("PropertyName", filter, node);
-        if(filter.value instanceof OpenLayers.Filter.Function) {
+        if (filter.value instanceof OpenLayers.Filter.Function) {
             this.writeNode("Function", filter.value, node);
         } else {
         var child;
-        if(filter.value instanceof OpenLayers.Geometry) {
+        if (filter.value instanceof OpenLayers.Geometry) {
             child = this.writeNode("feature:_geometry", filter.value).firstChild;
         } else {
             child = this.writeNode("gml:Box", filter.value);
         }
-        if(filter.projection) {
+        if (filter.projection) {
             child.setAttribute("srsName", filter.projection);
         }
         node.appendChild(child);

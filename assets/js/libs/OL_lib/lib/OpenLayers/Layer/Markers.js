@@ -68,7 +68,7 @@ OpenLayers.Layer.Markers = OpenLayers.Class(OpenLayers.Layer, {
      * opacity - {Float}
      */
     setOpacity: function(opacity) {
-        if(opacity != this.opacity) {
+        if (opacity != this.opacity) {
             this.opacity = opacity;
             for (var i=0, len=this.markers.length; i<len; i++) {
                 this.markers[i].setOpacity(this.opacity);
@@ -87,7 +87,7 @@ OpenLayers.Layer.Markers = OpenLayers.Class(OpenLayers.Layer, {
     moveTo:function(bounds, zoomChanged, dragging) {
         OpenLayers.Layer.prototype.moveTo.apply(this, arguments);
 
-        if(zoomChanged || !this.drawn) {
+        if (zoomChanged || !this.drawn) {
             for(var i=0, len=this.markers.length; i<len; i++) {
                 this.drawMarker(this.markers[i]);
             }
@@ -104,11 +104,11 @@ OpenLayers.Layer.Markers = OpenLayers.Class(OpenLayers.Layer, {
     addMarker: function(marker) {
         this.markers.push(marker);
 
-        if(this.opacity < 1) {
+        if (this.opacity < 1) {
             marker.setOpacity(this.opacity);
         }
 
-        if(this.map && this.map.getExtent()) {
+        if (this.map && this.map.getExtent()) {
             marker.map = this.map;
             this.drawMarker(marker);
         }
@@ -121,7 +121,7 @@ OpenLayers.Layer.Markers = OpenLayers.Class(OpenLayers.Layer, {
      * marker - {<OpenLayers.Marker>} 
      */
     removeMarker: function(marker) {
-        if(this.markers && this.markers.length) {
+        if (this.markers && this.markers.length) {
             OpenLayers.Util.removeItem(this.markers, marker);
             marker.erase();
         }
@@ -133,7 +133,7 @@ OpenLayers.Layer.Markers = OpenLayers.Class(OpenLayers.Layer, {
      * destroyed by this function, but are removed from the list of markers.
      */
     clearMarkers: function() {
-        if(this.markers != null) {
+        if (this.markers != null) {
             while(this.markers.length > 0) {
                 this.removeMarker(this.markers[0]);
             }
@@ -150,13 +150,13 @@ OpenLayers.Layer.Markers = OpenLayers.Class(OpenLayers.Layer, {
      */
     drawMarker: function(marker) {
         var px = this.map.getLayerPxFromLonLat(marker.lonlat);
-        if(px == null) {
+        if (px == null) {
             marker.display(false);
         } else {
-            if(!marker.isDrawn()) {
+            if (!marker.isDrawn()) {
                 var markerImg = marker.draw(px);
                 this.div.appendChild(markerImg);
-            } else if(marker.icon) {
+            } else if (marker.icon) {
                 marker.icon.moveTo(px);
             }
         }
@@ -172,7 +172,7 @@ OpenLayers.Layer.Markers = OpenLayers.Class(OpenLayers.Layer, {
     getDataExtent: function () {
         var maxExtent = null;
         
-        if( this.markers && (this.markers.length > 0)) {
+        if ( this.markers && (this.markers.length > 0)) {
             var maxExtent = new OpenLayers.Bounds();
             for(var i=0, len=this.markers.length; i<len; i++) {
                 var marker = this.markers[i];

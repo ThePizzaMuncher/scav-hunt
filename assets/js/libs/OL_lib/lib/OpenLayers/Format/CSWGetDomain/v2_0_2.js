@@ -80,10 +80,10 @@ OpenLayers.Format.CSWGetDomain.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML, 
      * Parse the response from a GetDomain request.
      */
     read: function(data) {
-        if(typeof data == "string") { 
+        if (typeof data == "string") { 
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
         var obj = {};
@@ -105,7 +105,7 @@ OpenLayers.Format.CSWGetDomain.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML, 
                 this.readChildNodes(node, obj);
             },
             "DomainValues": function(node, obj) {
-                if(!(OpenLayers.Util.isArray(obj.DomainValues))) {
+                if (!(OpenLayers.Util.isArray(obj.DomainValues))) {
                     obj.DomainValues = [];
                 }
                 var attrs = node.attributes;
@@ -123,7 +123,7 @@ OpenLayers.Format.CSWGetDomain.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML, 
                 obj.ParameterName = this.getChildValue(node);
             },
             "ListOfValues": function(node, obj) {
-                if(!(OpenLayers.Util.isArray(obj.ListOfValues))) {
+                if (!(OpenLayers.Util.isArray(obj.ListOfValues))) {
                     obj.ListOfValues = [];
                 }
                 this.readChildNodes(node, obj.ListOfValues);
@@ -205,13 +205,13 @@ OpenLayers.Format.CSWGetDomain.v2_0_2 = OpenLayers.Class(OpenLayers.Format.XML, 
                         version: this.version
                     }
                 });
-                if(options.PropertyName || this.PropertyName) {
+                if (options.PropertyName || this.PropertyName) {
                     this.writeNode(
                         "csw:PropertyName",
                         options.PropertyName || this.PropertyName,
                         node
                     );
-                } else if(options.ParameterName || this.ParameterName) {
+                } else if (options.ParameterName || this.ParameterName) {
                     this.writeNode(
                         "csw:ParameterName",
                         options.ParameterName || this.ParameterName,

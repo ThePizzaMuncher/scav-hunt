@@ -1,11 +1,11 @@
 <?php
-if(!isset($_SESSION['docent'])) {
+if (!isset($_SESSION['docent'])) {
 	header('location:../login'); die();
-} if(!$_SESSION['docent']) {
+} if (!$_SESSION['docent']) {
 	header('location:../login'); die();
 }
-/* if(isset($_SESSION["docent"])) {
-	if($_SESSION["docent"] != 1) {
+/* if (isset($_SESSION["docent"])) {
+	if ($_SESSION["docent"] != 1) {
 		header("location:../login");
 		die();
 	}
@@ -54,7 +54,7 @@ require_once("../assets/includes/conn.php");
 
 		while ($row = mysqli_fetch_row($leerlingen)) {
 			for ($i = 0; $i < $num_rows; $i++) {
-				if($i == 6) {
+				if ($i == 6) {
 					// Get all the categories from category table
 					$sql_klasid = "SELECT * FROM `leerling` where id = $row[$i]";
 					$KlassenID = mysqli_query($conn, $sql_klasid);

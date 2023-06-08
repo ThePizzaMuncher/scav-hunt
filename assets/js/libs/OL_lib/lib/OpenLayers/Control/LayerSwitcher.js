@@ -140,7 +140,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
             changebaselayer: this.redraw,
             scope: this
         });
-        if(this.outsideViewport) {
+        if (this.outsideViewport) {
             this.events.attachToElement(this.div);
             this.events.register("buttonclick", this, this.onButtonClick);
         } else {
@@ -162,7 +162,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
         this.loadContents();
 
         // set mode to minimize
-        if(!this.outsideViewport) {
+        if (!this.outsideViewport) {
             this.minimizeControl();
         }
 
@@ -180,16 +180,16 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
      */
     onButtonClick: function(evt) {
         var button = evt.buttonElement;
-        if(button === this.minimizeDiv) {
+        if (button === this.minimizeDiv) {
             this.minimizeControl();
-        } else if(button === this.maximizeDiv) {
+        } else if (button === this.maximizeDiv) {
             this.maximizeControl();
-        } else if(button._layerSwitcher === this.id) {
-            if(button["for"]) {
+        } else if (button._layerSwitcher === this.id) {
+            if (button["for"]) {
                 button = document.getElementById(button["for"]);
             }
-            if(!button.disabled) {
-                if(button.type == "radio") {
+            if (!button.disabled) {
+                if (button.type == "radio") {
                     button.checked = true;
                     this.map.setBaseLayer(this.map.getLayer(button._layer));
                 } else {
@@ -222,7 +222,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
      * {Boolean} The layer state changed since the last redraw() call.
      */
     checkRedraw: function() {
-        if( !this.layerStates.length ||
+        if ( !this.layerStates.length ||
              (this.map.layers.length != this.layerStates.length) ) {
             return true;
         }
@@ -230,7 +230,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
         for (var i = 0, len = this.layerStates.length; i < len; i++) {
             var layerState = this.layerStates[i];
             var layer = this.map.layers[i];
-            if( (layerState.name != layer.name) ||
+            if ( (layerState.name != layer.name) ||
                  (layerState.inRange != layer.inRange) ||
                  (layerState.id != layer.id) ||
                  (layerState.visibility != layer.visibility) ) {
@@ -253,7 +253,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
     redraw: function() {
         //if the state hasn't changed since last redraw, no need
         // to do anything. Just return the existing div.
-        if(!this.checkRedraw()) {
+        if (!this.checkRedraw()) {
             return this.div;
         }
 
@@ -281,14 +281,14 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
         }
 
         var layers = this.map.layers.slice();
-        if(!this.ascending) { layers.reverse(); }
+        if (!this.ascending) { layers.reverse(); }
         for(var i=0, len=layers.length; i<len; i++) {
             var layer = layers[i];
             var baseLayer = layer.isBaseLayer;
 
-            if(layer.displayInLayerSwitcher) {
+            if (layer.displayInLayerSwitcher) {
 
-                if(baseLayer) {
+                if (baseLayer) {
                     containsBaseLayers = true;
                 } else {
                     containsOverlays = true;
@@ -317,7 +317,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
                 inputElem._layer = layer.id;
                 inputElem._layerSwitcher = this.id;
 
-                if(!baseLayer && !layer.inRange) {
+                if (!baseLayer && !layer.inRange) {
                     inputElem.disabled = true;
                 }
 
@@ -329,7 +329,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
                 OpenLayers.Element.addClass(labelSpan, "labelSpan olButton");
                 labelSpan._layer = layer.id;
                 labelSpan._layerSwitcher = this.id;
-                if(!baseLayer && !layer.inRange) {
+                if (!baseLayer && !layer.inRange) {
                     labelSpan.style.color = "gray";
                 }
                 labelSpan.innerHTML = layer.name;
@@ -377,7 +377,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
         // set the newly selected base layer
         for(var i=0, len=this.baseLayers.length; i<len; i++) {
             var layerEntry = this.baseLayers[i];
-            if(layerEntry.inputElem.checked) {
+            if (layerEntry.inputElem.checked) {
                 this.map.setBaseLayer(layerEntry.layer, false);
             }
         }
@@ -406,7 +406,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
 
         this.showControls(false);
 
-        if(e != null) {
+        if (e != null) {
             OpenLayers.Event.stop(e);
         }
     },
@@ -430,7 +430,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
 
         this.showControls(true);
 
-        if(e != null) {
+        if (e != null) {
             OpenLayers.Event.stop(e);
         }
     },
@@ -476,7 +476,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
         this.dataLayersDiv = document.createElement("div");
         OpenLayers.Element.addClass(this.dataLayersDiv, "dataLayersDiv");
 
-        if(this.ascending) {
+        if (this.ascending) {
             this.layersDiv.appendChild(this.baseLbl);
             this.layersDiv.appendChild(this.baseLayersDiv);
             this.layersDiv.appendChild(this.dataLbl);

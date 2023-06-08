@@ -93,7 +93,7 @@ OpenLayers.Strategy = OpenLayers.Class({
      *      the strategy was already active.
      */
     activate: function() {
-        if(!this.active) {
+        if (!this.active) {
             this.active = true;
             return true;
         }
@@ -110,7 +110,7 @@ OpenLayers.Strategy = OpenLayers.Class({
      *      the strategy was already inactive.
      */
     deactivate: function() {
-        if(this.active) {
+        if (this.active) {
             this.active = false;
             return true;
         }

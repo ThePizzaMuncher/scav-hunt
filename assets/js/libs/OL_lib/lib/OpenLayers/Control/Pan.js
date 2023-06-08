@@ -62,7 +62,7 @@ OpenLayers.Control.Pan = OpenLayers.Class(OpenLayers.Control.Button, {
      * Method: trigger
      */
     trigger: function(){
-        if(this.map) {
+        if (this.map) {
             var getSlideFactor = OpenLayers.Function.bind(function (dim) {
                 return this.slideRatio ?
                     this.map.getSize()[dim] * this.slideRatio :

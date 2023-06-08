@@ -77,11 +77,11 @@ OpenLayers.Geometry.MultiLineString = OpenLayers.Class(
             sourceSplit = false;
             for(var j=0; j < targetParts.length; ++j) { 
                 splits = sourceLine.split(targetParts[j], options);
-                if(splits) {
-                    if(mutual) {
+                if (splits) {
+                    if (mutual) {
                         sourceLines = splits[0];
                         for(var k=0, klen=sourceLines.length; k<klen; ++k) {
-                            if(k===0 && sourceParts.length) {
+                            if (k===0 && sourceParts.length) {
                                 sourceParts[sourceParts.length-1].addComponent(
                                     sourceLines[k]
                                 );
@@ -96,7 +96,7 @@ OpenLayers.Geometry.MultiLineString = OpenLayers.Class(
                         sourceSplit = true;
                         splits = splits[1];
                     }
-                    if(splits.length) {
+                    if (splits.length) {
                         // splice in new target parts
                         splits.unshift(j, 1);
                         Array.prototype.splice.apply(targetParts, splits);
@@ -104,9 +104,9 @@ OpenLayers.Geometry.MultiLineString = OpenLayers.Class(
                     }
                 }
             }
-            if(!sourceSplit) {
+            if (!sourceSplit) {
                 // source line was not hit
-                if(sourceParts.length) {
+                if (sourceParts.length) {
                     // add line to existing multi
                     sourceParts[sourceParts.length-1].addComponent(
                         sourceLine.clone()
@@ -121,18 +121,18 @@ OpenLayers.Geometry.MultiLineString = OpenLayers.Class(
                 }
             }
         }
-        if(sourceParts && sourceParts.length > 1) {
+        if (sourceParts && sourceParts.length > 1) {
             sourceSplit = true;
         } else {
             sourceParts = [];
         }
-        if(targetParts && targetParts.length > 1) {
+        if (targetParts && targetParts.length > 1) {
             targetSplit = true;
         } else {
             targetParts = [];
         }
-        if(sourceSplit || targetSplit) {
-            if(mutual) {
+        if (sourceSplit || targetSplit) {
+            if (mutual) {
                 results = [sourceParts, targetParts];
             } else {
                 results = targetParts;
@@ -175,7 +175,7 @@ OpenLayers.Geometry.MultiLineString = OpenLayers.Class(
         var results = null;
         var mutual = options && options.mutual;
         var splits, targetLine, sourceLines, sourceSplit, targetSplit, sourceParts, targetParts;
-        if(geometry instanceof OpenLayers.Geometry.LineString) {
+        if (geometry instanceof OpenLayers.Geometry.LineString) {
             targetParts = [];
             sourceParts = [geometry];
             for(var i=0, len=this.components.length; i<len; ++i) {
@@ -183,22 +183,22 @@ OpenLayers.Geometry.MultiLineString = OpenLayers.Class(
                 targetLine = this.components[i];
                 for(var j=0; j<sourceParts.length; ++j) {
                     splits = sourceParts[j].split(targetLine, options);
-                    if(splits) {
-                        if(mutual) {
+                    if (splits) {
+                        if (mutual) {
                             sourceLines = splits[0];
-                            if(sourceLines.length) {
+                            if (sourceLines.length) {
                                 // splice in new source parts
                                 sourceLines.unshift(j, 1);
                                 Array.prototype.splice.apply(sourceParts, sourceLines);
                                 j += sourceLines.length - 2;
                             }
                             splits = splits[1];
-                            if(splits.length === 0) {
+                            if (splits.length === 0) {
                                 splits = [targetLine.clone()];
                             }
                         }
                         for(var k=0, klen=splits.length; k<klen; ++k) {
-                            if(k===0 && targetParts.length) {
+                            if (k===0 && targetParts.length) {
                                 targetParts[targetParts.length-1].addComponent(
                                     splits[k]
                                 );
@@ -213,9 +213,9 @@ OpenLayers.Geometry.MultiLineString = OpenLayers.Class(
                         targetSplit = true;                    
                     }
                 }
-                if(!targetSplit) {
+                if (!targetSplit) {
                     // target component was not hit
-                    if(targetParts.length) {
+                    if (targetParts.length) {
                         // add it to any existing multi-line
                         targetParts[targetParts.length-1].addComponent(
                             targetLine.clone()
@@ -234,18 +234,18 @@ OpenLayers.Geometry.MultiLineString = OpenLayers.Class(
         } else {
             results = geometry.split(this);
         }
-        if(sourceParts && sourceParts.length > 1) {
+        if (sourceParts && sourceParts.length > 1) {
             sourceSplit = true;
         } else {
             sourceParts = [];
         }
-        if(targetParts && targetParts.length > 1) {
+        if (targetParts && targetParts.length > 1) {
             targetSplit = true;
         } else {
             targetParts = [];
         }
-        if(sourceSplit || targetSplit) {
-            if(mutual) {
+        if (sourceSplit || targetSplit) {
+            if (mutual) {
                 results = [sourceParts, targetParts];
             } else {
                 results = targetParts;

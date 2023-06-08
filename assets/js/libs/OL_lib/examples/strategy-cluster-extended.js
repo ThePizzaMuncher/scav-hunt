@@ -76,7 +76,7 @@ var map, vectorlayer, features, stylemap, select;
     var showInformation = function(evt){
         var feature = evt.feature;
         var info = 'Last hovered feature:<br>';
-        if(feature.cluster) {
+        if (feature.cluster) {
             info += '&nbsp;&nbsp;Cluster of ' + feature.attributes.count + ' features:';
             var clazzes = {
                 '1': 0,
@@ -117,16 +117,16 @@ var map, vectorlayer, features, stylemap, select;
     var context = {
         getColor: function(feature){
             var color = '#aaaaaa';
-            if(feature.attributes.clazz && feature.attributes.clazz === 4) {
+            if (feature.attributes.clazz && feature.attributes.clazz === 4) {
                 color = '#ee0000';
-            } else if(feature.cluster) {
+            } else if (feature.cluster) {
                 var onlyFour = true;
                 for (var i = 0; i < feature.cluster.length; i++) {
-                    if(onlyFour && feature.cluster[i].attributes.clazz !== 4) {
+                    if (onlyFour && feature.cluster[i].attributes.clazz !== 4) {
                         onlyFour = false;
                     }
                 }
-                if(onlyFour === true) {
+                if (onlyFour === true) {
                     color = '#ee0000';
                 }
             }
@@ -240,7 +240,7 @@ var map, vectorlayer, features, stylemap, select;
     var inputs = document.getElementsByTagName('input');
     for( var cnt = 0; cnt < inputs.length; cnt++) {
       var input = inputs[cnt];
-      if(input.name === 'strategy') {
+      if (input.name === 'strategy') {
          input.onclick = changeStrategy;
       }
     }

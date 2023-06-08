@@ -92,7 +92,7 @@ OpenLayers.Filter.Comparison = OpenLayers.Class(OpenLayers.Filter, {
         OpenLayers.Filter.prototype.initialize.apply(this, [options]);
         // since matchCase on PropertyIsLike is not schema compliant, we only
         // want to use this if explicitly asked for
-        if(this.type === OpenLayers.Filter.Comparison.LIKE 
+        if (this.type === OpenLayers.Filter.Comparison.LIKE 
             && options.matchCase === undefined) {
                 this.matchCase = null;
         }
@@ -110,7 +110,7 @@ OpenLayers.Filter.Comparison = OpenLayers.Class(OpenLayers.Filter, {
      * {Boolean} The filter applies.
      */
     evaluate: function(context) {
-        if(context instanceof OpenLayers.Feature.Vector) {
+        if (context instanceof OpenLayers.Feature.Vector) {
             context = context.attributes;
         }
         var result = false;
@@ -119,7 +119,7 @@ OpenLayers.Filter.Comparison = OpenLayers.Class(OpenLayers.Filter, {
         switch(this.type) {
             case OpenLayers.Filter.Comparison.EQUAL_TO:
                 exp = this.value;
-                if(!this.matchCase &&
+                if (!this.matchCase &&
                    typeof got == "string" && typeof exp == "string") {
                     result = (got.toUpperCase() == exp.toUpperCase());
                 } else {
@@ -128,7 +128,7 @@ OpenLayers.Filter.Comparison = OpenLayers.Class(OpenLayers.Filter, {
                 break;
             case OpenLayers.Filter.Comparison.NOT_EQUAL_TO:
                 exp = this.value;
-                if(!this.matchCase &&
+                if (!this.matchCase &&
                    typeof got == "string" && typeof exp == "string") {
                     result = (got.toUpperCase() != exp.toUpperCase());
                 } else {
@@ -181,7 +181,7 @@ OpenLayers.Filter.Comparison = OpenLayers.Class(OpenLayers.Filter, {
      * {String} regular expression string
      */
     value2regex: function(wildCard, singleChar, escapeChar) {
-        if(wildCard == ".") {
+        if (wildCard == ".") {
             throw new Error("'.' is an unsupported wildCard character for " +
                             "OpenLayers.Filter.Comparison");
         }

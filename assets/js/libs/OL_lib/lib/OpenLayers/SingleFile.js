@@ -30,9 +30,9 @@ var OpenLayers = {
             src, m, l = "";
         for(var i=0, len=s.length; i<len; i++) {
             src = s[i].getAttribute('src');
-            if(src) {
+            if (src) {
                 m = src.match(r);
-                if(m) {
+                if (m) {
                     l = m[1];
                     break;
                 }

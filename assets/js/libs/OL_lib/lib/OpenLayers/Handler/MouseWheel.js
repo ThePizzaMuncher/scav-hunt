@@ -95,7 +95,7 @@ OpenLayers.Handler.MouseWheel = OpenLayers.Class(OpenLayers.Handler, {
     onWheelEvent: function(e){
         
         // make sure we have a map and check keyboard modifiers
-        if(!this.map || !this.checkModifiers(e)) {
+        if (!this.map || !this.checkModifiers(e)) {
             return;
         }
         
@@ -113,10 +113,10 @@ OpenLayers.Handler.MouseWheel = OpenLayers.Class(OpenLayers.Handler, {
         var elem = OpenLayers.Event.element(e);
         while((elem != null) && !overMapDiv && !overScrollableDiv) {
 
-            if(!overScrollableDiv) {
+            if (!overScrollableDiv) {
                 try {
                     var overflow;
-                    if(elem.currentStyle) {
+                    if (elem.currentStyle) {
                         overflow = elem.currentStyle["overflow"];
                     } else {
                         var style = 
@@ -131,15 +131,15 @@ OpenLayers.Handler.MouseWheel = OpenLayers.Class(OpenLayers.Handler, {
                 }
             }
 
-            if(!allowScroll) {
+            if (!allowScroll) {
                 allowScroll = OpenLayers.Element.hasClass(elem, 'olScrollable');
-                if(!allowScroll) {
+                if (!allowScroll) {
                     for (var i = 0, len = this.map.layers.length; i < len; i++) {
                         // Are we in the layer div? Note that we have two cases
                         // here: one is to catch EventPane layers, which have a
                         // pane above the layer (layer.pane)
                         var layer = this.map.layers[i];
-                        if(elem == layer.div || elem == layer.pane) {
+                        if (elem == layer.div || elem == layer.pane) {
                             allowScroll = true;
                             break;
                         }
@@ -168,18 +168,18 @@ OpenLayers.Handler.MouseWheel = OpenLayers.Class(OpenLayers.Handler, {
         //       Kill the event (dont scroll the page if we wheel over the 
         //        layerswitcher or the pan/zoom control)
         //
-        if(!overScrollableDiv && overMapDiv) {
-            if(allowScroll) {
+        if (!overScrollableDiv && overMapDiv) {
+            if (allowScroll) {
                 var delta = 0;
                 
-                if(e.wheelDelta) {
+                if (e.wheelDelta) {
                     delta = e.wheelDelta;
-                    if(delta % 160 === 0) {
+                    if (delta % 160 === 0) {
                         // opera have steps of 160 instead of 120
                         delta = delta * 0.75;
                     }
                     delta = delta / 120;
-                } else if(e.detail) {
+                } else if (e.detail) {
                     // detail in Firefox on OS X is 1/3 of Windows
                     // so force delta 1 / -1
                     delta = - (e.detail / Math.abs(e.detail));
@@ -187,7 +187,7 @@ OpenLayers.Handler.MouseWheel = OpenLayers.Class(OpenLayers.Handler, {
                 this.delta += delta;
 
                 window.clearTimeout(this._timeoutId);
-                if(this.interval && Math.abs(this.delta) < this.maxDelta) {
+                if (this.interval && Math.abs(this.delta) < this.maxDelta) {
                     // store e because window.event might change during delay
                     var evt = OpenLayers.Util.extend({}, e);
                     this._timeoutId = window.setTimeout(
@@ -216,9 +216,9 @@ OpenLayers.Handler.MouseWheel = OpenLayers.Class(OpenLayers.Handler, {
         var delta = this.delta;
         this.delta = 0;
         
-        if(delta) {
+        if (delta) {
             e.xy = this.map.events.getMousePosition(e);
-            if(delta < 0) {
+            if (delta < 0) {
                 this.callback("down",
                     [e, this.cumulative ? Math.max(-this.maxDelta, delta) : -1]);
             } else {
@@ -232,7 +232,7 @@ OpenLayers.Handler.MouseWheel = OpenLayers.Class(OpenLayers.Handler, {
      * Method: activate 
      */
     activate: function (evt) {
-        if(OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
+        if (OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
             //register mousewheel events specifically on the window and document
             var wheelListener = this.wheelListener;
             OpenLayers.Event.observe(window, "DOMMouseScroll", wheelListener);
@@ -248,7 +248,7 @@ OpenLayers.Handler.MouseWheel = OpenLayers.Class(OpenLayers.Handler, {
      * Method: deactivate 
      */
     deactivate: function (evt) {
-        if(OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
+        if (OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
             // unregister mousewheel events specifically on the window and document
             var wheelListener = this.wheelListener;
             OpenLayers.Event.stopObserving(window, "DOMMouseScroll", wheelListener);

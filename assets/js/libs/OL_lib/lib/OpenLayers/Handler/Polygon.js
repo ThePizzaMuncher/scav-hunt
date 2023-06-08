@@ -96,7 +96,7 @@ OpenLayers.Handler.Polygon = OpenLayers.Class(OpenLayers.Handler.Path, {
      * pixel - {<OpenLayers.Pixel>} The pixel location for the new point.
      */
     addPoint: function(pixel) {
-        if(!this.drawingHole && this.holeModifier &&
+        if (!this.drawingHole && this.holeModifier &&
            this.evt && this.evt[this.holeModifier]) {
             var geometry = this.point.geometry;
             var features = this.control.layer.features;
@@ -104,7 +104,7 @@ OpenLayers.Handler.Polygon = OpenLayers.Class(OpenLayers.Handler.Path, {
             // look for intersections, last drawn gets priority
             for (var i=features.length-1; i>=0; --i) {
                 candidate = features[i].geometry;
-                if((candidate instanceof OpenLayers.Geometry.Polygon || 
+                if ((candidate instanceof OpenLayers.Geometry.Polygon || 
                     candidate instanceof OpenLayers.Geometry.MultiPolygon) && 
                     candidate.intersects(geometry)) {
                     polygon = features[i];
@@ -147,7 +147,7 @@ OpenLayers.Handler.Polygon = OpenLayers.Class(OpenLayers.Handler.Path, {
         var point = event.vertex;
         var components = this.line.geometry.components;
         // ensure that vertices of interior ring are contained by exterior ring
-        if(!this.polygon.geometry.intersects(point)) {
+        if (!this.polygon.geometry.intersects(point)) {
             var last = components[components.length-3];
             point.x = last.x;
             point.y = last.y;
@@ -174,22 +174,22 @@ OpenLayers.Handler.Polygon = OpenLayers.Class(OpenLayers.Handler.Path, {
         var ring = this.line.geometry;
         // ensure that ring has some area
         var modified = (ring.getArea() !== 0);
-        if(modified) {
+        if (modified) {
             // ensure that new ring doesn't intersect any other rings
             var rings = this.polygon.geometry.components;
             for (var i=rings.length-2; i>=0; --i) {
-                if(ring.intersects(rings[i])) {
+                if (ring.intersects(rings[i])) {
                     modified = false;
                     break;
                 }
             }
-            if(modified) {
+            if (modified) {
                 // ensure that new ring doesn't contain any other rings
                 var target;
                 outer: for (var i=rings.length-2; i>0; --i) {
                     var points = rings[i].components;
                     for (var j=0, jj=points.length; j<jj; ++j) {
-                        if(ring.containsPoint(points[j])) {
+                        if (ring.containsPoint(points[j])) {
                             modified = false;
                             break outer;
                         }
@@ -197,8 +197,8 @@ OpenLayers.Handler.Polygon = OpenLayers.Class(OpenLayers.Handler.Path, {
                 }
             }
         }
-        if(modified) {
-            if(this.polygon.state !== OpenLayers.State.INSERT) {
+        if (modified) {
+            if (this.polygon.state !== OpenLayers.State.INSERT) {
                 this.polygon.state = OpenLayers.State.UPDATE;
             }
         } else {
@@ -213,7 +213,7 @@ OpenLayers.Handler.Polygon = OpenLayers.Class(OpenLayers.Handler.Path, {
      * Finish the geometry and call the "cancel" callback.
      */
     cancel: function() {
-        if(this.drawingHole) {
+        if (this.drawingHole) {
             this.polygon.geometry.removeComponent(this.line.geometry);
             this.restoreFeature(true);
         }
@@ -238,7 +238,7 @@ OpenLayers.Handler.Polygon = OpenLayers.Class(OpenLayers.Handler.Path, {
         this.layer.removeFeatures([this.polygon], {silent: true});
         this.control.layer.addFeatures([this.polygon], {silent: true});
         this.drawingHole = false;
-        if(!cancel) {
+        if (!cancel) {
             // Re-trigger "sketchcomplete" so other listeners can do their
             // business.  While this is somewhat sloppy (if a listener is 
             // registered with registerPriority - not common - between the start
@@ -295,7 +295,7 @@ OpenLayers.Handler.Polygon = OpenLayers.Class(OpenLayers.Handler.Path, {
      */
     getGeometry: function() {
         var geometry = this.polygon && this.polygon.geometry;
-        if(geometry && this.multi) {
+        if (geometry && this.multi) {
             geometry = new OpenLayers.Geometry.MultiPolygon([geometry]);
         }
         return geometry;

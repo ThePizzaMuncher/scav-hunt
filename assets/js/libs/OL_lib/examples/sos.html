@@ -48,7 +48,7 @@
                     this.offeringCount++;
                     for (var i=0, len=offering.featureOfInterestIds.length; i<len; i++) {
                         var foi = offering.featureOfInterestIds[i];
-                        if(OpenLayers.Util.indexOf(result, foi) === -1) {
+                        if (OpenLayers.Util.indexOf(result, foi) === -1) {
                             result.push(foi);
                         }
                     }
@@ -75,7 +75,7 @@
             getTitleForObservedProperty: function(property) {
                 for (var name in this.SOSCapabilities.contents.offeringList) {
                     var offering = this.SOSCapabilities.contents.offeringList[name];
-                    if(offering.observedProperties[0] === property) {
+                    if (offering.observedProperties[0] === property) {
                         return offering.name;
                     }
                 }
@@ -83,7 +83,7 @@
             showPopup: function(response) {
                 this.count++;
                 var output = this.obsformat.read(response.responseXML || response.responseText);
-                if(output.measurements.length > 0) {
+                if (output.measurements.length > 0) {
                     this.html += '<tr>';
                     this.html += '<td width="100">'+this.getTitleForObservedProperty(output.measurements[0].observedProperty)+'</td>';
                     this.html += '<td>'+output.measurements[0].samplingTime.timeInstant.timePosition+'</td>';
@@ -91,7 +91,7 @@
                     this.html += '</tr>';
                 }
                 // check if we are done
-                if(this.count === this.numRequests) {
+                if (this.count === this.numRequests) {
                     var html = '<table cellspacing="10"><tbody>';
                     html += '<tr>';
                     html += '<th><b>'+OpenLayers.i18n('SOSClientType')+'</b></th>';
@@ -122,10 +122,10 @@
                 this.count = 0;
                 this.html = '';
                 this.numRequests = this.offeringCount;
-                if(!this.responseFormat) {
+                if (!this.responseFormat) {
                     for (format in this.SOSCapabilities.operationsMetadata.GetObservation.parameters.responseFormat.allowedValues) {
                         // look for a text/xml type of format
-                        if(format.indexOf('text/xml') >= 0) {
+                        if (format.indexOf('text/xml') >= 0) {
                             this.responseFormat = format;
                         }
                     }

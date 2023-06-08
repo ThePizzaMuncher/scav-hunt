@@ -222,12 +222,12 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
 
         this.handlers = {};
         
-        if(this.click) {
+        if (this.click) {
             this.handlers.click = new OpenLayers.Handler.Click(this,
                 {click: this.selectClick}, this.handlerOptions.click || {});
         }
 
-        if(this.box) {
+        if (this.box) {
             this.handlers.box = new OpenLayers.Handler.Box(
                 this, {done: this.selectBox},
                 OpenLayers.Util.extend(this.handlerOptions.box, {
@@ -236,7 +236,7 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
             ); 
         }
         
-        if(this.hover) {
+        if (this.hover) {
             this.handlers.hover = new OpenLayers.Handler.Hover(
                 this, {'move': this.cancelHover, 'pause': this.selectHover},
                 OpenLayers.Util.extend(this.handlerOptions.hover, {
@@ -255,7 +255,7 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
      * {Boolean} The control was effectively activated.
      */
     activate: function () {
-        if(!this.active) {
+        if (!this.active) {
             for(var i in this.handlers) {
                 this.handlers[i].activate();
             }
@@ -273,7 +273,7 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
      * {Boolean} The control was effectively deactivated.
      */
     deactivate: function () {
-        if(this.active) {
+        if (this.active) {
             for(var i in this.handlers) {
                 this.handlers[i].deactivate();
             }
@@ -307,7 +307,7 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
      */
     selectBox: function(position) {
         var bounds;
-        if(position instanceof OpenLayers.Bounds) {
+        if (position instanceof OpenLayers.Bounds) {
             var minXY = this.map.getLonLatFromPixel({
                 x: position.left,
                 y: position.bottom
@@ -321,7 +321,7 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
             );
             
         } else {
-            if(this.click) {
+            if (this.click) {
                 // box without extent - let the click handler take care of it
                 return;
             }
@@ -348,7 +348,7 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
      * Callback from the handlers.hover set up when <hover> selection is on
      */
     cancelHover: function() {
-        if(this.hoverResponse) {
+        if (this.hoverResponse) {
             this.protocol.abort(this.hoverResponse);
             this.hoverResponse = null;
 
@@ -384,19 +384,19 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
             maxFeatures: options.single == true ? this.maxFeatures : undefined,
             filter: filter,
             callback: function(result) {
-                if(result.success()) {
-                    if(result.features.length) {
-                        if(options.single == true) {
+                if (result.success()) {
+                    if (result.features.length) {
+                        if (options.single == true) {
                             this.selectBestFeature(result.features,
                                 bounds.getCenterLonLat(), options);
                         } else {
                             this.select(result.features);
                         }
-                    } else if(options.hover) {
+                    } else if (options.hover) {
                         this.hoverSelect();
                     } else {
                         this.events.triggerEvent("clickout");
-                        if(this.clickout) {
+                        if (this.clickout) {
                             this.unselectAll();
                         }
                     }
@@ -406,7 +406,7 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
             },
             scope: this
         });
-        if(options.hover == true) {
+        if (options.hover == true) {
             this.hoverResponse = response;
         }
     },
@@ -426,26 +426,26 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
      */
     selectBestFeature: function(features, clickPosition, options) {
         options = options || {};
-        if(features.length) {
+        if (features.length) {
             var point = new OpenLayers.Geometry.Point(clickPosition.lon,
                 clickPosition.lat);
             var feature, resultFeature, dist;
             var minDist = Number.MAX_VALUE;
             for(var i=0; i<features.length; ++i) {
                 feature = features[i];
-                if(feature.geometry) {
+                if (feature.geometry) {
                     dist = point.distanceTo(feature.geometry, {edge: false});
-                    if(dist < minDist) {
+                    if (dist < minDist) {
                         minDist = dist;
                         resultFeature = feature;
-                        if(minDist == 0) {
+                        if (minDist == 0) {
                             break;
                         }
                     }
                 }
             }
             
-            if(options.hover == true) {
+            if (options.hover == true) {
                 this.hoverSelect(resultFeature);
             } else {
                 this.select(resultFeature || features);
@@ -476,30 +476,30 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
      * features - {<OpenLayers.Feature.Vector>} or an array of features
      */
     select: function(features) {
-        if(!this.modifiers.multiple && !this.modifiers.toggle) {
+        if (!this.modifiers.multiple && !this.modifiers.toggle) {
             this.unselectAll();
         }
-        if(!(OpenLayers.Util.isArray(features))) {
+        if (!(OpenLayers.Util.isArray(features))) {
             features = [features];
         }
         
         var cont = this.events.triggerEvent("beforefeaturesselected", {
             features: features
         });
-        if(cont !== false) {
+        if (cont !== false) {
             var selectedFeatures = [];
             var feature;
             for(var i=0, len=features.length; i<len; ++i) {
                 feature = features[i];
-                if(this.features[feature.fid || feature.id]) {
-                    if(this.modifiers.toggle) {
+                if (this.features[feature.fid || feature.id]) {
+                    if (this.modifiers.toggle) {
                         this.unselect(this.features[feature.fid || feature.id]);
                     }
                 } else {
                     cont = this.events.triggerEvent("beforefeatureselected", {
                         feature: feature
                     });
-                    if(cont !== false) {
+                    if (cont !== false) {
                         this.features[feature.fid || feature.id] = feature;
                         selectedFeatures.push(feature);
                 
@@ -528,12 +528,12 @@ OpenLayers.Control.GetFeature = OpenLayers.Class(OpenLayers.Control, {
         var hfid = this.hoverFeature ?
             this.hoverFeature.fid || this.hoverFeature.id : null;
             
-        if(hfid && hfid != fid) {
+        if (hfid && hfid != fid) {
             this.events.triggerEvent("outfeature",
                 {feature: this.hoverFeature});
             this.hoverFeature = null;
         }
-        if(fid && fid != hfid) {
+        if (fid && fid != hfid) {
             this.events.triggerEvent("hoverfeature", {feature: feature});
             this.hoverFeature = feature;
         }

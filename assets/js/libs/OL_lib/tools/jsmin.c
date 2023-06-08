@@ -55,13 +55,13 @@ get()
 {
     int c = theLookahead;
     theLookahead = EOF;
-    if(c == EOF) {
+    if (c == EOF) {
         c = getc(stdin);
     }
-    if(c >= ' ' || c == '\n' || c == EOF) {
+    if (c >= ' ' || c == '\n' || c == EOF) {
         return c;
     }
-    if(c == '\r') {
+    if (c == '\r') {
         return '\n';
     }
     return ' ';
@@ -92,7 +92,7 @@ next()
         case '/':
             for (;;) {
                 c = get();
-                if(c <= '\n') {
+                if (c <= '\n') {
                     return c;
                 }
             }
@@ -101,7 +101,7 @@ next()
             for (;;) {
                 switch (get()) {
                 case '*':
-                    if(peek() == '/') {
+                    if (peek() == '/') {
                         get();
                         return ' ';
                     }
@@ -135,19 +135,19 @@ action(int d)
         putc(theA, stdout);
     case 2:
         theA = theB;
-        if(theA == '\'' || theA == '"') {
+        if (theA == '\'' || theA == '"') {
             for (;;) {
                 putc(theA, stdout);
                 theA = get();
-                if(theA == theB) {
+                if (theA == theB) {
                     break;
                 }
-                if(theA <= '\n') {
+                if (theA <= '\n') {
                     fprintf(stderr,
 "Error: JSMIN unterminated string literal: %c\n", theA);
                     exit(1);
                 }
-                if(theA == '\\') {
+                if (theA == '\\') {
                     putc(theA, stdout);
                     theA = get();
                 }
@@ -155,19 +155,19 @@ action(int d)
         }
     case 3:
         theB = next();
-        if(theB == '/' && (theA == '(' || theA == ',' || theA == '=' ||
+        if (theB == '/' && (theA == '(' || theA == ',' || theA == '=' ||
                 theA == ':' || theA == '[' || theA == '!' || theA == '&' || 
                 theA == '|')) {
             putc(theA, stdout);
             putc(theB, stdout);
             for (;;) {
                 theA = get();
-                if(theA == '/') {
+                if (theA == '/') {
                     break;
-                } else if(theA =='\\') {
+                } else if (theA =='\\') {
                     putc(theA, stdout);
                     theA = get();
-                } else if(theA <= '\n') {
+                } else if (theA <= '\n') {
                     fprintf(stderr,
 "Error: JSMIN unterminated Regular Expression literal.\n", theA);
                     exit(1);
@@ -194,7 +194,7 @@ jsmin()
     while (theA != EOF) {
         switch (theA) {
         case ' ':
-            if(isAlphanum(theB)) {
+            if (isAlphanum(theB)) {
                 action(1);
             } else {
                 action(2);
@@ -213,7 +213,7 @@ jsmin()
                 action(3);
                 break;
             default:
-                if(isAlphanum(theB)) {
+                if (isAlphanum(theB)) {
                     action(1);
                 } else {
                     action(2);
@@ -223,7 +223,7 @@ jsmin()
         default:
             switch (theB) {
             case ' ':
-                if(isAlphanum(theA)) {
+                if (isAlphanum(theA)) {
                     action(1);
                     break;
                 }
@@ -241,7 +241,7 @@ jsmin()
                     action(1);
                     break;
                 default:
-                    if(isAlphanum(theA)) {
+                    if (isAlphanum(theA)) {
                         action(1);
                     } else {
                         action(3);

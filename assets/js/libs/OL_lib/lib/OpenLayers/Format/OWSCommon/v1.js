@@ -174,7 +174,7 @@ OpenLayers.Format.OWSCommon.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 this.readChildNodes(node, dcp.http);
             },
             "Get": function(node, http) {
-                if(!http.get) {
+                if (!http.get) {
                     http.get = [];
                 }
                 var obj = {
@@ -184,7 +184,7 @@ OpenLayers.Format.OWSCommon.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 http.get.push(obj);
             },
             "Post": function(node, http) {
-                if(!http.post) {
+                if (!http.post) {
                     http.post = [];
                 }
                 var obj = {
@@ -194,7 +194,7 @@ OpenLayers.Format.OWSCommon.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 http.post.push(obj);
             },
             "Parameter": function(node, operation) {
-                if(!operation.parameters) {
+                if (!operation.parameters) {
                     operation.parameters = {};
                 }
                 var name = node.getAttribute("name");
@@ -202,7 +202,7 @@ OpenLayers.Format.OWSCommon.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 this.readChildNodes(node, operation.parameters[name]);
             },
             "Constraint": function(node, obj) {
-                if(!obj.constraints) {
+                if (!obj.constraints) {
                     obj.constraints = {};
                 }
                 var name = node.getAttribute("name");
@@ -219,7 +219,7 @@ OpenLayers.Format.OWSCommon.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
             "WGS84BoundingBox": function(node, obj) {
                 var boundingBox = {};
                 boundingBox.crs = node.getAttribute("crs");
-                if(obj.BoundingBox) {
+                if (obj.BoundingBox) {
                     obj.BoundingBox.push(boundingBox);
                 } else {
                     obj.projection = boundingBox.crs;

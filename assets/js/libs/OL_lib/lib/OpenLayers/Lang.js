@@ -38,7 +38,7 @@ OpenLayers.Lang = {
      * {String} The current language code.
      */
     getCode: function() {
-        if(!OpenLayers.Lang.code) {
+        if (!OpenLayers.Lang.code) {
             OpenLayers.Lang.setCode();
         }
         return OpenLayers.Lang.code;
@@ -58,24 +58,24 @@ OpenLayers.Lang = {
      */
     setCode: function(code) {
         var lang;
-        if(!code) {
+        if (!code) {
             code = (OpenLayers.BROWSER_NAME == "msie") ?
                 navigator.userLanguage : navigator.language;
         }
         var parts = code.split('-');
         parts[0] = parts[0].toLowerCase();
-        if(typeof OpenLayers.Lang[parts[0]] == "object") {
+        if (typeof OpenLayers.Lang[parts[0]] == "object") {
             lang = parts[0];
         }
 
         // check for regional extensions
-        if(parts[1]) {
+        if (parts[1]) {
             var testLang = parts[0] + '-' + parts[1].toUpperCase();
-            if(typeof OpenLayers.Lang[testLang] == "object") {
+            if (typeof OpenLayers.Lang[testLang] == "object") {
                 lang = testLang;
             }
         }
-        if(!lang) {
+        if (!lang) {
             OpenLayers.Console.warn(
                 'Failed to find OpenLayers.Lang.' + parts.join("-") +
                 ' dictionary, falling back to default language'
@@ -103,11 +103,11 @@ OpenLayers.Lang = {
     translate: function(key, context) {
         var dictionary = OpenLayers.Lang[OpenLayers.Lang.getCode()];
         var message = dictionary && dictionary[key];
-        if(!message) {
+        if (!message) {
             // Message not found, fall back to message key
             message = key;
         }
-        if(context) {
+        if (context) {
             message = OpenLayers.String.format(message, context);
         }
         return message;

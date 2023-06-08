@@ -51,13 +51,13 @@ OpenLayers.Format.WFS = OpenLayers.Class(OpenLayers.Format.GML, {
     initialize: function(options, layer) {
         OpenLayers.Format.GML.prototype.initialize.apply(this, [options]);
         this.layer = layer;
-        if(this.layer.featureNS) {
+        if (this.layer.featureNS) {
             this.featureNS = this.layer.featureNS;
         }    
-        if(this.layer.options.geometry_column) {
+        if (this.layer.options.geometry_column) {
             this.geometryName = this.layer.options.geometry_column;
         }
-        if(this.layer.options.typename) {
+        if (this.layer.options.typename) {
             this.featureName = this.layer.options.typename;
         }
     },
@@ -106,7 +106,7 @@ OpenLayers.Format.WFS = OpenLayers.Class(OpenLayers.Format.GML, {
         for(var attr in feature.attributes) {
             var attrText = this.createTextNode(feature.attributes[attr]); 
             var nodename = attr;
-            if(attr.search(":") != -1) {
+            if (attr.search(":") != -1) {
                 nodename = attr.split(":")[1];
             }    
             var attrContainer = this.createElementNS(this.featureNS, "feature:" + nodename);
@@ -137,7 +137,7 @@ OpenLayers.Format.WFS = OpenLayers.Class(OpenLayers.Format.GML, {
      * feature - {<OpenLayers.Feature.Vector>} 
      */
     update: function(feature) {
-        if(!feature.fid) { OpenLayers.Console.userError(OpenLayers.i18n("noFID")); }
+        if (!feature.fid) { OpenLayers.Console.userError(OpenLayers.i18n("noFID")); }
         var updateNode = this.createElementNS(this.wfsns, 'wfs:Update');
         updateNode.setAttribute("typeName", this.featurePrefix + ':' + this.featureName); 
         updateNode.setAttribute("xmlns:" + this.featurePrefix, this.featureNS); 
@@ -153,7 +153,7 @@ OpenLayers.Format.WFS = OpenLayers.Class(OpenLayers.Format.GML, {
         
         var geometryNode = this.buildGeometryNode(feature.geometry);
         
-        if(feature.layer){
+        if (feature.layer){
             geometryNode.setAttribute(
                 "srsName", feature.layer.projection.getCode()
             );
@@ -194,7 +194,7 @@ OpenLayers.Format.WFS = OpenLayers.Class(OpenLayers.Format.GML, {
      * feature - {<OpenLayers.Feature.Vector>} 
      */
     remove: function(feature) {
-        if(!feature.fid) { 
+        if (!feature.fid) { 
             OpenLayers.Console.userError(OpenLayers.i18n("noFID")); 
             return false; 
         }

@@ -95,12 +95,12 @@
             var element = document.getElementById('text');
             var features = geojson.read(element.value);
             var bounds;
-            if(features) {
-                if(features.constructor != Array) {
+            if (features) {
+                if (features.constructor != Array) {
                     features = [features];
                 }
                 for(var i=0; i<features.length; ++i) {
-                    if(!bounds) {
+                    if (!bounds) {
                         bounds = features[i].geometry.getBounds();
                     } else {
                         bounds.extend(features[i].geometry.getBounds());
@@ -129,21 +129,21 @@
                 for(var j=i+1; j<features.length; ++j) {
                     feat2 = features[j];
                     intersects12 = feat1.geometry.intersects(feat2.geometry);
-                    if(intersects12) {
+                    if (intersects12) {
                         feat1.attributes.intersectsWith.push("f" + j);
                         parts.push("f" + i + " intersects f" + j + "\n");
                     }
                     intersects21 = feat2.geometry.intersects(feat1.geometry);
-                    if(intersects21) {
+                    if (intersects21) {
                         feat2.attributes.intersectsWith.push("f" + i);
                         parts.push("f" + j + " intersects f" +  i + "\n");
                     }
-                    if(intersects12 != intersects21) {
+                    if (intersects12 != intersects21) {
                         parts.push("trouble with " + i + " and " + j + "\n");
                     }
                 }
             }
-            if(parts.length > 0) {
+            if (parts.length > 0) {
                 document.getElementById("intersections").value = parts.join("");
             } else {
                 document.getElementById("intersections").value = "no intersections";

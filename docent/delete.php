@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(isset($_SESSION["docent"])) { 
-	if($_SESSION["docent"] != 1) {
+if (isset($_SESSION["docent"])) { 
+	if ($_SESSION["docent"] != 1) {
 		header("location:../login");
 	}
 }
@@ -20,7 +20,7 @@ else {
 
  
  // check if the 'id' variable is set in URL, and check that it is valid
- if(isset($_GET['id']) && is_numeric($_GET['id']))
+ if (isset($_GET['id']) && is_numeric($_GET['id']))
  {
  // get id value
  $id = $_GET['id'];

@@ -79,10 +79,10 @@ OpenLayers.Format.SOSGetObservation = OpenLayers.Class(OpenLayers.Format.XML, {
      * {Object} An object containing the measurements
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
         var info = {measurements: [], observations: []};
@@ -169,7 +169,7 @@ OpenLayers.Format.SOSGetObservation = OpenLayers.Class(OpenLayers.Format.XML, {
             "result": function(node, measurement) {
                 var result = {};
                 measurement.result = result;
-                if(this.getChildValue(node) !== '') {
+                if (this.getChildValue(node) !== '') {
                     result.value = this.getChildValue(node);
                     result.uom = node.getAttribute("uom");
                 } else {
@@ -206,7 +206,7 @@ OpenLayers.Format.SOSGetObservation = OpenLayers.Class(OpenLayers.Format.XML, {
                     } 
                 }); 
                 this.writeNode("offering", options, node);
-                if(options.eventTime) {
+                if (options.eventTime) {
                     this.writeNode("eventTime", options, node);
                 }
                 for (var procedure in options.procedures) {
@@ -215,14 +215,14 @@ OpenLayers.Format.SOSGetObservation = OpenLayers.Class(OpenLayers.Format.XML, {
                 for (var observedProperty in options.observedProperties) {
                     this.writeNode("observedProperty", options.observedProperties[observedProperty], node);
                 }
-                if(options.foi) {
+                if (options.foi) {
                     this.writeNode("featureOfInterest", options.foi, node);
                 }
                 this.writeNode("responseFormat", options, node);
-                if(options.resultModel) {
+                if (options.resultModel) {
                     this.writeNode("resultModel", options, node);
                 }
-                if(options.responseMode) {
+                if (options.responseMode) {
                     this.writeNode("responseMode", options, node);
                 }
                 return node; 
@@ -254,7 +254,7 @@ OpenLayers.Format.SOSGetObservation = OpenLayers.Class(OpenLayers.Format.XML, {
             },
             "eventTime": function(options) {
                 var node = this.createElementNSPlus("eventTime");
-                if(options.eventTime === 'latest') {
+                if (options.eventTime === 'latest') {
                     this.writeNode("ogc:TM_Equals", options, node);
                 }
                 return node;
@@ -273,7 +273,7 @@ OpenLayers.Format.SOSGetObservation = OpenLayers.Class(OpenLayers.Format.XML, {
                 var node = this.createElementNSPlus("ogc:TM_Equals");
                 this.writeNode("ogc:PropertyName", {property: 
                     "urn:ogc:data:time:iso8601"}, node);
-                if(options.eventTime === 'latest') {
+                if (options.eventTime === 'latest') {
                     this.writeNode("gml:TimeInstant", {value: 'latest'}, node);
                 }
                 return node;

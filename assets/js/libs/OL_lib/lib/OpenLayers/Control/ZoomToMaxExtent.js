@@ -26,7 +26,7 @@ OpenLayers.Control.ZoomToMaxExtent = OpenLayers.Class(OpenLayers.Control.Button,
      *     extent of this controls map.
      */
     trigger: function() {
-        if(this.map) {
+        if (this.map) {
             this.map.zoomToMaxExtent();
         }    
     },

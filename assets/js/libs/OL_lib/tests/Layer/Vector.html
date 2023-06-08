@@ -554,7 +554,7 @@
         t.eq(layer.selectedFeatures, [], "Destroy features removes selected features");
         var allDestroyed = true;
         for (i = 0; i < 5; i++) {
-            if(features[i].geometry) {
+            if (features[i].geometry) {
                 allDestroyed = false;
             }
         }
@@ -664,7 +664,7 @@
         });
                
         var root = renderer.vectorRoot;
-        if(layer.renderer.CLASS_NAME == 'OpenLayers.Renderer.SVG') {
+        if (layer.renderer.CLASS_NAME == 'OpenLayers.Renderer.SVG') {
                 feature.style = customStyle1;
                 layer.drawFeature(feature);
                 t.eq(root.firstChild.getAttributeNS(null, 'width'),
@@ -723,7 +723,7 @@
                         (-y + customStyle6.graphicYOffset).toFixed().toString(),
                         "graphicYOffset correctly set");
         }
-        if(layer.renderer.CLASS_NAME == 'OpenLayers.Renderer.VML') {
+        if (layer.renderer.CLASS_NAME == 'OpenLayers.Renderer.VML') {
                 feature.style = customStyle1;
                 layer.drawFeature(feature);
                 t.eq(root.firstChild.style.width,
@@ -763,10 +763,10 @@
                 layer.drawFeature(feature);
                 var fill = root.firstChild.getElementsByTagName("v:fill")[0];
                 var opacity;
-                if(fill) {
+                if (fill) {
                     opacity = fill.getAttribute('opacity');
                 }
-                if(opacity === undefined) {
+                if (opacity === undefined) {
                     fill = root.firstChild.getElementsByTagName("fill")[0];
                     opacity = fill.getAttribute('opacity');
                 }
@@ -838,7 +838,7 @@
         var beforefeatureadded_veto = function(evt) { return false; };
         layer.events.register("beforefeatureadded", layer, beforefeatureadded_veto);
         layer.events.register("featuresadded", layer, function(evt) {
-            if(evt.features) {
+            if (evt.features) {
                 for (var i = 0; i < evt.features.length; i++) {
                     addedFeatures.push(evt.features[i]);
                 }

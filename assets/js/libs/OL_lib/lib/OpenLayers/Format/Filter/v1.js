@@ -86,9 +86,9 @@ OpenLayers.Format.Filter.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                     switch(child.nodeType) {
                         case 1:
                             obj = this.readNode(child);
-                            if(obj.property) {
+                            if (obj.property) {
                                 value += "${" + obj.property + "}";
-                            } else if(obj.value !== undefined) {
+                            } else if (obj.value !== undefined) {
                                 value += obj.value;
                             }
                             break;
@@ -109,17 +109,17 @@ OpenLayers.Format.Filter.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                     filters: []
                 };
                 this.readChildNodes(node, obj);
-                if(obj.fids.length > 0) {
+                if (obj.fids.length > 0) {
                     parent.filter = new OpenLayers.Filter.FeatureId({
                         fids: obj.fids
                     });
-                } else if(obj.filters.length > 0) {
+                } else if (obj.filters.length > 0) {
                     parent.filter = obj.filters[0];
                 }
             },
             "FeatureId": function(node, obj) {
                 var fid = node.getAttribute("fid");
-                if(fid) {
+                if (fid) {
                     obj.fids.push(fid);
                 }
             },
@@ -180,18 +180,18 @@ OpenLayers.Format.Filter.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 obj.filters.push(filter);
             },
             "Literal": function(node, obj) {
-                obj.value = OpenLayers.String.numericIf(
+                obj.value = OpenLayers.String.numericif (
                     this.getChildValue(node), true);
             },
             "PropertyName": function(node, filter) {
                 filter.property = this.getChildValue(node);
             },
             "LowerBoundary": function(node, filter) {
-                filter.lowerBoundary = OpenLayers.String.numericIf(
+                filter.lowerBoundary = OpenLayers.String.numericif (
                     this.readers.ogc._expression.call(this, node), true);
             },
             "UpperBoundary": function(node, filter) {
-                filter.upperBoundary = OpenLayers.String.numericIf(
+                filter.upperBoundary = OpenLayers.String.numericif (
                     this.readers.ogc._expression.call(this, node), true);
             },
             "Intersects": function(node, obj) {
@@ -260,7 +260,7 @@ OpenLayers.Format.Filter.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      * {String} String representation of the provided value.
      */
     encodeLiteral: function(value) {
-        if(value instanceof Date) {
+        if (value instanceof Date) {
             value = OpenLayers.Date.toISOString(value);
         }
         return value;
@@ -279,7 +279,7 @@ OpenLayers.Format.Filter.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      * {DOMElement} Updated node element.
      */
     writeOgcExpression: function(value, node) {
-        if(value instanceof OpenLayers.Filter.Function){
+        if (value instanceof OpenLayers.Filter.Function){
             this.writeNode("Function", value, node);
         } else {
             this.writeNode("Literal", value, node);
@@ -467,7 +467,7 @@ OpenLayers.Format.Filter.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     getFilterType: function(filter) {
         var filterType = this.filterMap[filter.type];
-        if(!filterType) {
+        if (!filterType) {
             throw "Filter writing not supported for rule type: " + filter.type;
         }
         return filterType;

@@ -197,7 +197,7 @@ OpenLayers.Layer.Bing = OpenLayers.Class(OpenLayers.Layer.XYZ, {
                 res.zoomMax + 1 - res.zoomMin, this.numZoomLevels
             )
         }, true);
-        if(!this.isBaseLayer) {
+        if (!this.isBaseLayer) {
             this.redraw();
         }
         this.updateAttribution();
@@ -210,7 +210,7 @@ OpenLayers.Layer.Bing = OpenLayers.Class(OpenLayers.Layer.XYZ, {
      * bounds - {<OpenLayers.Bounds>}
      */
     getURL: function(bounds) {
-        if(!this.url) {
+        if (!this.url) {
             return;
         }
         var xyz = this.getXYZ(bounds), x = xyz.x, y = xyz.y, z = xyz.z;
@@ -218,10 +218,10 @@ OpenLayers.Layer.Bing = OpenLayers.Class(OpenLayers.Layer.XYZ, {
         for (var i = z; i > 0; --i) {
             var digit = '0';
             var mask = 1 << (i - 1);
-            if((x & mask) != 0) {
+            if ((x & mask) != 0) {
                 digit++;
             }
-            if((y & mask) != 0) {
+            if ((y & mask) != 0) {
                 digit++;
                 digit++;
             }
@@ -240,7 +240,7 @@ OpenLayers.Layer.Bing = OpenLayers.Class(OpenLayers.Layer.XYZ, {
      */
     updateAttribution: function() {
         var metadata = this.metadata;
-        if(!metadata.resourceSets || !this.map || !this.map.center) {
+        if (!metadata.resourceSets || !this.map || !this.map.center) {
             return;
         }
         var res = metadata.resourceSets[0].resources[0];
@@ -258,7 +258,7 @@ OpenLayers.Layer.Bing = OpenLayers.Class(OpenLayers.Layer.XYZ, {
                 coverage = provider.coverageAreas[j];
                 // axis order provided is Y,X
                 bbox = OpenLayers.Bounds.fromArray(coverage.bbox, true);
-                if(extent.intersectsBounds(bbox) &&
+                if (extent.intersectsBounds(bbox) &&
                         zoom <= coverage.zoomMax && zoom >= coverage.zoomMin) {
                     copyrights += provider.attribution + " ";
                 }
@@ -294,7 +294,7 @@ OpenLayers.Layer.Bing = OpenLayers.Class(OpenLayers.Layer.XYZ, {
      * {<OpenLayers.Layer.Bing>} An exact clone of this <OpenLayers.Layer.Bing>
      */
     clone: function(obj) {
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer.Bing(this.options);
         }
         //get all additions from superclasses

@@ -105,17 +105,17 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
      * Array({<OpenLayers.Feature.Vector>})
      */
     read: function(doc) {
-        if(typeof doc == "string") { 
+        if (typeof doc == "string") { 
             doc = OpenLayers.Format.XML.prototype.read.apply(this, [doc]);
         }
         var features = [];
         
-        if(this.extractTracks) {
+        if (this.extractTracks) {
             var tracks = doc.getElementsByTagName("trk");
             for (var i=0, len=tracks.length; i<len; i++) {
                 // Attributes are only in trk nodes, not trkseg nodes
                 var attrs = {};
-                if(this.extractAttributes) {
+                if (this.extractAttributes) {
                     attrs = this.parseAttributes(tracks[i]);
                 }
                 
@@ -129,11 +129,11 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
             }
         }
         
-        if(this.extractRoutes) {
+        if (this.extractRoutes) {
             var routes = doc.getElementsByTagName("rte");
             for (var k=0, klen=routes.length; k<klen; k++) {
                 var attrs = {};
-                if(this.extractAttributes) {
+                if (this.extractAttributes) {
                     attrs = this.parseAttributes(routes[k]);
                 }
                 var route = this.extractSegment(routes[k], "rtept");
@@ -141,11 +141,11 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
             }
         }
         
-        if(this.extractWaypoints) {
+        if (this.extractWaypoints) {
             var waypoints = doc.getElementsByTagName("wpt");
             for (var l = 0, len = waypoints.length; l < len; l++) {
                 var attrs = {};
-                if(this.extractAttributes) {
+                if (this.extractAttributes) {
                     attrs = this.parseAttributes(waypoints[l]);
                 }
                 var wpt = new OpenLayers.Geometry.Point(waypoints[l].getAttribute("lon"), waypoints[l].getAttribute("lat"));
@@ -153,7 +153,7 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
             }
         }
         
-        if(this.internalProjection && this.externalProjection) {
+        if (this.internalProjection && this.externalProjection) {
             for (var g = 0, featLength = features.length; g < featLength; g++) {
                 features[g].geometry.transform(this.externalProjection,
                                     this.internalProjection);
@@ -197,13 +197,13 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
         var attributes = {};
         var attrNode = node.firstChild, value, name;
         while(attrNode) {
-            if(attrNode.nodeType == 1 && attrNode.firstChild) {
+            if (attrNode.nodeType == 1 && attrNode.firstChild) {
                 value = attrNode.firstChild;
-                if(value.nodeType == 3 || value.nodeType == 4) {
+                if (value.nodeType == 3 || value.nodeType == 4) {
                     name = (attrNode.prefix) ?
                         attrNode.nodeName.split(":")[1] :
                         attrNode.nodeName;
-                    if(name != "trkseg" && name != "rtept") {
+                    if (name != "trkseg" && name != "rtept") {
                         attributes[name] = value.nodeValue;
                     }
                 }
@@ -232,7 +232,7 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
             "xsi:schemaLocation": this.schemaLocation
         });
 
-        if(metadata && typeof metadata == 'object') {
+        if (metadata && typeof metadata == 'object') {
             gpx.appendChild(this.buildMetadataNode(metadata));
         }
         for(var i=0, len=features.length; i<len; i++) {
@@ -253,7 +253,7 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
             node = this.createElementNS(this.namespaces.gpx, 'metadata');
         for (var i=0; i < types.length; i++) {
             var type = types[i];
-            if(metadata[type]) {
+            if (metadata[type]) {
                 var n = this.createElementNS(this.namespaces.gpx, type);
                 n.appendChild(this.createTextNode(metadata[type]));
                 node.appendChild(n);
@@ -275,11 +275,11 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
     buildFeatureNode: function(feature) {
         var geometry = feature.geometry;
             geometry = geometry.clone();
-        if(this.internalProjection && this.externalProjection) {
+        if (this.internalProjection && this.externalProjection) {
             geometry.transform(this.internalProjection, 
                                this.externalProjection);
         }
-        if(geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
+        if (geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
             var wpt = this.buildWptNode(geometry);
             this.appendAttributesNode(wpt, feature);
             return wpt;
@@ -310,7 +310,7 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
             len,
             point,
             nodes;
-        if(geometry.CLASS_NAME == "OpenLayers.Geometry.LineString" ||
+        if (geometry.CLASS_NAME == "OpenLayers.Geometry.LineString" ||
             geometry.CLASS_NAME == "OpenLayers.Geometry.LinearRing") {
             node = this.createElementNS(this.namespaces.gpx, "trkseg");
             for (i = 0, len=geometry.components.length; i < len; i++) {

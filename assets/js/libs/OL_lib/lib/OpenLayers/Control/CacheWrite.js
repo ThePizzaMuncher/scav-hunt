@@ -90,7 +90,7 @@ OpenLayers.Control.CacheWrite = OpenLayers.Class(OpenLayers.Control, {
         for (i=layers.length-1; i>=0; --i) {
             this.addLayer({layer: layers[i]});
         }
-        if(!this.layers) {
+        if (!this.layers) {
             map.events.on({
                 addlayer: this.addLayer,
                 removeLayer: this.removeLayer,
@@ -142,9 +142,9 @@ OpenLayers.Control.CacheWrite = OpenLayers.Class(OpenLayers.Control, {
      * evt - {<OpenLayers.Event>}
      */
     makeSameOrigin: function(evt) {
-        if(this.active) {
+        if (this.active) {
             var tile = evt.tile;
-            if(tile instanceof OpenLayers.Tile.Image &&
+            if (tile instanceof OpenLayers.Tile.Image &&
                     !tile.crossOriginKeyword &&
                     tile.url.substr(0, 5) !== "data:") {
                 var sameOriginUrl = OpenLayers.Request.makeSameOrigin(
@@ -164,7 +164,7 @@ OpenLayers.Control.CacheWrite = OpenLayers.Class(OpenLayers.Control, {
      * evt - {Event}
      */
     onTileLoaded: function(evt) {
-        if(this.active && !evt.aborted &&
+        if (this.active && !evt.aborted &&
                 evt.tile instanceof OpenLayers.Tile.Image &&
                 evt.tile.url.substr(0, 5) !== 'data:') {
             this.cache({tile: evt.tile});
@@ -182,11 +182,11 @@ OpenLayers.Control.CacheWrite = OpenLayers.Class(OpenLayers.Control, {
      *     <OpenLayers.Tile.Image> with the data to add to the cache
      */
     cache: function(obj) {
-        if(window.localStorage) {
+        if (window.localStorage) {
             var tile = obj.tile;
             try {
                 var canvasContext = tile.getCanvasContext();
-                if(canvasContext) {
+                if (canvasContext) {
                     var urlMap = OpenLayers.Control.CacheWrite.urlMap;
                     var url = urlMap[tile.url] || tile.url;
                     window.localStorage.setItem(
@@ -197,7 +197,7 @@ OpenLayers.Control.CacheWrite = OpenLayers.Class(OpenLayers.Control, {
             } catch(e) {
                 // local storage full or CORS violation
                 var reason = e.name || e.message;
-                if(reason && this.quotaRegEx.test(reason)) {
+                if (reason && this.quotaRegEx.test(reason)) {
                     this.events.triggerEvent("cachefull", {tile: tile});
                 } else {
                     OpenLayers.Console.error(e.toString());
@@ -213,13 +213,13 @@ OpenLayers.Control.CacheWrite = OpenLayers.Class(OpenLayers.Control, {
      * to prevent memory leaks.
      */
     destroy: function() {
-        if(this.layers || this.map) {
+        if (this.layers || this.map) {
             var i, layers = this.layers || this.map.layers;
             for (i=layers.length-1; i>=0; --i) {
                 this.removeLayer({layer: layers[i]});
             }
         }
-        if(this.map) {
+        if (this.map) {
             this.map.events.un({
                 addlayer: this.addLayer,
                 removeLayer: this.removeLayer,
@@ -237,11 +237,11 @@ OpenLayers.Control.CacheWrite = OpenLayers.Class(OpenLayers.Control, {
  * Clears all tiles cached with <OpenLayers.Control.CacheWrite> from the cache.
  */
 OpenLayers.Control.CacheWrite.clearCache = function() {
-    if(!window.localStorage) { return; }
+    if (!window.localStorage) { return; }
     var i, key;
     for (i=window.localStorage.length-1; i>=0; --i) {
         key = window.localStorage.key(i);
-        if(key.substr(0, 8) === "olCache_") {
+        if (key.substr(0, 8) === "olCache_") {
             window.localStorage.removeItem(key);
         }
     }

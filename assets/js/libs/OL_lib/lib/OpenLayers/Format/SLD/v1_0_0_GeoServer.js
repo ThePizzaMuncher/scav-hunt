@@ -52,12 +52,12 @@ OpenLayers.Format.SLD.v1_0_0_GeoServer = OpenLayers.Class(
         "sld": OpenLayers.Util.applyDefaults({
             "Priority": function(node, obj) {
                 var value = this.readers.ogc._expression.call(this, node);
-                if(value) {
+                if (value) {
                     obj.priority = value;
                 }
             },
             "VendorOption": function(node, obj) {
-                if(!obj.vendorOptions) {
+                if (!obj.vendorOptions) {
                     obj.vendorOptions = {};
                 }
                 obj.vendorOptions[node.getAttribute("name")] = this.getChildValue(node);
@@ -65,7 +65,7 @@ OpenLayers.Format.SLD.v1_0_0_GeoServer = OpenLayers.Class(
             "TextSymbolizer": function(node, rule) {
                 OpenLayers.Format.SLD.v1_0_0.prototype.readers.sld.TextSymbolizer.apply(this, arguments);
                 var symbolizer = this.multipleSymbolizers ? rule.symbolizers[rule.symbolizers.length-1] : rule.symbolizer["Text"];
-                if(symbolizer.graphic === undefined) {
+                if (symbolizer.graphic === undefined) {
                     symbolizer.graphic = false;
                 }
             }
@@ -94,10 +94,10 @@ OpenLayers.Format.SLD.v1_0_0_GeoServer = OpenLayers.Class(
             "TextSymbolizer": function(symbolizer) {
                 var writers = OpenLayers.Format.SLD.v1_0_0.prototype.writers;
                 var node = writers["sld"]["TextSymbolizer"].apply(this, arguments);
-                if(symbolizer.graphic !== false && (symbolizer.externalGraphic || symbolizer.graphicName)) {
+                if (symbolizer.graphic !== false && (symbolizer.externalGraphic || symbolizer.graphicName)) {
                     this.writeNode("Graphic", symbolizer, node);
                 }
-                if("priority" in symbolizer) {
+                if ("priority" in symbolizer) {
                     this.writeNode("Priority", symbolizer.priority, node);
                 }
                 return this.addVendorOptions(node, symbolizer);
@@ -133,7 +133,7 @@ OpenLayers.Format.SLD.v1_0_0_GeoServer = OpenLayers.Class(
      */
     addVendorOptions: function(node, symbolizer) {
         var options = symbolizer.vendorOptions;
-        if(options) {
+        if (options) {
             for (var key in symbolizer.vendorOptions) {
                 this.writeNode("VendorOption", {
                     name: key, 

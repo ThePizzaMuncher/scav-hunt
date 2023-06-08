@@ -38,11 +38,11 @@ OpenLayers.Format.WCSCapabilities.v1 = OpenLayers.Class(
      * {Array} List of named coverages.
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         var raw = data;
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
         var capabilities = {};

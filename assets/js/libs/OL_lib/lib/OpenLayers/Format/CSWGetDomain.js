@@ -19,7 +19,7 @@ OpenLayers.Format.CSWGetDomain = function(options) {
         options, OpenLayers.Format.CSWGetDomain.DEFAULTS
     );
     var cls = OpenLayers.Format.CSWGetDomain["v"+options.version.replace(/\./g, "_")];
-    if(!cls) {
+    if (!cls) {
         throw "Unsupported CSWGetDomain version: " + options.version;
     }
     return new cls(options);

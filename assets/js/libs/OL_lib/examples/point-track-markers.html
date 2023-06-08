@@ -44,7 +44,7 @@
             var feature, marker;
             // only show markers for features that are not "Untitled"
             for (var i = rss.features.length-1; i>0; i--) {
-                if(rss.features[i].data.popupContentHTML.indexOf(
+                if (rss.features[i].data.popupContentHTML.indexOf(
                         "Untitled") != -1) {
                     rss.removeMarker(rss.markers[i]);
                 }

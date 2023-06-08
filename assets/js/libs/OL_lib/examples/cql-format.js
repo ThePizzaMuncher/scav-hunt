@@ -49,7 +49,7 @@ function updateFilter() {
     } catch (err) {
         output.value = err.message;
     }
-    if(filter) {
+    if (filter) {
         output.value = "";
         rule.filter = filter;
         states.redraw();

@@ -17,12 +17,12 @@ var map = new OpenLayers.Map({
 
 var callback = function(infoLookup) {
     var msg = "";
-    if(infoLookup) {
+    if (infoLookup) {
         var info;
         for (var idx in infoLookup) {
             // idx can be used to retrieve layer from map.layers[idx]
             info = infoLookup[idx];
-            if(info && info.data) {
+            if (info && info.data) {
                 msg += "[" + info.id + "] <strong>In 2005, " + 
                     info.data.NAME + " had a population of " +
                     info.data.POP2005 + " people.</strong> ";

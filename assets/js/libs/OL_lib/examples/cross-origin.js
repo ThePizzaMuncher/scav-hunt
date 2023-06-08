@@ -22,9 +22,9 @@ var map = new OpenLayers.Map({
                 },
                 filterToParams: function(filter, params) {
                     // example to demonstrate BBOX serialization
-                    if(filter.type === OpenLayers.Filter.Spatial.BBOX) {
+                    if (filter.type === OpenLayers.Filter.Spatial.BBOX) {
                         params.bbox = filter.value.toArray();
-                        if(filter.projection) {
+                        if (filter.projection) {
                             params.bbox.push(filter.projection.getCode());
                         }
                     }

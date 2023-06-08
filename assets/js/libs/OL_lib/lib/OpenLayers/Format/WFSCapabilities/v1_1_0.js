@@ -50,7 +50,7 @@ OpenLayers.Format.WFSCapabilities.v1_1_0 = OpenLayers.Class(
         "wfs": OpenLayers.Util.applyDefaults({
             "DefaultSRS": function(node, obj) {
                 var defaultSRS = this.getChildValue(node);
-                if(defaultSRS) {
+                if (defaultSRS) {
                     obj.srs = defaultSRS;
                 }
             }

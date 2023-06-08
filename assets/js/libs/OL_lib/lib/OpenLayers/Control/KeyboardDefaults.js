@@ -78,7 +78,7 @@ OpenLayers.Control.KeyboardDefaults = OpenLayers.Class(OpenLayers.Control, {
         var size, handled = true;
 
         var target = OpenLayers.Event.element(evt);
-        if(target  &&
+        if (target  &&
             (target.tagName == 'INPUT' ||
              target.tagName == 'TEXTAREA' ||
              target.tagName == 'SELECT')) {
@@ -131,7 +131,7 @@ OpenLayers.Control.KeyboardDefaults = OpenLayers.Class(OpenLayers.Control, {
             default:
                 handled = false;
         }
-        if(handled) {
+        if (handled) {
             // prevent browser default not to move the page
             // when moving the page with the keyboard
             OpenLayers.Event.stop(evt);

@@ -52,7 +52,7 @@ OpenLayers.Format.OWSContext = OpenLayers.Class(OpenLayers.Format.Context,{
         var version = OpenLayers.Format.XML.VersionedOGC.prototype.getVersion.apply(
             this, arguments);
         // 0.3.1 is backwards compatible with 0.3.0
-        if(version === "0.3.0") {
+        if (version === "0.3.0") {
             version = this.defaultVersion;
         }
         return version;
@@ -71,7 +71,7 @@ OpenLayers.Format.OWSContext = OpenLayers.Class(OpenLayers.Format.Context,{
      */
     toContext: function(obj) {
         var context = {};
-        if(obj.CLASS_NAME == "OpenLayers.Map") {
+        if (obj.CLASS_NAME == "OpenLayers.Map") {
             context.bounds = obj.getExtent();
             context.maxExtent = obj.maxExtent;
             context.projection = obj.projection;

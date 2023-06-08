@@ -88,32 +88,32 @@ function buildForm() {
         input;
     for (var i=0,ii=inputs.length; i<ii; ++i) {
         input = inputs[i];
-        if(input.complexData) {
+        if (input.complexData) {
             var formats = input.complexData.supported.formats;
-            if(formats["application/wkt"]) {
+            if (formats["application/wkt"]) {
                 addWKTInput(input);
-            } else if(formats["text/xml; subtype=wfs-collection/1.0"]) {
+            } else if (formats["text/xml; subtype=wfs-collection/1.0"]) {
                 addWFSCollectionInput(input);
-            } else if(formats["image/tiff"]) {
+            } else if (formats["image/tiff"]) {
                 addRasterInput(input);
-            } else if(formats[sld]) {
+            } else if (formats[sld]) {
                 addXMLInput(input, sld);
             } else {
                 supported = false;
             }
-        } else if(input.boundingBoxData) {
+        } else if (input.boundingBoxData) {
             addBoundingBoxInput(input);
-        } else if(input.literalData) {
+        } else if (input.literalData) {
             addLiteralInput(input);
         } else {
             supported = false;
         }
-        if(input.minOccurs > 0) {
+        if (input.minOccurs > 0) {
             document.getElementById("input").appendChild(document.createTextNode("* "));
         }
     }
     
-    if(supported) {
+    if (supported) {
         var executeButton = document.createElement("button");
         executeButton.innerHTML = "Execute";
         document.getElementById("input").appendChild(executeButton);
@@ -139,7 +139,7 @@ function addWKTInput(input, previousSibling) {
         container.appendChild(label);
     var field = document.createElement("textarea");
     field.onclick = function () {
-        if(layer.selectedFeatures.length) {
+        if (layer.selectedFeatures.length) {
             this.innerHTML = new OpenLayers.Format.WKT().write(
                 layer.selectedFeatures[0]
             );
@@ -245,7 +245,7 @@ function addLiteralInput(input, previousSibling) {
     previousSibling && previousSibling.nextSibling ?
         container.insertBefore(field, previousSibling.nextSibling) :
         container.appendChild(field);
-    if(anyValue) {
+    if (anyValue) {
         var dataType = input.literalData.dataType;
         field.value = name + (dataType ? " (" + dataType + ")" : "");
         addValueHandlers(field, function() {
@@ -280,7 +280,7 @@ function addLiteralInput(input, previousSibling) {
 
 // if maxOccurs is > 1, this will add a copy of the field
 function createCopy(input, field, fn) {
-    if(input.maxOccurs && input.maxOccurs > 1 && !field.userSelected) {
+    if (input.maxOccurs && input.maxOccurs > 1 && !field.userSelected) {
         // add another copy of the field - we don't check maxOccurs
         field.userSelected = true;
         var newInput = OpenLayers.Util.extend({}, input);
@@ -294,13 +294,13 @@ function createCopy(input, field, fn) {
 // helper function for adding events to form fields
 function addValueHandlers(field, onblur) {
     field.onclick = function() {
-        if(!this.initialValue) {
+        if (!this.initialValue) {
             this.initialValue = this.value;
             this.value = "";
         }
     };
     field.onblur = function() {
-        if(!this.value) {
+        if (!this.value) {
             this.value = this.initialValue;
             delete this.initialValue;
         }
@@ -315,7 +315,7 @@ function execute() {
     // remove occurrences that the user has not filled out
     for (var i=process.dataInputs.length-1; i>=0; --i) {
         input = process.dataInputs[i];
-        if((input.minOccurs === 0 || input.occurrence) && !input.data && !input.reference) {
+        if ((input.minOccurs === 0 || input.occurrence) && !input.data && !input.reference) {
             OpenLayers.Util.removeItem(process.dataInputs, input);
         }
     }
@@ -324,7 +324,7 @@ function execute() {
             identifier: output.identifier
         }
     };
-    if(output.complexOutput && output.complexOutput.supported.formats["application/wkt"]) {
+    if (output.complexOutput && output.complexOutput.supported.formats["application/wkt"]) {
         process.responseForm.rawDataOutput.mimeType = "application/wkt";
     }
     OpenLayers.Request.POST({
@@ -340,12 +340,12 @@ function showOutput(response) {
     result.innerHTML = "<h3>Output:</h3>";
     var features;
     var contentType = response.getResponseHeader("Content-Type");
-    if(contentType == "application/wkt") {
+    if (contentType == "application/wkt") {
         features = new OpenLayers.Format.WKT().read(response.responseText);
-    } else if(contentType == "text/xml; subtype=wfs-collection/1.0") {
+    } else if (contentType == "text/xml; subtype=wfs-collection/1.0") {
         features = new OpenLayers.Format.WFST.v1_0_0().read(response.responseText);
     }
-    if(features && (features instanceof OpenLayers.Feature.Vector || features.length)) {
+    if (features && (features instanceof OpenLayers.Feature.Vector || features.length)) {
         layer.addFeatures(features);
         result.innerHTML += "The result should also be visible on the map.";
     }

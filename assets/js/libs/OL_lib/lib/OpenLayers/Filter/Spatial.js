@@ -83,12 +83,12 @@ OpenLayers.Filter.Spatial = OpenLayers.Class(OpenLayers.Filter, {
         switch(this.type) {
             case OpenLayers.Filter.Spatial.BBOX:
             case OpenLayers.Filter.Spatial.INTERSECTS:
-                if(feature.geometry) {
+                if (feature.geometry) {
                     var geom = this.value;
-                    if(this.value.CLASS_NAME == "OpenLayers.Bounds") {
+                    if (this.value.CLASS_NAME == "OpenLayers.Bounds") {
                         geom = this.value.toGeometry();
                     }
-                    if(feature.geometry.intersects(geom)) {
+                    if (feature.geometry.intersects(geom)) {
                         intersect = true;
                     }
                 }

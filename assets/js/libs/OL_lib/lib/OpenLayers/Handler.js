@@ -116,7 +116,7 @@ OpenLayers.Handler = OpenLayers.Class({
         this.callbacks = callbacks;
 
         var map = this.map || control.map;
-        if(map) {
+        if (map) {
             this.setMap(map); 
         }
         
@@ -140,7 +140,7 @@ OpenLayers.Handler = OpenLayers.Class({
      * {Boolean} The keyMask matches the keys down on an event.
      */
     checkModifiers: function (evt) {
-        if(this.keyMask == null) {
+        if (this.keyMask == null) {
             return true;
         }
         /* calculate the keyboard modifier mask for this event */
@@ -163,13 +163,13 @@ OpenLayers.Handler = OpenLayers.Class({
      * {Boolean} The handler was activated.
      */
     activate: function() {
-        if(this.active) {
+        if (this.active) {
             return false;
         }
         // register for event handlers defined on this class.
         var events = OpenLayers.Events.prototype.BROWSER_EVENTS;
         for (var i=0, len=events.length; i<len; i++) {
-            if(this[events[i]]) {
+            if (this[events[i]]) {
                 this.register(events[i], this[events[i]]); 
             }
         } 
@@ -185,13 +185,13 @@ OpenLayers.Handler = OpenLayers.Class({
      * {Boolean} The handler was deactivated.
      */
     deactivate: function() {
-        if(!this.active) {
+        if (!this.active) {
             return false;
         }
         // unregister event handlers defined on this class.
         var events = OpenLayers.Events.prototype.BROWSER_EVENTS;
         for (var i=0, len=events.length; i<len; i++) {
-            if(this[events[i]]) {
+            if (this[events[i]]) {
                 this.unregister(events[i], this[events[i]]); 
             }
         } 
@@ -207,14 +207,14 @@ OpenLayers.Handler = OpenLayers.Class({
      *     true and all mouse related listeners will do nothing.
      */
     startTouch: function() {
-        if(!this.touch) {
+        if (!this.touch) {
             this.touch = true;
             var events = [
                 "mousedown", "mouseup", "mousemove", "click", "dblclick",
                 "mouseout"
             ];
             for (var i=0, len=events.length; i<len; i++) {
-                if(this[events[i]]) {
+                if (this[events[i]]) {
                     this.unregister(events[i], this[events[i]]); 
                 }
             } 
@@ -232,7 +232,7 @@ OpenLayers.Handler = OpenLayers.Class({
     *     the callback (defined by the control).
     */
     callback: function (name, args) {
-        if(name && this.callbacks[name]) {
+        if (name && this.callbacks[name]) {
             this.callbacks[name].apply(this.control, args);
         }
     },

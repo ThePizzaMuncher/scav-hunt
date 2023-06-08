@@ -7,7 +7,7 @@ function init() {
             new OpenLayers.Layer.OSM()
         ]
     });
-    if(!map.getCenter()) map.zoomToMaxExtent();
+    if (!map.getCenter()) map.zoomToMaxExtent();
 
     map.addControl(new OpenLayers.Control.Permalink({anchor: true}));
 }

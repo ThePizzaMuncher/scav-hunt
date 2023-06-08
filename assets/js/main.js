@@ -5,17 +5,17 @@
        * Sticky Header on Scroll
        */
     const selectHeader = document.querySelector('#header');
-    if(selectHeader) {
+    if (selectHeader) {
         let headerOffset = selectHeader.offsetTop;
         let nextElement = selectHeader.nextElementSibling;
 
         const headerFixed = () => {
-            if((headerOffset - window.scrollY) <= 0) {
+            if ((headerOffset - window.scrollY) <= 0) {
                 selectHeader.classList.add('sticked');
-                if(nextElement) nextElement.classList.add('sticked-header-offset');
+                if (nextElement) nextElement.classList.add('sticked-header-offset');
             } else {
                 selectHeader.classList.remove('sticked');
-                if(nextElement) nextElement.classList.remove('sticked-header-offset');
+                if (nextElement) nextElement.classList.remove('sticked-header-offset');
             }
         }
         window.addEventListener('load', headerFixed);
@@ -27,7 +27,7 @@
      */
     const select = (el, all = false) => {
         el = el.trim()
-        if(all) {
+        if (all) {
             return [...document.querySelectorAll(el)]
         } else {
             return document.querySelector(el)
@@ -39,8 +39,8 @@
      */
     const on = (type, el, listener, all = false) => {
         let selectEl = select(el, all)
-        if(selectEl) {
-            if(all) {
+        if (selectEl) {
+            if (all) {
                 selectEl.forEach(e => e.addEventListener(type, listener))
             } else {
                 selectEl.addEventListener(type, listener)
@@ -78,7 +78,7 @@
     buttons.forEach(function (button) {
         button.addEventListener('mouseover', function (event) {
             // Check if audio is playing or button is already in hovering state
-            if(isHovering || event.target !== button) {
+            if (isHovering || event.target !== button) {
                 return;
             }
             isHovering = true;
@@ -87,7 +87,7 @@
 
         button.addEventListener('mouseout', function (event) {
             // Check if mouseout event is not on a child element of the button
-            if(!button.contains(event.relatedTarget)) {
+            if (!button.contains(event.relatedTarget)) {
                 isHovering = false;
                 stopAudio();
             }
@@ -106,7 +106,7 @@
         var parentDiv = creditsDiv.parentNode; // Get the parent element of the credits div
         var screenWidth = window.innerWidth; // Get the width of the screen
 
-        if(screenWidth > 1200) { // Check if the screen width is greater than 1200 pixels
+        if (screenWidth > 1200) { // Check if the screen width is greater than 1200 pixels
             creditsDiv.style.position = "absolute"; // Set the position of the element to absolute
             creditsDiv.style.left = Math.max(screenWidth * 0.4, Math.min(screenWidth * 0.6 - creditsDiv.offsetWidth, event.clientX - 130)) + "px"; // Set the left position to the current x-coordinate of the mouse pointer minus 50 pixels, but not outside the 10% and 90% of the screen width
             creditsDiv.style.top = parentDiv.offsetTop + 90 + "px"; // Set the top position to the top of the parent element
@@ -120,10 +120,10 @@
     const navbarlinksActive = () => {
         let position = window.scrollY + 200
         navbarlinks.forEach(navbarlink => {
-            if(!navbarlink.hash) return
+            if (!navbarlink.hash) return
             let section = select(navbarlink.hash)
-            if(!section) return
-            if(position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+            if (!section) return
+            if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
                 navbarlink.classList.add('active')
             } else {
                 navbarlink.classList.remove('active')
@@ -148,9 +148,9 @@
      * Back to top button
      */
     let backtotop = select('.back-to-top')
-    if(backtotop) {
+    if (backtotop) {
         const toggleBacktotop = () => {
-            if(window.scrollY > 100) {
+            if (window.scrollY > 100) {
                 backtotop.classList.add('active')
             } else {
                 backtotop.classList.remove('active')
@@ -173,11 +173,11 @@
  * Scroll with ofset on links with a class name .scrollto
  */
     on('click', '.scrollto', function (e) {
-        if(select(this.hash)) {
+        if (select(this.hash)) {
             e.preventDefault()
 
             let body = select('body')
-            if(body.classList.contains('mobile-nav-active')) {
+            if (body.classList.contains('mobile-nav-active')) {
                 body.classList.remove('mobile-nav-active')
                 let navbarToggle = select('.mobile-nav-toggle')
                 navbarToggle.classList.toggle('bi-list')
@@ -191,8 +191,8 @@
      * Scroll with ofset on page load with hash links in the url
      */
     window.addEventListener('load', () => {
-        if(window.location.hash) {
-            if(select(window.location.hash)) {
+        if (window.location.hash) {
+            if (select(window.location.hash)) {
                 scrollto(window.location.hash)
             }
         }

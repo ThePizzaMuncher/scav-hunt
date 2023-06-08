@@ -68,7 +68,7 @@ map.events.on({
     mousemove: function(event) {
         var x = event.xy.x - 1; // TODO: fix this elsewhere
         var y = event.xy.y;
-        if((x >= xOff) && (x < size.w - xOff) && (y >= yOff) && (y < size.h - yOff)) {
+        if ((x >= xOff) && (x < size.w - xOff) && (y >= yOff) && (y < size.h - yOff)) {
             var data = context.getImageData(x - xOff, y - yOff, rows, cols).data;
             var offset, red, green, blue, alpha, cell;
             for (var i=0; i<cols; ++i) {

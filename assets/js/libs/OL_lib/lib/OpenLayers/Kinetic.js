@@ -78,7 +78,7 @@ OpenLayers.Kinetic = OpenLayers.Class({
      */
     update: function(xy) {
         this.points.unshift({xy: xy, tick: new Date().getTime()});
-        if(this.points.length > this.nbPoints) {
+        if (this.points.length > this.nbPoints) {
             this.points.pop();
         }
     },
@@ -99,23 +99,23 @@ OpenLayers.Kinetic = OpenLayers.Class({
         var last, now = new Date().getTime();
         for (var i = 0, l = this.points.length, point; i < l; i++) {
             point = this.points[i];
-            if(now - point.tick > this.delay) {
+            if (now - point.tick > this.delay) {
                 break;
             }
             last = point;
         }
-        if(!last) {
+        if (!last) {
             return;
         }
         var time = new Date().getTime() - last.tick;
         var dist = Math.sqrt(Math.pow(xy.x - last.xy.x, 2) +
                              Math.pow(xy.y - last.xy.y, 2));
         var speed = dist / time;
-        if(speed == 0 || speed < this.threshold) {
+        if (speed == 0 || speed < this.threshold) {
             return;
         }
         var theta = Math.asin((xy.y - last.xy.y) / dist);
-        if(last.xy.x <= xy.x) {
+        if (last.xy.x <= xy.x) {
             theta = Math.PI - theta;
         }
         return {speed: speed, theta: theta};
@@ -142,7 +142,7 @@ OpenLayers.Kinetic = OpenLayers.Class({
         var lastY = 0;
 
         var timerCallback = function() {
-            if(this.timerId == null) {
+            if (this.timerId == null) {
                 return;
             }
 
@@ -156,7 +156,7 @@ OpenLayers.Kinetic = OpenLayers.Class({
             args.end = false;
             var v = -this.deceleration * t + v0;
 
-            if(v <= 0) {
+            if (v <= 0) {
                 OpenLayers.Animation.stop(this.timerId);
                 this.timerId = null;
                 args.end = true;

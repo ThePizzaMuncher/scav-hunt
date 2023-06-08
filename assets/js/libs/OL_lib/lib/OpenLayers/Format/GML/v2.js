@@ -62,7 +62,7 @@ OpenLayers.Format.GML.v2 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
             "Box": function(node, container) {
                 var obj = {};
                 this.readChildNodes(node, obj);
-                if(!container.components) {
+                if (!container.components) {
                     container.components = [];
                 }
                 var min = obj.points[0];
@@ -90,7 +90,7 @@ OpenLayers.Format.GML.v2 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
      */
     write: function(features) {
         var name;
-        if(OpenLayers.Util.isArray(features)) {
+        if (OpenLayers.Util.isArray(features)) {
             // GML2 only has abstract feature collections
             // wfs provides a feature collection from a well-known schema
             name = "wfs:FeatureCollection";
@@ -125,12 +125,12 @@ OpenLayers.Format.GML.v2 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
                 var point;
                 for(var i=0; i<numPoints; ++i) {
                     point = points[i];
-                    if(this.xy) {
+                    if (this.xy) {
                         parts[i] = point.x + "," + point.y;
                     } else {
                         parts[i] = point.y + "," + point.x;
                     }
-                    if(point.z != undefined) { // allow null or undefined
+                    if (point.z != undefined) { // allow null or undefined
                         parts[i] += "," + point.z;
                     }
                 }
@@ -178,7 +178,7 @@ OpenLayers.Format.GML.v2 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
                     {x: bounds.right, y: bounds.top}
                 ], node);
                 // srsName attribute is optional for gml:Box
-                if(this.srsName) {
+                if (this.srsName) {
                     node.setAttribute("srsName", this.srsName);
                 }
                 return node;

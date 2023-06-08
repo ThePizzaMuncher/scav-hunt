@@ -129,17 +129,17 @@ OpenLayers.Control.Navigation = OpenLayers.Class(OpenLayers.Control, {
     destroy: function() {
         this.deactivate();
 
-        if(this.dragPan) {
+        if (this.dragPan) {
             this.dragPan.destroy();
         }
         this.dragPan = null;
 
-        if(this.zoomBox) {
+        if (this.zoomBox) {
             this.zoomBox.destroy();
         }
         this.zoomBox = null;
 
-        if(this.pinchZoom) {
+        if (this.pinchZoom) {
             this.pinchZoom.destroy();
         }
         this.pinchZoom = null;
@@ -152,14 +152,14 @@ OpenLayers.Control.Navigation = OpenLayers.Class(OpenLayers.Control, {
      */
     activate: function() {
         this.dragPan.activate();
-        if(this.zoomWheelEnabled) {
+        if (this.zoomWheelEnabled) {
             this.handlers.wheel.activate();
         }    
         this.handlers.click.activate();
-        if(this.zoomBoxEnabled) {
+        if (this.zoomBoxEnabled) {
             this.zoomBox.activate();
         }
-        if(this.pinchZoom) {
+        if (this.pinchZoom) {
             this.pinchZoom.activate();
         }
         return OpenLayers.Control.prototype.activate.apply(this,arguments);
@@ -169,7 +169,7 @@ OpenLayers.Control.Navigation = OpenLayers.Class(OpenLayers.Control, {
      * Method: deactivate
      */
     deactivate: function() {
-        if(this.pinchZoom) {
+        if (this.pinchZoom) {
             this.pinchZoom.deactivate();
         }
         this.zoomBox.deactivate();
@@ -184,7 +184,7 @@ OpenLayers.Control.Navigation = OpenLayers.Class(OpenLayers.Control, {
      */
     draw: function() {
         // disable right mouse context menu for support of right click events
-        if(this.handleRightClicks) {
+        if (this.handleRightClicks) {
             this.map.viewPortDiv.oncontextmenu = OpenLayers.Function.False;
         }
 
@@ -219,7 +219,7 @@ OpenLayers.Control.Navigation = OpenLayers.Class(OpenLayers.Control, {
             this, {up : this.wheelUp, down: this.wheelDown},
             OpenLayers.Util.extend(wheelOptions, this.mouseWheelOptions)
         );
-        if(OpenLayers.Control.PinchZoom) {
+        if (OpenLayers.Control.PinchZoom) {
             this.pinchZoom = new OpenLayers.Control.PinchZoom(
                 OpenLayers.Util.extend(
                     {map: this.map}, this.pinchZoomOptions));
@@ -233,7 +233,7 @@ OpenLayers.Control.Navigation = OpenLayers.Class(OpenLayers.Control, {
      * evt - {Event}
      */
     defaultClick: function (evt) {
-        if(evt.lastTouches && evt.lastTouches.length == 2) {
+        if (evt.lastTouches && evt.lastTouches.length == 2) {
             this.map.zoomOut();
         }
     },
@@ -266,14 +266,14 @@ OpenLayers.Control.Navigation = OpenLayers.Class(OpenLayers.Control, {
      * deltaZ - {Integer}
      */
     wheelChange: function(evt, deltaZ) {
-        if(!this.map.fractionalZoom) {
+        if (!this.map.fractionalZoom) {
             deltaZ =  Math.round(deltaZ);
         }
         var currentZoom = this.map.getZoom(),
             newZoom = currentZoom + deltaZ;
         newZoom = Math.max(newZoom, 0);
         newZoom = Math.min(newZoom, this.map.getNumZoomLevels());
-        if(newZoom === currentZoom) {
+        if (newZoom === currentZoom) {
             return;
         }
         this.map.zoomTo(newZoom, evt.xy);
@@ -316,7 +316,7 @@ OpenLayers.Control.Navigation = OpenLayers.Class(OpenLayers.Control, {
      */
     enableZoomBox : function() {
         this.zoomBoxEnabled = true;
-        if(this.active) {
+        if (this.active) {
             this.zoomBox.activate();
         }    
     },
@@ -336,7 +336,7 @@ OpenLayers.Control.Navigation = OpenLayers.Class(OpenLayers.Control, {
     
     enableZoomWheel : function() {
         this.zoomWheelEnabled = true;
-        if(this.active) {
+        if (this.active) {
             this.handlers.wheel.activate();
         }    
     },

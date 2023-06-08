@@ -119,7 +119,7 @@ OpenLayers.Icon = OpenLayers.Class({
      * an object with a 'w' and 'h' properties.
      */
     setSize: function(size) {
-        if(size != null) {
+        if (size != null) {
             this.size = size;
         }
         this.draw();
@@ -132,7 +132,7 @@ OpenLayers.Icon = OpenLayers.Class({
      * url - {String} 
      */
     setUrl: function(url) {
-        if(url != null) {
+        if (url != null) {
             this.url = url;
         }
         this.draw();
@@ -165,7 +165,7 @@ OpenLayers.Icon = OpenLayers.Class({
      * Erase the underlying image element.
      */
     erase: function() {
-        if(this.imageDiv != null && this.imageDiv.parentNode != null) {
+        if (this.imageDiv != null && this.imageDiv.parentNode != null) {
             OpenLayers.Element.remove(this.imageDiv);
         }
     }, 
@@ -193,15 +193,15 @@ OpenLayers.Icon = OpenLayers.Class({
      */
     moveTo: function (px) {
         //if no px passed in, use stored location
-        if(px != null) {
+        if (px != null) {
             this.px = px;
         }
 
-        if(this.imageDiv != null) {
-            if(this.px == null) {
+        if (this.imageDiv != null) {
+            if (this.px == null) {
                 this.display(false);
             } else {
-                if(this.calculateOffset) {
+                if (this.calculateOffset) {
                     this.offset = this.calculateOffset(this.size);  
                 }
                 OpenLayers.Util.modifyAlphaImageDiv(this.imageDiv, null, {

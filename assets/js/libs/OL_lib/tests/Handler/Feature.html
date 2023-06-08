@@ -69,7 +69,7 @@
         map.events.registerPriority = function(type, obj, func) {
             var output = func();
             // Don't listen for setEvent handlers (#902)
-            if(typeof output == "string") {
+            if (typeof output == "string") {
                 t.eq(OpenLayers.Util.indexOf(nonevents, type), -1,
                      "registered method is not one of the events " +
                      "that should not be handled");
@@ -293,12 +293,12 @@
                 listeners = map.events.listeners[eventType];
                 for(var j=0, jlen=listeners.length; j<jlen; j++) {
                     listener = listeners[j];
-                    if(listener.func === handler[eventType] && listener.obj === handler) {
+                    if (listener.func === handler[eventType] && listener.obj === handler) {
                         flag = true;
                         break;
                     }
                 }
-                if(!flag) {
+                if (!flag) {
                     return false;
                 }
             }
@@ -312,7 +312,7 @@
             for(var i=0, ilen=eventTypes.length; i<ilen; i++) {
                 eventType = eventTypes[i];
                 times = map.events.listeners[eventType].length;
-                if(times != 0) {
+                if (times != 0) {
                     t.fail(eventType + " is registered " + times + " times");
                     flag = true;
                 }
@@ -437,7 +437,7 @@
         // now destroy the feature and confirm that the callback is not called again
         feature.destroy();
         handler.handle({type: "click"});
-        if(count === 1) {
+        if (count === 1) {
             t.ok(true, "[click] callback not called after destroy");
         } else {
             t.fail("[click] callback called after destroy: " + lastType);
@@ -466,7 +466,7 @@
         layer.getFeatureFromEvent = function(evt) {return null};
         handler.handle({type: "click"});
         // confirm that callback does not get called
-        if(count === 1) {
+        if (count === 1) {
             t.ok(true, "[clickout] callback not called when clicking out of a destroyed feature");
         } else {
             t.fail("[clickout] callback called when clicking out of a destroyed feature: " + lastType);
@@ -491,7 +491,7 @@
         // now destroy the feature and confirm that the callback is not called again
         feature.destroy();
         handler.handle({type: "mousemove"});
-        if(count === 1) {
+        if (count === 1) {
             t.ok(true, "[over] callback not called after destroy");
         } else {
             t.fail("[over] callback called after destroy: " + lastType);
@@ -520,7 +520,7 @@
         layer.getFeatureFromEvent = function(evt) {return null};
         handler.handle({type: "mousemove"});
         // confirm that callback does not get called
-        if(count === 1) {
+        if (count === 1) {
             t.ok(true, "[out] callback not called when moving out of a destroyed feature");
         } else {
             t.fail("[out] callback called when moving out of a destroyed feature: " + lastType);
@@ -590,7 +590,7 @@
 
     function test_multitouch_canvas(t) {
         var supported = OpenLayers.Renderer.Canvas.prototype.supported();
-        if(!supported) { t.plan(0); return; }
+        if (!supported) { t.plan(0); return; }
 
         t.plan(1);
 

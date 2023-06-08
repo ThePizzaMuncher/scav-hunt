@@ -145,7 +145,7 @@ OpenLayers.Layer.KaMap = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     clone: function (obj) {
         
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer.KaMap(this.name,
                                             this.url,
                                             this.params,
@@ -156,7 +156,7 @@ OpenLayers.Layer.KaMap = OpenLayers.Class(OpenLayers.Layer.Grid, {
         obj = OpenLayers.Layer.Grid.prototype.clone.apply(this, [obj]);
 
         // copy/set any non-init, non-simple values here
-        if(this.tileSize != null) {
+        if (this.tileSize != null) {
             obj.tileSize = this.tileSize.clone();
         }
         

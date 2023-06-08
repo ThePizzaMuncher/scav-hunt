@@ -166,11 +166,11 @@ OpenLayers.Event = {
      */
     stop: function(event, allowDefault) {
         
-        if(!allowDefault) { 
+        if (!allowDefault) { 
             OpenLayers.Event.preventDefault(event);
         }
                 
-        if(event.stopPropagation) {
+        if (event.stopPropagation) {
             event.stopPropagation();
         } else {
             event.cancelBubble = true;
@@ -186,7 +186,7 @@ OpenLayers.Event = {
      * event - {Event}
      */
     preventDefault: function(event) {
-        if(event.preventDefault) {
+        if (event.preventDefault) {
             event.preventDefault();
         } else {
             event.returnValue = false;
@@ -226,21 +226,21 @@ OpenLayers.Event = {
         var element = OpenLayers.Util.getElement(elementParam);
         useCapture = useCapture || false;
 
-        if(name == 'keypress' &&
+        if (name == 'keypress' &&
            (navigator.appVersion.match(/Konqueror|Safari|KHTML/)
            || element.attachEvent)) {
             name = 'keydown';
         }
 
         //if observers cache has not yet been created, create it
-        if(!this.observers) {
+        if (!this.observers) {
             this.observers = {};
         }
 
         //if not already assigned, make a new unique cache ID
-        if(!element._eventCacheID) {
+        if (!element._eventCacheID) {
             var idPrefix = "eventCacheID_";
-            if(element.id) {
+            if (element.id) {
                 idPrefix = element.id + "_" + idPrefix;
             }
             element._eventCacheID = OpenLayers.Util.createUniqueID(idPrefix);
@@ -249,7 +249,7 @@ OpenLayers.Event = {
         var cacheID = element._eventCacheID;
 
         //if there is not yet a hash entry for this element, add one
-        if(!this.observers[cacheID]) {
+        if (!this.observers[cacheID]) {
             this.observers[cacheID] = [];
         }
 
@@ -262,9 +262,9 @@ OpenLayers.Event = {
         });
 
         //add the actual browser event listener
-        if(element.addEventListener) {
+        if (element.addEventListener) {
             element.addEventListener(name, observer, useCapture);
-        } else if(element.attachEvent) {
+        } else if (element.attachEvent) {
             element.attachEvent('on' + name, observer);
         }
     },
@@ -294,7 +294,7 @@ OpenLayers.Event = {
      *                                         taken directly from hashtable
      */
     _removeElementObservers: function(elementObservers) {
-        if(elementObservers) {
+        if (elementObservers) {
             for(var i = elementObservers.length-1; i >= 0; i--) {
                 var entry = elementObservers[i];
                 OpenLayers.Event.stopObserving.apply(this, [
@@ -322,8 +322,8 @@ OpenLayers.Event = {
         var element = OpenLayers.Util.getElement(elementParam);
         var cacheID = element._eventCacheID;
 
-        if(name == 'keypress') {
-            if( navigator.appVersion.match(/Konqueror|Safari|KHTML/) || 
+        if (name == 'keypress') {
+            if ( navigator.appVersion.match(/Konqueror|Safari|KHTML/) || 
                  element.detachEvent) {
               name = 'keydown';
             }
@@ -332,19 +332,19 @@ OpenLayers.Event = {
         // find element's entry in this.observers cache and remove it
         var foundEntry = false;
         var elementObservers = OpenLayers.Event.observers[cacheID];
-        if(elementObservers) {
+        if (elementObservers) {
     
             // find the specific event type in the element's list
             var i=0;
             while(!foundEntry && i < elementObservers.length) {
                 var cacheEntry = elementObservers[i];
     
-                if((cacheEntry.name == name) &&
+                if ((cacheEntry.name == name) &&
                     (cacheEntry.observer == observer) &&
                     (cacheEntry.useCapture == useCapture)) {
     
                     elementObservers.splice(i, 1);
-                    if(elementObservers.length == 0) {
+                    if (elementObservers.length == 0) {
                         delete OpenLayers.Event.observers[cacheID];
                     }
                     foundEntry = true;
@@ -355,10 +355,10 @@ OpenLayers.Event = {
         }
     
         //actually remove the event listener from browser
-        if(foundEntry) {
-            if(element.removeEventListener) {
+        if (foundEntry) {
+            if (element.removeEventListener) {
                 element.removeEventListener(name, observer, useCapture);
-            } else if(element && element.detachEvent) {
+            } else if (element && element.detachEvent) {
                 element.detachEvent('on' + name, observer);
             }
         }
@@ -374,7 +374,7 @@ OpenLayers.Event = {
         // check for OpenLayers.Event before checking for observers, because
         // OpenLayers.Event may be undefined in IE if no map instance was
         // created
-        if(OpenLayers.Event && OpenLayers.Event.observers) {
+        if (OpenLayers.Event && OpenLayers.Event.observers) {
             for (var cacheID in OpenLayers.Event.observers) {
                 var elementObservers = OpenLayers.Event.observers[cacheID];
                 OpenLayers.Event._removeElementObservers.apply(this, 
@@ -512,7 +512,7 @@ OpenLayers.Events = OpenLayers.Class({
      *       },
      *       doStuff: function(evt) {
      *           var propagate = true;
-     *           if(OpenLayers.Event.element(evt).className === "foo") {
+     *           if (OpenLayers.Event.element(evt).className === "foo") {
      *               propagate = false;
      *               var target = this.target;
      *               target.triggerEvent("foostart");
@@ -570,7 +570,7 @@ OpenLayers.Events = OpenLayers.Class({
         
         // if a dom element is specified, add a listeners list 
         // for browser events on the element and register them
-        if(element != null) {
+        if (element != null) {
             this.attachToElement(element);
         }
     },
@@ -580,14 +580,14 @@ OpenLayers.Events = OpenLayers.Class({
      */
     destroy: function () {
         for (var e in this.extensions) {
-            if(typeof this.extensions[e] !== "boolean") {
+            if (typeof this.extensions[e] !== "boolean") {
                 this.extensions[e].destroy();
             }
         }
         this.extensions = null;
-        if(this.element) {
+        if (this.element) {
             OpenLayers.Event.stopObservingElement(this.element);
-            if(this.element.hasScrollEvent) {
+            if (this.element.hasScrollEvent) {
                 OpenLayers.Event.stopObserving(
                     window, "scroll", this.clearMouseListener
                 );
@@ -618,7 +618,7 @@ OpenLayers.Events = OpenLayers.Class({
      * element - {HTMLDOMElement} a DOM element to attach browser events to
      */
     attachToElement: function (element) {
-        if(this.element) {
+        if (this.element) {
             OpenLayers.Event.stopObservingElement(this.element);
         } else {
             // keep a bound copy of handleBrowserEvent() so that we can
@@ -640,7 +640,7 @@ OpenLayers.Events = OpenLayers.Class({
             // register the event cross-browser
             OpenLayers.Event.observe(element, type, this.eventHandler
             );
-            if(msTouch && type.indexOf('touch') === 0) {
+            if (msTouch && type.indexOf('touch') === 0) {
                 this.addMsTouchListener(element, type, this.eventHandler);
             }
         }
@@ -679,7 +679,7 @@ OpenLayers.Events = OpenLayers.Class({
      */
     on: function(object) {
         for(var type in object) {
-            if(type != "scope" && object.hasOwnProperty(type)) {
+            if (type != "scope" && object.hasOwnProperty(type)) {
                 this.register(type, object.scope, object[type]);
             }
         }
@@ -717,23 +717,23 @@ OpenLayers.Events = OpenLayers.Class({
      *     events.
      */
     register: function (type, obj, func, priority) {
-        if(type in OpenLayers.Events && !this.extensions[type]) {
+        if (type in OpenLayers.Events && !this.extensions[type]) {
             this.extensions[type] = new OpenLayers.Events[type](this);
         }
-        if(func != null) {
-            if(obj == null)  {
+        if (func != null) {
+            if (obj == null)  {
                 obj = this.object;
             }
             var listeners = this.listeners[type];
-            if(!listeners) {
+            if (!listeners) {
                 listeners = [];
                 this.listeners[type] = listeners;
                 this.extensionCount[type] = 0;
             }
             var listener = {obj: obj, func: func};
-            if(priority) {
+            if (priority) {
                 listeners.splice(this.extensionCount[type], 0, listener);
-                if(typeof priority === "object" && priority.extension) {
+                if (typeof priority === "object" && priority.extension) {
                     this.extensionCount[type]++;
                 }
             } else {
@@ -791,7 +791,7 @@ OpenLayers.Events = OpenLayers.Class({
      */
     un: function(object) {
         for(var type in object) {
-            if(type != "scope" && object.hasOwnProperty(type)) {
+            if (type != "scope" && object.hasOwnProperty(type)) {
                 this.unregister(type, object.scope, object[type]);
             }
         }
@@ -806,13 +806,13 @@ OpenLayers.Events = OpenLayers.Class({
      * func - {Function} 
      */
     unregister: function (type, obj, func) {
-        if(obj == null)  {
+        if (obj == null)  {
             obj = this.object;
         }
         var listeners = this.listeners[type];
-        if(listeners != null) {
+        if (listeners != null) {
             for (var i=0, len=listeners.length; i<len; i++) {
-                if(listeners[i].obj == obj && listeners[i].func == func) {
+                if (listeners[i].obj == obj && listeners[i].func == func) {
                     listeners.splice(i, 1);
                     break;
                 }
@@ -829,7 +829,7 @@ OpenLayers.Events = OpenLayers.Class({
      * type - {String} 
      */
     remove: function(type) {
-        if(this.listeners[type] != null) {
+        if (this.listeners[type] != null) {
             this.listeners[type] = [];
         }
     },
@@ -850,17 +850,17 @@ OpenLayers.Events = OpenLayers.Class({
         var listeners = this.listeners[type];
 
         // fast path
-        if(!listeners || listeners.length == 0) {
+        if (!listeners || listeners.length == 0) {
             return undefined;
         }
 
         // prep evt object with object & div references
-        if(evt == null) {
+        if (evt == null) {
             evt = {};
         }
         evt.object = this.object;
         evt.element = this.element;
-        if(!evt.type) {
+        if (!evt.type) {
             evt.type = type;
         }
     
@@ -874,13 +874,13 @@ OpenLayers.Events = OpenLayers.Class({
             // bind the context to callback.obj
             continueChain = callback.func.apply(callback.obj, [evt]);
 
-            if((continueChain != undefined) && (continueChain == false)) {
+            if ((continueChain != undefined) && (continueChain == false)) {
                 // if callback returns false, execute no more callbacks.
                 break;
             }
         }
         // don't fall through to other DOM elements
-        if(!this.fallThrough) {           
+        if (!this.fallThrough) {           
             OpenLayers.Event.stop(evt, true);
         }
         return continueChain;
@@ -897,13 +897,13 @@ OpenLayers.Events = OpenLayers.Class({
      */
     handleBrowserEvent: function (evt) {
         var type = evt.type, listeners = this.listeners[type];
-        if(!listeners || listeners.length == 0) {
+        if (!listeners || listeners.length == 0) {
             // noone's listening, bail out
             return;
         }
         // add clientX & clientY to all events - corresponds to average x, y
         var touches = evt.touches;
-        if(touches && touches[0]) {
+        if (touches && touches[0]) {
             var x = 0;
             var y = 0;
             var num = touches.length;
@@ -916,7 +916,7 @@ OpenLayers.Events = OpenLayers.Class({
             evt.clientX = x / num;
             evt.clientY = y / num;
         }
-        if(this.includeXY) {
+        if (this.includeXY) {
             evt.xy = this.getMousePosition(evt);
         } 
         this.triggerEvent(type, evt);
@@ -942,12 +942,12 @@ OpenLayers.Events = OpenLayers.Class({
             x = evt.clientX,
             y = evt.clientY;
         
-        if(evt.pageY === 0 && Math.floor(y) > Math.floor(evt.pageY) ||
+        if (evt.pageY === 0 && Math.floor(y) > Math.floor(evt.pageY) ||
             evt.pageX === 0 && Math.floor(x) > Math.floor(evt.pageX)) {
             // iOS4 include scroll offset in clientX/Y
             x = x - winPageX;
             y = y - winPageY;
-        } else if(y < (evt.pageY - winPageY) || x < (evt.pageX - winPageX) ) {
+        } else if (y < (evt.pageY - winPageY) || x < (evt.pageX - winPageX) ) {
             // Some Android browsers have totally bogus values for clientX/Y
             // when scrolling/zooming a page
             x = evt.pageX - winPageX;
@@ -986,14 +986,14 @@ OpenLayers.Events = OpenLayers.Class({
      *                      for offsets
      */
     getMousePosition: function (evt) {
-        if(!this.includeXY) {
+        if (!this.includeXY) {
             this.clearMouseCache();
-        } else if(!this.element.hasScrollEvent) {
+        } else if (!this.element.hasScrollEvent) {
             OpenLayers.Event.observe(window, "scroll", this.clearMouseListener);
             this.element.hasScrollEvent = true;
         }
         
-        if(!this.element.scrolls) {
+        if (!this.element.scrolls) {
             var viewportElement = OpenLayers.Util.getViewportElement();
             this.element.scrolls = [
                 window.pageXOffset || viewportElement.scrollLeft,
@@ -1001,14 +1001,14 @@ OpenLayers.Events = OpenLayers.Class({
             ];
         }
 
-        if(!this.element.lefttop) {
+        if (!this.element.lefttop) {
             this.element.lefttop = [
                 (document.documentElement.clientLeft || 0),
                 (document.documentElement.clientTop  || 0)
             ];
         }
         
-        if(!this.element.offsets) {
+        if (!this.element.offsets) {
             this.element.offsets = OpenLayers.Util.pagePosition(this.element);
         }
 
@@ -1075,12 +1075,12 @@ OpenLayers.Events = OpenLayers.Class({
 
             var alreadyInArray = false;
             for (var i=0, ii=touches.length; i<ii; ++i) {
-                if(touches[i].pointerId == e.pointerId) {
+                if (touches[i].pointerId == e.pointerId) {
                     alreadyInArray = true;
                     break;
                 }
             }
-            if(!alreadyInArray) {
+            if (!alreadyInArray) {
                 touches.push(e);
             }
 
@@ -1094,7 +1094,7 @@ OpenLayers.Events = OpenLayers.Class({
         // accurate
         var internalCb = function(e) {
             for (var i=0, ii=touches.length; i<ii; ++i) {
-                if(touches[i].pointerId == e.pointerId) {
+                if (touches[i].pointerId == e.pointerId) {
                     touches.splice(i, 1);
                     break;
                 }
@@ -1116,17 +1116,17 @@ OpenLayers.Events = OpenLayers.Class({
         var cb = function(e) {
 
             //Don't fire touch moves when mouse isn't down
-            if(e.pointerType == e.MSPOINTER_TYPE_MOUSE && e.buttons == 0) {
+            if (e.pointerType == e.MSPOINTER_TYPE_MOUSE && e.buttons == 0) {
                 return;
             }
 
-            if(touches.length == 1 && touches[0].pageX == e.pageX &&
+            if (touches.length == 1 && touches[0].pageX == e.pageX &&
                     touches[0].pageY == e.pageY) {
                 // don't trigger event when pointer has not moved
                 return;
             }
             for (var i=0, ii=touches.length; i<ii; ++i) {
-                if(touches[i].pointerId == e.pointerId) {
+                if (touches[i].pointerId == e.pointerId) {
                     touches[i] = e;
                     break;
                 }
@@ -1153,7 +1153,7 @@ OpenLayers.Events = OpenLayers.Class({
         var cb = function(e) {
 
             for (var i=0, ii=touches.length; i<ii; ++i) {
-                if(touches[i].pointerId == e.pointerId) {
+                if (touches[i].pointerId == e.pointerId) {
                     touches.splice(i, 1);
                     break;
                 }

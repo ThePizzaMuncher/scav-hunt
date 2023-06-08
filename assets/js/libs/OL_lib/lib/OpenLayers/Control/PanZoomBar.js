@@ -129,7 +129,7 @@ OpenLayers.Control.PanZoomBar = OpenLayers.Class(OpenLayers.Control.PanZoom, {
      * clear the div and start over.
      */
     redraw: function() {
-        if(this.div != null) {
+        if (this.div != null) {
             this.removeButtons();
             this._removeZoomBar();
         }  
@@ -151,18 +151,18 @@ OpenLayers.Control.PanZoomBar = OpenLayers.Class(OpenLayers.Control.PanZoom, {
         this.buttons = [];
 
         var sz = {w: 18, h: 18};
-        if(this.panIcons) {
+        if (this.panIcons) {
             var centered = new OpenLayers.Pixel(px.x+sz.w/2, px.y);
             var wposition = sz.w;
 
-            if(this.zoomWorldIcon) {
+            if (this.zoomWorldIcon) {
                 centered = new OpenLayers.Pixel(px.x+sz.w, px.y);
             }
 
             this._addButton("panup", "north-mini.png", centered, sz);
             px.y = centered.y+sz.h;
             this._addButton("panleft", "west-mini.png", px, sz);
-            if(this.zoomWorldIcon) {
+            if (this.zoomWorldIcon) {
                 this._addButton("zoomworld", "zoom-world-mini.png", px.add(sz.w, 0), sz);
 
                 wposition *= 2;
@@ -177,7 +177,7 @@ OpenLayers.Control.PanZoomBar = OpenLayers.Class(OpenLayers.Control.PanZoom, {
             this._addButton("zoomin", "zoom-plus-mini.png", px, sz);
             centered = this._addZoomBar(px.add(0, sz.h));
             this._addButton("zoomout", "zoom-minus-mini.png", centered, sz);
-            if(this.zoomWorldIcon) {
+            if (this.zoomWorldIcon) {
                 centered = centered.add(0, sz.h+3);
                 this._addButton("zoomworld", "zoom-world-mini.png", centered, sz);
             }
@@ -222,7 +222,7 @@ OpenLayers.Control.PanZoomBar = OpenLayers.Class(OpenLayers.Control.PanZoom, {
         var imgLocation = OpenLayers.Util.getImageLocation("zoombar.png");
         var div = null;
         
-        if(OpenLayers.Util.alphaHack()) {
+        if (OpenLayers.Util.alphaHack()) {
             var id = this.id + "_" + this.map.id;
             div = OpenLayers.Util.createAlphaImageDiv(id, centered,
                                       {w: sz.w, h: this.zoomStopHeight},
@@ -282,9 +282,9 @@ OpenLayers.Control.PanZoomBar = OpenLayers.Class(OpenLayers.Control.PanZoom, {
      */
     onButtonClick: function(evt) {
         OpenLayers.Control.PanZoom.prototype.onButtonClick.apply(this, arguments);
-        if(evt.buttonElement === this.zoombarDiv) {
+        if (evt.buttonElement === this.zoombarDiv) {
             var levels = evt.buttonXY.y / this.zoomStopHeight;
-            if(this.forceFixedZoomLevel || !this.map.fractionalZoom) {
+            if (this.forceFixedZoomLevel || !this.map.fractionalZoom) {
                 levels = Math.floor(levels);
             }    
             var zoom = (this.map.getNumZoomLevels() - 1) - levels; 
@@ -313,7 +313,7 @@ OpenLayers.Control.PanZoomBar = OpenLayers.Class(OpenLayers.Control.PanZoom, {
      * evt - {<OpenLayers.Event>} 
      */
     zoomBarDown:function(evt) {
-        if(!OpenLayers.Event.isLeftClick(evt) && !OpenLayers.Event.isSingleTouch(evt)) {
+        if (!OpenLayers.Event.isLeftClick(evt) && !OpenLayers.Event.isSingleTouch(evt)) {
             return;
         }
         this.map.events.on({
@@ -341,10 +341,10 @@ OpenLayers.Control.PanZoomBar = OpenLayers.Class(OpenLayers.Control.PanZoom, {
      * evt - {<OpenLayers.Event>} 
      */
     zoomBarDrag:function(evt) {
-        if(this.mouseDragStart != null) {
+        if (this.mouseDragStart != null) {
             var deltaY = this.mouseDragStart.y - evt.xy.y;
             var offsets = OpenLayers.Util.pagePosition(this.zoombarDiv);
-            if((evt.clientY - offsets[1]) > 0 && 
+            if ((evt.clientY - offsets[1]) > 0 && 
                 (evt.clientY - offsets[1]) < parseInt(this.zoombarDiv.style.height) - 2) {
                 var newTop = parseInt(this.slider.style.top) - deltaY;
                 this.slider.style.top = newTop+"px";
@@ -365,10 +365,10 @@ OpenLayers.Control.PanZoomBar = OpenLayers.Class(OpenLayers.Control.PanZoom, {
      * evt - {<OpenLayers.Event>} 
      */
     zoomBarUp:function(evt) {
-        if(!OpenLayers.Event.isLeftClick(evt) && evt.type !== "touchend") {
+        if (!OpenLayers.Event.isLeftClick(evt) && evt.type !== "touchend") {
             return;
         }
-        if(this.mouseDragStart) {
+        if (this.mouseDragStart) {
             this.div.style.cursor="";
             this.map.events.un({
                 "touchmove": this.passEventToSlider,
@@ -377,7 +377,7 @@ OpenLayers.Control.PanZoomBar = OpenLayers.Class(OpenLayers.Control.PanZoom, {
                 scope: this
             });
             var zoomLevel = this.map.zoom;
-            if(!this.forceFixedZoomLevel && this.map.fractionalZoom) {
+            if (!this.forceFixedZoomLevel && this.map.fractionalZoom) {
                 zoomLevel += this.deltaY/this.zoomStopHeight;
                 zoomLevel = Math.min(Math.max(zoomLevel, 0), 
                                      this.map.getNumZoomLevels() - 1);

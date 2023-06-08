@@ -71,7 +71,7 @@ function (fn, expectedException, doc) {
         theCaughtException = innerCaughtException;
     }
 
-    if(theCaughtException) {
+    if (theCaughtException) {
         // We delete the stacks before comparison as they will never match.
         delete theCaughtException.stack;
         delete expectedException.stack;

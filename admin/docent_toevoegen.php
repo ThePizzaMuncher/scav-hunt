@@ -1,9 +1,9 @@
 <?php
 require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
-if(!isset($_SESSION['admin'])) {
+if (!isset($_SESSION['admin'])) {
 	header('location:../login'); die();
-} else if(!$_SESSION['admin']) {
+} else if (!$_SESSION['admin']) {
 	header('location:../login'); die();
 }
 
@@ -73,7 +73,7 @@ echo '<div class="container">
    '
 ;
  // check if the form has been submitted. If it has, start to process the form and save it to the database
- if(isset($_POST['submit']))
+ if (isset($_POST['submit']))
  	{ 
        
 
@@ -82,14 +82,14 @@ echo '<div class="container">
 	$opleiding = mysqli_real_escape_string($conn,$_POST['opleiding']);
 	$wachtwoord = mysqli_real_escape_string($conn,$_POST['wachtwoord']);
 	$isAdmin = (isset($_POST['isAdmin']) ? 1 : 0);
-    /* if(isset($_POST['isAdmin']))
+    /* if (isset($_POST['isAdmin']))
         $isAdmin = '1'; // Checkbox is selected
     else
         $isAdmin = '0'; // Alternate code */
    
  
  // check to make sure both fields are entered
- if($naam == '' || $opleiding == '' || $wachtwoord == '')
+ if ($naam == '' || $opleiding == '' || $wachtwoord == '')
  	{
  	// generate error message
  	$error = 'ERROR: Please fill in all required fields!';
@@ -107,7 +107,7 @@ echo '<div class="container">
 
 	$retval = mysqli_query($conn, $sql_query );
    
-   	if(! $retval ) {
+   	if (! $retval ) {
       	die('Could not enter data: ');
    	}
    

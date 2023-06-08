@@ -78,10 +78,10 @@ OpenLayers.Format.SOSGetFeatureOfInterest = OpenLayers.Class(
      * {Array(<OpenLayers.Feature.Vector>)} An array of features. 
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
 
@@ -92,7 +92,7 @@ OpenLayers.Format.SOSGetFeatureOfInterest = OpenLayers.Class(
         for (var i=0, len=info.features.length; i<len; i++) {
             var container = info.features[i];
             // reproject features if needed
-            if(this.internalProjection && this.externalProjection &&
+            if (this.internalProjection && this.externalProjection &&
                 container.components[0]) {
                     container.components[0].transform(
                         this.externalProjection, this.internalProjection
@@ -118,7 +118,7 @@ OpenLayers.Format.SOSGetFeatureOfInterest = OpenLayers.Class(
             "SamplingPoint": function(node, obj) {
                 // sampling point can also be without a featureMember if 
                 // there is only 1
-                if(!obj.attributes) {
+                if (!obj.attributes) {
                     var feature = {attributes: {}};
                     obj.features.push(feature);
                     obj = feature;
@@ -147,7 +147,7 @@ OpenLayers.Format.SOSGetFeatureOfInterest = OpenLayers.Class(
                 // we need to parse the srsName to get to the 
                 // externalProjection, that's why we cannot use
                 // GML v3 for this
-                if(!this.externalProjection) {
+                if (!this.externalProjection) {
                     this.externalProjection = new OpenLayers.Projection(
                         node.getAttribute("srsName"));
                 }

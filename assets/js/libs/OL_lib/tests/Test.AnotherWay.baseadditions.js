@@ -42,7 +42,7 @@ Test.AnotherWay._add_test_page_url = function(test_url, convention){
     var index = Test.AnotherWay._g_test_page_urls.length;
     
     // trim spaces.
-    if(test_url.match("^(\\s*)(.*\\S)(\\s*)$")) {
+    if (test_url.match("^(\\s*)(.*\\S)(\\s*)$")) {
         test_url = RegExp.$2;
     }
     
@@ -99,11 +99,11 @@ Test.AnotherWay.old_set_iframe_location = Test.AnotherWay._set_iframe_location;
 Test.AnotherWay._set_iframe_location = function(iframe, loc, outside_path_correction){
     var optionPos = loc.indexOf( "?" ),
         option;
-    if(optionPos != -1) {
+    if (optionPos != -1) {
         option = loc.substring(optionPos+1);
         loc = loc.substring(0, optionPos);
     }
-    if(option === "visible") {
+    if (option === "visible") {
         document.getElementById("test_iframe_el").style.display = "";
     }
     return Test.AnotherWay.old_set_iframe_location.call(this, iframe, loc, outside_path_correction);
@@ -132,9 +132,9 @@ Test.AnotherWay.reset_running_time = function(){
 // quickfilter
 Test.AnotherWay.bindQuicksearchListener = function(){
     var input = document.getElementById('quickfilter');
-    if(input.addEventListener) {
+    if (input.addEventListener) {
         input.addEventListener('keyup', Test.AnotherWay.quicksearch);
-    } else if(input.attachEvent) {
+    } else if (input.attachEvent) {
         input.attachEvent('onkeyup', Test.AnotherWay.quicksearch);
     } else {
         // remove the input field
@@ -143,7 +143,7 @@ Test.AnotherWay.bindQuicksearchListener = function(){
 };
 Test.AnotherWay.quicksearchThrottleTimeOut = null;
 Test.AnotherWay.quicksearch = function(){
-    if(Test.AnotherWay.quicksearchThrottleTimeOut) {
+    if (Test.AnotherWay.quicksearchThrottleTimeOut) {
         window.clearTimeout(Test.AnotherWay.quicksearchThrottleTimeOut);
     }
     Test.AnotherWay.quicksearchThrottleTimeOut = window.setTimeout(function(){
@@ -159,7 +159,7 @@ Test.AnotherWay.filterTestList = function(str){
     for (var idx = 0, len = candidates.length; idx<len; idx++) {
         var tr = candidates[idx].parentNode.parentNode;
         var html = candidates[idx].innerHTML;
-        if(re.test(html)) {
+        if (re.test(html)) {
             tr.className = 'isShown';
         } else {
             tr.className = 'isHidden';
@@ -169,7 +169,7 @@ Test.AnotherWay.filterTestList = function(str){
 };
 
 Test.AnotherWay.unfilterTestList = function() {
-    if( document.querySelectorAll ) {
+    if ( document.querySelectorAll ) {
         var hidden = document.querySelectorAll('.isHidden');
         for (var idx = 0, len = hidden.length; idx < len; idx++) {
             hidden[idx].className = 'isShown';
@@ -179,9 +179,9 @@ Test.AnotherWay.unfilterTestList = function() {
 
 // bind our quicksearch init method to body onload.
 (function(win) {
-    if(win.addEventListener) {
+    if (win.addEventListener) {
         win.addEventListener('load', Test.AnotherWay.bindQuicksearchListener);
-    } else if(win.attachEvent) {
+    } else if (win.attachEvent) {
         win.attachEvent('onload', Test.AnotherWay.bindQuicksearchListener);
     } else {
         win.onload = function(){

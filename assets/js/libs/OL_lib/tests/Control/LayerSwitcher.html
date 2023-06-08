@@ -101,7 +101,7 @@
         t.eq(markersInput.value, markers.name, "wms correctly valued");
 
         t.eq(false, control.checkRedraw(), "check redraw is false");
-        if(OpenLayers.BROWSER_NAME != "opera") { 
+        if (OpenLayers.BROWSER_NAME != "opera") { 
             control = new OpenLayers.Control.LayerSwitcher();
             var myredraw = control.redraw;
             control.redraw = function() { 

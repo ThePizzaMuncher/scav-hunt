@@ -20,14 +20,14 @@
             feature.geometry.move(delta.x, delta.y);
             var me = map.maxExtent; 
             var rad = 6;
-            if(feature.geometry.x > (me.right - rad)) { 
+            if (feature.geometry.x > (me.right - rad)) { 
                 feature.geometry.x = me.right - rad;
-            } else if(feature.geometry.x < (me.left+rad)) {
+            } else if (feature.geometry.x < (me.left+rad)) {
                 feature.geometry.x = me.left+rad;
             } 
-            if(feature.geometry.y > (me.top-rad)) {
+            if (feature.geometry.y > (me.top-rad)) {
                 feature.geometry.y = me.top-rad;
-            } else if(feature.geometry.y < (me.bottom+rad)) {
+            } else if (feature.geometry.y < (me.bottom+rad)) {
                 feature.geometry.y = me.bottom+rad;
             }    
             vlayer.drawFeature(feature);
@@ -48,10 +48,10 @@
                 new OpenLayers.Geometry.Point(map.getCenter().lon, map.getCenter().lat));
             vlayer.addFeatures(feature);    
             map.addLayer(vlayer);
-            if(window.DeviceMotionEvent) {
+            if (window.DeviceMotionEvent) {
                 window.addEventListener('devicemotion', function (evt) {
                     var delta = null;
-                    if(typeof(evt.accelerationIncludingGravity) != 'undefined') {
+                    if (typeof(evt.accelerationIncludingGravity) != 'undefined') {
                         delta = {
                             'x': evt.accelerationIncludingGravity.x * 3,
                             'y': evt.accelerationIncludingGravity.y * 3,

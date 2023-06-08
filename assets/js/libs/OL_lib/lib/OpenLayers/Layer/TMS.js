@@ -143,7 +143,7 @@ OpenLayers.Layer.TMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     clone: function (obj) {
         
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer.TMS(this.name,
                                            this.url,
                                            this.getOptions());
@@ -176,7 +176,7 @@ OpenLayers.Layer.TMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
         var z = this.getServerZoom();
         var path = this.serviceVersion + "/" + this.layername + "/" + z + "/" + x + "/" + y + "." + this.type; 
         var url = this.url;
-        if(OpenLayers.Util.isArray(url)) {
+        if (OpenLayers.Util.isArray(url)) {
             url = this.selectUrl(path, url);
         }
         return url + path;
@@ -192,7 +192,7 @@ OpenLayers.Layer.TMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     setMap: function(map) {
         OpenLayers.Layer.Grid.prototype.setMap.apply(this, arguments);
-        if(!this.tileOrigin) { 
+        if (!this.tileOrigin) { 
             this.tileOrigin = new OpenLayers.LonLat(this.map.maxExtent.left,
                                                 this.map.maxExtent.bottom);
         }                                       

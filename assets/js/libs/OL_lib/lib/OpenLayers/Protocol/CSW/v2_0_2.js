@@ -34,7 +34,7 @@ OpenLayers.Protocol.CSW.v2_0_2 = OpenLayers.Class(OpenLayers.Protocol, {
      */
     initialize: function(options) {
         OpenLayers.Protocol.prototype.initialize.apply(this, [options]);
-        if(!options.format) {
+        if (!options.format) {
             this.format = new OpenLayers.Format.CSWGetRecords.v2_0_2(OpenLayers.Util.extend({
             }, this.formatOptions));
         }
@@ -45,7 +45,7 @@ OpenLayers.Protocol.CSW.v2_0_2 = OpenLayers.Class(OpenLayers.Protocol, {
      * Clean up the protocol.
      */
     destroy: function() {
-        if(this.options && !this.options.format) {
+        if (this.options && !this.options.format) {
             this.format.destroy();
         }
         this.format = null;
@@ -87,9 +87,9 @@ OpenLayers.Protocol.CSW.v2_0_2 = OpenLayers.Class(OpenLayers.Protocol, {
      * options - {Object} The user options passed to the read call.
      */
     handleRead: function(response, options) {
-        if(options.callback) {
+        if (options.callback) {
             var request = response.priv;
-            if(request.status >= 200 && request.status < 300) {
+            if (request.status >= 200 && request.status < 300) {
                 // success
                 response.data = this.parseData(request);
                 response.code = OpenLayers.Protocol.Response.SUCCESS;
@@ -113,10 +113,10 @@ OpenLayers.Protocol.CSW.v2_0_2 = OpenLayers.Class(OpenLayers.Protocol, {
      */
     parseData: function(request) {
         var doc = request.responseXML;
-        if(!doc || !doc.documentElement) {
+        if (!doc || !doc.documentElement) {
             doc = request.responseText;
         }
-        if(!doc || doc.length <= 0) {
+        if (!doc || doc.length <= 0) {
             return null;
         }
         return this.format.read(doc);

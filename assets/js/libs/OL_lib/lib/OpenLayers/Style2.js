@@ -99,7 +99,7 @@ OpenLayers.Style2 = OpenLayers.Class({
     clone: function() {
         var config = OpenLayers.Util.extend({}, this);
         // clone rules
-        if(this.rules) {
+        if (this.rules) {
             config.rules = [];
             for (var i=0, len=this.rules.length; i<len; ++i) {
                 config.rules.push(this.rules[i].clone());

@@ -75,7 +75,7 @@ OpenLayers.Filter = OpenLayers.Class({
      */
     toString: function() {
         var string;
-        if(OpenLayers.Format && OpenLayers.Format.CQL) {
+        if (OpenLayers.Format && OpenLayers.Format.CQL) {
             string = OpenLayers.Format.CQL.prototype.write(this);
         } else {
             string = Object.prototype.toString.call(this);

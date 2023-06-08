@@ -19,7 +19,7 @@ OpenLayers.Protocol.SOS = function(options) {
         options, OpenLayers.Protocol.SOS.DEFAULTS
     );
     var cls = OpenLayers.Protocol.SOS["v"+options.version.replace(/\./g, "_")];
-    if(!cls) {
+    if (!cls) {
         throw "Unsupported SOS version: " + options.version;
     }
     return new cls(options);

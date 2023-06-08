@@ -66,7 +66,7 @@ function setLayerStyles() {
         var styles = sld.namedLayers[l].userStyles, style;
         for (var i=0,ii=styles.length; i<ii; ++i) {
             style = styles[i];
-            if(style.isDefault) {
+            if (style.isDefault) {
                 map.getLayersByName(l)[0].styleMap.styles["default"] = style;
                 break;
             }

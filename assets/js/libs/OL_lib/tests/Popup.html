@@ -62,12 +62,12 @@
         var cacheID = closeImgDiv._eventCacheID;
         for (var i = 0; i < OpenLayers.Event.observers[cacheID].length; i++) {
             var observer = OpenLayers.Event.observers[cacheID][i];
-            if(observer.element == closeImgDiv) {
-                if(observer.name == "click") {
+            if (observer.element == closeImgDiv) {
+                if (observer.name == "click") {
                     t.ok(true, "A click event was registered for the close box element");
                     //call the registered observer to make sure it's the right one
                     observer.observer();
-                } else if(observer.name == "touchend") {
+                } else if (observer.name == "touchend") {
                     t.ok(true, "A touchend event was registered for the close box element");
                     //call the registered observer to make sure it's the right one
                     observer.observer();
@@ -168,13 +168,13 @@
         var bColor = popup.div.style.backgroundColor;
         var goodColor = ( (bColor == color) || (bColor == hexColor));
         t.ok(goodColor, "good default popup.backgroundColor");
-        if(navigator.appName.indexOf("Microsoft") == -1 || new RegExp(/msie 10/).test(navigator.userAgent.toLowerCase())) {
+        if (navigator.appName.indexOf("Microsoft") == -1 || new RegExp(/msie 10/).test(navigator.userAgent.toLowerCase())) {
             t.eq(parseFloat(popup.div.style.opacity), opacity, "good default popup.opacity");
         } else {
             t.eq(popup.div.style.filter, "alpha(opacity=" + opacity*100 + ")", "good default popup.opacity");
         }
         //Safari 3 separates the border style into separate entities when reading it
-        if(OpenLayers.BROWSER_NAME == 'safari') {
+        if (OpenLayers.BROWSER_NAME == 'safari') {
           var s = border.split(' ');
           t.ok(popup.div.style.borderTopWidth == s[0] && popup.div.style.borderTopStyle == s[1], "good default popup.border")
         } else {
@@ -190,10 +190,10 @@
     //closeOnMove
         var checkMapEvent = function(map, popup) {
             var startListeners = map.events.listeners['movestart'];
-            if(startListeners) {
+            if (startListeners) {
                 for (var i = 0; i < startListeners.length; i++) {
                     var listener = startListeners[i];
-                    if((listener.obj == popup) && (listener.func == popup.hide)) {
+                    if ((listener.obj == popup) && (listener.func == popup.hide)) {
                         return true;
                     }
                 }

@@ -89,13 +89,13 @@ OpenLayers.Control.ScaleLine = OpenLayers.Class(OpenLayers.Control, {
      */
     draw: function() {
         OpenLayers.Control.prototype.draw.apply(this, arguments);
-        if(!this.eTop) {
+        if (!this.eTop) {
             // stick in the top bar
             this.eTop = document.createElement("div");
             this.eTop.className = this.displayClass + "Top";
             var theLen = this.topInUnits.length;
             this.div.appendChild(this.eTop);
-            if((this.topOutUnits == "") || (this.topInUnits == "")) {
+            if ((this.topOutUnits == "") || (this.topInUnits == "")) {
                 this.eTop.style.visibility = "hidden";
             } else {
                 this.eTop.style.visibility = "visible";
@@ -105,7 +105,7 @@ OpenLayers.Control.ScaleLine = OpenLayers.Class(OpenLayers.Control, {
             this.eBottom = document.createElement("div");
             this.eBottom.className = this.displayClass + "Bottom";
             this.div.appendChild(this.eBottom);
-            if((this.bottomOutUnits == "") || (this.bottomInUnits == "")) {
+            if ((this.bottomOutUnits == "") || (this.bottomInUnits == "")) {
                 this.eBottom.style.visibility = "hidden";
             } else {
                 this.eBottom.style.visibility = "visible";
@@ -137,9 +137,9 @@ OpenLayers.Control.ScaleLine = OpenLayers.Class(OpenLayers.Control, {
 
         // right, put it into the correct bracket
         var barLen;
-        if(firstChar > 5) {
+        if (firstChar > 5) {
             barLen = 5;
-        } else if(firstChar > 2) {
+        } else if (firstChar > 2) {
             barLen = 2;
         } else {
             barLen = 1;
@@ -155,7 +155,7 @@ OpenLayers.Control.ScaleLine = OpenLayers.Class(OpenLayers.Control, {
      */
     update: function() {
         var res = this.map.getResolution();
-        if(!res) {
+        if (!res) {
             return;
         }
 
@@ -165,7 +165,7 @@ OpenLayers.Control.ScaleLine = OpenLayers.Class(OpenLayers.Control, {
         // convert maxWidth to map units
         var maxSizeData = this.maxWidth * res * inches[curMapUnits];
         var geodesicRatio = 1;
-        if(this.geodesic === true) {
+        if (this.geodesic === true) {
             var maxSizeGeodesic = (this.map.getGeodesicPixelSize().w ||
                 0.000001) * this.maxWidth;
             var maxSizeKilometers = maxSizeData / inches["km"];
@@ -176,7 +176,7 @@ OpenLayers.Control.ScaleLine = OpenLayers.Class(OpenLayers.Control, {
         // decide whether to use large or small scale units     
         var topUnits;
         var bottomUnits;
-        if(maxSizeData > 100000) {
+        if (maxSizeData > 100000) {
             topUnits = this.topOutUnits;
             bottomUnits = this.bottomOutUnits;
         } else {
@@ -203,12 +203,12 @@ OpenLayers.Control.ScaleLine = OpenLayers.Class(OpenLayers.Control, {
         // now set the pixel widths
         // and the values inside them
         
-        if(this.eBottom.style.visibility == "visible"){
+        if (this.eBottom.style.visibility == "visible"){
             this.eBottom.style.width = Math.round(bottomPx) + "px"; 
             this.eBottom.innerHTML = bottomRounded + " " + bottomUnits ;
         }
             
-        if(this.eTop.style.visibility == "visible"){
+        if (this.eTop.style.visibility == "visible"){
             this.eTop.style.width = Math.round(topPx) + "px";
             this.eTop.innerHTML = topRounded + " " + topUnits;
         }

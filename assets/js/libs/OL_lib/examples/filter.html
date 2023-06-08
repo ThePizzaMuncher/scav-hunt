@@ -37,7 +37,7 @@
                 out0.value = xml.write(filter_1_0.write(filter));
             } catch(err) {
                 out0.value = err.message;
-                if(err.lineNumber != undefined) {
+                if (err.lineNumber != undefined) {
                     out0.value += " (line " + err.lineNumber + " " +
                                         err.fileName + ")";
                 }
@@ -46,7 +46,7 @@
                 out1.value = xml.write(filter_1_1.write(filter));
             } catch(err) {
                 out1.value = err.message;
-                if(err.lineNumber != undefined) {
+                if (err.lineNumber != undefined) {
                     out1.value += " (line " + err.lineNumber + " " +
                                         err.fileName + ")";
                 }

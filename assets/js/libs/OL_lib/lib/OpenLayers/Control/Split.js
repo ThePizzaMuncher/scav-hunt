@@ -171,7 +171,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
         this.options = options || {}; // TODO: this could be done by the super
         
         // set the source layer if provided
-        if(this.options.source) {
+        if (this.options.source) {
             this.setSource(this.options.source);
         }
     },
@@ -185,9 +185,9 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
      *     null, a temporary sketch layer will be created.
      */
     setSource: function(layer) {
-        if(this.active) {
+        if (this.active) {
             this.deactivate();
-            if(this.handler) {
+            if (this.handler) {
                 this.handler.destroy();
                 delete this.handler;
             }
@@ -207,9 +207,9 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
      */
     activate: function() {
         var activated = OpenLayers.Control.prototype.activate.call(this);
-        if(activated) {
-            if(!this.source) {
-                if(!this.handler) {
+        if (activated) {
+            if (!this.source) {
+                if (!this.handler) {
                     this.handler = new OpenLayers.Handler.Path(this,
                         {done: function(geometry) {
                             this.onSketchComplete({
@@ -220,7 +220,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
                     );
                 }
                 this.handler.activate();
-            } else if(this.source.events) {
+            } else if (this.source.events) {
                 this.source.events.on({
                     sketchcomplete: this.onSketchComplete,
                     afterfeaturemodified: this.afterFeatureModified,
@@ -238,8 +238,8 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
      */
     deactivate: function() {
         var deactivated = OpenLayers.Control.prototype.deactivate.call(this);
-        if(deactivated) {
-            if(this.source && this.source.events) {
+        if (deactivated) {
+            if (this.source && this.source.events) {
                 this.source.events.un({
                     sketchcomplete: this.onSketchComplete,
                     afterfeaturemodified: this.afterFeatureModified,
@@ -276,9 +276,9 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
      * event - {Object} The after feature modified event.
      */
     afterFeatureModified: function(event) {
-        if(event.modified) {
+        if (event.modified) {
             var feature = event.feature;
-            if(typeof feature.geometry.split === "function") {
+            if (typeof feature.geometry.split === "function") {
                 this.feature = event.feature;
                 this.considerSplit(event.feature);
             }
@@ -295,7 +295,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
      */
     removeByGeometry: function(features, geometry) {
         for(var i=0, len=features.length; i<len; ++i) {
-            if(features[i].geometry === geometry) {
+            if (features[i].geometry === geometry) {
                 features.splice(i, 1);
                 break;
             }
@@ -313,7 +313,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
      * {Boolean} The target is eligible for splitting.
      */
     isEligible: function(target) {
-        if(!target.geometry) {
+        if (!target.geometry) {
             return false;
         } else {
             return (
@@ -345,7 +345,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
     considerSplit: function(feature) {
         var sourceSplit = false;
         var targetSplit = false;
-        if(!this.sourceFilter ||
+        if (!this.sourceFilter ||
            this.sourceFilter.evaluate(feature.attributes)) {
             var features = this.layer && this.layer.features || [];
             var target, results, proceed;
@@ -361,7 +361,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
             var source, parts;
             for(var i=0, len=features.length; i<len; ++i) {
                 targetFeature = features[i];
-                if(this.isEligible(targetFeature)) {
+                if (this.isEligible(targetFeature)) {
                     targetParts = [targetFeature.geometry];
                     // work through source geoms - this array may change
                     for(var j=0; j<sourceParts.length; ++j) { 
@@ -369,17 +369,17 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
                         // work through target parts - this array may change
                         for(var k=0; k<targetParts.length; ++k) {
                             target = targetParts[k];
-                            if(source.getBounds().intersectsBounds(target.getBounds())) {
+                            if (source.getBounds().intersectsBounds(target.getBounds())) {
                                 results = source.split(target, options);
-                                if(results) {
+                                if (results) {
                                     proceed = this.events.triggerEvent(
                                         "beforesplit", {source: feature, target: targetFeature}
                                     );
-                                    if(proceed !== false) {
-                                        if(mutual) {
+                                    if (proceed !== false) {
+                                        if (mutual) {
                                             parts = results[0];
                                             // handle parts that result from source splitting
-                                            if(parts.length > 1) {
+                                            if (parts.length > 1) {
                                                 // splice in new source parts
                                                 parts.unshift(j, 1); // add args for splice below
                                                 Array.prototype.splice.apply(sourceParts, parts);
@@ -388,7 +388,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
                                             results = results[1];
                                         }
                                         // handle parts that result from target splitting
-                                        if(results.length > 1) {
+                                        if (results.length > 1) {
                                             // splice in new target parts
                                             results.unshift(k, 1); // add args for splice below
                                             Array.prototype.splice.apply(targetParts, results);
@@ -399,7 +399,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
                             }
                         }
                     }
-                    if(targetParts && targetParts.length > 1) {
+                    if (targetParts && targetParts.length > 1) {
                         this.geomsToFeatures(targetFeature, targetParts);
                         this.events.triggerEvent("split", {
                             original: targetFeature,
@@ -411,7 +411,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
                     }
                 }
             }
-            if(sourceParts && sourceParts.length > 1) {
+            if (sourceParts && sourceParts.length > 1) {
                 this.geomsToFeatures(feature, sourceParts);
                 this.events.triggerEvent("split", {
                     original: feature,
@@ -421,17 +421,17 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
                 removals.push(feature);
                 sourceSplit = true;
             }
-            if(sourceSplit || targetSplit) {
+            if (sourceSplit || targetSplit) {
                 // remove and add feature events are suppressed
                 // listen for split event on this control instead
-                if(this.deferDelete) {
+                if (this.deferDelete) {
                     // Set state instead of removing.  Take care to avoid
                     // setting delete for features that have not yet been
                     // inserted - those should be destroyed immediately.
                     var feat, destroys = [];
                     for(var i=0, len=removals.length; i<len; ++i) {
                         feat = removals[i];
-                        if(feat.state === OpenLayers.State.INSERT) {
+                        if (feat.state === OpenLayers.State.INSERT) {
                             destroys.push(feat);
                         } else {
                             feat.state = OpenLayers.State.DELETE;
@@ -484,7 +484,7 @@ OpenLayers.Control.Split = OpenLayers.Class(OpenLayers.Control, {
      * Clean up the control.
      */
     destroy: function() {
-        if(this.active) {
+        if (this.active) {
             this.deactivate(); // TODO: this should be handled by the super
         }
         OpenLayers.Control.prototype.destroy.call(this);

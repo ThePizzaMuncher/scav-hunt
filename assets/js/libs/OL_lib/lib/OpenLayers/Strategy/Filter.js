@@ -60,7 +60,7 @@ OpenLayers.Strategy.Filter = OpenLayers.Class(OpenLayers.Strategy, {
      */
     activate: function() {
         var activated = OpenLayers.Strategy.prototype.activate.apply(this, arguments);
-        if(activated) {
+        if (activated) {
             this.cache = [];
             this.layer.events.on({
                 "beforefeaturesadded": this.handleAdd,
@@ -81,7 +81,7 @@ OpenLayers.Strategy.Filter = OpenLayers.Class(OpenLayers.Strategy, {
      */
     deactivate: function() {
         this.cache = null;
-        if(this.layer && this.layer.events) {
+        if (this.layer && this.layer.events) {
             this.layer.events.un({
                 "beforefeaturesadded": this.handleAdd,
                 "beforefeaturesremoved": this.handleRemove,
@@ -95,13 +95,13 @@ OpenLayers.Strategy.Filter = OpenLayers.Class(OpenLayers.Strategy, {
      * Method: handleAdd
      */
     handleAdd: function(event) {
-        if(!this.caching && this.filter) {
+        if (!this.caching && this.filter) {
             var features = event.features;
             event.features = [];
             var feature;
             for (var i=0, ii=features.length; i<ii; ++i) {
                 feature = features[i];
-                if(this.filter.evaluate(feature)) {
+                if (this.filter.evaluate(feature)) {
                     event.features.push(feature);
                 } else {
                     this.cache.push(feature);
@@ -114,7 +114,7 @@ OpenLayers.Strategy.Filter = OpenLayers.Class(OpenLayers.Strategy, {
      * Method: handleRemove
      */
     handleRemove: function(event) {
-        if(!this.caching) {
+        if (!this.caching) {
             this.cache = [];
         }
     },
@@ -136,16 +136,16 @@ OpenLayers.Strategy.Filter = OpenLayers.Class(OpenLayers.Strategy, {
         // look through layer for features to remove from layer
         this.handleAdd({features: this.layer.features});
         // cache now contains features to remove from layer
-        if(this.cache.length > 0) {
+        if (this.cache.length > 0) {
             this.caching = true;
             this.layer.removeFeatures(this.cache.slice());
             this.caching = false;
         }
         // now look through previous cache for features to add to layer
-        if(previousCache.length > 0) {
+        if (previousCache.length > 0) {
             var event = {features: previousCache};
             this.handleAdd(event);
-            if(event.features.length > 0) {
+            if (event.features.length > 0) {
                 // event has features to add to layer
                 this.caching = true;
                 this.layer.addFeatures(event.features);

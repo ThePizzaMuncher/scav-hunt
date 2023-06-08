@@ -149,7 +149,7 @@ OpenLayers.Format.WCSCapabilities.v1_0_0 = OpenLayers.Class(
                 var nodeList = this.getElementsByTagNameNS(node, "http://www.opengis.net/gml", "pos");
 
                 // We expect two nodes here, to create the corners of a bounding box
-                if(nodeList.length == 2) {
+                if (nodeList.length == 2) {
                     var min = {};
                     var max = {};
 

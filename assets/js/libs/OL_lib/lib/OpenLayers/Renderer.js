@@ -138,12 +138,12 @@ OpenLayers.Renderer = OpenLayers.Class({
      */
     setExtent: function(extent, resolutionChanged) {
         this.extent = extent.clone();
-        if(this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
+        if (this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
             var ratio = extent.getWidth() / this.map.getExtent().getWidth(),
                 extent = extent.scale(1 / ratio);
             this.extent = extent.wrapDateLine(this.map.getMaxExtent()).scale(ratio);
         }
-        if(resolutionChanged) {
+        if (resolutionChanged) {
             this.resolution = null;
         }
         return true;
@@ -192,26 +192,26 @@ OpenLayers.Renderer = OpenLayers.Class({
      *     undefined if the feature had no geometry
      */
     drawFeature: function(feature, style) {
-        if(style == null) {
+        if (style == null) {
             style = feature.style;
         }
-        if(feature.geometry) {
+        if (feature.geometry) {
             var bounds = feature.geometry.getBounds();
-            if(bounds) {
+            if (bounds) {
                 var worldBounds;
-                if(this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
+                if (this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
                     worldBounds = this.map.getMaxExtent();
                 }
-                if(!bounds.intersectsBounds(this.extent, {worldBounds: worldBounds})) {
+                if (!bounds.intersectsBounds(this.extent, {worldBounds: worldBounds})) {
                     style = {display: "none"};
                 } else {
                     this.calculateFeatureDx(bounds, worldBounds);
                 }
                 var rendered = this.drawGeometry(feature.geometry, style, feature.id);
-                if(style.display != "none" && style.label && rendered !== false) {
+                if (style.display != "none" && style.label && rendered !== false) {
 
                     var location = feature.geometry.getCentroid(); 
-                    if(style.labelXOffset || style.labelYOffset) {
+                    if (style.labelXOffset || style.labelYOffset) {
                         var xOffset = isNaN(style.labelXOffset) ? 0 : style.labelXOffset;
                         var yOffset = isNaN(style.labelYOffset) ? 0 : style.labelYOffset;
                         var res = this.getResolution();
@@ -241,7 +241,7 @@ OpenLayers.Renderer = OpenLayers.Class({
      */
     calculateFeatureDx: function(bounds, worldBounds) {
         this.featureDx = 0;
-        if(worldBounds) {
+        if (worldBounds) {
             var worldWidth = worldBounds.getWidth(),
                 rendererCenterX = (this.extent.left + this.extent.right) / 2,
                 featureCenterX = (bounds.left + bounds.right) / 2,
@@ -316,7 +316,7 @@ OpenLayers.Renderer = OpenLayers.Class({
      * features - {Array(<OpenLayers.Feature.Vector>)} 
      */
     eraseFeatures: function(features) {
-        if(!(OpenLayers.Util.isArray(features))) {
+        if (!(OpenLayers.Util.isArray(features))) {
             features = [features];
         }
         for(var i=0, len=features.length; i<len; ++i) {
@@ -373,11 +373,11 @@ OpenLayers.Renderer = OpenLayers.Class({
     applyDefaultSymbolizer: function(symbolizer) {
         var result = OpenLayers.Util.extend({},
             OpenLayers.Renderer.defaultSymbolizer);
-        if(symbolizer.stroke === false) {
+        if (symbolizer.stroke === false) {
             delete result.strokeWidth;
             delete result.strokeColor;
         }
-        if(symbolizer.fill === false) {
+        if (symbolizer.fill === false) {
             delete result.fillColor;
         }
         OpenLayers.Util.extend(result, symbolizer);

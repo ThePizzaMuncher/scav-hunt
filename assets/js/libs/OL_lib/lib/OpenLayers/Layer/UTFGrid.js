@@ -127,7 +127,7 @@ OpenLayers.Layer.UTFGrid = OpenLayers.Class(OpenLayers.Layer.XYZ, {
      * {<OpenLayers.Layer.UTFGrid>} An exact clone of this OpenLayers.Layer.UTFGrid
      */
     clone: function (obj) {
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer.UTFGrid(this.getOptions());
         }
 
@@ -154,7 +154,7 @@ OpenLayers.Layer.UTFGrid = OpenLayers.Class(OpenLayers.Layer.XYZ, {
     getFeatureInfo: function(location) {
         var info = null;
         var tileInfo = this.getTileData(location);
-        if(tileInfo && tileInfo.tile) {
+        if (tileInfo && tileInfo.tile) {
             info = tileInfo.tile.getFeatureInfo(tileInfo.i, tileInfo.j);
         }
         return info;
@@ -174,7 +174,7 @@ OpenLayers.Layer.UTFGrid = OpenLayers.Class(OpenLayers.Layer.XYZ, {
     getFeatureId: function(location) {
         var id = null;
         var info = this.getTileData(location);
-        if(info.tile) {
+        if (info.tile) {
             id = info.tile.getFeatureId(info.i, info.j);
         }
         return id;

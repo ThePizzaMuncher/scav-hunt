@@ -74,7 +74,7 @@ OpenLayers.Geometry = OpenLayers.Class({
      * bounds - {<OpenLayers.Bounds>} 
      */
     setBounds: function(bounds) {
-        if(bounds) {
+        if (bounds) {
             this.bounds = bounds.clone();
         }
     },
@@ -85,7 +85,7 @@ OpenLayers.Geometry = OpenLayers.Class({
      */
     clearBounds: function() {
         this.bounds = null;
-        if(this.parent) {
+        if (this.parent) {
             this.parent.clearBounds();
         }    
     },
@@ -100,7 +100,7 @@ OpenLayers.Geometry = OpenLayers.Class({
      */
     extendBounds: function(newBounds){
         var bounds = this.getBounds();
-        if(!bounds) {
+        if (!bounds) {
             this.setBounds(newBounds);
         } else {
             this.bounds.extend(newBounds);
@@ -116,7 +116,7 @@ OpenLayers.Geometry = OpenLayers.Class({
      * {<OpenLayers.Bounds>}
      */
     getBounds: function() {
-        if(this.bounds == null) {
+        if (this.bounds == null) {
             this.calculateBounds();
         }
         return this.bounds;
@@ -187,7 +187,7 @@ OpenLayers.Geometry = OpenLayers.Class({
     atPoint: function(lonlat, toleranceLon, toleranceLat) {
         var atPoint = false;
         var bounds = this.getBounds();
-        if((bounds != null) && (lonlat != null)) {
+        if ((bounds != null) && (lonlat != null)) {
 
             var dX = (toleranceLon != null) ? toleranceLon : 0;
             var dY = (toleranceLat != null) ? toleranceLat : 0;
@@ -252,7 +252,7 @@ OpenLayers.Geometry = OpenLayers.Class({
      */
     toString: function() {
         var string;
-        if(OpenLayers.Format && OpenLayers.Format.WKT) {
+        if (OpenLayers.Format && OpenLayers.Format.WKT) {
             string = OpenLayers.Format.WKT.prototype.write(
                 new OpenLayers.Feature.Vector(this)
             );
@@ -279,16 +279,16 @@ OpenLayers.Geometry = OpenLayers.Class({
  */
 OpenLayers.Geometry.fromWKT = function(wkt) {
     var geom;
-    if(OpenLayers.Format && OpenLayers.Format.WKT) {
+    if (OpenLayers.Format && OpenLayers.Format.WKT) {
         var format = OpenLayers.Geometry.fromWKT.format;
-        if(!format) {
+        if (!format) {
             format = new OpenLayers.Format.WKT();
             OpenLayers.Geometry.fromWKT.format = format;
         }
         var result = format.read(wkt);
-        if(result instanceof OpenLayers.Feature.Vector) {
+        if (result instanceof OpenLayers.Feature.Vector) {
             geom = result.geometry;
-        } else if(OpenLayers.Util.isArray(result)) {
+        } else if (OpenLayers.Util.isArray(result)) {
             var len = result.length;
             var components = new Array(len);
             for (var i=0; i<len; ++i) {
@@ -353,18 +353,18 @@ OpenLayers.Geometry.segmentsIntersect = function(seg1, seg2, options) {
     var d = (y22_21 * x12_11) - (x22_21 * y12_11);
     var n1 = (x22_21 * y11_21) - (y22_21 * x11_21);
     var n2 = (x12_11 * y11_21) - (y12_11 * x11_21);
-    if(d == 0) {
+    if (d == 0) {
         // parallel
-        if(n1 == 0 && n2 == 0) {
+        if (n1 == 0 && n2 == 0) {
             // coincident
             intersection = true;
         }
     } else {
         var along1 = n1 / d;
         var along2 = n2 / d;
-        if(along1 >= 0 && along1 <= 1 && along2 >=0 && along2 <= 1) {
+        if (along1 >= 0 && along1 <= 1 && along2 >=0 && along2 <= 1) {
             // intersect
-            if(!point) {
+            if (!point) {
                 intersection = true;
             } else {
                 // calculate the intersection point
@@ -374,10 +374,10 @@ OpenLayers.Geometry.segmentsIntersect = function(seg1, seg2, options) {
             }
         }
     }
-    if(tolerance) {
+    if (tolerance) {
         var dist;
-        if(intersection) {
-            if(point) {
+        if (intersection) {
+            if (point) {
                 var segs = [seg1, seg2];
                 var seg, x, y;
                 // check segment endpoints for proximity to intersection
@@ -391,7 +391,7 @@ OpenLayers.Geometry.segmentsIntersect = function(seg1, seg2, options) {
                             Math.pow(x - intersection.x, 2) +
                             Math.pow(y - intersection.y, 2)
                         );
-                        if(dist < tolerance) {
+                        if (dist < tolerance) {
                             intersection.x = x;
                             intersection.y = y;
                             break outer;
@@ -413,8 +413,8 @@ OpenLayers.Geometry.segmentsIntersect = function(seg1, seg2, options) {
                 for(var j=1; j<3; ++j) {
                     p = {x: source["x"+j], y: source["y"+j]};
                     result = OpenLayers.Geometry.distanceToSegment(p, target);
-                    if(result.distance < tolerance) {
-                        if(point) {
+                    if (result.distance < tolerance) {
+                        if (point) {
                             intersection = new OpenLayers.Geometry.Point(p.x, p.y);
                         } else {
                             intersection = true;
@@ -482,10 +482,10 @@ OpenLayers.Geometry.distanceSquaredToSegment = function(point, segment) {
     var along = ((dx * (x0 - x1)) + (dy * (y0 - y1))) /
                 (Math.pow(dx, 2) + Math.pow(dy, 2));
     var x, y;
-    if(along <= 0.0) {
+    if (along <= 0.0) {
         x = x1;
         y = y1;
-    } else if(along >= 1.0) {
+    } else if (along >= 1.0) {
         x = x2;
         y = y2;
     } else {

@@ -139,7 +139,7 @@
         //this should trigger a "loadstart" event
         tile.draw();
         
-        if(!isMozilla)
+        if (!isMozilla)
             t.ok( true, "skipping element test outside of Mozilla");
         else
             t.ok( tile.imgDiv instanceof HTMLElement, "tile.draw creates an image");
@@ -369,7 +369,7 @@
     }
 
     function test_getCanvasContext(t) {
-        if(!OpenLayers.CANVAS_SUPPORTED) {
+        if (!OpenLayers.CANVAS_SUPPORTED) {
             t.plan(0);
         } else {
             t.plan(1);

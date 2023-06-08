@@ -20,7 +20,7 @@ OpenLayers.ProxyHost = "";
  *     with XMLHttpRequests.  These methods work with a cross-browser
  *     W3C compliant <OpenLayers.Request.XMLHttpRequest> class.
  */
-if(!OpenLayers.Request) {
+if (!OpenLayers.Request) {
     /**
      * This allows for OpenLayers/Request/XMLHttpRequest.js to be included
      * before or after this script.
@@ -89,19 +89,19 @@ OpenLayers.Util.extend(OpenLayers.Request, {
     makeSameOrigin: function(url, proxy) {
         var sameOrigin = url.indexOf("http") !== 0;
         var urlParts = !sameOrigin && url.match(this.URL_SPLIT_REGEX);
-        if(urlParts) {
+        if (urlParts) {
             var location = window.location;
             sameOrigin =
                 urlParts[1] == location.protocol &&
                 urlParts[3] == location.hostname;
             var uPort = urlParts[4], lPort = location.port;
-            if(uPort != 80 && uPort != "" || lPort != "80" && lPort != "") {
+            if (uPort != 80 && uPort != "" || lPort != "80" && lPort != "") {
                 sameOrigin = sameOrigin && uPort == lPort;
             }
         }
-        if(!sameOrigin) {
-            if(proxy) {
-                if(typeof proxy == "function") {
+        if (!sameOrigin) {
+            if (proxy) {
+                if (typeof proxy == "function") {
                     url = proxy(url);
                 } else {
                     url = proxy + encodeURIComponent(url);
@@ -186,13 +186,13 @@ OpenLayers.Util.extend(OpenLayers.Request, {
         var customRequestedWithHeader = false,
             headerKey;
         for(headerKey in config.headers) {
-            if(config.headers.hasOwnProperty( headerKey )) {
-                if(headerKey.toLowerCase() === 'x-requested-with') {
+            if (config.headers.hasOwnProperty( headerKey )) {
+                if (headerKey.toLowerCase() === 'x-requested-with') {
                     customRequestedWithHeader = true;
                 }
             }
         }
-        if(customRequestedWithHeader === false) {
+        if (customRequestedWithHeader === false) {
             // we did not have a custom "X-Requested-With" header
             config.headers['X-Requested-With'] = 'XMLHttpRequest';
         }
@@ -216,12 +216,12 @@ OpenLayers.Util.extend(OpenLayers.Request, {
         var self = this;
         
         request.onreadystatechange = function() {
-            if(request.readyState == OpenLayers.Request.XMLHttpRequest.DONE) {
+            if (request.readyState == OpenLayers.Request.XMLHttpRequest.DONE) {
                 var proceed = events.triggerEvent(
                     "complete",
                     {request: request, config: config, requestUrl: url}
                 );
-                if(proceed !== false) {
+                if (proceed !== false) {
                     self.runCallbacks(
                         {request: request, config: config, requestUrl: url}
                     );
@@ -232,11 +232,11 @@ OpenLayers.Util.extend(OpenLayers.Request, {
         // send request (optionally with data) and return
         // call in a timeout for asynchronous requests so the return is
         // available before readyState == 4 for cached docs
-        if(config.async === false) {
+        if (config.async === false) {
             request.send(config.data);
         } else {
             window.setTimeout(function(){
-                if(request.readyState !== 0) { // W3C: 0-UNSENT
+                if (request.readyState !== 0) { // W3C: 0-UNSENT
                     request.send(config.data);
                 }
             }, 0);
@@ -266,7 +266,7 @@ OpenLayers.Util.extend(OpenLayers.Request, {
         
         // optional success callback
         var success;
-        if(config.success) {
+        if (config.success) {
             success = (config.scope) ?
                 OpenLayers.Function.bind(config.success, config.scope) :
                 config.success;
@@ -274,27 +274,27 @@ OpenLayers.Util.extend(OpenLayers.Request, {
 
         // optional failure callback
         var failure;
-        if(config.failure) {
+        if (config.failure) {
             failure = (config.scope) ?
                 OpenLayers.Function.bind(config.failure, config.scope) :
                 config.failure;
         }
 
-        if(OpenLayers.Util.createUrlObject(config.url).protocol == "file:" &&
+        if (OpenLayers.Util.createUrlObject(config.url).protocol == "file:" &&
                                                         request.responseText) {
             request.status = 200;
         }
         complete(request);
 
-        if(!request.status || (request.status >= 200 && request.status < 300)) {
+        if (!request.status || (request.status >= 200 && request.status < 300)) {
             this.events.triggerEvent("success", options);
-            if(success) {
+            if (success) {
                 success(request);
             }
         }
-        if(request.status && (request.status < 200 || request.status >= 300)) {                    
+        if (request.status && (request.status < 200 || request.status >= 300)) {                    
             this.events.triggerEvent("failure", options);
-            if(failure) {
+            if (failure) {
                 failure(request);
             }
         }
@@ -338,7 +338,7 @@ OpenLayers.Util.extend(OpenLayers.Request, {
         config = OpenLayers.Util.extend(config, {method: "POST"});
         // set content type to application/xml if it isn't already set
         config.headers = config.headers ? config.headers : {};
-        if(!("CONTENT-TYPE" in OpenLayers.Util.upperCaseObject(config.headers))) {
+        if (!("CONTENT-TYPE" in OpenLayers.Util.upperCaseObject(config.headers))) {
             config.headers["Content-Type"] = "application/xml";
         }
         return OpenLayers.Request.issue(config);
@@ -363,7 +363,7 @@ OpenLayers.Util.extend(OpenLayers.Request, {
         config = OpenLayers.Util.extend(config, {method: "PUT"});
         // set content type to application/xml if it isn't already set
         config.headers = config.headers ? config.headers : {};
-        if(!("CONTENT-TYPE" in OpenLayers.Util.upperCaseObject(config.headers))) {
+        if (!("CONTENT-TYPE" in OpenLayers.Util.upperCaseObject(config.headers))) {
             config.headers["Content-Type"] = "application/xml";
         }
         return OpenLayers.Request.issue(config);

@@ -16,14 +16,14 @@
              */
             OpenLayers.Format.Flickr = OpenLayers.Class(OpenLayers.Format, {
                 read: function(obj) {
-                    if(obj.stat === 'fail') {
+                    if (obj.stat === 'fail') {
                         throw new Error(
                             ['Flickr failure response (',
                              obj.code,
                              '): ',
                              obj.message].join(''));
                     }
-                    if(!obj || !obj.photos ||
+                    if (!obj || !obj.photos ||
                        !OpenLayers.Util.isArray(obj.photos.photo)) {
                         throw new Error(
                             'Unexpected Flickr response');

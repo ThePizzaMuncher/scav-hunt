@@ -97,7 +97,7 @@ OpenLayers.Element = {
      * {DOMElement} The element.
      */
     addClass: function(element, name) {
-        if(!OpenLayers.Element.hasClass(element, name)) {
+        if (!OpenLayers.Element.hasClass(element, name)) {
             element.className += (element.className ? " " : "") + name;
         }
         return element;
@@ -117,7 +117,7 @@ OpenLayers.Element = {
      */
     removeClass: function(element, name) {
         var names = element.className;
-        if(names) {
+        if (names) {
             element.className = OpenLayers.String.trim(
                 names.replace(
                     new RegExp("(^|\\s+)" + name + "(\\s+|$)"), " "
@@ -140,7 +140,7 @@ OpenLayers.Element = {
      * {DOMElement} The element.
      */
     toggleClass: function(element, name) {
-        if(OpenLayers.Element.hasClass(element, name)) {
+        if (OpenLayers.Element.hasClass(element, name)) {
             OpenLayers.Element.removeClass(element, name);
         } else {
             OpenLayers.Element.addClass(element, name);
@@ -162,21 +162,21 @@ OpenLayers.Element = {
         element = OpenLayers.Util.getElement(element);
 
         var value = null;
-        if(element && element.style) {
+        if (element && element.style) {
             value = element.style[OpenLayers.String.camelize(style)];
-            if(!value) {
-                if(document.defaultView && 
+            if (!value) {
+                if (document.defaultView && 
                     document.defaultView.getComputedStyle) {
                     
                     var css = document.defaultView.getComputedStyle(element, null);
                     value = css ? css.getPropertyValue(style) : null;
-                } else if(element.currentStyle) {
+                } else if (element.currentStyle) {
                     value = element.currentStyle[OpenLayers.String.camelize(style)];
                 }
             }
         
             var positions = ['left', 'top', 'right', 'bottom'];
-            if(window.opera &&
+            if (window.opera &&
                 (OpenLayers.Util.indexOf(positions,style) != -1) &&
                 (OpenLayers.Element.getStyle(element, 'position') == 'static')) { 
                 value = 'auto';

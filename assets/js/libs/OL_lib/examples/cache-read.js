@@ -27,7 +27,7 @@ function init() {
     // update the number of cached tiles and detect local storage support
     function updateHits(evt) {
         hits += evt.tile.url.substr(0, 5) === "data:";
-        if(window.localStorage) {
+        if (window.localStorage) {
             status.innerHTML = hits + " cache hits.";
         } else {
             status.innerHTML = "Local storage not supported. Try a different browser.";

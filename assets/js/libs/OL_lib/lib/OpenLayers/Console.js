@@ -240,8 +240,8 @@ OpenLayers.Console = {
      */
     var scripts = document.getElementsByTagName("script");
     for(var i=0, len=scripts.length; i<len; ++i) {
-        if(scripts[i].src.indexOf("firebug.js") != -1) {
-            if(console) {
+        if (scripts[i].src.indexOf("firebug.js") != -1) {
+            if (console) {
                 OpenLayers.Util.extend(OpenLayers.Console, console);
                 break;
             }

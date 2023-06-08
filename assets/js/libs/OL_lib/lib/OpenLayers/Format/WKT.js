@@ -64,18 +64,18 @@ OpenLayers.Format.WKT = OpenLayers.Class(OpenLayers.Format, {
         var features, type, str;
         wkt = wkt.replace(/[\n\r]/g, " ");
         var matches = this.regExes.typeStr.exec(wkt);
-        if(matches) {
+        if (matches) {
             type = matches[1].toLowerCase();
             str = matches[2];
-            if(this.parse[type]) {
+            if (this.parse[type]) {
                 features = this.parse[type].apply(this, [str]);
             }
-            if(this.internalProjection && this.externalProjection) {
-                if(features && 
+            if (this.internalProjection && this.externalProjection) {
+                if (features && 
                     features.CLASS_NAME == "OpenLayers.Feature.Vector") {
                     features.geometry.transform(this.externalProjection,
                                                 this.internalProjection);
-                } else if(features &&
+                } else if (features &&
                            type != "geometrycollection" &&
                            typeof features == "object") {
                     for (var i=0, len=features.length; i<len; i++) {
@@ -102,7 +102,7 @@ OpenLayers.Format.WKT = OpenLayers.Class(OpenLayers.Format, {
      */
     write: function(features) {
         var collection, geometry, isCollection;
-        if(features.constructor == Array) {
+        if (features.constructor == Array) {
             collection = features;
             isCollection = true;
         } else {
@@ -110,17 +110,17 @@ OpenLayers.Format.WKT = OpenLayers.Class(OpenLayers.Format, {
             isCollection = false;
         }
         var pieces = [];
-        if(isCollection) {
+        if (isCollection) {
             pieces.push('GEOMETRYCOLLECTION(');
         }
         for (var i=0, len=collection.length; i<len; ++i) {
-            if(isCollection && i>0) {
+            if (isCollection && i>0) {
                 pieces.push(',');
             }
             geometry = collection[i].geometry;
             pieces.push(this.extractGeometry(geometry));
         }
-        if(isCollection) {
+        if (isCollection) {
             pieces.push(')');
         }
         return pieces.join('');
@@ -138,10 +138,10 @@ OpenLayers.Format.WKT = OpenLayers.Class(OpenLayers.Format, {
      */
     extractGeometry: function(geometry) {
         var type = geometry.CLASS_NAME.split('.')[2].toLowerCase();
-        if(!this.extract[type]) {
+        if (!this.extract[type]) {
             return null;
         }
-        if(this.internalProjection && this.externalProjection) {
+        if (this.internalProjection && this.externalProjection) {
             geometry = geometry.clone();
             geometry.transform(this.internalProjection, this.externalProjection);
         }                       

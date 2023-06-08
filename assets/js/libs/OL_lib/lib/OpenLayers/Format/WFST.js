@@ -19,7 +19,7 @@ OpenLayers.Format.WFST = function(options) {
         options, OpenLayers.Format.WFST.DEFAULTS
     );
     var cls = OpenLayers.Format.WFST["v"+options.version.replace(/\./g, "_")];
-    if(!cls) {
+    if (!cls) {
         throw "Unsupported WFST version: " + options.version;
     }
     return new cls(options);

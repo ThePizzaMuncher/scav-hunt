@@ -164,25 +164,25 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
      * Deconstruct the control
      */
     destroy: function() {
-        if(!this.mapDiv) { // we've already been destroyed
+        if (!this.mapDiv) { // we've already been destroyed
             return;
         }
-        if(this.handlers.click) {
+        if (this.handlers.click) {
             this.handlers.click.destroy();
         }
-        if(this.handlers.drag) {
+        if (this.handlers.drag) {
             this.handlers.drag.destroy();
         }
 
         this.ovmap && this.ovmap.viewPortDiv.removeChild(this.extentRectangle);
         this.extentRectangle = null;
 
-        if(this.rectEvents) {
+        if (this.rectEvents) {
             this.rectEvents.destroy();
             this.rectEvents = null;
         }
 
-        if(this.ovmap) {
+        if (this.ovmap) {
             this.ovmap.destroy();
             this.ovmap = null;
         }
@@ -193,12 +193,12 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
         this.div.removeChild(this.element);
         this.element = null;
 
-        if(this.maximizeDiv) {
+        if (this.maximizeDiv) {
             this.div.removeChild(this.maximizeDiv);
             this.maximizeDiv = null;
         }
         
-        if(this.minimizeDiv) {
+        if (this.minimizeDiv) {
             this.div.removeChild(this.minimizeDiv);
             this.minimizeDiv = null;
         }
@@ -219,8 +219,8 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
      */    
     draw: function() {
         OpenLayers.Control.prototype.draw.apply(this, arguments);
-        if(this.layers.length === 0) {
-            if(this.map.baseLayer) {
+        if (this.layers.length === 0) {
+            if (this.map.baseLayer) {
                 var layer = this.map.baseLayer.clone();
                 this.layers = [layer];
             } else {
@@ -252,7 +252,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
 
         // Optionally add min/max buttons if the control will go in the
         // map viewport.
-        if(!this.outsideViewport) {
+        if (!this.outsideViewport) {
             this.div.className += " " + this.displayClass + 'Container';
             // maximize button div
             var img = OpenLayers.Util.getImageLocation('layer-switcher-maximize.png');
@@ -264,7 +264,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
                                         'absolute');
             this.maximizeDiv.style.display = 'none';
             this.maximizeDiv.className = this.displayClass + 'MaximizeButton olButton';
-            if(this.maximizeTitle) {
+            if (this.maximizeTitle) {
                 this.maximizeDiv.title = this.maximizeTitle;
             }
             this.div.appendChild(this.maximizeDiv);
@@ -279,7 +279,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
                                         'absolute');
             this.minimizeDiv.style.display = 'none';
             this.minimizeDiv.className = this.displayClass + 'MinimizeButton olButton';
-            if(this.minimizeTitle) {
+            if (this.minimizeTitle) {
                 this.minimizeDiv.title = this.minimizeTitle;
             }
             this.div.appendChild(this.minimizeDiv);            
@@ -288,7 +288,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
             // show the overview map
             this.element.style.display = '';
         }
-        if(this.map.getExtent()) {
+        if (this.map.getExtent()) {
             this.update();
         }
         
@@ -298,7 +298,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
             scope: this
         });
         
-        if(this.maximized) {
+        if (this.maximized) {
             this.maximizeControl();
         }
         return this.div;
@@ -323,7 +323,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
     rectDrag: function(px) {
         var deltaX = this.handlers.drag.last.x - px.x;
         var deltaY = this.handlers.drag.last.y - px.y;
-        if(deltaX != 0 || deltaY != 0) {
+        if (deltaX != 0 || deltaY != 0) {
             var rectTop = this.rectPxBounds.top;
             var rectLeft = this.rectPxBounds.left;
             var rectHeight = Math.abs(this.rectPxBounds.getHeight());
@@ -375,9 +375,9 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
      * evt - {Event}
      */
     onButtonClick: function(evt) {
-        if(evt.buttonElement === this.minimizeDiv) {
+        if (evt.buttonElement === this.minimizeDiv) {
             this.minimizeControl();
-        } else if(evt.buttonElement === this.maximizeDiv) {
+        } else if (evt.buttonElement === this.maximizeDiv) {
             this.maximizeControl();
         }
     },
@@ -392,7 +392,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
     maximizeControl: function(e) {
         this.element.style.display = '';
         this.showToggle(false);
-        if(e != null) {
+        if (e != null) {
             OpenLayers.Event.stop(e);                                            
         }
     },
@@ -408,7 +408,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
     minimizeControl: function(e) {
         this.element.style.display = 'none';
         this.showToggle(true);
-        if(e != null) {
+        if (e != null) {
             OpenLayers.Event.stop(e);                                            
         }
     },
@@ -421,10 +421,10 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
      * minimize - {Boolean} 
      */
     showToggle: function(minimize) {
-        if(this.maximizeDiv) {
+        if (this.maximizeDiv) {
             this.maximizeDiv.style.display = minimize ? '' : 'none';
         }
-        if(this.minimizeDiv) {
+        if (this.minimizeDiv) {
             this.minimizeDiv.style.display = minimize ? 'none' : '';
         }
     },
@@ -434,11 +434,11 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
      * Update the overview map after layers move.
      */
     update: function() {
-        if(this.ovmap == null) {
+        if (this.ovmap == null) {
             this.createMap();
         }
         
-        if(this.autoPan || !this.isSuitableOverview()) {
+        if (this.autoPan || !this.isSuitableOverview()) {
             this.updateOverview();
         }
         
@@ -460,7 +460,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
                                 Math.min(mapExtent.right, maxExtent.right),
                                 Math.min(mapExtent.top, maxExtent.top));        
 
-        if(this.ovmap.getProjection() != this.map.getProjection()) {
+        if (this.ovmap.getProjection() != this.map.getProjection()) {
             testExtent = testExtent.transform(
                 this.map.getProjectionObject(),
                 this.ovmap.getProjectionObject() );
@@ -480,15 +480,15 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
         var mapRes = this.map.getResolution();
         var targetRes = this.ovmap.getResolution();
         var resRatio = targetRes / mapRes;
-        if(resRatio > this.maxRatio) {
+        if (resRatio > this.maxRatio) {
             // zoom in overview map
             targetRes = this.minRatio * mapRes;            
-        } else if(resRatio <= this.minRatio) {
+        } else if (resRatio <= this.minRatio) {
             // zoom out overview map
             targetRes = this.maxRatio * mapRes;
         }
         var center;
-        if(this.ovmap.getProjection() != this.map.getProjection()) {
+        if (this.ovmap.getProjection() != this.map.getProjection()) {
             center = this.map.center.clone();
             center.transform(this.map.getProjectionObject(),
                 this.ovmap.getProjectionObject() );
@@ -549,17 +549,17 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
         this.rectEvents = new OpenLayers.Events(this, this.extentRectangle,
                                                 null, true);
         this.rectEvents.register("mouseover", this, function(e) {
-            if(!this.handlers.drag.active && !this.map.dragging) {
+            if (!this.handlers.drag.active && !this.map.dragging) {
                 this.handlers.drag.activate();
             }
         });
         this.rectEvents.register("mouseout", this, function(e) {
-            if(!this.handlers.drag.dragging) {
+            if (!this.handlers.drag.dragging) {
                 this.handlers.drag.deactivate();
             }
         });
 
-        if(this.ovmap.getProjection() != this.map.getProjection()) {
+        if (this.ovmap.getProjection() != this.map.getProjection()) {
             var sourceUnits = this.map.getProjectionObject().getUnits() ||
                 this.map.units || this.map.baseLayer.units;
             var targetUnits = this.ovmap.getProjectionObject().getUnits() ||
@@ -577,7 +577,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
     updateRectToMap: function() {
         // If the projections differ we need to reproject
         var bounds;
-        if(this.ovmap.getProjection() != this.map.getProjection()) {
+        if (this.ovmap.getProjection() != this.map.getProjection()) {
             bounds = this.map.getExtent().transform(
                 this.map.getProjectionObject(), 
                 this.ovmap.getProjectionObject() );
@@ -585,7 +585,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
             bounds = this.map.getExtent();
         }
         var pxBounds = this.getRectBoundsFromMapBounds(bounds);
-        if(pxBounds) {
+        if (pxBounds) {
             this.setRectPxBounds(pxBounds);
         }
     },
@@ -596,7 +596,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
      */
     updateMapToRect: function() {
         var lonLatBounds = this.getMapBoundsFromRectBounds(this.rectPxBounds);
-        if(this.ovmap.getProjection() != this.map.getProjection()) {
+        if (this.ovmap.getProjection() != this.map.getProjection()) {
             lonLatBounds = lonLatBounds.transform(
                 this.ovmap.getProjectionObject(),
                 this.map.getProjectionObject() );
@@ -620,7 +620,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
                              this.ovmap.size.w - this.wComp);
         var width = Math.max(right - left, 0);
         var height = Math.max(bottom - top, 0);
-        if(width < this.minRectSize || height < this.minRectSize) {
+        if (width < this.minRectSize || height < this.minRectSize) {
             this.extentRectangle.className = this.displayClass +
                                              this.minRectDisplayClass;
             var rLeft = left + (width / 2) - (this.minRectSize / 2);
@@ -664,7 +664,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
             lat: lonLatBounds.top
         });
         var bounds = null;
-        if(leftBottomPx && rightTopPx) {
+        if (leftBottomPx && rightTopPx) {
             bounds = new OpenLayers.Bounds(leftBottomPx.x, leftBottomPx.y,
                                            rightTopPx.x, rightTopPx.y);
         }
@@ -738,7 +738,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
     getOverviewPxFromLonLat: function(lonlat) {
         var res = this.ovmap.getResolution();
         var extent = this.ovmap.getExtent();
-        if(extent) {
+        if (extent) {
             return {
                 x: Math.round(1/res * (lonlat.lon - extent.left)),
                 y: Math.round(1/res * (extent.top - lonlat.lat))

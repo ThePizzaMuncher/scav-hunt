@@ -7,7 +7,7 @@
   function _typeof(obj) {
     "@babel/helpers - typeof";
 
-    if(typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
       _typeof = function (obj) {
         return typeof obj;
       };
@@ -21,7 +21,7 @@
   }
 
   function _classCallCheck(instance, Constructor) {
-    if(!(instance instanceof Constructor)) {
+    if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
     }
   }
@@ -31,14 +31,14 @@
       var descriptor = props[i];
       descriptor.enumerable = descriptor.enumerable || false;
       descriptor.configurable = true;
-      if("value" in descriptor) descriptor.writable = true;
+      if ("value" in descriptor) descriptor.writable = true;
       Object.defineProperty(target, descriptor.key, descriptor);
     }
   }
 
   function _createClass(Constructor, protoProps, staticProps) {
-    if(protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if(staticProps) _defineProperties(Constructor, staticProps);
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
     return Constructor;
   }
 
@@ -49,15 +49,15 @@
     var i = 0;
     var length = arguments.length;
 
-    if(Object.prototype.toString.call(arguments[0]) === '[object Boolean]') {
+    if (Object.prototype.toString.call(arguments[0]) === '[object Boolean]') {
       deep = arguments[0];
       i++;
     }
 
     var merge = function merge(obj) {
       for (var prop in obj) {
-        if(Object.prototype.hasOwnProperty.call(obj, prop)) {
-          if(deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
+        if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+          if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
             extended[prop] = extend(true, extended[prop], obj[prop]);
           } else {
             extended[prop] = obj[prop];
@@ -74,31 +74,31 @@
     return extended;
   }
   function each(collection, callback) {
-    if(isNode(collection) || collection === window || collection === document) {
+    if (isNode(collection) || collection === window || collection === document) {
       collection = [collection];
     }
 
-    if(!isArrayLike(collection) && !isObject(collection)) {
+    if (!isArrayLike(collection) && !isObject(collection)) {
       collection = [collection];
     }
 
-    if(size(collection) == 0) {
+    if (size(collection) == 0) {
       return;
     }
 
-    if(isArrayLike(collection) && !isObject(collection)) {
+    if (isArrayLike(collection) && !isObject(collection)) {
       var l = collection.length,
           i = 0;
 
       for (; i < l; i++) {
-        if(callback.call(collection[i], collection[i], i, collection) === false) {
+        if (callback.call(collection[i], collection[i], i, collection) === false) {
           break;
         }
       }
-    } else if(isObject(collection)) {
+    } else if (isObject(collection)) {
       for (var key in collection) {
-        if(has(collection, key)) {
-          if(callback.call(collection[key], collection[key], key, collection) === false) {
+        if (has(collection, key)) {
+          if (callback.call(collection[key], collection[key], key, collection) === false) {
             break;
           }
         }
@@ -115,9 +115,9 @@
       found: null
     };
 
-    if(name && fn && size(cache) > 0) {
+    if (name && fn && size(cache) > 0) {
       each(cache, function (cl, i) {
-        if(cl.eventName == name && cl.fn.toString() == fn.toString()) {
+        if (cl.eventName == name && cl.fn.toString() == fn.toString()) {
           data.found = true;
           data.evt = i;
           return false;
@@ -141,16 +141,16 @@
     var thisArg = arguments.length > 2 ? arguments[2] : undefined;
     var element = onElement || [];
 
-    if(isString(element)) {
+    if (isString(element)) {
       element = document.querySelectorAll(element);
     }
 
     function handler(event) {
-      if(isFunction(withCallback)) {
+      if (isFunction(withCallback)) {
         withCallback.call(thisArg, event, this);
       }
 
-      if(once) {
+      if (once) {
         handler.destroy();
       }
     }
@@ -159,11 +159,11 @@
       each(element, function (el) {
         var events = getNodeEvents(el, eventName, handler);
 
-        if(events.found) {
+        if (events.found) {
           events.all.splice(events.evt, 1);
         }
 
-        if(el.removeEventListener) {
+        if (el.removeEventListener) {
           el.removeEventListener(eventName, handler, useCapture);
         }
       });
@@ -172,7 +172,7 @@
     each(element, function (el) {
       var events = getNodeEvents(el, eventName, handler);
 
-      if(el.addEventListener && avoidDuplicate && !events.found || !avoidDuplicate) {
+      if (el.addEventListener && avoidDuplicate && !events.found || !avoidDuplicate) {
         el.addEventListener(eventName, handler, useCapture);
         events.all.push({
           eventName: eventName,
@@ -199,13 +199,13 @@
     while (elem !== document.body) {
       elem = elem.parentElement;
 
-      if(!elem) {
+      if (!elem) {
         return false;
       }
 
       var matches = typeof elem.matches == 'function' ? elem.matches(selector) : elem.msMatchesSelector(selector);
 
-      if(matches) {
+      if (matches) {
         return elem;
       }
     }
@@ -214,12 +214,12 @@
     var animation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
     var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-    if(!element || animation === '') {
+    if (!element || animation === '') {
       return false;
     }
 
-    if(animation === 'none') {
-      if(isFunction(callback)) {
+    if (animation === 'none') {
+      if (isFunction(callback)) {
         callback();
       }
 
@@ -240,7 +240,7 @@
           removeClass(target, 'g' + name);
         });
 
-        if(isFunction(callback)) {
+        if (isFunction(callback)) {
           callback();
         }
       }
@@ -249,7 +249,7 @@
   function cssTransform(node) {
     var translate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
-    if(translate === '') {
+    if (translate === '') {
       node.style.webkitTransform = '';
       node.style.MozTransform = '';
       node.style.msTransform = '';
@@ -298,7 +298,7 @@
     };
 
     for (t in animations) {
-      if(el.style[t] !== undefined) {
+      if (el.style[t] !== undefined) {
         return animations[t];
       }
     }
@@ -314,7 +314,7 @@
     };
 
     for (t in transitions) {
-      if(el.style[t] !== undefined) {
+      if (el.style[t] !== undefined) {
         return transitions[t];
       }
     }
@@ -330,7 +330,7 @@
     iframe.style.width = '100%';
     iframe.style.height = '100%';
 
-    if(allow) {
+    if (allow) {
       iframe.setAttribute('allow', allow);
     }
 
@@ -338,61 +338,61 @@
       iframe.onload = null;
       addClass(iframe, 'node-ready');
 
-      if(isFunction(callback)) {
+      if (isFunction(callback)) {
         callback();
       }
     };
 
-    if(appendTo) {
+    if (appendTo) {
       appendTo.appendChild(iframe);
     }
 
     return iframe;
   }
   function waitUntil(check, onComplete, delay, timeout) {
-    if(check()) {
+    if (check()) {
       onComplete();
       return;
     }
 
-    if(!delay) {
+    if (!delay) {
       delay = 100;
     }
 
     var timeoutPointer;
     var intervalPointer = setInterval(function () {
-      if(!check()) {
+      if (!check()) {
         return;
       }
 
       clearInterval(intervalPointer);
 
-      if(timeoutPointer) {
+      if (timeoutPointer) {
         clearTimeout(timeoutPointer);
       }
 
       onComplete();
     }, delay);
 
-    if(timeout) {
+    if (timeout) {
       timeoutPointer = setTimeout(function () {
         clearInterval(intervalPointer);
       }, timeout);
     }
   }
   function injectAssets(url, waitFor, callback) {
-    if(isNil(url)) {
+    if (isNil(url)) {
       console.error('Inject assets error');
       return;
     }
 
-    if(isFunction(waitFor)) {
+    if (isFunction(waitFor)) {
       callback = waitFor;
       waitFor = false;
     }
 
-    if(isString(waitFor) && waitFor in window) {
-      if(isFunction(callback)) {
+    if (isString(waitFor) && waitFor in window) {
+      if (isFunction(callback)) {
         callback();
       }
 
@@ -401,11 +401,11 @@
 
     var found;
 
-    if(url.indexOf('.css') !== -1) {
+    if (url.indexOf('.css') !== -1) {
       found = document.querySelectorAll('link[href="' + url + '"]');
 
-      if(found && found.length > 0) {
-        if(isFunction(callback)) {
+      if (found && found.length > 0) {
+        if (isFunction(callback)) {
           callback();
         }
 
@@ -420,13 +420,13 @@
       link.href = url;
       link.media = 'all';
 
-      if(headStyles) {
+      if (headStyles) {
         head.insertBefore(link, headStyles[0]);
       } else {
         head.appendChild(link);
       }
 
-      if(isFunction(callback)) {
+      if (isFunction(callback)) {
         callback();
       }
 
@@ -435,9 +435,9 @@
 
     found = document.querySelectorAll('script[src="' + url + '"]');
 
-    if(found && found.length > 0) {
-      if(isFunction(callback)) {
-        if(isString(waitFor)) {
+    if (found && found.length > 0) {
+      if (isFunction(callback)) {
+        if (isString(waitFor)) {
           waitUntil(function () {
             return typeof window[waitFor] !== 'undefined';
           }, function () {
@@ -457,8 +457,8 @@
     script.src = url;
 
     script.onload = function () {
-      if(isFunction(callback)) {
-        if(isString(waitFor)) {
+      if (isFunction(callback)) {
+        if (isString(waitFor)) {
           waitUntil(function () {
             return typeof window[waitFor] !== 'undefined';
           }, function () {
@@ -506,15 +506,15 @@
     return obj !== null && hasOwnProperty.call(obj, key);
   }
   function size(o) {
-    if(isObject(o)) {
-      if(o.keys) {
+    if (isObject(o)) {
+      if (o.keys) {
         return o.keys().length;
       }
 
       var l = 0;
 
       for (var k in o) {
-        if(has(o, k)) {
+        if (has(o, k)) {
           l++;
         }
       }
@@ -532,15 +532,15 @@
     var current = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : -1;
     var btns = document.querySelectorAll('.gbtn[data-taborder]:not(.disabled)');
 
-    if(!btns.length) {
+    if (!btns.length) {
       return false;
     }
 
-    if(btns.length == 1) {
+    if (btns.length == 1) {
       return btns[0];
     }
 
-    if(typeof current == 'string') {
+    if (typeof current == 'string') {
       current = parseInt(current);
     }
 
@@ -553,7 +553,7 @@
     }));
     var newIndex = current < 0 ? 1 : current + 1;
 
-    if(newIndex > highestOrder) {
+    if (newIndex > highestOrder) {
       newIndex = '1';
     }
 
@@ -565,7 +565,7 @@
   }
 
   function keyboardNavigation(instance) {
-    if(instance.events.hasOwnProperty('keyboard')) {
+    if (instance.events.hasOwnProperty('keyboard')) {
       return false;
     }
 
@@ -575,13 +575,13 @@
         event = event || window.event;
         var key = event.keyCode;
 
-        if(key == 9) {
+        if (key == 9) {
           var focusedButton = document.querySelector('.gbtn.focused');
 
-          if(!focusedButton) {
+          if (!focusedButton) {
             var activeElement = document.activeElement && document.activeElement.nodeName ? document.activeElement.nodeName.toLocaleLowerCase() : false;
 
-            if(activeElement == 'input' || activeElement == 'textarea' || activeElement == 'button') {
+            if (activeElement == 'input' || activeElement == 'textarea' || activeElement == 'button') {
               return;
             }
           }
@@ -589,14 +589,14 @@
           event.preventDefault();
           var btns = document.querySelectorAll('.gbtn[data-taborder]');
 
-          if(!btns || btns.length <= 0) {
+          if (!btns || btns.length <= 0) {
             return;
           }
 
-          if(!focusedButton) {
+          if (!focusedButton) {
             var first = getNextFocusElement();
 
-            if(first) {
+            if (first) {
               first.focus();
               addClass(first, 'focused');
             }
@@ -608,21 +608,21 @@
           var nextFocus = getNextFocusElement(currentFocusOrder);
           removeClass(focusedButton, 'focused');
 
-          if(nextFocus) {
+          if (nextFocus) {
             nextFocus.focus();
             addClass(nextFocus, 'focused');
           }
         }
 
-        if(key == 39) {
+        if (key == 39) {
           instance.nextSlide();
         }
 
-        if(key == 37) {
+        if (key == 37) {
           instance.prevSlide();
         }
 
-        if(key == 27) {
+        if (key == 27) {
           instance.close();
         }
       }
@@ -640,13 +640,13 @@
   function getAngle(v1, v2) {
     var mr = getLen(v1) * getLen(v2);
 
-    if(mr === 0) {
+    if (mr === 0) {
       return 0;
     }
 
     var r = dot(v1, v2) / mr;
 
-    if(r > 1) {
+    if (r > 1) {
       r = 1;
     }
 
@@ -660,7 +660,7 @@
   function getRotateAngle(v1, v2) {
     var angle = getAngle(v1, v2);
 
-    if(cross(v1, v2) > 0) {
+    if (cross(v1, v2) > 0) {
       angle *= -1;
     }
 
@@ -683,12 +683,12 @@
     }, {
       key: "del",
       value: function del(handler) {
-        if(!handler) {
+        if (!handler) {
           this.handlers = [];
         }
 
         for (var i = this.handlers.length; i >= 0; i--) {
-          if(this.handlers[i] === handler) {
+          if (this.handlers[i] === handler) {
             this.handlers.splice(i, 1);
           }
         }
@@ -699,7 +699,7 @@
         for (var i = 0, len = this.handlers.length; i < len; i++) {
           var handler = this.handlers[i];
 
-          if(typeof handler === 'function') {
+          if (typeof handler === 'function') {
             handler.apply(this.el, arguments);
           }
         }
@@ -773,13 +773,13 @@
     _createClass(TouchEvents, [{
       key: "start",
       value: function start(evt) {
-        if(!evt.touches) {
+        if (!evt.touches) {
           return;
         }
 
         var ignoreDragFor = ['a', 'button', 'input'];
 
-        if(evt.target && evt.target.nodeName && ignoreDragFor.indexOf(evt.target.nodeName.toLowerCase()) >= 0) {
+        if (evt.target && evt.target.nodeName && ignoreDragFor.indexOf(evt.target.nodeName.toLowerCase()) >= 0) {
           console.log('ignore drag for this touched element', evt.target.nodeName.toLowerCase());
           return;
         }
@@ -790,10 +790,10 @@
         this.delta = this.now - (this.last || this.now);
         this.touchStart.dispatch(evt, this.element);
 
-        if(this.preTapPosition.x !== null) {
+        if (this.preTapPosition.x !== null) {
           this.isDoubleTap = this.delta > 0 && this.delta <= 250 && Math.abs(this.preTapPosition.x - this.x1) < 30 && Math.abs(this.preTapPosition.y - this.y1) < 30;
 
-          if(this.isDoubleTap) {
+          if (this.isDoubleTap) {
             clearTimeout(this.singleTapTimeout);
           }
         }
@@ -804,7 +804,7 @@
         var preV = this.preV,
             len = evt.touches.length;
 
-        if(len > 1) {
+        if (len > 1) {
           this._cancelLongTap();
 
           this._cancelSingleTap();
@@ -828,7 +828,7 @@
     }, {
       key: "move",
       value: function move(evt) {
-        if(!evt.touches) {
+        if (!evt.touches) {
           return;
         }
 
@@ -838,7 +838,7 @@
             currentY = evt.touches[0].pageY;
         this.isDoubleTap = false;
 
-        if(len > 1) {
+        if (len > 1) {
           var sCurrentX = evt.touches[1].pageX,
               sCurrentY = evt.touches[1].pageY;
           var v = {
@@ -846,8 +846,8 @@
             y: evt.touches[1].pageY - currentY
           };
 
-          if(preV.x !== null) {
-            if(this.pinchStartLen > 0) {
+          if (preV.x !== null) {
+            if (this.pinchStartLen > 0) {
               evt.zoom = getLen(v) / this.pinchStartLen;
               this.pinch.dispatch(evt, this.element);
             }
@@ -859,7 +859,7 @@
           preV.x = v.x;
           preV.y = v.y;
 
-          if(this.x2 !== null && this.sx2 !== null) {
+          if (this.x2 !== null && this.sx2 !== null) {
             evt.deltaX = (currentX - this.x2 + sCurrentX - this.sx2) / 2;
             evt.deltaY = (currentY - this.y2 + sCurrentY - this.sy2) / 2;
           } else {
@@ -871,13 +871,13 @@
           this.sx2 = sCurrentX;
           this.sy2 = sCurrentY;
         } else {
-          if(this.x2 !== null) {
+          if (this.x2 !== null) {
             evt.deltaX = currentX - this.x2;
             evt.deltaY = currentY - this.y2;
             var movedX = Math.abs(this.x1 - this.x2),
                 movedY = Math.abs(this.y1 - this.y2);
 
-            if(movedX > 10 || movedY > 10) {
+            if (movedX > 10 || movedY > 10) {
               this._preventTap = true;
             }
           } else {
@@ -895,14 +895,14 @@
         this.x2 = currentX;
         this.y2 = currentY;
 
-        if(len > 1) {
+        if (len > 1) {
           evt.preventDefault();
         }
       }
     }, {
       key: "end",
       value: function end(evt) {
-        if(!evt.changedTouches) {
+        if (!evt.changedTouches) {
           return;
         }
 
@@ -910,29 +910,29 @@
 
         var self = this;
 
-        if(evt.touches.length < 2) {
+        if (evt.touches.length < 2) {
           this.multipointEnd.dispatch(evt, this.element);
           this.sx2 = this.sy2 = null;
         }
 
-        if(this.x2 && Math.abs(this.x1 - this.x2) > 30 || this.y2 && Math.abs(this.y1 - this.y2) > 30) {
+        if (this.x2 && Math.abs(this.x1 - this.x2) > 30 || this.y2 && Math.abs(this.y1 - this.y2) > 30) {
           evt.direction = this._swipeDirection(this.x1, this.x2, this.y1, this.y2);
           this.swipeTimeout = setTimeout(function () {
             self.swipe.dispatch(evt, self.element);
           }, 0);
         } else {
           this.tapTimeout = setTimeout(function () {
-            if(!self._preventTap) {
+            if (!self._preventTap) {
               self.tap.dispatch(evt, self.element);
             }
 
-            if(self.isDoubleTap) {
+            if (self.isDoubleTap) {
               self.doubleTap.dispatch(evt, self.element);
               self.isDoubleTap = false;
             }
           }, 0);
 
-          if(!self.isDoubleTap) {
+          if (!self.isDoubleTap) {
             self.singleTapTimeout = setTimeout(function () {
               self.singleTap.dispatch(evt, self.element);
             }, 250);
@@ -979,33 +979,33 @@
     }, {
       key: "on",
       value: function on(evt, handler) {
-        if(this[evt]) {
+        if (this[evt]) {
           this[evt].add(handler);
         }
       }
     }, {
       key: "off",
       value: function off(evt, handler) {
-        if(this[evt]) {
+        if (this[evt]) {
           this[evt].del(handler);
         }
       }
     }, {
       key: "destroy",
       value: function destroy() {
-        if(this.singleTapTimeout) {
+        if (this.singleTapTimeout) {
           clearTimeout(this.singleTapTimeout);
         }
 
-        if(this.tapTimeout) {
+        if (this.tapTimeout) {
           clearTimeout(this.tapTimeout);
         }
 
-        if(this.longTapTimeout) {
+        if (this.longTapTimeout) {
           clearTimeout(this.longTapTimeout);
         }
 
-        if(this.swipeTimeout) {
+        if (this.swipeTimeout) {
           clearTimeout(this.swipeTimeout);
         }
 
@@ -1044,7 +1044,7 @@
     var container = closest(media, '.ginner-container');
     var desc = slide.querySelector('.gslide-description');
 
-    if(windowWidth > 769) {
+    if (windowWidth > 769) {
       media = container;
     }
 
@@ -1059,13 +1059,13 @@
     });
     media.style.opacity = '';
 
-    if(desc) {
+    if (desc) {
       desc.style.opacity = '';
     }
   }
 
   function touchNavigation(instance) {
-    if(instance.events.hasOwnProperty('touch')) {
+    if (instance.events.hasOwnProperty('touch')) {
       return false;
     }
 
@@ -1103,15 +1103,15 @@
       touchStart: function touchStart(e) {
         process = true;
 
-        if(hasClass(e.targetTouches[0].target, 'ginner-container') || closest(e.targetTouches[0].target, '.gslide-desc') || e.targetTouches[0].target.nodeName.toLowerCase() == 'a') {
+        if (hasClass(e.targetTouches[0].target, 'ginner-container') || closest(e.targetTouches[0].target, '.gslide-desc') || e.targetTouches[0].target.nodeName.toLowerCase() == 'a') {
           process = false;
         }
 
-        if(closest(e.targetTouches[0].target, '.gslide-inline') && !hasClass(e.targetTouches[0].target.parentNode, 'gslide-inline')) {
+        if (closest(e.targetTouches[0].target, '.gslide-inline') && !hasClass(e.targetTouches[0].target.parentNode, 'gslide-inline')) {
           process = false;
         }
 
-        if(process) {
+        if (process) {
           endCoords = e.targetTouches[0];
           startCoords.pageX = e.targetTouches[0].pageX;
           startCoords.pageY = e.targetTouches[0].pageY;
@@ -1122,19 +1122,19 @@
           isInlined = currentSlide.querySelector('.gslide-inline');
           mediaImage = null;
 
-          if(hasClass(media, 'gslide-image')) {
+          if (hasClass(media, 'gslide-image')) {
             mediaImage = media.querySelector('img');
           }
 
           var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-          if(windowWidth > 769) {
+          if (windowWidth > 769) {
             media = currentSlide.querySelector('.ginner-container');
           }
 
           removeClass(overlay, 'greset');
 
-          if(e.pageX > 20 && e.pageX < window.innerWidth - 20) {
+          if (e.pageX > 20 && e.pageX < window.innerWidth - 20) {
             return;
           }
 
@@ -1142,20 +1142,20 @@
         }
       },
       touchMove: function touchMove(e) {
-        if(!process) {
+        if (!process) {
           return;
         }
 
         endCoords = e.targetTouches[0];
 
-        if(doingZoom || imageZoomed) {
+        if (doingZoom || imageZoomed) {
           return;
         }
 
-        if(isInlined && isInlined.offsetHeight > winHeight) {
+        if (isInlined && isInlined.offsetHeight > winHeight) {
           var moved = startCoords.pageX - endCoords.pageX;
 
-          if(Math.abs(moved) <= 13) {
+          if (Math.abs(moved) <= 13) {
             return false;
           }
         }
@@ -1166,7 +1166,7 @@
         var xDiff = xDown - xUp;
         var yDiff = yDown - yUp;
 
-        if(Math.abs(xDiff) > Math.abs(yDiff)) {
+        if (Math.abs(xDiff) > Math.abs(yDiff)) {
           vSwipe = false;
           hSwipe = true;
         } else {
@@ -1180,38 +1180,38 @@
         vDistancePercent = vDistance * 100 / winHeight;
         var opacity;
 
-        if(vSwipe && mediaImage) {
+        if (vSwipe && mediaImage) {
           opacity = 1 - Math.abs(vDistance) / winHeight;
           overlay.style.opacity = opacity;
 
-          if(instance.settings.touchFollowAxis) {
+          if (instance.settings.touchFollowAxis) {
             hDistancePercent = 0;
           }
         }
 
-        if(hSwipe) {
+        if (hSwipe) {
           opacity = 1 - Math.abs(hDistance) / winWidth;
           media.style.opacity = opacity;
 
-          if(instance.settings.touchFollowAxis) {
+          if (instance.settings.touchFollowAxis) {
             vDistancePercent = 0;
           }
         }
 
-        if(!mediaImage) {
+        if (!mediaImage) {
           return cssTransform(media, "translate3d(".concat(hDistancePercent, "%, 0, 0)"));
         }
 
         cssTransform(media, "translate3d(".concat(hDistancePercent, "%, ").concat(vDistancePercent, "%, 0)"));
       },
       touchEnd: function touchEnd() {
-        if(!process) {
+        if (!process) {
           return;
         }
 
         doingMove = false;
 
-        if(imageZoomed || doingZoom) {
+        if (imageZoomed || doingZoom) {
           lastZoomedPosX = zoomedPosX;
           lastZoomedPosY = zoomedPosY;
           return;
@@ -1220,12 +1220,12 @@
         var v = Math.abs(parseInt(vDistancePercent));
         var h = Math.abs(parseInt(hDistancePercent));
 
-        if(v > 29 && mediaImage) {
+        if (v > 29 && mediaImage) {
           instance.close();
           return;
         }
 
-        if(v < 29 && h < 25) {
+        if (v < 29 && h < 25) {
           addClass(overlay, 'greset');
           overlay.style.opacity = 1;
           return resetSlideMove(media);
@@ -1241,7 +1241,7 @@
         initScale = currentScale ? currentScale : 1;
       },
       pinch: function pinch(evt) {
-        if(!mediaImage || doingMove) {
+        if (!mediaImage || doingMove) {
           return false;
         }
 
@@ -1250,7 +1250,7 @@
         var scale = initScale * evt.zoom;
         imageZoomed = true;
 
-        if(scale <= 1) {
+        if (scale <= 1) {
           imageZoomed = false;
           scale = 1;
           lastZoomedPosY = null;
@@ -1261,7 +1261,7 @@
           return;
         }
 
-        if(scale > maxScale) {
+        if (scale > maxScale) {
           scale = maxScale;
         }
 
@@ -1269,15 +1269,15 @@
         currentScale = scale;
       },
       pressMove: function pressMove(e) {
-        if(imageZoomed && !doingZoom) {
+        if (imageZoomed && !doingZoom) {
           var mhDistance = endCoords.pageX - startCoords.pageX;
           var mvDistance = endCoords.pageY - startCoords.pageY;
 
-          if(lastZoomedPosX) {
+          if (lastZoomedPosX) {
             mhDistance = mhDistance + lastZoomedPosX;
           }
 
-          if(lastZoomedPosY) {
+          if (lastZoomedPosY) {
             mvDistance = mvDistance + lastZoomedPosY;
           }
 
@@ -1285,7 +1285,7 @@
           zoomedPosY = mvDistance;
           var style = "translate3d(".concat(mhDistance, "px, ").concat(mvDistance, "px, 0)");
 
-          if(currentScale) {
+          if (currentScale) {
             style += " scale3d(".concat(currentScale, ", ").concat(currentScale, ", 1)");
           }
 
@@ -1293,25 +1293,25 @@
         }
       },
       swipe: function swipe(evt) {
-        if(imageZoomed) {
+        if (imageZoomed) {
           return;
         }
 
-        if(doingZoom) {
+        if (doingZoom) {
           doingZoom = false;
           return;
         }
 
-        if(evt.direction == 'Left') {
-          if(instance.index == instance.elements.length - 1) {
+        if (evt.direction == 'Left') {
+          if (instance.index == instance.elements.length - 1) {
             return resetSlideMove(media);
           }
 
           instance.nextSlide();
         }
 
-        if(evt.direction == 'Right') {
-          if(instance.index == 0) {
+        if (evt.direction == 'Right') {
+          if (instance.index == 0) {
             return resetSlideMove(media);
           }
 
@@ -1334,7 +1334,7 @@
       this.slide = slide;
       this.onclose = onclose;
 
-      if(this.img.setZoomEvents) {
+      if (this.img.setZoomEvents) {
         return false;
       }
 
@@ -1357,17 +1357,17 @@
         return _this.drag(e);
       }, false);
       this.img.addEventListener('click', function (e) {
-        if(_this.slide.classList.contains('dragging-nav')) {
+        if (_this.slide.classList.contains('dragging-nav')) {
           _this.zoomOut();
 
           return false;
         }
 
-        if(!_this.zoomedIn) {
+        if (!_this.zoomedIn) {
           return _this.zoomIn();
         }
 
-        if(_this.zoomedIn && !_this.dragging) {
+        if (_this.zoomedIn && !_this.dragging) {
           _this.zoomOut();
         }
       }, false);
@@ -1379,7 +1379,7 @@
       value: function zoomIn() {
         var winWidth = this.widowWidth();
 
-        if(this.zoomedIn || winWidth <= 768) {
+        if (this.zoomedIn || winWidth <= 768) {
           return;
         }
 
@@ -1388,7 +1388,7 @@
         img.style.maxWidth = img.naturalWidth + 'px';
         img.style.maxHeight = img.naturalHeight + 'px';
 
-        if(img.naturalWidth > winWidth) {
+        if (img.naturalWidth > winWidth) {
           var centerX = winWidth / 2 - img.naturalWidth / 2;
           this.setTranslate(this.img.parentNode, centerX, 0);
         }
@@ -1410,7 +1410,7 @@
         this.xOffset = 0;
         this.yOffset = 0;
 
-        if(this.onclose && typeof this.onclose == 'function') {
+        if (this.onclose && typeof this.onclose == 'function') {
           this.onclose();
         }
       }
@@ -1419,12 +1419,12 @@
       value: function dragStart(e) {
         e.preventDefault();
 
-        if(!this.zoomedIn) {
+        if (!this.zoomedIn) {
           this.active = false;
           return;
         }
 
-        if(e.type === 'touchstart') {
+        if (e.type === 'touchstart') {
           this.initialX = e.touches[0].clientX - this.xOffset;
           this.initialY = e.touches[0].clientY - this.yOffset;
         } else {
@@ -1432,7 +1432,7 @@
           this.initialY = e.clientY - this.yOffset;
         }
 
-        if(e.target === this.img) {
+        if (e.target === this.img) {
           this.active = true;
           this.img.classList.add('dragging');
         }
@@ -1456,10 +1456,10 @@
     }, {
       key: "drag",
       value: function drag(e) {
-        if(this.active) {
+        if (this.active) {
           e.preventDefault();
 
-          if(e.type === 'touchmove') {
+          if (e.type === 'touchmove') {
             this.currentX = e.touches[0].clientX - this.initialX;
             this.currentY = e.touches[0].clientY - this.initialY;
           } else {
@@ -1477,7 +1477,7 @@
     }, {
       key: "onMove",
       value: function onMove(e) {
-        if(!this.zoomedIn) {
+        if (!this.zoomedIn) {
           return;
         }
 
@@ -1548,12 +1548,12 @@
     _createClass(DragSlides, [{
       key: "dragStart",
       value: function dragStart(e) {
-        if(this.slide.classList.contains('zoomed')) {
+        if (this.slide.classList.contains('zoomed')) {
           this.active = false;
           return;
         }
 
-        if(e.type === 'touchstart') {
+        if (e.type === 'touchstart') {
           this.initialX = e.touches[0].clientX - this.xOffset;
           this.initialY = e.touches[0].clientY - this.yOffset;
         } else {
@@ -1564,14 +1564,14 @@
         var clicked = e.target.nodeName.toLowerCase();
         var exludeClicks = ['input', 'select', 'textarea', 'button', 'a'];
 
-        if(e.target.classList.contains('nodrag') || closest(e.target, '.nodrag') || exludeClicks.indexOf(clicked) !== -1) {
+        if (e.target.classList.contains('nodrag') || closest(e.target, '.nodrag') || exludeClicks.indexOf(clicked) !== -1) {
           this.active = false;
           return;
         }
 
         e.preventDefault();
 
-        if(e.target === this.el || clicked !== 'img' && closest(e.target, '.gslide-inline')) {
+        if (e.target === this.el || clicked !== 'img' && closest(e.target, '.gslide-inline')) {
           this.active = true;
           this.el.classList.add('dragging');
           this.dragContainer = closest(e.target, '.ginner-container');
@@ -1593,17 +1593,17 @@
         this.yOffset = 0;
         this.active = false;
 
-        if(this.doSlideChange) {
+        if (this.doSlideChange) {
           this.instance.preventOutsideClick = true;
           this.doSlideChange == 'right' && this.instance.prevSlide();
           this.doSlideChange == 'left' && this.instance.nextSlide();
         }
 
-        if(this.doSlideClose) {
+        if (this.doSlideClose) {
           this.instance.close();
         }
 
-        if(!this.toleranceReached) {
+        if (!this.toleranceReached) {
           this.setTranslate(this.dragContainer, 0, 0, true);
         }
 
@@ -1625,11 +1625,11 @@
     }, {
       key: "drag",
       value: function drag(e) {
-        if(this.active) {
+        if (this.active) {
           e.preventDefault();
           this.slide.classList.add('dragging-nav');
 
-          if(e.type === 'touchmove') {
+          if (e.type === 'touchmove') {
             this.currentX = e.touches[0].clientX - this.initialX;
             this.currentY = e.touches[0].clientY - this.initialY;
           } else {
@@ -1646,17 +1646,17 @@
           var currentXInt = Math.abs(this.currentX);
           var currentYInt = Math.abs(this.currentY);
 
-          if(currentXInt > 0 && currentXInt >= Math.abs(this.currentY) && (!this.lastDirection || this.lastDirection == 'x')) {
+          if (currentXInt > 0 && currentXInt >= Math.abs(this.currentY) && (!this.lastDirection || this.lastDirection == 'x')) {
             this.yOffset = 0;
             this.lastDirection = 'x';
             this.setTranslate(this.dragContainer, this.currentX, 0);
             var doChange = this.shouldChange();
 
-            if(!this.instance.settings.dragAutoSnap && doChange) {
+            if (!this.instance.settings.dragAutoSnap && doChange) {
               this.doSlideChange = doChange;
             }
 
-            if(this.instance.settings.dragAutoSnap && doChange) {
+            if (this.instance.settings.dragAutoSnap && doChange) {
               this.instance.preventOutsideClick = true;
               this.toleranceReached = true;
               this.active = false;
@@ -1668,17 +1668,17 @@
             }
           }
 
-          if(this.toleranceY > 0 && currentYInt > 0 && currentYInt >= currentXInt && (!this.lastDirection || this.lastDirection == 'y')) {
+          if (this.toleranceY > 0 && currentYInt > 0 && currentYInt >= currentXInt && (!this.lastDirection || this.lastDirection == 'y')) {
             this.xOffset = 0;
             this.lastDirection = 'y';
             this.setTranslate(this.dragContainer, 0, this.currentY);
             var doClose = this.shouldClose();
 
-            if(!this.instance.settings.dragAutoSnap && doClose) {
+            if (!this.instance.settings.dragAutoSnap && doClose) {
               this.doSlideClose = true;
             }
 
-            if(this.instance.settings.dragAutoSnap && doClose) {
+            if (this.instance.settings.dragAutoSnap && doClose) {
               this.instance.close();
             }
 
@@ -1692,10 +1692,10 @@
         var doChange = false;
         var currentXInt = Math.abs(this.currentX);
 
-        if(currentXInt >= this.toleranceX) {
+        if (currentXInt >= this.toleranceX) {
           var dragDir = this.currentX > 0 ? 'right' : 'left';
 
-          if(dragDir == 'left' && this.slide !== this.slide.parentNode.lastChild || dragDir == 'right' && this.slide !== this.slide.parentNode.firstChild) {
+          if (dragDir == 'left' && this.slide !== this.slide.parentNode.lastChild || dragDir == 'right' && this.slide !== this.slide.parentNode.firstChild) {
             doChange = dragDir;
           }
         }
@@ -1708,7 +1708,7 @@
         var doClose = false;
         var currentYInt = Math.abs(this.currentY);
 
-        if(currentYInt >= this.toleranceY) {
+        if (currentYInt >= this.toleranceY) {
           doClose = true;
         }
 
@@ -1719,7 +1719,7 @@
       value: function setTranslate(node, xPos, yPos) {
         var animated = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
-        if(animated) {
+        if (animated) {
           node.style.transition = 'all .2s ease';
         } else {
           node.style.transition = '';
@@ -1738,36 +1738,36 @@
     var titleID = 'gSlideTitle_' + index;
     var textID = 'gSlideDesc_' + index;
     img.addEventListener('load', function () {
-      if(isFunction(callback)) {
+      if (isFunction(callback)) {
         callback();
       }
     }, false);
     img.src = data.href;
 
-    if(data.sizes != '' && data.srcset != '') {
+    if (data.sizes != '' && data.srcset != '') {
       img.sizes = data.sizes;
       img.srcset = data.srcset;
     }
 
     img.alt = '';
 
-    if(!isNil(data.alt) && data.alt !== '') {
+    if (!isNil(data.alt) && data.alt !== '') {
       img.alt = data.alt;
     }
 
-    if(data.title !== '') {
+    if (data.title !== '') {
       img.setAttribute('aria-labelledby', titleID);
     }
 
-    if(data.description !== '') {
+    if (data.description !== '') {
       img.setAttribute('aria-describedby', textID);
     }
 
-    if(data.hasOwnProperty('_hasCustomWidth') && data._hasCustomWidth) {
+    if (data.hasOwnProperty('_hasCustomWidth') && data._hasCustomWidth) {
       img.style.width = data.width;
     }
 
-    if(data.hasOwnProperty('_hasCustomHeight') && data._hasCustomHeight) {
+    if (data.hasOwnProperty('_hasCustomHeight') && data._hasCustomHeight) {
       img.style.height = data.height;
     }
 
@@ -1791,15 +1791,15 @@
     var customPlaceholder = false;
     slideMedia.style.maxWidth = data.width;
     injectAssets(this.settings.plyr.js, 'Plyr', function () {
-      if(!provider && url.match(/vimeo\.com\/([0-9]*)/)) {
+      if (!provider && url.match(/vimeo\.com\/([0-9]*)/)) {
         provider = 'vimeo';
       }
 
-      if(!provider && (url.match(/(youtube\.com|youtube-nocookie\.com)\/watch\?v=([a-zA-Z0-9\-_]+)/) || url.match(/youtu\.be\/([a-zA-Z0-9\-_]+)/) || url.match(/(youtube\.com|youtube-nocookie\.com)\/embed\/([a-zA-Z0-9\-_]+)/))) {
+      if (!provider && (url.match(/(youtube\.com|youtube-nocookie\.com)\/watch\?v=([a-zA-Z0-9\-_]+)/) || url.match(/youtu\.be\/([a-zA-Z0-9\-_]+)/) || url.match(/(youtube\.com|youtube-nocookie\.com)\/embed\/([a-zA-Z0-9\-_]+)/))) {
         provider = 'youtube';
       }
 
-      if(provider === 'local' || !provider) {
+      if (provider === 'local' || !provider) {
         provider = 'local';
         var html = '<video id="' + videoID + '" ';
         html += "style=\"background:#000; max-width: ".concat(data.width, ";\" ");
@@ -1823,7 +1823,7 @@
       player.on('ready', function (event) {
         videoPlayers[videoID] = event.detail.plyr;
 
-        if(isFunction(callback)) {
+        if (isFunction(callback)) {
           callback();
         }
       });
@@ -1840,11 +1840,11 @@
   function handleMediaFullScreen(event) {
     var media = closest(event.target, '.gslide-media');
 
-    if(event.type === 'enterfullscreen') {
+    if (event.type === 'enterfullscreen') {
       addClass(media, 'fullscreen');
     }
 
-    if(event.type === 'exitfullscreen') {
+    if (event.type === 'exitfullscreen') {
       removeClass(media, 'fullscreen');
     }
   }
@@ -1857,13 +1857,13 @@
     var content = has(data, 'content') && data.content ? data.content : false;
     var innerContent;
 
-    if(content) {
-      if(isString(content)) {
+    if (content) {
+      if (isString(content)) {
         innerContent = createHTML("<div class=\"ginlined-content\">".concat(content, "</div>"));
       }
 
-      if(isNode(content)) {
-        if(content.style.display == 'none') {
+      if (isNode(content)) {
+        if (content.style.display == 'none') {
           content.style.display = 'block';
         }
 
@@ -1874,10 +1874,10 @@
       }
     }
 
-    if(hash) {
+    if (hash) {
       var div = document.getElementById(hash);
 
-      if(!div) {
+      if (!div) {
         return false;
       }
 
@@ -1888,7 +1888,7 @@
       innerContent = cloned;
     }
 
-    if(!innerContent) {
+    if (!innerContent) {
       console.error('Unable to append inline slide content', data);
       return false;
     }
@@ -1905,7 +1905,7 @@
       }
     });
 
-    if(isFunction(callback)) {
+    if (isFunction(callback)) {
       callback();
     }
 
@@ -1948,7 +1948,7 @@
         draggable: true
       };
 
-      if(isObject(slideParamas)) {
+      if (isObject(slideParamas)) {
         this.defaults = extend(this.defaults, slideParamas);
       }
     }
@@ -1959,35 +1959,35 @@
         var origin = url;
         url = url.toLowerCase();
 
-        if(url.match(/\.(jpeg|jpg|jpe|gif|png|apn|webp|avif|svg)/) !== null) {
+        if (url.match(/\.(jpeg|jpg|jpe|gif|png|apn|webp|avif|svg)/) !== null) {
           return 'image';
         }
 
-        if(url.match(/(youtube\.com|youtube-nocookie\.com)\/watch\?v=([a-zA-Z0-9\-_]+)/) || url.match(/youtu\.be\/([a-zA-Z0-9\-_]+)/) || url.match(/(youtube\.com|youtube-nocookie\.com)\/embed\/([a-zA-Z0-9\-_]+)/)) {
+        if (url.match(/(youtube\.com|youtube-nocookie\.com)\/watch\?v=([a-zA-Z0-9\-_]+)/) || url.match(/youtu\.be\/([a-zA-Z0-9\-_]+)/) || url.match(/(youtube\.com|youtube-nocookie\.com)\/embed\/([a-zA-Z0-9\-_]+)/)) {
           return 'video';
         }
 
-        if(url.match(/vimeo\.com\/([0-9]*)/)) {
+        if (url.match(/vimeo\.com\/([0-9]*)/)) {
           return 'video';
         }
 
-        if(url.match(/\.(mp4|ogg|webm|mov)/) !== null) {
+        if (url.match(/\.(mp4|ogg|webm|mov)/) !== null) {
           return 'video';
         }
 
-        if(url.match(/\.(mp3|wav|wma|aac|ogg)/) !== null) {
+        if (url.match(/\.(mp3|wav|wma|aac|ogg)/) !== null) {
           return 'audio';
         }
 
-        if(url.indexOf('#') > -1) {
+        if (url.indexOf('#') > -1) {
           var hash = origin.split('#').pop();
 
-          if(hash.trim() !== '') {
+          if (hash.trim() !== '') {
             return 'inline';
           }
         }
 
-        if(url.indexOf('goajax=true') > -1) {
+        if (url.indexOf('goajax=true') > -1) {
           return 'ajax';
         }
 
@@ -2002,11 +2002,11 @@
           descPosition: settings.descPosition
         }, this.defaults);
 
-        if(isObject(element) && !isNode(element)) {
-          if(!has(element, 'type')) {
-            if(has(element, 'content') && element.content) {
+        if (isObject(element) && !isNode(element)) {
+          if (!has(element, 'type')) {
+            if (has(element, 'content') && element.content) {
               element.type = 'inline';
-            } else if(has(element, 'href')) {
+            } else if (has(element, 'href')) {
               element.type = this.sourceType(element.href);
             }
           }
@@ -2020,94 +2020,94 @@
         var config = element.getAttribute('data-glightbox');
         var nodeType = element.nodeName.toLowerCase();
 
-        if(nodeType === 'a') {
+        if (nodeType === 'a') {
           url = element.href;
         }
 
-        if(nodeType === 'img') {
+        if (nodeType === 'img') {
           url = element.src;
           data.alt = element.alt;
         }
 
         data.href = url;
         each(data, function (val, key) {
-          if(has(settings, key) && key !== 'width') {
+          if (has(settings, key) && key !== 'width') {
             data[key] = settings[key];
           }
 
           var nodeData = element.dataset[key];
 
-          if(!isNil(nodeData)) {
+          if (!isNil(nodeData)) {
             data[key] = _this.sanitizeValue(nodeData);
           }
         });
 
-        if(data.content) {
+        if (data.content) {
           data.type = 'inline';
         }
 
-        if(!data.type && url) {
+        if (!data.type && url) {
           data.type = this.sourceType(url);
         }
 
-        if(!isNil(config)) {
+        if (!isNil(config)) {
           var cleanKeys = [];
           each(data, function (v, k) {
             cleanKeys.push(';\\s?' + k);
           });
           cleanKeys = cleanKeys.join('\\s?:|');
 
-          if(config.trim() !== '') {
+          if (config.trim() !== '') {
             each(data, function (val, key) {
               var str = config;
               var match = 's?' + key + 's?:s?(.*?)(' + cleanKeys + 's?:|$)';
               var regex = new RegExp(match);
               var matches = str.match(regex);
 
-              if(matches && matches.length && matches[1]) {
+              if (matches && matches.length && matches[1]) {
                 var value = matches[1].trim().replace(/;\s*$/, '');
                 data[key] = _this.sanitizeValue(value);
               }
             });
           }
         } else {
-          if(!data.title && nodeType == 'a') {
+          if (!data.title && nodeType == 'a') {
             var title = element.title;
 
-            if(!isNil(title) && title !== '') {
+            if (!isNil(title) && title !== '') {
               data.title = title;
             }
           }
 
-          if(!data.title && nodeType == 'img') {
+          if (!data.title && nodeType == 'img') {
             var alt = element.alt;
 
-            if(!isNil(alt) && alt !== '') {
+            if (!isNil(alt) && alt !== '') {
               data.title = alt;
             }
           }
         }
 
-        if(data.description && data.description.substring(0, 1) === '.') {
+        if (data.description && data.description.substring(0, 1) === '.') {
           var description;
 
           try {
             description = document.querySelector(data.description).innerHTML;
           } catch (error) {
-            if(!(error instanceof DOMException)) {
+            if (!(error instanceof DOMException)) {
               throw error;
             }
           }
 
-          if(description) {
+          if (description) {
             data.description = description;
           }
         }
 
-        if(!data.description) {
+        if (!data.description) {
           var nodeDesc = element.querySelector('.glightbox-desc');
 
-          if(nodeDesc) {
+          if (nodeDesc) {
             data.description = nodeDesc.innerHTML;
           }
         }
@@ -2125,7 +2125,7 @@
         data.width = has(data, 'width') && data.width !== '' ? this.checkSize(data.width) : defaultWith;
         data.height = has(data, 'height') && data.height !== '' ? this.checkSize(data.height) : defaultHeight;
 
-        if(element && data.type == 'image') {
+        if (element && data.type == 'image') {
           data._hasCustomWidth = element.dataset.width ? true : false;
           data._hasCustomHeight = element.dataset.height ? true : false;
         }
@@ -2140,7 +2140,7 @@
     }, {
       key: "sanitizeValue",
       value: function sanitizeValue(val) {
-        if(val !== 'true' && val !== 'false') {
+        if (val !== 'true' && val !== 'false') {
           return val;
         }
 
@@ -2168,7 +2168,7 @@
         var slide = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
         var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-        if(hasClass(slide, 'loaded')) {
+        if (hasClass(slide, 'loaded')) {
           return false;
         }
 
@@ -2176,7 +2176,7 @@
         var slideConfig = this.slideConfig;
         var isMobileDevice = isMobile();
 
-        if(isFunction(settings.beforeSlideLoad)) {
+        if (isFunction(settings.beforeSlideLoad)) {
           settings.beforeSlideLoad({
             index: this.index,
             slide: slide,
@@ -2194,9 +2194,9 @@
         var titleID = 'gSlideTitle_' + this.index;
         var textID = 'gSlideDesc_' + this.index;
 
-        if(isFunction(settings.afterSlideLoad)) {
+        if (isFunction(settings.afterSlideLoad)) {
           finalCallback = function finalCallback() {
-            if(isFunction(callback)) {
+            if (isFunction(callback)) {
               callback();
             }
 
@@ -2208,22 +2208,22 @@
           };
         }
 
-        if(slideConfig.title == '' && slideConfig.description == '') {
-          if(slideDesc) {
+        if (slideConfig.title == '' && slideConfig.description == '') {
+          if (slideDesc) {
             slideDesc.parentNode.parentNode.removeChild(slideDesc.parentNode);
           }
         } else {
-          if(slideTitle && slideConfig.title !== '') {
+          if (slideTitle && slideConfig.title !== '') {
             slideTitle.id = titleID;
             slideTitle.innerHTML = slideConfig.title;
           } else {
             slideTitle.parentNode.removeChild(slideTitle);
           }
 
-          if(slideText && slideConfig.description !== '') {
+          if (slideText && slideConfig.description !== '') {
             slideText.id = textID;
 
-            if(isMobileDevice && settings.moreLength > 0) {
+            if (isMobileDevice && settings.moreLength > 0) {
               slideConfig.smallDescription = this.slideShortDesc(slideConfig.description, settings.moreLength, settings.moreText);
               slideText.innerHTML = slideConfig.smallDescription;
               this.descriptionEvents(slideText, slideConfig);
@@ -2241,20 +2241,20 @@
         addClass(slideMedia, "gslide-".concat(type));
         addClass(slide, 'loaded');
 
-        if(type === 'video') {
+        if (type === 'video') {
           slideVideo.apply(this.instance, [slide, slideConfig, this.index, finalCallback]);
           return;
         }
 
-        if(type === 'external') {
+        if (type === 'external') {
           slideIframe.apply(this, [slide, slideConfig, this.index, finalCallback]);
           return;
         }
 
-        if(type === 'inline') {
+        if (type === 'inline') {
           slideInline.apply(this.instance, [slide, slideConfig, this.index, finalCallback]);
 
-          if(slideConfig.draggable) {
+          if (slideConfig.draggable) {
             new DragSlides({
               dragEl: slide.querySelector('.gslide-inline'),
               toleranceX: settings.dragToleranceX,
@@ -2267,11 +2267,11 @@
           return;
         }
 
-        if(type === 'image') {
+        if (type === 'image') {
           slideImage(slide, slideConfig, this.index, function () {
             var img = slide.querySelector('img');
 
-            if(slideConfig.draggable) {
+            if (slideConfig.draggable) {
               new DragSlides({
                 dragEl: img,
                 toleranceX: settings.dragToleranceX,
@@ -2281,21 +2281,21 @@
               });
             }
 
-            if(slideConfig.zoomable && img.naturalWidth > img.offsetWidth) {
+            if (slideConfig.zoomable && img.naturalWidth > img.offsetWidth) {
               addClass(img, 'zoomable');
               new ZoomImages(img, slide, function () {
                 _this.instance.resize();
               });
             }
 
-            if(isFunction(finalCallback)) {
+            if (isFunction(finalCallback)) {
               finalCallback();
             }
           });
           return;
         }
 
-        if(isFunction(finalCallback)) {
+        if (isFunction(finalCallback)) {
           finalCallback();
         }
       }
@@ -2310,13 +2310,13 @@
         var useWordBoundary = wordBoundary;
         string = cleanedString.trim();
 
-        if(string.length <= n) {
+        if (string.length <= n) {
           return string;
         }
 
         var subString = string.substr(0, n - 1);
 
-        if(!useWordBoundary) {
+        if (!useWordBoundary) {
           return subString;
         }
 
@@ -2330,7 +2330,7 @@
 
         var moreLink = desc.querySelector('.desc-more');
 
-        if(!moreLink) {
+        if (!moreLink) {
           return false;
         }
 
@@ -2341,7 +2341,7 @@
             var body = document.body;
             var desc = closest(target, '.gslide-desc');
 
-            if(!desc) {
+            if (!desc) {
               return false;
             }
 
@@ -2350,7 +2350,7 @@
             var shortEvent = addEvent('click', {
               onElement: [body, closest(desc, '.gslide-description')],
               withCallback: function withCallback(event, target) {
-                if(event.target.nodeName.toLowerCase() !== 'a') {
+                if (event.target.nodeName.toLowerCase() !== 'a') {
                   removeClass(body, 'gdesc-open');
                   addClass(body, 'gdesc-closed');
                   desc.innerHTML = data.smallDescription;
@@ -2375,7 +2375,7 @@
     }, {
       key: "getConfig",
       value: function getConfig() {
-        if(!isNode(this.element) && !this.element.hasOwnProperty('draggable')) {
+        if (!isNode(this.element) && !this.element.hasOwnProperty('draggable')) {
           this.element.draggable = this.instance.settings.draggable;
         }
 
@@ -2510,7 +2510,7 @@
 
         var selector = this.getSelector();
 
-        if(selector) {
+        if (selector) {
           this.baseEvents = addEvent('click', {
             onElement: selector,
             withCallback: function withCallback(e, target) {
@@ -2529,7 +2529,7 @@
         var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
         var startAt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-        if(this.elements.length === 0) {
+        if (this.elements.length === 0) {
           return false;
         }
 
@@ -2538,24 +2538,24 @@
         this.prevActiveSlide = null;
         var index = isNumber(startAt) ? startAt : this.settings.startAt;
 
-        if(isNode(element)) {
+        if (isNode(element)) {
           var gallery = element.getAttribute('data-gallery');
 
-          if(gallery) {
+          if (gallery) {
             this.fullElementsList = this.elements;
             this.elements = this.getGalleryElements(this.elements, gallery);
           }
 
-          if(isNil(index)) {
+          if (isNil(index)) {
             index = this.getElementIndex(element);
 
-            if(index < 0) {
+            if (index < 0) {
               index = 0;
             }
           }
         }
 
-        if(!isNumber(index)) {
+        if (!isNumber(index)) {
           index = 0;
         }
 
@@ -2566,7 +2566,7 @@
         var body = document.body;
         var scrollBar = window.innerWidth - document.documentElement.clientWidth;
 
-        if(scrollBar > 0) {
+        if (scrollBar > 0) {
           var styleSheet = document.createElement('style');
           styleSheet.type = 'text/css';
           styleSheet.className = 'gcss-styles';
@@ -2580,7 +2580,7 @@
 
         addClass(html, 'glightbox-open');
 
-        if(isMobile$1) {
+        if (isMobile$1) {
           addClass(document.body, 'glightbox-mobile');
 
           this.settings.slideEffect = 'slide';
@@ -2588,7 +2588,7 @@
 
         this.showSlide(index, true);
 
-        if(this.elements.length === 1) {
+        if (this.elements.length === 1) {
           addClass(this.prevButton, 'glightbox-button-hidden');
 
           addClass(this.nextButton, 'glightbox-button-hidden');
@@ -2601,15 +2601,15 @@
         this.lightboxOpen = true;
         this.trigger('open');
 
-        if(isFunction(this.settings.onOpen)) {
+        if (isFunction(this.settings.onOpen)) {
           this.settings.onOpen();
         }
 
-        if(isTouch$1 && this.settings.touchNavigation) {
+        if (isTouch$1 && this.settings.touchNavigation) {
           touchNavigation(this);
         }
 
-        if(this.settings.keyboardNavigation) {
+        if (this.settings.keyboardNavigation) {
           keyboardNavigation(this);
         }
       }
@@ -2632,14 +2632,14 @@
         this.index = parseInt(index);
         var current = this.slidesContainer.querySelector('.current');
 
-        if(current) {
+        if (current) {
           removeClass(current, 'current');
         }
 
         this.slideAnimateOut();
         var slideNode = this.slidesContainer.querySelectorAll('.gslide')[index];
 
-        if(hasClass(slideNode, 'loaded')) {
+        if (hasClass(slideNode, 'loaded')) {
           this.slideAnimateIn(slideNode, first);
 
           hide(this.loader);
@@ -2671,7 +2671,7 @@
         this.slideDescription = slideNode.querySelector('.gslide-description');
         this.slideDescriptionContained = this.slideDescription && hasClass(this.slideDescription.parentNode, 'gslide-media');
 
-        if(this.settings.preload) {
+        if (this.settings.preload) {
           this.preloadSlide(index + 1);
           this.preloadSlide(index - 1);
         }
@@ -2684,17 +2684,17 @@
       value: function preloadSlide(index) {
         var _this3 = this;
 
-        if(index < 0 || index > this.elements.length - 1) {
+        if (index < 0 || index > this.elements.length - 1) {
           return false;
         }
 
-        if(isNil(this.elements[index])) {
+        if (isNil(this.elements[index])) {
           return false;
         }
 
         var slideNode = this.slidesContainer.querySelectorAll('.gslide')[index];
 
-        if(hasClass(slideNode, 'loaded')) {
+        if (hasClass(slideNode, 'loaded')) {
           return false;
         }
 
@@ -2711,7 +2711,7 @@
         };
         this.trigger('slide_before_load', slideData);
 
-        if(type === 'video' || type === 'external') {
+        if (type === 'video' || type === 'external') {
           setTimeout(function () {
             slide.instance.setContent(slideNode, function () {
               _this3.trigger('slide_after_load', slideData);
@@ -2740,13 +2740,13 @@
         this.prevActiveSlide = this.activeSlide;
         this.prevActiveSlideIndex = this.index;
 
-        if(!this.loop() && (index < 0 || index > this.elements.length - 1)) {
+        if (!this.loop() && (index < 0 || index > this.elements.length - 1)) {
           return false;
         }
 
-        if(index < 0) {
+        if (index < 0) {
           index = this.elements.length - 1;
-        } else if(index >= this.elements.length) {
+        } else if (index >= this.elements.length) {
           index = 0;
         }
 
@@ -2758,7 +2758,7 @@
         var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
         var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
 
-        if(index < 0) {
+        if (index < 0) {
           index = this.elements.length;
         }
 
@@ -2777,19 +2777,19 @@
         var addedSlideNode = null;
         var addedSlidePlayer = null;
 
-        if(this.slidesContainer) {
-          if(index > totalSlides) {
+        if (this.slidesContainer) {
+          if (index > totalSlides) {
             this.slidesContainer.appendChild(newSlide);
           } else {
             var existingSlide = this.slidesContainer.querySelectorAll('.gslide')[index];
             this.slidesContainer.insertBefore(newSlide, existingSlide);
           }
 
-          if(this.settings.preload && this.index == 0 && index == 0 || this.index - 1 == index || this.index + 1 == index) {
+          if (this.settings.preload && this.index == 0 && index == 0 || this.index - 1 == index || this.index + 1 == index) {
             this.preloadSlide(index);
           }
 
-          if(this.index === 0 && index === 0) {
+          if (this.index === 0 && index === 0) {
             this.index = 1;
           }
 
@@ -2809,7 +2809,7 @@
           player: addedSlidePlayer
         });
 
-        if(isFunction(this.settings.slideInserted)) {
+        if (isFunction(this.settings.slideInserted)) {
           this.settings.slideInserted({
             index: index,
             slide: addedSlideNode,
@@ -2822,15 +2822,15 @@
       value: function removeSlide() {
         var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : -1;
 
-        if(index < 0 || index > this.elements.length - 1) {
+        if (index < 0 || index > this.elements.length - 1) {
           return false;
         }
 
         var slide = this.slidesContainer && this.slidesContainer.querySelectorAll('.gslide')[index];
 
-        if(slide) {
-          if(this.getActiveSlideIndex() == index) {
-            if(index == this.elements.length - 1) {
+        if (slide) {
+          if (this.getActiveSlideIndex() == index) {
+            if (index == this.elements.length - 1) {
               this.prevSlide();
             } else {
               this.nextSlide();
@@ -2843,7 +2843,7 @@
         this.elements.splice(index, 1);
         this.trigger('slide_removed', index);
 
-        if(isFunction(this.settings.slideRemoved)) {
+        if (isFunction(this.settings.slideRemoved)) {
           this.settings.slideRemoved(index);
         }
       }
@@ -2873,7 +2873,7 @@
           player: this.getSlidePlayerInstance(this.index)
         };
 
-        if(slideMedia.offsetWidth > 0 && slideDesc) {
+        if (slideMedia.offsetWidth > 0 && slideDesc) {
           hide(slideDesc);
 
           slideDesc.style.display = '';
@@ -2881,9 +2881,9 @@
 
         removeClass(slide, this.effectsClasses);
 
-        if(first) {
+        if (first) {
           animateElement(slide, this.settings.cssEfects[this.settings.openEffect]["in"], function () {
-            if(_this4.settings.autoplayVideos) {
+            if (_this4.settings.autoplayVideos) {
               _this4.slidePlayerPlay(slide);
             }
 
@@ -2892,7 +2892,7 @@
               current: nextData
             });
 
-            if(isFunction(_this4.settings.afterSlideChange)) {
+            if (isFunction(_this4.settings.afterSlideChange)) {
               _this4.settings.afterSlideChange.apply(_this4, [prevData, nextData]);
             }
           });
@@ -2900,14 +2900,14 @@
           var effectName = this.settings.slideEffect;
           var animIn = effectName !== 'none' ? this.settings.cssEfects[effectName]["in"] : effectName;
 
-          if(this.prevActiveSlideIndex > this.index) {
-            if(this.settings.slideEffect == 'slide') {
+          if (this.prevActiveSlideIndex > this.index) {
+            if (this.settings.slideEffect == 'slide') {
               animIn = this.settings.cssEfects.slideBack["in"];
             }
           }
 
           animateElement(slide, animIn, function () {
-            if(_this4.settings.autoplayVideos) {
+            if (_this4.settings.autoplayVideos) {
               _this4.slidePlayerPlay(slide);
             }
 
@@ -2916,7 +2916,7 @@
               current: nextData
             });
 
-            if(isFunction(_this4.settings.afterSlideChange)) {
+            if (isFunction(_this4.settings.afterSlideChange)) {
               _this4.settings.afterSlideChange.apply(_this4, [prevData, nextData]);
             }
           });
@@ -2931,7 +2931,7 @@
     }, {
       key: "slideAnimateOut",
       value: function slideAnimateOut() {
-        if(!this.prevActiveSlide) {
+        if (!this.prevActiveSlide) {
           return false;
         }
 
@@ -2965,7 +2965,7 @@
           }
         });
 
-        if(isFunction(this.settings.beforeSlideChange)) {
+        if (isFunction(this.settings.beforeSlideChange)) {
           this.settings.beforeSlideChange.apply(this, [{
             index: this.prevActiveSlideIndex,
             slide: this.prevActiveSlide,
@@ -2977,7 +2977,7 @@
           }]);
         }
 
-        if(this.prevActiveSlideIndex > this.index && this.settings.slideEffect == 'slide') {
+        if (this.prevActiveSlideIndex > this.index && this.settings.slideEffect == 'slide') {
           animOut = this.settings.cssEfects.slideBack.out;
         }
 
@@ -2992,7 +2992,7 @@
 
           media.style.opacity = '';
 
-          if(desc) {
+          if (desc) {
             desc.style.opacity = '';
           }
 
@@ -3010,7 +3010,7 @@
         var id = 'gvideo' + index;
         var videoPlayers = this.getAllPlayers();
 
-        if(has(videoPlayers, id) && videoPlayers[id]) {
+        if (has(videoPlayers, id) && videoPlayers[id]) {
           return videoPlayers[id];
         }
 
@@ -3019,10 +3019,10 @@
     }, {
       key: "stopSlideVideo",
       value: function stopSlideVideo(slide) {
-        if(isNode(slide)) {
+        if (isNode(slide)) {
           var node = slide.querySelector('.gvideo-wrapper');
 
-          if(node) {
+          if (node) {
             slide = node.getAttribute('data-index');
           }
         }
@@ -3030,34 +3030,34 @@
         console.log('stopSlideVideo is deprecated, use slidePlayerPause');
         var player = this.getSlidePlayerInstance(slide);
 
-        if(player && player.playing) {
+        if (player && player.playing) {
           player.pause();
         }
       }
     }, {
       key: "slidePlayerPause",
       value: function slidePlayerPause(slide) {
-        if(isNode(slide)) {
+        if (isNode(slide)) {
           var node = slide.querySelector('.gvideo-wrapper');
 
-          if(node) {
+          if (node) {
             slide = node.getAttribute('data-index');
           }
         }
 
         var player = this.getSlidePlayerInstance(slide);
 
-        if(player && player.playing) {
+        if (player && player.playing) {
           player.pause();
         }
       }
     }, {
       key: "playSlideVideo",
       value: function playSlideVideo(slide) {
-        if(isNode(slide)) {
+        if (isNode(slide)) {
           var node = slide.querySelector('.gvideo-wrapper');
 
-          if(node) {
+          if (node) {
             slide = node.getAttribute('data-index');
           }
         }
@@ -3065,7 +3065,7 @@
         console.log('playSlideVideo is deprecated, use slidePlayerPlay');
         var player = this.getSlidePlayerInstance(slide);
 
-        if(player && !player.playing) {
+        if (player && !player.playing) {
           player.play();
         }
       }
@@ -3074,24 +3074,24 @@
       value: function slidePlayerPlay(slide) {
         var _this$settings$plyr$c;
 
-        if(isMobile$1 && !((_this$settings$plyr$c = this.settings.plyr.config) !== null && _this$settings$plyr$c !== void 0 && _this$settings$plyr$c.muted)) {
+        if (isMobile$1 && !((_this$settings$plyr$c = this.settings.plyr.config) !== null && _this$settings$plyr$c !== void 0 && _this$settings$plyr$c.muted)) {
           return;
         }
 
-        if(isNode(slide)) {
+        if (isNode(slide)) {
           var node = slide.querySelector('.gvideo-wrapper');
 
-          if(node) {
+          if (node) {
             slide = node.getAttribute('data-index');
           }
         }
 
         var player = this.getSlidePlayerInstance(slide);
 
-        if(player && !player.playing) {
+        if (player && !player.playing) {
           player.play();
 
-          if(this.settings.autofocusVideos) {
+          if (this.settings.autofocusVideos) {
             player.elements.container.focus();
           }
         }
@@ -3104,7 +3104,7 @@
         this.settings.elements = false;
         var newElements = [];
 
-        if(elements && elements.length) {
+        if (elements && elements.length) {
           each(elements, function (el, i) {
             var slide = new Slide(el, _this5, i);
             var data = slide.getConfig();
@@ -3120,10 +3120,10 @@
 
         this.elements = newElements;
 
-        if(this.lightboxOpen) {
+        if (this.lightboxOpen) {
           this.slidesContainer.innerHTML = '';
 
-          if(this.elements.length) {
+          if (this.elements.length) {
             each(this.elements, function () {
               var slide = createHTML(_this5.settings.slideHTML);
 
@@ -3140,7 +3140,7 @@
         var index = false;
 
         each(this.elements, function (el, i) {
-          if(has(el, 'node') && el.node == node) {
+          if (has(el, 'node') && el.node == node) {
             index = i;
             return true;
           }
@@ -3156,7 +3156,7 @@
         var list = [];
         this.elements = this.elements ? this.elements : [];
 
-        if(!isNil(this.settings.elements) && isArray(this.settings.elements) && this.settings.elements.length) {
+        if (!isNil(this.settings.elements) && isArray(this.settings.elements) && this.settings.elements.length) {
           each(this.settings.elements, function (el, i) {
             var slide = new Slide(el, _this6, i);
             var elData = slide.getConfig();
@@ -3174,11 +3174,11 @@
         var nodes = false;
         var selector = this.getSelector();
 
-        if(selector) {
+        if (selector) {
           nodes = document.querySelectorAll(this.getSelector());
         }
 
-        if(!nodes) {
+        if (!nodes) {
           return list;
         }
 
@@ -3208,11 +3208,11 @@
     }, {
       key: "getSelector",
       value: function getSelector() {
-        if(this.settings.elements) {
+        if (this.settings.elements) {
           return false;
         }
 
-        if(this.settings.selector && this.settings.selector.substring(0, 5) == 'data-') {
+        if (this.settings.selector && this.settings.selector.substring(0, 5) == 'data-') {
           return "*[".concat(this.settings.selector, "]");
         }
 
@@ -3234,7 +3234,7 @@
         var effects = [];
 
         for (var key in this.settings.cssEfects) {
-          if(this.settings.cssEfects.hasOwnProperty(key)) {
+          if (this.settings.cssEfects.hasOwnProperty(key)) {
             var effect = this.settings.cssEfects[key];
             effects.push("g".concat(effect["in"]));
             effects.push("g".concat(effect.out));
@@ -3248,7 +3248,7 @@
       value: function build() {
         var _this7 = this;
 
-        if(this.built) {
+        if (this.built) {
           return false;
         }
 
@@ -3256,7 +3256,7 @@
         var bodyChildElms = [];
 
         each(children, function (el) {
-          if(el.parentNode == document.body && el.nodeName.charAt(0) !== '#' && el.hasAttribute && !el.hasAttribute('aria-hidden')) {
+          if (el.parentNode == document.body && el.nodeName.charAt(0) !== '#' && el.hasAttribute && !el.hasAttribute('aria-hidden')) {
             bodyChildElms.push(el);
             el.setAttribute('aria-hidden', 'true');
           }
@@ -3284,7 +3284,7 @@
 
         addClass(this.modal, 'glightbox-' + this.settings.skin);
 
-        if(this.settings.closeButton && closeButton) {
+        if (this.settings.closeButton && closeButton) {
           this.events['close'] = addEvent('click', {
             onElement: closeButton,
             withCallback: function withCallback(e, target) {
@@ -3295,11 +3295,11 @@
           });
         }
 
-        if(closeButton && !this.settings.closeButton) {
+        if (closeButton && !this.settings.closeButton) {
           closeButton.parentNode.removeChild(closeButton);
         }
 
-        if(this.nextButton) {
+        if (this.nextButton) {
           this.events['next'] = addEvent('click', {
             onElement: this.nextButton,
             withCallback: function withCallback(e, target) {
@@ -3310,7 +3310,7 @@
           });
         }
 
-        if(this.prevButton) {
+        if (this.prevButton) {
           this.events['prev'] = addEvent('click', {
             onElement: this.prevButton,
             withCallback: function withCallback(e, target) {
@@ -3321,12 +3321,12 @@
           });
         }
 
-        if(this.settings.closeOnOutsideClick) {
+        if (this.settings.closeOnOutsideClick) {
           this.events['outClose'] = addEvent('click', {
             onElement: modal,
             withCallback: function withCallback(e, target) {
-              if(!_this7.preventOutsideClick && !hasClass(document.body, 'glightbox-mobile') && !closest(e.target, '.ginner-container')) {
-                if(!closest(e.target, '.gbtn') && !hasClass(e.target, 'gnext') && !hasClass(e.target, 'gprev')) {
+              if (!_this7.preventOutsideClick && !hasClass(document.body, 'glightbox-mobile') && !closest(e.target, '.ginner-container')) {
+                if (!closest(e.target, '.gbtn') && !hasClass(e.target, 'gnext') && !hasClass(e.target, 'gprev')) {
                   _this7.close();
                 }
               }
@@ -3340,7 +3340,7 @@
           slide.slideNode = _this7.slidesContainer.querySelectorAll('.gslide')[i];
         });
 
-        if(isTouch$1) {
+        if (isTouch$1) {
           addClass(document.body, 'glightbox-touch');
         }
 
@@ -3358,7 +3358,7 @@
         var slide = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
         slide = !slide ? this.activeSlide : slide;
 
-        if(!slide || hasClass(slide, 'zoomed')) {
+        if (!slide || hasClass(slide, 'zoomed')) {
           return;
         }
 
@@ -3370,26 +3370,26 @@
         var winWidth = winSize.width;
         var winHeight = winSize.height;
 
-        if(winWidth <= 768) {
+        if (winWidth <= 768) {
           addClass(document.body, 'glightbox-mobile');
         } else {
           removeClass(document.body, 'glightbox-mobile');
         }
 
-        if(!video && !image) {
+        if (!video && !image) {
           return;
         }
 
         var descriptionResize = false;
 
-        if(description && (hasClass(description, 'description-bottom') || hasClass(description, 'description-top')) && !hasClass(description, 'gabsolute')) {
+        if (description && (hasClass(description, 'description-bottom') || hasClass(description, 'description-top')) && !hasClass(description, 'gabsolute')) {
           descriptionResize = true;
         }
 
-        if(image) {
-          if(winWidth <= 768) {
+        if (image) {
+          if (winWidth <= 768) {
             var imgNode = image.querySelector('img');
-          } else if(descriptionResize) {
+          } else if (descriptionResize) {
             var descHeight = description.offsetHeight;
 
             var _imgNode = image.querySelector('img');
@@ -3400,10 +3400,10 @@
           }
         }
 
-        if(video) {
+        if (video) {
           var ratio = has(this.settings.plyr.config, 'ratio') ? this.settings.plyr.config.ratio : '';
 
-          if(!ratio) {
+          if (!ratio) {
             var containerWidth = video.clientWidth;
             var containerHeight = video.clientHeight;
             var divisor = containerWidth / containerHeight;
@@ -3414,14 +3414,14 @@
           var videoWidth = this.settings.videosWidth;
           var maxWidth = this.settings.videosWidth;
 
-          if(isNumber(videoWidth) || videoWidth.indexOf('px') !== -1) {
+          if (isNumber(videoWidth) || videoWidth.indexOf('px') !== -1) {
             maxWidth = parseInt(videoWidth);
           } else {
-            if(videoWidth.indexOf('vw') !== -1) {
+            if (videoWidth.indexOf('vw') !== -1) {
               maxWidth = winWidth * parseInt(videoWidth) / 100;
-            } else if(videoWidth.indexOf('vh') !== -1) {
+            } else if (videoWidth.indexOf('vh') !== -1) {
               maxWidth = winHeight * parseInt(videoWidth) / 100;
-            } else if(videoWidth.indexOf('%') !== -1) {
+            } else if (videoWidth.indexOf('%') !== -1) {
               maxWidth = winWidth * parseInt(videoWidth) / 100;
             } else {
               maxWidth = parseInt(video.clientWidth);
@@ -3431,11 +3431,11 @@
           var maxHeight = maxWidth / (parseInt(videoRatio[0]) / parseInt(videoRatio[1]));
           maxHeight = Math.floor(maxHeight);
 
-          if(descriptionResize) {
+          if (descriptionResize) {
             winHeight = winHeight - description.offsetHeight;
           }
 
-          if(maxWidth > winWidth || maxHeight > winHeight || winHeight < maxHeight && winWidth > maxWidth) {
+          if (maxWidth > winWidth || maxHeight > winHeight || winHeight < maxHeight && winWidth > maxWidth) {
             var vwidth = video.offsetWidth;
             var vheight = video.offsetHeight;
 
@@ -3447,13 +3447,13 @@
             };
             video.parentNode.setAttribute('style', "max-width: ".concat(vsize.width, "px"));
 
-            if(descriptionResize) {
+            if (descriptionResize) {
               description.setAttribute('style', "max-width: ".concat(vsize.width, "px;"));
             }
           } else {
             video.parentNode.style.maxWidth = "".concat(videoWidth);
 
-            if(descriptionResize) {
+            if (descriptionResize) {
               description.setAttribute('style', "max-width: ".concat(videoWidth, ";"));
             }
           }
@@ -3473,13 +3473,13 @@
 
         removeClass(this.prevButton, 'disabled');
 
-        if(this.index == 0 && this.elements.length - 1 == 0) {
+        if (this.index == 0 && this.elements.length - 1 == 0) {
           addClass(this.prevButton, 'disabled');
 
           addClass(this.nextButton, 'disabled');
-        } else if(this.index === 0 && !loop) {
+        } else if (this.index === 0 && !loop) {
           addClass(this.prevButton, 'disabled');
-        } else if(this.index === this.elements.length - 1 && !loop) {
+        } else if (this.index === this.elements.length - 1 && !loop) {
           addClass(this.nextButton, 'disabled');
         }
       }
@@ -3495,10 +3495,10 @@
       value: function close() {
         var _this8 = this;
 
-        if(!this.lightboxOpen) {
-          if(this.events) {
+        if (!this.lightboxOpen) {
+          if (this.events) {
             for (var key in this.events) {
-              if(this.events.hasOwnProperty(key)) {
+              if (this.events.hasOwnProperty(key)) {
                 this.events[key].destroy();
               }
             }
@@ -3509,18 +3509,18 @@
           return false;
         }
 
-        if(this.closing) {
+        if (this.closing) {
           return false;
         }
 
         this.closing = true;
         this.slidePlayerPause(this.activeSlide);
 
-        if(this.fullElementsList) {
+        if (this.fullElementsList) {
           this.elements = this.fullElementsList;
         }
 
-        if(this.bodyHiddenChildElms.length) {
+        if (this.bodyHiddenChildElms.length) {
           each(this.bodyHiddenChildElms, function (el) {
             el.removeAttribute('aria-hidden');
           });
@@ -3536,9 +3536,9 @@
           _this8.prevActiveSlide = null;
           _this8.built = false;
 
-          if(_this8.events) {
+          if (_this8.events) {
             for (var _key in _this8.events) {
-              if(_this8.events.hasOwnProperty(_key)) {
+              if (_this8.events.hasOwnProperty(_key)) {
                 _this8.events[_key].destroy();
               }
             }
@@ -3556,13 +3556,13 @@
 
           _this8.trigger('close');
 
-          if(isFunction(_this8.settings.onClose)) {
+          if (isFunction(_this8.settings.onClose)) {
             _this8.settings.onClose();
           }
 
           var styles = document.querySelector('.gcss-styles');
 
-          if(styles) {
+          if (styles) {
             styles.parentNode.removeChild(styles);
           }
 
@@ -3576,7 +3576,7 @@
         this.close();
         this.clearAllEvents();
 
-        if(this.baseEvents) {
+        if (this.baseEvents) {
           this.baseEvents.destroy();
         }
       }
@@ -3585,7 +3585,7 @@
       value: function on(evt, callback) {
         var once = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-        if(!evt || !isFunction(callback)) {
+        if (!evt || !isFunction(callback)) {
           throw new TypeError('Event name and callback must be defined');
         }
 
@@ -3613,16 +3613,16 @@
               once = event.once,
               callback = event.callback;
 
-          if(evt == eventName) {
+          if (evt == eventName) {
             callback(data);
 
-            if(once) {
+            if (once) {
               onceTriggered.push(i);
             }
           }
         });
 
-        if(onceTriggered.length) {
+        if (onceTriggered.length) {
           each(onceTriggered, function (i) {
             return _this9.apiEvents.splice(i, 1);
           });

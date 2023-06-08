@@ -32,7 +32,7 @@
     
     function test_cache_clearCache(t) {
 
-        if(!window.localStorage) {
+        if (!window.localStorage) {
             t.plan(2);
             var scope = {active: true};
             t.eq(OpenLayers.Control.CacheWrite.prototype.cache.call(scope), undefined, "no tiles cached when localStorage is not supported.");

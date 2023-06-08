@@ -70,7 +70,7 @@ OpenLayers.Layer.XYZ = OpenLayers.Class(OpenLayers.Layer.Grid, {
      * options - {Object} Hashtable of extra options to tag onto the layer
      */
     initialize: function(name, url, options) {
-        if(options && options.sphericalMercator || this.sphericalMercator) {
+        if (options && options.sphericalMercator || this.sphericalMercator) {
             options = OpenLayers.Util.extend({
                 projection: "EPSG:900913",
                 numZoomLevels: 19
@@ -93,7 +93,7 @@ OpenLayers.Layer.XYZ = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     clone: function (obj) {
         
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer.XYZ(this.name,
                                             this.url,
                                             this.getOptions());
@@ -119,7 +119,7 @@ OpenLayers.Layer.XYZ = OpenLayers.Class(OpenLayers.Layer.Grid, {
     getURL: function (bounds) {
         var xyz = this.getXYZ(bounds);
         var url = this.url;
-        if(OpenLayers.Util.isArray(url)) {
+        if (OpenLayers.Util.isArray(url)) {
             var s = '' + xyz.x + xyz.y + xyz.z;
             url = this.selectUrl(s, url);
         }
@@ -145,7 +145,7 @@ OpenLayers.Layer.XYZ = OpenLayers.Class(OpenLayers.Layer.Grid, {
             (res * this.tileSize.h));
         var z = this.getServerZoom();
 
-        if(this.wrapDateLine) {
+        if (this.wrapDateLine) {
             var limit = Math.pow(2, z);
             x = ((x % limit) + limit) % limit;
         }
@@ -162,7 +162,7 @@ OpenLayers.Layer.XYZ = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     setMap: function(map) {
         OpenLayers.Layer.Grid.prototype.setMap.apply(this, arguments);
-        if(!this.tileOrigin) { 
+        if (!this.tileOrigin) { 
             this.tileOrigin = new OpenLayers.LonLat(this.maxExtent.left,
                                                 this.maxExtent.bottom);
         }                                       

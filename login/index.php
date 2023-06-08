@@ -3,7 +3,7 @@ session_start();
 $_SESSION['pagina'] = 'login';
 require_once("../assets/includes/header.php");
 
-if(isset($_SESSION['docent'])) {
+if (isset($_SESSION['docent'])) {
 	header('location:../');
 	die();
 } ?>

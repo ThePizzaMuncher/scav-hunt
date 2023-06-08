@@ -99,7 +99,7 @@ OpenLayers.Popup.Framed =
 
         OpenLayers.Popup.Anchored.prototype.initialize.apply(this, arguments);
 
-        if(this.fixedRelativePosition) {
+        if (this.fixedRelativePosition) {
             //based on our decided relativePostion, set the current padding
             // this keeps us from getting into trouble 
             this.updateRelativePosition();
@@ -114,7 +114,7 @@ OpenLayers.Popup.Framed =
         this.contentDiv.style.position = "absolute";
         this.contentDiv.style.zIndex = 1;
 
-        if(closeBox) {
+        if (closeBox) {
             this.closeDiv.style.zIndex = 1;
         }
 
@@ -140,12 +140,12 @@ OpenLayers.Popup.Framed =
         for(var i = 0; i < this.blocks.length; i++) {
             var block = this.blocks[i];
 
-            if(block.image) {
+            if (block.image) {
                 block.div.removeChild(block.image);
             }
             block.image = null;
 
-            if(block.div) {
+            if (block.div) {
                 this.groupDiv.removeChild(block.div);
             }
             block.div = null;
@@ -209,7 +209,7 @@ OpenLayers.Popup.Framed =
         this.padding = this.positionBlocks[this.relativePosition].padding;
 
         //update the position of our close box to new padding
-        if(this.closeDiv) {
+        if (this.closeDiv) {
             // use the content div's css padding to determine if we should
             //  padd the close div
             var contentDivPadding = this.getContentDivPadding();
@@ -294,11 +294,11 @@ OpenLayers.Popup.Framed =
      *     the popup's blocks in their appropropriate places.
      */
     updateBlocks: function() {
-        if(!this.blocks) {
+        if (!this.blocks) {
             this.createBlocks();
         }
         
-        if(this.size && this.relativePosition) {
+        if (this.size && this.relativePosition) {
             var position = this.positionBlocks[this.relativePosition];
             for (var i = 0; i < position.blocks.length; i++) {
     

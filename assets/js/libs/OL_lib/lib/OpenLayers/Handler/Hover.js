@@ -81,7 +81,7 @@ OpenLayers.Handler.Hover = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean} Continue propagating this event.
      */
     mousemove: function(evt) {
-        if(this.passesTolerance(evt.xy)) {
+        if (this.passesTolerance(evt.xy)) {
             this.clearTimer();
             this.callback('move', [evt]);
             this.px = evt.xy;
@@ -107,7 +107,7 @@ OpenLayers.Handler.Hover = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean} Continue propagating this event.
      */
     mouseout: function(evt) {
-        if(OpenLayers.Util.mouseLeft(evt, this.map.viewPortDiv)) {
+        if (OpenLayers.Util.mouseLeft(evt, this.map.viewPortDiv)) {
             this.clearTimer();
             this.callback('move', [evt]);
         }
@@ -126,12 +126,12 @@ OpenLayers.Handler.Hover = OpenLayers.Class(OpenLayers.Handler, {
      */
     passesTolerance: function(px) {
         var passes = true;
-        if(this.pixelTolerance && this.px) {
+        if (this.pixelTolerance && this.px) {
             var dpx = Math.sqrt(
                 Math.pow(this.px.x - px.x, 2) +
                 Math.pow(this.px.y - px.y, 2)
             );
-            if(dpx < this.pixelTolerance) {
+            if (dpx < this.pixelTolerance) {
                 passes = false;
             }
         }
@@ -143,7 +143,7 @@ OpenLayers.Handler.Hover = OpenLayers.Class(OpenLayers.Handler, {
      * Clear the timer and set <timerId> to null.
      */
     clearTimer: function() {
-        if(this.timerId != null) {
+        if (this.timerId != null) {
             window.clearTimeout(this.timerId);
             this.timerId = null;
         }
@@ -169,7 +169,7 @@ OpenLayers.Handler.Hover = OpenLayers.Class(OpenLayers.Handler, {
      */
     deactivate: function() {
         var deactivated = false;
-        if(OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
+        if (OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
             this.clearTimer();
             deactivated = true;
         }

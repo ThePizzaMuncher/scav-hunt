@@ -41,11 +41,11 @@
 
         // To get length of events.listeners error-free
         var getListenerLength= function(events,key){
-            if(!events) {
+            if (!events) {
                 return -2; // events is destroyed
-            } else if(!events.listeners) {
+            } else if (!events.listeners) {
                 return -1; // events is destroyed
-            } else if(!events.listeners[key]) {
+            } else if (!events.listeners[key]) {
                 return 0; // no listener in event
             } else {
                 return events.listeners[key].length;

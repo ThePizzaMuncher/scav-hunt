@@ -37,9 +37,9 @@
             }
             
             function setStyleMockProp(prop, value) {
-                if(prop && value === undefined) {
+                if (prop && value === undefined) {
                     delete style[prop];
-                } else if(prop) {
+                } else if (prop) {
                     style[prop] = value;
                 }
             }
@@ -57,7 +57,7 @@
                             setStyleMockProp(expectedPrefix, undefined);
                         }
                         
-                        if(!err) {
+                        if (!err) {
                             t.eq(prefixedProp, expectedPrefix, msg);
                         } else {
                             t.fail("Error when testing " + type.toUpperCase() + " vendor prefix: " + err.message);

@@ -55,16 +55,16 @@ OpenLayers.Format.WMSCapabilities.v1 = OpenLayers.Class(
      * {Array} List of named layers.
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         var raw = data;
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
         var capabilities = {};
         this.readNode(data, capabilities);
-        if(capabilities.service === undefined) {
+        if (capabilities.service === undefined) {
             // an exception must have occurred, so parse it
             var parser = new OpenLayers.Format.OGCExceptionReport();
             capabilities.error = parser.read(raw);
@@ -108,7 +108,7 @@ OpenLayers.Format.WMSCapabilities.v1 = OpenLayers.Class(
                     y: parseFloat(node.getAttribute("resy"))
                 };
 
-                if(! (isNaN(res.x) && isNaN(res.y))) {
+                if (! (isNaN(res.x) && isNaN(res.y))) {
                     bbox.res = res;
                 }
                 // return the bbox so that descendant classes can set the
@@ -169,13 +169,13 @@ OpenLayers.Format.WMSCapabilities.v1 = OpenLayers.Class(
             },
             "Fees": function(node, obj) {
                 var fees = this.getChildValue(node);
-                if(fees && fees.toLowerCase() != "none") {
+                if (fees && fees.toLowerCase() != "none") {
                     obj.fees = fees;
                 }
             },
             "AccessConstraints": function(node, obj) {
                 var constraints = this.getChildValue(node);
-                if(constraints && constraints.toLowerCase() != "none") {
+                if (constraints && constraints.toLowerCase() != "none") {
                     obj.accessConstraints = constraints;
                 }
             },
@@ -195,7 +195,7 @@ OpenLayers.Format.WMSCapabilities.v1 = OpenLayers.Class(
                 this.readChildNodes(node, obj.getcapabilities);
             },
             "Format": function(node, obj) {
-                if(OpenLayers.Util.isArray(obj.formats)) {
+                if (OpenLayers.Util.isArray(obj.formats)) {
                     obj.formats.push(this.getChildValue(node));
                 } else {
                     obj.format = this.getChildValue(node);
@@ -211,7 +211,7 @@ OpenLayers.Format.WMSCapabilities.v1 = OpenLayers.Class(
                 obj.get = {};
                 this.readChildNodes(node, obj.get);
                 // backwards compatibility
-                if(!obj.href) {
+                if (!obj.href) {
                     obj.href = obj.get.href;
                 }
             },
@@ -219,7 +219,7 @@ OpenLayers.Format.WMSCapabilities.v1 = OpenLayers.Class(
                 obj.post = {};
                 this.readChildNodes(node, obj.post);
                 // backwards compatibility
-                if(!obj.href) {
+                if (!obj.href) {
                     obj.href = obj.get.href;
                 }
             },
@@ -237,7 +237,7 @@ OpenLayers.Format.WMSCapabilities.v1 = OpenLayers.Class(
             },
             "Layer": function(node, obj) {
                 var parentLayer, capability;
-                if(obj.capability) {
+                if (obj.capability) {
                     capability = obj.capability;
                     parentLayer = obj;
                 } else {
@@ -291,18 +291,18 @@ OpenLayers.Format.WMSCapabilities.v1 = OpenLayers.Class(
                 layer.capability = capability;
                 this.readChildNodes(node, layer);
                 delete layer.capability;
-                if(layer.name) {
+                if (layer.name) {
                     var parts = layer.name.split(":"),
                         request = capability.request,
                         gfi = request.getfeatureinfo;
-                    if(parts.length > 0) {
+                    if (parts.length > 0) {
                         layer.prefix = parts[0];
                     }
                     capability.layers.push(layer);
-                    if(layer.formats === undefined) {
+                    if (layer.formats === undefined) {
                         layer.formats = request.getmap.formats;
                     }
-                    if(layer.infoFormats === undefined && gfi) {
+                    if (layer.infoFormats === undefined && gfi) {
                         layer.infoFormats = gfi.formats;
                     }
                 }

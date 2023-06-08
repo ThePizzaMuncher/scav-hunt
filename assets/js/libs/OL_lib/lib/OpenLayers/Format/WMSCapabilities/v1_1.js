@@ -31,7 +31,7 @@ OpenLayers.Format.WMSCapabilities.v1_1 = OpenLayers.Class(
                 this.readChildNodes(node, obj);
             },
             "Keyword": function(node, obj) {
-                if(obj.keywords) {
+                if (obj.keywords) {
                     obj.keywords.push(this.getChildValue(node));
                 }
             },
@@ -78,13 +78,13 @@ OpenLayers.Format.WMSCapabilities.v1_1 = OpenLayers.Class(
                 var max = node.getAttribute("max");
                 var rad2 = Math.pow(2, 0.5);
                 var ipm = OpenLayers.INCHES_PER_UNIT["m"];
-                if(min != 0) {
+                if (min != 0) {
                     obj.maxScale = parseFloat(
                         ((min / rad2) * ipm * 
                             OpenLayers.DOTS_PER_INCH).toPrecision(13)
                     );
                 }
-                if(max != Number.POSITIVE_INFINITY) {
+                if (max != Number.POSITIVE_INFINITY) {
                     obj.minScale = parseFloat(
                         ((max / rad2) * ipm * 
                             OpenLayers.DOTS_PER_INCH).toPrecision(13)
@@ -102,7 +102,7 @@ OpenLayers.Format.WMSCapabilities.v1_1 = OpenLayers.Class(
             },
             "Extent": function(node, obj) {
                 var name = node.getAttribute("name").toLowerCase();
-                if(name in obj["dimensions"]) {
+                if (name in obj["dimensions"]) {
                     var extent = obj.dimensions[name];
                     extent.nearestVal = 
                         node.getAttribute("nearestValue") === "1";

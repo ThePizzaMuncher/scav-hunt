@@ -6,7 +6,7 @@ ws.onopen = () => {
     let number = 0;
     ws.send("Client joined the server. " + Date());
     setInterval(() => {//Stuurt elke seconde een ping naar de server met de data.
-        if(navigator.geolocation) {
+        if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         }
         else {

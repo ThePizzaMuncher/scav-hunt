@@ -59,7 +59,7 @@
 						<ul class="nav-menu">
 							<li><a href="../.." class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
 							<?php
-							if(isset($_SESSION['docent'])) {
+							if (isset($_SESSION['docent'])) {
 								// echo <<< bar
 								echo '<li><a href="../../docent/"><i class="bx bx-user"></i> Docent</a></li>';
 								echo '<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
@@ -69,18 +69,18 @@
 								echo 		'<li><a href="../../docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
 								echo 		'<li><a href="../../docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
 								echo 		'<li><a href="../../docent/code-tonen.php"><i class="bx bx-code"></i> Code tonen</a></li>';
-								if(isset($_SESSION['admin']))
+								if (isset($_SESSION['admin']))
 									echo	'<li><a href="docent_toevoegen.php"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
 								echo 	'</ul>';
 								echo '</li>';
 								echo '<li><a href="../../login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 								// bar;
-							} else if($_SESSION['pagina'] == 'home') {
+							} else if ($_SESSION['pagina'] == 'home') {
 								echo '<li><a href="../../login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>';
 								echo '<li><a href="../../student_code.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>';
 							}
 							
-							/* else if(isset($_SESSION["admin"])) {
+							/* else if (isset($_SESSION["admin"])) {
 								echo '<li><a href="../../docent/"><i class="bx bx-user"></i> Docent</a></li>';
 								echo '<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
 								echo '<ul>';
@@ -94,7 +94,7 @@
 								echo '</li>';
 								echo '<li><a href="../../login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 							} else {
-								if($_SESSION['pagina'] == 'home') {
+								if ($_SESSION['pagina'] == 'home') {
 									echo '<li><a href="../../login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>';
 									echo '<li><a href="../../student_code.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>';
 								} else {
@@ -105,12 +105,12 @@
 							/* function default_bar() {
 							echo '<li><a href="code-tonen.php"><i class="bx bx-code"></i>Login</a></li>';
 							}
-							if(isset($_SESSION["pagina"])) {
+							if (isset($_SESSION["pagina"])) {
 							$pn = $_SESSION["pagina"];
-							if($pn == "home") {
+							if ($pn == "home") {
 							echo '<li><a href="../../login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>';
 							echo '<li><a href="../../student_code.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>';
-							} else if($pn == "login") default_bar();
+							} else if ($pn == "login") default_bar();
 							} else default_bar(); */
 							?>
 							<li><a href="../../about.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li>

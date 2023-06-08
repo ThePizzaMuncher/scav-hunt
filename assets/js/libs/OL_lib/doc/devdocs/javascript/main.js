@@ -15,52 +15,52 @@ var agt=navigator.userAgent.toLowerCase();
 var browserType;
 var browserVer;
 
-if(agt.indexOf("opera") != -1)
+if (agt.indexOf("opera") != -1)
     {
     browserType = "Opera";
 
-    if(agt.indexOf("opera 7") != -1 || agt.indexOf("opera/7") != -1)
+    if (agt.indexOf("opera 7") != -1 || agt.indexOf("opera/7") != -1)
         {  browserVer = "Opera7";  }
-    else if(agt.indexOf("opera 8") != -1 || agt.indexOf("opera/8") != -1)
+    else if (agt.indexOf("opera 8") != -1 || agt.indexOf("opera/8") != -1)
         {  browserVer = "Opera8";  }
-    else if(agt.indexOf("opera 9") != -1 || agt.indexOf("opera/9") != -1)
+    else if (agt.indexOf("opera 9") != -1 || agt.indexOf("opera/9") != -1)
         {  browserVer = "Opera9";  }
     }
 
-else if(agt.indexOf("applewebkit") != -1)
+else if (agt.indexOf("applewebkit") != -1)
     {
     browserType = "Safari";
 
-    if(agt.indexOf("version/3") != -1)
+    if (agt.indexOf("version/3") != -1)
         {  browserVer = "Safari3";  }
-    else if(agt.indexOf("safari/4") != -1)
+    else if (agt.indexOf("safari/4") != -1)
         {  browserVer = "Safari2";  }
     }
 
-else if(agt.indexOf("khtml") != -1)
+else if (agt.indexOf("khtml") != -1)
     {
     browserType = "Konqueror";
     }
 
-else if(agt.indexOf("msie") != -1)
+else if (agt.indexOf("msie") != -1)
     {
     browserType = "IE";
 
-    if(agt.indexOf("msie 6") != -1)
+    if (agt.indexOf("msie 6") != -1)
         {  browserVer = "IE6";  }
-    else if(agt.indexOf("msie 7") != -1)
+    else if (agt.indexOf("msie 7") != -1)
         {  browserVer = "IE7";  }
     }
 
-else if(agt.indexOf("gecko") != -1)
+else if (agt.indexOf("gecko") != -1)
     {
     browserType = "Firefox";
 
-    if(agt.indexOf("rv:1.7") != -1)
+    if (agt.indexOf("rv:1.7") != -1)
         {  browserVer = "Firefox1";  }
-    else if(agt.indexOf("rv:1.8)") != -1 || agt.indexOf("rv:1.8.0") != -1)
+    else if (agt.indexOf("rv:1.8)") != -1 || agt.indexOf("rv:1.8.0") != -1)
         {  browserVer = "Firefox15";  }
-    else if(agt.indexOf("rv:1.8.1") != -1)
+    else if (agt.indexOf("rv:1.8.1") != -1)
         {  browserVer = "Firefox2";  }
     }
 
@@ -74,7 +74,7 @@ function GetXPosition(item)
     {
     var position = 0;
 
-    if(item.offsetWidth != null)
+    if (item.offsetWidth != null)
         {
         while (item != document.body && item != null)
             {
@@ -91,7 +91,7 @@ function GetYPosition(item)
     {
     var position = 0;
 
-    if(item.offsetWidth != null)
+    if (item.offsetWidth != null)
         {
         while (item != document.body && item != null)
             {
@@ -108,12 +108,12 @@ function MoveToPosition(item, x, y)
     {
     // Opera 5 chokes on the px extension, so it can use the Microsoft one instead.
 
-    if(item.style.left != null)
+    if (item.style.left != null)
         {
         item.style.left = x + "px";
         item.style.top = y + "px";
         }
-    else if(item.style.pixelLeft != null)
+    else if (item.style.pixelLeft != null)
         {
         item.style.pixelLeft = x;
         item.style.pixelTop = y;
@@ -128,12 +128,12 @@ function MoveToPosition(item, x, y)
 
 function ToggleMenu(id)
     {
-    if(!window.document.getElementById)
+    if (!window.document.getElementById)
         {  return;  };
 
     var display = window.document.getElementById(id).style.display;
 
-    if(display == "none")
+    if (display == "none")
         {  display = "block";  }
     else
         {  display = "none";  }
@@ -143,14 +143,14 @@ function ToggleMenu(id)
 
 function HideAllBut(ids, max)
     {
-    if(document.getElementById)
+    if (document.getElementById)
         {
         ids.sort( function(a,b) { return a - b; } );
         var number = 1;
 
         while (number < max)
             {
-            if(ids.length > 0 && number == ids[0])
+            if (ids.length > 0 && number == ids[0])
                 {  ids.shift();  }
             else
                 {
@@ -172,7 +172,7 @@ var tooltipTimer = 0;
 
 function ShowTip(event, tooltipID, linkID)
     {
-    if(tooltipTimer)
+    if (tooltipTimer)
         {  clearTimeout(tooltipTimer);  };
 
     var docX = event.clientX + window.pageXOffset;
@@ -190,18 +190,18 @@ function ReallyShowTip(tooltipID, linkID, docX, docY)
     var tooltip;
     var link;
 
-    if(document.getElementById)
+    if (document.getElementById)
         {
         tooltip = document.getElementById(tooltipID);
         link = document.getElementById(linkID);
         }
-/*    else if(document.all)
+/*    else if (document.all)
         {
         tooltip = eval("document.all['" + tooltipID + "']");
         link = eval("document.all['" + linkID + "']");
         }
 */
-    if(tooltip)
+    if (tooltip)
         {
         var left = GetXPosition(link);
         var top = GetYPosition(link);
@@ -211,7 +211,7 @@ function ReallyShowTip(tooltipID, linkID, docX, docY)
         // The fallback method is to use the mouse X and Y relative to the document.  We use a separate if and test if its a number
         // in case some browser snuck through the above if statement but didn't support everything.
 
-        if(!isFinite(top) || top == 0)
+        if (!isFinite(top) || top == 0)
             {
             left = docX;
             top = docY;
@@ -224,16 +224,16 @@ function ReallyShowTip(tooltipID, linkID, docX, docY)
         // Make sure the tooltip doesnt get smushed by being too close to the edge, or in some browsers, go off the edge of the
         // page.  We do it here because Konqueror does get offsetWidth right even if it doesnt get the positioning right.
 
-        if(tooltip.offsetWidth != null)
+        if (tooltip.offsetWidth != null)
             {
             var width = tooltip.offsetWidth;
             var docWidth = document.body.clientWidth;
 
-            if(left + width > docWidth)
+            if (left + width > docWidth)
                 {  left = docWidth - width - 1;  }
 
             // If there's a horizontal scroll bar we could go past zero because it's using the page width, not the window width.
-            if(left < 0)
+            if (left < 0)
                 {  left = 0;  };
             }
 
@@ -244,7 +244,7 @@ function ReallyShowTip(tooltipID, linkID, docX, docY)
 
 function HideTip(tooltipID)
     {
-    if(tooltipTimer)
+    if (tooltipTimer)
         {
         clearTimeout(tooltipTimer);
         tooltipTimer = 0;
@@ -252,12 +252,12 @@ function HideTip(tooltipID)
 
     var tooltip;
 
-    if(document.getElementById)
+    if (document.getElementById)
         {  tooltip = document.getElementById(tooltipID); }
-    else if(document.all)
+    else if (document.all)
         {  tooltip = eval("document.all['" + tooltipID + "']");  }
 
-    if(tooltip)
+    if (tooltip)
         {  tooltip.style.visibility = "hidden";  }
     }
 
@@ -269,11 +269,11 @@ function HideTip(tooltipID)
 
 function NDOnLoad()
     {
-    if(browserVer == "IE6")
+    if (browserVer == "IE6")
         {
         var scrollboxes = document.getElementsByTagName('blockquote');
 
-        if(scrollboxes.item(0))
+        if (scrollboxes.item(0))
             {
             NDDoResize();
             window.onresize=NDOnResize;
@@ -286,7 +286,7 @@ var resizeTimer = 0;
 
 function NDOnResize()
     {
-    if(resizeTimer != 0)
+    if (resizeTimer != 0)
         {  clearTimeout(resizeTimer);  };
 
     resizeTimer = setTimeout(NDDoResize, 250);
@@ -339,7 +339,7 @@ function NDDoResize()
 
 function SearchPanel(name, mode, resultsPath)
     {
-    if(!name || !mode || !resultsPath)
+    if (!name || !mode || !resultsPath)
         {  alert("Incorrect parameters to SearchPanel.");  };
 
 
@@ -453,7 +453,7 @@ function SearchPanel(name, mode, resultsPath)
     */
     this.OnSearchFieldChange = function()
         {
-        if(this.keyTimeout)
+        if (this.keyTimeout)
             {
             clearTimeout(this.keyTimeout);
             this.keyTimeout = 0;
@@ -461,15 +461,15 @@ function SearchPanel(name, mode, resultsPath)
 
         var searchValue = this.DOMSearchField().value.replace(/ +/g, "");
 
-        if(searchValue != this.lastSearchValue)
+        if (searchValue != this.lastSearchValue)
             {
-            if(searchValue != "")
+            if (searchValue != "")
                 {
                 this.keyTimeout = setTimeout(this.name + ".Search()", this.keyTimeoutLength);
                 }
             else
                 {
-                if(this.mode == "HTML")
+                if (this.mode == "HTML")
                     {  this.DOMPopupSearchResultsWindow().style.display = "none";  };
                 this.lastSearchValue = "";
                 };
@@ -495,7 +495,7 @@ function SearchPanel(name, mode, resultsPath)
         {
         var searchValue = this.DOMSearchField().value.replace(/ +/g, "");
 
-        if(searchValue != "")
+        if (searchValue != "")
             {
             this.Search();
             };
@@ -531,9 +531,9 @@ function SearchPanel(name, mode, resultsPath)
 
         var pageExtension = searchValue.substr(0,1);
 
-        if(pageExtension.match(/^[a-z]/i))
+        if (pageExtension.match(/^[a-z]/i))
             {  pageExtension = pageExtension.toUpperCase();  }
-        else if(pageExtension.match(/^[0-9]/))
+        else if (pageExtension.match(/^[0-9]/))
             {  pageExtension = 'Numbers';  }
         else
             {  pageExtension = "Symbols";  };
@@ -543,7 +543,7 @@ function SearchPanel(name, mode, resultsPath)
         var hasResultsPage;
 
         // indexSectionsWithContent is defined in searchdata.js
-        if(indexSectionsWithContent[searchTopic][pageExtension] == true)
+        if (indexSectionsWithContent[searchTopic][pageExtension] == true)
             {
             resultsPage = this.resultsPath + '/' + searchTopic + pageExtension + '.html';
             resultsPageWithSearch = resultsPage+'?'+escape(searchValue);
@@ -557,13 +557,13 @@ function SearchPanel(name, mode, resultsPath)
             };
 
         var resultsFrame;
-        if(this.mode == "HTML")
+        if (this.mode == "HTML")
             {  resultsFrame = window.frames.MSearchResults;  }
-        else if(this.mode == "FramedHTML")
+        else if (this.mode == "FramedHTML")
             {  resultsFrame = window.top.frames['Content'];  };
 
 
-        if(resultsPage != this.lastResultsPage ||
+        if (resultsPage != this.lastResultsPage ||
 
             // Bug in IE.  If everything becomes hidden in a run, none of them will be able to be reshown in the next for some
             // reason.  It counts the right number of results, and you can even read the display as "block" after setting it, but it
@@ -579,10 +579,10 @@ function SearchPanel(name, mode, resultsPath)
         // So if the results page is right and there's no IE bug, reperform the search on the existing page.  We have to check if there
         // are results because NoResults.html doesn't have any JavaScript, and it would be useless to do anything on that page even
         // if it did.
-        else if(hasResultsPage)
+        else if (hasResultsPage)
             {
             // We need to check if this exists in case the frame is present but didn't finish loading.
-            if(resultsFrame.searchResults)
+            if (resultsFrame.searchResults)
                 {  resultsFrame.searchResults.Search(searchValue);  }
 
             // Otherwise just reload instead of waiting.
@@ -593,7 +593,7 @@ function SearchPanel(name, mode, resultsPath)
 
         var domPopupSearchResultsWindow = this.DOMPopupSearchResultsWindow();
 
-        if(this.mode == "HTML" && domPopupSearchResultsWindow.style.display != "block")
+        if (this.mode == "HTML" && domPopupSearchResultsWindow.style.display != "block")
             {
             var domSearchType = this.DOMSearchType();
 
@@ -630,9 +630,9 @@ function SearchPanel(name, mode, resultsPath)
     this.Activate = function(isActive, ignoreDeactivateDelay)
         {
         // We want to ignore isActive being false while the results window is open.
-        if(isActive || (this.mode == "HTML" && this.DOMPopupSearchResultsWindow().style.display == "block"))
+        if (isActive || (this.mode == "HTML" && this.DOMPopupSearchResultsWindow().style.display == "block"))
             {
-            if(this.inactivateTimeout)
+            if (this.inactivateTimeout)
                 {
                 clearTimeout(this.inactivateTimeout);
                 this.inactivateTimeout = 0;
@@ -642,10 +642,10 @@ function SearchPanel(name, mode, resultsPath)
 
             var searchField = this.DOMSearchField();
 
-            if(searchField.value == 'Search')
+            if (searchField.value == 'Search')
                  {  searchField.value = "";  }
             }
-        else if(!ignoreDeactivateDelay)
+        else if (!ignoreDeactivateDelay)
             {
             this.inactivateTimeout = setTimeout(this.name + ".InactivateAfterTimeout()", this.inactivateTimeoutLength);
             }
@@ -710,7 +710,7 @@ function SearchResults(name, mode)
     */
     this.Toggle = function(id)
         {
-        if(this.mode == "FramedHTML")
+        if (this.mode == "FramedHTML")
             {  return;  };
 
         var parentElement = document.getElementById(id);
@@ -719,17 +719,17 @@ function SearchResults(name, mode)
 
         while (element && element != parentElement)
             {
-            if(element.nodeName == 'DIV' && element.className == 'ISubIndex')
+            if (element.nodeName == 'DIV' && element.className == 'ISubIndex')
                 {
-                if(element.style.display == 'block')
+                if (element.style.display == 'block')
                     {  element.style.display = "none";  }
                 else
                     {  element.style.display = 'block';  }
                 };
 
-            if(element.nodeName == 'DIV' && element.hasChildNodes())
+            if (element.nodeName == 'DIV' && element.hasChildNodes())
                 {  element = element.firstChild;  }
-            else if(element.nextSibling)
+            else if (element.nextSibling)
                 {  element = element.nextSibling;  }
             else
                 {
@@ -739,7 +739,7 @@ function SearchResults(name, mode)
                     }
                 while (element && element != parentElement && !element.nextSibling);
 
-                if(element && element != parentElement)
+                if (element && element != parentElement)
                     {  element = element.nextSibling;  };
                 };
             };
@@ -755,7 +755,7 @@ function SearchResults(name, mode)
     */
     this.Search = function(search)
         {
-        if(!search)
+        if (!search)
             {
             search = window.location.search;
             search = search.substring(1);  // Remove the leading ?
@@ -766,7 +766,7 @@ function SearchResults(name, mode)
         search = search.replace(/ +$/, "");
         search = search.toLowerCase();
 
-        if(search.match(/[^a-z0-9]/)) // Just a little speedup so it doesn't have to go through the below unnecessarily.
+        if (search.match(/[^a-z0-9]/)) // Just a little speedup so it doesn't have to go through the below unnecessarily.
             {
             search = search.replace(/\_/g, "_und");
             search = search.replace(/\ +/gi, "_spc");
@@ -809,12 +809,12 @@ function SearchResults(name, mode)
             {
             var row = resultRows.item(i);
 
-            if(row.className == "SRResult")
+            if (row.className == "SRResult")
                 {
                 var rowMatchName = row.id.toLowerCase();
                 rowMatchName = rowMatchName.replace(/^sr\d*_/, '');
 
-                if(search.length <= rowMatchName.length && rowMatchName.substr(0, search.length) == search)
+                if (search.length <= rowMatchName.length && rowMatchName.substr(0, search.length) == search)
                     {
                     row.style.display = "block";
                     matches++;
@@ -828,7 +828,7 @@ function SearchResults(name, mode)
 
         document.getElementById("Searching").style.display="none";
 
-        if(matches == 0)
+        if (matches == 0)
             {  document.getElementById("NoMatches").style.display="block";  }
         else
             {  document.getElementById("NoMatches").style.display="none";  }

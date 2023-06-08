@@ -34,7 +34,7 @@ OpenLayers.Util.vendorPrefix = (function() {
      * {String} The CSS property
      */
     function domToCss(prefixedDom) {
-        if(!prefixedDom) { return null; }
+        if (!prefixedDom) { return null; }
         return prefixedDom.
             replace(/([A-Z])/g, function(c) { return "-" + c.toLowerCase(); }).
             replace(/^ms-/, "-ms-");
@@ -52,7 +52,7 @@ OpenLayers.Util.vendorPrefix = (function() {
      *          supported
      */
     function css(property) {
-        if(cssCache[property] === undefined) {
+        if (cssCache[property] === undefined) {
             var domProperty = property.
                 replace(/(-[\s\S])/g, function(c) { return c.charAt(1).toUpperCase(); });
             var prefixedDom = style(domProperty);
@@ -74,7 +74,7 @@ OpenLayers.Util.vendorPrefix = (function() {
      *          supported
      */
     function js(obj, property) {
-        if(jsCache[property] === undefined) {
+        if (jsCache[property] === undefined) {
             var tmpProp,
                 i = 0,
                 l = VENDOR_PREFIXES.length,
@@ -84,8 +84,8 @@ OpenLayers.Util.vendorPrefix = (function() {
             jsCache[property] = null;
             for(; i<l; i++) {
                 prefix = VENDOR_PREFIXES[i];
-                if(prefix) {
-                    if(!isStyleObj) {
+                if (prefix) {
+                    if (!isStyleObj) {
                         // js prefix should be lower-case, while style
                         // properties have upper case on first character
                         prefix = prefix.toLowerCase();
@@ -95,7 +95,7 @@ OpenLayers.Util.vendorPrefix = (function() {
                     tmpProp = property;
                 }
 
-                if(obj[tmpProp] !== undefined) {
+                if (obj[tmpProp] !== undefined) {
                     jsCache[property] = tmpProp;
                     break;
                 }

@@ -32,8 +32,8 @@
         t.ok( layer.units = 'm', "map units are set correctly");
         t.ok( layer.resolutions && layer.resolutions.length == 20, "resolutions are initialized from LOD objects properly");
         
-        if(layerInfo.tileInfo) {
-            if(layerInfo.tileInfo.width && layerInfo.tileInfo.height) {
+        if (layerInfo.tileInfo) {
+            if (layerInfo.tileInfo.width && layerInfo.tileInfo.height) {
                 var tileSize = new OpenLayers.Size(layerInfo.tileInfo.width, layerInfo.tileInfo.height);
                 t.ok((layer.tileSize.width == tileSize.width) && (layer.tileSize.height == tileSize.height), "tile size is set properly");
             }

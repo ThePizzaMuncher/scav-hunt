@@ -70,7 +70,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
         this.container.appendChild(this.root);
         this.canvas = this.root.getContext("2d");
         this.features = {};
-        if(this.hitDetection) {
+        if (this.hitDetection) {
             this.hitCanvas = document.createElement("canvas");
             this.hitContext = this.hitCanvas.getContext("2d");
         }
@@ -136,7 +136,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
         root.width = size.w;
         root.height = size.h;
         this.resolution = null;
-        if(this.hitDetection) {
+        if (this.hitDetection) {
             var hitCanvas = this.hitCanvas;
             hitCanvas.style.width = size.w + "px";
             hitCanvas.style.height = size.h + "px";
@@ -161,20 +161,20 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
      */
     drawFeature: function(feature, style) {
         var rendered;
-        if(feature.geometry) {
+        if (feature.geometry) {
             style = this.applyDefaultSymbolizer(style || feature.style);
             // don't render if display none or feature outside extent
             var bounds = feature.geometry.getBounds();
 
             var worldBounds;
-            if(this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
+            if (this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
                 worldBounds = this.map.getMaxExtent();
             }
 
             var intersects = bounds && bounds.intersectsBounds(this.extent, {worldBounds: worldBounds});
 
             rendered = (style.display !== "none") && !!bounds && intersects;
-            if(rendered) {
+            if (rendered) {
                 // keep track of what we have rendered for redraw
                 this.features[feature.id] = [feature, style];
             }
@@ -184,7 +184,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
             }
             this.pendingRedraw = true;
         }
-        if(this.pendingRedraw && !this.locked) {
+        if (this.pendingRedraw && !this.locked) {
             this.redraw();
             this.pendingRedraw = false;
         }
@@ -202,7 +202,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
      */
     drawGeometry: function(geometry, style, featureId) {
         var className = geometry.CLASS_NAME;
-        if((className == "OpenLayers.Geometry.Collection") ||
+        if ((className == "OpenLayers.Geometry.Collection") ||
             (className == "OpenLayers.Geometry.MultiPoint") ||
             (className == "OpenLayers.Geometry.MultiLineString") ||
             (className == "OpenLayers.Geometry.MultiPolygon")) {
@@ -242,7 +242,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
         var img = new Image();
 
         var title = style.title || style.graphicTitle;        
-        if(title) {
+        if (title) {
             img.title = title;           
         }
 
@@ -258,13 +258,13 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
         var opacity = style.graphicOpacity || style.fillOpacity;
         
         var onLoad = function() {
-            if(!this.features[featureId]) {
+            if (!this.features[featureId]) {
                 return;
             }
             var pt = this.getLocalXY(geometry);
             var p0 = pt[0];
             var p1 = pt[1];
-            if(!isNaN(p0) && !isNaN(p1)) {
+            if (!isNaN(p0) && !isNaN(p1)) {
                 var x = (p0 + xOffset) | 0;
                 var y = (p1 + yOffset) | 0;
                 var canvas = this.canvas;
@@ -279,7 +279,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
                 canvas.drawImage(
                     img, x*factor, y*factor, width*factor, height*factor
                 );
-                if(this.hitDetection) {
+                if (this.hitDetection) {
                     this.setHitContextStyle("fill", featureId);
                     this.hitContext.fillRect(x, y, width, height);
                 }
@@ -307,29 +307,29 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
         
         var symbol = OpenLayers.Renderer.symbol[style.graphicName];
          
-        if(!symbol) {
+        if (!symbol) {
             throw new Error(style.graphicName + ' is not a valid symbol name');
         }
         
-        if(!symbol.length || symbol.length < 2) return;
+        if (!symbol.length || symbol.length < 2) return;
         
         var pt = this.getLocalXY(geometry);
         var p0 = pt[0];
         var p1 = pt[1];
        
-        if(isNaN(p0) || isNaN(p1)) return;
+        if (isNaN(p0) || isNaN(p1)) return;
         
         // Use rounded line caps
         this.canvas.lineCap = "round";
         this.canvas.lineJoin = "round";
         
-        if(this.hitDetection) {
+        if (this.hitDetection) {
             this.hitContext.lineCap = "round";
             this.hitContext.lineJoin = "round";
         }
         
         // Scale and rotate symbols, using precalculated bounds whenever possible.
-        if(style.graphicName in this.cachedSymbolBounds) {
+        if (style.graphicName in this.cachedSymbolBounds) {
             symbolBounds = this.cachedSymbolBounds[style.graphicName];
         } else {
             symbolBounds = new OpenLayers.Bounds();
@@ -342,54 +342,54 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
         // Push symbol scaling, translation and rotation onto the transformation stack in reverse order.
         // Don't forget to apply all canvas transformations to the hitContext canvas as well(!)
         this.canvas.save();
-        if(this.hitDetection) { this.hitContext.save(); }
+        if (this.hitDetection) { this.hitContext.save(); }
         
         // Step 3: place symbol at the desired location
         this.canvas.translate(p0,p1);
-        if(this.hitDetection) { this.hitContext.translate(p0,p1); }
+        if (this.hitDetection) { this.hitContext.translate(p0,p1); }
         
         // Step 2a. rotate the symbol if necessary
         angle = deg2rad * style.rotation; // will be NaN when style.rotation is undefined.
-        if(!isNaN(angle)) {
+        if (!isNaN(angle)) {
             this.canvas.rotate(angle);
-            if(this.hitDetection) { this.hitContext.rotate(angle); }
+            if (this.hitDetection) { this.hitContext.rotate(angle); }
         }
                 
         // // Step 2: scale symbol such that pointRadius equals half the maximum symbol dimension.
         scaling = 2.0 * style.pointRadius / Math.max(symbolBounds.getWidth(), symbolBounds.getHeight());
         this.canvas.scale(scaling,scaling);
-        if(this.hitDetection) { this.hitContext.scale(scaling,scaling); }
+        if (this.hitDetection) { this.hitContext.scale(scaling,scaling); }
         
         // Step 1: center the symbol at the origin        
         cx = symbolBounds.getCenterLonLat().lon;
         cy = symbolBounds.getCenterLonLat().lat;
         this.canvas.translate(-cx,-cy);
-        if(this.hitDetection) { this.hitContext.translate(-cx,-cy); }        
+        if (this.hitDetection) { this.hitContext.translate(-cx,-cy); }        
 
         // Don't forget to scale stroke widths, because they are affected by canvas scale transformations as well(!)
         // Alternative: scale symbol coordinates manually, so stroke width scaling is not needed anymore.
         unscaledStrokeWidth = style.strokeWidth;
         style.strokeWidth = unscaledStrokeWidth / scaling;
             
-        if(style.fill !== false) {
+        if (style.fill !== false) {
             this.setCanvasStyle("fill", style);
             this.canvas.beginPath();
             for (i=0; i<symbol.length; i=i+2) {
                 x = symbol[i];
                 y = symbol[i+1];
-                if(i == 0) this.canvas.moveTo(x,y);
+                if (i == 0) this.canvas.moveTo(x,y);
                 this.canvas.lineTo(x,y);
             }
             this.canvas.closePath();
             this.canvas.fill();
 
-            if(this.hitDetection) {
+            if (this.hitDetection) {
                 this.setHitContextStyle("fill", featureId, style);
                 this.hitContext.beginPath();
                 for (i=0; i<symbol.length; i=i+2) {
                     x = symbol[i];
                     y = symbol[i+1];
-                    if(i == 0) this.canvas.moveTo(x,y);
+                    if (i == 0) this.canvas.moveTo(x,y);
                     this.hitContext.lineTo(x,y);
                 }
                 this.hitContext.closePath();
@@ -397,26 +397,26 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
             }
         }  
         
-        if(style.stroke !== false) {
+        if (style.stroke !== false) {
             this.setCanvasStyle("stroke", style);
             this.canvas.beginPath();
             for (i=0; i<symbol.length; i=i+2) {
                 x = symbol[i];
                 y = symbol[i+1];
-                if(i == 0) this.canvas.moveTo(x,y);
+                if (i == 0) this.canvas.moveTo(x,y);
                 this.canvas.lineTo(x,y);
             }
             this.canvas.closePath();
             this.canvas.stroke();
             
             
-            if(this.hitDetection) {
+            if (this.hitDetection) {
                 this.setHitContextStyle("stroke", featureId, style, scaling);
                 this.hitContext.beginPath();
                 for (i=0; i<symbol.length; i=i+2) {
                     x = symbol[i];
                     y = symbol[i+1];
-                    if(i == 0) this.hitContext.moveTo(x,y);
+                    if (i == 0) this.hitContext.moveTo(x,y);
                     this.hitContext.lineTo(x,y);
                 }
                 this.hitContext.closePath();
@@ -427,7 +427,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
         
         style.strokeWidth = unscaledStrokeWidth;
         this.canvas.restore();
-        if(this.hitDetection) { this.hitContext.restore(); }
+        if (this.hitDetection) { this.hitContext.restore(); }
         this.setCanvasStyle("reset");  
     },
 
@@ -440,10 +440,10 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
      * style - {Object} Symbolizer hash
      */
     setCanvasStyle: function(type, style) {
-        if(type === "fill") {     
+        if (type === "fill") {     
             this.canvas.globalAlpha = style['fillOpacity'];
             this.canvas.fillStyle = style['fillColor'];
-        } else if(type === "stroke") {  
+        } else if (type === "stroke") {  
             this.canvas.globalAlpha = style['strokeOpacity'];
             this.canvas.strokeStyle = style['strokeColor'];
             this.canvas.lineWidth = style['strokeWidth'];
@@ -465,7 +465,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
      */
     featureIdToHex: function(featureId) {
         var id = Number(featureId.split("_").pop()) + 1; // zero for no feature
-        if(id >= 16777216) {
+        if (id >= 16777216) {
             this.hitOverflow = id - 16777215;
             id = id % 16777216 + 1;
         }
@@ -486,18 +486,18 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
      */
     setHitContextStyle: function(type, featureId, symbolizer, strokeScaling) {
         var hex = this.featureIdToHex(featureId);
-        if(type == "fill") {
+        if (type == "fill") {
             this.hitContext.globalAlpha = 1.0;
             this.hitContext.fillStyle = hex;
-        } else if(type == "stroke") {  
+        } else if (type == "stroke") {  
             this.hitContext.globalAlpha = 1.0;
             this.hitContext.strokeStyle = hex;
             // bump up stroke width to deal with antialiasing. If strokeScaling is defined, we're rendering a symbol 
             // on a transformed canvas, so the antialias width bump has to scale as well.
-            if(typeof strokeScaling === "undefined") {
+            if (typeof strokeScaling === "undefined") {
                 this.hitContext.lineWidth = symbolizer.strokeWidth + 2;
             } else {
-                if(!isNaN(strokeScaling)) { this.hitContext.lineWidth = symbolizer.strokeWidth + 2.0 / strokeScaling; }
+                if (!isNaN(strokeScaling)) { this.hitContext.lineWidth = symbolizer.strokeWidth + 2.0 / strokeScaling; }
             }
         } else {
             this.hitContext.globalAlpha = 0;
@@ -515,24 +515,24 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
      * featureId - {String}
      */ 
     drawPoint: function(geometry, style, featureId) {
-        if(style.graphic !== false) {
-            if(style.externalGraphic) {
+        if (style.graphic !== false) {
+            if (style.externalGraphic) {
                 this.drawExternalGraphic(geometry, style, featureId);
-            } else if(style.graphicName && (style.graphicName != "circle")) {
+            } else if (style.graphicName && (style.graphicName != "circle")) {
                 this.drawNamedSymbol(geometry, style, featureId);
             } else {
                 var pt = this.getLocalXY(geometry);
                 var p0 = pt[0];
                 var p1 = pt[1];
-                if(!isNaN(p0) && !isNaN(p1)) {
+                if (!isNaN(p0) && !isNaN(p1)) {
                     var twoPi = Math.PI*2;
                     var radius = style.pointRadius;
-                    if(style.fill !== false) {
+                    if (style.fill !== false) {
                         this.setCanvasStyle("fill", style);
                         this.canvas.beginPath();
                         this.canvas.arc(p0, p1, radius, 0, twoPi, true);
                         this.canvas.fill();
-                        if(this.hitDetection) {
+                        if (this.hitDetection) {
                             this.setHitContextStyle("fill", featureId, style);
                             this.hitContext.beginPath();
                             this.hitContext.arc(p0, p1, radius, 0, twoPi, true);
@@ -540,12 +540,12 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
                         }
                     }
 
-                    if(style.stroke !== false) {
+                    if (style.stroke !== false) {
                         this.setCanvasStyle("stroke", style);
                         this.canvas.beginPath();
                         this.canvas.arc(p0, p1, radius, 0, twoPi, true);
                         this.canvas.stroke();
-                        if(this.hitDetection) {
+                        if (this.hitDetection) {
                             this.setHitContextStyle("stroke", featureId, style);
                             this.hitContext.beginPath();
                             this.hitContext.arc(p0, p1, radius, 0, twoPi, true);
@@ -582,18 +582,18 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
      * featureId - {String}
      */ 
     drawLinearRing: function(geometry, style, featureId) {
-        if(style.fill !== false) {
+        if (style.fill !== false) {
             this.setCanvasStyle("fill", style);
             this.renderPath(this.canvas, geometry, style, featureId, "fill");
-            if(this.hitDetection) {
+            if (this.hitDetection) {
                 this.setHitContextStyle("fill", featureId, style);
                 this.renderPath(this.hitContext, geometry, style, featureId, "fill");
             }
         }
-        if(style.stroke !== false) {
+        if (style.stroke !== false) {
             this.setCanvasStyle("stroke", style);
             this.renderPath(this.canvas, geometry, style, featureId, "stroke");
-            if(this.hitDetection) {
+            if (this.hitDetection) {
                 this.setHitContextStyle("stroke", featureId, style);
                 this.renderPath(this.hitContext, geometry, style, featureId, "stroke");
             }
@@ -612,13 +612,13 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
         var start = this.getLocalXY(components[0]);
         var x = start[0];
         var y = start[1];
-        if(!isNaN(x) && !isNaN(y)) {
+        if (!isNaN(x) && !isNaN(y)) {
             context.moveTo(start[0], start[1]);
             for (var i=1; i<len; ++i) {
                 var pt = this.getLocalXY(components[i]);
                 context.lineTo(pt[0], pt[1]);
             }
-            if(type === "fill") {
+            if (type === "fill") {
                 context.fill();
             } else {
                 context.stroke();
@@ -650,7 +650,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
              * TODO: http://trac.osgeo.org/openlayers/ticket/3130 
              */
             this.canvas.globalCompositeOperation = "destination-out";
-            if(this.hitDetection) {
+            if (this.hitDetection) {
                 this.hitContext.globalCompositeOperation = "destination-out";
             }
             this.drawLinearRing(
@@ -659,7 +659,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
                 featureId
             );
             this.canvas.globalCompositeOperation = "source-over";
-            if(this.hitDetection) {
+            if (this.hitDetection) {
                 this.hitContext.globalCompositeOperation = "source-over";
             }
             this.drawLinearRing(
@@ -691,7 +691,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
                          style.fontFamily ? style.fontFamily : "sans-serif"].join(" ");
         var labelRows = style.label.split('\n');
         var numRows = labelRows.length;
-        if(this.canvas.fillText) {
+        if (this.canvas.fillText) {
             // HTML5
             this.canvas.font = fontStyle;
             this.canvas.textAlign =
@@ -702,7 +702,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
                 "middle";
             var vfactor =
                 OpenLayers.Renderer.Canvas.LABEL_FACTOR[style.labelAlign[1]];
-            if(vfactor == null) {
+            if (vfactor == null) {
                 vfactor = -.5;
             }
             var lineHeight =
@@ -710,7 +710,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
                 this.canvas.measureText('xx').width;
             pt[1] += lineHeight*vfactor*(numRows-1);
             for (var i = 0; i < numRows; i++) {
-                if(style.labelOutlineWidth) {
+                if (style.labelOutlineWidth) {
                     this.canvas.save();
                     this.canvas.globalAlpha = style.labelOutlineOpacity || style.fontOpacity || 1.0;
                     this.canvas.strokeStyle = style.labelOutlineColor;
@@ -720,18 +720,18 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
                 }
                 this.canvas.fillText(labelRows[i], pt[0], pt[1] + (lineHeight*i));
             }
-        } else if(this.canvas.mozDrawText) {
+        } else if (this.canvas.mozDrawText) {
             // Mozilla pre-Gecko1.9.1 (<FF3.1)
             this.canvas.mozTextStyle = fontStyle;
             // No built-in text alignment, so we measure and adjust the position
             var hfactor =
                 OpenLayers.Renderer.Canvas.LABEL_FACTOR[style.labelAlign[0]];
-            if(hfactor == null) {
+            if (hfactor == null) {
                 hfactor = -.5;
             }
             var vfactor =
                 OpenLayers.Renderer.Canvas.LABEL_FACTOR[style.labelAlign[1]];
-            if(vfactor == null) {
+            if (vfactor == null) {
                 vfactor = -.5;
             }
             var lineHeight = this.canvas.mozMeasureText('xx');
@@ -771,7 +771,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
         var width = this.root.width;
         this.canvas.clearRect(0, 0, width, height);
         this.features = {};
-        if(this.hitDetection) {
+        if (this.hitDetection) {
             this.hitContext.clearRect(0, 0, width, height);
         }
     },
@@ -791,16 +791,16 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
     getFeatureIdFromEvent: function(evt) {
         var featureId, feature;
         
-        if(this.hitDetection && this.root.style.display !== "none") {
+        if (this.hitDetection && this.root.style.display !== "none") {
             // this dragging check should go in the feature handler
-            if(!this.map.dragging) {
+            if (!this.map.dragging) {
                 var xy = evt.xy;
                 var x = xy.x | 0;
                 var y = xy.y | 0;
                 var data = this.hitContext.getImageData(x, y, 1, 1).data;
-                if(data[3] === 255) { // antialiased
+                if (data[3] === 255) { // antialiased
                     var id = data[2] + (256 * (data[1] + (256 * data[0])));
-                    if(id) {
+                    if (id) {
                         featureId = "OpenLayers_Feature_Vector_" + (id - 1 + this.hitOverflow);
                         try {
                             feature = this.features[featureId][0];
@@ -825,7 +825,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
      * features - {Array(<OpenLayers.Feature.Vector>)} 
      */
     eraseFeatures: function(features) {
-        if(!(OpenLayers.Util.isArray(features))) {
+        if (!(OpenLayers.Util.isArray(features))) {
             features = [features];
         }
         for(var i=0; i<features.length; ++i) {
@@ -843,24 +843,24 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
      *     instead we have to just clear everything and draw from scratch.
      */
     redraw: function() {
-        if(!this.locked) {
+        if (!this.locked) {
             var height = this.root.height;
             var width = this.root.width;
             this.canvas.clearRect(0, 0, width, height);
-            if(this.hitDetection) {
+            if (this.hitDetection) {
                 this.hitContext.clearRect(0, 0, width, height);
             }
             var labelMap = [];
             var feature, geometry, style;
             var worldBounds = (this.map.baseLayer && this.map.baseLayer.wrapDateLine) && this.map.getMaxExtent();
             for (var id in this.features) {
-                if(!this.features.hasOwnProperty(id)) { continue; }
+                if (!this.features.hasOwnProperty(id)) { continue; }
                 feature = this.features[id][0];
                 geometry = feature.geometry;
                 this.calculateFeatureDx(geometry.getBounds(), worldBounds);
                 style = this.features[id][1];
                 this.drawGeometry(geometry, style, feature.id);
-                if(style.label) {
+                if (style.label) {
                     labelMap.push([feature, style]);
                 }
             }

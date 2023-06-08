@@ -71,22 +71,22 @@ OpenLayers.Bounds = OpenLayers.Class({
      * bounds - {Array(Number)} [left, bottom, right, top]
      */
     initialize: function(left, bottom, right, top) {
-        if(OpenLayers.Util.isArray(left)) {
+        if (OpenLayers.Util.isArray(left)) {
             top = left[3];
             right = left[2];
             bottom = left[1];
             left = left[0];
         }
-        if(left != null) {
+        if (left != null) {
             this.left = OpenLayers.Util.toFloat(left);
         }
-        if(bottom != null) {
+        if (bottom != null) {
             this.bottom = OpenLayers.Util.toFloat(bottom);
         }
-        if(right != null) {
+        if (right != null) {
             this.right = OpenLayers.Util.toFloat(right);
         }
-        if(top != null) {
+        if (top != null) {
             this.top = OpenLayers.Util.toFloat(top);
         }
     },
@@ -117,7 +117,7 @@ OpenLayers.Bounds = OpenLayers.Class({
      */
     equals:function(bounds) {
         var equals = false;
-        if(bounds != null) {
+        if (bounds != null) {
             equals = ((this.left == bounds.left) && 
                       (this.right == bounds.right) &&
                       (this.top == bounds.top) && 
@@ -152,7 +152,7 @@ OpenLayers.Bounds = OpenLayers.Class({
      * {Array} array of left, bottom, right, top
      */
     toArray: function(reverseAxisOrder) {
-        if(reverseAxisOrder === true) {
+        if (reverseAxisOrder === true) {
             return [this.bottom, this.left, this.top, this.right];
         } else {
             return [this.left, this.bottom, this.right, this.top];
@@ -173,7 +173,7 @@ OpenLayers.Bounds = OpenLayers.Class({
      *          (e.g. "5,42,10,45")
      */
     toBBOX:function(decimal, reverseAxisOrder) {
-        if(decimal== null) {
+        if (decimal== null) {
             decimal = 6; 
         }
         var mult = Math.pow(10, decimal);
@@ -181,7 +181,7 @@ OpenLayers.Bounds = OpenLayers.Class({
         var ymin = Math.round(this.bottom * mult) / mult;
         var xmax = Math.round(this.right * mult) / mult;
         var ymax = Math.round(this.top * mult) / mult;
-        if(reverseAxisOrder === true) {
+        if (reverseAxisOrder === true) {
             return ymin + "," + xmin + "," + ymax + "," + xmax;
         } else {
             return xmin + "," + ymin + "," + xmax + "," + ymax;
@@ -262,7 +262,7 @@ OpenLayers.Bounds = OpenLayers.Class({
      * {<OpenLayers.LonLat>} The center of the bounds in map space.
      */
     getCenterLonLat:function() {
-        if(!this.centerLonLat) {
+        if (!this.centerLonLat) {
             this.centerLonLat = new OpenLayers.LonLat(
                 (this.left + this.right) / 2, (this.bottom + this.top) / 2
             );
@@ -286,14 +286,14 @@ OpenLayers.Bounds = OpenLayers.Class({
      *                      from origin.
      */
     scale: function(ratio, origin){
-        if(origin == null){
+        if (origin == null){
             origin = this.getCenterLonLat();
         }
         
         var origx,origy;
 
         // get origin coordinates
-        if(origin.CLASS_NAME == "OpenLayers.LonLat"){
+        if (origin.CLASS_NAME == "OpenLayers.LonLat"){
             origx = origin.lon;
             origy = origin.lat;
         } else {
@@ -334,7 +334,7 @@ OpenLayers.Bounds = OpenLayers.Class({
      *     this, but shifted by the passed-in x and y values.
      */
     add:function(x, y) {
-        if( (x == null) || (y == null) ) {
+        if ( (x == null) || (y == null) ) {
             throw new TypeError('Bounds.add cannot receive null values');
         }
         return new OpenLayers.Bounds(this.left + x, this.bottom + y,
@@ -355,7 +355,7 @@ OpenLayers.Bounds = OpenLayers.Class({
      *     object.
      */
     extend:function(object) {
-        if(object) {
+        if (object) {
             switch(object.CLASS_NAME) {
                 case "OpenLayers.LonLat":
                     this.extendXY(object.lon, object.lat);
@@ -368,16 +368,16 @@ OpenLayers.Bounds = OpenLayers.Class({
                     // clear cached center location
                     this.centerLonLat = null;
 
-                    if( (this.left == null) || (object.left < this.left)) {
+                    if ( (this.left == null) || (object.left < this.left)) {
                         this.left = object.left;
                     }
-                    if( (this.bottom == null) || (object.bottom < this.bottom) ) {
+                    if ( (this.bottom == null) || (object.bottom < this.bottom) ) {
                         this.bottom = object.bottom;
                     }
-                    if( (this.right == null) || (object.right > this.right) ) {
+                    if ( (this.right == null) || (object.right > this.right) ) {
                         this.right = object.right;
                     }
-                    if( (this.top == null) || (object.top > this.top) ) {
+                    if ( (this.top == null) || (object.top > this.top) ) {
                         this.top = object.top;
                     }
                     break;
@@ -397,16 +397,16 @@ OpenLayers.Bounds = OpenLayers.Class({
         // clear cached center location
         this.centerLonLat = null;
 
-        if((this.left == null) || (x < this.left)) {
+        if ((this.left == null) || (x < this.left)) {
             this.left = x;
         }
-        if((this.bottom == null) || (y < this.bottom)) {
+        if ((this.bottom == null) || (y < this.bottom)) {
             this.bottom = y;
         }
-        if((this.right == null) || (x > this.right)) {
+        if ((this.right == null) || (x > this.right)) {
             this.right = x;
         }
-        if((this.top == null) || (y > this.top)) {
+        if ((this.top == null) || (y > this.top)) {
             this.top = y;
         }
     },
@@ -432,13 +432,13 @@ OpenLayers.Bounds = OpenLayers.Class({
      * {Boolean} The passed-in lonlat is within this bounds.
      */
     containsLonLat: function(ll, options) {
-        if(typeof options === "boolean") {
+        if (typeof options === "boolean") {
             options =  {inclusive: options};
         }
         options = options || {};
         var contains = this.contains(ll.lon, ll.lat, options.inclusive),
             worldBounds = options.worldBounds;
-        if(worldBounds && !contains) {
+        if (worldBounds && !contains) {
             var worldWidth = worldBounds.getWidth();
             var worldCenterX = (worldBounds.left + worldBounds.right) / 2;
             var worldsAway = Math.round((ll.lon - worldCenterX) / worldWidth);
@@ -482,11 +482,11 @@ OpenLayers.Bounds = OpenLayers.Class({
      */
     contains:function(x, y, inclusive) {
         //set default
-        if(inclusive == null) {
+        if (inclusive == null) {
             inclusive = true;
         }
 
-        if(x == null || y == null) {
+        if (x == null || y == null) {
             return false;
         }
 
@@ -494,7 +494,7 @@ OpenLayers.Bounds = OpenLayers.Class({
         y = OpenLayers.Util.toFloat(y);
 
         var contains = false;
-        if(inclusive) {
+        if (inclusive) {
             contains = ((x >= this.left) && (x <= this.right) && 
                         (y >= this.bottom) && (y <= this.top));
         } else {
@@ -527,17 +527,17 @@ OpenLayers.Bounds = OpenLayers.Class({
      * {Boolean} The passed-in bounds object intersects this bounds.
      */
     intersectsBounds:function(bounds, options) {
-        if(typeof options === "boolean") {
+        if (typeof options === "boolean") {
             options =  {inclusive: options};
         }
         options = options || {};
-        if(options.worldBounds) {
+        if (options.worldBounds) {
             var self = this.wrapDateLine(options.worldBounds);
             bounds = bounds.wrapDateLine(options.worldBounds);
         } else {
             self = this;
         }
-        if(options.inclusive == null) {
+        if (options.inclusive == null) {
             options.inclusive = true;
         }
         var intersects = false;
@@ -550,7 +550,7 @@ OpenLayers.Bounds = OpenLayers.Class({
         
         // if the two bounds only touch at an edge, and inclusive is false,
         // then the bounds don't *really* intersect.
-        if(options.inclusive || !mightTouch) {
+        if (options.inclusive || !mightTouch) {
             // otherwise, if one of the boundaries even partially contains another,
             // inclusive of the edges, then they do intersect.
             var inBottom = (
@@ -572,15 +572,15 @@ OpenLayers.Bounds = OpenLayers.Class({
             intersects = ((inBottom || inTop) && (inLeft || inRight));
         }
         // document me
-        if(options.worldBounds && !intersects) {
+        if (options.worldBounds && !intersects) {
             var world = options.worldBounds;
             var width = world.getWidth();
             var selfCrosses = !world.containsBounds(self);
             var boundsCrosses = !world.containsBounds(bounds);
-            if(selfCrosses && !boundsCrosses) {
+            if (selfCrosses && !boundsCrosses) {
                 bounds = bounds.add(-width, 0);
                 intersects = self.intersectsBounds(bounds, {inclusive: options.inclusive});
-            } else if(boundsCrosses && !selfCrosses) {
+            } else if (boundsCrosses && !selfCrosses) {
                 self = self.add(-width, 0);
                 intersects = bounds.intersectsBounds(self, {inclusive: options.inclusive});                
             }
@@ -603,10 +603,10 @@ OpenLayers.Bounds = OpenLayers.Class({
      * {Boolean} The passed-in bounds object is contained within this bounds. 
      */
     containsBounds:function(bounds, partial, inclusive) {
-        if(partial == null) {
+        if (partial == null) {
             partial = false;
         }
-        if(inclusive == null) {
+        if (inclusive == null) {
             inclusive = true;
         }
         var bottomLeft  = this.contains(bounds.left, bounds.bottom, inclusive);
@@ -707,7 +707,7 @@ OpenLayers.Bounds = OpenLayers.Class({
 
         var newBounds = this.clone();
     
-        if(maxExtent) {
+        if (maxExtent) {
             var width = maxExtent.getWidth();
 
             //shift right?
@@ -724,7 +724,7 @@ OpenLayers.Bounds = OpenLayers.Class({
            
             // crosses right only? force left
             var newLeft = newBounds.left + leftTolerance;
-            if(newLeft < maxExtent.right && newLeft > maxExtent.left && 
+            if (newLeft < maxExtent.right && newLeft > maxExtent.left && 
                    newBounds.right - rightTolerance > maxExtent.right) {
                 newBounds = newBounds.add(-width, 0);
             }

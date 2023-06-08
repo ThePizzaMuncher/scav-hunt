@@ -31,11 +31,11 @@
         for(var i=0; i<len; ++i) {
             file = files[i];
             expect = cases[file];
-            if(expect) {
+            if (expect) {
                 doc = readXML(file);
-                if(doc && doc.documentElement) {
+                if (doc && doc.documentElement) {
                     out = format.readNode(doc.documentElement);
-                    if(out.components && out.components.length == 1) {
+                    if (out.components && out.components.length == 1) {
                         t.geom_eq(out.components[0], expect, "[" + file + "] geometry read");
                     } else {
                         t.fail("[" + file + "] gml parsing");
@@ -77,13 +77,13 @@
         for(var i=0; i<len; ++i) {
             file = files[i];
             expect = cases[file];
-            if(expect) {
+            if (expect) {
                 doc = readXML(file);
-                if(doc && doc.documentElement) {
+                if (doc && doc.documentElement) {
                     out = format.readNode(doc.documentElement);
-                    if(out.components && out.components.length == 1) {
+                    if (out.components && out.components.length == 1) {
                         got = out.components[0];
-                        if(got instanceof OpenLayers.Bounds) {
+                        if (got instanceof OpenLayers.Bounds) {
                             t.ok(out.components[0].equals(expect), "[" + file + "] bounds read")
                         } else {
                             t.fail("[" + file + "] expected a bounds, got " + got);
@@ -131,11 +131,11 @@
         for(var i=0; i<len; ++i) {
             file = files[i].path;
             geom = cases[file];
-            if(geom) {
+            if (geom) {
                 doc = readXML(file);
-                if(doc && doc.documentElement) {
+                if (doc && doc.documentElement) {
                     options = OpenLayers.Util.extend({}, defaults);
-                    if(files[i].options) {
+                    if (files[i].options) {
                         OpenLayers.Util.extend(options, files[i].options);
                     }
                     format = new OpenLayers.Format.GML.v3(options);
@@ -167,9 +167,9 @@
         for(var i=0; i<len; ++i) {
             file = files[i];
             bounds = cases[file];
-            if(bounds) {
+            if (bounds) {
                 doc = readXML(file);
-                if(doc && doc.documentElement) {
+                if (doc && doc.documentElement) {
                     node = format.writeNode("gml:Envelope", bounds);
                     t.xml_eq(node, doc.documentElement, "[" + file + "] bounds written");
                 } else {

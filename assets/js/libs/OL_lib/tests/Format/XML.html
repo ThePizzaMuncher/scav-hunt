@@ -97,7 +97,7 @@
                  "doc.documentElement correctly read");
         
         // where appropriate, make sure doc is loaded into xmldom property
-        if(format.xmldom) {
+        if (format.xmldom) {
             t.xml_eq(format.xmldom.documentElement, text,
                      "xmldom.documentElement contains equivalent xml");
         }
@@ -159,7 +159,7 @@
              "node has correct namespace uri");
         
         var doc = format.read(text);
-        if(doc.importNode) {
+        if (doc.importNode) {
             node = doc.importNode(node, true);
         }    
         t.ok(doc.documentElement.appendChild(node),
@@ -229,7 +229,7 @@
              "[boolean] node has correct value");
 
         var doc = format.read(text);
-        if(doc.importNode) {
+        if (doc.importNode) {
             node = doc.importNode(node, true);
         }    
         t.ok(doc.documentElement.appendChild(node),
@@ -867,7 +867,7 @@
         var attr = bar.attributes[0];
         // Internet Explorer didn't have the ownerElement property until 8.
         var supportsOwnerElement = !!attr.ownerElement;        
-        if(supportsOwnerElement) {
+        if (supportsOwnerElement) {
             t.eq(format.lookupNamespaceURI(attr, null), "urn:example", "default namespace lookup on attribute");
             t.eq(format.lookupNamespaceURI(attr, "baz"), "urn:baznamespace", "prefix lookup on attribute with different default");
         } else {

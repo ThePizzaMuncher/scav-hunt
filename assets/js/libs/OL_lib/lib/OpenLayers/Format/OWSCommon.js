@@ -46,16 +46,16 @@ OpenLayers.Format.OWSCommon = OpenLayers.Class(OpenLayers.Format.XML.VersionedOG
      */
     getVersion: function(root, options) {
         var version = this.version;
-        if(!version) {
+        if (!version) {
             // remember version does not correspond to the OWS version
             // it corresponds to the WMS/WFS/WCS etc. request version
             var uri = root.getAttribute("xmlns:ows");
             // the above will fail if the namespace prefix is different than
             // ows and if the namespace is declared on a different element
-            if(uri && uri.substring(uri.lastIndexOf("/")+1) === "1.1") {
+            if (uri && uri.substring(uri.lastIndexOf("/")+1) === "1.1") {
                 version ="1.1.0";
             } 
-            if(!version) {
+            if (!version) {
                 version = this.defaultVersion;
             }
         }

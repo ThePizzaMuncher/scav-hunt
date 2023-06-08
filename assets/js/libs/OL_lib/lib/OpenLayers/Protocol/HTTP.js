@@ -125,7 +125,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
         this.headers = {};
         OpenLayers.Protocol.prototype.initialize.apply(this, arguments);
 
-        if(!this.filterToParams && OpenLayers.Format.QueryStringFilter) {
+        if (!this.filterToParams && OpenLayers.Format.QueryStringFilter) {
             var format = new OpenLayers.Format.QueryStringFilter({
                 wildcarded: this.wildcarded,
                 srsInBBOX: this.srsInBBOX
@@ -189,7 +189,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
         options.params = OpenLayers.Util.applyDefaults(
             options.params, this.options.params);
         options = OpenLayers.Util.applyDefaults(options, this.options);
-        if(options.filter && this.filterToParams) {
+        if (options.filter && this.filterToParams) {
             options.params = this.filterToParams(
                 options.filter, options.params
             );
@@ -197,7 +197,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
         var readWithPOST = (options.readWithPOST !== undefined) ?
                            options.readWithPOST : this.readWithPOST;
         var resp = new OpenLayers.Protocol.Response({requestType: "read"});
-        if(readWithPOST) {
+        if (readWithPOST) {
             var headers = options.headers || {};
             headers["Content-Type"] = "application/x-www-form-urlencoded";
             resp.priv = OpenLayers.Request.POST({
@@ -366,7 +366,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
             callback: this.createCallback(this.handleDelete, resp, options),
             headers: options.headers
         };
-        if(this.deleteWithPOST) {
+        if (this.deleteWithPOST) {
             requestOptions.data = this.format.write(feature);
         }
         resp.priv = OpenLayers.Request[method](requestOptions);
@@ -400,10 +400,10 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
      */
     handleResponse: function(resp, options) {
         var request = resp.priv;
-        if(options.callback) {
-            if(request.status >= 200 && request.status < 300) {
+        if (options.callback) {
+            if (request.status >= 200 && request.status < 300) {
                 // success
-                if(resp.requestType != "delete") {
+                if (resp.requestType != "delete") {
                     resp.features = this.parseFeatures(request);
                 }
                 resp.code = OpenLayers.Protocol.Response.SUCCESS;
@@ -428,10 +428,10 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
      */
     parseFeatures: function(request) {
         var doc = request.responseXML;
-        if(!doc || !doc.documentElement) {
+        if (!doc || !doc.documentElement) {
             doc = request.responseText;
         }
-        if(!doc || doc.length <= 0) {
+        if (!doc || doc.length <= 0) {
             return null;
         }
         return this.format.read(doc);
@@ -475,7 +475,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
         for(var i=0, len=features.length; i<len; ++i) {
             feature = features[i];
             list = types[feature.state];
-            if(list) {
+            if (list) {
                 list.push(feature);
                 requestFeatures.push(feature); 
             }
@@ -506,8 +506,8 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
             this.callUserCallback(response, options);
             success = success && response.success();
             nResponses++;
-            if(nResponses >= nRequests) {
-                if(options.callback) {
+            if (nResponses >= nRequests) {
+                if (options.callback) {
                     finalResponse.code = success ? 
                         OpenLayers.Protocol.Response.SUCCESS :
                         OpenLayers.Protocol.Response.FAILURE;
@@ -518,7 +518,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
 
         // start issuing requests
         var queue = types[OpenLayers.State.INSERT];
-        if(queue.length > 0) {
+        if (queue.length > 0) {
             resp.push(this.create(
                 queue, OpenLayers.Util.applyDefaults(
                     {callback: insertCallback, scope: this}, options.create
@@ -554,7 +554,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
      * response - {<OpenLayers.Protocol.Response>}
      */
     abort: function(response) {
-        if(response) {
+        if (response) {
             response.priv.abort();
         }
     },
@@ -571,7 +571,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
      */
     callUserCallback: function(resp, options) {
         var opt = options[resp.requestType];
-        if(opt && opt.callback) {
+        if (opt && opt.callback) {
             opt.callback.call(opt.scope, resp);
         }
     },

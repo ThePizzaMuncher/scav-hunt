@@ -9,7 +9,7 @@
 var jsdom = require('jsdom'); 
 jsdom.env('<html><body></body></html>', function(errors, window) { 
     for (var i in window) { 
-        if(i == "console") {
+        if (i == "console") {
             continue;
         }    
         eval(i+"=window['"+i+"'];"); 

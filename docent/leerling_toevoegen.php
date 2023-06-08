@@ -1,9 +1,9 @@
 <?php
 require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
-if(!isset($_SESSION['docent'])) {
+if (!isset($_SESSION['docent'])) {
 	header('location:../login'); die();
-} if(!$_SESSION['docent']) {
+} if (!$_SESSION['docent']) {
 	header('location:../login'); die();
 }
 
@@ -71,7 +71,7 @@ echo '<div class="container">
    '
 ;
  // check if the form has been submitted. If it has, start to process the form and save it to the database
- if(isset($_POST['submit']))
+ if (isset($_POST['submit']))
  	{ 
        
 
@@ -84,7 +84,7 @@ echo '<div class="container">
    
  
  // check to make sure both fields are entered
- if($naam == '' || $opleiding == '' || $groep_ID == '' || $leerjaar == '')
+ if ($naam == '' || $opleiding == '' || $groep_ID == '' || $leerjaar == '')
  	{
  	// generate error message
  	$error = 'ERROR: Please fill in all required fields!';
@@ -102,7 +102,7 @@ echo '<div class="container">
 
 	$retval = mysqli_query($conn, $sql_query );
    
-   	if(! $retval ) {
+   	if (! $retval ) {
       	die('Could not enter data: ');
    	}
    

@@ -48,7 +48,7 @@ OpenLayers.Geometry.Polygon = OpenLayers.Class(
      */
     getArea: function() {
         var area = 0.0;
-        if( this.components && (this.components.length > 0)) {
+        if ( this.components && (this.components.length > 0)) {
             area += Math.abs(this.components[0].getArea());
             for (var i=1, len=this.components.length; i<len; i++) {
                 area -= Math.abs(this.components[i].getArea());
@@ -77,7 +77,7 @@ OpenLayers.Geometry.Polygon = OpenLayers.Class(
      */
     getGeodesicArea: function(projection) {
         var area = 0.0;
-        if(this.components && (this.components.length > 0)) {
+        if (this.components && (this.components.length > 0)) {
             area += Math.abs(this.components[0].getGeodesicArea(projection));
             for(var i=1, len=this.components.length; i<len; i++) {
                 area -= Math.abs(this.components[i].getGeodesicArea(projection));
@@ -101,17 +101,17 @@ OpenLayers.Geometry.Polygon = OpenLayers.Class(
     containsPoint: function(point) {
         var numRings = this.components.length;
         var contained = false;
-        if(numRings > 0) {
+        if (numRings > 0) {
             // check exterior ring - 1 means on edge, boolean otherwise
             contained = this.components[0].containsPoint(point);
-            if(contained !== 1) {
-                if(contained && numRings > 1) {
+            if (contained !== 1) {
+                if (contained && numRings > 1) {
                     // check interior rings
                     var hole;
                     for(var i=1; i<numRings; ++i) {
                         hole = this.components[i].containsPoint(point);
-                        if(hole) {
-                            if(hole === 1) {
+                        if (hole) {
+                            if (hole === 1) {
                                 // on edge
                                 contained = 1;
                             } else {
@@ -140,22 +140,22 @@ OpenLayers.Geometry.Polygon = OpenLayers.Class(
     intersects: function(geometry) {
         var intersect = false;
         var i, len;
-        if(geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
+        if (geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
             intersect = this.containsPoint(geometry);
-        } else if(geometry.CLASS_NAME == "OpenLayers.Geometry.LineString" ||
+        } else if (geometry.CLASS_NAME == "OpenLayers.Geometry.LineString" ||
                   geometry.CLASS_NAME == "OpenLayers.Geometry.LinearRing") {
             // check if rings/linestrings intersect
             for(i=0, len=this.components.length; i<len; ++i) {
                 intersect = geometry.intersects(this.components[i]);
-                if(intersect) {
+                if (intersect) {
                     break;
                 }
             }
-            if(!intersect) {
+            if (!intersect) {
                 // check if this poly contains points of the ring/linestring
                 for(i=0, len=geometry.components.length; i<len; ++i) {
                     intersect = this.containsPoint(geometry.components[i]);
-                    if(intersect) {
+                    if (intersect) {
                         break;
                     }
                 }
@@ -163,18 +163,18 @@ OpenLayers.Geometry.Polygon = OpenLayers.Class(
         } else {
             for(i=0, len=geometry.components.length; i<len; ++ i) {
                 intersect = this.intersects(geometry.components[i]);
-                if(intersect) {
+                if (intersect) {
                     break;
                 }
             }
         }
         // check case where this poly is wholly contained by another
-        if(!intersect && geometry.CLASS_NAME == "OpenLayers.Geometry.Polygon") {
+        if (!intersect && geometry.CLASS_NAME == "OpenLayers.Geometry.Polygon") {
             // exterior ring points will be contained in the other geometry
             var ring = this.components[0];
             for(i=0, len=ring.components.length; i<len; ++i) {
                 intersect = geometry.containsPoint(ring.components[i]);
-                if(intersect) {
+                if (intersect) {
                     break;
                 }
             }
@@ -213,7 +213,7 @@ OpenLayers.Geometry.Polygon = OpenLayers.Class(
         var edge = !(options && options.edge === false);
         var result;
         // this is the case where we might not be looking for distance to edge
-        if(!edge && this.intersects(geometry)) {
+        if (!edge && this.intersects(geometry)) {
             result = 0;
         } else {
             result = OpenLayers.Geometry.Collection.prototype.distanceTo.apply(
@@ -239,7 +239,7 @@ OpenLayers.Geometry.Polygon = OpenLayers.Class(
  */
 OpenLayers.Geometry.Polygon.createRegularPolygon = function(origin, radius, sides, rotation) {  
     var angle = Math.PI * ((1/sides) - (1/2));
-    if(rotation) {
+    if (rotation) {
         angle += (rotation / 180) * Math.PI;
     }
     var rotatedAngle, x, y;

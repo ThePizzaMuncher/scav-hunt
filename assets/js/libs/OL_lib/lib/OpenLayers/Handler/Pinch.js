@@ -88,7 +88,7 @@ OpenLayers.Handler.Pinch = OpenLayers.Class(OpenLayers.Handler, {
     touchstart: function(evt) {
         var propagate = true;
         this.pinching = false;
-        if(OpenLayers.Event.isMultiTouch(evt)) {
+        if (OpenLayers.Event.isMultiTouch(evt)) {
             this.started = true;
             this.last = this.start = {
                 distance: this.getDistance(evt.touches),
@@ -97,7 +97,7 @@ OpenLayers.Handler.Pinch = OpenLayers.Class(OpenLayers.Handler, {
             };
             this.callback("start", [evt, this.start]);
             propagate = !this.stopDown;
-        } else if(this.started) {
+        } else if (this.started) {
             // Some webkit versions send fake single-touch events during
             // multitouch, which cause the drag handler to trigger
             return false;
@@ -122,14 +122,14 @@ OpenLayers.Handler.Pinch = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean} Let the event propagate.
      */
     touchmove: function(evt) {
-        if(this.started && OpenLayers.Event.isMultiTouch(evt)) {
+        if (this.started && OpenLayers.Event.isMultiTouch(evt)) {
             this.pinching = true;
             var current = this.getPinchData(evt);
             this.callback("move", [evt, current]);
             this.last = current;
             // prevent document dragging
             OpenLayers.Event.stop(evt);
-        } else if(this.started) {
+        } else if (this.started) {
             // Some webkit versions send fake single-touch events during
             // multitouch, which cause the drag handler to trigger
             return false;
@@ -148,7 +148,7 @@ OpenLayers.Handler.Pinch = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean} Let the event propagate.
      */
     touchend: function(evt) {
-        if(this.started && !OpenLayers.Event.isMultiTouch(evt)) {
+        if (this.started && !OpenLayers.Event.isMultiTouch(evt)) {
             this.started = false;
             this.pinching = false;
             this.callback("done", [evt, this.start, this.last]);
@@ -168,7 +168,7 @@ OpenLayers.Handler.Pinch = OpenLayers.Class(OpenLayers.Handler, {
      */
     activate: function() {
         var activated = false;
-        if(OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
+        if (OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
             this.pinching = false;
             activated = true;
         }
@@ -184,7 +184,7 @@ OpenLayers.Handler.Pinch = OpenLayers.Class(OpenLayers.Handler, {
      */
     deactivate: function() {
         var deactivated = false;
-        if(OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
+        if (OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
             this.started = false;
             this.pinching = false;
             this.start = null;

@@ -6,7 +6,7 @@
     var geometry = null, node = null;
     
     function test_SVG_constructor(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -17,7 +17,7 @@
     }
     
     function test_SVG_destroy(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -43,7 +43,7 @@
     }
     
     function test_SVG_setextent(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -88,7 +88,7 @@
     }
     
     function test_SVG_setsize(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -104,7 +104,7 @@
     }
     
     function test_SVG_drawpoint(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -125,7 +125,7 @@
     }
     
     function test_SVG_drawcircle(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -173,7 +173,7 @@
     }
     
     function test_SVG_drawlinestring(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -202,7 +202,7 @@
     }
     
     function test_SVG_drawlinearring(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -231,7 +231,7 @@
     }
 
     function test_SVG_drawpolygon(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -270,7 +270,7 @@
     }
 
     function test_SVG_drawrectangle(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -300,7 +300,7 @@
     }
     
     function test_SVG_getcomponentsstring(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -326,7 +326,7 @@
     
     
     function test_SVG_getshortstring(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -348,7 +348,7 @@
     }
         
     function test_svg_importsymbol(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -366,7 +366,7 @@
             var p = polygon.points.getItem(i);
             pass = p.x === OpenLayers.Renderer.symbol.square[2*i] && 
                    p.y === OpenLayers.Renderer.symbol.square[2*i+1];
-            if(!pass) {
+            if (!pass) {
                 break;
             }
         }
@@ -375,7 +375,7 @@
     }
         
     function test_svg_dashstyle(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }
@@ -392,7 +392,7 @@
     }
     
     function test_svg_clipline(t) {
-        if(!OpenLayers.Renderer.SVG.prototype.supported()) {
+        if (!OpenLayers.Renderer.SVG.prototype.supported()) {
             t.plan(0);
             return;
         }

@@ -112,7 +112,7 @@ OpenLayers.Events.buttonclick = OpenLayers.Class({
         var depth = 3, // limit the search depth
             button;
         do {
-            if(OpenLayers.Element.hasClass(element, "olButton")) {
+            if (OpenLayers.Element.hasClass(element, "olButton")) {
                 // hit!
                 button = element;
                 break;
@@ -133,7 +133,7 @@ OpenLayers.Events.buttonclick = OpenLayers.Class({
         var depth = 3,
             ignore = false;
         do {
-            if(element.nodeName.toLowerCase() === 'a') {
+            if (element.nodeName.toLowerCase() === 'a') {
                 ignore = true;
                 break;
             }
@@ -152,11 +152,11 @@ OpenLayers.Events.buttonclick = OpenLayers.Class({
     buttonClick: function(evt) {
         var propagate = true,
             element = OpenLayers.Event.element(evt);
-        if(element && (OpenLayers.Event.isLeftClick(evt) || !~evt.type.indexOf("mouse"))) {
+        if (element && (OpenLayers.Event.isLeftClick(evt) || !~evt.type.indexOf("mouse"))) {
             // was a button pressed?
             var button = this.getPressedButton(element);
-            if(button) {
-                if(evt.type === "keydown") {
+            if (button) {
+                if (evt.type === "keydown") {
                     switch (evt.keyCode) {
                     case OpenLayers.Event.KEY_RETURN:
                     case OpenLayers.Event.KEY_SPACE:
@@ -167,8 +167,8 @@ OpenLayers.Events.buttonclick = OpenLayers.Class({
                         propagate = false;
                         break;
                     }
-                } else if(this.startEvt) {
-                    if(this.completeRegEx.test(evt.type)) {
+                } else if (this.startEvt) {
+                    if (this.completeRegEx.test(evt.type)) {
                         var pos = OpenLayers.Util.pagePosition(button);
                         var viewportElement = OpenLayers.Util.getViewportElement();
                         var scrollTop = window.pageYOffset || viewportElement.scrollTop;
@@ -184,13 +184,13 @@ OpenLayers.Events.buttonclick = OpenLayers.Class({
                             }
                         });
                     }
-                    if(this.cancelRegEx.test(evt.type)) {
+                    if (this.cancelRegEx.test(evt.type)) {
                         delete this.startEvt;
                     }
                     OpenLayers.Event.stop(evt);
                     propagate = false;
                 }
-                if(this.startRegEx.test(evt.type)) {
+                if (this.startRegEx.test(evt.type)) {
                     this.startEvt = evt;
                     OpenLayers.Event.stop(evt);
                     propagate = false;

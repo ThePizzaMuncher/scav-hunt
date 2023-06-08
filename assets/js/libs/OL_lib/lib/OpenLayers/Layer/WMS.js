@@ -112,7 +112,7 @@ OpenLayers.Layer.WMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
         var newArguments = [];
         //uppercase params
         params = OpenLayers.Util.upperCaseObject(params);
-        if(parseFloat(params.VERSION) >= 1.3 && !params.EXCEPTIONS) {
+        if (parseFloat(params.VERSION) >= 1.3 && !params.EXCEPTIONS) {
             params.EXCEPTIONS = "INIMAGE";
         } 
         newArguments.push(name, url, params, options);
@@ -124,17 +124,17 @@ OpenLayers.Layer.WMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
 
 
         //layer is transparent        
-        if(!this.noMagic && this.params.TRANSPARENT && 
+        if (!this.noMagic && this.params.TRANSPARENT && 
             this.params.TRANSPARENT.toString().toLowerCase() == "true") {
             
             // unless explicitly set in options, make layer an overlay
-            if( (options == null) || (!options.isBaseLayer) ) {
+            if ( (options == null) || (!options.isBaseLayer) ) {
                 this.isBaseLayer = false;
             } 
             
             // jpegs can never be transparent, so intelligently switch the 
             //  format, depending on the browser's capabilities
-            if(this.params.FORMAT == "image/jpeg") {
+            if (this.params.FORMAT == "image/jpeg") {
                 this.params.FORMAT = OpenLayers.Util.alphaHack() ? "image/gif"
                                                                  : "image/png";
             }
@@ -151,7 +151,7 @@ OpenLayers.Layer.WMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     clone: function (obj) {
         
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer.WMS(this.name,
                                            this.url,
                                            this.params,
@@ -249,13 +249,13 @@ OpenLayers.Layer.WMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
             this.projection.getCode() :
             mapProjection.getCode();
         var value = (projectionCode == "none") ? null : projectionCode;
-        if(parseFloat(this.params.VERSION) >= 1.3) {
+        if (parseFloat(this.params.VERSION) >= 1.3) {
             this.params.CRS = value;
         } else {
             this.params.SRS = value;
         }
         
-        if(typeof this.params.TRANSPARENT == "boolean") {
+        if (typeof this.params.TRANSPARENT == "boolean") {
             newParams.TRANSPARENT = this.params.TRANSPARENT ? "TRUE" : "FALSE";
         }
 

@@ -177,23 +177,23 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
         
         // unless explicitly set in options, if the layer is transparent, 
         // it will be an overlay
-        if(options == null || options.isBaseLayer == null) {
+        if (options == null || options.isBaseLayer == null) {
             this.isBaseLayer = ((this.transparent != "true") && 
                                 (this.transparent != true));
         }
 
-        if(options && options.useOverlay!=null) {
+        if (options && options.useOverlay!=null) {
           this.useOverlay = options.useOverlay;
         }
         
         //initialize for untiled layers
-        if(this.singleTile) {
-          if(this.useOverlay) {
+        if (this.singleTile) {
+          if (this.useOverlay) {
             OpenLayers.Util.applyDefaults(
                            this.params,
                            this.OVERLAY_PARAMS
                            );
-            if(!this.useAsyncOverlay) {
+            if (!this.useAsyncOverlay) {
               this.params.version = "1.0.0";
             }
           } else {
@@ -204,7 +204,7 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
           }         
         } else {
             //initialize for tiled layers
-            if(this.useHttpTile) {
+            if (this.useHttpTile) {
                 OpenLayers.Util.applyDefaults(
                                this.params,
                                this.FOLDER_PARAMS
@@ -227,7 +227,7 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
      * {<OpenLayers.Layer.MapGuide>} An exact clone of this layer
      */
     clone: function (obj) {
-      if(obj == null) {
+      if (obj == null) {
             obj = new OpenLayers.Layer.MapGuide(this.name,
                                            this.url,
                                            this.params,
@@ -257,7 +257,7 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
         var center = bounds.getCenterLonLat();
         var mapSize = this.map.getSize();
 
-        if(this.singleTile) {
+        if (this.singleTile) {
           //set up the call for GETMAPIMAGE or GETDYNAMICMAPOVERLAY with
           //dynamic map parameters
           var params = {
@@ -269,7 +269,7 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
             setviewscale: this.map.getScale()
           };
           
-          if(this.useOverlay && !this.useAsyncOverlay) {
+          if (this.useOverlay && !this.useAsyncOverlay) {
             //first we need to call GETVISIBLEMAPEXTENT to set the extent
             var getVisParams = {};
             getVisParams = OpenLayers.Util.extend(getVisParams, params);
@@ -293,7 +293,7 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
           var rowidx = Math.floor((this.maxExtent.top-bounds.top)/currentRes);
           rowidx = Math.round(rowidx/this.tileSize.h);
 
-          if(this.useHttpTile){
+          if (this.useHttpTile){
               url = this.getImageFilePath(
                    {
                        tilecol: colidx,
@@ -332,7 +332,7 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
         // if url is not a string, it should be an array of strings, 
         //  in which case we will randomly select one of them in order
         //  to evenly distribute requests to different urls.
-        if(typeof url == "object") {
+        if (typeof url == "object") {
             url = url[Math.floor(Math.random()*url.length)];
         }   
         // requestString always starts with url
@@ -346,7 +346,7 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
         var urlParams = OpenLayers.Util.upperCaseObject(
                             OpenLayers.Util.getParameters(url));
         for(var key in allParams) {
-            if(key.toUpperCase() in urlParams) {
+            if (key.toUpperCase() in urlParams) {
                 delete allParams[key];
             }
         }
@@ -360,12 +360,12 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
            to '+' */
         paramsString = paramsString.replace(/,/g, "+");
         
-        if(paramsString != "") {
+        if (paramsString != "") {
             var lastServerChar = url.charAt(url.length - 1);
-            if((lastServerChar == "&") || (lastServerChar == "?")) {
+            if ((lastServerChar == "&") || (lastServerChar == "?")) {
                 requestString += paramsString;
             } else {
-                if(url.indexOf('?') == -1) {
+                if (url.indexOf('?') == -1) {
                     //serverPath has no ? -- add one
                     requestString += '?' + paramsString;
                 } else {
@@ -394,7 +394,7 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
         // if url is not a string, it should be an array of strings, 
         //  in which case we will randomly select one of them in order
         //  to evenly distribute requests to different urls.
-        if(typeof url == "object") {
+        if (typeof url == "object") {
             url = url[Math.floor(Math.random()*url.length)];
         }   
         // requestString always starts with url
@@ -403,21 +403,21 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
         var tileRowGroup = "";
         var tileColGroup = "";
         
-        if(newParams.tilerow < 0) {
+        if (newParams.tilerow < 0) {
           tileRowGroup =  '-';
         }
           
-        if(newParams.tilerow == 0 ) {
+        if (newParams.tilerow == 0 ) {
           tileRowGroup += '0';
         } else {
           tileRowGroup += Math.floor(Math.abs(newParams.tilerow/this.params.tileRowsPerFolder)) * this.params.tileRowsPerFolder;
         }
           
-        if(newParams.tilecol < 0) {
+        if (newParams.tilecol < 0) {
           tileColGroup =  '-';
         }
         
-        if(newParams.tilecol == 0) {
+        if (newParams.tilecol == 0) {
           tileColGroup += '0';
         } else {
           tileColGroup += Math.floor(Math.abs(newParams.tilecol/this.params.tileColumnsPerFolder)) * this.params.tileColumnsPerFolder;
@@ -431,7 +431,7 @@ OpenLayers.Layer.MapGuide = OpenLayers.Class(OpenLayers.Layer.Grid, {
                 + '_' + (newParams.tilecol % this.params.tileColumnsPerFolder) 
                 + '.' + this.params.format;
     
-        if(this.params.querystring) {
+        if (this.params.querystring) {
                tilePath += "?" + this.params.querystring;
         }
         

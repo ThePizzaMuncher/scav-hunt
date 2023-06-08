@@ -98,7 +98,7 @@ OpenLayers.Layer.GeoRSS = OpenLayers.Class(OpenLayers.Layer.Markers, {
      * since we may not be visible at any point, and it would therefore be a waste.
      */
     loadRSS: function() {
-        if(!this.loaded) {
+        if (!this.loaded) {
             this.events.triggerEvent("loadstart");
             OpenLayers.Request.GET({
                 url: this.location,
@@ -120,7 +120,7 @@ OpenLayers.Layer.GeoRSS = OpenLayers.Class(OpenLayers.Layer.Markers, {
      */
     moveTo:function(bounds, zoomChanged, minor) {
         OpenLayers.Layer.Markers.prototype.moveTo.apply(this, arguments);
-        if(this.visibility && !this.loaded){
+        if (this.visibility && !this.loaded){
             this.loadRSS();
         }
     },
@@ -134,11 +134,11 @@ OpenLayers.Layer.GeoRSS = OpenLayers.Class(OpenLayers.Layer.Markers, {
      */
     parseData: function(ajaxRequest) {
         var doc = ajaxRequest.responseXML;
-        if(!doc || !doc.documentElement) {
+        if (!doc || !doc.documentElement) {
             doc = OpenLayers.Format.XML.prototype.read(ajaxRequest.responseText);
         }
         
-        if(this.useFeedTitle) {
+        if (this.useFeedTitle) {
             var name = null;
             try {
                 name = doc.getElementsByTagNameNS('*', 'title')[0].firstChild.nodeValue;
@@ -146,7 +146,7 @@ OpenLayers.Layer.GeoRSS = OpenLayers.Class(OpenLayers.Layer.Markers, {
             catch (e) {
                 name = doc.getElementsByTagName('title')[0].firstChild.nodeValue;
             }
-            if(name) {
+            if (name) {
                 this.setName(name);
             }    
         }
@@ -155,7 +155,7 @@ OpenLayers.Layer.GeoRSS = OpenLayers.Class(OpenLayers.Layer.Markers, {
         
         OpenLayers.Util.extend(options, this.formatOptions);
         
-        if(this.map && !this.projection.equals(this.map.getProjectionObject())) {
+        if (this.map && !this.projection.equals(this.map.getProjectionObject())) {
             options.externalProjection = this.projection;
             options.internalProjection = this.map.getProjectionObject();
         }    
@@ -169,7 +169,7 @@ OpenLayers.Layer.GeoRSS = OpenLayers.Class(OpenLayers.Layer.Markers, {
             
             // we don't support features with no geometry in the GeoRSS
             // layer at this time. 
-            if(!feature.geometry) {
+            if (!feature.geometry) {
                 continue;
             }    
             
@@ -192,18 +192,18 @@ OpenLayers.Layer.GeoRSS = OpenLayers.Class(OpenLayers.Layer.Markers, {
                              this.popupSize.clone() :
                              new OpenLayers.Size(250, 120);
             
-            if(title || description) {
+            if (title || description) {
                 // we have supplemental data, store them.
                 data.title = title;
                 data.description = description;
             
                 var contentHTML = '<div class="olLayerGeoRSSClose">[x]</div>'; 
                 contentHTML += '<div class="olLayerGeoRSSTitle">';
-                if(link) {
+                if (link) {
                     contentHTML += '<a class="link" href="'+link+'" target="_blank">';
                 }
                 contentHTML += title;
-                if(link) {
+                if (link) {
                     contentHTML += '</a>';
                 }
                 contentHTML += '</div>';
@@ -233,7 +233,7 @@ OpenLayers.Layer.GeoRSS = OpenLayers.Class(OpenLayers.Layer.Markers, {
         for(var i=0, len=this.layer.map.popups.length; i<len; i++) {
             this.layer.map.removePopup(this.layer.map.popups[i]);
         }
-        if(!sameMarkerClicked) {
+        if (!sameMarkerClicked) {
             var popup = this.createPopup();
             OpenLayers.Event.observe(popup.div, "click",
                 OpenLayers.Function.bind(function() { 
@@ -252,7 +252,7 @@ OpenLayers.Layer.GeoRSS = OpenLayers.Class(OpenLayers.Layer.Markers, {
      * Destroy all features in this layer.
      */
     clearFeatures: function() {
-        if(this.features != null) {
+        if (this.features != null) {
             while(this.features.length > 0) {
                 var feature = this.features[0];
                 OpenLayers.Util.removeItem(this.features, feature);

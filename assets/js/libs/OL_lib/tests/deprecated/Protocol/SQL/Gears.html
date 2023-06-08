@@ -6,7 +6,7 @@
 
     function test_initialize(t) {
         var protocol = new OpenLayers.Protocol.SQL.Gears();
-        if(!protocol.supported()) {
+        if (!protocol.supported()) {
             t.plan(0);
             return;
         }
@@ -37,7 +37,7 @@
 
     function test_destroy(t) {
         var protocol = new OpenLayers.Protocol.SQL.Gears();
-        if(!protocol.supported()) {
+        if (!protocol.supported()) {
             t.plan(0);
             return;
         }
@@ -60,7 +60,7 @@
         var readOptions = {callback: readCallback};
 
         var protocol = new OpenLayers.Protocol.SQL.Gears(protocolOptions);
-        if(!protocol.supported()) {
+        if (!protocol.supported()) {
             t.plan(0);
             return;
         }
@@ -98,7 +98,7 @@
 
     function test_unfreezeFeature(t) {
         var protocol = new OpenLayers.Protocol.SQL.Gears();
-        if(!protocol.supported()) {
+        if (!protocol.supported()) {
             t.plan(0);
             return;
         }
@@ -114,16 +114,16 @@
 
         var row = {
             fieldByName: function(str) {
-                if(str == "geometry") {
+                if (str == "geometry") {
                     return wkt;
                 }
-                if(str == "properties") {
+                if (str == "properties") {
                     return json;
                 }
-                if(str == "fid") {
+                if (str == "fid") {
                     return fid;
                 }
-                if(str == "state") {
+                if (str == "state") {
                     return state;
                 }
             }
@@ -164,7 +164,7 @@
 
     function test_extractFidFromField(t) {
         var protocol = new OpenLayers.Protocol.SQL.Gears();
-        if(!protocol.supported()) {
+        if (!protocol.supported()) {
             t.plan(0);
             return;
         }
@@ -206,7 +206,7 @@
 
     function test_freezeFeature(t) {
         var protocol = new OpenLayers.Protocol.SQL.Gears();
-        if(!protocol.supported()) {
+        if (!protocol.supported()) {
             t.plan(0);
             return;
         }
@@ -253,7 +253,7 @@
 
      function test_create(t) {
         var protocol = new OpenLayers.Protocol.SQL.Gears();
-        if(!protocol.supported()) {
+        if (!protocol.supported()) {
             t.plan(0);
             return;
         }
@@ -302,7 +302,7 @@
 
      function test_createOrUpdate(t) {
         var protocol = new OpenLayers.Protocol.SQL.Gears();
-        if(!protocol.supported()) {
+        if (!protocol.supported()) {
             t.plan(0);
             return;
         }
@@ -336,7 +336,7 @@
 
     function test_delete(t) {
         var protocol = new OpenLayers.Protocol.SQL.Gears();
-        if(!protocol.supported()) {
+        if (!protocol.supported()) {
             t.plan(0);
             return;
         }
@@ -395,7 +395,7 @@
 
     function test_callUserCallback(t) {
         var protocol = new OpenLayers.Protocol.SQL.Gears();
-        if(!protocol.supported()) {
+        if (!protocol.supported()) {
             t.plan(0);
             return;
         }

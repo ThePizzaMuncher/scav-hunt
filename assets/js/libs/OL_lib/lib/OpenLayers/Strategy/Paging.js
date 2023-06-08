@@ -58,7 +58,7 @@ OpenLayers.Strategy.Paging = OpenLayers.Class(OpenLayers.Strategy, {
      */
     activate: function() {
         var activated = OpenLayers.Strategy.prototype.activate.call(this);
-        if(activated) {
+        if (activated) {
             this.layer.events.on({
                 "beforefeaturesadded": this.cacheFeatures,
                 scope: this
@@ -77,7 +77,7 @@ OpenLayers.Strategy.Paging = OpenLayers.Class(OpenLayers.Strategy, {
      */
     deactivate: function() {
         var deactivated = OpenLayers.Strategy.prototype.deactivate.call(this);
-        if(deactivated) {
+        if (deactivated) {
             this.clearCache();
             this.layer.events.un({
                 "beforefeaturesadded": this.cacheFeatures,
@@ -96,7 +96,7 @@ OpenLayers.Strategy.Paging = OpenLayers.Class(OpenLayers.Strategy, {
      *     with a batch of features to be paged.
      */
     cacheFeatures: function(event) {
-        if(!this.paging) {
+        if (!this.paging) {
             this.clearCache();
             this.features = event.features;
             this.pageNext(event);
@@ -109,7 +109,7 @@ OpenLayers.Strategy.Paging = OpenLayers.Class(OpenLayers.Strategy, {
      *     nothing else has a reference.
      */
     clearCache: function() {
-        if(this.features) {
+        if (this.features) {
             for(var i=0; i<this.features.length; ++i) {
                 this.features[i].destroy();
             }
@@ -152,7 +152,7 @@ OpenLayers.Strategy.Paging = OpenLayers.Class(OpenLayers.Strategy, {
      * {Integer} The length of a page (number of features per page).
      */
     pageLength: function(newLength) {
-        if(newLength && newLength > 0) {
+        if (newLength && newLength > 0) {
             this.length = newLength;
         }
         return this.length;
@@ -167,8 +167,8 @@ OpenLayers.Strategy.Paging = OpenLayers.Class(OpenLayers.Strategy, {
      */
     pageNext: function(event) {
         var changed = false;
-        if(this.features) {
-            if(this.num === null) {
+        if (this.features) {
+            if (this.num === null) {
                 this.num = -1;
             }
             var start = (this.num + 1) * this.length;
@@ -186,8 +186,8 @@ OpenLayers.Strategy.Paging = OpenLayers.Class(OpenLayers.Strategy, {
      */
     pagePrevious: function() {
         var changed = false;
-        if(this.features) {
-            if(this.num === null) {
+        if (this.features) {
+            if (this.num === null) {
                 this.num = this.pageCount();
             }
             var start = (this.num - 1) * this.length;
@@ -205,16 +205,16 @@ OpenLayers.Strategy.Paging = OpenLayers.Class(OpenLayers.Strategy, {
      */
     page: function(start, event) {
         var changed = false;
-        if(this.features) {
-            if(start >= 0 && start < this.features.length) {
+        if (this.features) {
+            if (start >= 0 && start < this.features.length) {
                 var num = Math.floor(start / this.length);
-                if(num != this.num) {
+                if (num != this.num) {
                     this.paging = true;
                     var features = this.features.slice(start, start + this.length);
                     this.layer.removeFeatures(this.layer.features);
                     this.num = num;
                     // modify the event if any
-                    if(event && event.features) {
+                    if (event && event.features) {
                         // this.was called by an event listener
                         event.features = features;
                     } else {

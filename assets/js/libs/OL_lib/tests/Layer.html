@@ -315,13 +315,13 @@
             for (var i=0; i<expectedResolutions.length; ++i) {
                 got = layer.resolutions[i];
                 exp = expectedResolutions[i];
-                if(got.toFixed(10) !== exp.toFixed(10)) {
+                if (got.toFixed(10) !== exp.toFixed(10)) {
                     t.fail(id + ": bad resolutions - index " + i + " got " + got + " but expected " + exp);
                     same = false;
                     break;
                 }
             }
-            if(same) {
+            if (same) {
                 t.ok(true, id + ": correct resolutions");
             }
             t.eq(

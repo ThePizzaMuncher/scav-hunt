@@ -142,7 +142,7 @@ OpenLayers.Layer.Zoomify = OpenLayers.Class(OpenLayers.Layer.Grid, {
                 this.tileCountUpToTier[i-1]
                 );
         }
-        if(!this.serverResolutions) {
+        if (!this.serverResolutions) {
             this.serverResolutions = resolutions;
         }
     },
@@ -172,7 +172,7 @@ OpenLayers.Layer.Zoomify = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     clone: function (obj) {
 
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer.Zoomify(this.name,
                                            this.url,
                                            this.size,
@@ -209,7 +209,7 @@ OpenLayers.Layer.Zoomify = OpenLayers.Class(OpenLayers.Layer.Grid, {
         var path = "TileGroup" + Math.floor( (tileIndex) / 256 ) +
             "/" + z + "-" + x + "-" + y + ".jpg";
         var url = this.url;
-        if(OpenLayers.Util.isArray(url)) {
+        if (OpenLayers.Util.isArray(url)) {
             url = this.selectUrl(path, url);
         }
         return url + path;
@@ -222,7 +222,7 @@ OpenLayers.Layer.Zoomify = OpenLayers.Class(OpenLayers.Layer.Grid, {
      *
      */
     getImageSize: function() {
-        if(arguments.length > 0) {
+        if (arguments.length > 0) {
             var bounds = this.adjustBounds(arguments[0]);
             var res = this.getServerResolution();
             var x = Math.round((bounds.left - this.tileOrigin.lon) / (res * this.tileSize.w));
@@ -230,10 +230,10 @@ OpenLayers.Layer.Zoomify = OpenLayers.Class(OpenLayers.Layer.Grid, {
             var z = this.getZoomForResolution( res );
             var w = this.standardTileSize;
             var h = this.standardTileSize;
-            if(x == this.tierSizeInTiles[z].w -1 ) {
+            if (x == this.tierSizeInTiles[z].w -1 ) {
                 var w = this.tierImageSize[z].w % this.standardTileSize;
             }
-            if(y == this.tierSizeInTiles[z].h -1 ) {
+            if (y == this.tierSizeInTiles[z].h -1 ) {
                 var h = this.tierImageSize[z].h % this.standardTileSize;
             }
             return (new OpenLayers.Size(w, h));

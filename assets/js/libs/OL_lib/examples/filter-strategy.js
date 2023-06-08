@@ -7,16 +7,16 @@ var step = 8; // sencods to advance each interval
 var interval = 0.125; // seconds between each step in the animation
 
 function startAnimation() {
-    if(animationTimer) {
+    if (animationTimer) {
         stopAnimation(true);
     }
-    if(!currentDate) {
+    if (!currentDate) {
         currentDate = startDate;
     }
     var spanEl = document.getElementById("span");
     var next = function() {
         var span = parseInt(spanEl.value, 10);
-        if(currentDate < endDate) {
+        if (currentDate < endDate) {
             filter.lowerBoundary = currentDate;
             filter.upperBoundary = new Date(currentDate.getTime() + (span * 1000));
             filterStrategy.setFilter(filter);
@@ -31,7 +31,7 @@ function startAnimation() {
 function stopAnimation(reset) {
     window.clearInterval(animationTimer);
     animationTimer = null;
-    if(reset === true) {
+    if (reset === true) {
         currentDate = null;
     }
 }
