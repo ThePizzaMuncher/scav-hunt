@@ -598,9 +598,9 @@ td {
 }
 
 .scrollable {
-  height: 22vw;
+  height: 25vw;
   overflow-y: scroll;
-  border: 2px solid var(--color-primary);
+  box-shadow: 0 0 10px var(--color-secondary-light);
   border-radius: 5px;
 }
 
