@@ -37,7 +37,7 @@ require_once("../assets/includes/conn.php");
 
 		</div>
 		<?php 
-		echo '<thead>     
+		echo "<table border='1' cellpadding='10'><thead>     
 			<tr>    
 				<th>ID</th>
 				<th>Voornaam</th>
@@ -46,14 +46,14 @@ require_once("../assets/includes/conn.php");
 				<th>Bewerken</th>
 				<th>Verwijderen</th>
 			</tr>
-		</thead> ';
+		</thead></table>";
 		echo "<div class='scrollable'><table border='1' cellpadding='10'>";
 		echo '</div>';
 
 		$num_rows = mysqli_num_fields($leerlingen);
 		//    echo 'aantal kolommen' . $num_rows;
 
-		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.ID,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.ID");
+		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
 		while($row = $pull->fetch_assoc()) {
 			echo "<tr>";
 			echo "<td>$row[ID]</td>";
