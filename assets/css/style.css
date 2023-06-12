@@ -435,8 +435,9 @@ section {
 --------------------------------------------------------------*/
 
 #about {
-  height: 70vh;
+  min-height: 70vh;
   justify-content: center !important;
+  overflow: auto;
 }
 
 #about h3 {
