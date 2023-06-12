@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -39,7 +39,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-1">
-					<a href="/~fp241754/scav-hunt/"><img src="/~fp241754/scav-hunt/assets/img/ScavHunt.png" alt="" class="img-fluid rounded-circle"></a>
+					<a href="/~fp241754/scav-hunt/"><img src="/~fp241754/scav-hunt/assets/img/1234.png" alt="" class="img-fluid rounded-circle"></a>
 				</div>
 
 				<div class="col-md-2">
