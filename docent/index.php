@@ -37,7 +37,7 @@ require_once("../assets/includes/conn.php");
 
 		</div>
 		<?php 
-		echo "<table border='1' cellpadding='10'><thead>     
+		echo "<div class='scrollable'><table border='1' cellpadding='10'><thead>     
 			<tr>    
 				<th>ID</th>
 				<th>Voornaam</th>
@@ -46,7 +46,7 @@ require_once("../assets/includes/conn.php");
 				<th>Bewerken</th>
 				<th>Verwijderen</th>
 			</tr>
-		</thead></table>";
+		</thead></table></div>";
 		echo "<div class='scrollable'><table border='1' cellpadding='10'>";
 		echo '</div>';
 
