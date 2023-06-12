@@ -56,5 +56,5 @@ require_once('../assets/includes/conn.php');
 
 <?php
 	$leerlingen = mysqli_query($conn, 'SELECT * FROM leerling');
-	include "../assets/includes/footer.php"
+	include "../assets/includes/footer.php";
 ?>
