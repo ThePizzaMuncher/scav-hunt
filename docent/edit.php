@@ -145,6 +145,7 @@ else
 		echo $row1['opleiding_ID'];
 		echo $row1['opleiding_naam'];
 		echo $row1['opleiding_ID'];
+		$opleiding_ID = $row['opleiding_ID'];
 		$leerjaar = $row['leerjaar'];
 		$groep_ID = $row['groep_ID'];
 		// show form

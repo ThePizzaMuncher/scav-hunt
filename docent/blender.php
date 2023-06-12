@@ -18,7 +18,7 @@ require_once('../assets/includes/conn.php');
 <body id="pagina_blender">
   <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
     <section id="about" class="section-50 d-flex flex-column align-items-center">
-      <h3 class="panel-title">Blender wzhh!!...</h3>
+      <h2 class="panel-title">Blender</h2>
       <form method="post" action="">
       <h4>Aantal groepjes</h4>
         <div class="input-group" id="ag">
