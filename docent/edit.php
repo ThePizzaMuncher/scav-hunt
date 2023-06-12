@@ -12,11 +12,11 @@ require_once("../assets/includes/conn.php"); ?>
 <?php /*  docenten_edit.PHP
  Allows user to edit specific entry in database
 */
- function renderForm($id, $naam, $opleiding)
+ function renderForm($id, $naam, $opleiding_ID,$leerjaar,$groep_ID)
  {
  ?>
  <form action="" method="post">
- <input name="id" value="<?php echo $id; ?>"/>
+ <input type="hidden" name="id" value="<?php echo $id; ?>"/>
 
  <div>
  <table border='1' cellpadding='10' width='100%'>
@@ -24,7 +24,13 @@ require_once("../assets/includes/conn.php"); ?>
 <td> <strong>Naam: </strong></td><td> <input type='text' name='leerlingnummer' value='<?php echo $naam; ?>'/></td>
 </tr>
 <tr>
-<td> <strong>opleiding_ID: </strong></td><td>  <input type='text' name='voornaam' value='<?php echo $opleiding; ?>'/>*</td>
+<td> <strong>opleiding_ID: </strong></td><td>  <input type='text' name='voornaam' value='<?php echo $opleiding_ID; ?>'/></td>
+</tr>
+<tr>
+<td> <strong>Leerjaar: </strong></td><td>  <input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>'/></td>
+</tr>
+<tr>
+<td> <strong>Groep_ID: </strong></td><td>  <input type='text' name='groepid' value='<?php echo $groep_ID; ?>'/></td>
 </tr>
 <tr>
 <?php
@@ -85,22 +91,24 @@ if (isset($_POST['submit']))
 	{
 	    $id = $_POST['id']; 	     // get form data, making sure it is valid
         $naam = mysqli_real_escape_string($conn, htmlspecialchars($_POST['leerlingnummer']));
-        $opleiding = mysqli_real_escape_string($conn, htmlspecialchars($_POST['voornaam']));
+        $opleiding_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['voornaam']));
+		$leerjaar = mysqli_real_escape_string($conn, htmlspecialchars($_POST['leerjaar']));
+		$groep_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['groepid']));
     
 	    // checken of volgende velden zijn gevuld
-        if ($naam == '' || $opleiding == '')
+        if ($naam == '' || $opleiding_ID == '')
 
 		{
 		    // generate error message
 		    $error = 'ERROR: Please fill in all required fields!';
 		    //error, display form
-		    renderForm($id,$naam, $opleiding);
+		    renderForm($id,$naam, $opleiding_ID,$leerjaar,$groep_ID);
 		}
 	    else
 		{
 		    
 	// save the data to the database
-	$sql_query = "UPDATE leerling SET naam='$naam', opleiding='$opleiding' WHERE id='$id'"; // or die("this stuffed up");
+	$sql_query = "UPDATE leerling SET naam='$naam', opleiding_ID='$opleiding_ID',leerjaar='$leerjaar',groep_ID='$groep_ID' WHERE id='$id'"; // or die("this stuffed up");
 	$retval = mysqli_query( $conn,$sql_query );   
     if (! $retval ) {
         die('Could not enter data: ');
@@ -133,9 +141,11 @@ else
 		{
 		// get data from db
 		$naam = $row['naam'];
-		$opleiding = $row['opleiding'];
+		$opleiding_ID = $row['opleiding_ID'];
+		$leerjaar = $row['leerjaar'];
+		$groep_ID = $row['groep_ID'];
 		// show form
-		renderForm($id, $naam, $opleiding);
+		renderForm($id, $naam, $opleiding_ID,$leerjaar,$groep_ID);
 		}
 		else
 		// if no match, display result

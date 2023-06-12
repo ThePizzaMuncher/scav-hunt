@@ -85,7 +85,7 @@ echo '<div class="container">
  	// generate error message
  	$error = 'ERROR: Please fill in all required fields!';
  	// if either field is blank, display the form again
- 	renderForm($naam, $opleiding_ID,$leerjaar, $groep_ID);
+ 	renderForm($id,$naam, $opleiding_ID,$leerjaar, $groep_ID);
 
  	}
  else

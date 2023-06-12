@@ -13,6 +13,12 @@ require_once('../assets/includes/conn.php');
 <head>
 	<title>Groepjes maken</title>
 </head>
+<body>
+	<form>
+		<input type="number" placeholder="Aantal groepjes">
+		<input type="number" placeholder="Aantal mensen in groepjes">
+	</form>
+</body>
 
 <?php
 	$leerlingen = mysqli_query($conn, 'SELECT * FROM leerling');

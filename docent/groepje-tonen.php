@@ -9,10 +9,7 @@ echo <<< groepjes
     <title>Groepjes</title>
 </head>
 <body>
-    <form>
-        <input type="number" placeholder="Aantal groepjes">
-        <input type="number" placeholder="Aantal mensen in groepjes">
-    </form>
+    <p>Nog niets hier</p>
 </body>
 </html>
 groepjes;

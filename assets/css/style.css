@@ -469,8 +469,7 @@ section {
   border: 1px solid var(--color-secondary-light);
   background-size: 100% 5px;
 }
-
-.about button, .about .button-red {
+.about [type=submit], .about button, .about .button-red {
   transition: 0.3s;
   text-align: center;
   border: none;
@@ -488,7 +487,7 @@ section {
   background: var(--color-secondary-light-red);
 }
 
-.about button:hover {
+.about button:hover, .about [type=submit]:hover {
   background: var(--color-secondary);
   box-shadow: 0 0 20px var(--color-secondary-light),
   0 5px 5px var(--color-grey);
