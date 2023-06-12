@@ -60,7 +60,7 @@ require_once("../assets/includes/conn.php");
 </table>
  <p>* Required</p>
 
- <input type="submit" name="submit" value="Submit">
+ <input type="submit" name="submit" value="Go">
 
  </div>
 
