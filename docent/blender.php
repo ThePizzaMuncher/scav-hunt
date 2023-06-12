@@ -11,11 +11,11 @@ require_once('../assets/includes/conn.php');
 
 ?>
 
-<head id="pagina_blender">
+<head>
 	<title>Groepjes maken</title>
 	<script src="../assets/js/blender.js" defer></script><!-- Blender code -->
 </head>
-<body>
+<body id="pagina_blender">
   <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
     <section id="about" class="section-50 d-flex flex-column align-items-center">
       <h3 class="panel-title">Blender wzhh!!...</h3>
