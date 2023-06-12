@@ -334,16 +334,17 @@ h6 {
   text-decoration: none;
 }
 
-.nav-menu a:hover,
+.nav-menu a:hover {
+  text-decoration: none;
+  color: white;
+}
+
 .nav-menu .active,
 .nav-menu .active:focus,
 .nav-menu li:hover {
-  text-decoration: none;
-  color: white;
-  text-shadow: 0 0 10px var(--color-grey);
+background-color: var(--color-grey);
+text-shadow: 0 0 10px var(--color-grey);
 }
-
-
 
 .nav-menu a:hover i,
 .nav-menu .active i,
@@ -352,8 +353,6 @@ h6 {
   color: var(--color-secondary-red);
   text-shadow: 0 0 20px var(--color-secondary-light);
 }
-
-
 
 /* Style the dropdown menu */
 .nav-menu ul ul {
