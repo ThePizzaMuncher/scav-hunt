@@ -34,6 +34,22 @@ require_once('../assets/includes/conn.php');
       </form>
     </section>
   </section> <!-- End About Section -->
+
+  <script>//For value input form
+    function incrementValue(button) {
+      var input = button.parentNode.querySelector('input[type="number"]');
+      var value = parseInt(input.value);
+      input.value = value + 1;
+    }
+
+    function decrementValue(button) {
+      var input = button.parentNode.querySelector('input[type="number"]');
+      var value = parseInt(input.value);
+      if (value > 0) {
+        input.value = value - 1;
+      }
+    }
+  </script>
 </body>
 
 <?php
