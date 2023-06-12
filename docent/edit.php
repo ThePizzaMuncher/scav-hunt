@@ -138,13 +138,12 @@ else
 		{
 		// get data from db
 		
+		$naam = $row['naam'];
 		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
-		while($row = $pull->fetch_array()) {
-			$naam = $row['naam'];
-			$opleiding_ID = $row['leerjaar'];
-			$leerjaar = $row['groep_ID'];
-			$groep_ID = $row['opleiding_naam'];
-		}
+		$row1 = $pull->fetch_assoc();
+		$opleiding_ID = $row1['opleiding_naam'];
+		$leerjaar = $row['leerjaar'];
+		$groep_ID = $row['groep_ID'];
 		// show form
 		renderForm($id, $naam, $opleiding_ID,$leerjaar,$groep_ID);
 		}
