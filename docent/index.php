@@ -61,6 +61,8 @@ require_once("../assets/includes/conn.php");
 			echo "<td>$row[leerjaar]</td>";
 			echo "<td>$row[groep_ID]</td>";
 			echo "<td>$row[opleiding_ID]</td>";
+			echo '<td><a href="edit.php?id=' . $row["ID"] . '">Bewerk</a></td>';
+            echo '<td><a href="delete.php?id=' . $row['ID'] . '">Verwijder</a></td>';
 			echo "</tr>";
 		}
 

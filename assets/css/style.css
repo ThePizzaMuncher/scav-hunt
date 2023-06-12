@@ -512,6 +512,7 @@ section {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  width: auto;
 }
 
 .about .input-group input {
