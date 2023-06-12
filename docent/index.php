@@ -55,13 +55,13 @@ require_once("../assets/includes/conn.php");
 		$num_rows = mysqli_num_fields($leerlingen);
 		//    echo 'aantal kolommen' . $num_rows;
 
-		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
+		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam,groep.ID,groep.groepsnaam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id INNER JOIN groep ON leerling.groep_ID = groep.ID");
 		while($row = $pull->fetch_assoc()) {
 			echo "<tr>";
 			echo "<td>$row[ID]</td>";
 			echo "<td>$row[naam]</td>";
 			echo "<td>$row[leerjaar]</td>";
-			echo "<td>$row[groep_ID]</td>";
+			echo "<td>$row[groepsnaam]</td>";
 			echo "<td>$row[opleiding_naam]</td>";
 			echo "<td><a href=\"edit.php?id=$row[ID]\">Bewerk</a></td>";
             echo "<td><a href=\"delete.php?id=$row[ID]\">Verwijder</a></td>";
