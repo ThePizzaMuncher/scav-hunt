@@ -467,6 +467,7 @@ section {
   border: 1px solid var(--color-secondary-light);
   background-size: 100% 5px;
 }
+
 .about [type=submit], .about button, .about .button-red {
   transition: 0.3s;
   text-align: center;
@@ -479,9 +480,11 @@ section {
   width: 200px;
   height: 45px;
 }
+
 .about button, .about [type=submit] {
   background: var(--color-secondary-light);
 }
+
 .about .button-red {
   background: var(--color-secondary-light-red);
 }
@@ -496,6 +499,21 @@ section {
   background: var(--color-secondary-red);
   box-shadow: 0 0 20px var(--color-secondary-light-red),
   0 5px 5px var(--color-grey);
+}
+
+.about .input-group {
+  display: flex;
+  align-items: center;
+}
+
+.about .input-group input {
+  margin: 0 10px;
+}
+
+.about .input-group button {
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
 }
 
 /*--------------------------------------------------------------

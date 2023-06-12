@@ -74,12 +74,7 @@ require_once("../assets/includes/conn.php");
 echo '<div class="container">
 		<div class="row">
 			<div class="col-md-8"></div>
-  
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title">Leerling Wijzigen</h3>
-					</div>
-				</div>
+				<h3 class="panel-title">Leerling Wijzigen</h3>
 		</div>
 	</div>
  ' 
