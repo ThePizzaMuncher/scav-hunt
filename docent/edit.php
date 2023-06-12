@@ -130,7 +130,7 @@ else
 	{
 	    // query db
 	    $id = $_GET['id'];
-	    $result = mysqli_query($conn,"SELECT * FROM leerling WHERE id=$id")
+	    $result = mysqli_query($conn,"SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id")
 	    or die('doet niet'); 
 	    $row = mysqli_fetch_array($result);
 	    // check that the 'id' matches up with a row in the databse
@@ -139,13 +139,7 @@ else
 		// get data from db
 		
 		$naam = $row['naam'];
-		/*Leerling opleiding_ID omzetten naar de opleiding_naam*/
-		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
-		while($row = $pull->fetch_assoc()) {
-			echo "<tr>";
-			echo "<td>$row[opleiding_naam]</td>";
-			echo "</tr>";
-		}
+		$opleiding_ID = $row['opleiding_naam'];
 		$leerjaar = $row['leerjaar'];
 		$groep_ID = $row['groep_ID'];
 		// show form

@@ -45,7 +45,7 @@ require_once("../assets/includes/conn.php");
 				<th>Voornaam</th>
 				<th>Leerjaar</th>
 				<th>Groeps_ID</th>
-				<th>Groep</th>
+				<th>Opleiding</th>
 				<th>Bewerken</th>
 				<th>Verwijderen</th>
 			</tr>
