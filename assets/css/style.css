@@ -666,7 +666,7 @@ td {
 }
 
 .scrollable::-webkit-scrollbar-thumb:hover {
-  background-color: #999;
+  background-color: var(--color-secondary);
 }
 #ul {
   flex-wrap: wrap;
