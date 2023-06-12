@@ -1,14 +1,18 @@
+function invis(id) {
+    document.getElementById(id).style.display = "none";
+}
+
 if (document.getElementById("pagina_blender")) {//Als blender pagina bestaat doe dan...
-    console.log("Pagina detection works");
     document.getElementById("ag").addEventListener("click", () => {
-        document.getElementById("amig").style.display = "none";
-        console.log("klik op ag");
+        invis("amig");
     });
     document.getElementById("amig").addEventListener("click", () => {
-        document.getElementById("ag").style.display = "none";
-        console.log("klik op amig");
+        invis("ag");
     });
     document.getElementById("ag").addEventListener("keypress", () => {
-
+        invis("amig");
+    });
+    document.getElementById("amig").addEventListener("keypress", () => {
+        invis("ag");
     });
 }
