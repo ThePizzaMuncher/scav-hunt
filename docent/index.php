@@ -53,7 +53,7 @@ require_once("../assets/includes/conn.php");
 		$num_rows = mysqli_num_fields($leerlingen);
 		//    echo 'aantal kolommen' . $num_rows;
 
-		$pull = $conn->query("SELECT ID, naam, leerjaar, groep_ID, opleiding_ID, opleiding.ID, opleiding.naam FROM leerling JOIN opleiding ON opleiding_ID = opleiding.ID");
+		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.ID,opleiding.naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.ID");
 		while($row = $pull->fetch_assoc()) {
 			echo "<tr>";
 			echo "<td>$row[ID]</td>";
