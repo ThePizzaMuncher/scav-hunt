@@ -15,8 +15,8 @@ if (isset($_SESSION['docent'])) {
   <section id="about" class="section-50 d-flex flex-column align-items-center">
     <h3>Docent en admin login</h3>
     <form method="post" action="send.php">
-      <input type="text" name="user" placeholder="Username">
-      <input type="password" name="pw" placeholder="Password">
+      <input type="text" name="user" placeholder="Username" required>
+      <input type="password" name="pw" placeholder="Password" required>
       <button type="submit" name="submit">Login</button>
     </form>
   </section>
