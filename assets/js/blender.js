@@ -8,4 +8,7 @@ if (document.getElementById("pagina_blender")) {
         document.getElementById("ag").style.display = "none";
         console.log("klik op amig");
     });
+    document.getElementById("ag").addEventListener("keypress", () => {
+
+    });
 }

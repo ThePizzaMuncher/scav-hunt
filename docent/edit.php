@@ -138,12 +138,22 @@ else
 		{
 		// get data from db
 		
-		$naam = $row['naam'];
-		$pull = mysqli_query($conn,"SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
-		$rij = mysqli_fetch_array($pull);
-		$opleiding_ID = $rij['opleiding_naam'];
-		$leerjaar = $row['leerjaar'];
-		$groep_ID = $row['groep_ID'];
+		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
+		while($row = $pull->fetch_assoc()) {
+			echo "<tr>";
+			echo "<td>$row[ID]</td>";
+			echo "<td>$row[naam]</td>";
+			echo "<td>$row[leerjaar]</td>";
+			echo "<td>$row[groep_ID]</td>";
+			echo "<td>$row[opleiding_naam]</td>";
+			echo "<td><a href=\"edit.php?id=$row[ID]\">Bewerk</a></td>";
+            echo "<td><a href=\"delete.php?id=$row[ID]\">Verwijder</a></td>";
+			echo "</tr>";
+			$naam = $row['naam'];
+			$opleiding_ID = $row['leerjaar'];
+			$leerjaar = $row['groep_ID'];
+			$groep_ID = $row['opleiding_naam'];
+		}
 		// show form
 		renderForm($id, $naam, $opleiding_ID,$leerjaar,$groep_ID);
 		}
