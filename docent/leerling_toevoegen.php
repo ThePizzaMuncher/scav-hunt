@@ -14,11 +14,11 @@ if (!isset($_SESSION['docent'])) {
 
 $id='';
 $naam='';
-$opleiding='';
+$opleiding_ID='';
 $leerjaar='';
 $groep_ID='1';
 
- function renderForm($id, $naam, $opleiding,$leerjaar, $groep_ID)
+ function renderForm($id, $naam, $opleiding_ID,$leerjaar, $groep_ID)
  {
  ?>
   
@@ -30,7 +30,7 @@ $groep_ID='1';
 <td> <strong>Voornaam: </strong></td><td>  <input type='text' name='naam' value='<?php echo $naam; ?>'/>*</td>
 </tr>
 <tr>
-<td> <strong>Opleiding: </strong></td><td>  <input type='text' name='opleiding' value='<?php echo $opleiding; ?>'/>*</td>
+<td> <strong>Opleiding: </strong></td><td>  <input type='text' name='opleiding_ID' value='<?php echo $opleiding_ID; ?>'/>* 1 staat voor software developer w.i.p</td>
 </tr>
 <tr>
 <td> <strong>Leerjaar: </strong></td><td>  <input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>'/>*</td>
@@ -74,18 +74,18 @@ echo '<div class="container">
  	// get form data, making sure it is valid
 //	$id = $_POST['id']; 	     // get form data, making sure it is valid
 	$naam = mysqli_real_escape_string($conn,$_POST['naam']);
-	$opleiding = mysqli_real_escape_string($conn,$_POST['opleiding']);
+	$opleiding_ID = mysqli_real_escape_string($conn,$_POST['opleiding_ID']);
 	$leerjaar = mysqli_real_escape_string($conn,$_POST['leerjaar']);
 	//$groep_ID = mysqli_real_escape_string($conn,$_POST['groep_ID']);
    
  
  // check to make sure both fields are entered
- if ($naam == '' || $opleiding == '' || $groep_ID == '' || $leerjaar == '')
+ if ($naam == '' || $opleiding_ID == '' || $groep_ID == '' || $leerjaar == '')
  	{
  	// generate error message
  	$error = 'ERROR: Please fill in all required fields!';
  	// if either field is blank, display the form again
- 	renderForm($naam, $opleiding,$leerjaar, $groep_ID);
+ 	renderForm($naam, $opleiding_ID,$leerjaar, $groep_ID);
 
  	}
  else
@@ -93,7 +93,7 @@ echo '<div class="container">
 		 
  	// save the data to the database
 
-	$sql_query = "INSERT INTO leerling (naam, opleiding,leerjaar, groep_ID) VALUES ('$naam', '$opleiding','$leerjaar', '$groep_ID')";
+	$sql_query = "INSERT INTO leerling (naam, opleiding_ID,leerjaar, groep_ID) VALUES ('$naam', '$opleiding_ID','$leerjaar', '$groep_ID')";
 
 
 	$retval = mysqli_query($conn, $sql_query );

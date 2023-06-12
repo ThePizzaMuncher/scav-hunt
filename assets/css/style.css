@@ -323,15 +323,24 @@ h6 {
   transition: 0.3s;
 }
 
+.nav-menu li {
+  display: inline-block;
+  border-radius: 10px;
+}
+
+.nav-menu li a {
+  display: block;
+  text-decoration: none;
+}
+
 .nav-menu a:hover,
 .nav-menu .active,
 .nav-menu .active:focus,
-.nav-menu li:hover>a {
+.nav-menu li:hover {
   text-decoration: none;
   color: white;
   text-shadow: 0 0 10px var(--color-grey);
   background-color: var(--color-grey);
-  border-radius: 10px;
 }
 
 .nav-menu a:hover i,
@@ -342,14 +351,7 @@ h6 {
   text-shadow: 0 0 20px var(--color-secondary-light);
 }
 
-.nav-menu li {
-  display: inline-block;
-}
 
-.nav-menu li a {
-  display: block;
-  text-decoration: none;
-}
 
 /* Style the dropdown menu */
 .nav-menu ul ul {
@@ -363,12 +365,12 @@ h6 {
 
 .nav-menu li ul {
   display: block;
-  height: 0;
+  height: 0px;
   overflow: hidden;
   background: var(--color-default);
-  box-shadow: 0px 5px 5px var(--color-secondary-light-red);
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  box-shadow: 0px 2px 3px var(--color-secondary-light-red);
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   padding: 10px 0;
   transition: 1s;
 }
@@ -466,31 +468,31 @@ section {
 }
 
 .about button, .about .button-red {
-  border-radius: 5px;
-  padding: 10px 5px;
   transition: 0.3s;
   text-align: center;
-  overflow: hidden;
   border: none;
+  border-radius: 5px;
   color: white;
   cursor: pointer;
   margin: 10px 10px;
+  padding: 10px 5px;
+  width: 200px;
 }
 .about button {
-  background: var(--color-secondary);
+  background: var(--color-secondary-light);
 }
 .about .button-red {
-  background: var(--color-secondary-red);
+  background: var(--color-secondary-light-red);
 }
 
 .about button:hover {
-  background: var(--color-secondary-light);
+  background: var(--color-secondary);
   box-shadow: 0 0 20px var(--color-secondary-light),
   0 5px 5px var(--color-grey);
 }
 
 .about .button-red:hover {
-  background: var(--color-secondary-light-red);
+  background: var(--color-secondary-red);
   box-shadow: 0 0 20px var(--color-secondary-light-red),
   0 5px 5px var(--color-grey);
 }
@@ -596,6 +598,8 @@ td {
 .scrollable {
   height: 22vw;
   overflow-y: scroll;
+  border: 2px solid var(--color-primary);
+  border-radius: 5px;
 }
 
 .scrollable::-webkit-scrollbar {
@@ -619,5 +623,6 @@ td {
 }
 
 th {
+  background: var(--color-grey);
   border-bottom: 2px solid var(--color-primary);
 }

@@ -10,7 +10,8 @@ require_once("../assets/includes/conn.php"); ?>
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
      <section id="about" class="section-50 d-flex flex-column align-items-center">
 <?php /*  docenten_edit.PHP
- Allows user to edit specific entry in database */
+ Allows user to edit specific entry in database
+*/
  function renderForm($id, $naam, $opleiding)
  {
  ?>
@@ -20,14 +21,14 @@ require_once("../assets/includes/conn.php"); ?>
  <div>
  <table border='1' cellpadding='10' width='100%'>
 <tr>
-<td> <strong>Leerlingnummer: </strong></td><td> <input type='text' name='leerlingnummer' value='<?php echo $naam; ?>'/</td>
+<td> <strong>Naam: </strong></td><td> <input type='text' name='leerlingnummer' value='<?php echo $naam; ?>'/></td>
 </tr>
 <tr>
-<td> <strong>voornaam: </strong></td><td>  <input type='text' name='voornaam' value='<?php echo $opleiding; ?>'/>*</td>
+<td> <strong>opleiding_ID: </strong></td><td>  <input type='text' name='voornaam' value='<?php echo $opleiding; ?>'/>*</td>
 </tr>
 <tr>
 <?php
-
+require_once("../assets/includes/conn.php");
 // Get all the categories from category table
     $sql_klasid = "SELECT * FROM `leerling`";
     $KlassenID = mysqli_query($conn,$sql_klasid);

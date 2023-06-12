@@ -36,19 +36,19 @@ require_once("../assets/includes/conn.php");
 			</div>
 
 		</div>
-		<?php
+		<?php 
+		echo '<thead>     
+			<tr>    
+				<th>ID</th>
+				<th>Voornaam</th>
+				<th>Opleiding</th>
+				<th>Groeps_ID</th>
+				<th>Bewerken</th>
+				<th>Verwijderen</th>
+			</tr>
+		</thead> ';
 		echo "<div class='scrollable'><table border='1' cellpadding='10'>";
-		echo '  <thead>     
-	<tr>    
-            <th>ID</th>
-            <th>Voornaam</th>
-            <th>Opleiding</th>
-			<th>Groeps_ID</th>
-            <th>Bewerken</th>
-            <th>Verwijderen</th>
-        </tr>
-	</thead>
-    </div>';
+		echo '</div>';
 
 		$num_rows = mysqli_num_fields($leerlingen);
 		//    echo 'aantal kolommen' . $num_rows;
