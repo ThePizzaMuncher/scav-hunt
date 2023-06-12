@@ -2,6 +2,9 @@
 session_start();
 $_SESSION["pagina"] = "home";
 include 'assets/includes/header.php';
+echo <<< meta
+
+meta;
 ?>
 
 <main id="main">
