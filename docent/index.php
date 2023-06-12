@@ -53,25 +53,9 @@ require_once("../assets/includes/conn.php");
 		$num_rows = mysqli_num_fields($leerlingen);
 		//    echo 'aantal kolommen' . $num_rows;
 
-		while ($row = mysqli_fetch_row($leerlingen)) {
-			for ($i = 0; $i < $num_rows; $i++) {
-				if ($i == 6) {
-					// Get all the categories from category table
-					$sql_klasid = "SELECT * FROM `leerling` where id = $row[$i]";
-					$KlassenID = mysqli_query($conn, $sql_klasid);
-					$klas_id = mysqli_fetch_array($KlassenID);
-				}
-				else if ($i == 5) {
-					
-				}
-				else {
-					echo '<td>' . $row[$i] . '</td>';
-				}
-			}
-			$id = $row[0];
-			echo '<td><a href="edit.php?id=' . $id . '">Bewerk</a></td>';
-			echo '<td><a href="delete.php?id=' . $id . '">Verwijder</a></td>';
-			echo '</tr>';
+		$pull = $conn->query("SELECT * FROM leerling");
+		while($row = $pull->fetch_assoc()) {
+			echo "<td>$row[ID]</td>";
 		}
 
 		echo "</table></div>";

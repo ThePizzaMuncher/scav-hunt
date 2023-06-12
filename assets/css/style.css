@@ -537,6 +537,10 @@ section {
   width: 30px;
   height: 30px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
 /*--------------------------------------------------------------
@@ -641,7 +645,8 @@ td {
   height: 25vw;
   overflow-y: scroll;
   box-shadow: 0 0 10px var(--color-secondary-light);
-  border-radius: 5px;
+  border-radius: 15px;
+  border: solid 1px black;
 }
 
 .scrollable::-webkit-scrollbar {
