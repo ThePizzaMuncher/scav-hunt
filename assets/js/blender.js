@@ -1,22 +1,25 @@
 function invis(id) {
     document.getElementById(id).style.display = "none";
 }
-
+function a() {
+    invis("amig");
+    invis("2");
+}
+function b() {
+    invis("ag");
+    invis("1");
+}
 if (document.getElementById("pagina_blender")) {//Als blender pagina bestaat doe dan...
     document.getElementById("ag").addEventListener("click", () => {
-        invis("amig");
-        invis("2");
+        a();
     });
     document.getElementById("amig").addEventListener("click", () => {
-        invis("ag");
-        invis("1");
+        b();
     });
     document.getElementById("ag").addEventListener("keypress", () => {
-        invis("2");
-        invis("amig");
+        a();
     });
     document.getElementById("amig").addEventListener("keypress", () => {
-        invis("1");
-        invis("ag");
+        b();
     });
 }
