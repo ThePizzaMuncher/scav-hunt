@@ -21,12 +21,12 @@ require_once('../assets/includes/conn.php');
       <form method="post" action="">
         <div class="input-group">
           <button type="button" class="minus-button" onclick="decrementValue(this)">-1</button>
-          <input type="number" placeholder="Aantal groepjes" name="ag" min="0">
+          <input type="number" placeholder="Aantal groepjes" name="ag" min="0" value="1">
           <button type="button" class="plus-button" onclick="incrementValue(this)">+1</button>
         </div>
         <div class="input-group">
           <button type="button" class="minus-button" onclick="decrementValue(this)">-1</button>
-          <input type="number" placeholder="Aantal mensen in groepje" name="amig" min="0">
+          <input type="number" placeholder="Aantal mensen in groepje" name="amig" min="0" value="1">
           <button type="button" class="plus-button" onclick="incrementValue(this)">+1</button>
         </div>
         <button type="submit"><p>Genereer groepjes</p></button>
@@ -44,7 +44,7 @@ require_once('../assets/includes/conn.php');
     function decrementValue(button) {
       var input = button.parentNode.querySelector('input[type="number"]');
       var value = parseInt(input.value);
-      if (value > 0) {
+      if (value > 1) {
         input.value = value - 1;
       }
     }

@@ -60,7 +60,11 @@ require_once("../assets/includes/conn.php");
 					$sql_klasid = "SELECT * FROM `leerling` where id = $row[$i]";
 					$KlassenID = mysqli_query($conn, $sql_klasid);
 					$klas_id = mysqli_fetch_array($KlassenID);
-				} else {
+				}
+				else if ($i == 5) {
+					
+				}
+				else {
 					echo '<td>' . $row[$i] . '</td>';
 				}
 			}

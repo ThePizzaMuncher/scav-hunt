@@ -432,6 +432,7 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+
 #about {
   height: 70vh;
   justify-content: center !important;
@@ -463,12 +464,18 @@ section {
   background-repeat: no-repeat;
 }
 
+.about input[type="number"] {
+  width: 100px;
+}
+
 .about input:focus {
   border: 1px solid var(--color-secondary-light);
   background-size: 100% 5px;
 }
 
-.about [type=submit], .about button, .about .button-red {
+.about [type=submit],
+.about button,
+.about .button-red {
   transition: 0.3s;
   text-align: center;
   border: none;
@@ -481,7 +488,8 @@ section {
   height: 45px;
 }
 
-.about button, .about [type=submit] {
+.about button,
+.about [type=submit] {
   background: var(--color-secondary-light);
 }
 
@@ -489,25 +497,40 @@ section {
   background: var(--color-secondary-light-red);
 }
 
-.about button:hover, .about [type=submit]:hover {
+.about button:hover,
+.about [type=submit]:hover {
   background: var(--color-secondary);
-  box-shadow: 0 0 20px var(--color-secondary-light),
-  0 5px 5px var(--color-grey);
+  box-shadow: 0 0 20px var(--color-secondary-light), 0 5px 5px var(--color-grey);
 }
 
 .about .button-red:hover {
   background: var(--color-secondary-red);
-  box-shadow: 0 0 20px var(--color-secondary-light-red),
-  0 5px 5px var(--color-grey);
+  box-shadow: 0 0 20px var(--color-secondary-light-red), 0 5px 5px var(--color-grey);
 }
 
 .about .input-group {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .about .input-group input {
+  width: 100px;
+  height: 30px;
   margin: 0 10px;
+  padding: 5px;
+  border: 1px solid var(--color-grey-light);
+  border-radius: 5px;
+  transition: 1s;
+  background-image: linear-gradient(to right, var(--color-secondary-light) 0%, var(--color-secondary-light) 0%);
+  background-position: bottom left;
+  background-size: 0% 5px;
+  background-repeat: no-repeat;
+}
+
+.about .input-group input:focus {
+  border: 1px solid var(--color-secondary-light);
+  background-size: 100% 5px;
 }
 
 .about .input-group button {
