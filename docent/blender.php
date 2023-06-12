@@ -20,13 +20,13 @@ require_once('../assets/includes/conn.php');
     <section id="about" class="section-50 d-flex flex-column align-items-center">
       <h3 class="panel-title">Blender wzhh!!...</h3>
       <form method="post" action="">
-      <p>Aantal groepjes</p>
+      <h4>Aantal groepjes</h4>
         <div class="input-group" id="ag">
           <button type="button" class="minus-button" onclick="decrementValue(this)">-1</button>
           <input type="number" name="ag" min="0" value="0">
           <button type="button" class="plus-button" onclick="incrementValue(this)">+1</button>
         </div>
-        <p>Aantal mensen in groepje</p>
+        <h4>Aantal mensen in groepje</h4>
         <div class="input-group" id="amig">
           <button type="button" class="minus-button" onclick="decrementValue(this)">-1</button>
           <input type="number" name="amig" min="0" id="amig" value="0">
