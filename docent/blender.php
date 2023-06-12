@@ -21,13 +21,15 @@ require_once('../assets/includes/conn.php');
       <h3 class="panel-title">Blender wzhh!!...</h3>
       <form method="post" action="">
         <div class="input-group" id="ag">
+			<p>Aantal groepjes</p>
           <button type="button" class="minus-button" onclick="decrementValue(this)">-1</button>
-          <input type="number" placeholder="Aantal groepjes" name="ag" min="0">
+          <input type="number" name="ag" min="0" value="0">
           <button type="button" class="plus-button" onclick="incrementValue(this)">+1</button>
         </div>
         <div class="input-group" id="amig">
+		<p>Aantal mensen in groepje</p>
           <button type="button" class="minus-button" onclick="decrementValue(this)">-1</button>
-          <input type="number" placeholder="Aantal mensen in groepje" name="amig" min="0" id="amig">
+          <input type="number" name="amig" min="0" id="amig" value="0">
           <button type="button" class="plus-button" onclick="incrementValue(this)">+1</button>
         </div>
         <button type="submit"><p>Genereer groepjes</p></button>
