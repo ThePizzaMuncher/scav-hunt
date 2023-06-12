@@ -130,7 +130,7 @@ else
 	    $result = mysqli_query($conn,"SELECT * FROM leerling WHERE id=$id")
 	    or die('doet niet'); 
 	    $row = mysqli_fetch_array($result);
-		$opleiding = mysqli_query($conn,"SELECT leerling.ID leerling.opleiding_ID,opleiding.ID,opleiding.naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.ID");
+		$opleiding = mysqli_query($conn,"SELECT leerling.ID leerling.opleiding_ID,opleiding.id,opleiding.naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
 		$rij = mysqli_fetch_array($opleiding);
 	    // check that the 'id' matches up with a row in the databse
 	    if ($row)
@@ -138,9 +138,13 @@ else
 		// get data from db
 		
 		$naam = $row['naam'];
-		$opleiding_ID = $rij['ID'];
+		$opleiding_ID = $rij['leerling.ID'];
 		$leerjaar = $row['leerjaar'];
 		$groep_ID = $row['groep_ID'];
+		echo $rij['leerling.ID'];
+		echo $rij['ID'];
+		echo $rij['opleiding.id'];
+		echo $rij['opleiding.opleiding_naam'];
 		// show form
 		renderForm($id, $naam, $opleiding_ID,$leerjaar,$groep_ID);
 		}
