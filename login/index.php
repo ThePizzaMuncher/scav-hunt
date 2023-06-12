@@ -3,6 +3,15 @@ session_start();
 $_SESSION['pagina'] = 'login';
 require_once("../assets/includes/header.php");
 
+if (isset($_SESSION["error"])) {//Error feedback van login
+  if ($_SESSION["error"] != "0") {
+    echo "<script>
+    window.alert($_SESSION[error]);
+    </script>";
+    $_SESSION["error"] = "0";
+  }
+}
+
 if (isset($_SESSION['docent'])) {
 	echo $_SESSION['docent'];
 	// header('location:../');
@@ -26,13 +35,4 @@ if (isset($_SESSION['docent'])) {
 
 <?php
 require_once("../assets/includes/footer.php");
-if (isset($_SESSION["error"])) {//Error feedback van login
-  if ($_SESSION["error"] != "0") {
-    echo "<script>
-    document.getElementById(error).innerHTML = $_SESSION[error];
-    document.getElementById(error).style.color = \"red\";
-    </script>";
-    $_SESSION["error"] = "0";
-  }
-}
 ?>
