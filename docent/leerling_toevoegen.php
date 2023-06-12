@@ -35,7 +35,7 @@ $groep_ID='1';
 <tr>
 <td> <strong>Leerjaar: </strong></td><td>  <input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>'/>*</td>
 </tr>
-<input hidden readonly type='text' name='groep_ID' value='1'/></td>
+<input hidden readonly type='text' name='groep_ID' value='0'/></td>
 
 </table>
 <p>* required</p>

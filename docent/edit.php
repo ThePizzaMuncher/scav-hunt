@@ -16,7 +16,7 @@ require_once("../assets/includes/conn.php"); ?>
  {
  ?>
  <form action="" method="post">
- <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+ <input name="id" value="<?php echo $id; ?>"/>
 
  <div>
  <table border='1' cellpadding='10' width='100%'>

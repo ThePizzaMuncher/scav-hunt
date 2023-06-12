@@ -11,7 +11,7 @@ echo <<< groepjes
 <body>
     <form>
         <input type="number" placeholder="Aantal groepjes">
-        <input type="number">
+        <input type="number" placeholder="Aantal mensen in groepjes">
     </form>
 </body>
 </html>
