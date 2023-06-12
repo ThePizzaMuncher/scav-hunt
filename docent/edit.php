@@ -8,8 +8,8 @@ if (!isset($_SESSION['docent'])) {
 } if (!$_SESSION['docent']) {
 	header('location:../login'); die();
 }
-require_once('../assets/includes/header.php');
-require_once("../assets/includes/conn.php"); ?>
+require_once("../assets/includes/conn.php");
+?>
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
      <section id="about" class="section-50 d-flex flex-column align-items-center">
 <?php /*  docenten_edit.PHP
@@ -133,23 +133,21 @@ else
 	    $result = mysqli_query($conn,"SELECT * FROM leerling WHERE id=$id")
 	    or die('doet niet'); 
 	    $row = mysqli_fetch_array($result);
-		$opleiding = mysqli_query($conn,"SELECT leerling.ID leerling.opleiding_ID,opleiding.id,opleiding.naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
-		$rij = mysqli_fetch_array($opleiding);
-		echo $rij;
-		echo $opleiding;
 	    // check that the 'id' matches up with a row in the databse
 	    if ($row)
 		{
 		// get data from db
 		
 		$naam = $row['naam'];
-		$opleiding_ID = $rij['leerling.ID'];
+		/*Leerling opleiding_ID omzetten naar de opleiding_naam*/
+		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
+		while($row = $pull->fetch_assoc()) {
+			echo "<tr>";
+			echo "<td>$row[opleiding_naam]</td>";
+			echo "</tr>";
+		}
 		$leerjaar = $row['leerjaar'];
 		$groep_ID = $row['groep_ID'];
-		echo $rij['leerling.ID'];
-		echo $rij['ID'];
-		echo $rij['opleiding.id'];
-		echo $rij['opleiding.opleiding_naam'];
 		// show form
 		renderForm($id, $naam, $opleiding_ID,$leerjaar,$groep_ID);
 		}
