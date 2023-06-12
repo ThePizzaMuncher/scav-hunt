@@ -1,6 +1,15 @@
 <?php
 session_start();
 $_SESSION['pagina'] = 'login';
+
+if (isset($_SESSION["error"])) {//Error feedback van login
+  if ($_SESSION["error"] != "0") {
+    echo "<script>
+    window.alert(\"$_SESSION[error]\");
+    </script>";
+    $_SESSION["error"] = "0";
+  }
+}
 require_once("../assets/includes/header.php");
 
 if (isset($_SESSION['docent'])) {
