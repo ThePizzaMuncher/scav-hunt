@@ -343,6 +343,8 @@ h6 {
   text-shadow: 0 0 10px var(--color-grey);
 }
 
+
+
 .nav-menu a:hover i,
 .nav-menu .active i,
 .nav-menu .active:focus i,

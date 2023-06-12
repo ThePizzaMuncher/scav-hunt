@@ -53,7 +53,7 @@ require_once("../assets/includes/conn.php");
 		$num_rows = mysqli_num_fields($leerlingen);
 		//    echo 'aantal kolommen' . $num_rows;
 
-		$pull = $conn->query("SELECT * FROM leerling");
+		$pull = $conn->query("SELECT ID,naam,leerjaar,groep_ID,opleiding_ID,opleiding.ID,opleiding.naam FROM leerling JOIN opleiding ON opleiding_ID = opleiding.ID");
 		while($row = $pull->fetch_assoc()) {
 			echo "<tr>";
 			echo "<td>$row[ID]</td>";
@@ -61,8 +61,8 @@ require_once("../assets/includes/conn.php");
 			echo "<td>$row[leerjaar]</td>";
 			echo "<td>$row[groep_ID]</td>";
 			echo "<td>$row[opleiding_ID]</td>";
-			echo '<td><a href="edit.php?id=' . $row["ID"] . '">Bewerk</a></td>';
-            echo '<td><a href="delete.php?id=' . $row['ID'] . '">Verwijder</a></td>';
+			echo "<td><a href=\"edit.php?id=$row[ID]\">Bewerk</a></td>";
+            echo "<td><a href=\"delete.php?id=$row[ID]\">Verwijder</a></td>";
 			echo "</tr>";
 		}
 
