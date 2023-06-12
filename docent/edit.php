@@ -137,15 +137,11 @@ else
 	    if ($row)
 		{
 		// get data from db
-		
+		$opleidingid = $row['opleiding_ID'];
 		$naam = $row['naam'];
-		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
+		$pull = $conn->query("SELECT SELECT leerling.naam,leerling.leerjaar,leerling.opleiding_ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id WHERE leerling.opleiding_ID = $opleidingid");
 		$row1 = $pull->fetch_array();
-		$opleiding_ID = $row1['opleiding_naam'];
-		echo $row1['opleiding_ID'];
-		echo $row1['opleiding_naam'];
-		echo $row1['opleiding_ID'];
-		$opleiding_ID = $row['opleiding_ID'];
+		$opleiding_ID = $row1['opleiding_ID'];
 		$leerjaar = $row['leerjaar'];
 		$groep_ID = $row['groep_ID'];
 		// show form
