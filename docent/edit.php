@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 session_start();
 if (!isset($_SESSION['docent'])) {
 	header('location:../login'); die();
@@ -130,7 +127,7 @@ else
 	{
 	    // query db
 	    $id = $_GET['id'];
-	    $result = mysqli_query($conn,"SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.id,opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id WHERE leerling.id=$id")
+	    $result = mysqli_query($conn,"SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.id,opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id WHERE leerling.ID=$id")
 	    or die('doet niet'); 
 	    $row = mysqli_fetch_array($result);
 	    // check that the 'id' matches up with a row in the databse
