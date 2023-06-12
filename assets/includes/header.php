@@ -72,7 +72,7 @@
 									echo	'<li><a href="docent_toevoegen.php"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
 								echo 	'</ul>';
 								echo '</li>';
-								echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
+								// echo '<li><a href="/~fp241754/scav-hunt/login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 								// bar;
 							} else if ($_SESSION['pagina'] == 'home') {
 								echo '<li><a href="/~fp241754/scav-hunt/login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>';
