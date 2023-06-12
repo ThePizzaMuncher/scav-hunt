@@ -5,7 +5,9 @@ if (!isset($_SESSION['docent'])) {
 } if (!$_SESSION['docent']) {
 	header('location:../login'); die();
 }
+require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
+
 ?>
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
      <section id="about" class="section-50 d-flex flex-column align-items-center">
@@ -127,7 +129,7 @@ else
 	{
 	    // query db
 	    $id = $_GET['id'];
-	    $result = mysqli_query($conn,"SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.id,opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id WHERE leerling.ID=$id")
+	    $result = mysqli_query($conn,"SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.id,opleiding_naam, FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id WHERE leerling.ID=$id")
 	    or die('doet niet'); 
 	    $row = mysqli_fetch_array($result);
 	    // check that the 'id' matches up with a row in the databse
