@@ -11,8 +11,9 @@ require_once('../assets/includes/conn.php');
 
 ?>
 
-<head>
+<head id="pagina_blender">
 	<title>Groepjes maken</title>
+	<script src="../js/blender.js" defer></script><!-- Blender code -->
 </head>
 <body>
   <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
@@ -21,34 +22,18 @@ require_once('../assets/includes/conn.php');
       <form method="post" action="">
         <div class="input-group">
           <button type="button" class="minus-button" onclick="decrementValue(this)">-1</button>
-          <input type="number" placeholder="Aantal groepjes" name="ag" min="0" value="0">
+          <input type="number" placeholder="Aantal groepjes" name="ag" min="0" value="0" id="ag">
           <button type="button" class="plus-button" onclick="incrementValue(this)">+1</button>
         </div>
         <div class="input-group">
           <button type="button" class="minus-button" onclick="decrementValue(this)">-1</button>
-          <input type="number" placeholder="Aantal mensen in groepje" name="amig" min="0" value="0">
+          <input type="number" placeholder="Aantal mensen in groepje" name="amig" min="0" value="0" id="amig">
           <button type="button" class="plus-button" onclick="incrementValue(this)">+1</button>
         </div>
         <button type="submit"><p>Genereer groepjes</p></button>
       </form>
     </section>
   </section> <!-- End About Section -->
-
-  <script>//For value input form
-    function incrementValue(button) {
-      var input = button.parentNode.querySelector('input[type="number"]');
-      var value = parseInt(input.value);
-      input.value = value + 1;
-    }
-
-    function decrementValue(button) {
-      var input = button.parentNode.querySelector('input[type="number"]');
-      var value = parseInt(input.value);
-      if (value > 0) {
-        input.value = value - 1;
-      }
-    }
-  </script>
 </body>
 
 <?php
