@@ -43,7 +43,7 @@ require_once("../assets/includes/conn.php");
 			<tr>    
 				<th>ID</th>
 				<th>Voornaam</th>
-				<th>Opleiding</th>
+				<th>Leerjaar</th>
 				<th>Groeps_ID</th>
 				<th>Groep</th>
 				<th>Bewerken</th>
