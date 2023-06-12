@@ -5,7 +5,8 @@ $_SESSION['pagina'] = 'login';
 if (isset($_SESSION["error"])) {//Error feedback van login
   if ($_SESSION["error"] != "0") {
     echo "<script>
-    window.alert(\"$_SESSION[error]\");
+    document.getElementById(error).innerHTML = $_SESSION[error];
+    document.getElementById(error).style.color = \"red\";
     </script>";
     $_SESSION["error"] = "0";
   }
@@ -28,6 +29,7 @@ if (isset($_SESSION['docent'])) {
       <input type="password" name="pw" placeholder="Password" required>
       <button type="submit" name="submit">Login</button>
     </form>
+    <p id="error"></p>
   </section>
 </section>
 
