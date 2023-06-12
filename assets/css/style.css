@@ -619,5 +619,5 @@ td {
 }
 
 th {
-  position: fixed;
+  border-bottom: 2px solid var(--color-primary);
 }
