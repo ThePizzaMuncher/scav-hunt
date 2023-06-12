@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
 if (!isset($_SESSION['docent'])) {
 	header('location:../login'); die();
@@ -132,6 +135,8 @@ else
 	    $row = mysqli_fetch_array($result);
 		$opleiding = mysqli_query($conn,"SELECT leerling.ID leerling.opleiding_ID,opleiding.id,opleiding.naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
 		$rij = mysqli_fetch_array($opleiding);
+		echo $rij;
+		echo $opleiding;
 	    // check that the 'id' matches up with a row in the databse
 	    if ($row)
 		{
