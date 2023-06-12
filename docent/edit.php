@@ -139,7 +139,8 @@ else
 		// get data from db
 		
 		$naam = $row['naam'];
-		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
+		$pull = mysqli_query($conn,"SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id");
+		$rij = mysqli_fetch_array($pull);
 		$opleiding_ID = $pull['opleiding_naam'];
 		$leerjaar = $row['leerjaar'];
 		$groep_ID = $row['groep_ID'];
