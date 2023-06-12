@@ -37,9 +37,9 @@ if(isset($_POST['importSubmit'])){
             while(($line = fgetcsv($csvFile)) !== FALSE){
                 // Get row data
                 $naam   = str_replace(';', '',$line[0]);
-                $opleiding  = str_replace(';', '',$line[1]);
-                $leerjaar  = str_replace(';', '',$line[2]);
-                $groep_ID = str_replace(';', '',$line[3]);
+                $leerjaar  = str_replace(';', '',$line[1]);
+                $groep_ID = str_replace(';', '',$line[2]);
+                $opleiding  = str_replace(';', '',$line[3]);
                 echo $naam . $opleiding . $leerjaar . $groep_ID;
                 // Check whether member already exists in the database with the same email
                /* $prevQuery = "SELECT id FROM leerling WHERE groep_ID = '".$line[1]."'";
@@ -51,7 +51,7 @@ if(isset($_POST['importSubmit'])){
                 }else{
                     // Insert member data in the database
                     */
-                $conn->query("INSERT INTO leerling (naam, opleiding, leerjaar, groep_ID) VALUES ('$naam', '$opleiding', $leerjaar,$groep_ID)");
+                $conn->query("INSERT INTO leerling (naam, leerjaar,groep_ID,opleiding_ID) VALUES ('$naam', '$leerjaar', $groep_ID,$opleiding)");
               //  }
             }
             

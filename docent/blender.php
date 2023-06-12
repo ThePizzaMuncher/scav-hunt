@@ -15,8 +15,9 @@ require_once('../assets/includes/conn.php');
 </head>
 <body>
 	<form>
-		<input type="number" placeholder="Aantal groepjes">
-		<input type="number" placeholder="Aantal mensen in groepjes">
+		<input type="number" placeholder="Aantal groepjes" name="ag">
+		<input type="number" placeholder="Aantal mensen in groepje" name="amig">
+		<button type="submit"><p>Genereer groepjes</p></button>
 	</form>
 </body>
 

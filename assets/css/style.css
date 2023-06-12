@@ -480,7 +480,7 @@ section {
   padding: 10px 5px;
   width: 200px;
 }
-.about button {
+.about button, .about [type=submit] {
   background: var(--color-secondary-light);
 }
 .about .button-red {

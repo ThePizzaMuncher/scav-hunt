@@ -58,9 +58,9 @@ require_once("../assets/includes/conn.php");
         </select>
 </tr></td>
 </table>
- <p>* Required</p>
+ <p>Everything is Required</p>
 
- <input type="submit" name="submit" value="Go">
+ <input type="submit" name="submit" value="Wijzigen">
 
  </div>
 
