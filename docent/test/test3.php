@@ -38,9 +38,8 @@ if(isset($_POST['importSubmit'])){
                 // Get row data
                 $naam   = str_replace(';', '',$line[0]);
                 $leerjaar  = str_replace(';', '',$line[1]);
-                $groep_ID = str_replace(';', '',$line[2]);
-                $opleiding  = str_replace(';', '',$line[3]);
-                echo $naam . $leerjaar . $groep_ID . $opleiding;
+                $opleiding  = str_replace(';', '',$line[2]);
+                echo $naam . $leerjaar . $opleiding;
                 // Check whether member already exists in the database with the same email
                /* $prevQuery = "SELECT id FROM leerling WHERE groep_ID = '".$line[1]."'";
                 $prevResult = $db->query($prevQuery);
@@ -51,7 +50,7 @@ if(isset($_POST['importSubmit'])){
                 }else{
                     // Insert member data in the database
                     */
-                $conn->query("INSERT INTO leerling (naam, leerjaar,groep_ID,opleiding_ID) VALUES ('$naam', $leerjaar, $groep_ID,$opleiding)");
+                $conn->query("INSERT INTO leerling (naam, leerjaar,opleiding_ID) VALUES ('$naam', $leerjaar,$opleiding)");
               //  }
             }
             

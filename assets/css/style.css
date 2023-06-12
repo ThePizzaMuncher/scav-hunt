@@ -477,7 +477,7 @@ section {
   margin: 10px 10px;
   padding: 10px 5px;
   width: 200px;
-  height: auto;
+  height: 45px;
 }
 .about button, .about [type=submit] {
   background: var(--color-secondary-light);

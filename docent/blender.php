@@ -17,7 +17,7 @@ require_once('../assets/includes/conn.php');
 <body>
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
      <section id="about" class="section-50 d-flex flex-column align-items-center">
-	<form>
+	<form method="post" action="">
 		<input type="number" placeholder="Aantal groepjes" name="ag">
 		<input type="number" placeholder="Aantal mensen in groepje" name="amig">
 		<button type="submit"><p>Genereer groepjes</p></button>
