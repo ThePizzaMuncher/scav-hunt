@@ -341,7 +341,6 @@ h6 {
   text-decoration: none;
   color: white;
   text-shadow: 0 0 10px var(--color-grey);
-  background-color: var(--color-grey);
 }
 
 .nav-menu a:hover i,
@@ -466,6 +465,7 @@ section {
 
 .about input[type="number"] {
   width: 100px;
+  text-align: center;
 }
 
 .about input:focus {
