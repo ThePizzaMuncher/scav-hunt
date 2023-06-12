@@ -13,7 +13,7 @@ require_once('../assets/includes/conn.php');
 
 <head id="pagina_blender">
 	<title>Groepjes maken</title>
-	<script src="../js/blender.js" defer></script><!-- Blender code -->
+	<script src="../assets/js/blender.js" defer></script><!-- Blender code -->
 </head>
 <body>
   <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">

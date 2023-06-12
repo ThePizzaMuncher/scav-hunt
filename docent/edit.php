@@ -130,7 +130,7 @@ else
 	{
 	    // query db
 	    $id = $_GET['id'];
-	    $result = mysqli_query($conn,"SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id WHERE id=$id")
+	    $result = mysqli_query($conn,"SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID, leerling.ID,opleiding.id,opleiding.opleiding_naam FROM leerling WHERE id=$id INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id")
 	    or die('doet niet'); 
 	    $row = mysqli_fetch_array($result);
 	    // check that the 'id' matches up with a row in the databse
