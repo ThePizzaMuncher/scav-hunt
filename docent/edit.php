@@ -142,6 +142,7 @@ else
 		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.opleiding_ID,opleiding.id,opleiding.opleiding_naam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id WHERE leerling.opleiding_ID = $opleidingid");
 		$row1 = $pull->fetch_assoc();
 		$opleiding_ID = $row1['opleiding_ID'];
+		echo $row1;
 		$leerjaar = $row['leerjaar'];
 		$groep_ID = $row['groep_ID'];
 		// show form
