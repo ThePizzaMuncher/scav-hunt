@@ -1,16 +1,6 @@
 <?php
 session_start();
 $_SESSION['pagina'] = 'login';
-
-if (isset($_SESSION["error"])) {//Error feedback van login
-  if ($_SESSION["error"] != "0") {
-    echo "<script>
-    document.getElementById(error).innerHTML = $_SESSION[error];
-    document.getElementById(error).style.color = \"red\";
-    </script>";
-    $_SESSION["error"] = "0";
-  }
-}
 require_once("../assets/includes/header.php");
 
 if (isset($_SESSION['docent'])) {
@@ -36,4 +26,13 @@ if (isset($_SESSION['docent'])) {
 
 <?php
 require_once("../assets/includes/footer.php");
+if (isset($_SESSION["error"])) {//Error feedback van login
+  if ($_SESSION["error"] != "0") {
+    echo "<script>
+    document.getElementById(error).innerHTML = $_SESSION[error];
+    document.getElementById(error).style.color = \"red\";
+    </script>";
+    $_SESSION["error"] = "0";
+  }
+}
 ?>
