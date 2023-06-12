@@ -44,7 +44,7 @@ require_once('../assets/includes/conn.php');
     function decrementValue(button) {
       var input = button.parentNode.querySelector('input[type="number"]');
       var value = parseInt(input.value);
-      if (value > 1) {
+      if (value > 0) {
         input.value = value - 1;
       }
     }
