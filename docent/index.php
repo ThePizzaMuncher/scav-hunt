@@ -55,7 +55,13 @@ require_once("../assets/includes/conn.php");
 
 		$pull = $conn->query("SELECT * FROM leerling");
 		while($row = $pull->fetch_assoc()) {
+			echo "<tr>";
 			echo "<td>$row[ID]</td>";
+			echo "<td>$row[naam]</td>";
+			echo "<td>$row[leerjaar]</td>";
+			echo "<td>$row[groep_ID]</td>";
+			echo "<td>$row[opleiding_ID]</td>";
+			echo "</tr>";
 		}
 
 		echo "</table></div>";
