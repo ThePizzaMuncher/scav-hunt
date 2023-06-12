@@ -138,7 +138,7 @@ else
 		// get data from db
 		
 		$naam = $row['naam'];
-		$opleiding_ID = $rij['opleiding.naam'];
+		$opleiding_ID = $rij['ID'];
 		$leerjaar = $row['leerjaar'];
 		$groep_ID = $row['groep_ID'];
 		// show form

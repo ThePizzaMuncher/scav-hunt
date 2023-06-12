@@ -34,7 +34,7 @@ require_once('../assets/includes/conn.php');
     </section>
   </section> <!-- End About Section -->
 
-  <script>
+  <script>//For value input form
     function incrementValue(button) {
       var input = button.parentNode.querySelector('input[type="number"]');
       var value = parseInt(input.value);

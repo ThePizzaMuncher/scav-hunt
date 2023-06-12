@@ -37,7 +37,9 @@ require_once("../assets/includes/conn.php");
 
 		</div>
 		<?php 
-		echo "<div class='scrollable'><table border='1' cellpadding='10'><thead>     
+		
+		echo "<div class='scrollable'><table border='1' cellpadding='10'>";
+		echo "<thead>     
 			<tr>    
 				<th>ID</th>
 				<th>Voornaam</th>
@@ -46,8 +48,7 @@ require_once("../assets/includes/conn.php");
 				<th>Bewerken</th>
 				<th>Verwijderen</th>
 			</tr>
-		</thead></table></div>";
-		echo "<div class='scrollable'><table border='1' cellpadding='10'>";
+		</thead>";
 		echo '</div>';
 
 		$num_rows = mysqli_num_fields($leerlingen);
