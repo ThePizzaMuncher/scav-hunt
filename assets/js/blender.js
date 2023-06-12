@@ -9,10 +9,10 @@ if (document.getElementById("pagina_blender")) {//Als blender pagina bestaat doe
     document.getElementById("amig").addEventListener("click", () => {
         invis("ag");
     });
-    document.getElementById("ag").addEventListener("keypress", () => {
-        invis("amig");
+    document.getElementById("1").addEventListener("keypress", () => {
+        invis("2");
     });
-    document.getElementById("amig").addEventListener("keypress", () => {
-        invis("ag");
+    document.getElementById("2").addEventListener("keypress", () => {
+        invis("1");
     });
 }
