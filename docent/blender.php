@@ -13,7 +13,7 @@ require_once('../assets/includes/conn.php');
 
 <body id="pagina_blender">
 	<?php
-if(!isset($_POST['submit'])) {
+if(!isset($_POST)) {
 	echo <<< form
 	<head>
 		<title>Groepjes maken</title>
