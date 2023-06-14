@@ -19,7 +19,7 @@ meta;
               <div class="content d-flex flex-column justify-content-center align-items-center sticked-header-offset">
                 <h3>Join the adventure today!</h3>
                 <div class="image-container">
-                  <img src="assets/img/Dog.jpg" alt="Image" class="full-width-image">
+                  <img src="assets/img/Map-location.png" alt="Image" class="full-width-image">
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@ meta;
       </div>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <div class="container">
-        Fuuuuuuuuuuuuuuuuuuuuuuuuuuuu test
+        <p>Special event organized by the ROC Friese Poort</p>
       </div>
     </section>
   </section> <!-- End About Section -->
