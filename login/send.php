@@ -13,10 +13,13 @@ while ($row = $docent->fetch_assoc()) {
 		if ($row['isAdmin']) $_SESSION['admin'] = $row['ID'];
 		header('location:../docent');
 		die();
+	} else {
+		$check = 1;
 	}
 }
-
-$_SESSION['error'] = 'Inloggegevens onjuist.';
+if ($check == 1) {
+	$_SESSION['error'] = 'Inloggegevens onjuist.';
+}
 header('location:../login');
 die();
 ?>
