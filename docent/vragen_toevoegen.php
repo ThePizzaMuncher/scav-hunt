@@ -81,7 +81,7 @@ echo '<div class="container">
    
  
  // check to make sure both fields are entered
- if ($naam == '' || $antwoord == '' || $vragenlijst_ID == '')
+ if ($vraag == '' || $antwoord == '' || $vragenlijst_ID == '')
  	{
  	// generate error message
  	$error = 'ERROR: Please fill in all required fields!';

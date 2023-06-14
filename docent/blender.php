@@ -57,20 +57,29 @@ require_once('../assets/includes/conn.php');
 <!-- </body> -->
 form;
 else {
-	if(isset($_POST['ag'])) {
+	$oID = $_SESSION['opleiding_ID']; $gID = 1;
+		if(isset($_POST['ag'])) {
 		$ag = $_POST['ag'];
 		$conn->query('DELETE FROM groep');
-		for($i = 1; $i <= $ag; ++$i) {
-			$conn->query("INSERT INTO groep (ID) VALUES ($i)");
-		}
-		$gID = 1;
-		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $_SESSION[opleiding_ID]");
+		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)");
+
+		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID");
 		while($leerling = $pull->fetch_assoc()) {
 			$conn->query("UPDATE leerling SET  groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]");
-			$gID = $gID == $ag ? 1 : +1;
+			if($gID == $ag) $gID = 1; else ++$gID;
 		}
 	} else {
-
+		$amig = $_POST['amig'];
+		$conn->query('DELETE FROM groep');
+		$aLL = $conn->query("SELECT (*) FROM leerling WHERE opleiding_ID = $oID")->fetch_array()[0];
+		$ag = floor($aLL / $amig);
+		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)");
+		
+		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID");
+		while($leerling = $pull->fetch_assoc()) {
+			$conn->query("UPDATE leerling SET groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]");
+			if($gID == $ag) $gID = 1; else ++$gID;
+		}
 	}
 }
 ?>
