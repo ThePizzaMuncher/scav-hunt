@@ -16,7 +16,8 @@ require_once('../assets/includes/conn.php');
 	<script src="../assets/js/blender.js" defer></script>
 </head> -->
 <!-- <body id="pagina_blender"> -->
-<?php if(!isset($_POST)) {
+<?php
+if(!isset($_POST['submit'])) {
 	echo <<< form
 	<script src="../assets/js/blender.js" defer></script>
 	<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
