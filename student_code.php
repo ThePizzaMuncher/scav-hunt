@@ -5,7 +5,7 @@ $code;
 while ($row = $pull->fetch_assoc()) {
     $code = $row["code"];
 }
-if ($code == "") {
+if ($code == "0") {
     $code = "Momenteel geen speurtocht.";
 }
 echo "<p>$code</p>";
