@@ -593,6 +593,20 @@ section {
   box-shadow: 0 0 20px var(--color-secondary-ultra-light);
 }
 
+.image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-width-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Test css for basic */
 .main-list {
   width: 100%;

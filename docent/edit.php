@@ -21,7 +21,6 @@ require_once("../assets/includes/conn.php");
 			echo "</tr>";
 		}
  ?>
-
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
      <section id="about" class="section-50 d-flex flex-column align-items-center">
 <?php /*  docenten_edit.PHP
@@ -32,7 +31,6 @@ require_once("../assets/includes/conn.php");
  ?>
  <form action="" method="post">
  <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-
  <div>
  <table border='1' cellpadding='10' width='100%'>
 <tr>
@@ -74,13 +72,9 @@ require_once("../assets/includes/conn.php");
 </tr></td>
 </table>
  <p>Everything is Required</p>
-
  <input type="submit" name="submit" value="Wijzigen">
-
  </div>
-
  </form>
-
  <?php
  }
  // connect to the database
@@ -172,7 +166,14 @@ else
 		echo 'Error!';
 	}
 }
-?>
-     </section>
-   </section> <!-- End About Section -->
-<?php include "../assets/includes/footer.php" ?>
+
+		$ophalen = $conn->query("SELECT * FROM groep");
+		while($rij = $ophalen->fetch_assoc()) {
+			echo "<tr>";
+			echo "<td>$rij[ID]</td>";
+			echo "<td>$rij[groepsnaam]</td>";
+			echo "</tr>";
+		}
+ ?>
+<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
+     <section id="about" class="section-50 d-flex flex-column align-items-center">

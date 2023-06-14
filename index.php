@@ -17,33 +17,59 @@ meta;
           <div class="col-6">
             <div class="block">
               <div class="content d-flex flex-column justify-content-center align-items-center sticked-header-offset">
-                <h3>We are nice guys!!</h3>
-                <button>Here is the button</button>
+                <h3>Join the adventure today!</h3>
+                <div class="image-container">
+                  <img src="assets/img/Dog.jpg" alt="Image" class="full-width-image">
+                </div>
               </div>
             </div>
           </div>
           <div class="col-2">
             <div class="block">
               <h2>Block 1</h2>
-              <p>Block content 1</p>
+              <button>Go here</button>
             </div>
           </div>
           <div class="col-2">
             <div class="block">
               <h2>Block 2</h2>
-              <p>Block content 2</p>
+              <button>Go there</button>
             </div>
           </div>
           <div class="col-2">
             <div class="block">
               <h2>Block 3</h2>
-              <p>Block content 3</p>
+              <button>Just go</button>
             </div>
           </div>
           <div class="col-12">
             <div class="full-width-block">
-              <h2>Fullwidth block</h2>
-              <p>Fullwidth block content</p>
+              <?php
+              $filePath = "about.txt";
+
+              function formatText($text)
+              {
+                $text = preg_replace("/\*(.*?)\*/", "<em>$1</em>", $text);
+                $text = preg_replace("/\*\*(.*?)\*\*/", "<strong>$1</strong>", $text);
+                $text = preg_replace("/__(.*?)__/", "<u>$1</u>", $text);
+
+                return $text;
+              }
+
+              $content = formatText(file_get_contents($filePath));
+
+              $lines = explode("\n", $content);
+              foreach ($lines as $line) {
+                if (preg_match("/^###/", $line)) {
+                  echo "<h3>" . substr($line, 3) . "</h3>";
+                } elseif (preg_match("/^##/", $line)) {
+                  echo "<h2>" . substr($line, 2) . "</h2>";
+                } elseif (preg_match("/^#/", $line)) {
+                  echo "<h1>" . substr($line, 1) . "</h1>";
+                } else {
+                  echo "<p>" . $line . "</p>";
+                }
+              } ?>
             </div>
           </div>
         </div>
