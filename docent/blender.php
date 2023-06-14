@@ -11,14 +11,14 @@ require_once('../assets/includes/conn.php');
 
 ?>
 
-<body id="pagina_blender">
-	<?php
+<?php
 if(!isset($_POST)) {
 	echo <<< form
 	<head>
-		<title>Groepjes maken</title>
-		<script src="../assets/js/blender.js" defer></script>
+	<title>Groepjes maken</title>
+	<script src="../assets/js/blender.js" defer></script>
 	</head>
+	<body id="pagina_blender">
 	<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
 		<section id="about" class="section-50 d-flex flex-column align-items-center">
 			<h2 class="panel-title">Blender</h2>
