@@ -18,7 +18,7 @@ if (!isset($_SESSION['docent'])) {
 	die(); 
 }*/
 
-require_once("../assets/includes/header.php");
+/*require_once("../assets/includes/header.php");*/
 require_once("../assets/includes/conn.php");
 ?>
 
@@ -52,8 +52,6 @@ require_once("../assets/includes/conn.php");
 		</thead>";
 		echo '</div>';
 
-		$num_rows = mysqli_num_fields($vragen);
-		//    echo 'aantal kolommen' . $num_rows;
 
 		$pull = $conn->query("SELECT vraag.antwoord,vraag.vragenlijst_ID,vraag.vraag,vragenlijst.ID,vragenlijst.docent_ID,docent.ID,docent.ID,docent.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN docent.opleiding_ID = opleiding.ID");
 		while($row = $pull->fetch_assoc()) {
