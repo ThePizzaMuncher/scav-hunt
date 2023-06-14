@@ -2,8 +2,9 @@
 session_start();
 $_SESSION["pagina"] = "home";
 include 'assets/includes/header.php';
-echo <<< meta
+echo <<<meta
 <html id="page_home">
+<meta>
 meta;
 ?>
 
@@ -21,25 +22,25 @@ meta;
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-2">
-              <div class="block">
-                <h2>Block 1</h2>
-                <p>Block content 1</p>
-              </div>
+          <div class="col-2">
+            <div class="block">
+              <h2>Block 1</h2>
+              <p>Block content 1</p>
             </div>
-            <div class="col-2">
-              <div class="block">
-                <h2>Block 2</h2>
-                <p>Block content 2</p>
-              </div>
+          </div>
+          <div class="col-2">
+            <div class="block">
+              <h2>Block 2</h2>
+              <p>Block content 2</p>
             </div>
-            <div class="col-2">
-              <div class="block">
-                <h2>Block 3</h2>
-                <p>Block content 3</p>
-              </div>
+          </div>
+          <div class="col-2">
+            <div class="block">
+              <h2>Block 3</h2>
+              <p>Block content 3</p>
             </div>
+          </div>
+          <div class="col-12">
             <div class="full-width-block">
               <h2>Fullwidth block</h2>
               <p>Fullwidth block content</p>
@@ -49,7 +50,7 @@ meta;
       </div>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <div class="container">
-        Fuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+        Fuuuuuuuuuuuuuuuuuuuuuuuuuuuu test
       </div>
     </section>
   </section> <!-- End About Section -->

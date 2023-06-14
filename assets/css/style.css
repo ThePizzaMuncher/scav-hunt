@@ -585,25 +585,13 @@ section {
   align-items: center;
 }
 
-
-.block {
+.block, .full-width-block {
   background-color: white;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 2vh;
   box-shadow: 0 0 20px var(--color-secondary-ultra-light);
-  height: 100%;
-  color: black;
 }
-
-.full-width-block {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 2vh;
-  box-shadow: 0 0 20px var(--color-secondary-ultra-light);
-}
-
 
 /* Test css for basic */
 .main-list {
