@@ -11,14 +11,14 @@ require_once('../assets/includes/conn.php');
 
 ?>
 
-<!-- <head>
-	<title>Groepjes maken</title>
-	<script src="../assets/js/blender.js" defer></script>
-</head> -->
-<!-- <body id="pagina_blender"> -->
-<?php
+<body id="pagina_blender">
+	<?php
 if(!isset($_POST['submit'])) {
 	echo <<< form
+	<head>
+		<title>Groepjes maken</title>
+		<script src="../assets/js/blender.js" defer></script>
+	</head>
 	<script src="../assets/js/blender.js" defer></script>
 	<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
 		<section id="about" class="section-50 d-flex flex-column align-items-center">
@@ -61,9 +61,9 @@ if(!isset($_POST['submit'])) {
 }
 else {
 	$oID = $_SESSION['opleiding_ID']; $gID = 1;
-		if(isset($_POST['ag'])) {
+	$conn->query('DELETE FROM groep WHERE groepsnaam != "standaard"');
+	if(isset($_POST['ag'])) {
 		$ag = $_POST['ag'];
-		$conn->query('DELETE FROM groep');
 		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)");
 
 		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID");
@@ -73,8 +73,7 @@ else {
 		}
 	} else {
 		$amig = $_POST['amig'];
-		$conn->query('DELETE FROM groep');
-		$aLL = $conn->query("SELECT (*) FROM leerling WHERE opleiding_ID = $oID")->fetch_array()[0];
+		$aLL = $conn->query("SELECT COUNT(*) FROM leerling WHERE opleiding_ID = $oID")->fetch_array()[0];
 		$ag = floor($aLL / $amig);
 		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)");
 		
