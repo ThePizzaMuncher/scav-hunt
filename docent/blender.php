@@ -15,8 +15,9 @@ require_once('../assets/includes/conn.php');
 	<title>Groepjes maken</title>
 	<script src="../assets/js/blender.js" defer></script>
 </head> -->
-<?php if(!isset($_POST)) echo <<< form
-<body id="pagina_blender">
+<!-- <body id="pagina_blender"> -->
+<?php if(!isset($_POST)) {
+	echo <<< form
 	<script src="../assets/js/blender.js" defer></script>
 	<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
 		<section id="about" class="section-50 d-flex flex-column align-items-center">
@@ -54,8 +55,9 @@ require_once('../assets/includes/conn.php');
 			}
 		}
 	</script>
-<!-- </body> -->
-form;
+	<!-- </body> -->
+	form;
+}
 else {
 	$oID = $_SESSION['opleiding_ID']; $gID = 1;
 		if(isset($_POST['ag'])) {
