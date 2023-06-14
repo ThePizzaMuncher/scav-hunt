@@ -56,16 +56,22 @@ require_once("../assets/includes/conn.php");
 		//    echo 'aantal kolommen' . $num_rows;
 
 		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,groep.ID,groep.groepsnaam,leerling.ID FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.ID INNER JOIN groep ON leerling.groep_ID = groep.ID");
-		while($row = $pull->fetch_assoc()) {
-			echo "<tr>";
-			echo "<td>$row[ID]</td>";
-			echo "<td>$row[naam]</td>";
-			echo "<td>$row[leerjaar]</td>";
-			echo "<td>$row[groepsnaam]</td>";
-			echo "<td>$row[opleiding_naam]</td>";
-			echo "<td><a href=\"edit.php?id=$row[ID]\">Bewerk</a></td>";
-            echo "<td><a href=\"delete.php?id=$row[ID]\">Verwijder</a></td>";
-			echo "</tr>";
+		//Laat aleen maar de leerlingen zien van de passende opleiding van de docent.
+		$opleiding_ID_D = $conn->query("SELECT opleiding_ID FROM docent");
+		$opleiding_ID_L = $conn->query("SELECT opleiding_ID FROM leerling");
+		while($row = $pull->fetch_assoc() && $pd = $opleiding_ID_D->fetch_assoc() && $pl = $opleiding_ID_L->fetch_assoc()) {
+
+			if ($pd == $pl) {
+				echo "<tr>";
+				echo "<td>$row[ID]</td>";
+				echo "<td>$row[naam]</td>";
+				echo "<td>$row[leerjaar]</td>";
+				echo "<td>$row[groepsnaam]</td>";
+				echo "<td>$row[opleiding_naam]</td>";
+				echo "<td><a href=\"edit.php?id=$row[ID]\">Bewerk</a></td>";
+				echo "<td><a href=\"delete.php?id=$row[ID]\">Verwijder</a></td>";
+				echo "</tr>";
+			}
 		}
 
 		echo "</table></div>";
