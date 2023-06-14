@@ -4,7 +4,7 @@ $_SESSION['pagina'] = 'login';
 require_once("../assets/includes/header.php");
 
 if (isset($_SESSION["error"])) {//Error feedback van login
-  if ($_SESSION["error"] != "0") {
+  if ($_SESSION["error"] != 0) {
     echo "<script>
     window.alert($_SESSION[error]);
     </script>";

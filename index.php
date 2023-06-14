@@ -17,7 +17,7 @@ meta;
           <div class="col-6">
             <div class="block">
               <div class="content d-flex flex-column justify-content-center align-items-center sticked-header-offset">
-                <h3>Join the adventure today!</h3>
+                <h2>Join the adventure today!</h2>
                 <div class="image-container">
                   <img src="assets/img/Map-location.png" alt="Image" class="full-width-image">
                 </div>
@@ -27,18 +27,21 @@ meta;
           <div class="col-2">
             <div class="block">
               <h2>Block 1</h2>
+              <p>You can do something, if u want to do so.</p>
               <button>Go here</button>
             </div>
           </div>
           <div class="col-2">
             <div class="block">
               <h2>Block 2</h2>
+              <p>Or maybe not.</p>
               <button>Go there</button>
             </div>
           </div>
           <div class="col-2">
             <div class="block">
               <h2>Block 3</h2>
+              <p>But who knows, yes?</p>
               <button>Just go</button>
             </div>
           </div>
@@ -61,11 +64,11 @@ meta;
               $lines = explode("\n", $content);
               foreach ($lines as $line) {
                 if (preg_match("/^###/", $line)) {
-                  echo "<h3>" . substr($line, 3) . "</h3>";
+                  echo "<h3>" . substr($line, 3) . "</h4>";
                 } elseif (preg_match("/^##/", $line)) {
-                  echo "<h2>" . substr($line, 2) . "</h2>";
+                  echo "<h2>" . substr($line, 2) . "</h3>";
                 } elseif (preg_match("/^#/", $line)) {
-                  echo "<h1>" . substr($line, 1) . "</h1>";
+                  echo "<h1>" . substr($line, 1) . "</h2>";
                 } else {
                   echo "<p>" . $line . "</p>";
                 }
@@ -76,7 +79,7 @@ meta;
       </div>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <div class="container">
-        <p>Special event organized by the ROC Friese Poort</p>
+        <br><p>Special event organized by the ROC Friese Poort</p>
       </div>
     </section>
   </section> <!-- End About Section -->

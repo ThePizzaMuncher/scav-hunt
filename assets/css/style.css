@@ -603,9 +603,12 @@ section {
 }
 
 .full-width-image {
-  width: 100%;
-  height: 100%;
+  width: 30%;
   object-fit: cover;
+}
+
+select {
+  display: none;
 }
 
 /* Test css for basic */
