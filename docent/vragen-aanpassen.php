@@ -48,6 +48,8 @@ require_once("../assets/includes/conn.php");
 				<th>Vraag</th>
 				<th>Antwoord</th>
 				<th>Opleiding</th>
+                <th>Bewerk</th>
+                <th>Verwijder</th>
 			</tr>
 		</thead>";
 		echo '</div>';
@@ -60,13 +62,13 @@ require_once("../assets/includes/conn.php");
 			echo "<td>$row[vraag]</td>";
 			echo "<td>$row[antwoord]</td>";
 			echo "<td>$row[opleiding_naam]</td>";
-			echo "<td><a href=\"edit.php?id=$row[ID]\">Bewerk</a></td>";
-            echo "<td><a href=\"delete.php?id=$row[ID]\">Verwijder</a></td>";
+			echo "<td><a href=\"vragen_edit.php?id=$row[ID]\">Bewerk</a></td>";
+            echo "<td><a href=\"vragen_delete.php?id=$row[ID]\">Verwijder</a></td>";
 			echo "</tr>";
 		}
 
 		echo "</table></div>";
-		echo "<a href='leerling_toevoegen.php'><button>Toevoegen</button></a>
+		echo "<a href='vragen_toevoegen.php'><button>Toevoegen</button></a>
 	<a href='../login/logout.php'><button class='button-red'>Log Out</button></a>";
 		?>
 
