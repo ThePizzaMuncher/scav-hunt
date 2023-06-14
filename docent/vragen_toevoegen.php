@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
 // require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
@@ -55,7 +58,7 @@ echo '<div class="container">
   
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h3 class="panel-title">Nieuwe Leerling toevoegen</h3>
+						<h3 class="panel-title">Nieuwe Vraag toevoegen</h3>
 					</div>
 				</div>
 			
@@ -101,13 +104,13 @@ echo '<div class="container">
    	}
    
    	echo "Entered data successfully\n";
-    header("Location: index.php");
+    header("Location: vragen-aanpassen.php");
  
  	}
 }
  else
  	// if the form hasn't been submitted, display the form
  	{
- 	renderForm('','','','','');
+ 	renderForm('','','','');
  	}
 require_once("../assets/includes/footer.php"); ?>
