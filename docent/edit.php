@@ -9,6 +9,19 @@ require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
 
 ?>
+<!--GROEPJES TABEL ALLES TONEN-->
+<?php
+require_once("../assets/includes/conn.php");
+
+		$ophalen = $conn->query("SELECT * FROM groep");
+		while($rij = $ophalen->fetch_assoc()) {
+			echo "<tr>";
+			echo "<td>$rij[ID]</td>";
+			echo "<td>$rij[groepsnaam]</td>";
+			echo "</tr>";
+		}
+ ?>
+
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
      <section id="about" class="section-50 d-flex flex-column align-items-center">
 <?php /*  docenten_edit.PHP
@@ -91,7 +104,11 @@ if (isset($_POST['submit']))
         $opleiding_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['voornaam']));
 		$leerjaar = mysqli_real_escape_string($conn, htmlspecialchars($_POST['leerjaar']));
 		$groep_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['groepid']));
-    
+		if ($opleiding_ID == "software developer" || $opleiding_ID == "Software developer") {
+			$opleiding_ID = 1;
+		} else {
+			$opleiding_ID = 0;
+		}
 	    // checken of volgende velden zijn gevuld
         if ($naam == '' || $opleiding_ID == '')
 
