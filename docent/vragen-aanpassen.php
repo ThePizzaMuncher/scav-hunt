@@ -53,7 +53,7 @@ require_once("../assets/includes/conn.php");
 		echo '</div>';
 
 
-		$pull = $conn->query("SELECT vraag.antwoord,vraag.vragenlijst_ID,vraag.vraag,vragenlijst.ID,vragenlijst.docent_ID,docent.ID,docent.ID,docent.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN docent.opleiding_ID = opleiding.ID");
+		$pull = $conn->query("SELECT vraag.antwoord,vraag.vragenlijst_ID,vraag.vraag,vragenlijst.ID,vragenlijst.docent_ID,docent.ID,docent.ID,docent.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID");
 		while($row = $pull->fetch_assoc()) {
 			echo "<tr>";
 			echo "<td>$row[ID]</td>";
