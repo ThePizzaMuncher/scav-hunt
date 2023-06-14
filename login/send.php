@@ -10,9 +10,7 @@ while ($row = $docent->fetch_assoc()) {
 	if ($usr == $row['naam'] && $pw == $row['wachtwoord']) {
 		$_SESSION['docent'] = $row['ID'];
 		$_SESSION['opleiding'] = $row['opleiding_ID'];
-		if ($row['isAdmin'] == "1") {
-			$_SESSION['admin'] = 1;
-		}
+		if ($row['isAdmin'] == 1) $_SESSION['admin'] = 1;
 		header('location:../docent');
 		die();
 	}
