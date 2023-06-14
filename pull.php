@@ -1,1 +1,1 @@
-<?php exec('git pull'); ?>
+<?php echo exec('git pull'); ?>
