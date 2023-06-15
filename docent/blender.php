@@ -30,6 +30,7 @@ if(isset($_POST)) {
 			if($gID == $ag) $gID = 1; else ++$gID; // groups are assigned 1…x–1…x–1…x
 		}
 	}
+	header('location:/~fp241754/docent'); die();
 }
 require_once('../assets/includes/header.php');
 ?>
