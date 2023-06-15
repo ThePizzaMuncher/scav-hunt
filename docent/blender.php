@@ -6,7 +6,7 @@ if (!isset($_SESSION['docent'])) {
 	header('location:../login'); die();
 }
 require_once('../assets/includes/conn.php');
-if(isset($_POST['ag'] || isset($_POST['amig']))) {
+if(isset($_POST['ag']) || isset($_POST['amig']))) {
 	$oID = $_SESSION['opleiding_ID']; $gID = 1; // opleiding_ID wordt meerdere keren gebruikt, dus een kortere variabelenaam is fijn
 	$conn->query('DELETE FROM groep WHERE groepsnaam != "standaard"'); // leeg de tabel met groepen
 	if(isset($_POST['ag'])) { // number of groups has been specified
