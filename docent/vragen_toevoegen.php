@@ -94,7 +94,7 @@ echo '<div class="container">
 		 
  	// save the data to the database
 
-	$sql_query = "INSERT INTO vraag (vraag, antwoord,vragenlijst_ID) VALUES ('$vraag', '$antwoord',$vragenlijst_ID)";
+	$sql_query = "INSERT INTO vraag VALUES ('$vraag', '$antwoord','$vragenlijst_ID')";
 
 
 	$retval = mysqli_query($conn, $sql_query );
