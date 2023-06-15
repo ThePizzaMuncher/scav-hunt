@@ -36,15 +36,15 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 							<div>
 								<table border='1' cellpadding='10' width='100%'>
 									<tr>
-										<td><strong>Naam: </strong></td>
+										<td><strong>Wat is de vraag: </strong></td>
 										<td><input type='text' name='vraag' value='<?php echo $vraag; ?>' /></td>
 									</tr>
 									<tr>
-										<td><strong>opleiding_ID: </strong></td>
+										<td><strong>Antwoord op de vraag: </strong></td>
 										<td><input type='text' name='antwoord' value='<?php echo $antwoord; ?>' /></td>
 									</tr>
 									<tr>
-										<td><strong>Leerjaar: </strong></td>
+										<td><strong>Bij welke opleiding hoort de vraag: </strong></td>
 										<td><input type='text' name='vragenlijst_ID' value='<?php echo $vragenlijst_ID; ?>' /></td>
 									</tr>
 									<tr>
@@ -98,7 +98,7 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8"></div>
-				<h3 class="panel-title">Leerling Wijzigen</h3>
+				<h3 class="panel-title">Vragen Wijzigen</h3>
 			</div>
 		</div>';
 
@@ -138,14 +138,14 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 						if (isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0) {
 							// query db
 							$id = $_GET['id'];
-							$result = mysqli_query($conn, "SELECT vraag.antwoord,vraag.vragenlijst_ID,vraag.vraag,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID WHERE vraag.ID=$id") or die('doet niet');
+							$result = mysqli_query($conn, "SELECT vraag.antwoord,vraag.vragenlijst_ID,vraag.vraag,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID WHERE vraag.ID=$id") or die('doet niet');
 							$row = mysqli_fetch_array($result);
 							// check that the 'id' matches up with a row in the databse
 							if ($row) {
 								// get data from db
 								$vraag = $row['vraag'];
 								$antwoord = $row['antwoord'];
-								$vragenlijst_ID = $row['vragenlijst_ID'];
+								$vragenlijst_ID = $row['opleiding.ID'];
 								// show form
 								renderForm($id, $vraag, $antwoord, $vragenlijst_ID);
 							} else {
