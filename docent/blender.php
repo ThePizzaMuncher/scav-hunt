@@ -9,9 +9,6 @@ if (!isset($_SESSION['docent'])) {
 require_once('../assets/includes/header.php');
 require_once('../assets/includes/conn.php');
 
-?>
-
-<?php
 if(!isset($_POST)) {
 	echo <<< form
 	<head>
