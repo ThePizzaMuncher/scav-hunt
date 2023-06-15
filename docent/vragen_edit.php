@@ -15,7 +15,7 @@ require_once("../assets/includes/conn.php");
 <?php
 require_once("../assets/includes/conn.php");
 
-$ophalen = $conn->query("SELECT * FROM groep");
+$ophalen = $conn->query("SELECT * FROM vraag");
 ?>
 
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
@@ -27,7 +27,7 @@ $ophalen = $conn->query("SELECT * FROM groep");
 					/* docenten_edit.PHP
 		Allows user to edit specific entry in database
 		*/
-					function renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID)
+					function renderForm($id, $vraag, $antwoord, $vragenlijst_ID)
 					{
 					?>
 						<form action="" method="post">
@@ -37,37 +37,33 @@ $ophalen = $conn->query("SELECT * FROM groep");
 								<table border='1' cellpadding='10' width='100%'>
 									<tr>
 										<td><strong>Naam: </strong></td>
-										<td><input type='text' name='leerlingnummer' value='<?php echo $naam; ?>' /></td>
+										<td><input type='text' name='vraag' value='<?php echo $vraag; ?>' /></td>
 									</tr>
 									<tr>
 										<td><strong>opleiding_ID: </strong></td>
-										<td><input type='text' name='voornaam' value='<?php echo $opleiding_ID; ?>' /></td>
+										<td><input type='text' name='antwoord' value='<?php echo $antwoord; ?>' /></td>
 									</tr>
 									<tr>
 										<td><strong>Leerjaar: </strong></td>
-										<td><input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>' /></td>
-									</tr>
-									<tr>
-										<td><strong>Groep_ID: </strong></td>
-										<td><input type='text' name='groepid' value='<?php echo $groep_ID; ?>' /></td>
+										<td><input type='text' name='vragenlijst_ID' value='<?php echo $vragenlijst_ID; ?>' /></td>
 									</tr>
 									<tr>
 										<?php
 										require_once("../assets/includes/conn.php");
 										// Get all the categories from category table
-										$sql_klasid = "SELECT * FROM `leerling`";
-										$KlassenID = mysqli_query($conn, $sql_klasid);
+										$sql_klasid = "SELECT * FROM `vraag`";
+										$vraagID = mysqli_query($conn, $sql_klasid);
 										?>
-										<select name="KlasID">
+										<select name="vraagID">
 											<?php
 											// use a while loop to fetch data
 											// from the $all_categories variable
 											// and individually display as an option
-											while ($klas_id = mysqli_fetch_array(
-												$KlassenID
+											while ($vraag_id = mysqli_fetch_array(
+												$vraagID
 											)) :
 											?>
-												<option value="<?php echo $klas_id["id"];
+												<option value="<?php echo $vraag_id["id"];
 																// The value we usually set is the primary key
 																?>">
 												</option>
@@ -87,23 +83,6 @@ $ophalen = $conn->query("SELECT * FROM groep");
 
 						</form>
 
-				</div>
-				<div class="col-6">
-					<!-- Вывод таблицы с данными -->
-					<table border='1' cellpadding='10' width='100%'>
-						<tr>
-							<th>ID</th>
-							<th>Groepsnaam</th>
-						</tr>
-						<?php
-						while ($rij = $ophalen->fetch_assoc()) {
-							echo "<tr>";
-							echo "<td>" . $rij['ID'] . "</td>";
-							echo "<td>" . $rij['groepsnaam'] . "</td>";
-							echo "</tr>";
-						}
-						?>
-					</table>
 				</div>
 			</div>
 		</div>
@@ -129,24 +108,19 @@ $ophalen = $conn->query("SELECT * FROM groep");
 							// confirm that the 'id' value is a valid integer before getting the form data
 							$id = $_POST['id'];
 							// get form data, making sure it is valid
-							$naam = mysqli_real_escape_string($conn, htmlspecialchars($_POST['leerlingnummer']));
-							$opleiding_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['voornaam']));
-							$leerjaar = mysqli_real_escape_string($conn, htmlspecialchars($_POST['leerjaar']));
-							$groep_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['groepid']));
-							if ($opleiding_ID == "software developer" || $opleiding_ID == "Software developer") {
-								$opleiding_ID = 1;
-							} else {
-								$opleiding_ID = 0;
-							}
+							$vraag = mysqli_real_escape_string($conn, htmlspecialchars($_POST['leerlingnuvraag']));
+							$antwoord = mysqli_real_escape_string($conn, htmlspecialchars($_POST['antwoord']));
+							$vragenlijst_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['vragenlijst_ID']));
+					
 							// checken of volgende velden zijn gevuld
-							if ($naam == '' || $opleiding_ID == '') {
+							if ($vraag == '' || $antwoord == '') {
 								// generate error message
 								$error = 'ERROR: Please fill in all required fields!';
 								//error, display form
-								renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID);
+								renderForm($id, $vraag, $antwoord, $vragenlijst_ID);
 							} else {
 								// save the data to the database
-								$sql_query = "UPDATE leerling SET naam='$naam', opleiding_ID='$opleiding_ID',leerjaar='$leerjaar',groep_ID='$groep_ID' WHERE id='$id'";
+								$sql_query = "UPDATE vraag SET vraag='$vraag', antwoord='$antwoord',vragenlijst_ID='$vragenlijst_ID' WHERE id='$id'";
 								$retval = mysqli_query($conn, $sql_query);
 								if (!$retval) {
 									die('Could not enter data: ');
@@ -164,17 +138,16 @@ $ophalen = $conn->query("SELECT * FROM groep");
 						if (isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0) {
 							// query db
 							$id = $_GET['id'];
-							$result = mysqli_query($conn, "SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.id,opleiding_naam,groep.ID,groep.groepsnaam FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.id INNER JOIN groep ON leerling.groep_ID = groep.ID WHERE leerling.ID=$id") or die('doet niet');
+							$result = mysqli_query($conn, "SELECT vraag.antwoord,vraag.vragenlijst_ID,vraag.vraag,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID WHERE vraag.ID=$id") or die('doet niet');
 							$row = mysqli_fetch_array($result);
 							// check that the 'id' matches up with a row in the databse
 							if ($row) {
 								// get data from db
-								$naam = $row['naam'];
-								$opleiding_ID = $row['opleiding_naam'];
-								$leerjaar = $row['leerjaar'];
-								$groep_ID = $row['groepsnaam'];
+								$vraag = $row['vraag'];
+								$antwoord = $row['antwoord'];
+								$vragenlijst_ID = $row['vragenlijst_ID'];
 								// show form
-								renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID);
+								renderForm($id, $vraag, $antwoord, $vragenlijst_ID);
 							} else {
 								// if no match, display result
 								echo "No results!";
