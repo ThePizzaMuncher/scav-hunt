@@ -34,7 +34,7 @@ if(isset($_POST['ag']) || isset($_POST['amig'])) {
 			if($gID == $ag) $gID = 1; else ++$gID; // groups are assigned 1…x–1…x–1…x
 		}
 	}
-	// header("location:/~fp241754/scav-hunt/docent?ag=$ag"); die();
+	header('location:/~fp241754/scav-hunt/docent'); die();
 }
 require_once('../assets/includes/header.php');
 ?>
