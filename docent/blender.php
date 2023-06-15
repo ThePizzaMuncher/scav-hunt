@@ -1,5 +1,9 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
+
 if (!isset($_SESSION['docent'])) {
 	header('location:../login'); die();
 } if (!$_SESSION['docent']) {
@@ -16,9 +20,7 @@ if(isset($_POST['ag']) || isset($_POST['amig'])) {
 		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID AND leerjaar = 1"); // pull all relevant students
 		while($leerling = $pull->fetch_assoc()) { // loop through students
 			$conn->query("UPDATE leerling SET  groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]"); // assign group ID to individual student
-			if($gID == $ag)
-				$gID = 1;
-			else ++$gID; // groups are assigned 1…x–1…x–1…x
+			if($gID == $ag) $gID = 1; else ++$gID; // groups are assigned 1…x–1…x–1…x
 		}
 	} else { // size of group has been specified
 		$amig = $_POST['amig'];
@@ -27,7 +29,6 @@ if(isset($_POST['ag']) || isset($_POST['amig'])) {
 		$ag = floor($aLL / $amig); // amount of groups
 		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)"); // create groups
 		
-		// $pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID AND leerjaar = 1"); // pull all relevant students
 		while($leerling = $pull->fetch_assoc()) { // loop through students
 			$conn->query("UPDATE leerling SET groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]"); // assign group ID to indiv. students
 			if($gID == $ag)
