@@ -32,7 +32,7 @@ $vragenlijst_ID='';
 <td> <strong>Vraag: </strong></td><td>  <input type='text' name='vraag' value='<?php echo $vraag; ?>'/>*</td>
 </tr>
 <tr>
-<td> <strong>Antwoord op de vraag: </strong></td><td>  <input type='text' name='antwoord' value='<?php echo $antwoord; ?>'/>* 1 staat voor software developer w.i.p</td>
+<td> <strong>Antwoord op de vraag: </strong></td><td>  <input type='text' name='antwoord' value='<?php echo $antwoord; ?>'/>*</td>
 </tr>
 <tr>
 <td> <strong>Bij welke vragenlijstnummer hoort de vraag: </strong></td><td>  <input type='text' name='vragenlijst_ID' value='<?php echo $vragenlijst_ID; ?>'/>*</td>
@@ -94,12 +94,12 @@ echo '<div class="container">
 		 
  	// save the data to the database
 
-	$sql_query = "INSERT INTO vraag VALUES ('$vraag', '$antwoord','$vragenlijst_ID')";
+	$sql_query = "INSERT INTO vraag (vraag, antwoord,vragenlijst_ID) VALUES ('$vraag', '$antwoord',$vragenlijst_ID)";
 
 
 	$retval = mysqli_query($conn, $sql_query );
    
-   	if (! $retval ) {
+   	if (!$retval ) {
       	die('Could not enter data: ');
    	}
    
