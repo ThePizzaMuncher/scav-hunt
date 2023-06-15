@@ -28,14 +28,14 @@ if(isset($_POST['ag']) || isset($_POST['amig'])) {
 		$aLL = $pull->num_rows; // $aLL is the amount of relevant students
 		$ag = floor($aLL / $amig); // amount of groups
 		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)"); // create groups
-		
+		echo $ag;
 		while($leerling = $pull->fetch_assoc()) { // loop through students
 			$conn->query("UPDATE leerling SET groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]"); // assign group ID to indiv. students
 			
 			// groups are assigned 1…x–1…x–1…x
 		}
 	}
-	header("location:/~fp241754/scav-hunt/docent?ag=$ag"); die();
+	// header("location:/~fp241754/scav-hunt/docent?ag=$ag"); die();
 }
 require_once('../assets/includes/header.php');
 ?>
