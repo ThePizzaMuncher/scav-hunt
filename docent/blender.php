@@ -31,9 +31,8 @@ if(isset($_POST['ag']) || isset($_POST['amig'])) {
 		
 		while($leerling = $pull->fetch_assoc()) { // loop through students
 			$conn->query("UPDATE leerling SET groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]"); // assign group ID to indiv. students
-			if($gID == $ag)
-				break;
-			else ++$gID; // groups are assigned 1…x–1…x–1…x
+			if($gID != $ag) $gID++; else break;
+			// groups are assigned 1…x–1…x–1…x
 		}
 	}
 	header('location:/~fp241754/scav-hunt/docent'); die();
