@@ -59,27 +59,27 @@ if(!isset($_POST)) {
 	form;
 }
 else {
-	$oID = $_SESSION['opleiding_ID']; $gID = 1;
-	$conn->query('DELETE FROM groep WHERE groepsnaam != "standaard"');
-	if(isset($_POST['ag'])) {
+	$oID = $_SESSION['opleiding_ID']; $gID = 1; // opleiding_ID wordt meerdere keren gebruikt, dus een kortere variabelenaam is fijn
+	$conn->query('DELETE FROM groep WHERE groepsnaam != "standaard"'); // leeg de tabel met groepen
+	if(isset($_POST['ag'])) { // number of groups has been specified
 		$ag = $_POST['ag'];
-		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)");
+		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID, docent_ID) VALUES ('$i',  '$oID')"); // create groups
 
-		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID");
-		while($leerling = $pull->fetch_assoc()) {
-			$conn->query("UPDATE leerling SET  groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]");
-			if($gID == $ag) $gID = 1; else ++$gID;
+		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID"); // pull all relevant students
+		while($leerling = $pull->fetch_assoc()) { // loop through students
+			$conn->query("UPDATE leerling SET  groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]"); // assign group ID to individual student
+			if($gID == $ag) $gID = 1; else ++$gID; // groups are assigned 1…x–1…x–1…x
 		}
-	} else {
+	} else { // size of group has been specified
 		$amig = $_POST['amig'];
-		$aLL = $conn->query("SELECT COUNT(*) FROM leerling WHERE opleiding_ID = $oID")->fetch_array()[0];
-		$ag = floor($aLL / $amig);
-		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)");
+		$aLL = $conn->query("SELECT COUNT(*) FROM leerling WHERE opleiding_ID = $oID")->fetch_array()[0]; // $aLL is the amount of relevant students
+		$ag = floor($aLL / $amig); // amount of groups
+		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)"); // create groups
 		
-		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID");
-		while($leerling = $pull->fetch_assoc()) {
-			$conn->query("UPDATE leerling SET groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]");
-			if($gID == $ag) $gID = 1; else ++$gID;
+		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID"); // pull all relevant students
+		while($leerling = $pull->fetch_assoc()) { // loop through students
+			$conn->query("UPDATE leerling SET groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]"); // assign group ID to indiv. students
+			if($gID == $ag) $gID = 1; else ++$gID; // groups are assigned 1…x–1…x–1…x
 		}
 	}
 }
