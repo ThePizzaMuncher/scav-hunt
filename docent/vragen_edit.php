@@ -138,14 +138,14 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 						if (isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0) {
 							// query db
 							$id = $_GET['id'];
-							$result = mysqli_query($conn, "SELECT vraag.antwoord,vraag.vragenlijst_ID,vraag.vraag,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID WHERE vraag.ID=$id") or die('doet niet');
+							$result = mysqli_query($conn, "SELECT vraag.antwoord,vraag.vragenlijst_ID,vraag.vraag,vragenlijst.ID,vragenlijst.docent_ID,docent.ID,docent.opleiding_ID,opleiding.ID,opleiding.opleidingsnaam,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID WHERE vraag.ID=$id") or die('doet niet');
 							$row = mysqli_fetch_array($result);
 							// check that the 'id' matches up with a row in the databse
 							if ($row) {
 								// get data from db
 								$vraag = $row['vraag'];
 								$antwoord = $row['antwoord'];
-								$vragenlijst_ID = $row['opleiding.ID'];
+								$vragenlijst_ID = $row['opleidingsnaam'];
 								// show form
 								renderForm($id, $vraag, $antwoord, $vragenlijst_ID);
 							} else {
