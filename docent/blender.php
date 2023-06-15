@@ -32,7 +32,7 @@ if(isset($_POST['ag']) || isset($_POST['amig'])) {
 		while($leerling = $pull->fetch_assoc()) { // loop through students
 			$conn->query("UPDATE leerling SET groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]"); // assign group ID to indiv. students
 			if($gID == $ag)
-				$gID = 1;
+				break;
 			else ++$gID; // groups are assigned 1…x–1…x–1…x
 		}
 	}
