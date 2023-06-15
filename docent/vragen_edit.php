@@ -108,7 +108,7 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 							// confirm that the 'id' value is a valid integer before getting the form data
 							$id = $_POST['id'];
 							// get form data, making sure it is valid
-							$vraag = mysqli_real_escape_string($conn, htmlspecialchars($_POST['leerlingnuvraag']));
+							$vraag = mysqli_real_escape_string($conn, htmlspecialchars($_POST['vraag']));
 							$antwoord = mysqli_real_escape_string($conn, htmlspecialchars($_POST['antwoord']));
 							$vragenlijst_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['vragenlijst_ID']));
 					
