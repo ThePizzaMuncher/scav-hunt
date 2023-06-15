@@ -22,11 +22,12 @@ if(isset($_POST['ag']) || isset($_POST['amig'])) {
 		}
 	} else { // size of group has been specified
 		$amig = $_POST['amig'];
-		$aLL = $conn->query("SELECT COUNT(*) FROM leerling WHERE opleiding_ID = $oID AND leerjaar = 1")->fetch_array()[0]; // $aLL is the amount of relevant students
+		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID AND leerjaar = 1");
+		$aLL = $pull->num_rows; // $aLL is the amount of relevant students
 		$ag = floor($aLL / $amig); // amount of groups
 		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)"); // create groups
 		
-		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID AND leerjaar = 1"); // pull all relevant students
+		// $pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID AND leerjaar = 1"); // pull all relevant students
 		while($leerling = $pull->fetch_assoc()) { // loop through students
 			$conn->query("UPDATE leerling SET groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]"); // assign group ID to indiv. students
 			if($gID == $ag)
