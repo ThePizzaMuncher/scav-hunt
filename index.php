@@ -1,7 +1,6 @@
 <?php
-session_start();
-$_SESSION["pagina"] = "home";
 include 'assets/includes/header.php';
+$_SESSION["pagina"] = "home";
 echo <<<meta
 <html id="page_home">
 <meta>
