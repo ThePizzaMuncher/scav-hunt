@@ -1,2 +1,2 @@
-# scav-hunt
-Made with love by wwwqr-000, ThePizzaMuncher, Dimitree and ValeraZSD
+# scav-hunt_wwwqr
+A scavanger hunt for the first class studens.

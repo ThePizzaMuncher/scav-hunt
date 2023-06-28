@@ -1,5 +1,4 @@
 <?php
-session_start();
 $_SESSION['pagina'] = 'login';
 require_once("../assets/includes/header.php");
 
@@ -12,11 +11,10 @@ if (isset($_SESSION["error"])) {//Error feedback van login
   }
 }
 
-if (isset($_SESSION['docent'])) {
-	echo $_SESSION['docent'];
-	// header('location:../');
-	// die();
-} ?>
+if (isset($_SESSION['docent'])):
+	echo $_SESSION['docent'];?>
+  <script>location.replace("../docent/index.php") </script>.
+<?php endif; ?>
 
 <main id="main">
 

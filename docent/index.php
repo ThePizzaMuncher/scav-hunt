@@ -2,8 +2,8 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
 session_start();
+
 if (!isset($_SESSION['docent'])) {
 	header('location:../login'); die();
 } if ($_SESSION['docent'] != 1) {
@@ -73,8 +73,8 @@ require_once("../assets/includes/conn.php");
 		}
 
 		echo "</table></div>";
-		echo "<a href='leerling_toevoegen.php'><button>Toevoegen</button></a>
-	<a href='../login/logout.php'><button class='button-red'>Log Out</button></a>";
+		echo "<a href='leerling_toevoegen.php'><button>Leerling toevoegen</button></a>
+	<a href='../login/logout.php'><button class='button-red'>Uitloggen</button></a>";
 		?>
 
 	</section>

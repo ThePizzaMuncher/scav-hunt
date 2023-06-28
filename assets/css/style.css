@@ -36,8 +36,8 @@
   --color-grey-dark: rgb(44, 49, 63);
   scroll-behavior: smooth;
 }
+
 body {
-  background: var(--color-default);
   font-family: "Open Sans", sans-serif;
   color: black;
 }
@@ -151,7 +151,10 @@ h6 {
 }
 
 #header .vert {
-  top: 50%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
 }
 
 #header h4 {
@@ -230,6 +233,7 @@ h6 {
 }
 
 @media (max-width: 1199px) {
+
   /* Styles made by Valerii Kozhevets */
   #header {
     left: -1200px;
@@ -297,6 +301,7 @@ h6 {
 .nav-menu {
   display: flex;
   list-style: none;
+  margin: 0;
 }
 
 .nav-menu>li {
@@ -343,7 +348,6 @@ h6 {
 .nav-menu .active:focus,
 .nav-menu li:hover {
   background-color: var(--color-secondary-ultra-light-red);
-  text-shadow: 0 0 10px var(--color-grey);
 }
 
 .nav-menu a:hover i,
@@ -351,7 +355,6 @@ h6 {
 .nav-menu .active:focus i,
 .nav-menu li:hover>a i {
   color: var(--color-secondary-red);
-  text-shadow: 0 0 20px var(--color-secondary-light);
 }
 
 /* Style the dropdown menu */
@@ -370,7 +373,7 @@ h6 {
   height: 0px;
   overflow: hidden;
   background: var(--color-default);
-  box-shadow: 0px 2px 3px var(--color-secondary-light-red);
+  box-shadow: 0px 3px 2px var(--color-secondary-light-red);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   padding: 10px 0;
@@ -379,7 +382,7 @@ h6 {
 
 
 .nav-menu li:hover ul {
-  box-shadow: 0px 10px 10px var(--color-secondary-light-red);
+  box-shadow: 0px 15px 10px var(--color-secondary-light-red);
   height: auto;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
@@ -425,9 +428,9 @@ h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 60px 0;
-  overflow: hidden;
-  background: white;
+  padding: 40px 0;
+  overflow: auto;
+  background: var(--color-grey-ultra-light);
 }
 
 /*--------------------------------------------------------------
@@ -453,9 +456,8 @@ section {
 }
 
 .about input {
-  width: 300px;
-  height: 40px;
-  margin-bottom: 10px;
+  width: auto;
+  margin: 5px;
   padding: 5px;
   border: 1px solid var(--color-grey-light);
   border-radius: 5px;
@@ -485,10 +487,10 @@ section {
   border-radius: 5px;
   color: white;
   cursor: pointer;
-  margin: 10px 10px;
   padding: 10px 5px;
   width: auto;
   height: 45px;
+  margin: 10px;
 }
 
 .about button,
@@ -555,12 +557,12 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  padding: 20px;
-  color: var(--color-secondary-light);
+  padding: 30px;
+  color: var(--color-grey);
   font-size: 14px;
   left: 0;
   bottom: 0;
-  height: 150px;
+  height: auto;
   width: auto;
   z-index: 9999;
   background: var(--color-default);
@@ -578,19 +580,20 @@ section {
 
 .section-50 {
   width: 80%;
-  background-color: var(--color-grey-ultra-light);
+  /* background-color: var(--color-grey-ultra-light); */
   border-radius: 5vh;
-  box-shadow: inset 0 0 100px var(--color-secondary-ultra-light);
+  /* box-shadow: inset 0 0 100px var(--color-secondary-ultra-light); */
   text-align: center;
   align-items: center;
 }
 
-.block, .full-width-block {
+.block,
+.full-width-block {
   background-color: white;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 2vh;
-  box-shadow: 0 0 20px var(--color-secondary-ultra-light);
+  /* box-shadow: 0 0 20px var(--color-secondary-ultra-light); */
   height: 100%;
 }
 
@@ -603,8 +606,7 @@ section {
 }
 
 .full-width-image {
-  width: 30%;
-  object-fit: cover;
+  height: 100px;
 }
 
 select {
@@ -617,7 +619,7 @@ select {
   height: 25vw;
   overflow: hidden;
   background: var(--color-secondary-ultra-light);
-  
+
 }
 
 table {
@@ -652,7 +654,7 @@ td {
 }
 
 .scrollable {
-  height: 25vw;
+  height: 40vw;
   overflow-y: scroll;
   box-shadow: 0 0 10px var(--color-secondary-light);
   border-radius: 15px;
@@ -675,6 +677,7 @@ td {
 .scrollable::-webkit-scrollbar-thumb:hover {
   background-color: var(--color-secondary);
 }
+
 #ul {
   flex-wrap: wrap;
 }

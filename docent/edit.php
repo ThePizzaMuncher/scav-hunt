@@ -1,28 +1,24 @@
 <?php
-session_start();
+
 if (!isset($_SESSION['docent'])) {
-	header('location:../login');
-	die();
+    header('location:../login');
+    die();
 } elseif (!$_SESSION['docent']) {
-	header('location:../login');
-	die();
+    header('location:../login');
+    die();
 }
 require_once("../assets/includes/header.php");
-require_once("../assets/includes/conn.php");
-?>
-
-<!-- GROEPJES TABEL ALLES TONEN -->
-<?php
-require_once("../assets/includes/conn.php");
-
+include("../assets/includes/conn.php");
+session_start();
 $ophalen = $conn->query("SELECT * FROM groep");
+
 ?>
 
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
 	<section id="about" class="section-50 d-flex flex-column align-items-center">
 		<div class="container">
 			<div class="row">
-				<div class="col-6">
+				<div class="col-12">
 					<?php
 					/* docenten_edit.PHP
 		Allows user to edit specific entry in database
@@ -113,7 +109,7 @@ $ophalen = $conn->query("SELECT * FROM groep");
 					}
 
 					// connect to the database
-					require_once("../assets/includes/conn.php");
+					// require_once("../assets/includes/conn.php");
 
 					echo '
 		<div class="container">
@@ -123,6 +119,7 @@ $ophalen = $conn->query("SELECT * FROM groep");
 			</div>
 		</div>';
 
+		
 					// check if the form has been submitted. If it has, process the form and save it to the database
 					if (isset($_POST['submit'])) {
 						if (is_numeric($_POST['id'])) {
