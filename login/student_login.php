@@ -11,6 +11,7 @@ echo '
 <body>
     <form method="post" action="../assets/php/student_login_verw.php">
     <input type="text" name="code">
+    <input type="submit" name="submit" value="Aanmelden">
     </form>
 </body>
 </html>
