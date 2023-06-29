@@ -50,7 +50,7 @@ $ophalen = $conn->query("SELECT * FROM groep");
 										<?php
 										require_once("../assets/includes/conn.php");
 										// Get all the categories from category table
-										$sql_klasid = "SELECT * FROM `leerling`";
+										$sql_klasid = "SELECT * FROM leerling";
 										$KlassenID = mysqli_query($conn, $sql_klasid);
 										?>
 										<select name="KlasID">
