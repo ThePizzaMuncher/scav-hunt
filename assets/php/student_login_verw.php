@@ -9,6 +9,7 @@ if (isset($_POST["code"]) && !empty($_POST["code"]) && isset($_POST["submit"]) &
     $pull = $conn->query("SELECT groep_ID, ID FROM leerling WHERE naam = '" . $naam . "'");
     while ($row = $pull->fetch_assoc()) {//Enkele executie van leerling. Pakt groep ID van leerling.
         $groepID = $row["groep_ID"];
+        $opleidingID = $row["opleiding_ID"];
         $llID = $row["ID"];
     }
     if ($groepID == -1) {//Als naam verkeerd is gegaan doe dan...
@@ -22,6 +23,7 @@ if (isset($_POST["code"]) && !empty($_POST["code"]) && isset($_POST["submit"]) &
             $_SESSION["student_login"] = true;//Session voor toegang wordt aangemaakt.
             $_SESSION["student_groepID"] = $groepID;
             $_SESSION["student_ID"] = $llID;
+            $_SESSION["student_opleidingID"] = $opleidingID;
             $_SESSION["stl_fb"] = "0";
             header("location: ../../groepsnaam");
             die();
