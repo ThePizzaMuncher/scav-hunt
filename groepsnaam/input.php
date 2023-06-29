@@ -17,10 +17,12 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
     }
     else {
         $_SESSION["stl_fb"] = "Error: team bestaat al.";
+        header("location: ./");
     }
 }
 else {
     $_SESSION["stl_fb"] = "Error: Je bent niet ingelogd.";
+    header("location: ../login/student_login.php");
 }
 header("location: ../");
 ?>
