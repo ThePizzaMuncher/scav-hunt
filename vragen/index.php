@@ -33,7 +33,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
         else {
             echo "<script defer>
             setTimeout(() => {
-                window.alert('Deze vraag heb je al gehad.');
+                window.alert('Deze vraag past momenteel niet bij je team.');
             }, 200);
             </script>";
         }
