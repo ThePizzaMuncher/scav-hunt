@@ -16,4 +16,7 @@ echo '
 </body>
 </html>
 ';
+if (isset($_SESSION["stl_fb"]) && $_SESSION["stl_fb"] != "0") {
+    echo "<script defer>window.alert('" . $_SESSION["stl_fb"] . "')</script>";
+}
 ?>
