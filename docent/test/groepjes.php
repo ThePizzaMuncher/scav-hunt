@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 }
 
 // Haal de leerlingen op uit de database
-$sql = "SELECT ID, naam, groep_ID FROM leerling";
+$sql = "SELECT ID, naam, groep_ID FROM leerling WHERE opleiding_ID = $_SESSION[opleiding_ID]";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -45,6 +45,8 @@ if ($result->num_rows > 0) {
 		$conn->query($query); // create groups
     } */
 
+
+    $conn->query("UPDATE leerling SET groep_ID = 0 WHERE opleiding_ID = $_SESSION[opleiding_ID]");
     $conn->query('DELETE FROM groep WHERE ID != 0'); // leeg de tabel met groepen
     
     for ($i = 0, $j = 1; $i < $aantalGroepjes; $i++, $j++) {

@@ -23,7 +23,7 @@ if (isset($_POST["code"]) && !empty($_POST["code"]) && isset($_POST["submit"]) &
             $_SESSION["student_groepID"] = $groepID;
             $_SESSION["student_ID"] = $llID;
             $_SESSION["stl_fb"] = "0";
-            header("location: ../../");
+            header("location: ../../groepsnaam");
             die();
         }
         else {

@@ -18,7 +18,7 @@ echo '
 </body>
 </html>
 ';
-if (isset($_SESSION["stl_fb"]) && $_SESSION["stl_fb"] != "0") {
+if (isset($_SESSION["stl_fb"]) && $_SESSION["stl_fb"] != "0") {//Feedback van login actie
     echo "<script defer>
     setTimeout(() => {
         window.alert('" . $_SESSION["stl_fb"] . "');
