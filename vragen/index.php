@@ -42,11 +42,11 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 $counter = 0;
                 while ($row2c = $pull2c->fetch_assoc()) {//Maak array met nummers en ID's, omdat vraag ID ook groter kan zijn dan 13 voor andere opleidingen.
                     ++$counter;
-                    array_push($vraagArr, [$counter => $row2c["ID"]]);//Voeg ID van vraag toe aan array.
+                    array_push($vraagArr, $row2c["ID"]);//Voeg ID van vraag toe aan array.
                 }
                 print_r($vraagArr);
                 die("test");
-                $pull2 = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = $vragenlijstID AND ID = " . $vraagArr[$vraagID] . "");
+                $pull2 = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = $vragenlijstID AND ID = " . $vraagArr[$vraagID - 1] . "");
                 while ($row2 = $pull2->fetch_assoc()) {
                     echo "<p>";
                     echo $row2["vraag"];
