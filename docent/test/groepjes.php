@@ -35,6 +35,7 @@ if ($result->num_rows > 0) {
     $aantalLeerlingen = count($leerlingen);
     $aantalGroepjes = floor($aantalLeerlingen / $aantalLeerlingenPerGroep);
     $extraLeerlingen = $aantalLeerlingen % $aantalLeerlingenPerGroep;
+    echo $aantalLeerlingen . " " ."aantal LEERLINGEN aan het begin";
     echo $extraLeerlingen . " " ."EXTRA LEERLINGEN aan het begin";
 
     $startIndex = 0;
