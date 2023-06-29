@@ -25,6 +25,33 @@
                                     <div class="input-group mb-3">
                                         <input type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search data">
                                         <button type="submit" class="btn btn-primary">Search</button>
+                                        <div>
+					<table border='1' cellpadding='10' width='100%'>
+						<tr>
+							<td> <strong>naam: </strong></td>
+							<td> <input type='text' name='naam' value='<?php echo $naam; ?>' />*</td>
+						</tr>
+						<tr>
+							<td> <strong>opleiding: </strong></td>
+							<td> <input type='text' name='opleiding' value='<?php echo $opleiding; ?>' />*</td>
+						</tr>
+						<tr>
+							<td> <strong>wachtwoord: </strong></td>
+							<td> <input type='text' name='wachtwoord' value='<?php echo $wachtwoord; ?>' />*</td>
+						</tr>
+						<tr>
+							<td> <strong>Admin: </strong></td>
+							<td> <input type='checkbox' name='isAdmin' /></td>
+						</tr>
+
+						<?php
+
+						?>
+
+					</table>
+					<p>* required</p>
+					<input type='submit' name='submit' value='submit'>
+				</div>
                                     </div>
                                 </form>
 
@@ -46,13 +73,14 @@
                             </thead>
                             <tbody>
                                 <?php 
-                                    $con = mysqli_connect("localhost", "kartel", "bremankartel", "kartel");
-
+                                // connect to the database
+	                                require '../assets/includes/conn.php';
+                                    if (isset($_POST['submit'])) {
                                     if(isset($_GET['search']))
                                     {
                                         $filtervalues = $_GET['search'];
                                         $query = "SELECT * FROM opleiding WHERE CONCAT(opleiding_naam) LIKE '%$filtervalues%' ";
-                                        $query_run = mysqli_query($con, $query);
+                                        $query_run = mysqli_query($conn, $query);
 
                                         if(mysqli_num_rows($query_run) > 0)
                                         {
@@ -64,6 +92,24 @@
                                                     <td><?= $items['opleiding_naam']; ?></td>
                                                 </tr>
                                                 <?php
+                                                 // get form data, making sure it is valid
+                                        $naam = mysqli_real_escape_string($conn, $_POST['naam']);
+                                        $opleiding = $items['ID'];
+                                        $wachtwoord = mysqli_real_escape_string($conn, $_POST['wachtwoord']);
+                                        $isAdmin = (isset($_POST['isAdmin']) ? 1 : 0);
+                                            // save the data to the database
+                                
+                                            $sql_query = "INSERT INTO docent (naam, opleiding_ID, wachtwoord,isAdmin) VALUES ('$naam', '$opleiding', '$wachtwoord','$isAdmin')";
+                                
+                                
+                                            $retval = mysqli_query($conn, $sql_query);
+                                
+                                            if (!$retval) {
+                                                die('Could not enter data: ');
+                                            }
+                                
+                                            echo "Entered data successfully\n";
+                                            header("Location: index.php");
                                             }
                                         }
                                         else
@@ -75,7 +121,12 @@
                                             <?php
                                         }
                                     }
-                                ?>
+
+
+                                        }
+                                
+                                        ?>
+                                
                             </tbody>
                         </table>
                     </div>
