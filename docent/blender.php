@@ -44,25 +44,26 @@ if(isset($_POST['ag']) || isset($_POST['amig'])) {
 	}
 	// header('location:/~fp241754/scav-hunt/docent'); die();
 
-	function telwoord(int $nummer) {
-		switch($nummer) {
-			case 1: return 'één';
-			case 2: return 'twee';
-			case 3: return 'drie';
-			case 4: return 'vier';
-			case 5: return 'vijf';
-			case 6: return 'zes';
-			case 7: return 'zeven';
-			case 8: return 'acht';
-			case 9: return 'negen';
-			case 10: return 'tien';
-			case 11: return 'elf';
-			case 12: return 'twaalf';
-			case 13: return 'dertien';
-			case 14: return 'veertien';
-			case 15: return 'vijftien';
-			default: return $nummer;
-		}
+	
+}
+function telwoord(int $nummer) {
+	switch($nummer) {
+		case 1: return 'één';
+		case 2: return 'twee';
+		case 3: return 'drie';
+		case 4: return 'vier';
+		case 5: return 'vijf';
+		case 6: return 'zes';
+		case 7: return 'zeven';
+		case 8: return 'acht';
+		case 9: return 'negen';
+		case 10: return 'tien';
+		case 11: return 'elf';
+		case 12: return 'twaalf';
+		case 13: return 'dertien';
+		case 14: return 'veertien';
+		case 15: return 'vijftien';
+		default: return $nummer;
 	}
 }
 require_once('../assets/includes/header.php');
