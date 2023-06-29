@@ -22,17 +22,15 @@
                             <div class="col-md-7">
 
                                 <form action="" method="post">
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="search" required value="<?php if(isset($_POST['submit'])){echo $_POST['search']; } ?>" class="form-control" placeholder="Search data">
-                                        <div>
 					<table border='1' cellpadding='10' width='100%'>
 						<tr>
 							<td> <strong>naam: </strong></td>
 							<td> <input type='text' name='naam' value='' />*</td>
 						</tr>
 						<tr>
-							<td> <strong>opleiding: </strong></td>
-							<td> <input type='text' name='opleiding' value='' />*</td>
+                        <div class="input-group mb-3">
+                            <input type="text" name="search" required value="<?php if(isset($_POST['submit'])){echo $_POST['search']; } ?>" class="form-control" placeholder="Search data">
+                        <div>
 						</tr>
 						<tr>
 							<td> <strong>wachtwoord: </strong></td>
