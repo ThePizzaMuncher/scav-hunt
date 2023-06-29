@@ -43,11 +43,13 @@ if ($result->num_rows > 0) {
         if ($extraLeerlingen > 0) {
             $aantalLeerlingenInGroep++;
             $extraLeerlingen--;
+            echo $extraLeerlingen . " " ."EXTRA LEERLINGEN";
         }
-
+        echo $startIndex . " " ."start index";
+        echo $aantalLeerlingenInGroep . " " ."leerlingen in groep";
         $groep = array_slice($leerlingen, $startIndex, $aantalLeerlingenInGroep - 1);
         $startIndex += $aantalLeerlingenInGroep;
-
+        
         // Voeg de groep toe aan de database
         foreach ($groep as $leerling) {
             $leerlingId = $leerling['ID'];
