@@ -27,6 +27,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                         $docentID = $row2a["docent_ID"];
                     }
                 }
+                echo $docentID;
                 $pull2b = $conn->query("SELECT ID FROM vragenlijst WHERE docent_ID = $docentID");
                 $vragenlijstID = -1;
                 while ($row2b = $pull2b->fetch_assoc()) {
