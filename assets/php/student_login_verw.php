@@ -5,12 +5,13 @@ if (isset($_POST["code"]) && !empty($_POST["code"]) && isset($_POST["submit"]) &
     $code = $_POST["code"];
     $naam = htmlspecialchars(strtolower($_POST["naam"]));
     $groepID = -1;
+
     $pull = $conn->query("SELECT groep_ID, ID FROM leerling WHERE naam = '" . $naam . "'");
     while ($row = $pull->fetch_assoc()) {//Enkele executie van leerling. Pakt groep ID van leerling.
         $groepID = $row["groep_ID"];
         $llID = $row["ID"];
     }
-    if ($groep_ID == -1) {//Als naam verkeerd is gegaan doe dan...
+    if ($groepID == -1) {//Als naam verkeerd is gegaan doe dan...
         $_SESSION["stl_fb"] = "Error: leerling bestaat niet of naam is verkeerd ingevoerd.";
         header("location: ../../login/student_login.php");
         die();
