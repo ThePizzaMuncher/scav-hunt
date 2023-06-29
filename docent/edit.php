@@ -8,7 +8,7 @@ if (!isset($_SESSION['docent'])) {
     die();
 }*/
 require_once("../assets/includes/header.php");
-include("../assets/includes/conn.php");
+require_once("../assets/includes/conn.php");
 $ophalen = $conn->query("SELECT * FROM groep");
 
 ?>
