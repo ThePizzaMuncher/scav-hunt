@@ -9,7 +9,6 @@ if (!isset($_SESSION['docent'])) {
 }*/
 require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
-$ophalen = $conn->query("SELECT * FROM groep");
 
 ?>
 
@@ -43,8 +42,33 @@ $ophalen = $conn->query("SELECT * FROM groep");
 										<td><input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>' /></td>
 									</tr>
 									<tr>
-										<td><strong>Groep_ID: </strong></td>
-										<td><input type='text' name='groepid' value='<?php echo $groep_ID; ?>' /></td>
+                                    <?php
+require('../assets/includes/conn.php');
+
+// Get all the categories from category table
+    $sql_groep_ID = "SELECT * FROM `groep`";
+    $groepID = mysqli_query($conn,$sql_groep_ID);
+?>
+<select name="groepid">
+            <?php
+                // use a while loop to fetch data
+                // from the $all_categories variable
+                // and individually display as an option
+                while ($groep_ID = mysqli_fetch_array(
+                        $groepID)):;
+            ?>
+                <option value="<?php echo $groep_ID["ID"];
+                    // The value we usually set is the primary key
+                ?>">
+                    <?php echo $groep_ID["groepsnaam"];
+                        // To show the category name to the user
+                    ?>
+                </option>
+            <?php
+                endwhile;
+                // While loop must be terminated
+            ?>
+        </select>
 									</tr>
 								</table>
 								<p>Everything is Required</p>
