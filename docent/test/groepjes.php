@@ -39,10 +39,13 @@ if ($result->num_rows > 0) {
 
     $startIndex = 0;
 
-    for ($i = 0; $i < $aantalGroepjes; ++$i) {
+    // (hopefully opsolete) code for making the groups
+    /* for ($i = 0; $i < $aantalGroepjes; ++$i) {
         $query = "INSERT INTO groep (ID, docent_ID, groepsnaam) VALUES ('$i', '$_SESSION[opleiding_ID]', '" . telwoord($i) . "')";
 		$conn->query($query); // create groups
-    }
+    } */
+
+    $conn->query('DELETE FROM groep WHERE groepsnaam != "standaard"'); // leeg de tabel met groepen
     
     for ($i = 0; $i < $aantalGroepjes; $i++) {
         $aantalLeerlingenInGroep = $aantalLeerlingenPerGroep;
@@ -57,8 +60,10 @@ if ($result->num_rows > 0) {
         // Voeg de groep toe aan de database
         foreach ($groep as $leerling) {
             $leerlingId = $leerling['ID'];
-            $sql = "UPDATE leerling SET groep_ID = $i+1 WHERE ID = $leerlingId";
-            $conn->query($sql);
+            $makeGroup = "INSERT INTO groep (ID, groepsnaam, docent_ID) VALUES ('$i', '" . telwoord() . "', '$_SESSION[opleiding_ID]')";
+            $setGroup = "UPDATE leerling SET groep_ID = $i+1 WHERE ID = $leerlingId";
+            $conn->multi_query("$makeGroup; $setGroup;");
+            // $conn->query($makeGroup, $setGroup);
         }
     }
     
