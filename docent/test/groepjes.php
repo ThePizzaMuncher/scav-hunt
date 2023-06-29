@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Verbindingsgegevens voor de database
 $servername = "localhost";
 $username = "kartel";
