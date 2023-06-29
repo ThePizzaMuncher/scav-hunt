@@ -17,27 +17,37 @@ if ($conn->connect_error) {
 }
 
 // Haal de leerlingen op uit de database
-$sql = "SELECT ID,naam,groep_ID FROM leerling";
+$sql = "SELECT ID, naam, groep_ID FROM leerling";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $leerlingen = array();
-    
+
     // Voeg de leerlingen toe aan een array
     while ($row = $result->fetch_assoc()) {
         $leerlingen[] = $row;
     }
-    
+
     // Randomize de volgorde van de leerlingen
     shuffle($leerlingen);
-    
-    // Maak groepjes met hetzelfde aantal leerlingen
+
+    // Bereken het aantal groepjes en extra leerlingen
     $aantalLeerlingen = count($leerlingen);
     $aantalGroepjes = floor($aantalLeerlingen / $aantalLeerlingenPerGroep);
-    
+    $extraLeerlingen = $aantalLeerlingen % $aantalLeerlingenPerGroep;
+
+    $startIndex = 0;
+
     for ($i = 0; $i < $aantalGroepjes; $i++) {
-        $groep = array_slice($leerlingen, $i * $aantalLeerlingenPerGroep, $aantalLeerlingenPerGroep);
-        
+        $aantalLeerlingenInGroep = $aantalLeerlingenPerGroep;
+        if ($extraLeerlingen > 0) {
+            $aantalLeerlingenInGroep++;
+            $extraLeerlingen--;
+        }
+
+        $groep = array_slice($leerlingen, $startIndex, $aantalLeerlingenInGroep);
+        $startIndex += $aantalLeerlingenInGroep;
+
         // Voeg de groep toe aan de database
         foreach ($groep as $leerling) {
             $leerlingId = $leerling['ID'];
@@ -45,7 +55,7 @@ if ($result->num_rows > 0) {
             $conn->query($sql);
         }
     }
-    
+
     echo "De groepjes zijn succesvol gegenereerd en opgeslagen in de database.";
 } else {
     echo "Er zijn geen leerlingen gevonden in de database.";

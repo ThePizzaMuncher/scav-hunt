@@ -23,5 +23,6 @@ if (isset($_SESSION["stl_fb"]) && $_SESSION["stl_fb"] != "0") {
         window.alert('" . $_SESSION["stl_fb"] . "');
     }, 200);
     </script>";
+    $_SESSION["stl_fb"] = "0";
 }
 ?>

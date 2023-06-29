@@ -26,9 +26,10 @@ if(isset($_POST['ag']) || isset($_POST['amig'])) {
 		$amig = $_POST['amig'];
 		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID AND leerjaar = 1");
 		$aLL = $pull->num_rows; // $aLL is the amount of relevant students
-		$ag = (int)($aLL / $amig); // amount of groups
+		$ag = (int) floor($aLL / $amig); // amount of groups
 		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)"); // create groups
 		
+		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID AND leerjaar = 1");
 		while($leerling = $pull->fetch_assoc()) { // loop through students
 			$conn->query("UPDATE leerling SET groep_ID = '$gID' WHERE leerling.ID = $leerling[ID]"); // assign group ID to indiv. students
 			if($gID == $ag) $gID = 1; else ++$gID; // groups are assigned 1…x–1…x–1…x
