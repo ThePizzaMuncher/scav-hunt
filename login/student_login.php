@@ -1,5 +1,6 @@
 <?php
 require_once("../assets/includes/conn.php");
+session_start();
 echo '
 <!DOCTYPE html>
 <html>
