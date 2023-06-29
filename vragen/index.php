@@ -24,12 +24,12 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 while ($row2a = $pull2a->fetch_assoc()) {
                     echo "naam: " . $row["naam"] . " opleiding_ID:" . $row["opleiding_ID"] . "<br>";
                 }
-                //$pull2 = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = ")
+                /*$pull2 = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = ")
                 while ($row2 = $pull2->fetch_assoc()) {
                     echo "<p>";
                     echo $row2["vraag"];
                     echo "</p>";
-                }
+                }*/
                 echo '
                 </div>
             </body>
