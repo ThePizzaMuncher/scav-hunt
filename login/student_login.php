@@ -17,6 +17,10 @@ echo '
 </html>
 ';
 if (isset($_SESSION["stl_fb"]) && $_SESSION["stl_fb"] != "0") {
-    echo "<script defer>window.alert('" . $_SESSION["stl_fb"] . "')</script>";
+    echo "<script defer>
+    setTimeout(() => {
+        window.alert('" . $_SESSION["stl_fb"] . "');
+    }, 200);
+    </script>";
 }
 ?>
