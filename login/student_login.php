@@ -10,7 +10,7 @@ echo '
 </head>
 <body>
     <form method="post" action="../assets/php/student_login_verw.php">
-    <input type="text" name="code">
+    <input type="text" name="code" required placeholder="Voer hier de code in">
     <input type="submit" name="submit" value="Aanmelden">
     </form>
 </body>
