@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
             $extraLeerlingen--;
         }
 
-        $groep = array_slice($leerlingen, $startIndex, $aantalLeerlingenInGroep);
+        $groep = array_slice($leerlingen, $startIndex, $aantalLeerlingenInGroep - 1);
         $startIndex += $aantalLeerlingenInGroep;
 
         // Voeg de groep toe aan de database
