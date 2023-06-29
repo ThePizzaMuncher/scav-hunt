@@ -23,11 +23,12 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 //$pull2 = $conn->query("SELECT vraag.vraag, vraag.vragenlijst_ID, vraag.antwoord, vragenlijst.ID,vragenlijst.docent_ID,docent.opleiding_ID,opleiding.opleiding_naam, vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID WHERE vraag.ID = $vraagID AND opleiding.ID = $opleiding");
                 $pull2a = $conn->query("SELECT vragenlijst.docent_ID, vragenlijst.ID, docent.opleiding_ID, docent.naam FROM vragenlijst INNER JOIN docent ON vragenlijst.docent_ID = docent.ID");
                 while ($row2a = $pull2a->fetch_assoc()) {
+                    echo $opleiding;
                     if ($opleiding == $row2a["opleiding_ID"]) {//Zoek opleiding bij student en docent.
                         $docentID = $row2a["docent_ID"];
                     }
                 }
-                echo $docentID;
+                //echo $docentID;
                 $pull2b = $conn->query("SELECT ID FROM vragenlijst WHERE docent_ID = $docentID");
                 $vragenlijstID = -1;
                 while ($row2b = $pull2b->fetch_assoc()) {
