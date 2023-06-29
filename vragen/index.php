@@ -30,6 +30,13 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
             ';
             $conn->query("UPDATE groep SET current_vraag = " . ($row["current_vraag"] + 1) . " WHERE ID = " . $row["ID"] . "");//Stel volgende vraag in.
         }
+        else {
+            echo "<script defer>
+            setTimeout(() => {
+                window.alert('Deze vraag heb je al gehad.');
+            }, 200);
+            </script>";
+        }
     }
 }
 else {
