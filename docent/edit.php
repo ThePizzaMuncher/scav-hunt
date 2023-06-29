@@ -34,8 +34,33 @@ require_once("../assets/includes/conn.php");
 										<td><input type='text' name='leerlingnummer' value='<?php echo $naam; ?>' /></td>
 									</tr>
 									<tr>
-										<td><strong>opleiding_ID: </strong></td>
-										<td><input type='text' name='voornaam' value='<?php echo $opleiding_ID; ?>' /></td>
+                                    <?php
+require('../assets/includes/conn.php');
+
+// Get all the categories from category table
+    $sql_opleiding_ID = "SELECT * FROM `opleiding`";
+    $opleidingID = mysqli_query($conn,$sql_opleiding_ID);
+?>
+<select name="opleiding">
+            <?php
+                // use a while loop to fetch data
+                // from the $all_categories variable
+                // and individually display as an option
+                while ($opleiding_ID = mysqli_fetch_array(
+                        $opleidingID)):;
+            ?>
+                <option value="<?php echo $opleiding_ID["ID"];
+                    // The value we usually set is the primary key
+                ?>">
+                    <?php echo $opleiding_ID["opleiding_naam"];
+                        // To show the category name to the user
+                    ?>
+                </option>
+            <?php
+                endwhile;
+                // While loop must be terminated
+            ?>
+        </select>
 									</tr>
 									<tr>
 										<td><strong>Leerjaar: </strong></td>
@@ -106,7 +131,7 @@ require('../assets/includes/conn.php');
 							$id = $_POST['id'];
 							// get form data, making sure it is valid
 							$naam = mysqli_real_escape_string($conn, htmlspecialchars($_POST['leerlingnummer']));
-							$opleiding_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['voornaam']));
+							$opleiding_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['opleiding']));
 							$leerjaar = mysqli_real_escape_string($conn, htmlspecialchars($_POST['leerjaar']));
 							$groep_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['groepid']));
 							if ($opleiding_ID == "software developer" || $opleiding_ID == "Software developer") {

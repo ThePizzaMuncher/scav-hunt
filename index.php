@@ -3,7 +3,6 @@ $_SESSION["pagina"] = "home";
 include 'assets/includes/header.php';
 echo <<<meta
 <html id="page_home">
-<meta>
 meta;
 ?>
 <style>
