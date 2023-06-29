@@ -46,33 +46,6 @@ $ophalen = $conn->query("SELECT * FROM groep");
 										<td><strong>Groep_ID: </strong></td>
 										<td><input type='text' name='groepid' value='<?php echo $groep_ID; ?>' /></td>
 									</tr>
-									<tr>
-										<?php
-										require_once("../assets/includes/conn.php");
-										// Get all the categories from category table
-										$sql_klasid = "SELECT * FROM leerling";
-										$KlassenID = mysqli_query($conn, $sql_klasid);
-										?>
-										<select name="KlasID">
-											<?php
-											// use a while loop to fetch data
-											// from the $all_categories variable
-											// and individually display as an option
-											while ($klas_id = mysqli_fetch_array(
-												$KlassenID
-											)) :
-											?>
-												<option value="<?php echo $klas_id["id"];
-																// The value we usually set is the primary key
-																?>">
-												</option>
-											<?php
-											endwhile;
-											// While loop must be terminated
-											?>
-										</select>
-									</tr>
-									</td>
 								</table>
 								<p>Everything is Required</p>
 
@@ -91,6 +64,7 @@ $ophalen = $conn->query("SELECT * FROM groep");
 							<th>Groepsnaam</th>
 						</tr>
 						<?php
+						require_once("../assets/includes/conn.php");
 						while ($rij = $ophalen->fetch_assoc()) {
 							echo "<tr>";
 							echo "<td>" . $rij['ID'] . "</td>";
