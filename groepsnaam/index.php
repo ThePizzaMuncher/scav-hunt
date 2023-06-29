@@ -12,8 +12,8 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
     </head>
     <body>
         <form method="post" action="input.php">
-        <input type="text" name="groepsnaam">
-        <input type="submit" name="submit">
+        <input type="text" name="groepsnaam" placeholder="Voer je groepsnaam in">
+        <input type="submit" name="submit" value="maak groep">
         </form>
     </body>
     </html>
