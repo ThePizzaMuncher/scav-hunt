@@ -60,7 +60,7 @@ if ($result->num_rows > 0) {
         // Voeg de groep toe aan de database
         foreach ($groep as $leerling) {
             $leerlingId = $leerling['ID'];
-            $makeGroup = "INSERT INTO groep (ID, groepsnaam, docent_ID) VALUES ('$i', '" . telwoord() . "', '$_SESSION[opleiding_ID]')";
+            $makeGroup = "INSERT INTO groep (ID, groepsnaam, docent_ID) VALUES ('$i', '" . telwoord($i + 1) . "', '$_SESSION[opleiding_ID]')";
             $setGroup = "UPDATE leerling SET groep_ID = $i+1 WHERE ID = $leerlingId";
             $conn->multi_query("$makeGroup; $setGroup;");
             // $conn->query($makeGroup, $setGroup);
