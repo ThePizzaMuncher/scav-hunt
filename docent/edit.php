@@ -102,7 +102,7 @@ $ophalen = $conn->query("SELECT * FROM groep");
 									die('Could not enter data: ');
 								}
 								// once saved, redirect back to the view page
-								header("Location: index.php");
+								echo "<script>window.open('../', '_self')</script>";
 							}
 						} else {
 							// if the 'id' isn't valid, display an error
