@@ -54,15 +54,16 @@ if ($result->num_rows > 0) {
             $extraLeerlingen--;
         }
 
+        $makeGroup = "INSERT INTO groep (ID, groepsnaam, docent_ID) VALUES ('" . $i + 1 . "', '" . telwoord($i + 1) . "', '$_SESSION[opleiding_ID]')";
+        $conn->query($makeGroup);
         $groep = array_slice($leerlingen, $startIndex, $startIndex + $aantalLeerlingenInGroep - 1);
         $startIndex += $aantalLeerlingenInGroep;
         
         // Voeg de groep toe aan de database
         foreach ($groep as $leerling) {
             $leerlingId = $leerling['ID'];
-            $makeGroup = "INSERT INTO groep (ID, groepsnaam, docent_ID) VALUES ('" . $i + 1 . "', '" . telwoord($i + 1) . "', '$_SESSION[opleiding_ID]')";
             $setGroup = "UPDATE leerling SET groep_ID = $i+1 WHERE ID = $leerlingId";
-            $conn->multi_query("$makeGroup; $setGroup;");
+            $conn->query($setGroup);
             // $conn->query($makeGroup, $setGroup);
         }
     }
