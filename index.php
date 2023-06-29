@@ -1,10 +1,6 @@
 <?php
 $_SESSION["pagina"] = "home";
 include 'assets/includes/header.php';
-if (isset($_SESSION["stl_fb"]) && !empty($_SESSION["stl_fb"])) {
-  echo "<script>window.alert('" . $_SESSION["stl_fb"] . "')</script>";
-  $_SESSION["stl_fb"] = "0";
-}
 echo <<<meta
 <html id="page_home">
 meta;
@@ -73,4 +69,14 @@ meta;
     </section>
   </section> <!-- End About Section -->
 
-  <?php include "assets/includes/footer.php" ?>
+  <?php
+  include "assets/includes/footer.php";
+  if (isset($_SESSION["stl_fb"]) && !empty($_SESSION["stl_fb"])) {
+    echo "<script>
+    setTimeout(() => {
+      window.alert('" . $_SESSION["stl_fb"] . "');
+    }, 200);
+    </script>";
+    $_SESSION["stl_fb"] = "0";
+  }
+  ?>
