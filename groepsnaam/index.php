@@ -23,7 +23,7 @@ else {
     header("location: ../login/student_login.php");
 }
 if (isset($_SESSION["stl_fb"]) && !empty($_SESSION["stl_fb"])) {
-    echo "<script>
+    echo "<script defer>
     setTimeout(() => {
       window.alert('" . $_SESSION["stl_fb"] . "');
     }, 200);

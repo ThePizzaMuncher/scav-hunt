@@ -70,13 +70,13 @@ meta;
   </section> <!-- End About Section -->
 
   <?php
-  include "assets/includes/footer.php";
-  if (isset($_SESSION["stl_fb"]) && !empty($_SESSION["stl_fb"])) {
-    echo "<script>
+   if (isset($_SESSION["stl_fb"]) && !empty($_SESSION["stl_fb"])) {
+    echo "<script defer>
     setTimeout(() => {
       window.alert('" . $_SESSION["stl_fb"] . "');
     }, 200);
     </script>";
     $_SESSION["stl_fb"] = "0";
   }
+  include "assets/includes/footer.php";
   ?>
