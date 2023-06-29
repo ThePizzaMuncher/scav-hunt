@@ -47,7 +47,7 @@ require('../../assets/includes/conn.php');
 
 // Get all the categories from category table
     $sql_groep_ID = "SELECT * FROM `groep`";
-    $groepID = mysqli_query($con,$sql_groep_ID);
+    $groepID = mysqli_query($conn,$sql_groep_ID);
 ?>
 <select name="groepid">
             <?php
