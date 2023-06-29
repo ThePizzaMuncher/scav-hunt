@@ -29,15 +29,15 @@
 					<table border='1' cellpadding='10' width='100%'>
 						<tr>
 							<td> <strong>naam: </strong></td>
-							<td> <input type='text' name='naam' value='<?php echo $naam; ?>' />*</td>
+							<td> <input type='text' name='naam' value='' />*</td>
 						</tr>
 						<tr>
 							<td> <strong>opleiding: </strong></td>
-							<td> <input type='text' name='opleiding' value='<?php echo $opleiding; ?>' />*</td>
+							<td> <input type='text' name='opleiding' value='' />*</td>
 						</tr>
 						<tr>
 							<td> <strong>wachtwoord: </strong></td>
-							<td> <input type='text' name='wachtwoord' value='<?php echo $wachtwoord; ?>' />*</td>
+							<td> <input type='text' name='wachtwoord' value='' />*</td>
 						</tr>
 						<tr>
 							<td> <strong>Admin: </strong></td>

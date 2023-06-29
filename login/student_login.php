@@ -1,5 +1,5 @@
 <?php
-require_once("assets/includes/conn.php");
+require_once("../assets/includes/conn.php");
 $pull = $conn->query("SELECT * FROM uniekecode");
 $code;
 while ($row = $pull->fetch_assoc()) {
