@@ -1,12 +1,12 @@
 <?php
-
+/*
 if (!isset($_SESSION['docent'])) {
     header('location:../login');
     die();
 } elseif (!$_SESSION['docent']) {
     header('location:../login');
     die();
-}
+}*/
 require_once("../assets/includes/header.php");
 include("../assets/includes/conn.php");
 session_start();

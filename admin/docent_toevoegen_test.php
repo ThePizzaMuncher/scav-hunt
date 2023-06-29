@@ -15,16 +15,15 @@
             <div class="col-md-12">
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h4>How to make Search box & filter data in HTML Table from Database in PHP MySQL </h4>
+                        <h4>Testing </h4>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-7">
 
-                                <form action="" method="GET">
+                                <form action="" method="post">
                                     <div class="input-group mb-3">
-                                        <input type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search data">
-                                        <button type="submit" class="btn btn-primary">Search</button>
+                                        <input type="text" name="search" required value="<?php if(isset($_POST['submit'])){echo $_POST['search']; } ?>" class="form-control" placeholder="Search data">
                                         <div>
 					<table border='1' cellpadding='10' width='100%'>
 						<tr>
@@ -44,10 +43,6 @@
 							<td> <input type='checkbox' name='isAdmin' /></td>
 						</tr>
 
-						<?php
-
-						?>
-
 					</table>
 					<p>* required</p>
 					<input type='submit' name='submit' value='submit'>
@@ -60,25 +55,12 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-12">
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Opleiding naam</th>
-                                </tr>
-                            </thead>
-                            <tbody>
                                 <?php 
                                 // connect to the database
 	                                require '../assets/includes/conn.php';
-                                    if (isset($_POST['submit'])) {
-                                    if(isset($_GET['search']))
+                                    if(isset($_POST['submit']))
                                     {
-                                        $filtervalues = $_GET['search'];
+                                        $filtervalues = $_POST['search'];
                                         $query = "SELECT * FROM opleiding WHERE CONCAT(opleiding_naam) LIKE '%$filtervalues%' ";
                                         $query_run = mysqli_query($conn, $query);
 
@@ -121,19 +103,12 @@
                                             <?php
                                         }
                                     }
-
-
-                                        }
                                 
                                         ?>
                                 
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
