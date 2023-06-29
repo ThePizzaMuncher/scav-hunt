@@ -44,12 +44,12 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                     ++$counter;
                     array_push($vraagArr, $row2c["ID"]);//Voeg ID van vraag toe aan array.
                 }
-                print_r($vraagArr);
-                die("test");
+                /*print_r($vraagArr);
+                die("test");*/
                 $pull2 = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = $vragenlijstID AND ID = " . $vraagArr[$vraagID - 1] . "");
                 while ($row2 = $pull2->fetch_assoc()) {
                     echo "<p>";
-                    echo $row2["vraag"];
+                    echo "Vraag:&nbsp;" . $row2["vraag"];
                     echo "</p>";
                 }
                 echo '
@@ -57,7 +57,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
             </body>
             </html>
             ';
-            $conn->query("UPDATE groep SET current_vraag = " . ($row["current_vraag"] + 1) . " WHERE ID = " . $row["ID"] . "");//Stel volgende vraag in.
+            //    DON'T DELETE!   $conn->query("UPDATE groep SET current_vraag = " . ($row["current_vraag"] + 1) . " WHERE ID = " . $row["ID"] . "");//Stel volgende vraag in.
         }
         else {
             echo "<script defer>
