@@ -40,7 +40,7 @@ if ($result->num_rows > 0) {
         
         // Voeg de groep toe aan de database
         foreach ($groep as $leerling) {
-            $leerlingId = $leerling['id'];
+            $leerlingId = $leerling['ID'];
             $sql = "UPDATE leerling SET groep_ID = $i+1 WHERE ID = $leerlingId";
             $conn->query($sql);
         }
