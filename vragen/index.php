@@ -40,6 +40,6 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
     }
 }
 else {
-    die("Error. Niet ingelogd!");
+    die("Error: geen toegang!");
 }
 ?>
