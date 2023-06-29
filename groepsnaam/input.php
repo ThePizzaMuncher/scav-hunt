@@ -24,5 +24,4 @@ else {
     $_SESSION["stl_fb"] = "Error: Je bent niet ingelogd.";
     header("location: ../login/student_login.php");
 }
-header("location: ../");
 ?>
