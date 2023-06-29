@@ -7,8 +7,8 @@ if (!isset($_SESSION['docent'])) {
     header('location:../login');
     die();
 }*/
-require_once("../assets/includes/header.php");
-require_once("../assets/includes/conn.php");
+require_once("../../assets/includes/header.php");
+require_once("../../assets/includes/conn.php");
 
 ?>
 
@@ -161,4 +161,4 @@ require('../../assets/includes/conn.php');
 	?>
 	</section>
 </section> <!-- End About Section -->
-<?php include "../assets/includes/footer.php" ?>
+<?php include "../../assets/includes/footer.php" ?>
