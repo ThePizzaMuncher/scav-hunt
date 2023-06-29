@@ -56,24 +56,6 @@ $ophalen = $conn->query("SELECT * FROM groep");
 						</form>
 
 				</div>
-				<div class="col-6">
-					<!-- Вывод таблицы с данными -->
-					<table border='1' cellpadding='10' width='100%'>
-						<tr>
-							<th>ID</th>
-							<th>Groepsnaam</th>
-						</tr>
-						<?php
-						require_once("../assets/includes/conn.php");
-						while ($rij = $ophalen->fetch_assoc()) {
-							echo "<tr>";
-							echo "<td>" . $rij['ID'] . "</td>";
-							echo "<td>" . $rij['groepsnaam'] . "</td>";
-							echo "</tr>";
-						}
-						?>
-					</table>
-				</div>
 			</div>
 		</div>
 

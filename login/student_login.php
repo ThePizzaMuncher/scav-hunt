@@ -1,12 +1,18 @@
 <?php
 require_once("../assets/includes/conn.php");
-$pull = $conn->query("SELECT * FROM uniekecode");
-$code;
-while ($row = $pull->fetch_assoc()) {
-    $code = $row["code"];
-}
-if ($code == "0") {
-    $code = "Momenteel geen speurtocht.";
-}
-echo "<p>$code</p>";
+echo '
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <form method="post" action="../assets/php/student_login_verw.php">
+    <input type="text" name="code">
+    </form>
+</body>
+</html>
+';
 ?>
