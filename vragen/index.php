@@ -32,12 +32,11 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 $pull2b = $conn->query("SELECT ID FROM vragenlijst WHERE docent_ID = $docentID");
                 $vragenlijstID = -1;
                 while ($row2b = $pull2b->fetch_assoc()) {
-                    $vragenlijstID = $row["ID"];
+                    $vragenlijstID = $row2b["ID"];
                 }
                 if ($docentID == -1 || $vragenlijstID == -1) {//Error melding
                     die("Error: geen passende vragenlijst gevonden bij opleiding.");
                 }
-                echo "vlID:" . $vragenlijstID . "<br>" . "vrID:" . $vraagID;
                 $pull2 = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = $vragenlijstID AND ID = $vraagID");
                 while ($row2 = $pull2->fetch_assoc()) {
                     echo "<p>";
