@@ -17,7 +17,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
             </head>
             <body>
                 <div class="keuze">';
-                $pull2 = $conn->query("SELECT vraag.vraag, vraag.vragenlijst_ID, vraag.antwoord, vragenlijst.ID, vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vraagenlijst_ID = vragenlijst.ID WHERE vraag.ID = " . $vraagID . "");
+                $pull2 = $conn->query("SELECT vraag.vraag, vraag.vragenlijst_ID, vraag.antwoord, vragenlijst.ID, vraag.ID FROM vraag INNER JOIN vragenlijst ON vraagenlijst = vragenlijst.ID WHERE vraag.ID = " . $vraagID . "");
                 while ($row2 = $pull2->fetch_assoc()) {
                     echo "<p>";
                     echo $row2["vraag"];
