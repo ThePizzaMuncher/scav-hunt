@@ -6,7 +6,7 @@ if (isset($_POST["code"]) && !empty($_POST["code"]) && isset($_POST["submit"]) &
     $naam = htmlspecialchars(strtolower($_POST["naam"]));
     $groepID = -1;
 
-    $pull = $conn->query("SELECT groep_ID, ID FROM leerling WHERE naam = '" . $naam . "'");
+    $pull = $conn->query("SELECT groep_ID, ID, opleiding_ID FROM leerling WHERE naam = '" . $naam . "'");
     while ($row = $pull->fetch_assoc()) {//Enkele executie van leerling. Pakt groep ID van leerling.
         $groepID = $row["groep_ID"];
         $opleidingID = $row["opleiding_ID"];
