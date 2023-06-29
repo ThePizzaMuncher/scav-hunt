@@ -16,7 +16,15 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 <link rel="../assets/css/style.css">
             </head>
             <body>
-                <div></div>
+                <div class="gordel">
+                <div class="vraag"></div>
+                <div class="keuze">
+                    <div class="E"><p class="txt">e</p></div>
+                    <div class="E"><p class="txt">e</p></div>
+                    <div class="E"><p class="txt">e</p></div>
+                    <div class="E"><p class="txt">e</p></div>
+                </div>
+                </div>
             </body>
             </html>
             ';
