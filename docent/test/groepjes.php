@@ -34,10 +34,15 @@ if ($result->num_rows > 0) {
     // Bereken het aantal groepjes en extra leerlingen
     $aantalLeerlingen = count($leerlingen);
     $aantalGroepjes = floor($aantalLeerlingen / $aantalLeerlingenPerGroep);
-    $extraLeerlingen = $aantalLeerlingen % $aantalLeerlingenPerGroep;
+    $extraLeerlingen = $aantalLeerlingen % $aantalLeerlingenPerGroep; 
 
     $startIndex = 0;
 
+    for ($i = 0; $i < $aantalGroepjes; ++$i) {
+        $query = "INSERT INTO groep (ID, docent_ID, groepsnaam) VALUES ('$i', '$oID', '" . telwoord($i) . "')";
+		$conn->query($query); // create groups
+    }
+    
     for ($i = 0; $i < $aantalGroepjes; $i++) {
         $aantalLeerlingenInGroep = $aantalLeerlingenPerGroep;
         if ($extraLeerlingen > 0) {
@@ -55,7 +60,7 @@ if ($result->num_rows > 0) {
             $conn->query($sql);
         }
     }
-
+    
     echo "De groepjes zijn succesvol gegenereerd en opgeslagen in de database.";
 } else {
     echo "Er zijn geen leerlingen gevonden in de database.";
@@ -63,4 +68,25 @@ if ($result->num_rows > 0) {
 
 // Sluit de verbinding
 $conn->close();
+
+function telwoord(int $nummer) {
+	switch($nummer) {
+		case 1: return 'één';
+		case 2: return 'twee';
+		case 3: return 'drie';
+		case 4: return 'vier';
+		case 5: return 'vijf';
+		case 6: return 'zes';
+		case 7: return 'zeven';
+		case 8: return 'acht';
+		case 9: return 'negen';
+		case 10: return 'tien';
+		case 11: return 'elf';
+		case 12: return 'twaalf';
+		case 13: return 'dertien';
+		case 14: return 'veertien';
+		case 15: return 'vijftien';
+		default: return $nummer;
+	}
+}
 ?>
