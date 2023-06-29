@@ -11,7 +11,9 @@ while ($row = $docent->fetch_assoc()) {
 		$_SESSION['docent'] = 1;
 		$_SESSION['naam'] = $row['naam'];
 		$_SESSION['opleiding_ID'] = $row['opleiding_ID'];
-		if ($row['isAdmin']) $_SESSION['admin'] = 1;
+		if ($row['isAdmin']) {
+			$_SESSION['admin'] = 1;
+		}
 		header('location:../docent');
 		die();
 	}

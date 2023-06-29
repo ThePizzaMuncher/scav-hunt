@@ -59,7 +59,7 @@ require_once("../assets/includes/conn.php");
 		$num_rows = mysqli_num_fields($leerlingen);
 		//    echo 'aantal kolommen' . $num_rows;
 		$queryTxt = "";
-		if (isset($_SESSION['admin']) && $_SESSION['admin'] != 1) {//Als docent geen admin is laat dan alleen de leerlingen zien die bij de opleiding van de desbetreffende docent horen.
+		if (!isset($_SESSION['admin'])) {//Als docent geen admin is laat dan alleen de leerlingen zien die bij de opleiding van de desbetreffende docent horen.
 			$queryTxt = " WHERE leerling.opleiding_ID = $_SESSION[opleiding_ID]";
 		}
 		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,groep.ID,groep.groepsnaam,leerling.ID FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.ID INNER JOIN groep ON leerling.groep_ID = groep.ID" . $queryTxt . ""); 
