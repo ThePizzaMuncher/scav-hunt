@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
 		$conn->query($query); // create groups
     } */
 
-    $conn->query('DELETE FROM groep WHERE groepsnaam != "standaard"'); // leeg de tabel met groepen
+    $conn->query('DELETE FROM groep WHERE ID != 0'); // leeg de tabel met groepen
     
     for ($i = 0, $j = 1; $i < $aantalGroepjes; $i++, $j++) {
         $aantalLeerlingenInGroep = $aantalLeerlingenPerGroep;
