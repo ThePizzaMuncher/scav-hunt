@@ -44,6 +44,8 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                     ++$counter;
                     array_unshift($vraagArr, [$counter => $row2c["ID"]]);//Voeg ID van vraag toe aan array.
                 }
+                print_r($vraagArr);
+                die("test");
                 $pull2 = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = $vragenlijstID AND ID = " . $vraagArr[$vraagID] . "");
                 while ($row2 = $pull2->fetch_assoc()) {
                     echo "<p>";
