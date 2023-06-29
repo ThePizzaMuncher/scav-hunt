@@ -15,7 +15,10 @@ if(isset($_POST['ag']) || isset($_POST['amig'])) {
 	$conn->query('DELETE FROM groep WHERE groepsnaam != "standaard"'); // leeg de tabel met groepen
 	if(isset($_POST['ag'])) { // number of groups has been specified
 		$ag = $_POST['ag'];
-		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID, docent_ID) VALUES ('$i', '$oID')"); // create groups
+		for($i = 1; $i <= $ag; ++$i) {
+			$query = "INSERT INTO groep (ID, docent_ID, groespnaam) VALUES ('$i', '$oID', '" . telwoord($i) . "')";
+			$conn->query($query); // create groups
+		}
 
 		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID AND leerjaar = 1"); // pull all relevant students
 		while($leerling = $pull->fetch_assoc()) { // loop through students
@@ -27,7 +30,10 @@ if(isset($_POST['ag']) || isset($_POST['amig'])) {
 		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID AND leerjaar = 1");
 		$aLL = $pull->num_rows; // $aLL is the amount of relevant students
 		$ag = (int) floor($aLL / $amig); // amount of groups
-		for($i = 1; $i <= $ag; ++$i) $conn->query("INSERT INTO groep (ID) VALUES ($i)"); // create groups
+		for($i = 1; $i <= $ag; ++$i) { // create groups
+			$query = "INSERT INTO groep (ID, docent_ID, groespnaam) VALUES ('$i', '$oID', '" . telwoord($i) . "')";
+			$conn->query($query);
+		}
 		
 		$pull = $conn->query("SELECT * FROM leerling WHERE opleiding_ID = $oID AND leerjaar = 1");
 		while($leerling = $pull->fetch_assoc()) { // loop through students

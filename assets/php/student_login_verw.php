@@ -7,6 +7,8 @@ if (isset($_POST["code"]) && !empty($_POST["code"]) && isset($_POST["submit"])) 
     while ($row = $pull->fetch_assoc()) {//Enkelijke executie
         if ($row["code"] == $code) {
             $_SESSION["student_login"] = true;//Session voor toegang wordt aangemaakt.
+            $pull2 = $conn->query("SELECT * FROM leerling WHERE ID = " . $row["ID"] . "")
+            $_SESSION["student_groepID"] = 
             $_SESSION["stl_fb"] = "0";
         }
         else {

@@ -35,8 +35,6 @@ if ($result->num_rows > 0) {
     $aantalLeerlingen = count($leerlingen);
     $aantalGroepjes = floor($aantalLeerlingen / $aantalLeerlingenPerGroep);
     $extraLeerlingen = $aantalLeerlingen % $aantalLeerlingenPerGroep;
-    echo $aantalLeerlingen . " " ."aantal LEERLINGEN aan het begin";
-    echo $extraLeerlingen . " " ."EXTRA LEERLINGEN aan het begin";
 
     $startIndex = 0;
 
@@ -45,10 +43,8 @@ if ($result->num_rows > 0) {
         if ($extraLeerlingen > 0) {
             $aantalLeerlingenInGroep++;
             $extraLeerlingen--;
-            echo $extraLeerlingen . " " ."EXTRA LEERLINGEN";
         }
-        echo $startIndex . " " ."start index";
-        echo $aantalLeerlingenInGroep . " " ."leerlingen in groep";
+
         $groep = array_slice($leerlingen, $startIndex, $startIndex + $aantalLeerlingenInGroep - 1);
         $startIndex += $aantalLeerlingenInGroep;
         
