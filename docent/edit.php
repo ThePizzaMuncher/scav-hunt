@@ -87,8 +87,6 @@ $ophalen = $conn->query("SELECT * FROM groep");
 							$groep_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['groepid']));
 							if ($opleiding_ID == "software developer" || $opleiding_ID == "Software developer") {
 								$opleiding_ID = 1;
-							} else {
-								$opleiding_ID = 0;
 							}
 							// checken of volgende velden zijn gevuld
 							if ($naam == '' || $opleiding_ID == '') {
