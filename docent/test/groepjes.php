@@ -1,28 +1,56 @@
 <?php
-$conn = new mysqli("localhost", "kartel", "bremankartel", "kartel");
+// Verbindingsgegevens voor de database
+$servername = "localhost";
+$username = "kartel";
+$password = "bremankartel";
+$dbname = "kartel";
 
-// Controleren op fouten bij het maken van de verbinding
+// Aantal leerlingen per groep
+$aantalLeerlingenPerGroep = 4;
+
+// Maak een nieuwe databaseverbinding
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Controleer de verbinding
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Verbindingsfout: " . $conn->connect_error);
 }
 
-// Tabel maken als deze nog niet bestaat
-$table_name = 'nummers';
-$sql_create_table = "CREATE TABLE IF NOT EXISTS $table_name (id INT PRIMARY KEY, groep_ID INT)";
-$conn->query($sql_create_table);
+// Haal de leerlingen op uit de database
+$sql = "SELECT ID,naam,groep_ID FROM leerling";
+$result = $conn->query($sql);
 
-// Groep_ID toevoegen totdat de hele rij gevuld is
-$row_size = 4; // Aantal kolommen in de tabel
-$groep_ID = 1234;
-
-// Het aantal keer dat de groep_ID moet worden herhaald
-$repeat_count = ceil($row_size / 4);
-
-for ($i = 0; $i < $repeat_count; $i++) {
-    $sql_insert = "INSERT INTO $table_name (id, groep_ID) VALUES ($i+1, $groep_ID)";
-    $conn->query($sql_insert);
+if ($result->num_rows > 0) {
+    $leerlingen = array();
+    
+    // Voeg de leerlingen toe aan een array
+    while ($row = $result->fetch_assoc()) {
+        $leerlingen[] = $row;
+    }
+    
+    // Randomize de volgorde van de leerlingen
+    shuffle($leerlingen);
+    
+    // Maak groepjes met hetzelfde aantal leerlingen
+    $aantalLeerlingen = count($leerlingen);
+    $aantalGroepjes = floor($aantalLeerlingen / $aantalLeerlingenPerGroep);
+    
+    for ($i = 0; $i < $aantalGroepjes; $i++) {
+        $groep = array_slice($leerlingen, $i * $aantalLeerlingenPerGroep, $aantalLeerlingenPerGroep);
+        
+        // Voeg de groep toe aan de database
+        foreach ($groep as $leerling) {
+            $leerlingId = $leerling['id'];
+            $sql = "UPDATE leerling SET groep_ID = $i+1 WHERE ID = $leerlingId";
+            $conn->query($sql);
+        }
+    }
+    
+    echo "De groepjes zijn succesvol gegenereerd en opgeslagen in de database.";
+} else {
+    echo "Er zijn geen leerlingen gevonden in de database.";
 }
 
-// Databaseverbinding sluiten
+// Sluit de verbinding
 $conn->close();
 ?>
