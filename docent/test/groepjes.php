@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
     $startIndex = 0;
 
     for ($i = 0; $i < $aantalGroepjes; ++$i) {
-        $query = "INSERT INTO groep (ID, docent_ID, groepsnaam) VALUES ('$i', '$oID', '" . telwoord($i) . "')";
+        $query = "INSERT INTO groep (ID, docent_ID, groepsnaam) VALUES ('$i', '$_SESSION[opleiding_ID]', '" . telwoord($i) . "')";
 		$conn->query($query); // create groups
     }
     

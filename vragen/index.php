@@ -3,7 +3,7 @@ session_start();
 require_once("../assets/includes/conn.php");
 if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && isset($_GET["vraag"]) && !empty($_GET["vraag"])) {
     $vraagID = $_GET["vraag"];
-    $pull = $conn->query("SELECT * FROM groep");
+    $pull = $conn->query("SELECT * FROM groep WHERE ID = " . $_SESSION["student_groepID"] . "");
     $check = 0;
     while ($row = $pull->fetch_assoc()) {//Voor elke groep doe...
         if ($vraagID == ($row["current_vraag"] + 1)) {//Kijken of de volgende vraag bij de groep past.
