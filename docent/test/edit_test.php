@@ -54,13 +54,13 @@ require('../../assets/includes/conn.php');
                 // use a while loop to fetch data
                 // from the $all_categories variable
                 // and individually display as an option
-                while ($groep_id = mysqli_fetch_array(
+                while ($groep_ID = mysqli_fetch_array(
                         $groepID)):;
             ?>
-                <option value="<?php echo $groep_id["ID"];
+                <option value="<?php echo $groep_ID["ID"];
                     // The value we usually set is the primary key
                 ?>">
-                    <?php echo $groep_id["groepsnaam"];
+                    <?php echo $groep_ID["groepsnaam"];
                         // To show the category name to the user
                     ?>
                 </option>
