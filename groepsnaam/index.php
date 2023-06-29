@@ -22,4 +22,12 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
 else {
     header("location: ../login/student_login.php");
 }
+if (isset($_SESSION["stl_fb"]) && !empty($_SESSION["stl_fb"])) {
+    echo "<script>
+    setTimeout(() => {
+      window.alert('" . $_SESSION["stl_fb"] . "');
+    }, 200);
+    </script>";
+    $_SESSION["stl_fb"] = "0";
+  }
 ?>
