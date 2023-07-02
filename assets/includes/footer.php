@@ -6,7 +6,7 @@
     </div>
     <div class="credits">
       <p>All Rights Maybe Reserved</p>
-      <p>Made by <a href="" target="_blank">Valerii, Wieger, Jonathan, Dimitry </a></p>
+      <p>Made by <a href="https://mbo-portal.nl/~valerie/" target="_blank"><u>Valerii</u></a>, <a href="https://mbo-portal.nl/~fp245787" target="_blank"><u>Wieger</u></a>, <a href="https://mbo-portal.nl/~fp241754/" target="_blank"><u>Jonathan</u></a>, <a href="https://mbo-portal.nl/~fp245573/"><u>Dimitry</u></a></p>
       <p>*Special event hosted and organized by the ROC Friese Poort (Firda)</p>
     </div>
   </div>
