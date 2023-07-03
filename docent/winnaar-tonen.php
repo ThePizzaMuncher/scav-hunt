@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['docent'])) {
+    header('location:../login');
+    die();
+}
+if ($_SESSION['docent'] != 1) {
+    header('location:../login');
+    die();
+}
+
+require_once("../assets/includes/header.php");
+require_once("../assets/includes/conn.php");
+?>
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset"
     style="height: 100%;">
     <section id="about" class="section-50 d-flex flex-column align-items-center">
