@@ -1,3 +1,4 @@
+<script src="../js/main.js"></script>
 <?php
 $_SESSION["pagina"] = "home";
 include 'assets/includes/header.php';
@@ -6,10 +7,12 @@ echo <<<meta
 meta;
 ?>
 <style>
-  h2, h3, h4 {
+  h2,
+  h3,
+  h4 {
     text-align: center;
   }
-  
+
   p {
     text-align: left;
   }
@@ -18,7 +21,8 @@ meta;
 
 <main id="main">
 
-  <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
+  <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset"
+    style="height: 100%;">
     <section id="about" class="section-50 d-flex flex-column align-items-center">
       <div class="container">
 
@@ -61,16 +65,16 @@ meta;
           </div>
         </div>
       </div> -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      <div class="container">
-        <br>
-        
-      </div>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <div class="container">
+          <br>
+
+        </div>
     </section>
   </section> <!-- End About Section -->
 
   <?php
-   if (isset($_SESSION["stl_fb"]) && !empty($_SESSION["stl_fb"])) {
+  if (isset($_SESSION["stl_fb"]) && !empty($_SESSION["stl_fb"])) {
     echo "<script defer>
     setTimeout(() => {
       window.alert('" . $_SESSION["stl_fb"] . "');
