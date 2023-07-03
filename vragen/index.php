@@ -45,7 +45,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
             break;
         default:
             $vraagID = 0;
-            break
+            break;
     }
     $pull = $conn->query("SELECT * FROM groep WHERE ID = " . $_SESSION["student_groepID"] . "");
     while ($row = $pull->fetch_assoc()) { //Voor de groep doe...
