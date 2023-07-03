@@ -26,7 +26,7 @@ require_once("../assets/includes/conn.php");
                         </p>
 
                         <div class="text-center">
-                            <button id="login" name="submit" type="submit">Log In!</button>
+                            <input id="login" name="submit" type="submit">Log In!</input>
                         </div>
 
 
