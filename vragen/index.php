@@ -25,6 +25,11 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
             $vraagID = 7;
             break;
         case "twefrbhdfhrj":
+            $vraagID = 8;
+            break;
+        case "kwhegfbewhrgskode":
+            $vraagID = 9;
+            break;
 
     }
     $pull = $conn->query("SELECT * FROM groep WHERE ID = " . $_SESSION["student_groepID"] . "");
