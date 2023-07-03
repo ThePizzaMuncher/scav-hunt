@@ -11,7 +11,7 @@ require_once("../assets/includes/conn.php");
             <div class="container mlogin">
                 <div id="login">
                     <h1>Student login</h1>
-                    <form action="send.php" id="loginform" method="post" name="loginform">
+                    <form action="../assets/php/student_login_verw.php" id="loginform" method="post" name="loginform">
                         <p>
                             <label for="user_login">
                                 <input class="input form-control" name="code" placeholder="Code" size="32" type="text"
