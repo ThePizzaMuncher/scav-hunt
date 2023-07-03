@@ -299,7 +299,6 @@ h6 {
 --------------------------------------------------------------*/
 /* Desktop Navigation */
 .nav-menu {
-  display: flex;
   list-style: none;
   margin: 0;
 }
