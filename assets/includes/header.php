@@ -26,7 +26,9 @@ $path = "~speurtocht/";
 	?>
 
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+		rel="stylesheet">
 
 	<!-- Vendor CSS Files -->
 	<?php
@@ -51,8 +53,10 @@ $path = "~speurtocht/";
 </head>
 
 <body>
-	<!-- <div id="box"> <?php include_once("" . $path . "filedir.php") ?> </div>
-	<i class="bi bi-list mobile-nav-toggle d-xl-none"></i> -->
+	<div id="box">
+		<?php include_once("" . $path . "filedir.php") ?>
+	</div>
+	<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
 	<div class="header-box"></div>
 
@@ -72,7 +76,7 @@ $path = "~speurtocht/";
 						<?php
 						echo '
 						<h1 class="text-light"><a href="/' . $path . '">Scav Hunt</a></h1>
-						';?>
+						'; ?>
 						<div class="social-links mt-3 text-center">
 							<a href="" target="_blank"><i class="fa fa-info" aria-hidden="true"></i></a>
 							<a href="" target="_blank"><i class="fa fa-address-book" aria-hidden="true"></i></a>
@@ -86,21 +90,21 @@ $path = "~speurtocht/";
 							<?php
 							echo '
 							<li><a href="/' . $path . '" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
-							';?>
+							'; ?>
 							<?php
 							if (isset($_SESSION['docent'])) {
 								// echo <<< bar
 								echo '<li><a href="/' . $path . 'docent/"><i class="bx bx-user"></i> Docent</a></li>';
 								echo '<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
-								echo 	'<ul>';
-								echo 		'<li><a href="/' . $path . 'docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
-								echo 		'<li><a href="/' . $path . 'docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
-								echo 		'<li><a href="/' . $path . 'docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
-								echo 		'<li><a href="/' . $path . 'docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
-								echo 		'<li><a href="/' . $path . 'docent/unieke_code_generatie.php"><i class="bx bx-code"></i> Code genereren</a></li>';
+								echo '<ul>';
+								echo '<li><a href="/' . $path . 'docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
+								echo '<li><a href="/' . $path . 'docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
+								echo '<li><a href="/' . $path . 'docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
+								echo '<li><a href="/' . $path . 'docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
+								echo '<li><a href="/' . $path . 'docent/unieke_code_generatie.php"><i class="bx bx-code"></i> Code genereren</a></li>';
 								if (isset($_SESSION['admin']))
-									echo	'<li><a href="/'. $path . 'admin/docent_toevoegen.php"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
-								echo 	'</ul>';
+									echo '<li><a href="/' . $path . 'admin/docent_toevoegen.php"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
+								echo '</ul>';
 								echo '</li>';
 								// echo '<li><a href="' . $path . 'login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 								// bar;
@@ -109,7 +113,7 @@ $path = "~speurtocht/";
 								echo '<li><a href="/' . $path . 'login/student_login.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>';
 							}
 							?>
-							
+
 							<!-- <li><a href="/' . $path . 'about.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li> -->
 						</ul>
 					</nav>

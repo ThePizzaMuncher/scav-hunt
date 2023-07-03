@@ -438,7 +438,7 @@ section {
 --------------------------------------------------------------*/
 
 #about {
-  min-height: 70vh;
+  min-height: 100vh;
   justify-content: center !important;
   overflow: auto;
 }
@@ -568,10 +568,6 @@ section {
   background: var(--color-default);
   text-align: center;
   transition: 0.5s;
-}
-
-#footer .container {
-  width: 50%;
 }
 
 #footer:hover {
