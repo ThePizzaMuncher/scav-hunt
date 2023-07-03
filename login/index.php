@@ -26,7 +26,7 @@ if (isset($_SESSION['docent'])):
         <div class="container mlogin">
           <div id="login">
             <h1>Docent en admin login</h1>
-            <form action="" id="loginform" method="post" name="loginform">
+            <form action="send.php" id="loginform" method="post" name="loginform">
               <p>
                 <label for="user_login">
                   <input class="input form-control" name="user" placeholder="Username" size="32" type="text" value=""
