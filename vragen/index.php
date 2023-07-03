@@ -50,10 +50,13 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 echo "<p>";
                 echo "Vraag:&nbsp;" . $row2["vraag"];
                 echo "<form method='post' action='send_vraag.php'>
-                <p></p><input type='checkbox' name='a'>
-                <p></p>
+                <p>$contentArr[0]</p>
+                <input type='checkbox' name='a'>
+                <p>$contentArr[0]</p>
                 <input type='checkbox' name='b'>
+                <p>$contentArr[0]</p>
                 <input type='checkbox' name='c'>
+                <p>$contentArr[0]</p>
                 <input type='checkbox' name='d'>
                 </form>";
                 echo "</p>";
