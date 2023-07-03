@@ -24,8 +24,8 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 
 		<?php
 		/* docenten_edit.PHP
-																				   Allows user to edit specific entry in database
-																				   */
+																						 Allows user to edit specific entry in database
+																						 */
 		function renderForm($id, $vraag, $antwoord, $vragenlijst_ID, $opties)
 		{
 			?>
@@ -50,7 +50,7 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 						require('../assets/includes/conn.php');
 
 						// Get all the categories from category table
-						$docent = "SELECT * FROM `docent`";
+						$docent = "SELECT ID,naam FROM `docent`";
 						$docent = mysqli_query($conn, $docent);
 						?>
 						<select name="vragenlijst_ID">
