@@ -702,7 +702,7 @@ td {
 
 .scrollable {
   background-color: white;
-  height: 30vw;
+  max-height: 30vw;
   overflow-y: scroll;
   box-shadow: 0 0 10px var(--color-secondary-light);
   border-radius: 15px;
