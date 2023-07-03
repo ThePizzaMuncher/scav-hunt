@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!isset($_SESSION['docent'])) {
 	header('location:../login');
 	die();
@@ -25,8 +26,8 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 				<div class="col-6">
 					<?php
 					/* docenten_edit.PHP
-													 Allows user to edit specific entry in database
-													 */
+																	Allows user to edit specific entry in database
+																	*/
 					function renderForm($id, $vraag, $antwoord, $vragenlijst_ID)
 					{
 						?>
