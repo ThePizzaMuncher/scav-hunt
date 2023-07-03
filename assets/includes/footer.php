@@ -2,7 +2,10 @@
 <footer id="footer">
   <div class="container">
     <div class="copyright">
-      &copy; Copyright <strong><span>Friends Company & Firda 2023-2024</span></strong>
+      <?php
+      echo '
+      &copy; Copyright <strong><span>Friends Company & Firda 2023-' . date("Y") . '</span></strong>
+    '; ?>
     </div>
     <div class="credits">
       <p>All Rights Reserved</p>
