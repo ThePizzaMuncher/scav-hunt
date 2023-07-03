@@ -38,7 +38,7 @@ require_once("../assets/includes/conn.php");
 		?>
 		<h2 class="panel-title">Docenten pagina</h2>
 		<div class="row">
-			<div class="col-lg-8">
+			<div class="col-lg-10">
 				<h3 class="panel-title">Lijst met Leerlingen</h3>
 				<?php
 
@@ -79,7 +79,7 @@ require_once("../assets/includes/conn.php");
 
 				?>
 			</div>
-			<div class="col-lg-4">
+			<div class="col-lg-2">
 				<?php echo "<a href='leerling_toevoegen.php'><button style='height: 70px;'>Leerling toevoegen</button></a>
 	<a href='../login/logout.php'><button class='button-red'>Uitloggen</button></a>"; ?>
 			</div>
