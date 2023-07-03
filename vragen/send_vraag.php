@@ -20,8 +20,11 @@ if (isset($_POST["submit"])) {
         ++$counter;
     }
     if ($counter != 1) {
-
+        die("Error: meerdere antwoorden ingevuld of geen antwoorden ingevuld.");
     }
+    //volgende vraag instellen
+
+
 
 } else {
     die("Error: geen toegang!");
