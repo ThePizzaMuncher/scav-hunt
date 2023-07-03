@@ -27,8 +27,6 @@ if (isset($_POST["submit"]) && isset($_POST["cvp1"]) && isset($_POST["rw"])) {
     $conn->query("UPDATE groep SET current_vraag = " . $cvp1 . " WHERE ID = " . $rw . ""); //Stel volgende vraag in.
     $rw -= 1; //Om current vraag ID te pakken.
     $conn->query("INSERT INTO antwoord(antwoorden, vraag_ID, groep_ID) VALUES ('$ia', $rw, $_SESSION[student_groepID])");
-    echo "<script defer>window.alert('Antwoord verzonden!')</script>";
-    sleep(1);
     header("location: ../");
 } else {
     die("Error: geen toegang!");
