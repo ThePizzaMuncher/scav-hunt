@@ -7,7 +7,7 @@ $d = false;
 $counter = 0;
 $cvp1 = 0;
 $rw = 0;
-$ia = 0;//Ingevoerde antwoord (String)
+$ia = 0; //Ingevoerde antwoord (String)
 if (isset($_POST["submit"]) && isset($_POST["cvp1"]) && isset($_POST["rw"])) {
     $cvp1 = md5($_POST["cvp1"]);
     $rw = md5($_POST["rw"]);
@@ -32,8 +32,8 @@ if (isset($_POST["submit"]) && isset($_POST["cvp1"]) && isset($_POST["rw"])) {
         die("Error: meerdere antwoorden ingevuld of geen antwoorden ingevuld.");
     }
     $conn->query("UPDATE groep SET current_vraag = " . $cvp1 . " WHERE ID = " . $rw . ""); //Stel volgende vraag in.
-    $rw -= 1;//Om current vraag ID te pakken.
-    $conn->query("INSERT INTO antwoord(antwoorden, vraag_ID, groep_ID) VALUES ('$ia', , $_SESSION[student_groepID])")
+    $rw -= 1; //Om current vraag ID te pakken.
+    $conn->query("INSERT INTO antwoord(antwoorden, vraag_ID, groep_ID) VALUES ('$ia', $rw, $_SESSION[student_groepID])");
 } else {
     die("Error: geen toegang!");
 }
