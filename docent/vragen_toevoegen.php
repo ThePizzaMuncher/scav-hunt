@@ -27,30 +27,33 @@ function renderForm($id, $vraag, $antwoord, $vragenlijst_ID)
 {
 	?>
 
+	<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset"
+		style="height: 100%;">
+		<section id="about" class="section-50 d-flex flex-column align-items-center">
+			<form action='' method='post'>
+				<div>
+					<table border='1' cellpadding='10' width='100%'>
+						<tr>
+							<td> <strong>Vraag: </strong></td>
+							<td> <input type='text' name='vraag' value='<?php echo $vraag; ?>' />*</td>
+						</tr>
+						<tr>
+							<td> <strong>Antwoord op de vraag: </strong></td>
+							<td> <input type='text' name='antwoord' value='<?php echo $antwoord; ?>' />*</td>
+						</tr>
+						<tr>
+							<td> <strong>Bij welke vragenlijstnummer hoort de vraag: </strong></td>
+							<td> <input type='text' name='vragenlijst_ID' value='<?php echo $vragenlijst_ID; ?>' />*</td>
+						</tr>
 
-	<form action='' method='post'>
-		<div>
-			<table border='1' cellpadding='10' width='100%'>
-				<tr>
-					<td> <strong>Vraag: </strong></td>
-					<td> <input type='text' name='vraag' value='<?php echo $vraag; ?>' />*</td>
-				</tr>
-				<tr>
-					<td> <strong>Antwoord op de vraag: </strong></td>
-					<td> <input type='text' name='antwoord' value='<?php echo $antwoord; ?>' />*</td>
-				</tr>
-				<tr>
-					<td> <strong>Bij welke vragenlijstnummer hoort de vraag: </strong></td>
-					<td> <input type='text' name='vragenlijst_ID' value='<?php echo $vragenlijst_ID; ?>' />*</td>
-				</tr>
-
-			</table>
-			<p>* required</p>
-			<input type='submit' name='submit' value='submit'>
-		</div>
-	</form>
-
-<?php
+					</table>
+					<p>* required</p>
+					<input type='submit' name='submit' value='submit'>
+				</div>
+			</form>
+		</section>
+	</section>
+	<?php
 }
 
 
