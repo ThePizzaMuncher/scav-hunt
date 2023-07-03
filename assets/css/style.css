@@ -552,6 +552,66 @@ section {
 # Login
 --------------------------------------------------------------*/
 
+.form-control {
+  min-height: 3em;
+  max-height: 10em;
+  overflow-y: auto;
+  resize: vertical;
+  border-radius: 0.5rem;
+  margin: 5px;
+}
+
+.login {
+  color: black;
+  background: var(--color-grey-ultra-light);
+  height: 90vh;
+}
+
+.login .row {
+  border-radius: 20px;
+}
+
+.login .login-block {
+  margin-top: 12px;
+  padding: 20px;
+
+  opacity: 1;
+  border-radius: 10px;
+  height: 95%;
+}
+
+.login button[type=submit] {
+  background: var(--color-third);
+  border: 0;
+  padding: 10px 24px;
+  color: white;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.login button[type=submit]:hover {
+  background: var(--color-third-light);
+  box-shadow: 0 5px 5px var(--color-third);
+}
+
+.user {
+  min-height: 100vh;
+  justify-content: center !important;
+}
+
+.section-50 {
+  width: 70%;
+  background-color: var(--color-grey-ultra-light);
+  border-radius: 5vh;
+}
+
+.error {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  border: solid 2px var(--color-grey-light);
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
