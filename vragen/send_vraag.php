@@ -6,6 +6,8 @@ $cvp1 = 0; //Current vraag plus 1
 $rw = 0;
 $ia = 0; //Ingevoerde antwoord (String)
 if (isset($_POST["submit"]) && isset($_POST["cvp1"]) && isset($_POST["rw"])) {
+    $rw = $_POST["rw"];
+    $cvp1 = $_POST["cvp1"];
     if (isset($_POST["a"])) {
         $ia = "a";
         ++$counter;
