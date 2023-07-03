@@ -64,7 +64,9 @@ $path = "~speurtocht/";
 				<div class="col-md-1">
 					<?php
 					echo '
+					<div class="image-container">
 					<a href="/' . $path . '"><img src="/' . $path . 'assets/img/1234.png" alt="" class="img-fluid rounded-circle"></a>
+					</div>
 					';
 					?>
 				</div>
