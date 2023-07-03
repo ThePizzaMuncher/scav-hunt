@@ -1,4 +1,3 @@
-<script src="../js/main.js"></script>
 <?php
 $_SESSION["pagina"] = "home";
 include 'assets/includes/header.php';
