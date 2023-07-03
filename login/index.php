@@ -28,13 +28,15 @@ if (isset($_SESSION['docent'])):
             <h1>Docent en admin login</h1>
             <form action="" id="loginform" method="post" name="loginform">
               <p>
-                <label for="user_login">User name<br>
-                  <input class="input form-control" name="user" size="32" type="text" value="" required>
+                <label for="user_login">
+                  <input class="input form-control" name="user" placeholder="User name" size="32" type="text" value=""
+                    required>
                 </label>
               </p>
               <p>
-                <label for="user_pass">Password<br>
-                  <input class="input form-control" name="pw" size="32" type="password" value="" required>
+                <label for="user_pass">
+                  <input class="input form-control" name="pw" placeholder="Password" size="32" type="password" value=""
+                    required>
                 </label>
               </p>
 
