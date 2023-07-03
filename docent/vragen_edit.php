@@ -24,8 +24,8 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 
 		<?php
 		/* docenten_edit.PHP
-																						 Allows user to edit specific entry in database
-																						 */
+																							   Allows user to edit specific entry in database
+																							   */
 		function renderForm($id, $vraag, $antwoord, $vragenlijst_ID, $opties)
 		{
 			?>
@@ -50,8 +50,8 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 						require('../assets/includes/conn.php');
 
 						// Get all the categories from category table
-						$docent = "SELECT ID,naam FROM `docent`";
-						$docent = mysqli_query($conn, $docent);
+						$docent_ID = "SELECT ID,naam FROM `docent`";
+						$docent_pull = mysqli_query($conn, $docent_ID);
 						?>
 						<select name="vragenlijst_ID">
 							<?php
@@ -60,7 +60,7 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 							// and individually display as an option
 							while (
 								$docent = mysqli_fetch_array(
-									$docent
+									$docent_pull
 								)
 							):
 								;

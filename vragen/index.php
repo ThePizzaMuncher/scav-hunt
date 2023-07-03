@@ -3,6 +3,18 @@ session_start();
 require_once("../assets/includes/conn.php");
 if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && isset($_GET["vraag"]) && !empty($_GET["vraag"])) {
     $vraagID = $_GET["vraag"]; //ID van qr-code en vraag.
+    switch ($vraagID) {
+        case "bhefyufvu":
+            $vraagID = 1;
+            break;
+        case "uh4r78uybr43hhj4":
+            $vraagID = 2;
+            break;
+        case "jnrtnjb3byug":
+            $vraagID = 3;
+            break;
+        case ""
+    }
     $pull = $conn->query("SELECT * FROM groep WHERE ID = " . $_SESSION["student_groepID"] . "");
     while ($row = $pull->fetch_assoc()) { //Voor de groep doe...
         if ($vraagID == ($row["current_vraag"] + 1)) { //Kijken of de volgende vraag bij de groep past.
