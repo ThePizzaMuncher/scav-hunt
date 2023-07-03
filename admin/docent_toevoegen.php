@@ -87,6 +87,7 @@ if (isset($_POST['submit'])) {
 
 
 
+
 	// check to make sure both fields are entered
 	if ($naam == '' || $opleiding == '' || $wachtwoord == '') {
 		// generate error message
