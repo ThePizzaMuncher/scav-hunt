@@ -8,7 +8,7 @@ if (!isset($_SESSION['docent'])) {
 	die();
 }
 
-require_once("../assets/includes/conn.php");
+require_once("../assets/includes/header.php");
 ?>
 
 <!-- GROEPJES TABEL ALLES TONEN -->
@@ -18,18 +18,19 @@ require_once("../assets/includes/conn.php");
 $ophalen = $conn->query("SELECT * FROM vraag");
 ?>
 
-<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
+<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset"
+	style="height: 100%;">
 	<section id="about" class="section-50 d-flex flex-column align-items-center">
 		<div class="container">
 			<div class="row">
 				<div class="col-6">
 					<?php
 					/* docenten_edit.PHP
-		Allows user to edit specific entry in database
-		*/
+									  Allows user to edit specific entry in database
+									  */
 					function renderForm($id, $vraag, $antwoord, $vragenlijst_ID)
 					{
-					?>
+						?>
 						<form action="" method="post">
 							<input type="hidden" name="id" value="<?php echo $id; ?>" />
 
@@ -45,24 +46,25 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 									</tr>
 									<tr>
 										<td><strong>Bij welke vragenlijst hoort de vraag: </strong></td>
-										<td><input type='text' name='vragenlijst_ID' value='<?php echo $vragenlijst_ID; ?>' /></td>
+										<td><input type='text' name='vragenlijst_ID'
+												value='<?php echo $vragenlijst_ID; ?>' /></td>
 									</tr>
 									</td>
 								</table>
 								<p>Everything is Required</p>
 
-								<input type="submit" name="submit" value="Wijzigen"/>
+								<input type="submit" name="submit" value="Wijzigen" />
 
 							</div>
 
 						</form>
 
+					</div>
 				</div>
 			</div>
-		</div>
 
 
-	<?php
+			<?php
 					}
 
 					// connect to the database
@@ -85,7 +87,7 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 							$vraag = mysqli_real_escape_string($conn, htmlspecialchars($_POST['vraag']));
 							$antwoord = mysqli_real_escape_string($conn, htmlspecialchars($_POST['antwoord']));
 							$vragenlijst_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['vragenlijst_ID']));
-					
+
 							// checken of volgende velden zijn gevuld
 							if ($vraag == '' || $antwoord == '') {
 								// generate error message
@@ -131,6 +133,8 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 							echo 'Error!';
 						}
 					}
-	?>
+					?>
 	</section>
 </section> <!-- End About Section -->
+
+<?php require_once("../assets/includes/footer.php"); ?>
