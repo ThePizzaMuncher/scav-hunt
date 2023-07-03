@@ -101,17 +101,17 @@
         el.addEventListener('scroll', listener)
 
     }
-    document.addEventListener("mousemove", function (event) {
-        var creditsDiv = document.querySelector(".credits"); // Get the credits div element
-        var parentDiv = creditsDiv.parentNode; // Get the parent element of the credits div
-        var screenWidth = window.innerWidth; // Get the width of the screen
+    // document.addEventListener("mousemove", function (event) {
+    //     var creditsDiv = document.querySelector(".credits"); // Get the credits div element
+    //     var parentDiv = creditsDiv.parentNode; // Get the parent element of the credits div
+    //     var screenWidth = window.innerWidth; // Get the width of the screen
 
-        if (screenWidth > 1200) { // Check if the screen width is greater than 1200 pixels
-            creditsDiv.style.position = "absolute"; // Set the position of the element to absolute
-            creditsDiv.style.left = Math.max(screenWidth * 0.4, Math.min(screenWidth * 0.6 - creditsDiv.offsetWidth, event.clientX - 130)) + "px"; // Set the left position to the current x-coordinate of the mouse pointer minus 50 pixels, but not outside the 10% and 90% of the screen width
-            creditsDiv.style.top = parentDiv.offsetTop + 90 + "px"; // Set the top position to the top of the parent element
-        }
-    });
+    //     if (screenWidth > 1200) { // Check if the screen width is greater than 1200 pixels
+    //         creditsDiv.style.position = "absolute"; // Set the position of the element to absolute
+    //         creditsDiv.style.left = Math.max(screenWidth * 0.4, Math.min(screenWidth * 0.6 - creditsDiv.offsetWidth, event.clientX - 130)) + "px"; // Set the left position to the current x-coordinate of the mouse pointer minus 50 pixels, but not outside the 10% and 90% of the screen width
+    //         creditsDiv.style.top = parentDiv.offsetTop + 90 + "px"; // Set the top position to the top of the parent element
+    //     }
+    // });
 
     /**
      * Navbar links active state on scroll
