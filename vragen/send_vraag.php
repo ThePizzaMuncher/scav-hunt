@@ -4,15 +4,20 @@ $a = false;
 $b = false;
 $c = false;
 $d = false;
+$counter = 0;
 if (isset($_POST["submit"])) {
     if (isset($_POST["a"])) {
         $a = true;
+        ++$counter;
     } else if (isset($_POST["b"])) {
         $b = true;
-    } else if (isset($_POST["b"])) {
-        $b = true;
-    } else if (isset($_POST["b"])) {
-        $b = true;
+        ++$counter;
+    } else if (isset($_POST["c"])) {
+        $c = true;
+        ++$counter;
+    } else if (isset($_POST["d"])) {
+        $d = true;
+        ++$counter;
     }
 
 } else {
