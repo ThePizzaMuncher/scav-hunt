@@ -599,12 +599,6 @@ section {
   justify-content: center !important;
 }
 
-.section-50 {
-  width: 70%;
-  background-color: var(--color-grey-ultra-light);
-  border-radius: 5vh;
-}
-
 .error {
   background: white;
   border-radius: 20px;
@@ -635,11 +629,11 @@ section {
 
 .section-50 {
   width: 80%;
-  /* background-color: var(--color-grey-ultra-light); */
   border-radius: 5vh;
-  /* box-shadow: inset 0 0 100px var(--color-secondary-ultra-light); */
   text-align: center;
   align-items: center;
+  background-color: var(--color-grey-ultra-light);
+  border-radius: 5vh;
 }
 
 .block,

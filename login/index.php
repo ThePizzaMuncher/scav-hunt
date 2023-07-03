@@ -18,9 +18,9 @@ if (isset($_SESSION['docent'])):
 
 <main id="main">
 
-  <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset"
+  <section id="about" class="d-flex flex-column justify-content-center align-items-center sticked-header-offset"
     style="height: 100%;">
-    <section id="about" class="section-50 d-flex flex-column align-items-center">
+    <section class="section-50 d-flex flex-column align-items-center">
 
       <div class="login-block">
         <div class="container mlogin">
