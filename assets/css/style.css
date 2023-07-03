@@ -718,7 +718,7 @@ td {
 }
 
 .scrollable::-webkit-scrollbar-thumb {
-  background-color: var(--color-grey-ultra-light);
+  background-color: var(--color-grey-light);
   border-radius: 10px;
 }
 
