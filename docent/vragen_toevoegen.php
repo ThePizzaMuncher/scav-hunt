@@ -30,6 +30,7 @@ function renderForm($id, $vraag, $antwoord, $vragenlijst_ID)
 	<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset"
 		style="height: 100%;">
 		<section id="about" class="section-50 d-flex flex-column align-items-center">
+			<h3 class="panel-title">Nieuwe Vraag toevoegen</h3>
 			<form action='' method='post'>
 				<div>
 					<table border='1' cellpadding='10' width='100%'>
@@ -60,22 +61,6 @@ function renderForm($id, $vraag, $antwoord, $vragenlijst_ID)
 // connect to the database
 require '../assets/includes/conn.php';
 
-
-echo '<div class="container">
-		<div class="row">
-			<div class="col-xs-8"></div>
-  
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title">Nieuwe Vraag toevoegen</h3>
-					</div>
-				</div>
-			
-		</div>
-	</div>
-
-   '
-;
 // check if the form has been submitted. If it has, start to process the form and save it to the database
 if (isset($_POST['submit'])) {
 
