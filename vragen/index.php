@@ -49,7 +49,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 echo "<p>";
                 echo "Vraag:&nbsp;" . $row2["vraag"];
                 echo "<form method='post' action='send_vraag.php'>
-                <input type='radiobutton'>
+                <input type='checkbox'>
                 </form>";
                 echo "</p>";
             }
