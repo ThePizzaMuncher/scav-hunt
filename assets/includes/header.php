@@ -84,10 +84,10 @@ $path = "~speurtocht/";
 						<div class="social-links mt-3 text-center">
 							<?php
 							echo '
-							<a href="#about" target="_blank"><i class="fa fa-info" aria-hidden="true"></i></a>
-							<a href="/' . $path . 'docent/groepje-tonen.php" target="_blank"><i
+							<a href="#about"><i class="fa fa-info" aria-hidden="true"></i></a>
+							<a href="/' . $path . 'docent/groepje-tonen.php"><i
 									class="fa fa-address-book" aria-hidden="true"></i></a>
-							<a href="/' . $path . 'docent/koter_analyzer.php" target="_blank"><i class="fa fa-map"
+							<a href="/' . $path . 'docent/koter_analyzer.php"><i class="fa fa-map"
 									aria-hidden="true"></i></a>
 									'; ?>
 						</div>

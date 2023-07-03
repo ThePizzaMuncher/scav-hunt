@@ -439,7 +439,7 @@ section {
 
 #about {
   justify-content: center !important;
-  overflow: auto;
+  overflow: initial;
 }
 
 #about h3 {

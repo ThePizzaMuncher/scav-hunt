@@ -58,6 +58,9 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 <p>$contentArr[3]</p>
                 <input type='checkbox' name='d'>
                 <br>
+                <!--Invis values for questions-->
+                <input name='cvp1' value= '" . $row["current_vraag"] + 1 . "'>
+                <input name='rw' value= '" . $row["ID"] . "'>
                 <input type='submit' name='submit' value='Vraag inleveren'>
                 </form>";
             }
