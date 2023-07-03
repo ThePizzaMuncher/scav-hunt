@@ -13,7 +13,19 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
         case "jnrtnjb3byug":
             $vraagID = 3;
             break;
-        case ""
+        case "ub3r7847443d":
+            $vraagID = 4;
+            break;
+        case "herh74utb7bdddf":
+            $vraagID = 5;
+        case "8734gvhjvf4":
+            $vraagID = 6;
+            break;
+        case "ipotyhbtert4":
+            $vraagID = 7;
+            break;
+        case "twefrbhdfhrj":
+
     }
     $pull = $conn->query("SELECT * FROM groep WHERE ID = " . $_SESSION["student_groepID"] . "");
     while ($row = $pull->fetch_assoc()) { //Voor de groep doe...

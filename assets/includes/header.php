@@ -106,7 +106,7 @@ $path = "~speurtocht/";
 								echo '<li><a href="/' . $path . 'docent/"><i class="bx bx-user"></i> Docent</a></li>';
 								echo '<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
 								echo '<ul>';
-								echo '<li><a href="/' . $path . 'docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
+								echo '<li><a href="/' . $path . 'docent/groepen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
 								echo '<li><a href="/' . $path . 'docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
 								echo '<li><a href="/' . $path . 'docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
 								echo '<li><a href="/' . $path . 'docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
