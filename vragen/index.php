@@ -59,7 +59,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 <input type='checkbox' name='d'>
                 <br>
                 <!--Invis values for questions-->
-                <input name='cvp1' value= '" . md5($row["current_vraag"]) + 1 . "'>
+                <input name='cvp1' value= '" . md5($row["current_vraag"] + 1) . "'>
                 <input name='rw' value= '" . md5($row["ID"]) . "'>
                 <input type='submit' name='submit' value='Vraag inleveren'>
                 </form>";
