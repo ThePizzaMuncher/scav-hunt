@@ -19,7 +19,7 @@ if (isset($_POST["submit"])) {
         $d = true;
         ++$counter;
     }
-    if ($counter == 1) {
+    if ($counter != 1) {
 
     }
 
