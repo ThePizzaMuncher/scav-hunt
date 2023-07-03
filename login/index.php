@@ -41,7 +41,7 @@ if (isset($_SESSION['docent'])):
               </p>
 
               <div class="text-center">
-                <button id="login" name="login" type="submit">Log In!</button>
+                <button id="login" name="submit" type="submit">Log In!</button>
               </div>
 
 
