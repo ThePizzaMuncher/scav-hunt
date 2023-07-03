@@ -19,6 +19,9 @@ if (isset($_POST["submit"])) {
         $d = true;
         ++$counter;
     }
+    if ($counter == 1) {
+
+    }
 
 } else {
     die("Error: geen toegang!");

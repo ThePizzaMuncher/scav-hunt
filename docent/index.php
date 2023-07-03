@@ -36,7 +36,6 @@ require_once("../assets/includes/conn.php");
 		// vullen variabele programs met inhoud van database
 		$leerlingen = mysqli_query($conn, "SELECT * FROM leerling");
 		?>
-		<h2 class="panel-title">Docenten pagina</h2>
 		<div class="row">
 			<div class="col-lg-10">
 				<h4 class="panel-title">Lijst met Leerlingen</h4>
