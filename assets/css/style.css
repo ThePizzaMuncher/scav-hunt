@@ -427,6 +427,7 @@ h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
+  /* padding: 40px 0; */
   overflow: auto;
   background: var(--color-grey-ultra-light);
 }
