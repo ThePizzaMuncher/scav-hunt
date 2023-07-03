@@ -104,7 +104,7 @@ h6 {
   bottom: 0;
   height: 100px;
   width: 100%;
-  background: white;
+  background: rgba(1, 1, 1, 0);
 }
 
 #header {
@@ -117,7 +117,22 @@ h6 {
   z-index: 9997;
   padding: 0 15px;
   background: var(--color-default);
-  box-shadow: 0 0 10px var(--color-grey-ultra-light);
+  overflow-y: hidden;
+}
+
+#header button {
+  color: var(--color-grey-light);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+#header button:hover {
+  scale: 110%;
+  color: white;
+  text-shadow: 0 0 5px var(--color-secondary);
 }
 
 #header .container {
@@ -128,33 +143,47 @@ h6 {
   height: 100px;
 }
 
-#header .row:first-child {
-  height: 100px;
-  padding: 0;
+#header .col-0 {
+  width: 100px;
 }
 
-#header img {
+#header .col-0 .image-container {
   margin: 10px auto;
-  display: block;
-  border: 2px solid var(--color-secondary-red);
-  transition: 1s;
-  height: fit-content;
-  scale: 100%;
-  width: 80px;
-}
-
-#header img:hover {
-  box-shadow: 0 0 10px 0px white,
-    0 0 30px 0px var(--color-secondary-light-red);
-  border: 5px solid white;
-  scale: 110%;
-}
-
-#header .vert {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid var(--color-grey-dark);
+  border-radius: 50%;
+  overflow: hidden;
+  transition: 1s;
+  position: relative;
+}
+
+#header .col-0 .image-container::before {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+#header .col-0 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#header .col-0 .image-container:hover {
+  box-shadow: 0 0 10px 0px white,
+    0 0 30px 0px var(--color-secondary-light);
+  border: 5px solid white;
+  transform: scale(1.1);
+}
+
+#header .center-the-header {
+  margin-top: 15px;
+  width: auto;
 }
 
 #header h4 {
@@ -162,61 +191,74 @@ h6 {
   font-size: 15px;
   padding-left: 17px;
   margin-bottom: 0;
+
+}
+
+#header .profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 #header .profile h1 {
-  font-size: 20px;
-  margin-top: 15px;
+  font-size: 30px;
   font-weight: 600;
-  -moz-text-align-last: center;
-  text-align-last: center;
+  text-align: center;
   font-family: "Poppins", sans-serif;
 }
 
+
 #header .profile h1 a {
-  color: var(--color-grey-dark);
+  color: var(--color-secondary);
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.5s;
   position: relative;
+}
+
+#header .profile h1 a:hover {
+  color: var(--color-secondary-light);
 }
 
 #header .profile h1 a::before,
 #header .profile h1 a::after {
   content: "";
   position: absolute;
-  width: 5px;
+  width: 100%;
   height: 0;
-  background-color: var(--color-secondary-light);
-  transition: 0.3s;
+  background-color: white;
+  transition: 0.5s;
   bottom: 0;
 }
 
 #header .profile h1 a::before {
   top: 50%;
-  left: -6px;
+  left: -20px;
 }
 
 #header .profile h1 a::after {
   top: 50%;
-  right: -6px;
+  right: -20px;
 }
 
-#header .profile h1 a:hover::before,
-#header .profile h1 a:hover::after {
+#header .profile h1:hover a::before,
+#header .profile h1:hover a::after {
   height: 100%;
   top: 0;
+  background-color: var(--color-secondary-light);
+  width: 3px;
 }
 
 #header .profile .social-links a {
   font-size: 16px;
   display: inline-block;
   background: var(--color-default);
-  color: var(--color-grey);
+  color: white;
   vertical-align: center;
   border-radius: 50%;
   width: 36px;
   height: 36px;
-  margin: 0 5px 0 5px;
+  /* margin: 0 5px 0 5px; */
   padding: 6px 0;
   transition: 0.5s;
 }
