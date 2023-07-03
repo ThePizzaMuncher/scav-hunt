@@ -82,11 +82,14 @@ $path = "~speurtocht/";
 						<h1 class="text-light"><a href="/' . $path . '">Scav Hunt</a></h1>
 						'; ?>
 						<div class="social-links mt-3 text-center">
+							<?php
+							echo '
 							<a href="#about" target="_blank"><i class="fa fa-info" aria-hidden="true"></i></a>
 							<a href="/' . $path . 'docent/groepje-tonen.php" target="_blank"><i
 									class="fa fa-address-book" aria-hidden="true"></i></a>
 							<a href="/' . $path . 'docent/koter_analyzer.php" target="_blank"><i class="fa fa-map"
 									aria-hidden="true"></i></a>
+									'; ?>
 						</div>
 					</div>
 				</div>
