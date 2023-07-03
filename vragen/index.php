@@ -46,7 +46,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
             die("test");*/
             $pull2 = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = $vragenlijstID AND ID = " . $vraagArr[$vraagID - 1] . "");
             while ($row2 = $pull2->fetch_assoc()) {
-                $contentArr = explode($row["content"], ",");
+                $contentArr = explode(",", $row["content"]);
                 echo "<p>Vraag:&nbsp;" . $row2["vraag"] . "</p>";
                 echo "<form method='post' action='send_vraag.php'>
                 <p>$contentArr[0]</p>
