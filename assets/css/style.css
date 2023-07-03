@@ -658,9 +658,7 @@ section {
   height: 100px;
 }
 
-select {
-  display: none;
-}
+
 
 /* Test css for basic */
 .main-list {
@@ -719,7 +717,7 @@ td {
 }
 
 .scrollable::-webkit-scrollbar-thumb {
-  background-color: transparent;
+  background-color: var(--color-secondary-light);
   border-radius: 10px;
 }
 

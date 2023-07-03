@@ -81,7 +81,7 @@ require_once("../assets/includes/conn.php");
 		}
 
 		echo "</table></div>";
-		echo "<a href='leerling_toevoegen.php'><button style='height: 100px;'>Leerling toevoegen</button></a>
+		echo "<a href='leerling_toevoegen.php'><button style='height: 70px;'>Leerling toevoegen</button></a>
 	<a href='../login/logout.php'><button class='button-red'>Uitloggen</button></a>";
 		?>
 
