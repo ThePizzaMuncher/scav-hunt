@@ -1,5 +1,9 @@
+<p style="display: none">
+	<?php
+	session_start();
+	?>
+</p>
 <?php
-session_start();
 $path = "~speurtocht/";
 ?>
 <!DOCTYPE html>
