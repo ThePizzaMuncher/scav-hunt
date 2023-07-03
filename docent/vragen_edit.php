@@ -24,9 +24,9 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 
 		<?php
 		/* docenten_edit.PHP
-																			 Allows user to edit specific entry in database
-																			 */
-		function renderForm($id, $vraag, $antwoord, $vragenlijst_ID)
+																				   Allows user to edit specific entry in database
+																				   */
+		function renderForm($id, $vraag, $antwoord, $vragenlijst_ID, $opties)
 		{
 			?>
 			<form action="" method="post">
@@ -39,14 +39,44 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 							<td><input type='text' name='vraag' value='<?php echo $vraag; ?>' /></td>
 						</tr>
 						<tr>
-							<td><strong>Antwoord op de vraag: </strong></td>
+							<td><strong>Goede Antwoord op de vraag: </strong></td>
 							<td><input type='text' name='antwoord' value='<?php echo $antwoord; ?>' /></td>
 						</tr>
 						<tr>
-							<td><strong>Bij welke vragenlijst hoort de vraag: </strong></td>
-							<td><input type='text' name='vragenlijst_ID' value='<?php echo $vragenlijst_ID; ?>' /></td>
+							<td><strong>Keuzeantwoorden op de vraag: </strong></td>
+							<td><input type='text' name='opties' value='<?php echo $opties; ?>' /></td>
 						</tr>
-						</td>
+						<?php
+						require('../assets/includes/conn.php');
+
+						// Get all the categories from category table
+						$docent = "SELECT * FROM `docent`";
+						$docent = mysqli_query($conn, $docent);
+						?>
+						<select name="vragenlijst_ID">
+							<?php
+							// use a while loop to fetch data
+							// from the $all_categories variable
+							// and individually display as an option
+							while (
+								$docent = mysqli_fetch_array(
+									$docent
+								)
+							):
+								;
+								?>
+								<option value="<?php echo $docent["ID"];
+								// The value we usually set is the primary key
+								?>">
+									<?php echo $docent["naam"];
+									// To show the category name to the user
+									?>
+								</option>
+								<?php
+							endwhile;
+							// While loop must be terminated
+							?>
+						</select>
 					</table>
 					<p>Everything is Required</p>
 
@@ -81,17 +111,18 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 				// get form data, making sure it is valid
 				$vraag = mysqli_real_escape_string($conn, htmlspecialchars($_POST['vraag']));
 				$antwoord = mysqli_real_escape_string($conn, htmlspecialchars($_POST['antwoord']));
+				$opties = mysqli_real_escape_string($conn, htmlspecialchars($_POST['opties']));
 				$vragenlijst_ID = mysqli_real_escape_string($conn, htmlspecialchars($_POST['vragenlijst_ID']));
 
 				// checken of volgende velden zijn gevuld
-				if ($vraag == '' || $antwoord == '') {
+				if ($vraag == '' || $antwoord == '' || $opties == '') {
 					// generate error message
 					$error = 'ERROR: Please fill in all required fields!';
 					//error, display form
-					renderForm($id, $vraag, $antwoord, $vragenlijst_ID);
+					renderForm($id, $vraag, $antwoord, $vragenlijst_ID, $opties);
 				} else {
 					// save the data to the database
-					$sql_query = "UPDATE vraag SET vraag='$vraag', antwoord='$antwoord',vragenlijst_ID='$vragenlijst_ID' WHERE id='$id'";
+					$sql_query = "UPDATE vraag SET vraag='$vraag', antwoord='$antwoord',vragenlijst_ID='$vragenlijst_ID',content='$opties' WHERE id='$id'";
 					$retval = mysqli_query($conn, $sql_query);
 					if (!$retval) {
 						die('Could not enter data: ');
@@ -109,16 +140,17 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 			if (isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0) {
 				// query db
 				$id = $_GET['id'];
-				$result = mysqli_query($conn, "SELECT vraag.antwoord,vraag.vragenlijst_ID,vraag.vraag,vragenlijst.ID,vragenlijst.docent_ID,docent.ID,docent.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID WHERE vraag.ID=$id") or die('doet niet');
+				$result = mysqli_query($conn, "SELECT vraag.antwoord,vraag.content,vraag.vragenlijst_ID,vraag.vraag,vragenlijst.ID,vragenlijst.docent_ID,docent.ID,docent.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID WHERE vraag.ID=$id") or die('doet niet');
 				$row = mysqli_fetch_array($result);
 				// check that the 'id' matches up with a row in the databse
 				if ($row) {
 					// get data from db
 					$vraag = $row['vraag'];
 					$antwoord = $row['antwoord'];
+					$opties = $row['content'];
 					$vragenlijst_ID = $row['opleiding_naam'];
 					// show form
-					renderForm($id, $vraag, $antwoord, $vragenlijst_ID);
+					renderForm($id, $vraag, $antwoord, $vragenlijst_ID, $opties);
 				} else {
 					// if no match, display result
 					echo "No results!";
