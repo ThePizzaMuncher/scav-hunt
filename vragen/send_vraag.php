@@ -1,28 +1,21 @@
 <?php
 require_once("../assets/includes/conn.php");
-$a = false;
-$b = false;
-$c = false;
-$d = false;
+session_start();
 $counter = 0;
 $cvp1 = 0; //Current vraag plus 1
 $rw = 0;
 $ia = 0; //Ingevoerde antwoord (String)
 if (isset($_POST["submit"]) && isset($_POST["cvp1"]) && isset($_POST["rw"])) {
     if (isset($_POST["a"])) {
-        $a = true;
         $ia = "a";
         ++$counter;
     } else if (isset($_POST["b"])) {
-        $b = true;
         $ia = "b";
         ++$counter;
     } else if (isset($_POST["c"])) {
-        $c = true;
         $ia = "c";
         ++$counter;
     } else if (isset($_POST["d"])) {
-        $d = true;
         $ia = "d";
         ++$counter;
     }
