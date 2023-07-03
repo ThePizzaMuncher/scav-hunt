@@ -2,12 +2,14 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-session_start();
 
 if (!isset($_SESSION['docent'])) {
-	header('location:../login'); die();
-} if ($_SESSION['docent'] != 1) {
-	header('location:../login'); die();
+	header('location:../login');
+	die();
+}
+if ($_SESSION['docent'] != 1) {
+	header('location:../login');
+	die();
 }
 /* if (isset($_SESSION["docent"])) {
 	if ($_SESSION["docent"] != 1) {
@@ -24,7 +26,8 @@ require_once("../assets/includes/conn.php");
 ?>
 
 <!-- <h1>ПАЦАНЫ КОЛБАСА ЗДЕСЬ ( Ням-ням ^.^ )</h1> -->
-<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
+<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset"
+	style="height: 100%;">
 	<section id="about" class="section-50 d-flex flex-column align-items-center">
 
 		<?php
@@ -40,8 +43,8 @@ require_once("../assets/includes/conn.php");
 			</div>
 
 		</div>
-		<?php 
-		
+		<?php
+
 		echo "<div class='scrollable'><table border='1' cellpadding='10'>";
 		echo "<thead>     
 			<tr>    
@@ -59,11 +62,11 @@ require_once("../assets/includes/conn.php");
 		$num_rows = mysqli_num_fields($leerlingen);
 		//    echo 'aantal kolommen' . $num_rows;
 		$queryTxt = "";
-		if (!isset($_SESSION['admin'])) {//Als docent geen admin is laat dan alleen de leerlingen zien die bij de opleiding van de desbetreffende docent horen.
+		if (!isset($_SESSION['admin'])) { //Als docent geen admin is laat dan alleen de leerlingen zien die bij de opleiding van de desbetreffende docent horen.
 			$queryTxt = " WHERE leerling.opleiding_ID = $_SESSION[opleiding_ID]";
 		}
-		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,groep.ID,groep.groepsnaam,leerling.ID FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.ID INNER JOIN groep ON leerling.groep_ID = groep.ID" . $queryTxt . ""); 
-		while($row = $pull->fetch_assoc()) {
+		$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,groep.ID,groep.groepsnaam,leerling.ID FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.ID INNER JOIN groep ON leerling.groep_ID = groep.ID" . $queryTxt . "");
+		while ($row = $pull->fetch_assoc()) {
 			echo "<tr>";
 			echo "<td>$row[ID]</td>";
 			echo "<td>$row[naam]</td>";
