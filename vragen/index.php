@@ -58,7 +58,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 <p>$contentArr[3]</p>
                 <input type='checkbox' name='d'>
                 <br>
-                <input type='submit' name='submit' value='volgende vraag'>
+                <input type='submit' name='submit' value='Vraag inleveren'>
                 </form>";
             }
             echo '
