@@ -5,7 +5,7 @@
       &copy; Copyright <strong><span>Friends Company & Firda 2023-2024</span></strong>
     </div>
     <div class="credits">
-      <p>All Rights Maybe Reserved</p>
+      <p>All Rights Reserved</p>
       <p>Made by <a href="https://mbo-portal.nl/~valerie/" target="_blank"><u>Valerii</u></a>, <a
           href="https://mbo-portal.nl/~fp245787" target="_blank"><u>Wieger</u></a>, <a
           href="https://mbo-portal.nl/~fp241754/" target="_blank"><u>Jonathan</u></a>, <a
