@@ -1,4 +1,5 @@
 <?php
+require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
 session_start();
 echo '
@@ -18,7 +19,7 @@ echo '
 </body>
 </html>
 ';
-if (isset($_SESSION["stl_fb"]) && $_SESSION["stl_fb"] != "0") {//Feedback van login actie
+if (isset($_SESSION["stl_fb"]) && $_SESSION["stl_fb"] != "0") { //Feedback van login actie
     echo "<script defer>
     setTimeout(() => {
         window.alert('" . $_SESSION["stl_fb"] . "');
@@ -26,4 +27,5 @@ if (isset($_SESSION["stl_fb"]) && $_SESSION["stl_fb"] != "0") {//Feedback van lo
     </script>";
     $_SESSION["stl_fb"] = "0";
 }
+require_once("../assets/includes/footer.php");
 ?>
