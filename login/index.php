@@ -29,7 +29,7 @@ if (isset($_SESSION['docent'])):
             <form action="" id="loginform" method="post" name="loginform">
               <p>
                 <label for="user_login">
-                  <input class="input form-control" name="user" placeholder="User name" size="32" type="text" value=""
+                  <input class="input form-control" name="user" placeholder="Username" size="32" type="text" value=""
                     required>
                 </label>
               </p>
