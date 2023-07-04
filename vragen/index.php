@@ -103,9 +103,9 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 <input type='checkbox' name='d'>
                 <br>
                 <!--Invis values for questions-->
-                <input name='cvp1' value='" . ($row["current_vraag"] + 1) . "' style='display: none'>
-                <input name='rw' value='" . $row2["ID"] . "' style='display: none'>
-                <input name='gi' value='" . $row["ID"] . "' style='display: none'>
+                <input name='cvp1' value='" . ($row["current_vraag"] + 1)/*Meegeven van data naar send_vraag.php*/ . "' style='display: none'>
+                <input name='rw' value='" . $row2["ID"]/*Meegeven van data naar send_vraag.php*/ . "' style='display: none'>
+                <input name='gi' value='" . $row["ID"]/*Meegeven van data naar send_vraag.php*/ . "' style='display: none'>
                 <input type='submit' name='submit' value='Vraag inleveren'>
                 </form>";
             }
