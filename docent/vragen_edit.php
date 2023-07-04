@@ -128,7 +128,7 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 						die('Could not enter data: ');
 					}
 					// once saved, redirect back to the view page
-					echo "<script defer>window.open('./vragen-aanpassen.php', '_self')</script>";//Geen header gebruiken. maar JS open ~wwwqr
+					echo "<script defer>window.open('./vragen-aanpassen.php', '_self')</script>";//Geen header gebruiken, omdat echo de header al uitschakeld. Gebruik JS open ~wwwqr
 				}
 			} else {
 				// if the 'id' isn't valid, display an error
