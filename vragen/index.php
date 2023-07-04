@@ -90,6 +90,11 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
             die("test");*/
             $pull2 = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = $vragenlijstID AND ID = " . $vraagArr[$vraagID - 1] . "");
             while ($row2 = $pull2->fetch_assoc()) {
+                //Meegeven van data naar send_vraag.php
+                $_SESSION['vstd_1'] = $row["current_vraag"] + 1;
+                $_SESSION['vstd_2'] = $row2["ID"];
+                $_SESSION['vstd_3'] = $row["ID"];
+                //
                 $contentArr = explode(",", $row2["content"]);
                 echo "<p>Vraag:&nbsp;" . $row2["vraag"] . "</p>";
                 echo "<form method='post' action='send_vraag.php'>
