@@ -101,21 +101,12 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 ";
                 $indoorCounter = 0 ;
                 $in = "a";
-                foreach($contentArr as $content) {
+                foreach($contentArr as $content) {//Voor elke keuze entity doe...
                     echo "<p>$contentArr[$indoorCounter]</p>
                     <input type='checkbox' name='$in'>";
                     ++$indoorCounter;
                     ++$in;
                 }
-                /*
-                <p>$contentArr[0]</p>
-                <input type='checkbox' name='a'>
-                <p>$contentArr[1]</p>
-                <input type='checkbox' name='b'>
-                <p>$contentArr[2]</p>
-                <input type='checkbox' name='c'>
-                <p>$contentArr[3]</p>
-                */
                 echo "
                 <br>
                 <input type='submit' name='submit' value='Vraag inleveren'>
