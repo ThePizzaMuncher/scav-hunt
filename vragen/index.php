@@ -3,7 +3,7 @@ session_start();
 require_once("../assets/includes/conn.php");
 if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && isset($_GET["vraag"]) && !empty($_GET["vraag"])) {
     $vraagID = $_GET["vraag"]; //ID van qr-code en vraag.
-    switch ($vraagID) {
+    switch ($vraagID) {//Zelf encrypted 1 t/m 13 value zodat mensen persé de QR code moeten scannen.
         case "bhefyufvu":
             $vraagID = 1;
             break;
@@ -118,6 +118,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
             echo "<script defer>
             setTimeout(() => {
                 window.alert('Deze vraag past momenteel niet bij je team.');
+                window.open('../',  '_self');
             }, 200);
             </script>";
         }
