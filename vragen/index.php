@@ -98,6 +98,16 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 $contentArr = explode(",", $row2["content"]);
                 echo "<p>Vraag:&nbsp;" . $row2["vraag"] . "</p>";
                 echo "<form method='post' action='send_vraag.php'>
+                ";
+                $indoorCounter = 0 ;
+                $in = "a";
+                foreach($contentArr as $content) {
+                    echo "<p>$contentArr[$indoorCounter]</p>
+                    <input type='checkbox' name='$in'>";
+                    ++$indoorCounter;
+                    ++$in;
+                }
+                /*
                 <p>$contentArr[0]</p>
                 <input type='checkbox' name='a'>
                 <p>$contentArr[1]</p>
@@ -105,6 +115,8 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 <p>$contentArr[2]</p>
                 <input type='checkbox' name='c'>
                 <p>$contentArr[3]</p>
+                */
+                echo "
                 <input type='checkbox' name='d'>
                 <br>
                 <input type='submit' name='submit' value='Vraag inleveren'>
