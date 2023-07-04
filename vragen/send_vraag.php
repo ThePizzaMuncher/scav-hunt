@@ -6,7 +6,7 @@ $cvp1 = 0; //Current vraag plus 1
 $rw = 0;
 $ia = 0; //Ingevoerde antwoord (String)
 if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vstd_2']) && isset($_SESSION['vstd_3'])) {
-    $rw = $_SESSION['vstd_2'];
+    $rw = $_SESSION['vstd_2'] + 1;
     $cvp1 = $_SESSION['vstd_1'];
     $gi = $_SESSION['vstd_3'];
     if (isset($_POST["a"])) {
