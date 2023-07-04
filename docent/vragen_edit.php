@@ -128,7 +128,7 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 						die('Could not enter data: ');
 					}
 					// once saved, redirect back to the view page
-					header("Location: index.php");
+					echo "<script defer>window.open('./', '_self')</script>";//Geen header gebruiken. maar JS open ~wwwqr
 				}
 			} else {
 				// if the 'id' isn't valid, display an error
