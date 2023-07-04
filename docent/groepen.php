@@ -44,7 +44,7 @@ require_once("../assets/includes/conn.php");
 						echo "<tr>";
 						echo "<td>$row[ID]</td>";
 						echo "<td>$row[groepsnaam]</td>";
-						echo "<td>$row[current_vraagn]</td>";
+						echo "<td>$row[current_vraag]</td>";
 						echo "</tr>";
 					}
 					?>
