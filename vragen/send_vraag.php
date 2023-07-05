@@ -28,7 +28,7 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
     $conn->query("UPDATE groep SET current_vraag = " . $cvp1 . " WHERE ID = " . $gi . ""); //Stel volgende vraag in.
     $rw -= 1; //Om current vraag ID te pakken.
     $conn->query("INSERT INTO antwoord(antwoorden, vraag_ID, groep_ID) VALUES ('$ia', $rw, $_SESSION[student_groepID])");
-    //Score updaten
+    //Score updaten --- Start
     $pull = $conn->query("SELECT antwoord FROM vraag WHERE ID = $rw");//Enkele executie (pakt goede antwoord op de vraag uit DB)
     $antwoord_goed = "";
     while ($row = $pull->fetch_assoc()) {//Enkele executie.
@@ -42,6 +42,7 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
         }
         $conn->query("UPDATE groep SET score = $score WHERE ID = $_SESSION[student_groepID]");//Zet up to date score in DB.
     }
+    //Score updaten --- End
     header("location: ../");
 } else {
     die("Error: geen toegang!");

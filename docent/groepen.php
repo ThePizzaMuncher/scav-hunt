@@ -36,6 +36,7 @@ require_once("../assets/includes/conn.php");
 								<th>ID</th>
 								<th>Naam</th>
 								<th>Huidige vraag</th>
+								<th>Score</th>
 							</tr>
 						</thead>
 					</div>
@@ -45,6 +46,7 @@ require_once("../assets/includes/conn.php");
 						echo "<td>$row[ID]</td>";
 						echo "<td>$row[groepsnaam]</td>";
 						echo "<td>$row[current_vraag]</td>";
+						echo "<td>$row[score]</td>";
 						echo "</tr>";
 					}
 					?>
