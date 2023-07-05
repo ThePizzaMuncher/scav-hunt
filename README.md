@@ -6,7 +6,6 @@
     <tr>e</tr>
     <tr>e</tr>
   </td>
-    <td>
     <tr>e2</tr>
     <tr>e2</tr>
   </td>
