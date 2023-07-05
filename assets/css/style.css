@@ -425,15 +425,6 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Sections General
---------------------------------------------------------------*/
-section {
-  /* padding: 40px 0; */
-  overflow: auto;
-  background: var(--color-grey-ultra-light);
-}
-
-/*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
 #myBtn {
@@ -558,118 +549,135 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 50px 0;
+  overflow: hidden;
+  background: white;
+}
+
+.section-bg {
+  background: var(--color-grey-ultra-light);
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title h2,
+.about .row h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #173b6c;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 70px;
+  height: 3px;
+  background: var(--color-secondary);
+  bottom: 0;
+  left: 0;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-
-#about {
-  justify-content: center !important;
-  overflow: initial;
-}
-
-#about h3 {
-  font-weight: 700;
-  font-size: 24px;
-  color: var(--color-grey-dark);
-}
-
-.about form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.about input {
-  width: auto;
-  margin: 5px;
-  padding: 5px;
-  border: 1px solid var(--color-grey-light);
+.about .image {
+  width: 100%;
+  height: 100%;
+  min-width: 200px;
+  min-height: 200px;
   border-radius: 5px;
-  transition: 1s;
-  background-image: linear-gradient(to right, var(--color-secondary-light) 0%, var(--color-secondary-light) 0%);
-  background-position: bottom left;
-  background-size: 0% 5px;
-  background-repeat: no-repeat;
-}
-
-.about input[type="number"] {
-  width: 100px;
-  text-align: center;
-}
-
-.about input:focus {
-  border: 1px solid var(--color-secondary-light);
-  background-size: 100% 5px;
-}
-
-.about [type=submit],
-.about button,
-.about .button-red {
+  background-image: url("../img/valera-zsd-12.jpg");
   transition: 0.3s;
-  text-align: center;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  padding: 10px 5px;
-  width: 100px;
-  height: 45px;
-  margin: 10px;
-}
-
-.about button,
-.about [type=submit] {
-  background: var(--color-secondary-light);
-}
-
-.about .button-red {
-  background: var(--color-secondary-light-red);
-}
-
-.about button:hover,
-.about [type=submit]:hover {
-  background: var(--color-secondary);
-  box-shadow: 0 0 20px var(--color-secondary-light), 0 5px 5px var(--color-grey);
-}
-
-.about .button-red:hover {
-  background: var(--color-secondary-red);
-  box-shadow: 0 0 20px var(--color-secondary-light-red), 0 5px 5px var(--color-grey);
-}
-
-.about .input-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  width: auto;
-}
-
-.about .input-group input {
-  width: 100px;
-  height: 30px;
-  margin: 0 10px;
-  padding: 5px;
-  border: 1px solid var(--color-grey-light);
-  border-radius: 5px;
-  transition: 1s;
-  background-image: linear-gradient(to right, var(--color-secondary-light) 0%, var(--color-secondary-light) 0%);
-  background-position: bottom left;
-  background-size: 0% 5px;
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
-.about .input-group input:focus {
-  border: 1px solid var(--color-secondary-light);
-  background-size: 100% 5px;
+.about .image:hover {
+  background-image: url("../img/valera-zsd-10.jpg");
 }
 
-.about .input-group button {
-  width: 30px;
-  height: 30px;
-  font-weight: bold;
+.about .content h2 {
+  font-weight: 700;
+  font-size: 26px;
+  color: #173b6c;
+}
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0;
+}
+
+.about .content ul strong {
+  margin-right: 10px;
+}
+
+.about .content ul i {
+  font-size: 16px;
+  margin-right: 5px;
+  color: var(--color-secondary);
+  line-height: 0;
+}
+
+.about .content p:last-child {
+  margin-bottom: 0;
+}
+
+.about .button,
+.about .user-button {
+  background: var(--color-third);
+  border-radius: 5px;
+  height: 25px;
+  width: 100%;
+  margin: 10px 0;
+  transition: 5s ease-in-out;
+  text-align: center;
+  overflow: hidden;
+}
+
+.about .user-button {
+  width: 200px;
+}
+
+.about .button a,
+.about .user-button a {
+  color: white;
+  font-size: 15px;
+}
+
+.about .button:hover,
+.about .user-button:hover {
+  background: var(--color-third-light);
+}
+
+.about .button p,
+.about .user-button p {
+  transition: 2s ease-in-out;
+}
+
+.about .button:hover p,
+.about .user-button:hover p {
+  transform: translateY(-22px);
+  transition: 1s ease-out;
 }
 
 /*--------------------------------------------------------------
