@@ -31,11 +31,16 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
     //Score updaten
     $pull = $conn->query("SELECT antwoord FROM vraag WHERE ID = $rw");//Enkele executie (pakt goede antwoord op de vraag uit DB)
     $antwoord_goed = "";
-    while ($row = $pull->fetch_assoc()) {
+    while ($row = $pull->fetch_assoc()) {//Enkele executie.
         $antwoord_goed = $row["antwoord"];
     }
     if ($antwoord_goed == $ia) {//Als antwoord goed overeenkomt met antwoord dat is ingevult voeg dan punt toe.
-
+        $pull = $conn->query("SELECT score FROM groep WHERE ID = $_SESSION[student_groepID]");
+        $score = 0;
+        while ($row = $pull->fetch_assoc()) {
+            $score = $row["score"] + 1;
+        }
+        $conn->query("UPDATE groep SET score = $score WHERE ID = $_SESSION[student_groepID]");//Zet up to date score in DB.
     }
     header("location: ../");
 } else {
