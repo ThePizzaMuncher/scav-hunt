@@ -31,8 +31,14 @@ meta;
 
   <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
     <section id="about" class="section-50 d-flex flex-column align-items-center">
-      <div class="container">
-        <div class="col-12">
+      <!-- Video loop -->
+      <div class="video-container">
+        <video autoplay loop muted>
+          <source src="assets/mp4/Leeuwarden.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      
           <div class="full-width-block">
             <?php
             $filePath = "about.txt";
@@ -61,22 +67,8 @@ meta;
               }
             }
             ?>
-          </div>
-        </div>
       </div>
 
-      <!-- Video loop -->
-      <div class="video-container">
-        <video autoplay loop muted>
-          <source src="assets/mp4/Leeuwarden.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      <div class="container">
-        <br>
-      </div>
     </section>
   </section>
 
