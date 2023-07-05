@@ -28,6 +28,12 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
     $conn->query("UPDATE groep SET current_vraag = " . $cvp1 . " WHERE ID = " . $gi . ""); //Stel volgende vraag in.
     $rw -= 1; //Om current vraag ID te pakken.
     $conn->query("INSERT INTO antwoord(antwoorden, vraag_ID, groep_ID) VALUES ('$ia', $rw, $_SESSION[student_groepID])");
+    //Score updaten
+    $pull = $conn->query("SELECT antwoord FROM vraag WHERE ID = $rw");
+    $antwoord_goed = "";
+    while ($row = $pull->fetch_assoc()) {
+        
+    }
     header("location: ../");
 } else {
     die("Error: geen toegang!");
