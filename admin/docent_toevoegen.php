@@ -28,7 +28,7 @@ function renderForm($id, $naam, $opleiding, $wachtwoord)
 	<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset"
 		style="height: 100%;">
 		<section id="about" class="section-50 d-flex flex-column align-items-center">
-			<h3 class="panel-title">Nieuwe Docent / Admin toevoegen</h3>
+			<h3 class="panel-title">Nieuwe Docent toevoegen</h3>
 			<form action='' method='post'>
 				<div>
 					<table border='1' cellpadding='10' width='100%'>
