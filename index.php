@@ -92,7 +92,6 @@ meta;
 
           <div class="full-width-block">
             <?php
-            $filePath = "about.txt";
 
             function formatText($text)
             {
@@ -103,7 +102,7 @@ meta;
               return $text;
             }
 
-            $content = formatText(file_get_contents($filePath));
+            $content = formatText(file_get_contents($filename));
 
             $lines = explode("\n", $content);
             foreach ($lines as $line) {
