@@ -84,7 +84,7 @@ $path = "~speurtocht/";
 						<div class="social-links mt-3 text-center">
 							<?php
 							echo '
-							<a href="#about"><i class="fa fa-info" aria-hidden="true"></i></a>
+							<a href="/' . $path . '#about"><i class="fa fa-info" aria-hidden="true"></i></a>
 							<a href="/' . $path . 'docent/groepen.php"><i
 									class="fa fa-address-book" aria-hidden="true"></i></a>
 							<a href="/' . $path . 'docent/koter_analyzer.php"><i class="fa fa-map"
