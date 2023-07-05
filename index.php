@@ -93,29 +93,7 @@ meta;
           <div class="full-width-block">
             <?php
 
-            function formatText($text)
-            {
-              $text = preg_replace("/\*(.*?)\*/", "<em>$1</em>", $text);
-              $text = preg_replace("/\*\*(.*?)\*\*/", "<strong>$1</strong>", $text);
-              $text = preg_replace("/__(.*?)__/", "<u>$1</u>", $text);
-
-              return $text;
-            }
-
-            $content = formatText(file_get_contents($filename));
-
-            $lines = explode("\n", $content);
-            foreach ($lines as $line) {
-              if (preg_match("/^###/", $line)) {
-                echo "<h3>" . substr($line, 3) . "</h4>";
-              } elseif (preg_match("/^##/", $line)) {
-                echo "<h2>" . substr($line, 2) . "</h3>";
-              } elseif (preg_match("/^#/", $line)) {
-                echo "<h1>" . substr($line, 1) . "</h2>";
-              } else {
-                echo "<p>" . $line . "</p>";
-              }
-            }
+            echo convertMarkdownToHTML(file_get_contents($filename));
             ?>
       </div>
 

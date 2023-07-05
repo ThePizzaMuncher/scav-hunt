@@ -53,6 +53,20 @@ $path = "~speurtocht/";
 	echo '
 	<link href="/' . $path . 'assets/css/style.css" rel="stylesheet">
 	';
+
+	function convertMarkdownToHTML($text)
+              {
+                $formattedText = htmlspecialchars($text);
+                $formattedText = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $formattedText);
+                $formattedText = preg_replace('/\*(.*?)\*/', '<em>$1</em>', $formattedText);
+                $formattedText = preg_replace('/__(.*?)__/', '<u>$1</u>', $formattedText);
+                $formattedText = preg_replace('/~(.*?)~/', '<s>$1</s>', $formattedText);
+                $formattedText = preg_replace('/#(.*?)#/', '<p class="post-text-info">$1</p>', $formattedText);
+                $formattedText = preg_replace('/\[([^]]+)\]\(([^)]+)\)/', '<a href="$2" target="_blank">$1</a>', $formattedText);
+                $formattedText = nl2br($formattedText);
+
+                return $formattedText;
+              }
 	?>
 </head>
 
