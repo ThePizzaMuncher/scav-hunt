@@ -35,8 +35,8 @@ meta;
   <div class="hero-container" data-aos="fade-in">
     <h1>Speurtocht</h1>
     <div class="text-centered">
-      <p>We are <span class="typed"
-          data-typed-items="Developers, Designers, Programmers, Gamers, the team, Artists"></span>
+      <p><span class="typed"
+          data-typed-items="Adventure, Action, Leeuwarden, Team work, Firda"></span>
       </p>
     </div>
   </div>
@@ -68,37 +68,7 @@ meta;
             ^-^
           </p>
           <div class="row">
-            <div class="col-lg-6">
-              <ul>
-                <li><i class="bi bi-play"></i> <strong>Genres:</strong> <span>
-                    <?php $query = "SELECT genre FROM games";
-                    $result = mysqli_query($con, $query);
-
-                    if (!$result) {
-                      echo "Error: " . mysqli_error($con);
-                    }
-                    $genres = array();
-
-                    while ($row = mysqli_fetch_assoc($result)) {
-                      $genre = $row['genre'];
-                      $genres[] = $genre;
-                    }
-                    $splitGenres = array();
-
-                    foreach ($genres as $genre) {
-                      $splitGenres = array_merge($splitGenres, explode(",", $genre));
-                    }
-                    $genreCounts = array_count_values($splitGenres);
-                    arsort($genreCounts);
-                    $topGenres = array_slice(array_keys($genreCounts), 0, 5);
-                    $topGenresString = implode(", ", $topGenres);
-                    echo $topGenresString;
-                    ?>
-
-                  </span></li>
-              </ul>
-            </div>
-            <div class="col-lg-6">
+            <div class="col-lg-12">
               <ul>
                 <li><i class="bi bi-map"></i> <strong>Location:</strong> <span>WorldWide</span></li>
               </ul>
@@ -106,7 +76,7 @@ meta;
           </div>
           <p>
             <?php
-            $filename = "assets/about_text.txt";
+            $filename = "about.txt";
             echo convertMarkdownToHTML(file_get_contents($filename));
             ?>
           </p>

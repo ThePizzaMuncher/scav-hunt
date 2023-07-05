@@ -29,10 +29,13 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
     $rw -= 1; //Om current vraag ID te pakken.
     $conn->query("INSERT INTO antwoord(antwoorden, vraag_ID, groep_ID) VALUES ('$ia', $rw, $_SESSION[student_groepID])");
     //Score updaten
-    $pull = $conn->query("SELECT antwoord FROM vraag WHERE ID = $rw");
+    $pull = $conn->query("SELECT antwoord FROM vraag WHERE ID = $rw");//Enkele executie (pakt goede antwoord op de vraag uit DB)
     $antwoord_goed = "";
     while ($row = $pull->fetch_assoc()) {
-        
+        $antwoord_goed = $row["antwoord"];
+    }
+    if ($antwoord_goed == $ia) {//Als antwoord goed overeenkomt met antwoord dat is ingevult voeg dan punt toe.
+
     }
     header("location: ../");
 } else {
