@@ -85,7 +85,7 @@ $path = "~speurtocht/";
 							<?php
 							echo '
 							<a href="#about"><i class="fa fa-info" aria-hidden="true"></i></a>
-							<a href="/' . $path . 'docent/groepje-tonen.php"><i
+							<a href="/' . $path . 'docent/groepen.php"><i
 									class="fa fa-address-book" aria-hidden="true"></i></a>
 							<a href="/' . $path . 'docent/koter_analyzer.php"><i class="fa fa-map"
 									aria-hidden="true"></i></a>
