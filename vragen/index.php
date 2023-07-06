@@ -102,14 +102,15 @@ require_once("../assets/includes/conn.php");
                         $_SESSION['vstd_3'] = $row["ID"];
                         //
                         $contentArr = explode(",", $row2["content"]);
-                        echo "<p>Vraag:&nbsp;" . $row2["vraag"] . "</p>";
                         echo "<form method='post' action='send_vraag.php'>
                 ";
                         $indoorCounter = 0;
                         $in = "a";
                         foreach ($contentArr as $content) { //Voor elke keuze entity doe...
                             echo "<p>$contentArr[$indoorCounter]</p>
-                            <input type='checkbox' name='$in'>";
+                            <input type='checkbox' name='$in' id='$in'>
+                            <label for='$in'>" . $row2["vraag"] . "</label><br>
+                            ";
                             ++$indoorCounter;
                             ++$in;
                         }
