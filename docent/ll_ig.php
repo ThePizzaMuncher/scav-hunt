@@ -15,7 +15,7 @@ while ($row = $pull->fetch_assoc()) {
     $pull2 = $conn->query("SELECT * FROM leerling WHERE groep_ID = " . $row["ID"]);
     while ($row2 = $pull2->fetch_assoc()) {
         echo "<tr>";
-        echo "<p>" . $row2["naam"] . "</p>";
+        echo $row2["naam"];
         echo "</tr>";
     }
     echo "</td>";

@@ -649,7 +649,7 @@ section {
   height: 25px;
   width: 100%;
   margin: 10px 0;
-  transition: 5s ease-in-out;
+  transition: 2s ease-in-out;
   text-align: center;
   overflow: hidden;
 }
