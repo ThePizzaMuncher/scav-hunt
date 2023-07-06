@@ -49,7 +49,7 @@ $groepID = $_GET["groep"];?>
 <?php
 $pull = $conn->query("SELECT naam FROM leerling WHERE groep_ID = " . $groepID);
 while ($row = $pull->fetch_assoc()) {
-    echo "<p>$row[naam]</p><br>";
+    echo "<p>$row[naam]</p>";
 }
 ?>
 </div>
