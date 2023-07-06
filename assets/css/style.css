@@ -598,7 +598,7 @@ section {
   min-width: 200px;
   min-height: 200px;
   border-radius: 5px;
-  background-image: url("../img/valera-zsd-12.jpg");
+  background-image: url("../img/oldehove.png");
   transition: 0.3s;
   background-position: center;
   background-repeat: no-repeat;
@@ -607,7 +607,7 @@ section {
 }
 
 .about .image:hover {
-  background-image: url("../img/valera-zsd-10.jpg");
+  background-image: url("../img/Leeuwarden-Friesland.png");
 }
 
 .about .content h2 {
