@@ -95,20 +95,7 @@ function telwoord(int $nummer) {
 	}
 }
 //Afterparty
-$targetGroeppen = 0;
-$groepen = 0;
-$pull = $conn->query("SELECT groep_ID FROM leerling WHERE ID = 0");
-while ($row = $pull->fetch_assoc()) {++$targetGroeppen;}
-$pull = $conn->query("SELECT ID FROM groep WHERE ID != 0");
-while ($row = $pull->fetch_assoc()) {++$groepen;}
-$pull = $conn->query("SELECT * FROM leerling");
-$b = 1;
-for ($i = 0; $i < $targetGroeppen; $i++, $b++) {//Voor aantal groepen doe...
-    $conn->query("UPDATE leerling SET groep_ID = $b WHERE groep_ID = 0");
-    if ($b == $groepen) {
-        $b = 1;
-    }
-}
+$conn->query("UPDATE leerling SET groep_ID = 1 WHERE groep_ID = 0");
 // Sluit de verbinding
 $conn->close();
 ?>
