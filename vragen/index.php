@@ -105,9 +105,9 @@ require_once("../assets/includes/conn.php");
                         echo "<form method='post' action='send_vraag.php'>";
                         $indoorCounter = 0;
                         $in = "a";
+                        echo "<p>$row2[vraag]</p>";
                         foreach ($contentArr as $content) { //Voor elke keuze entity doe...
-                            echo "<p>$row2[vraag]</p>
-                            <input type='checkbox' name='$in' id='$in'>
+                            echo "<input type='checkbox' name='$in' id='$in'>
                             <label for='$in'>" . $contentArr[$indoorCounter] . "</label><br>
                             ";
                             ++$indoorCounter;
