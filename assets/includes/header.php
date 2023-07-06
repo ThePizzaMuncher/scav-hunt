@@ -72,6 +72,7 @@ $path = "~speurtocht/";
 		return $formattedText;
 	}
 
+
 	?>
 </head>
 

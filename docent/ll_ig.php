@@ -2,6 +2,9 @@
 <?php
 require_once('../assets/includes/header.php');
 require_once("../assets/includes/conn.php");
+function dead() {//Dead is gone gone DX
+    die("Error: ID is niet gezet of groep ID bestaat niet.");
+}
 ?>
 
 <!-- Main part -->
@@ -20,9 +23,11 @@ if (isset($_GET["groep"]) && !empty($_GET["groep"])) {
     }
 }
 else {
-    die("Error: ID is niet gezet of groep ID bestaat niet.");
+    dead();
 }
-$pull = $conn->query("SELECT naam FROM leerling WHERE groep_ID = ")
+if ($check != 1) {
+    dead();
+}
 ?>
     </section>
 </section>
