@@ -68,7 +68,7 @@ require_once("../assets/includes/conn.php");
 						if (!confirm('Weet u zeker dat u deze persoon wilt verwijderen?')) {
 							return;
 						}
-						window.open('delete.php?id=$row[ID]');
+						window.open(document.URL + '/delete.php?id=$row[ID]');
 					}
 					</script>";
 					echo "<tr>";
