@@ -73,7 +73,7 @@ $path = "~speurtocht/";
         $url = htmlspecialchars($matches[2]);
         return '<a href="' . $url . '" target="_blank">' . $text . '</a>';
     }, $formattedText);
-    $formattedText = nl2br($formattedText);
+    // $formattedText = nl2br($formattedText);
 
     return $formattedText;
 }

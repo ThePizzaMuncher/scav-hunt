@@ -12,6 +12,7 @@ function dead() {//Dead is gone gone DX
     <section id="about" class="section-50 d-flex align-items-center">
         
 <?php
+//Check om te kijken of groep bestaat bij de $_GET methode.
 $check = 0;
 if (isset($_GET["groep"]) && !empty($_GET["groep"])) {
     $pull = $conn->query("SELECT ID FROM groep");
@@ -28,7 +29,12 @@ else {
 if ($check != 1) {
     dead();
 }
-$pull = $conn->query("SELECT * FROM")
+//
+$groepID = $_GET["groep"];
+$pull = $conn->query("SELECT naam FROM leerling WHERE groep_ID = " . $groepID);
+while ($row = $pull->fetch_assoc()) {
+    echo "<p>$row[naam]</p><br>";
+}
 ?>
     </section>
 </section>
