@@ -42,7 +42,7 @@ $filename = "about.txt";
           <div class="col-lg-8 pt-4 pt-lg-0 content">
             <h2>Speurtocht</h2>
             <ul>
-              <li><i class="bi bi-map"></i> <strong>Location:</strong> <span>WorldWide</span></li>
+              <li><i class="bi bi-map"></i> <strong>Locatie:</strong> <span>Leeuwarden</span></li>
             </ul>
 
             <p>
