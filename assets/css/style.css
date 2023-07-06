@@ -644,7 +644,7 @@ section {
 
 .about .button,
 .about .user-button {
-  background: var(--color-third);
+  background: var(--color-secondary);
   border-radius: 5px;
   height: 25px;
   width: 100%;
@@ -666,7 +666,7 @@ section {
 
 .about .button:hover,
 .about .user-button:hover {
-  background: var(--color-third-light);
+  background: var(--color-secondary-light);
 }
 
 .about .button p,

@@ -22,17 +22,16 @@ $filename = "about.txt";
   </section><!-- End Hero -->
 
   <main id="main">
-
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 d-flex justify-content-center align-items-center sticked-header-offset">
+          <div class="col-lg-4 justify-content-center align-items-center sticked-header-offset">
             <div class="section-title">
-              <h2>About us</h2>
-              <p>Here you can find information about our scavenger hunt game!</p>
-              <div class="button"><a href="catalog.php" target="_blank">
-                  <p>Login with the code <br> There you can start the journey! <br> Easter egg!
+            <h2>Over</h2>
+               <p>Hier vind je informatie over ons speurtochtspel!</p>
+               <div class="button"><a href="catalog.php" target="_blank">
+                   <p>Log in met de code <br> Daar kun je de reis beginnen! <br>  Easter egg!
                     Congratulations!</p>
                 </a></div>
               </p>
@@ -42,10 +41,6 @@ $filename = "about.txt";
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content">
             <h2>Speurtocht</h2>
-            <p class="fst-italic">
-              ^-^
-            </p>
-
             <ul>
               <li><i class="bi bi-map"></i> <strong>Location:</strong> <span>WorldWide</span></li>
             </ul>
@@ -63,7 +58,6 @@ $filename = "about.txt";
 
     <section class="about d-flex justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
       <section id="about" class="section-50 d-flex align-items-center">
-
         <div class="full-width-block">
           <?php
 
@@ -73,7 +67,6 @@ $filename = "about.txt";
 
       </section>
     </section>
-
 
     <?php
     if (isset($_SESSION["stl_fb"]) && !empty($_SESSION["stl_fb"])) {
