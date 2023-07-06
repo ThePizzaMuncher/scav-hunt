@@ -24,7 +24,7 @@ $filename = "about.txt";
   <main id="main">
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
-      <div class="container">
+    <div class="container" style="overflow: hidden;">
         <div class="row">
           <div class="col-lg-4 justify-content-center align-items-center sticked-header-offset">
             <div class="section-title">
