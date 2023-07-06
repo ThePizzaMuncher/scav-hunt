@@ -43,7 +43,7 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
         $conn->query("UPDATE groep SET score = $score WHERE ID = $_SESSION[student_groepID]");//Zet up to date score in DB.
     }
     //Score updaten --- End
-    //Check als speurtocht over is
+    //Check als speurtocht over is...
     $pull = $conn->query("SELECT current_vraag FROM groep WHERE docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $_SESSION[student_opleidingID]);");
     $check = true;
     while ($row = $pull->fetch_assoc()) {
