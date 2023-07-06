@@ -46,7 +46,7 @@ $groepID = $_GET["groep"];?>
 
 <h3>Leerling lijst voor groep №<?php echo $groepID; ?> :</h3>
 
-<?
+<?php
 $pull = $conn->query("SELECT naam FROM leerling WHERE groep_ID = " . $groepID);
 while ($row = $pull->fetch_assoc()) {
     echo "<p>$row[naam]</p><br>";
@@ -58,6 +58,4 @@ while ($row = $pull->fetch_assoc()) {
 
 
 <!-- Footer, scripts -->
-<?
-require 'assets/includes/footer.php';
-?>
+<?php require 'assets/includes/footer.php'; ?>
