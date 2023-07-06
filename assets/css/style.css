@@ -868,8 +868,5 @@ th {
 }
 
 .leerling-lijst {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
+  width: 100%;
 }
