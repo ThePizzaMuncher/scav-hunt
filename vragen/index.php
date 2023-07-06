@@ -127,6 +127,11 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
         }
     }
 } else {
-    die("Error: geen toegang!");
+?>
+<script>
+window.alert("You do not have required permissions to access this page. You will be redirected to the login page.")
+location.replace("../login/index.php")
+</script>
+<?php
 }
 ?>
