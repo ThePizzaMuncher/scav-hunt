@@ -63,8 +63,11 @@ $path = "~speurtocht/";
         $text = htmlspecialchars($matches[1]);
         return '<h2>' . $text . '</h2>';
     }, $formattedText);
+    $formattedText = preg_replace_callback('/###(.*?)###/', function ($matches) {
+        $text = htmlspecialchars($matches[1]);
+        return '<h3>' . $text . '</h3>';
+    }, $formattedText);
     $formattedText = preg_replace('/#(.*?)#/', '<h1>$1</h1>', $formattedText);
-    $formattedText = preg_replace('/###(.*?)###/', '<h3>$1</h3>', $formattedText);
     $formattedText = preg_replace_callback('/\[([^]]+)\]\(([^)]+)\)/', function ($matches) {
         $text = htmlspecialchars($matches[1]);
         $url = htmlspecialchars($matches[2]);
@@ -74,6 +77,7 @@ $path = "~speurtocht/";
 
     return $formattedText;
 }
+
 
 
 

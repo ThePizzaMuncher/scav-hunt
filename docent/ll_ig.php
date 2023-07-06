@@ -28,6 +28,7 @@ else {
 if ($check != 1) {
     dead();
 }
+$pull = $conn->query("SELECT * FROM")
 ?>
     </section>
 </section>
