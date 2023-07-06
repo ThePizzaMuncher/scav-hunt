@@ -697,7 +697,6 @@ section {
 .login {
   color: black;
   background: var(--color-grey-ultra-light);
-  height: 90vh;
 }
 
 .login .row {
@@ -714,7 +713,7 @@ section {
 }
 
 .login button[type=submit] {
-  background: var(--color-third);
+  background: var(--color-secondary-red);
   border: 0;
   padding: 10px 24px;
   color: white;
@@ -723,8 +722,8 @@ section {
 }
 
 .login button[type=submit]:hover {
-  background: var(--color-third-light);
-  box-shadow: 0 5px 5px var(--color-third);
+  background: var(--color-secondary-light-red);
+  box-shadow: 0 5px 5px var(--color-secondary-red);
 }
 
 .user {
