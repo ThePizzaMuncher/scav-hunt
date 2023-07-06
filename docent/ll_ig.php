@@ -9,18 +9,14 @@ require_once("../assets/includes/conn.php");
     <section id="about" class="section-50 d-flex align-items-center">
 <?php
 $pull = $conn->query("SELECT * FROM groep");
-echo "<table>";
 while ($row = $pull->fetch_assoc()) {
-    echo "<td>";
+    echo "<br>";
     $pull2 = $conn->query("SELECT * FROM leerling WHERE groep_ID = " . $row["ID"]);
     while ($row2 = $pull2->fetch_assoc()) {
-        echo "<tr>";
-        echo $row2["naam"];
-        echo "</tr>";
+        echo "<br>" . $row2["naam"];
     }
-    echo "</td>";
+    echo "<br>";
 }
-echo "</table>";
 ?>
     </section>
 </section>
