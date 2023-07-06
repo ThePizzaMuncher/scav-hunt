@@ -643,7 +643,6 @@ section {
   margin-bottom: 0;
 }
 
-.about button,
 .about .button,
 .about .user-button {
   background: var(--color-secondary);
@@ -666,7 +665,6 @@ section {
   font-size: 15px;
 }
 
-.about button:hover,
 .about .button:hover,
 .about .user-button:hover {
   background: var(--color-secondary-light);
