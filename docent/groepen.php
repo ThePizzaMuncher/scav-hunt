@@ -44,7 +44,7 @@ require_once("../assets/includes/conn.php");
 					while ($row = $groepen->fetch_assoc()) {
 						echo "<tr>";
 						echo "<td>$row[ID]</td>";
-						echo "<td>$row[groepsnaam]</td>";
+						echo "<td><a href='ll_ig.php/?groep=$row[ID]'>$row[groepsnaam]</a></td>";
 						echo "<td>$row[current_vraag]</td>";
 						echo "<td>$row[score]</td>";
 						echo "</tr>";

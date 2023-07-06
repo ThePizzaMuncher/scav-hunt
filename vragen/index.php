@@ -1,6 +1,10 @@
 <?php
 session_start();
-require_once("../assets/includes/conn.php");
+require_once("../assets/includes/header.php");
+?>
+<section class="about d-flex justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
+      <section id="about" class="section-50 d-flex align-items-center">
+<?php
 if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && isset($_GET["vraag"]) && !empty($_GET["vraag"])) {
     $vraagID = $_GET["vraag"]; //ID van qr-code en vraag.
     switch ($vraagID) {//Zelf encrypted 1 t/m 13 value zodat mensen persé de QR code moeten scannen en geen getallen kunnen raden.
@@ -58,6 +62,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Vragen</title>
                 <link rel="stylesheet" href="../assets/css/style.css">
+                <script src="../assets/js/vragen.js" defer></script>
             </head>
             <body>
                 <div class="keuze">';
@@ -134,4 +139,10 @@ location.replace("../login/student_login.php")
 </script>
 <?php
 }
+?>
+</section>
+    </section>
+    <?php
+
+require_once("../assets/includes/footer.php");
 ?>
