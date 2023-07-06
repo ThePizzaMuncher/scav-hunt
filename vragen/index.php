@@ -130,7 +130,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
 ?>
 <script>
 window.alert("You do not have required permissions to access this page. You will be redirected to the login page.")
-location.replace("../login/index.php")
+location.replace("../login/student_login.php")
 </script>
 <?php
 }
