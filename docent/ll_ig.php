@@ -26,11 +26,13 @@ if (!isset($_SESSION['docent'])) {
 <?php
 //Check om te kijken of groep bestaat bij de $_GET methode.
 $check = 0;
+$groepsnaam = "";
 if (isset($_GET["groep"]) && !empty($_GET["groep"])) {
-    $pull = $conn->query("SELECT ID FROM groep");
+    $pull = $conn->query("SELECT ID, groepsnaam FROM groep");
     while ($row = $pull->fetch_assoc()) {
         if ($_GET["groep"] == $row["ID"]) {
             $check = 1;
+            $groepsnaam = $row["groepsnaam"];
             break;
         }
     }
@@ -44,12 +46,12 @@ if ($check != 1) {
 //
 $groepID = $_GET["groep"];?>
 
-<h3>Leerling lijst voor groep №<?php echo $groepID; ?> :</h3>
+<h3>Leerling lijst voor groep №<?php echo $groepID . " - " . $groepsnaam; ?> :</h3>
 
 <?php
-$pull = $conn->query("SELECT naam FROM leerling WHERE groep_ID = " . $groepID);
+$pull = $conn->query("SELECT naam, ID FROM leerling WHERE groep_ID = " . $groepID);
 while ($row = $pull->fetch_assoc()) {
-    echo "<p>$row[naam]</p>";
+    echo "<p>$row[ID]. $row[naam]</p>";
 }
 ?>
 </div>
@@ -58,4 +60,4 @@ while ($row = $pull->fetch_assoc()) {
 
 
 <!-- Footer, scripts -->
-<?php require 'assets/includes/footer.php'; ?>
+<?php require '../assets/includes/footer.php'; ?>
