@@ -36,6 +36,7 @@ require_once("../assets/includes/conn.php");
 								<th>ID</th>
 								<th>Naam</th>
 								<th>Huidige vraag</th>
+								<th>Leden</th>
 							</tr>
 						</thead>
 					</div>
@@ -46,7 +47,7 @@ require_once("../assets/includes/conn.php");
 						echo "<td>$row[groepsnaam]</td>";
 						echo "<td>$row[current_vraag]</td>";
 						echo "</tr>";
-					}
+					} // Herein still need to be displayed the members of each group
 					?>
 					</table>
 				</div>
