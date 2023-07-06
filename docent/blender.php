@@ -97,4 +97,6 @@ function telwoord(int $nummer) {
 		default: return $nummer;
 	}
 }
+//Afterparty
+$conn->query("UPDATE leerling SET groep_ID = 1 WHERE groep_ID = 0");
 ?>

@@ -46,7 +46,7 @@ if ($check != 1) {
 //
 $groepID = $_GET["groep"];?>
 
-<h3>Leerling lijst voor groep № <?php echo $groepID . " - " . $groepsnaam; ?></h3>
+<h3>Leerling lijst voor groep № <?php echo $groepID . " - groep " . $groepsnaam; ?></h3>
 
 <?php
 $pull = $conn->query("SELECT naam, ID FROM leerling WHERE groep_ID = " . $groepID);
