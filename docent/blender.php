@@ -74,9 +74,6 @@ if ($result->num_rows > 0) {
     echo "Er zijn geen leerlingen gevonden in de database.";
 }
 
-// Sluit de verbinding
-$conn->close();
-
 function telwoord(int $nummer) {
 	switch($nummer) {
 		case 1: return 'één';
@@ -99,4 +96,6 @@ function telwoord(int $nummer) {
 }
 //Afterparty
 $conn->query("UPDATE leerling SET groep_ID = 1 WHERE groep_ID = 0");
+// Sluit de verbinding
+$conn->close();
 ?>
