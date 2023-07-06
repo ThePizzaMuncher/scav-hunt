@@ -44,7 +44,7 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
     }
     //Score updaten --- End
     //Check als speurtocht over is
-    $pull = $conn->query("SELECT current_vraag FROM groep WHERE docent_ID = $_SESSION[opleiding_ID]");
+    $pull = $conn->query("SELECT current_vraag FROM groep WHERE docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $_SESSION[student_opleidingID]);");
     $check = true;
     while ($row = $pull->fetch_assoc()) {
         if ($row["current_vraag"] != 13) {
@@ -53,7 +53,7 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
     }
     if ($check) {//Als ieder groepje klaar is met de speurtocht doe dan...
         $winGroepID = 0;
-        $pull = $conn->query("SELECT ID, MAX(score) FROM groep");
+        $pull = $conn->query("SELECT ID FROM groep WHERE score = (SELECT MAX(score) FROM groep) AND docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $_SESSION[student_opleidingID]);");
         while ($row = $pull->fetch_assoc()) {
             $winGroepID = $row["ID"];
         }
