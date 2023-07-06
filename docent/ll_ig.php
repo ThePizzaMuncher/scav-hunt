@@ -10,10 +10,10 @@ require_once("../assets/includes/conn.php");
         
 <?php
 $check = 0;
-if (isset($_GET["id"]) && !empty($_GET["id"])) {
+if (isset($_GET["groep"]) && !empty($_GET["groep"])) {
     $pull = $conn->query("SELECT ID FROM groep");
     while ($row = $pull->fetch_assoc()) {
-        if ($_GET["id"] == $row["ID"]) {
+        if ($_GET["groep"] == $row["ID"]) {
             $check = 1;
             break;
         }
