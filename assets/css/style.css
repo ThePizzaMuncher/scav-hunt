@@ -425,127 +425,260 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#myBtn {
+  width: 100px;
+  font-size: 20px;
+  padding: 5px;
+  border: none;
+  background: var(--color-default);
+  color: white;
+  transition: 1s;
+  border-radius: 10px;
+  border: solid 2px white;
+  text-shadow: 0 0 20px var(--color-secondary), 0 0 10px white;
+}
+
+#myBtn:hover {
+  background: white;
+  color: black;
+  box-shadow: 0 0 10px var(--color-secondary);
+}
+
+
+#hero {
+  width: 100%;
+  height: 50vh;
+  background: black;
+  background-size: cover;
+  position: relative;
+}
+
+#hero:before {
+  background: rgba(5, 13, 24, 0.3);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+#hero .hero-container {
+  position: relative;
+  z-index: 2;
+  min-width: 300px;
+  max-width: 80vw;
+}
+
+#hero #myVideo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 56px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 20px var(--color-default);
+}
+
+#hero h2 {
+  font-size: 1.5vh;
+  color: white;
+  position: relative;
+  bottom: 20px;
+}
+
+#hero .text-centered {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+#hero p {
+  position: relative;
+  left: auto;
+  min-width: 200px;
+  color: white;
+  font-size: 26px;
+  font-family: "Poppins", sans-serif;
+}
+
+#hero p span {
+  color: white;
+  padding-bottom: 4px;
+  letter-spacing: 1px;
+  border-bottom: 3px solid var(--color-secondary);
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 800px) {
+  #hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+
+  #hero .second-container {
+    width: 90%;
+    padding-left: center;
+  }
+
+  .card-body h5 {
+    margin-top: 20px;
+  }
+}
+
+/*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
 section {
-  /* padding: 40px 0; */
-  overflow: auto;
+  padding: 50px 0;
+  overflow: hidden;
+  background: white;
+}
+
+.section-bg {
   background: var(--color-grey-ultra-light);
+}
+
+.section-title {
+  height: 30%;
+  margin-bottom: 20px;
+}
+
+.section-title h2,
+.about .row h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #173b6c;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 70px;
+  height: 3px;
+  background: var(--color-secondary);
+  bottom: 0;
+  left: 0;
+}
+
+.section-title p {
+  margin-bottom: 0;
 }
 
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-
-#about {
-  justify-content: center !important;
-  overflow: initial;
-}
-
-#about h3 {
-  font-weight: 700;
-  font-size: 24px;
-  color: var(--color-grey-dark);
-}
-
-.about form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.about input {
-  width: auto;
-  margin: 5px;
-  padding: 5px;
-  border: 1px solid var(--color-grey-light);
+.about .image {
+  width: 100%;
+  height: 65%;
+  min-width: 200px;
+  min-height: 200px;
   border-radius: 5px;
-  transition: 1s;
-  background-image: linear-gradient(to right, var(--color-secondary-light) 0%, var(--color-secondary-light) 0%);
-  background-position: bottom left;
-  background-size: 0% 5px;
-  background-repeat: no-repeat;
-}
-
-.about input[type="number"] {
-  width: 100px;
-  text-align: center;
-}
-
-.about input:focus {
-  border: 1px solid var(--color-secondary-light);
-  background-size: 100% 5px;
-}
-
-.about [type=submit],
-.about button,
-.about .button-red {
+  background-image: url("../img/oldehove.png");
   transition: 0.3s;
-  text-align: center;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  padding: 10px 5px;
-  width: 100px;
-  height: 45px;
-  margin: 10px;
-}
-
-.about button,
-.about [type=submit] {
-  background: var(--color-secondary-light);
-}
-
-.about .button-red {
-  background: var(--color-secondary-light-red);
-}
-
-.about button:hover,
-.about [type=submit]:hover {
-  background: var(--color-secondary);
-  box-shadow: 0 0 20px var(--color-secondary-light), 0 5px 5px var(--color-grey);
-}
-
-.about .button-red:hover {
-  background: var(--color-secondary-red);
-  box-shadow: 0 0 20px var(--color-secondary-light-red), 0 5px 5px var(--color-grey);
-}
-
-.about .input-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  width: auto;
-}
-
-.about .input-group input {
-  width: 100px;
-  height: 30px;
-  margin: 0 10px;
-  padding: 5px;
-  border: 1px solid var(--color-grey-light);
-  border-radius: 5px;
-  transition: 1s;
-  background-image: linear-gradient(to right, var(--color-secondary-light) 0%, var(--color-secondary-light) 0%);
-  background-position: bottom left;
-  background-size: 0% 5px;
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
-.about .input-group input:focus {
-  border: 1px solid var(--color-secondary-light);
-  background-size: 100% 5px;
+.about .image:hover {
+  background-image: url("../img/Leeuwarden-Friesland.png");
 }
 
-.about .input-group button {
-  width: 30px;
-  height: 30px;
-  font-weight: bold;
+.about .content h2 {
+  font-weight: 700;
+  font-size: 26px;
+  color: #173b6c;
+}
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0;
+}
+
+.about .content ul strong {
+  margin-right: 10px;
+}
+
+.about .content ul i {
+  font-size: 16px;
+  margin-right: 5px;
+  color: var(--color-secondary);
+  line-height: 0;
+}
+
+.about .content p:last-child {
+  margin-bottom: 0;
+}
+
+.about .button,
+.about .user-button {
+  background: var(--color-secondary-light);
+  border-radius: 5px;
+  height: 25px;
+  width: 100%;
+  margin: 10px 0;
+  transition: 2s ease-in-out;
+  text-align: center;
+  overflow: hidden;
+}
+
+.about .user-button {
+  width: 200px;
+}
+
+.about .button a,
+.about .user-button a {
+  color: white;
+  font-size: 15px;
+}
+
+.about .button:hover,
+.about .user-button:hover {
+  background: var(--color-secondary);
+}
+
+.about .button p,
+.about .user-button p {
+  transition: 2s ease-in-out;
+}
+
+.about .button:hover p,
+.about .user-button:hover p {
+  transform: translateY(-22px);
+  transition: 1s ease-out;
 }
 
 /*--------------------------------------------------------------
@@ -564,7 +697,6 @@ section {
 .login {
   color: black;
   background: var(--color-grey-ultra-light);
-  height: 90vh;
 }
 
 .login .row {
@@ -581,7 +713,7 @@ section {
 }
 
 .login button[type=submit] {
-  background: var(--color-third);
+  background: var(--color-secondary-red);
   border: 0;
   padding: 10px 24px;
   color: white;
@@ -590,8 +722,8 @@ section {
 }
 
 .login button[type=submit]:hover {
-  background: var(--color-third-light);
-  box-shadow: 0 5px 5px var(--color-third);
+  background: var(--color-secondary-light-red);
+  box-shadow: 0 5px 5px var(--color-secondary-red);
 }
 
 .user {
@@ -605,6 +737,46 @@ section {
   padding: 30px;
   border: solid 2px var(--color-grey-light);
 }
+
+
+.custom-button,
+.custom-button-red {
+  width: 120px;
+  background-color: var(--color-secondary-light);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  color: #FFFFFF;
+  display: inline-block;
+  font-family: 'Arial', sans-serif;  
+  padding: 10px 0;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.custom-button:hover {
+  background-color: var(--color-secondary);
+  box-shadow: 0 2px 4px var(--color-secondary-light);
+}
+
+.custom-button a,
+.custom-button-red a {
+  color: #FFFFFF;
+  display: block;
+  text-decoration: none;
+}
+
+.custom-button-red {
+  background-color: var(--color-secondary-light-red);
+}
+
+.custom-button-red:hover {
+  background-color: var(--color-secondary-red);
+  box-shadow: 0 2px 4px var(--color-secondary-light-red);
+}
+
 
 /*--------------------------------------------------------------
 # Footer
@@ -733,4 +905,8 @@ td {
 th {
   background: var(--color-grey);
   border-bottom: 2px solid var(--color-primary);
+}
+
+.leerling-lijst {
+  width: 100%;
 }

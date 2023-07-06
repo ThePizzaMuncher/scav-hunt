@@ -53,7 +53,7 @@ function renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID)
 
 					</table>
 					<p>* required</p>
-					<input type='submit' name='submit' value='submit'>
+					<input class="custom-button" type='submit' name='submit' value='submit'>
 				</div>
 			</form>
 		</section>

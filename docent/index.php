@@ -62,6 +62,14 @@ require_once("../assets/includes/conn.php");
 					$queryTxt = " WHERE leerling.opleiding_ID = $_SESSION[opleiding_ID]";
 				}
 				$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,groep.ID,groep.groepsnaam,leerling.ID FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.ID INNER JOIN groep ON leerling.groep_ID = groep.ID" . $queryTxt . "");
+				echo "<script>
+					function vraag(id) {
+						if (!confirm('Weet u zeker dat u deze persoon wilt verwijderen?')) {
+							return;
+						}
+						window.open(document.URL + 'delete.php?id=' + id, '_self');
+					}
+					</script>";
 				while ($row = $pull->fetch_assoc()) {
 					echo "<tr>";
 					echo "<td>$row[ID]</td>";
@@ -70,7 +78,7 @@ require_once("../assets/includes/conn.php");
 					echo "<td>$row[groepsnaam]</td>";
 					echo "<td>$row[opleiding_naam]</td>";
 					echo "<td><a href=\"edit.php?id=$row[ID]\">Bewerk</a></td>";
-					echo "<td><a href=\"delete.php?id=$row[ID]\">Verwijder</a></td>";
+					echo "<td><a onclick='vraag($row[ID])' >Verwijder</a></td>";
 					echo "</tr>";
 				}
 
@@ -80,8 +88,9 @@ require_once("../assets/includes/conn.php");
 			</div>
 			<div class="col-lg-2">
 				<h4 class="panel-title">Buttons:</h4>
-				<?php echo "<a href='leerling_toevoegen.php'><button style='height: 70px;'>Leerling toevoegen</button></a>
-	<a href='../login/logout.php'><button class='button-red'>Uitloggen</button></a>"; ?>
+				<button class="custom-button"><a href="leerling_toevoegen.php">Leerling toevoegen</a></button>
+<button class="custom-button-red"><a href="../login/logout.php">Uitloggen</a></button>
+
 			</div>
 		</div>
 	</section>

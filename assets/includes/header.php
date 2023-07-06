@@ -30,9 +30,7 @@ $path = "~speurtocht/";
 	?>
 
 	<!-- Google Fonts -->
-	<link
-		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
 	<!-- Vendor CSS Files -->
 	<?php
@@ -53,6 +51,36 @@ $path = "~speurtocht/";
 	echo '
 	<link href="/' . $path . 'assets/css/style.css" rel="stylesheet">
 	';
+
+	function convertMarkdownToHTML($text)
+{
+    $formattedText = htmlspecialchars($text);
+    $formattedText = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $formattedText);
+    $formattedText = preg_replace('/\*(.*?)\*/', '<em>$1</em>', $formattedText);
+    $formattedText = preg_replace('/__(.*?)__/', '<u>$1</u>', $formattedText);
+    $formattedText = preg_replace('/~(.*?)~/', '<s>$1</s>', $formattedText);
+    $formattedText = preg_replace_callback('/##(.*?)##/', function ($matches) {
+        $text = htmlspecialchars($matches[1]);
+        return '<h2>' . $text . '</h2>';
+    }, $formattedText);
+    $formattedText = preg_replace_callback('/###(.*?)###/', function ($matches) {
+        $text = htmlspecialchars($matches[1]);
+        return '<h3>' . $text . '</h3>';
+    }, $formattedText);
+    $formattedText = preg_replace('/#(.*?)#/', '<h1>$1</h1>', $formattedText);
+    $formattedText = preg_replace_callback('/\[([^]]+)\]\(([^)]+)\)/', function ($matches) {
+        $text = htmlspecialchars($matches[1]);
+        $url = htmlspecialchars($matches[2]);
+        return '<a href="' . $url . '" target="_blank">' . $text . '</a>';
+    }, $formattedText);
+    // $formattedText = nl2br($formattedText);
+
+    return $formattedText;
+}
+
+
+
+
 	?>
 </head>
 
@@ -84,8 +112,8 @@ $path = "~speurtocht/";
 						<div class="social-links mt-3 text-center">
 							<?php
 							echo '
-							<a href="#about"><i class="fa fa-info" aria-hidden="true"></i></a>
-							<a href="/' . $path . 'docent/groepje-tonen.php"><i
+							<a href="/' . $path . '#about"><i class="fa fa-info" aria-hidden="true"></i></a>
+							<a href="/' . $path . 'docent/groepen.php"><i
 									class="fa fa-address-book" aria-hidden="true"></i></a>
 							<a href="/' . $path . 'docent/koter_analyzer.php"><i class="fa fa-map"
 									aria-hidden="true"></i></a>
@@ -111,6 +139,7 @@ $path = "~speurtocht/";
 								echo '<li><a href="/' . $path . 'docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
 								echo '<li><a href="/' . $path . 'docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
 								echo '<li><a href="/' . $path . 'docent/unieke_code_generatie.php"><i class="bx bx-code"></i> Code genereren</a></li>';
+								echo '<li><a href="/' . $path . 'docent/blender.php"><i class="bx bx-group"></i> Groepjes maken</a></li>';
 								if (isset($_SESSION['admin']))
 									echo '<li><a href="/' . $path . 'admin/docent_toevoegen.php"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
 								echo '</ul>';

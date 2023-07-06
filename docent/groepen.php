@@ -36,18 +36,21 @@ require_once("../assets/includes/conn.php");
 								<th>ID</th>
 								<th>Naam</th>
 								<th>Huidige vraag</th>
-								<th>Leden</th>
+								<th>Score</th>
 							</tr>
 						</thead>
 					</div>
 					<?php
 					while ($row = $groepen->fetch_assoc()) {
-						echo "<tr>";
-						echo "<td>$row[ID]</td>";
-						echo "<td>$row[groepsnaam]</td>";
-						echo "<td>$row[current_vraag]</td>";
-						echo "</tr>";
-					} // Herein still need to be displayed the members of each group
+						if ($row["ID"] != 0) {
+							echo "<tr>";
+							echo "<td>$row[ID]</td>";
+							echo "<td><a href='ll_ig.php/?groep=$row[ID]'>$row[groepsnaam]</a></td>";
+							echo "<td>$row[current_vraag]</td>";
+							echo "<td>$row[score]</td>";
+							echo "</tr>";
+						} // Herein still need to be displayed the members of each group
+					}
 					?>
 					</table>
 				</div>

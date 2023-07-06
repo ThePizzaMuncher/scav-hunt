@@ -9,7 +9,7 @@ require_once("../assets/includes/conn.php");
     <section id="about" class="section-50 d-flex flex-column align-items-center">
         <div class="login-block">
             <div class="container mlogin">
-                <div id="login">
+                <div id="login" class="login">
                     <h1>Student login</h1>
                     <form action="../assets/php/student_login_verw.php" id="loginform" method="post" name="loginform">
                         <p>
