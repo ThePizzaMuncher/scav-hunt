@@ -80,8 +80,8 @@ require_once("../assets/includes/conn.php");
 			</div>
 			<div class="col-lg-2">
 				<h4 class="panel-title">Buttons:</h4>
-				<?php echo "<a href='leerling_toevoegen.php'><button style='height: 70px;'>Leerling toevoegen</button></a>
-	<a href='../login/logout.php'><button class='button-red'>Uitloggen</button></a>"; ?>
+				<?php echo "<button style='height: 70px;'><a href='leerling_toevoegen.php'>Leerling toevoegen</a></button>
+	<button class='button-red'><a href='../login/logout.php'>Uitloggen</a></button>"; ?>
 			</div>
 		</div>
 	</section>

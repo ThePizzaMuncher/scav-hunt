@@ -102,7 +102,7 @@ while ($row = $pull->fetch_assoc()) {++$targetGroeppen;}
 $pull = $conn->query("SELECT ID FROM groep WHERE ID != 0");
 while ($row = $pull->fetch_assoc()) {++$groepen;}
 $pull = $conn->query("SELECT * FROM leerling");
-while ($row = $pull->fetch_assoc()) {
+for ($i = 0; $i < $groepen; $i++) {//Voor aantal groepen doe...
     
 }
 // Sluit de verbinding
