@@ -1,5 +1,9 @@
+<p style="display: none">
+	<?php
+	session_start();
+	?>
+</p>
 <?php
-session_start();
 $path = "~speurtocht/";
 ?>
 <!DOCTYPE html>
@@ -16,7 +20,7 @@ $path = "~speurtocht/";
 	<!-- Favicons -->
 	<?php
 	echo '
-	<link href="/' . $path . 'assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/' . $path . 'assets/img/favicon_io/apple-touch-icon.png" rel="apple-touch-icon">
 	<link rel="apple-touch-icon" sizes="180x180" href="/' . $path . 'assets/img/favicon_io/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/' . $path . 'assets/img/favicon_io/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/' . $path . 'assets/img/favicon_io/favicon-16x16.png">
@@ -26,7 +30,9 @@ $path = "~speurtocht/";
 	?>
 
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+		rel="stylesheet">
 
 	<!-- Vendor CSS Files -->
 	<?php
@@ -55,16 +61,17 @@ $path = "~speurtocht/";
                 $formattedText = preg_replace('/\*(.*?)\*/', '<em>$1</em>', $formattedText);
                 $formattedText = preg_replace('/__(.*?)__/', '<u>$1</u>', $formattedText);
                 $formattedText = preg_replace('/~(.*?)~/', '<s>$1</s>', $formattedText);
-                $formattedText = preg_replace('/#(.*?)#/', '<h1>$1</h1>', $formattedText);
-				$formattedText = preg_replace('/##(.*?)##/', '<h2>$1</h2>', $formattedText);
+                $formattedText = preg_replace('/#(.*?)#/', '<p class="post-text-info">$1</p>', $formattedText);
                 $formattedText = preg_replace('/\[([^]]+)\]\(([^)]+)\)/', '<a href="$2" target="_blank">$1</a>', $formattedText);
-                // $formattedText = nl2br($formattedText);
+                $formattedText = nl2br($formattedText);
 
-                return $formattedText; };
+                return $formattedText;
+              }
 	?>
 </head>
 
 <body>
+
 	<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
 	<div class="header-box"></div>
@@ -75,7 +82,9 @@ $path = "~speurtocht/";
 				<div class="col-md-1">
 					<?php
 					echo '
+					<div class="image-container">
 					<a href="/' . $path . '"><img src="/' . $path . 'assets/img/1234.png" alt="" class="img-fluid rounded-circle"></a>
+					</div>
 					';
 					?>
 				</div>
@@ -85,11 +94,16 @@ $path = "~speurtocht/";
 						<?php
 						echo '
 						<h1 class="text-light"><a href="/' . $path . '">Scav Hunt</a></h1>
-						';?>
+						'; ?>
 						<div class="social-links mt-3 text-center">
-							<a href="" target="_blank"><i class="fa fa-info" aria-hidden="true"></i></a>
-							<a href="" target="_blank"><i class="fa fa-address-book" aria-hidden="true"></i></a>
-							<a href="" target="_blank"><i class="fa fa-map" aria-hidden="true"></i></a>
+							<?php
+							echo '
+							<a href="/' . $path . '#about"><i class="fa fa-info" aria-hidden="true"></i></a>
+							<a href="/' . $path . 'docent/groepen.php"><i
+									class="fa fa-address-book" aria-hidden="true"></i></a>
+							<a href="/' . $path . 'docent/koter_analyzer.php"><i class="fa fa-map"
+									aria-hidden="true"></i></a>
+									'; ?>
 						</div>
 					</div>
 				</div>
@@ -99,21 +113,22 @@ $path = "~speurtocht/";
 							<?php
 							echo '
 							<li><a href="/' . $path . '" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
-							';?>
+							'; ?>
 							<?php
 							if (isset($_SESSION['docent'])) {
 								// echo <<< bar
 								echo '<li><a href="/' . $path . 'docent/"><i class="bx bx-user"></i> Docent</a></li>';
 								echo '<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
-								echo 	'<ul>';
-								echo 		'<li><a href="/' . $path . 'docent/groepje-tonen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
-								echo 		'<li><a href="/' . $path . 'docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
-								echo 		'<li><a href="/' . $path . 'docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
-								echo 		'<li><a href="/' . $path . 'docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
-								echo 		'<li><a href="/' . $path . 'docent/unieke_code_generatie.php"><i class="bx bx-code"></i> Code genereren</a></li>';
+								echo '<ul>';
+								echo '<li><a href="/' . $path . 'docent/groepen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
+								echo '<li><a href="/' . $path . 'docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
+								echo '<li><a href="/' . $path . 'docent/koter_analyzer.php"><i class="bx bx-map"></i> Locaties</a></li>';
+								echo '<li><a href="/' . $path . 'docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
+								echo '<li><a href="/' . $path . 'docent/unieke_code_generatie.php"><i class="bx bx-code"></i> Code genereren</a></li>';
+								echo '<li><a href="/' . $path . 'docent/blender.php"><i class="bx bx-group"></i> Groepjes maken</a></li>';
 								if (isset($_SESSION['admin']))
-									echo	'<li><a href="/'. $path . 'admin/docent_toevoegen.php"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
-								echo 	'</ul>';
+									echo '<li><a href="/' . $path . 'admin/docent_toevoegen.php"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
+								echo '</ul>';
 								echo '</li>';
 								// echo '<li><a href="' . $path . 'login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 								// bar;
@@ -122,7 +137,7 @@ $path = "~speurtocht/";
 								echo '<li><a href="/' . $path . 'login/student_login.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>';
 							}
 							?>
-							
+
 							<!-- <li><a href="/' . $path . 'about.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li> -->
 						</ul>
 					</nav>

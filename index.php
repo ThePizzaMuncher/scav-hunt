@@ -56,18 +56,6 @@ $filename = "about.txt";
       </div>
     </section>
 
-    <section class="about d-flex justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
-      <section id="about" class="section-50 d-flex align-items-center">
-        <div class="full-width-block">
-          <?php
-
-          echo convertMarkdownToHTML(file_get_contents($filename));
-          ?>
-        </div>
-
-      </section>
-    </section>
-
     <?php
     if (isset($_SESSION["stl_fb"]) && !empty($_SESSION["stl_fb"])) {
       echo "<script defer>
