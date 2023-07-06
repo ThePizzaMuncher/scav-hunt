@@ -56,14 +56,17 @@ $path = "~speurtocht/";
 
 	function convertMarkdownToHTML($text)
               {
-                $formattedText = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $text);
+				$formattedText = $text;
+                $formattedText = htmlspecialchars($formattedText);
+                $formattedText = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $formattedText);
                 $formattedText = preg_replace('/\*(.*?)\*/', '<em>$1</em>', $formattedText);
                 $formattedText = preg_replace('/__(.*?)__/', '<u>$1</u>', $formattedText);
                 $formattedText = preg_replace('/~(.*?)~/', '<s>$1</s>', $formattedText);
-                $formattedText = preg_replace('/#(.*?)#/', '<p class="post-text-info">$1</p>', $formattedText);
+                $formattedText = preg_replace('/#(.*?)#/', '<h1>$1</h1>', $formattedText);
+				$formattedText = preg_replace('/##(.*?)##/', '<h2>$1</h2>', $formattedText);
+				$formattedText = preg_replace('/###(.*?)###/', '<h3>$1</h3>', $formattedText);
                 $formattedText = preg_replace('/\[([^]]+)\]\(([^)]+)\)/', '<a href="$2" target="_blank">$1</a>', $formattedText);
-                $formattedText = htmlspecialchars($formattedText);
-				// $formattedText = nl2br($formattedText);
+                // $formattedText = nl2br($formattedText);
 
                 return $formattedText;
               }

@@ -9,7 +9,9 @@ require_once("../assets/includes/conn.php");
     <section id="about" class="section-50 d-flex align-items-center">
         
 <?php
-if (isset($_GET["id"]))
+if (isset($_GET["id"]) && !empty($_GET["id"])) {
+    
+}
 $pull = $conn->query("SELECT naam FROM leerling WHERE groep_ID = ")
 ?>
     </section>
