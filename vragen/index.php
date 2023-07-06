@@ -109,7 +109,7 @@ require_once("../assets/includes/conn.php");
                         $in = "a";
                         foreach ($contentArr as $content) { //Voor elke keuze entity doe...
                             echo "<p>$contentArr[$indoorCounter]</p>
-                    <input type='checkbox' name='$in'>";
+                    <input type='radio' name='$in'>";
                             ++$indoorCounter;
                             ++$in;
                         }
