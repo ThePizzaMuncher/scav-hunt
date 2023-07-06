@@ -6,11 +6,28 @@ require_once("../assets/includes/conn.php");
 
 <style>
     .keuze {
-        width: 100%;
+        margin-bottom: 20px;
     }
 
     .variants {
-        text-align: left;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .variants input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    .variants label {
+        margin-right: 10px;
+    }
+
+    .variants br {
+        margin-bottom: 5px;
+    }
+
+    input[type="submit"] {
+        margin-top: 10px;
     }
 </style>
 
