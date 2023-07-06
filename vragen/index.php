@@ -1,9 +1,9 @@
 <?php
 session_start();
 require_once("../assets/includes/header.php");
+require_once("../assets/includes/conn.php");
 ?>
-<section class="about d-flex justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
-      <section id="about" class="section-50 d-flex align-items-center">
+
 <?php
 if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && isset($_GET["vraag"]) && !empty($_GET["vraag"])) {
     $vraagID = $_GET["vraag"]; //ID van qr-code en vraag.
