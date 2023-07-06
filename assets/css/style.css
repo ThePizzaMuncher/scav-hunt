@@ -759,7 +759,8 @@ section {
   background-color: var(--color-secondary)
 }
 
-.custom-button a {
+.custom-button a,
+.custom-button-red a {
   color: #FFFFFF;
   display: block;
   text-decoration: none;
