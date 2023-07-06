@@ -42,12 +42,14 @@ require_once("../assets/includes/conn.php");
 					</div>
 					<?php
 					while ($row = $groepen->fetch_assoc()) {
-						echo "<tr>";
-						echo "<td>$row[ID]</td>";
-						echo "<td><a href='ll_ig.php/?groep=$row[ID]'>$row[groepsnaam]</a></td>";
-						echo "<td>$row[current_vraag]</td>";
-						echo "<td>$row[score]</td>";
-						echo "</tr>";
+						if ($row["id"] != 0) {
+							echo "<tr>";
+							echo "<td>$row[ID]</td>";
+							echo "<td><a href='ll_ig.php/?groep=$row[ID]'>$row[groepsnaam]</a></td>";
+							echo "<td>$row[current_vraag]</td>";
+							echo "<td>$row[score]</td>";
+							echo "</tr>";
+						}
 					}
 					?>
 					</table>
