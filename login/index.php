@@ -24,7 +24,7 @@ if (isset($_SESSION['docent'])):
 
       <div class="login-block">
         <div class="container mlogin">
-          <div id="login">
+          <div id="login" class="login">
             <h1>Docent en admin login</h1>
             <form action="send.php" id="loginform" method="post" name="loginform">
               <p>
