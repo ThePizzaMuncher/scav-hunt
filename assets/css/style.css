@@ -866,3 +866,10 @@ th {
   background: var(--color-grey);
   border-bottom: 2px solid var(--color-primary);
 }
+
+.leerling-lijst {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}

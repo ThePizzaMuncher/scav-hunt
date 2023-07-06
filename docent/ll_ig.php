@@ -20,6 +20,7 @@ if (!isset($_SESSION['docent'])) {
 <!-- Main part -->
 <section class="about d-flex justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
     <section id="about" class="section-50 d-flex align-items-center">
+        <div class="leerling-lijst">
         
 <?php
 //Check om te kijken of groep bestaat bij de $_GET methode.
@@ -46,6 +47,7 @@ while ($row = $pull->fetch_assoc()) {
     echo "<p>$row[naam]</p><br>";
 }
 ?>
+</div>
     </section>
 </section>
 
