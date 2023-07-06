@@ -30,7 +30,7 @@ $filename = "about.txt";
             <div class="section-title">
             <h2>Over</h2>
                <p>Hier vind je informatie over ons speurtochtspel!</p>
-               <div class="button"><a href="catalog.php" target="_blank">
+               <div class="button"><a href="login/student_login.php">
                    <p>Log in met de code <br> Daar kun je de reis beginnen! <br>  Easter egg!
                     Congratulations!</p>
                 </a></div>
