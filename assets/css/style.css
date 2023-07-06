@@ -712,7 +712,7 @@ section {
   height: 95%;
 }
 
-button {
+.login button[type=submit] {
   background: var(--color-secondary-red);
   border: 0;
   padding: 10px 24px;
@@ -721,7 +721,7 @@ button {
   border-radius: 4px;
 }
 
-button:hover {
+.login button[type=submit]:hover {
   background: var(--color-secondary-light-red);
   box-shadow: 0 5px 5px var(--color-secondary-red);
 }
@@ -737,6 +737,40 @@ button:hover {
   padding: 30px;
   border: solid 2px var(--color-grey-light);
 }
+
+.custom-button {
+  height: 70px;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 70px;
+  padding: 0 20px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.custom-button a {
+  color: #FFFFFF;
+  display: block;
+  text-decoration: none;
+}
+
+.custom-button-red {
+  background-color: #F44336;
+}
+
+.custom-button-red:hover {
+  background-color: #FF5722;
+}
+
 
 /*--------------------------------------------------------------
 # Footer
