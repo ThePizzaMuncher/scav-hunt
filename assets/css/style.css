@@ -643,7 +643,6 @@ section {
   margin-bottom: 0;
 }
 
-.about button,
 .about .button,
 .about .user-button {
   background: var(--color-secondary-light);
@@ -660,26 +659,22 @@ section {
   width: 200px;
 }
 
-.about button a,
 .about .button a,
 .about .user-button a {
   color: white;
   font-size: 15px;
 }
 
-.about button:hover,
 .about .button:hover,
 .about .user-button:hover {
   background: var(--color-secondary);
 }
 
-.about button p,
 .about .button p,
 .about .user-button p {
   transition: 2s ease-in-out;
 }
 
-.about button:hover p,
 .about .button:hover p,
 .about .user-button:hover p {
   transform: translateY(-22px);
@@ -717,7 +712,7 @@ section {
   height: 95%;
 }
 
-.login button[type=submit] {
+button {
   background: var(--color-secondary-red);
   border: 0;
   padding: 10px 24px;
@@ -726,7 +721,7 @@ section {
   border-radius: 4px;
 }
 
-.login button[type=submit]:hover {
+button:hover {
   background: var(--color-secondary-light-red);
   box-shadow: 0 5px 5px var(--color-secondary-red);
 }
