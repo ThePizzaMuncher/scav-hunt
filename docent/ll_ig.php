@@ -9,8 +9,18 @@ require_once("../assets/includes/conn.php");
     <section id="about" class="section-50 d-flex align-items-center">
         
 <?php
+$check = 0;
 if (isset($_GET["id"]) && !empty($_GET["id"])) {
-    
+    $pull = $conn->query("SELECT ID FROM groep");
+    while ($row = $pull->fetch_assoc()) {
+        if ($_GET["id"] == $row["ID"]) {
+            $check = 1;
+            break;
+        }
+    }
+}
+else {
+    die("Error: ID is niet gezet of groep ID bestaat niet.");
 }
 $pull = $conn->query("SELECT naam FROM leerling WHERE groep_ID = ")
 ?>

@@ -30,9 +30,7 @@ $path = "~speurtocht/";
 	?>
 
 	<!-- Google Fonts -->
-	<link
-		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
 	<!-- Vendor CSS Files -->
 	<?php
@@ -55,21 +53,25 @@ $path = "~speurtocht/";
 	';
 
 	function convertMarkdownToHTML($text)
-              {
-				$formattedText = $text;
-                $formattedText = htmlspecialchars($formattedText);
-                $formattedText = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $formattedText);
-                $formattedText = preg_replace('/\*(.*?)\*/', '<em>$1</em>', $formattedText);
-                $formattedText = preg_replace('/__(.*?)__/', '<u>$1</u>', $formattedText);
-                $formattedText = preg_replace('/~(.*?)~/', '<s>$1</s>', $formattedText);
-                $formattedText = preg_replace('/#(.*?)#/', '<h1>$1</h1>', $formattedText);
-				$formattedText = preg_replace('/##(.*?)##/', '<h2>$1</h2>', $formattedText);
-				$formattedText = preg_replace('/###(.*?)###/', '<h3>$1</h3>', $formattedText);
-                $formattedText = preg_replace('/\[([^]]+)\]\(([^)]+)\)/', '<a href="$2" target="_blank">$1</a>', $formattedText);
-                // $formattedText = nl2br($formattedText);
+	{
+		$formattedText = htmlspecialchars($text);
+		$formattedText = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $formattedText);
+		$formattedText = preg_replace('/\*(.*?)\*/', '<em>$1</em>', $formattedText);
+		$formattedText = preg_replace('/__(.*?)__/', '<u>$1</u>', $formattedText);
+		$formattedText = preg_replace('/~(.*?)~/', '<s>$1</s>', $formattedText);
+		$formattedText = preg_replace('/#(.*?)#/', '<h1>$1</h1>', $formattedText);
+		$formattedText = preg_replace('/##(.*?)##/', '<h2>$1</h2>', $formattedText);
+		$formattedText = preg_replace('/###(.*?)###/', '<h3>$1</h3>', $formattedText);
+		$formattedText = preg_replace_callback('/\[([^]]+)\]\(([^)]+)\)/', function ($matches) {
+			$text = htmlspecialchars($matches[1]);
+			$url = htmlspecialchars($matches[2]);
+			return '<a href="' . $url . '" target="_blank">' . $text . '</a>';
+		}, $formattedText);
+		$formattedText = nl2br($formattedText);
 
-                return $formattedText;
-              }
+		return $formattedText;
+	}
+
 	?>
 </head>
 
