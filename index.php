@@ -23,12 +23,9 @@ meta;
   <main id="main">
 
     <!-- ======= About Section ======= -->
-
-
     <section class="about d-flex justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
       <section id="about" class="section-50 d-flex align-items-center">
-
-        <div class="container">
+    <div class="container">
           <div class="row">
             <div class="col-lg-4 d-flex justify-content-center align-items-center sticked-header-offset">
               <div class="section-title">
@@ -62,6 +59,11 @@ meta;
             </div>
           </div>
         </div>
+        </section>
+    </section>
+    
+    <section class="about d-flex justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
+      <section id="about" class="section-50 d-flex align-items-center">
 
         <div class="full-width-block">
           <?php
