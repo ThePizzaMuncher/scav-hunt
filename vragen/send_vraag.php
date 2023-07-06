@@ -51,7 +51,7 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
             $check = false;
         }
     }
-    if ($check) {
+    if ($check) {//Als ieder groepje klaar is met de speurtocht doe dan...
         $winGroepID = 0;
         $pull = $conn->query("SELECT ID, MAX(score) FROM groep");
         while ($row = $pull->fetch_assoc()) {
