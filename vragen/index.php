@@ -3,6 +3,17 @@ session_start();
 require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
 ?>
+
+<style>
+    .keuze {
+        width: 100%;
+    }
+
+    .variants {
+        text-align: left;
+    }
+</style>
+
 <section class="about d-flex justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
     <section id="about" class="section-50 d-flex align-items-center">
         <?php
@@ -56,16 +67,7 @@ require_once("../assets/includes/conn.php");
             while ($row = $pull->fetch_assoc()) { //Voor de groep doe...
                 if ($vraagID == ($row["current_vraag"] + 1)) { //Kijken of de volgende vraag bij de groep past.
                     echo '
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Vragen</title>
-                <link rel="stylesheet" href="../assets/css/style.css">
-                <script src="../assets/js/vragen.js" defer></script>
-            </head>
-            <body>
+            
                 <div class="keuze">';
                     $opleiding = $_SESSION['student_opleidingID'];
                     $docentID = -1;
@@ -105,7 +107,8 @@ require_once("../assets/includes/conn.php");
                         echo "<form method='post' action='send_vraag.php'>";
                         $indoorCounter = 0;
                         $in = "a";
-                        echo "<p>$row2[vraag]</p>";
+                        echo "<p>$row2[vraag]</p>
+                        <div class='variants'>";
                         foreach ($contentArr as $content) { //Voor elke keuze entity doe...
                             echo "<input type='checkbox' name='$in' id='$in'>
                             <label for='$in'>" . $contentArr[$indoorCounter] . "</label><br>
@@ -114,15 +117,12 @@ require_once("../assets/includes/conn.php");
                             ++$in;
                         }
                         echo "
+                        </div>
                 <br>
                 <input type='submit' name='submit' value='Vraag inleveren'>
                 </form>";
                     }
-                    echo '
-                </div>
-            </body>
-            </html>
-            ';
+                    echo '</div>';
                 } else {
                     echo "<script defer>
             setTimeout(() => {
