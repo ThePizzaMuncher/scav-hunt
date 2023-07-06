@@ -81,7 +81,7 @@ require_once("../assets/includes/conn.php");
 			<div class="col-lg-2">
 				<h4 class="panel-title">Buttons:</h4>
 				<button class="custom-button"><a href="leerling_toevoegen.php">Leerling toevoegen</a></button>
-<button class="custom-button custom-button-red"><a href="../login/logout.php">Uitloggen</a></button>
+<button class="custom-button-red"><a href="../login/logout.php">Uitloggen</a></button>
 
 			</div>
 		</div>

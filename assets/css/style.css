@@ -738,23 +738,25 @@ section {
   border: solid 2px var(--color-grey-light);
 }
 
-.custom-button {
-  height: 70px;
-  background-color: #4CAF50;
+
+.custom-button,
+.custom-button-red {
+  width: 120px;
+  background-color: var(--color-secondary-light);
   border: none;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   color: #FFFFFF;
-  cursor: pointer;
   display: inline-block;
-  font-family: 'Arial', sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 70px;
+  font-family: 'Arial', sans-serif;  
   padding: 0 20px;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.custom-button:hover {
+  background-color: var(--color-secondary)
 }
 
 .custom-button a {
@@ -764,11 +766,11 @@ section {
 }
 
 .custom-button-red {
-  background-color: #F44336;
+  background-color: var(--color-secondary-light-red);
 }
 
 .custom-button-red:hover {
-  background-color: #FF5722;
+  background-color: var(--color-secondary-red);
 }
 
 

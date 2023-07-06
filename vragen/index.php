@@ -6,7 +6,7 @@ require_once("../assets/includes/conn.php");
 
 <style>
     .keuze {
-        margin-bottom: 20px;
+        width: 100%;
     }
 
     .variants {
