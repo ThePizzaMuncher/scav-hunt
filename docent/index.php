@@ -63,7 +63,7 @@ require_once("../assets/includes/conn.php");
 				}
 				$pull = $conn->query("SELECT leerling.naam,leerling.leerjaar,leerling.groep_ID,leerling.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,groep.ID,groep.groepsnaam,leerling.ID FROM leerling INNER JOIN opleiding ON leerling.opleiding_ID = opleiding.ID INNER JOIN groep ON leerling.groep_ID = groep.ID" . $queryTxt . "");
 				while ($row = $pull->fetch_assoc()) {
-					echo "<tr>";
+					echo "<a href=\"edit.php?id=$row[ID]\"><tr>";
 					echo "<td>$row[ID]</td>";
 					echo "<td>$row[naam]</td>";
 					echo "<td>$row[leerjaar]</td>";
@@ -71,7 +71,7 @@ require_once("../assets/includes/conn.php");
 					echo "<td>$row[opleiding_naam]</td>";
 					echo "<td><a href=\"edit.php?id=$row[ID]\">Bewerk</a></td>";
 					echo "<td><a href=\"delete.php?id=$row[ID]\">Verwijder</a></td>";
-					echo "</tr>";
+					echo "</tr></a>";
 				}
 
 				echo "</table></div>";

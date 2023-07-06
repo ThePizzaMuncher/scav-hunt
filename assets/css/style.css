@@ -753,10 +753,12 @@ section {
   text-align: center;
   text-decoration: none;
   margin-bottom: 20px;
+  transition: 0.3s;
 }
 
 .custom-button:hover {
-  background-color: var(--color-secondary)
+  background-color: var(--color-secondary);
+  box-shadow: 0 2px 4px var(--color-secondary-light);
 }
 
 .custom-button a,
@@ -772,6 +774,7 @@ section {
 
 .custom-button-red:hover {
   background-color: var(--color-secondary-red);
+  box-shadow: 0 2px 4px var(--color-secondary-light-red);
 }
 
 
