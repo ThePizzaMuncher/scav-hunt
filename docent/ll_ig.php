@@ -5,6 +5,11 @@ require_once("../assets/includes/conn.php");
 function dead() {//Dead is gone gone DX
     die("Error: ID is niet gezet of groep ID bestaat niet.");
 }
+if (isset($_SESSION['docent'])) {
+    if ($_SESSION['docent']) {
+        die("Error: geen toegang!");
+    }
+}
 ?>
 
 <!-- Main part -->
