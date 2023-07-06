@@ -8,10 +8,10 @@ meta;
 
 <main id="main">
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+  <section id="hero" class="d-flex justify-content-center align-items-center">
     <video id="myVideo" src="assets/mp4/Leeuwarden.mp4" autoplay loop muted></video>
 
-    <div class="hero-container" data-aos="fade-in">
+    <div class="hero-container">
       <h1>Speurtocht</h1>
       <div class="text-centered">
         <p><span class="typed" data-typed-items="Adventure, Action, Leeuwarden, Team work, Firda"></span>
@@ -25,11 +25,12 @@ meta;
     <!-- ======= About Section ======= -->
 
 
-    <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
-      <section id="about" class="section-50 d-flex flex-column align-items-center">
+    <section class="about d-flex justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
+      <section id="about" class="section-50 d-flex align-items-center">
+
         <div class="container">
           <div class="row">
-            <div class="col-lg-4 d-flex flex-column justify-content-center align-items-center sticked-header-offset" data-aos="fade-right">
+            <div class="col-lg-4 d-flex justify-content-center align-items-center sticked-header-offset">
               <div class="section-title">
                 <h2>About us</h2>
                 <p>Here you can find information about our scavenger hunt game!</p>
@@ -42,18 +43,16 @@ meta;
               <div class="image">
               </div>
             </div>
-            <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+            <div class="col-lg-8 pt-4 pt-lg-0 content">
               <h2>Speurtocht</h2>
               <p class="fst-italic">
                 ^-^
               </p>
-              <div class="row">
-                <div class="col-lg-12">
+
                   <ul>
                     <li><i class="bi bi-map"></i> <strong>Location:</strong> <span>WorldWide</span></li>
                   </ul>
-                </div>
-              </div>
+
               <p>
                 <?php
                 $filename = "about.txt";
