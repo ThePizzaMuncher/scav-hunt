@@ -21,6 +21,7 @@ if (!isset($_SESSION['docent'])) {
 <section class="about d-flex justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
     <section id="about" class="section-50 d-flex align-items-center">
         <div class="leerling-lijst">
+            
         
 <?php
 //Check om te kijken of groep bestaat bij de $_GET methode.
@@ -41,7 +42,11 @@ if ($check != 1) {
     dead();
 }
 //
-$groepID = $_GET["groep"];
+$groepID = $_GET["groep"];?>
+
+<h3>Leerling lijst voor groep №<?php echo $groepID ?> :</h3>
+
+<?
 $pull = $conn->query("SELECT naam FROM leerling WHERE groep_ID = " . $groepID);
 while ($row = $pull->fetch_assoc()) {
     echo "<p>$row[naam]</p><br>";
