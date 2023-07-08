@@ -95,7 +95,7 @@ function telwoord(int $nummer) {
 	}
 }
 //Afterparty
-$conn->query("UPDATE leerling SET groep_ID = 1 WHERE groep_ID = 0");
+//$conn->query("UPDATE leerling SET groep_ID = 1 WHERE groep_ID = 0");
 // Sluit de verbinding
 $conn->close();
 ?>
