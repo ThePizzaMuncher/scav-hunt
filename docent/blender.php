@@ -1,25 +1,29 @@
 <?php
 session_start();
 // Verbindingsgegevens voor de database
-$servername = "localhost";
+/* $servername = "localhost";
 $username = "kartel";
 $password = "bremankartel";
-$dbname = "kartel";
+$dbname = "kartel"; */
 
 // Aantal leerlingen per groep
 $aantalLeerlingenPerGroep = 4;
 
 // Maak een nieuwe databaseverbinding
-$conn = new mysqli($servername, $username, $password, $dbname);
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Controleer de verbinding
-if ($conn->connect_error) {
+/* if ($conn->connect_error) {
     die("Verbindingsfout: " . $conn->connect_error);
-}
+} */
+
+require '../assets/includes/conn.php';
 
 // Haal de leerlingen op uit de database
-$sql = "SELECT ID, naam, groep_ID FROM leerling WHERE opleiding_ID = $_SESSION[opleiding_ID]";
-$result = $conn->query($sql);
+$fetchStudents = "SELECT ID, naam, groep_ID FROM leerling WHERE opleiding_ID = $_SESSION[opleiding_ID]";
+$result = $conn->query($fetchStudents);
+// $result = $conn->query("SELECT ID, naam, groep_ID FROM leerling WHERE opleiding_ID = $_SESSION[opleiding_ID]");
+
 
 if ($result->num_rows > 0) {
     $leerlingen = array();
@@ -46,8 +50,8 @@ if ($result->num_rows > 0) {
     } */
 
 
-    $conn->query('UPDATE leerling SET groep_ID = 0');
-    $conn->query('DELETE FROM groep WHERE ID != 0'); // leeg de tabel met groepen
+    $conn->query("UPDATE leerling SET groep_ID = 0 WHERE opleiding_ID = $_SESSION[opleiding_ID]");
+    $conn->query("DELETE FROM groep WHERE ID != 0 WHERE docent_ID = $_SESSION[opleiding_ID]"); // leeg de tabel met groepen
     
     for ($i = 0, $j = 1; $i < $aantalGroepjes; $i++, $j++) {
         $aantalLeerlingenInGroep = $aantalLeerlingenPerGroep;
