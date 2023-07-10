@@ -51,7 +51,7 @@ if ($result->num_rows > 0) {
 
 
     $conn->query("UPDATE leerling SET groep_ID = 0 WHERE opleiding_ID = $_SESSION[opleiding_ID]");
-    $conn->query("DELETE FROM groep WHERE ID != 0 WHERE docent_ID = $_SESSION[opleiding_ID]"); // leeg de tabel met groepen
+    $conn->query("DELETE FROM groep WHERE ID != 0 AND docent_ID = $_SESSION[docent_ID]"); // leeg de tabel met groepen
     
     for ($i = 0, $j = 1; $i < $aantalGroepjes; $i++, $j++) {
         $aantalLeerlingenInGroep = $aantalLeerlingenPerGroep;

@@ -53,7 +53,7 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
     }
     if ($check) {//Als ieder groepje klaar is met de speurtocht doe dan...
         $winGroepID = 0;
-        $pull = $conn->query("SELECT ID FROM groep WHERE score = (SELECT MAX(score) FROM groep) AND docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $_SESSION[student_opleidingID]);");
+        $pull = $conn->query("SELECT * FROM groep WHERE score = (SELECT MAX(score) FROM groep) AND docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $_SESSION[student_opleidingID]);");
         while ($row = $pull->fetch_assoc()) {
             $winGroepID = $row["ID"];
         }
