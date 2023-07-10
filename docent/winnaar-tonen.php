@@ -42,7 +42,7 @@ require_once("../assets/includes/conn.php");
 		</thead>";
         echo '</div>';
 
-        $pull = $conn->query("SELECT * FROM winnaar ORDER BY datum ASC");
+        $pull = $conn->query("SELECT * FROM winnaar ORDER BY datum DESC");
         while ($row = $pull->fetch_assoc()) {
             echo "<tr>";
             echo "<td>$row[groepsnaam]</td>";
