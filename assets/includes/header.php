@@ -135,7 +135,7 @@ $path = "~speurtocht/";
 								echo '<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
 								echo '<ul>';
 								echo '<li><a href="/' . $path . 'docent/groepen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
-								echo '<li><a href="/' . $path . 'docent/blender.php"><i class="bx bx-group"></i> Groepjes maken</a></li>';
+								echo '<li><a href="/' . $path . 'docent/blender.php"><i class="bx bx-group"></i> Groepjes genereren</a></li>';
 								echo '<li><a href="/' . $path . 'vragen/tussenstand"><i class="bx bx-group"></i> Groepjes tussenstand</a></li>';
 								echo '<li><a href="/' . $path . 'docent/koter_analyzer.php"><i class="bx bx-map"></i> Locatie groepjes</a></li>';
 								echo '<li><a href="/' . $path . 'docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
