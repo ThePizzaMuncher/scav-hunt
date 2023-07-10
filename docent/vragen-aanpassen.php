@@ -33,10 +33,8 @@ require_once("../assets/includes/conn.php");
 	<section id="about" class="section-50 d-flex flex-column align-items-center">
 
 		<?php
-		$opleiding = $_SESSION['opleiding_ID'];
-		echo $opleiding . "welke id hoort bij de opleiding";
 		// vullen variabele programs met inhoud van database
-		$vragen = mysqli_query($conn, "SELECT * FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID WHERE opleiding_ID = $opleiding");
+		$vragen = mysqli_query($conn, "SELECT * FROM vraag");
 		?>
 		<div class="row">
 			<div class="col-xs-8"></div>
@@ -48,7 +46,7 @@ require_once("../assets/includes/conn.php");
 
 		</div>
 		<?php
-
+		$opleiding = $_SESSION['opleiding_ID'];
 		echo "<div class='scrollable'><table border='1' cellpadding='10'>";
 		echo "<thead>     
 			<tr>    
@@ -63,7 +61,7 @@ require_once("../assets/includes/conn.php");
 		echo '</div>';
 
 
-		$pull = $conn->query("SELECT vraag.antwoord,vraag.vragenlijst_ID,vraag.vraag,vragenlijst.ID,vragenlijst.docent_ID,docent.ID,docent.ID,docent.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID");
+		$pull = $conn->query("SELECT vraag.antwoord,vraag.vragenlijst_ID,vraag.vraag,vragenlijst.ID,vragenlijst.docent_ID,docent.ID,docent.ID,docent.opleiding_ID,opleiding.ID,opleiding.opleiding_naam,vraag.ID FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID WHERE opleiding_ID = $opleiding");
 		while ($row = $pull->fetch_assoc()) {
 			echo "<tr>";
 			echo "<td>$row[ID]</td>";
