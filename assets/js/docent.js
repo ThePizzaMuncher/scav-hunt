@@ -19,12 +19,12 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-/*let marker = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map);
-marker.bindPopup("<b>groep_1</b>").openPopup();*/
+//Initialisatie en definiering markers.
+let marker = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
 
-setInterval(() => {//Update de map voor de docent om de seconde.
+setInterval(() => {//Update de map voor de docent om de seconde. (Display update)
     map.removeLayer(marker);
-    let marker = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+    marker = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
 }, 1000);
 
 /*  Koter analyzer oud
