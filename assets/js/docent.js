@@ -23,7 +23,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 marker.bindPopup("<b>groep_1</b>").openPopup();*/
 
 setInterval(() => {//Update de map voor de docent om de seconde.
-    L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+    map.removeLayer(marker);
+    let marker = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
 }, 1000);
 
 /*  Koter analyzer oud
