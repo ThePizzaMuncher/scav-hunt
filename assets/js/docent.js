@@ -20,11 +20,35 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 //Initialisatie en definiering markers.
-let marker = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+
+
+let markerArr = [];
+let markerVarArr = {};
+//Input
+markerArr.unshift("marker1|1000|500|score: 6|groep_1");
+let marker1 = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+//
+markerArr.forEach((s) => {
+    let innerArr = str.split(s);
+    let innerName = innerArr[0];
+    let innerX = innerArr[1];
+    let innerZ = innerArr[2];
+    let innerTitle = innerArr[3];
+    let innerBp = innerArr[4];
+    markerVarArr[innerName] = L.marker([ innerX , innerZ ], {icon: img, title: innerTitle}).addTo(map).bindPopup("<b>" + innerBp + "</b>").openPopup();
+});
 
 setInterval(() => {//Update de map voor de docent om de seconde. (Display update)
-    map.removeLayer(marker);
-    marker = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+    map.removeLayer(marker1);
+    markerArr.forEach((s) => {
+        let innerArr = str.split(s);
+        let innerName = innerArr[0];
+        let innerX = innerArr[1];
+        let innerZ = innerArr[2];
+        let innerTitle = innerArr[3];
+        let innerBp = innerArr[4];
+        markerVarArr[innerName] = L.marker([ innerX , innerZ ], {icon: img, title: innerTitle}).addTo(map).bindPopup("<b>" + innerBp + "</b>").openPopup();
+    });
 }, 1000);
 
 /*  Koter analyzer oud
