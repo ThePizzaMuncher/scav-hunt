@@ -50,7 +50,7 @@ $pull2 = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT ID FROM doc
 echo "<div class='gordel'>";
 while ($row = $pull2->fetch_assoc()) {
     echo "
-    <div id='$row[ID]' style='height: " . ($row["score"] + 0.5) . "vw; width: 4vw;' class='balk'>
+    <div id='$row[ID]' style='height: " . ($row["score"] + $row["current_vraag"]) / 2 + 0.5. "vw; width: 4vw;' class='balk'>
     <p class='naam'>$row[groepsnaam]</p>
     </div>
     ";
