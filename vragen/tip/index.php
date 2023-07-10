@@ -23,12 +23,15 @@ switch ($current_vraag) {
         $tipTxt = "Loop nu langs de elfstedenhal in de righting van de Jumbo. Loop langs de weg die links van de jumbo loopt. Bij het kruispunt kan je de volgende qr-code vinden.";
     break;
     case 2:
-        $tipTxt = "Bij het kruispunt sla je rechts af tot dat je weer een kruising tegenkomt. Zoek hier naar de volgende qr-code.";
+        $tipTxt = "Steek over en volg de weg rechtdoor. Zoek voor een speeltuin, hier kan je de volgende qr-code vinden.";
     break;
     case 3:
-        $tipTxt = "Ga niet over de brug, maar blijf aan deze kant van het water. Sla links af en zoek lopend naar de volgende qr-code.";
+        $tipTxt = "Pak de eerste weg rechts toen jullie vanaf het kruispunt naar de speeltuin liepen. Vervolg deze weg totdat je bij het water uitkomt (Ga niet over het water), sla dan links af en zoek voor de volgende qr-code.";
     break;
     case 4:
-        $tipTxt = "Ga nu de eerste weg weer links en zoek lopend naar de volgende qr-code.";
+        $tipTxt = "Vervolg de weg langs het water (En blijf aan dezelfde kant van het water) totdat je uitkomt bij het standbeeld 'Ús mem' Zoek daar voor de volgende qr-code.";
+    break;
+    case 5:
+        $tipTxt = "";
 }
 ?>
