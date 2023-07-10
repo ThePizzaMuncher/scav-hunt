@@ -67,7 +67,7 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
             $llCounter = 0;
             foreach($llArr as $ll) {
                 ++$llCounter;
-                $llstr += $ll;
+                $llstr .= $ll;
                 if ($llCounter != $laatste) {
                     $llstr .= ",";
                 }
