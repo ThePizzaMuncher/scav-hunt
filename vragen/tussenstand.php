@@ -5,6 +5,7 @@ if (!isset($_SESSION["student_login"])) {
     header("location: ../login/student_login.php");
     die();
 }
+require_once("../assets/includes/header.php");
 echo "
 <!DOCTYPE html>
 <html>
@@ -53,7 +54,8 @@ while ($row = $pull->fetch_assoc()) {
     </div>
     ";
 }
-echo "</div></body></html>";//Afsluiten van html tags
+echo "</div></body>";//Afsluiten van html tags
+require_once("../assets/includes/footer.php");
 ?>
 <!--
 <style>
