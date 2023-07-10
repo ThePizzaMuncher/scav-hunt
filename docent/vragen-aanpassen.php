@@ -34,6 +34,7 @@ require_once("../assets/includes/conn.php");
 
 		<?php
 		$opleiding = $_SESSION['opleiding_ID'];
+		echo $opleiding . "welke id hoort bij de opleiding";
 		// vullen variabele programs met inhoud van database
 		$vragen = mysqli_query($conn, "SELECT * FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID WHERE opleiding_ID = $opleiding");
 		?>
