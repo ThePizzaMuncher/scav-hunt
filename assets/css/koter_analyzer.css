@@ -2,3 +2,6 @@
     width: 20vw;
     height: 20vw;
 }
+[class~="leaflet-control-attribution leaflet-control"] {
+    display: none;
+}

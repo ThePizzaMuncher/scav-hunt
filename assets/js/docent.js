@@ -24,7 +24,6 @@ marker.bindPopup("<b>groep_1</b>").openPopup();*/
 
 setInterval(() => {//Update de map voor de docent om de seconde.
     L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
-    L.marker([ 10000 , 434 ], {icon: img, title: 'score: 3'}).addTo(map).bindPopup("<b>groep_2</b>").openPopup();
 }, 1000);
 
 /*  Koter analyzer oud
