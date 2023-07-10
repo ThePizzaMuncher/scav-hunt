@@ -36,12 +36,12 @@ echo "
     flex-direction: row;
     background-color: #737373;
 }
+body {
+    margin: 0vw;
+}
 </style>
 </head>
 <body>
-
-</body>
-</html>
 ";
 $groepID = $_SESSION["student_groepID"];
 $opleidingID = $_SESSION["student_opleidingID"];
@@ -55,7 +55,7 @@ while ($row = $pull2->fetch_assoc()) {
     </div>
     ";
 }
-echo "</div>";//Afsluiten van gordel tag
+echo "</div></body></html>";//Afsluiten van html tags
 ?>
 <!--
 <style>
@@ -79,6 +79,9 @@ echo "</div>";//Afsluiten van gordel tag
     justify-content: space-around;
     text-align: center;
     flex-direction: row;
+}
+body {
+    margin: 0vw;
 }
 </style>
 -->
