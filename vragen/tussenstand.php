@@ -54,7 +54,7 @@ while ($row = $pull->fetch_assoc()) {
     </div>
     ";
 }
-echo "</div></body>";//Afsluiten van html tags
+echo "</div>";//Afsluiten van gordel tag
 require_once("../assets/includes/footer.php");
 ?>
 <!--
