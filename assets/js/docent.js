@@ -1,3 +1,36 @@
+let x = 0;
+let y = 0;
+let z = 0;
+let schaal = 19;
+let map = L.map('map').setView([x, z], schaal);
+
+let img = L.icon({
+    iconUrl: 'me.png',
+    iconSize:     [10, 15],
+    shadowSize:   [12, 16],
+    iconAnchor:   [0, 0],
+    shadowAnchor: [0, 0],
+    popupAnchor:  [0, 0]
+});
+
+let marker = L.marker([ a , b ], {icon: img, title: 'groep_1'}).addTo(map);
+marker.bindPopup("<b>score: 6</b>").openPopup();
+
+setInterval(() => {//Stuurt elke seconde een ping naar de server met de data.
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    else {
+        window.alert("Error: brouwser niet geaccepteerd voor deze trace methode.");
+    }
+    function showPosition(position) {
+        console.log(Date());
+        let newLatLng = new L.LatLng(a, b);
+        marker.setLatLng(newLatLng);
+    }
+}, 1000);
+
+/*  Koter analyzer oud
 //Koter analyzer * begin
 let msg;
 let x;
@@ -45,3 +78,4 @@ ws.onmessage = (msg_) => {
 
 updateMap(53.199848, 5.764583, 16, false);
 //Koter analyzer * end
+*/
