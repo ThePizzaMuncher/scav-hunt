@@ -74,8 +74,13 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
             }
             $conn->query("INSERT INTO winnaar(leerlingen, groepsnaam) VALUES ('$llstr', '$groepsNaam')");
         }
+        header("location: ../tussenstand");
+        die();
     }
-    header("location: ../");
+    else {
+        header("location: ../");
+        die();
+    }
 } else {
     die("Error: geen toegang!");
 }
