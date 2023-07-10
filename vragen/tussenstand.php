@@ -28,7 +28,7 @@ echo "
 .gordel {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: space-around;
     text-align: center;
     flex-direction: row;
