@@ -19,6 +19,7 @@ echo "
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin-bottom: 1vw;
 }
 .naam {
     color: white;
