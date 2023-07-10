@@ -3,6 +3,7 @@ let y = 0;
 let z = 0;
 let schaal = 19;
 let map = L.map('map').setView([x, z], schaal);
+let delay = 2;//Update delay in seconden.
 
 let img = L.icon({
     iconUrl: 'me.png',
@@ -29,7 +30,7 @@ let marker1 = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bin
 setInterval(() => {//Update de map voor de docent om de seconde. (Display update)
     map.removeLayer(marker1);
     marker1 = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
-}, 1000);
+}, (delay * 1000));
 
 /*  Koter analyzer oud
 //Koter analyzer * begin
