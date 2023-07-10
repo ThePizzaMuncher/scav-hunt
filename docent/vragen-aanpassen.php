@@ -33,8 +33,10 @@ require_once("../assets/includes/conn.php");
 	<section id="about" class="section-50 d-flex flex-column align-items-center">
 
 		<?php
+		session_start();
+		$opleiding = $_SESSION['opleiding_ID'];
 		// vullen variabele programs met inhoud van database
-		$vragen = mysqli_query($conn, "SELECT * FROM vraag");
+		$vragen = mysqli_query($conn, "SELECT * FROM vraag INNER JOIN vragenlijst ON vraag.vragenlijst_ID = vragenlijst.ID INNER JOIN docent ON vragenlijst.docent_ID = docent.ID INNER JOIN opleiding ON docent.opleiding_ID = opleiding.ID WHERE opleiding_ID = $opleiding");
 		?>
 		<div class="row">
 			<div class="col-xs-8"></div>
