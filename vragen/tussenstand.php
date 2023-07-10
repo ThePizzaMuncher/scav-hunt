@@ -45,15 +45,15 @@ $groepID = $_SESSION["student_groepID"];
 $opleidingID = $_SESSION["student_opleidingID"];
 $pull = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = (SELECT ID FROM vragenlijst WHERE docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $opleidingID))");
 $pull2 = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $opleidingID)");
+echo "<div class='gordel'>";
 while ($row = $pull2->fetch_assoc()) {
     echo "
-    <div class='gordel'>
     <div id='$row[ID]' height='$row[score]" . "vw" . "' class='balk'>
     <p class='naam'>$row[groepsnaam]</p>
     </div>
-    </div> <!-- Afsluiten van gordel -->
     ";
 }
+echo "</div>";//Afsluiten van gordel tag
 ?>
 <!--
 <style>
