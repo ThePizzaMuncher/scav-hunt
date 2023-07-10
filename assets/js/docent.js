@@ -13,7 +13,7 @@ let img = L.icon({
     popupAnchor:  [0, 0]
 });
 
-// load a tile layer
+//Copyright
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -22,18 +22,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let marker = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map);
 marker.bindPopup("<b>groep_1</b>").openPopup();
 
-setInterval(() => {//Stuurt elke seconde een ping naar de server met de data.
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
-    else {
-        window.alert("Error: brouwser niet geaccepteerd voor deze trace methode.");
-    }
-    function showPosition(position) {
-        console.log(Date());
-        let newLatLng = new L.LatLng(x, z);
-        marker.setLatLng(newLatLng);
-    }
+setInterval(() => {//Update de map voor de docent om de seconde.
+    L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
 }, 1000);
 
 /*  Koter analyzer oud
