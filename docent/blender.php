@@ -20,7 +20,7 @@ $aantalLeerlingenPerGroep = 4;
 require '../assets/includes/conn.php';
 
 // Haal de leerlingen op uit de database
-$fetchStudents = "SELECT ID, naam, groep_ID FROM leerling WHERE opleiding_ID = {$_SESSION['opleiding_ID']}";
+$fetchStudents = "SELECT ID, naam, groep_ID FROM leerling WHERE opleiding_ID = $_SESSION[opleiding_ID]";
 $result = $conn->query($fetchStudents);
 // $result = $conn->query("SELECT ID, naam, groep_ID FROM leerling WHERE opleiding_ID = $_SESSION[opleiding_ID]");
 
@@ -50,9 +50,8 @@ if ($result->num_rows > 0) {
     } */
 
 
-    $conn->query("UPDATE leerling SET groep_ID = 0 WHERE opleiding_ID = {$_SESSION['opleiding_ID']}");
-    $conn->query("DELETE FROM groep WHERE ID != 0 AND docent_ID = {$_SESSION['docent_ID']}"); // leeg de tabel met groepen
-    echo $_SESSION['docent_ID'];
+    $conn->query("UPDATE leerling SET groep_ID = 0 WHERE opleiding_ID = $_SESSION[opleiding_ID]");
+    $conn->query("DELETE FROM groep WHERE ID != 0 AND docent_ID = $_SESSION[docent_ID]"); // leeg de tabel met groepen
     
     for ($i = 0, $j = 1; $i < $aantalGroepjes; $i++, $j++) {
         $aantalLeerlingenInGroep = $aantalLeerlingenPerGroep;
@@ -61,7 +60,7 @@ if ($result->num_rows > 0) {
             $extraLeerlingen--;
         }
         
-        $makeGroup = "INSERT INTO groep (ID, groepsnaam, docent_ID) VALUES ('$j', '" . telwoord($j) . "', {$_SESSION['opleiding_ID']}";
+        $makeGroup = "INSERT INTO groep (ID, groepsnaam, docent_ID) VALUES ('$j', '" . telwoord($j) . "', '$_SESSION[opleiding_ID]')";
         $conn->query($makeGroup); // make the group
         $groep = array_slice($leerlingen, $startIndex, $startIndex + $aantalLeerlingenInGroep);
         $startIndex += $aantalLeerlingenInGroep;
