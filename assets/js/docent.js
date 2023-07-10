@@ -5,15 +5,6 @@ let schaal = 19;
 let map = L.map('map').setView([x, z], schaal);
 let delay = 2;//Update delay in seconden.
 
-/*let img = L.icon({
-    iconUrl: '1.ikbestaaniet',
-    iconSize:     [10, 15],
-    shadowSize:   [12, 16],
-    iconAnchor:   [0, 0],
-    shadowAnchor: [0, 0],
-    popupAnchor:  [0, 0]
-});*/
-
 //Copyright
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -28,6 +19,9 @@ let marker1 = L.marker([ x , z ], {title: 'score: 6'}).addTo(map).bindPopup("<b>
 //
 
 setInterval(() => {//Update de map voor de docent om de seconde. (Display update)
+    $.ajax({url:"access/php/reset_coords.php?/code=gi3yhk3rKNRLO73g_8", success: (result) => {
+
+    }});
     map.removeLayer(marker1);
     marker1 = L.marker([ x , z ], {title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
 }, (delay * 1000));
