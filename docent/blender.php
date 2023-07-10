@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
         }
         $docent = $_SESSION['docent_ID'];
         $tw = telwoord($j);
-        $conn->query("INSERT INTO groep (ID,groepsnaam, docent_ID) VALUES ('$j,$tw,$docent)"); // make the group
+        $conn->query("INSERT INTO groep (ID,groepsnaam, docent_ID) VALUES ($j, '$tw', $docent)"); // make the group
         $groep = array_slice($leerlingen, $startIndex, $startIndex + $aantalLeerlingenInGroep);
         $startIndex += $aantalLeerlingenInGroep;
         
