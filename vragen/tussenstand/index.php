@@ -1,11 +1,11 @@
 <?php
 session_start();
-require_once("../assets/includes/conn.php");
+require_once("../../assets/includes/conn.php");
 if (!isset($_SESSION["student_login"])) {
-    header("location: ../login/student_login.php");
+    header("location: ../../login/student_login.php");
     die();
 }
-require_once("../assets/includes/header.php");
+require_once("../../assets/includes/header.php");
 echo "
 <!DOCTYPE html>
 <html>
@@ -55,7 +55,7 @@ while ($row = $pull->fetch_assoc()) {
     ";
 }
 echo "</div>";//Afsluiten van gordel tag
-require_once("../assets/includes/footer.php");
+require_once("../../assets/includes/footer.php");
 ?>
 <!--
 <style>
