@@ -17,9 +17,18 @@ while ($row = $pull->fetch_assoc()) {
 $tipTxt = "";
 switch ($current_vraag) {
     case 0:
-        $tipTxt = "Ga vanaf school naar de elfsteden hal en kijk rond het parkeer terrein voor een volgende qr-code.";
+        $tipTxt = "Ga vanaf school naar de elfstedenhal en kijk rond het parkeerterrein voor een volgende qr-code.";
     break;
     case 1:
-        $tipTxt
+        $tipTxt = "Loop nu langs de elfstedenhal in de righting van de Jumbo. Loop langs de weg die links van de jumbo loopt. Bij het kruispunt kan je de volgende qr-code vinden.";
+    break;
+    case 2:
+        $tipTxt = "Bij het kruispunt sla je rechts af tot dat je weer een kruising tegenkomt. Zoek hier naar de volgende qr-code.";
+    break;
+    case 3:
+        $tipTxt = "Ga niet over de brug, maar blijf aan deze kant van het water. Sla links af en zoek lopend naar de volgende qr-code.";
+    break;
+    case 4:
+        $tipTxt = "Ga nu de eerste weg weer links en zoek lopend naar de volgende qr-code.";
 }
 ?>
