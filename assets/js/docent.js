@@ -25,7 +25,7 @@ setInterval(() => {//Stuurt elke seconde een ping naar de server met de data.
     }
     function showPosition(position) {
         console.log(Date());
-        let newLatLng = new L.LatLng(a, b);
+        let newLatLng = new L.LatLng(x, z);
         marker.setLatLng(newLatLng);
     }
 }, 1000);
