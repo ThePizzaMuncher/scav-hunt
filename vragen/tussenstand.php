@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("../assets/includes/conn.php");
 if (!isset($_SESSION["student_login"])) {
     header("location: ../login/student_login.php");
