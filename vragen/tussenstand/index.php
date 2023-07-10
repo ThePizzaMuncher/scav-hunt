@@ -22,10 +22,13 @@ echo "
     text-align: center;
     margin-bottom: 0.5vw;
 }
-.naam {
+.naam, .txt {
     color: white;
     text-shadow: 0.2vw 0.2vw 0.2vw black;
     font-size: 1.2vw;
+}
+.txt {
+    font-size: 2vw;
 }
 .gordel {
     width: 100%;
@@ -46,7 +49,7 @@ body {
 ";
 $opleidingID = $_SESSION["student_opleidingID"];
 $pull = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $opleidingID)");
-echo "<div class='gordel'>";
+echo "<div class='gordel'><p class='txt'>Tussenstand groepjes</p>";
 while ($row = $pull->fetch_assoc()) {
     echo "
     <div id='$row[ID]' style='height: " . ($row["score"] + $row["current_vraag"]) / 2 + 0.5. "vw; width: 4vw;' class='balk'>
@@ -67,7 +70,7 @@ require_once("../../assets/includes/footer.php");
     justify-content: center;
     text-align: center;
 }
-.naam {
+.naam, .txt {
     color: white;
     text-shadow: 0.2vw 0.2vw 0.2vw black;
     font-size: 1.2vw;
@@ -82,6 +85,9 @@ require_once("../../assets/includes/footer.php");
 }
 body {
     margin: 0vw;
+}
+.txt {
+
 }
 </style>
 -->
