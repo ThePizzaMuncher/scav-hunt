@@ -6,7 +6,7 @@ let map = L.map('map').setView([x, z], schaal);
 let delay = 2;//Update delay in seconden.
 
 let img = L.icon({
-    iconUrl: 'me.png',
+    iconUrl: '1.ikbestaaniet',
     iconSize:     [10, 15],
     shadowSize:   [12, 16],
     iconAnchor:   [0, 0],
