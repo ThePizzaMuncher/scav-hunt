@@ -69,7 +69,7 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
                 ++$llCounter;
                 $llstr += $ll;
                 if ($llCounter != $laatste) {
-                    $llstr += ",";
+                    $llstr .= ",";
                 }
             }
             $conn->query("INSERT INTO winnaar(leerlingen, groepsnaam) VALUES ('$llstr', '$groepsNaam')");
