@@ -68,8 +68,6 @@ if ($result->num_rows > 0) {
         // Voeg de groep toe aan de database
         foreach ($groep as $leerling) {
             $leerlingId = $leerling['ID'];
-            echo $j . "Welke id we geven aan groep_ID<br>";
-            echo $leerlingId . "Welke leerling id we ophalen<br>";
             $setGroup = "UPDATE leerling SET groep_ID = $j WHERE ID = $leerlingId";
             $conn->query($setGroup);
             // $conn->query($makeGroup, $setGroup);
