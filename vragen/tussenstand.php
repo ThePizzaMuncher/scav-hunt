@@ -43,12 +43,10 @@ body {
 </head>
 <body>
 ";
-$groepID = $_SESSION["student_groepID"];
 $opleidingID = $_SESSION["student_opleidingID"];
-$pull = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = (SELECT ID FROM vragenlijst WHERE docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $opleidingID))");
-$pull2 = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $opleidingID)");
+$pull = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $opleidingID)");
 echo "<div class='gordel'>";
-while ($row = $pull2->fetch_assoc()) {
+while ($row = $pull->fetch_assoc()) {
     echo "
     <div id='$row[ID]' style='height: " . ($row["score"] + $row["current_vraag"]) / 2 + 0.5. "vw; width: 4vw;' class='balk'>
     <p class='naam'>$row[groepsnaam]</p>
