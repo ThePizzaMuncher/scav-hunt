@@ -13,6 +13,12 @@ let img = L.icon({
     popupAnchor:  [0, 0]
 });
 
+// load a tile layer
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
 let marker = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map);
 marker.bindPopup("<b>groep_1</b>").openPopup();
 
