@@ -22,29 +22,13 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //Initialisatie en definiering markers.
 
 
-let markerArr = [];
-let markerVarArr = {};
 //Input
-markerArr.unshift("marker1|1000|500|score: 6|groep_1");
-//let marker1 = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+let marker1 = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
 //
-function mau() {
-    markerArr.forEach((s) => {
-        let innerArr = s.split(new RegExp("|"));
-        let innerName = innerArr[0];
-        let innerX = innerArr[1];
-        let innerZ = innerArr[2];
-        let innerTitle = innerArr[3];
-        let innerBp = innerArr[4];
-        markerVarArr[innerName] = L.marker([ innerX , innerZ ], {icon: img, title: innerTitle}).addTo(map).bindPopup("<b>" + innerBp + "</b>").openPopup();
-        markerVarArr[innerName];
-    });
-}
-mau();
 
 setInterval(() => {//Update de map voor de docent om de seconde. (Display update)
     map.removeLayer(marker1);
-    mau();
+    marker1;
 }, 1000);
 
 /*  Koter analyzer oud

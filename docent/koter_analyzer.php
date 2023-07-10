@@ -13,6 +13,7 @@ if (!isset($_SESSION['docent'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docenten pagina</title>
     <script src="../assets/js/libs/OL_lib/OpenLayers.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><!-- Ajax -->
     <script src="../assets/js/docent.js" defer></script>
     <link rel="stylesheet" href="../assets/css/koter_analyzer.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
