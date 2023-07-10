@@ -40,10 +40,37 @@ function renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID)
 							<td> <input type='text' name='naam' value='<?php echo $naam; ?>' />*</td>
 						</tr>
 						<tr>
-							<td> <strong>Opleiding: </strong></td>
-							<td> <input type='text' name='opleiding_ID' value='<?php echo $opleiding_ID; ?>' />* 1 staat
-								voor
-								software developer w.i.p</td>
+						<?php
+						require('../assets/includes/conn.php');
+
+						// Get all the categories from category table
+						$opleiding_ID = "SELECT ID,opleiding_naam FROM `leerling`";
+						$opleiding_pull = mysqli_query($conn, $opleiding_ID);
+						?>
+						<select name="opleiding_ID">
+							<?php
+							// use a while loop to fetch data
+							// from the $all_categories variable
+							// and individually display as an option
+							while (
+								$opleiding = mysqli_fetch_array(
+									$opleiding_pull
+								)
+							):
+								;
+								?>
+								<option value="<?php echo $opleiding["ID"];
+								// The value we usually set is the primary key
+								?>">
+									<?php echo $opleiding["opleiding_naam"];
+									// To show the category name to the user
+									?>
+								</option>
+								<?php
+							endwhile;
+							// While loop must be terminated
+							?>
+						</select>
 						</tr>
 						<tr>
 							<td> <strong>Leerjaar: </strong></td>

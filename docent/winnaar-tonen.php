@@ -36,6 +36,7 @@ require_once("../assets/includes/conn.php");
         echo "<thead>     
 			<tr>    
 				<th>Groepsnaam</th>
+                <th>Leerlingen</th>
                 <th>Datum</th>
 			</tr>
 		</thead>";
@@ -45,6 +46,7 @@ require_once("../assets/includes/conn.php");
         while ($row = $pull->fetch_assoc()) {
             echo "<tr>";
             echo "<td>$row[groepsnaam]</td>";
+            echo "<td>$row[leerlingen]</td>";
             echo "<td>$row[datum]</td>";
             echo "</tr>";
         }

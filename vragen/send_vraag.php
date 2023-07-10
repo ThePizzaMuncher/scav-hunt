@@ -56,6 +56,23 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
         $pull = $conn->query("SELECT * FROM groep WHERE score = (SELECT MAX(score) FROM groep) AND docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $_SESSION[student_opleidingID]);");
         while ($row = $pull->fetch_assoc()) {
             $winGroepID = $row["ID"];
+            $groepsNaam = $row["groepsnaam"];
+            $pull2 = $conn->query("SELECT naam FROM leerling WHERE groep_ID = $winGroepID");
+            $llArr = [];
+            $llstr = "";
+            while ($row2 = $pull2->fetch_assoc()) {
+                array_unshift($llArr, $row2["naam"]);
+            }
+            $laatste = count($llArr);
+            $llCounter = 0;
+            foreach($llArr as $ll) {
+                ++$llCounter;
+                $llstr += $ll;
+                if ($llCounter != $laatste) {
+                    $llstr += ",";
+                }
+            }
+            $conn->query("INSERT INTO winnaar(leerlingen, groepsnaam) VALUES ('$llstr', '$groepsNaam')");
         }
     }
     header("location: ../");
