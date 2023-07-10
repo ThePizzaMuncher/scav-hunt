@@ -15,11 +15,24 @@ echo "
 <style>
 .balk {
     width: 4vw;
-    color: blue;
+    background-color: blue;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+.naam {
+    color: white;
+    text-shadow: 0.2vw 0.2vw 0.2vw black;
+    font-size: 1.2vw;
+}
+.gordel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    flex-direction: row;
 }
 </style>
 </head>
@@ -34,12 +47,13 @@ $pull = $conn->query("SELECT * FROM vraag WHERE vragenlijst_ID = (SELECT ID FROM
 $pull2 = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $opleidingID)");
 while ($row = $pull2->fetch_assoc()) {
     echo "
-    <div id='$row[ID]' height='$row[score]' class='balk'>
+    <div id='$row[ID]' height='$row[score]" . "vw" . "' class='balk'>
     <p class='naam'>$row[groepsnaam]</p>
     </div>
     ";
 }
 ?>
+<!--
 <style>
 .balk {
     width: 4vw;
@@ -54,4 +68,13 @@ while ($row = $pull2->fetch_assoc()) {
     text-shadow: 0.2vw 0.2vw 0.2vw black;
     font-size: 1.2vw;
 }
+.gordel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    flex-direction: row;
+}
 </style>
+-->
