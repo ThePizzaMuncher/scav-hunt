@@ -62,8 +62,7 @@ if ($result->num_rows > 0) {
         
         $makeGroup = "INSERT INTO groep (ID, groepsnaam, docent_ID) VALUES ('$j', '" . telwoord($j) . "', '$_SESSION[opleiding_ID]')";
         $conn->query($makeGroup); // make the group
-        $groep = array_slice($leerlingen, $startIndex, $startIndex + $aantalLeerlingenInGroep - 1);
-        echo $groep . "Welke ids neemt hij mee<br>";
+        $groep = array_slice($leerlingen, $startIndex, $startIndex + $aantalLeerlingenInGroep);
         $startIndex += $aantalLeerlingenInGroep;
         
         // Voeg de groep toe aan de database
