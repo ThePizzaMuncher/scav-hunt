@@ -26,7 +26,7 @@ let markerArr = [];
 let markerVarArr = {};
 //Input
 markerArr.unshift("marker1|1000|500|score: 6|groep_1");
-let marker1 = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+//let marker1 = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
 //
 function mau() {
     markerArr.forEach((s) => {
