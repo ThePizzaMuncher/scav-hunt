@@ -50,7 +50,7 @@ if ($result->num_rows > 0) {
     } */
 
 
-    //$conn->query("UPDATE leerling SET groep_ID = 0 WHERE opleiding_ID = $_SESSION[opleiding_ID]");
+    $conn->query("UPDATE leerling SET groep_ID = 0 WHERE opleiding_ID = $_SESSION[opleiding_ID]");
     $conn->query("DELETE FROM groep WHERE ID != 0 AND docent_ID = $_SESSION[docent_ID]"); // leeg de tabel met groepen
     
     for ($i = 0, $j = 1; $i < $aantalGroepjes; $i++, $j++) {
@@ -68,7 +68,8 @@ if ($result->num_rows > 0) {
         // Voeg de groep toe aan de database
         foreach ($groep as $leerling) {
             $leerlingId = $leerling['ID'];
-            echo $j . "Welke id we geven aan groep_ID";
+            echo $j . "Welke id we geven aan groep_ID<br>";
+            echo $leerlingId . "Welke leerling id we ophalen<br>";
             $setGroup = "UPDATE leerling SET groep_ID = $j WHERE ID = $leerlingId";
             $conn->query($setGroup);
             // $conn->query($makeGroup, $setGroup);
