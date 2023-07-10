@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
 		$error = 'ERROR: Please fill in all required fields!';
 		// if either field is blank, display the form again
 		renderForm($id, $naam, $opleiding, $wachtwoord);
-	} else { //wwwqr~
+	} else {
 		$pull = $conn->query("SELECT * FROM opleiding");
 		while ($row = $pull->fetch_assoc()) {
 			$txt = $opleiding;
