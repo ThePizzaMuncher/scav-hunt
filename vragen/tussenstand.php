@@ -14,7 +14,6 @@ echo "
 <title>Tussenstand groepjes</title>
 <style>
 .balk {
-    width: 4vw;
     background-color: blue;
     display: flex;
     align-items: center;
@@ -48,7 +47,7 @@ $pull2 = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT ID FROM doc
 echo "<div class='gordel'>";
 while ($row = $pull2->fetch_assoc()) {
     echo "
-    <div id='$row[ID]' height='$row[score]" . "vw" . "' class='balk'>
+    <div id='$row[ID]' height='$row[score]" . "vw" . "' width='4vw' class='balk'>
     <p class='naam'>$row[groepsnaam]</p>
     </div>
     ";
