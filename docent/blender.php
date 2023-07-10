@@ -1,4 +1,12 @@
 <?php
+function alertAndBack($content) {
+    echo "<script>
+    window.alert('$content');
+    window.open('../', '_self');
+    </script>";
+    die();
+    
+}
 session_start();
 // Verbindingsgegevens voor de database
 /* $servername = "localhost";
@@ -74,9 +82,9 @@ if ($result->num_rows > 0) {
         }
     }
     
-    echo "De groepjes zijn succesvol gegenereerd en opgeslagen in de database.";
+    alertAndBack("De groepjes zijn succesvol gegenereerd en opgeslagen in de database.");
 } else {
-    echo "Er zijn geen leerlingen gevonden in de database.";
+    alertAndBack("ERROR: Er zijn geen leerlingen gevonden in de database.");
 }
 
 function telwoord(int $nummer) {
