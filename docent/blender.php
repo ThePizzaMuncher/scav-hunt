@@ -60,7 +60,7 @@ if ($result->num_rows > 0) {
             $extraLeerlingen--;
         }
         
-        $makeGroup = "INSERT INTO groep (ID, groepsnaam, docent_ID) VALUES ('$j', '" . telwoord($j) . "', '$_SESSION[opleiding_ID]')";
+        $makeGroup = "INSERT INTO groep (groepsnaam, docent_ID) VALUES ('" . telwoord($j) . "', '$_SESSION[opleiding_ID]')";
         $conn->query($makeGroup); // make the group
         $groep = array_slice($leerlingen, $startIndex, $startIndex + $aantalLeerlingenInGroep);
         $startIndex += $aantalLeerlingenInGroep;
