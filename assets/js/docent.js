@@ -13,8 +13,8 @@ let img = L.icon({
     popupAnchor:  [0, 0]
 });
 
-let marker = L.marker([ x , z ], {icon: img, title: 'groep_1'}).addTo(map);
-marker.bindPopup("<b>score: 6</b>").openPopup();
+let marker = L.marker([ x , z ], {icon: img, title: 'score: 6'}).addTo(map);
+marker.bindPopup("<b>groep_1</b>").openPopup();
 
 setInterval(() => {//Stuurt elke seconde een ping naar de server met de data.
     if (navigator.geolocation) {
