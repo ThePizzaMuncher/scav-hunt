@@ -44,7 +44,7 @@ function renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID)
 						require('../assets/includes/conn.php');
 
 						// Get all the categories from category table
-						$opleiding_ID = "SELECT ID,opleiding_naam FROM `leerling`";
+						$opleiding_ID = "SELECT ID,opleiding_naam FROM `opleiding`";
 						$opleiding_pull = mysqli_query($conn, $opleiding_ID);
 						?>
 						<select name="opleiding_ID">
