@@ -22,7 +22,8 @@ require_once("../assets/includes/conn.php");
 	style="height: 100%;">
 	<section id="about" class="section-50 d-flex flex-column align-items-center">
 		<?php
-			$groepen = $conn->query('SELECT * FROM groep');
+			$docent = $_SESSION['docent_ID'];
+			$groepen = $conn->query("SELECT * FROM groep WHERE docent_ID = $docent");
 			$num_rows = $groepen->num_rows;
 		?>
 
