@@ -124,7 +124,9 @@ if (isset($_POST['submit'])) {
 		}
 
 		echo "Entered data successfully\n";
-		header("Location: index.php");
+		echo "<script>
+		window.open('../', '_self');
+		</script>";
 
 	}
 } else
