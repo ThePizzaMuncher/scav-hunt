@@ -49,7 +49,7 @@ body {
 ";
 $opleidingID = $_SESSION["student_opleidingID"];
 $pull = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $opleidingID)");
-echo "<div class='gordel'><p class='txt'>Tussenstand groepjes</p></div>";
+echo "<div class='gordel' style='margin-top: -5vw;'><p class='txt'>Tussenstand groepjes</p></div>";
 echo "<div class='gordel'>";
 while ($row = $pull->fetch_assoc()) {
     echo "
