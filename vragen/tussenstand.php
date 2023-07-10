@@ -32,6 +32,7 @@ echo "
     justify-content: space-around;
     text-align: center;
     flex-direction: row;
+    background-color: #737373;
 }
 </style>
 </head>
