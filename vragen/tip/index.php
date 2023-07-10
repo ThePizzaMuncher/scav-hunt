@@ -32,6 +32,9 @@ switch ($current_vraag) {
         $tipTxt = "Vervolg de weg langs het water (En blijf aan dezelfde kant van het water) totdat je uitkomt bij het standbeeld 'Ús mem' Zoek daar voor de volgende qr-code.";
     break;
     case 5:
-        $tipTxt = "";
+        $tipTxt = "Als je goed hebt gekeken, dan heb je de scheve toren al gezien (De oldehove.) Rondom deze toren zit de volgende qr-code";
+    break;
+    case 6:
+        $tipTxt = 
 }
 ?>
