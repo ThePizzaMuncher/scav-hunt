@@ -131,7 +131,7 @@ setInterval(() => {//Update de map voor de docent om de aangegeven seconden.
             break;
             case 13:
                 Ix = 53.1976139;
-                Iy = 5.7746288;
+                Iz = 5.7746288;
             break;
         }
         console.log("x:" + Ix + ", z=" + Iz);
