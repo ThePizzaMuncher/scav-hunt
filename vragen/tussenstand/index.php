@@ -53,18 +53,22 @@ $pull = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT ID FROM doce
 echo "<div class='gordel' style='margin-top: -5vw;'><p class='txt'>Tussenstand groepjes</p></div>";
 echo "<div class='gordel'>";
 while ($row = $pull->fetch_assoc()) {
+    //Als groepsnaam lang is, verkort deze dan voor de display.
     $gn = $row["groepsnaam"];
     $gna = "";
     $gnc = strlen($gn);
+    $gebr = $gn;
     if ($gnc > 4) {
         $gna .= $gn[0];
         $gna .= $gn[1];
         $gna .= $gn[2];
         $gna .= $gn[3];
+        $gebr = $gna;
     }
+    //
     echo "
     <div id='$row[ID]' style='height: " . ($row["score"] + $row["current_vraag"]) / 2 + 0.5. "vw; width: 4vw;' class='balk'>
-    <p class='naam'>$gna</p>
+    <p class='naam'>$gebr</p>
     </div>
     ";
 }
