@@ -72,7 +72,7 @@ echo '
     }
     .txt {
         color: black;
-        text-shadow: 0.2vw 0.2vw 0.2vw white;
+        text-shadow: 0.2vw 0.2vw 0.2vw grey;
         font-size: 2vw;
     }
 </style>
