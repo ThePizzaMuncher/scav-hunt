@@ -66,6 +66,7 @@ setInterval(() => {//Update de map voor de docent om de aangegeven seconden.
     let output = "";
     $.ajax({url:"../assets/php/koter_API.php/?code=gi3yhk3rKNRLO73g_8", success: (result) => {
         output = result;
+        console.log(result);
     }});
     let dataArr = output.split("(_)");
     console.log(output);
