@@ -1,5 +1,6 @@
 <?php
 require_once("../includes/conn.php");
+session_start();
 if (isset($_GET["code"]) && $_GET["code"] == "gi3yhk3rKNRLO73g_8" && isset($_SESSION["docent_ID"])) {
     $docentID = $_SESSION["docent_ID"];
     $query = "SELECT * FROM groep WHERE docent_ID = $docentID";
