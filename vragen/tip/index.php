@@ -82,7 +82,7 @@ require_once("../../assets/includes/header.php");
 ';*/
 echo '
 <div class="container">
-  <div class="row h-100 justify-content-center align-items-center">
+  <div class="row justify-content-center align-items-center">
     <form class="col-12">
       <div class="form-group"><p>' . $tipTxt . '</p></div>
     </form>   
