@@ -64,7 +64,7 @@ echo '
 <style>
     .gordel {
         width: 100%;
-        height: 3vw;
+        height: 10vw;
         align-items: center;
         justify-content: center;
         display: flex;
