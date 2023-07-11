@@ -4,7 +4,7 @@ let z = 0;
 let xD = 53.19954; let yD = 0; let zD = 5.764912;//Default coords
 let schaal = 15;
 let map = L.map('map').setView([x, z], schaal);
-let delay = 2;//Update delay in seconden.
+let delay = 10;//Update delay in seconden.
 
 //Copyright
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
