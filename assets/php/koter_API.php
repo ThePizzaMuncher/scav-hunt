@@ -23,7 +23,7 @@ if (isset($_GET["code"]) && $_GET["code"] == "gi3yhk3rKNRLO73g_8" && isset($_SES
         $output .= $row["groepsnaam"] . ",";
         $output .= $row["current_vraag"] . ",";
         $output .= $row["score"];
-        if (!$counter == $counter2) {
+        if (!$counter == $counter2) {//Als 
             $output .= "(_)";
         }
     }

@@ -8,30 +8,21 @@ function alertAndBack($content) {
     
 }
 session_start();
-// Verbindingsgegevens voor de database
-/* $servername = "localhost";
-$username = "kartel";
-$password = "bremankartel";
-$dbname = "kartel"; */
+
+// Hier stonden de verbindingsgegevens voor de database
+// Nu niet meer
 
 // Aantal leerlingen per groep
 $aantalLeerlingenPerGroep = 4;
 
-// Maak een nieuwe databaseverbinding
-// $conn = new mysqli($servername, $username, $password, $dbname);
-
-// Controleer de verbinding
-/* if ($conn->connect_error) {
-    die("Verbindingsfout: " . $conn->connect_error);
-} */
+// hier werd met de database verbonden
+// nu niet meer
 
 require '../assets/includes/conn.php';
 
 // Haal de leerlingen op uit de database
 $fetchStudents = "SELECT ID, naam, groep_ID FROM leerling WHERE opleiding_ID = $_SESSION[opleiding_ID]";
 $result = $conn->query($fetchStudents);
-// $result = $conn->query("SELECT ID, naam, groep_ID FROM leerling WHERE opleiding_ID = $_SESSION[opleiding_ID]");
-
 
 if ($result->num_rows > 0) {
     $leerlingen = array();
@@ -50,12 +41,6 @@ if ($result->num_rows > 0) {
     $extraLeerlingen = $aantalLeerlingen % $aantalLeerlingenPerGroep; 
 
     $startIndex = 0;
-
-    // (hopefully opsolete) code for making the groups
-    /* for ($i = 0; $i < $aantalGroepjes; ++$i) {
-        $query = "INSERT INTO groep (ID, docent_ID, groepsnaam) VALUES ('$i', '$_SESSION[opleiding_ID]', '" . telwoord($i) . "')";
-		$conn->query($query); // create groups
-    } */
 
 
     $conn->query("UPDATE leerling SET groep_ID = 0 WHERE opleiding_ID = $_SESSION[opleiding_ID]");
@@ -107,8 +92,7 @@ function telwoord(int $nummer) {
 		default: return $nummer;
 	}
 }
-//Afterparty
-//$conn->query("UPDATE leerling SET groep_ID = 1 WHERE groep_ID = 0");
+
 // Sluit de verbinding
 $conn->close();
 ?>
