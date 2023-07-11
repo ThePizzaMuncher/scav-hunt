@@ -84,7 +84,7 @@ echo '
 <div class="container">
   <div class="row justify-content-center align-items-center">
     <form class="col-12">
-      <div class="form-group"><p>' . $tipTxt . '</p></div>
+      <div class="form-group"><h3>' . $tipTxt . '</h3></div>
     </form>   
   </div>
 </div>
