@@ -86,16 +86,28 @@ echo '
         <div class="row">
           <div class="col-lg-4 justify-content-center align-items-center sticked-header-offset">
             <div class="section-title">
+            <p>' . $tipTxt . '</p>
             </div>
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <p>
-            ' . $tipTxt . '
-            </p>
           </div>
         </div>
       </div>
     </section>
 ';
+/*
+<section id="about" class="about">
+    <div class="container" style="overflow: hidden;">
+        <div class="row">
+          <div class="col-lg-4 justify-content-center align-items-center sticked-header-offset">
+            <div class="section-title">
+            </div>
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content">
+            <p>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+*/
 require_once("../../assets/includes/footer.php");
 ?>
