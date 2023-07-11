@@ -55,7 +55,7 @@ echo "<div class='gordel'>";
 while ($row = $pull->fetch_assoc()) {
     $gn = $row["groepsnaam"];
     $gna = "";
-    $gnc = $gn.trim().length;
+    $gnc = strlen($gn);
     if ($gnc > 4) {
         $gna .= $gn[0];
         $gna .= $gn[1];
