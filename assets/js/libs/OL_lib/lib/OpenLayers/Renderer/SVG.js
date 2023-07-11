@@ -297,7 +297,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
                 // prevents various rendering issues in Safari and FF
                 var parent = node.parentNode;
                 var nextSibling = node.nextSibling;
-                if(parent) {
+                if (parent) {
                     parent.removeChild(node);
                 }
                 
@@ -318,9 +318,9 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
                 
                 // now that the node has all its new properties, insert it
                 // back into the dom where it was
-                if(nextSibling) {
+                if (nextSibling) {
                     parent.insertBefore(node, nextSibling);
-                } else if(parent) {
+                } else if (parent) {
                     parent.appendChild(node);
                 }
             } else {
@@ -956,7 +956,7 @@ OpenLayers.Renderer.SVG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      */
     getFeatureIdFromEvent: function(evt) {
         var featureId = OpenLayers.Renderer.Elements.prototype.getFeatureIdFromEvent.apply(this, arguments);
-        if(!featureId) {
+        if (!featureId) {
             var target = evt.target;
             featureId = target.parentNode && target != this.rendererRoot ?
                 target.parentNode._featureId : undefined;

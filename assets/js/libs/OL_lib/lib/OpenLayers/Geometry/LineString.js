@@ -65,12 +65,12 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
     intersects: function(geometry) {
         var intersect = false;
         var type = geometry.CLASS_NAME;
-        if(type == "OpenLayers.Geometry.LineString" ||
+        if (type == "OpenLayers.Geometry.LineString" ||
            type == "OpenLayers.Geometry.LinearRing" ||
            type == "OpenLayers.Geometry.Point") {
             var segs1 = this.getSortedSegments();
             var segs2;
-            if(type == "OpenLayers.Geometry.Point") {
+            if (type == "OpenLayers.Geometry.Point") {
                 segs2 = [{
                     x1: geometry.x, y1: geometry.y,
                     x2: geometry.x, y2: geometry.y
@@ -89,25 +89,25 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
                 seg1y2 = seg1.y2;
                 inner: for(var j=0, jlen=segs2.length; j<jlen; ++j) {
                     seg2 = segs2[j];
-                    if(seg2.x1 > seg1x2) {
+                    if (seg2.x1 > seg1x2) {
                         // seg1 still left of seg2
                         break;
                     }
-                    if(seg2.x2 < seg1x1) {
+                    if (seg2.x2 < seg1x1) {
                         // seg2 still left of seg1
                         continue;
                     }
                     seg2y1 = seg2.y1;
                     seg2y2 = seg2.y2;
-                    if(Math.min(seg2y1, seg2y2) > Math.max(seg1y1, seg1y2)) {
+                    if (Math.min(seg2y1, seg2y2) > Math.max(seg1y1, seg1y2)) {
                         // seg2 above seg1
                         continue;
                     }
-                    if(Math.max(seg2y1, seg2y2) < Math.min(seg1y1, seg1y2)) {
+                    if (Math.max(seg2y1, seg2y2) < Math.min(seg1y1, seg1y2)) {
                         // seg2 below seg1
                         continue;
                     }
-                    if(OpenLayers.Geometry.segmentsIntersect(seg1, seg2)) {
+                    if (OpenLayers.Geometry.segmentsIntersect(seg1, seg2)) {
                         intersect = true;
                         break outer;
                     }
@@ -134,7 +134,7 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
         for(var i=0; i<numSeg; ++i) {
             point1 = this.components[i];
             point2 = this.components[i + 1];
-            if(point1.x < point2.x) {
+            if (point1.x < point2.x) {
                 segments[i] = {
                     x1: point1.x,
                     y1: point1.y,
@@ -202,29 +202,29 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
             point = OpenLayers.Geometry.segmentsIntersect(
                 seg, target, interOptions
             );
-            if(point instanceof OpenLayers.Geometry.Point) {
-                if((point.x === seg.x1 && point.y === seg.y1) ||
+            if (point instanceof OpenLayers.Geometry.Point) {
+                if ((point.x === seg.x1 && point.y === seg.y1) ||
                    (point.x === seg.x2 && point.y === seg.y2) ||
                    point.equals(vert1) || point.equals(vert2)) {
                     vertex = true;
                 } else {
                     vertex = false;
                 }
-                if(vertex || edge) {
+                if (vertex || edge) {
                     // push intersections different than the previous
-                    if(!point.equals(intersections[intersections.length-1])) {
+                    if (!point.equals(intersections[intersections.length-1])) {
                         intersections.push(point.clone());
                     }
-                    if(i === 0) {
-                        if(point.equals(vert1)) {
+                    if (i === 0) {
+                        if (point.equals(vert1)) {
                             continue;
                         }
                     }
-                    if(point.equals(vert2)) {
+                    if (point.equals(vert2)) {
                         continue;
                     }
                     split = true;
-                    if(!point.equals(vert1)) {
+                    if (!point.equals(vert1)) {
                         points.push(point);
                     }
                     lines.push(new OpenLayers.Geometry.LineString(points));
@@ -232,11 +232,11 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
                 }
             }
         }
-        if(split) {
+        if (split) {
             points.push(vert2.clone());
             lines.push(new OpenLayers.Geometry.LineString(points));
         }
-        if(intersections.length > 0) {
+        if (intersections.length > 0) {
             // sort intersections along segment
             var xDir = seg.x1 < seg.x2 ? 1 : -1;
             var yDir = seg.y1 < seg.y2 ? 1 : -1;
@@ -283,7 +283,7 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
         var results = null;
         var mutual = options && options.mutual;
         var sourceSplit, targetSplit, sourceParts, targetParts;
-        if(target instanceof OpenLayers.Geometry.LineString) {
+        if (target instanceof OpenLayers.Geometry.LineString) {
             var verts = this.getVertices();
             var vert1, vert2, seg, splits, lines, point;
             var points = [];
@@ -296,26 +296,26 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
                     x2: vert2.x, y2: vert2.y
                 };
                 targetParts = targetParts || [target];
-                if(mutual) {
+                if (mutual) {
                     points.push(vert1.clone());
                 }
                 for(var j=0; j<targetParts.length; ++j) {
                     splits = targetParts[j].splitWithSegment(seg, options);
-                    if(splits) {
+                    if (splits) {
                         // splice in new features
                         lines = splits.lines;
-                        if(lines.length > 0) {
+                        if (lines.length > 0) {
                             lines.unshift(j, 1);
                             Array.prototype.splice.apply(targetParts, lines);
                             j += lines.length - 2;
                         }
-                        if(mutual) {
+                        if (mutual) {
                             for(var k=0, len=splits.points.length; k<len; ++k) {
                                 point = splits.points[k];
-                                if(!point.equals(vert1)) {
+                                if (!point.equals(vert1)) {
                                     points.push(point);
                                     sourceParts.push(new OpenLayers.Geometry.LineString(points));
-                                    if(point.equals(vert2)) {
+                                    if (point.equals(vert2)) {
                                         points = [];
                                     } else {
                                         points = [point.clone()];
@@ -326,25 +326,25 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
                     }
                 }
             }
-            if(mutual && sourceParts.length > 0 && points.length > 0) {
+            if (mutual && sourceParts.length > 0 && points.length > 0) {
                 points.push(vert2.clone());
                 sourceParts.push(new OpenLayers.Geometry.LineString(points));
             }
         } else {
             results = target.splitWith(this, options);
         }
-        if(targetParts && targetParts.length > 1) {
+        if (targetParts && targetParts.length > 1) {
             targetSplit = true;
         } else {
             targetParts = [];
         }
-        if(sourceParts && sourceParts.length > 1) {
+        if (sourceParts && sourceParts.length > 1) {
             sourceSplit = true;
         } else {
             sourceParts = [];
         }
-        if(targetSplit || sourceSplit) {
-            if(mutual) {
+        if (targetSplit || sourceSplit) {
+            if (mutual) {
                 results = [sourceParts, targetParts];
             } else {
                 results = targetParts;
@@ -403,7 +403,7 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
      */
     getVertices: function(nodes) {
         var vertices;
-        if(nodes === true) {
+        if (nodes === true) {
             vertices = [
                 this.components[0],
                 this.components[this.components.length-1]
@@ -448,7 +448,7 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
         var details = edge && options && options.details;
         var result, best = {};
         var min = Number.POSITIVE_INFINITY;
-        if(geometry instanceof OpenLayers.Geometry.Point) {
+        if (geometry instanceof OpenLayers.Geometry.Point) {
             var segs = this.getSortedSegments();
             var x = geometry.x;
             var y = geometry.y;
@@ -456,20 +456,20 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
             for(var i=0, len=segs.length; i<len; ++i) {
                 seg = segs[i];
                 result = OpenLayers.Geometry.distanceToSegment(geometry, seg);
-                if(result.distance < min) {
+                if (result.distance < min) {
                     min = result.distance;
                     best = result;
-                    if(min === 0) {
+                    if (min === 0) {
                         break;
                     }
                 } else {
                     // if distance increases and we cross y0 to the right of x0, no need to keep looking.
-                    if(seg.x2 > x && ((y > seg.y1 && y < seg.y2) || (y < seg.y1 && y > seg.y2))) {
+                    if (seg.x2 > x && ((y > seg.y1 && y < seg.y2) || (y < seg.y1 && y > seg.y2))) {
                         break;
                     }
                 }
             }
-            if(details) {
+            if (details) {
                 best = {
                     distance: best.distance,
                     x0: best.x, y0: best.y,
@@ -478,7 +478,7 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
             } else {
                 best = best.distance;
             }
-        } else if(geometry instanceof OpenLayers.Geometry.LineString) { 
+        } else if (geometry instanceof OpenLayers.Geometry.LineString) { 
             var segs0 = this.getSortedSegments();
             var segs1 = geometry.getSortedSegments();
             var seg0, seg1, intersection, x0, y0;
@@ -491,7 +491,7 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
                 for(var j=0; j<len1; ++j) {
                     seg1 = segs1[j];
                     intersection = OpenLayers.Geometry.segmentsIntersect(seg0, seg1, interOptions);
-                    if(intersection) {
+                    if (intersection) {
                         min = 0;
                         best = {
                             distance: 0,
@@ -501,7 +501,7 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
                         break outer;
                     } else {
                         result = OpenLayers.Geometry.distanceToSegment({x: x0, y: y0}, seg1);
-                        if(result.distance < min) {
+                        if (result.distance < min) {
                             min = result.distance;
                             best = {
                                 distance: min,
@@ -512,19 +512,19 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
                     }
                 }
             }
-            if(!details) {
+            if (!details) {
                 best = best.distance;
             }
-            if(min !== 0) {
+            if (min !== 0) {
                 // check the final vertex in this line's sorted segments
-                if(seg0) {
+                if (seg0) {
                     result = geometry.distanceTo(
                         new OpenLayers.Geometry.Point(seg0.x2, seg0.y2),
                         options
                     );
                     var dist = details ? result.distance : result;
-                    if(dist < min) {
-                        if(details) {
+                    if (dist < min) {
+                        if (details) {
                             best = {
                                 distance: min,
                                 x0: result.x1, y0: result.y1,
@@ -539,7 +539,7 @@ OpenLayers.Geometry.LineString = OpenLayers.Class(OpenLayers.Geometry.Curve, {
         } else {
             best = geometry.distanceTo(this, options);
             // swap since target comes from this line
-            if(details) {
+            if (details) {
                 best = {
                     distance: best.distance,
                     x0: best.x1, y0: best.y1,

@@ -17,7 +17,7 @@
       let action = thisForm.getAttribute('action');
       let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
       
-      if( ! action ) {
+      if ( ! action ) {
         displayError(thisForm, 'The form action property is not set!')
         return;
       }
@@ -28,7 +28,7 @@
       let formData = new FormData( thisForm );
 
       if ( recaptcha ) {
-        if(typeof grecaptcha !== "undefined" ) {
+        if (typeof grecaptcha !== "undefined" ) {
           grecaptcha.ready(function() {
             try {
               grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})

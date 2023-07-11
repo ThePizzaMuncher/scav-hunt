@@ -213,7 +213,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
      * {Array(<OpenLayers.Feature.Vector>)} List of features.
      */
     parseData: function(data, options) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
 
@@ -226,7 +226,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
             var nodes = this.getElementsByTagNameNS(data, "*", type);
 
             // skip to next type if no nodes are found
-            if(nodes.length == 0) { 
+            if (nodes.length == 0) { 
                 continue;
             }
 
@@ -283,7 +283,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
 
         for(var i=0, len=nodes.length; i<len; i++) {
             var href = this.parseProperty(nodes[i], "*", "href");
-            if(href && !this.fetched[href]) {
+            if (href && !this.fetched[href]) {
                 this.fetched[href] = true; // prevent reloading the same urls
                 var data = this.fetchLink(href);
                 if (data) {
@@ -321,7 +321,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
     parseStyles: function(nodes, options) {
         for(var i=0, len=nodes.length; i<len; i++) {
             var style = this.parseStyle(nodes[i]);
-            if(style) {
+            if (style) {
                 var styleName = (options.styleBaseUrl || "") + "#" + style.id;
                 
                 this.styles[styleName] = style;
@@ -372,7 +372,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
         for(var i=0, len=types.length; i<len; ++i) {
             type = types[i];
             styleTypeNode = this.getElementsByTagNameNS(node, "*", type)[0];
-            if(!styleTypeNode) { 
+            if (!styleTypeNode) { 
                 continue;
             }
 
@@ -612,7 +612,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
         for(var i=0, len=nodes.length; i<len; i++) {
             var featureNode = nodes[i];
             var feature = this.parseFeature.apply(this,[featureNode]) ;
-            if(feature) {
+            if (feature) {
 
                 // Create reference to styleUrl 
                 if (this.extractStyles && feature.attributes &&
@@ -785,10 +785,10 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
                     node.namespaceURI : this.kmlns;
             nodeList = this.getElementsByTagNameNS(node, 
                                                    this.internalns, type);
-            if(nodeList.length > 0) {
+            if (nodeList.length > 0) {
                 // only deal with first geometry of this type
                 var parser = this.parseGeometry[type.toLowerCase()];
-                if(parser) {
+                if (parser) {
                     geometry = parser.apply(this, [nodeList[0]]);
                     if (this.internalProjection && this.externalProjection) {
                         geometry.transform(this.externalProjection, 
@@ -804,13 +804,13 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
 
         // construct feature (optionally with attributes)
         var attributes;
-        if(this.extractAttributes) {
+        if (this.extractAttributes) {
             attributes = this.parseAttributes(node);
         }
         var feature = new OpenLayers.Feature.Vector(geometry, attributes);
 
         var fid = node.getAttribute("id") || node.getAttribute("name");
-        if(fid != null) {
+        if (fid != null) {
             feature.fid = fid;
         }
 
@@ -878,16 +878,16 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
             var nodeList = this.getElementsByTagNameNS(node, this.internalns,
                                                        "coordinates");
             var coords = [];
-            if(nodeList.length > 0) {
+            if (nodeList.length > 0) {
                 var coordString = nodeList[0].firstChild.nodeValue;
                 coordString = coordString.replace(this.regExes.removeSpace, "");
                 coords = coordString.split(",");
             }
 
             var point = null;
-            if(coords.length > 1) {
+            if (coords.length > 1) {
                 // preserve third dimension
-                if(coords.length == 2) {
+                if (coords.length == 2) {
                     coords[2] = null;
                 }
                 point = new OpenLayers.Geometry.Point(coords[0], coords[1],
@@ -913,7 +913,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
             var nodeList = this.getElementsByTagNameNS(node, this.internalns,
                                                        "coordinates");
             var line = null;
-            if(nodeList.length > 0) {
+            if (nodeList.length > 0) {
                 var coordString = this.getChildValue(nodeList[0]);
 
                 coordString = coordString.replace(this.regExes.trimSpace,
@@ -927,8 +927,8 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
                 for(var i=0; i<numPoints; ++i) {
                     coords = pointList[i].split(",");
                     numCoords = coords.length;
-                    if(numCoords > 1) {
-                        if(coords.length == 2) {
+                    if (numCoords > 1) {
+                        if (coords.length == 2) {
                             coords[2] = null;
                         }
                         points[i] = new OpenLayers.Geometry.Point(coords[0],
@@ -939,8 +939,8 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
                               pointList[i];
                     }
                 }
-                if(numPoints) {
-                    if(ring) {
+                if (numPoints) {
+                    if (ring) {
                         line = new OpenLayers.Geometry.LinearRing(points);
                     } else {
                         line = new OpenLayers.Geometry.LineString(points);
@@ -969,13 +969,13 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
                                                        "LinearRing");
             var numRings = nodeList.length;
             var components = new Array(numRings);
-            if(numRings > 0) {
+            if (numRings > 0) {
                 // this assumes exterior ring first, inner rings after
                 var ring;
                 for(var i=0, len=nodeList.length; i<len; ++i) {
                     ring = this.parseGeometry.linestring.apply(this,
                                                         [nodeList[i], true]);
-                    if(ring) {
+                    if (ring) {
                         components[i] = ring;
                     } else {
                         throw "Bad LinearRing geometry: " + i;
@@ -1002,12 +1002,12 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
             var children = node.childNodes;
             for(var i=0, len=children.length; i<len; ++i ) {
                 child = children[i];
-                if(child.nodeType == 1) {
+                if (child.nodeType == 1) {
                     var type = (child.prefix) ?
                             child.nodeName.split(":")[1] :
                             child.nodeName;
                     var parser = this.parseGeometry[type.toLowerCase()];
-                    if(parser) {
+                    if (parser) {
                         parts.push(parser.apply(this, [child]));
                     }
                 }
@@ -1041,9 +1041,9 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
 
         for(var i=0, len=children.length; i<len; ++i) {
             child = children[i];
-            if(child.nodeType == 1) {
+            if (child.nodeType == 1) {
                 grandchildren = child.childNodes;
-                if(grandchildren.length >= 1 && grandchildren.length <= 3) {
+                if (grandchildren.length >= 1 && grandchildren.length <= 3) {
                     var grandchild;
                     switch (grandchildren.length) {
                         case 1:
@@ -1060,7 +1060,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
                             grandchild = grandchildren[1];
                             break;
                     }
-                    if(grandchild.nodeType == 3 || grandchild.nodeType == 4) {
+                    if (grandchild.nodeType == 3 || grandchild.nodeType == 4) {
                         var name = (child.prefix) ?
                                 child.nodeName.split(":")[1] :
                                 child.nodeName;
@@ -1156,7 +1156,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
      * {String} A KML string.
      */
     write: function(features) {
-        if(!(OpenLayers.Util.isArray(features))) {
+        if (!(OpenLayers.Util.isArray(features))) {
             features = [features];
         }
         var kml = this.createElementNS(this.kmlns, "kml");
@@ -1222,7 +1222,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
         
         // Placemark
         var placemarkNode = this.createElementNS(this.kmlns, "Placemark");
-        if(feature.fid != null) {
+        if (feature.fid != null) {
             placemarkNode.setAttribute("id", feature.fid);
         }
         placemarkNode.appendChild(placemarkName);
@@ -1258,7 +1258,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
         var type = className.substring(className.lastIndexOf(".") + 1);
         var builder = this.buildGeometry[type.toLowerCase()];
         var node = null;
-        if(builder) {
+        if (builder) {
             node = builder.apply(this, [geometry]);
         }
         return node;
@@ -1407,7 +1407,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
             for(var i=0, len=geometry.components.length; i<len; ++i) {
                 child = this.buildGeometryNode.apply(this,
                                                      [geometry.components[i]]);
-                if(child) {
+                if (child) {
                     kml.appendChild(child);
                 }
             }
@@ -1431,7 +1431,7 @@ OpenLayers.Format.KML = OpenLayers.Class(OpenLayers.Format.XML, {
         
         var path;
         var points = geometry.components;
-        if(points) {
+        if (points) {
             // LineString or LinearRing
             var point;
             var numPoints = points.length;

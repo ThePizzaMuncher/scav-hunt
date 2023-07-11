@@ -119,13 +119,13 @@ OpenLayers.Rico.Corner = {
     }, 
 
    _roundCornersImpl: function(e, color, bgColor) {
-      if(this.options.border) {
+      if (this.options.border) {
          this._renderBorder(e,bgColor);
       }
-      if(this._isTopRounded()) {
+      if (this._isTopRounded()) {
          this._roundTopCorners(e,color,bgColor);
       }
-      if(this._isBottomRounded()) {
+      if (this._isBottomRounded()) {
          this._roundBottomCorners(e,color,bgColor);
       }
    },
@@ -182,7 +182,7 @@ OpenLayers.Rico.Corner = {
          inStyle.height            = "0px"; // assumes css compliant box model
          inStyle.borderColor       = borderColor;
       }
-      else if(borderColor) {
+      else if (borderColor) {
          inStyle.borderColor = borderColor;
          inStyle.borderStyle = "solid";
          inStyle.borderWidth = "0px 1px";
@@ -236,9 +236,9 @@ OpenLayers.Rico.Corner = {
          return "";
       }
 
-      if(this.options.corners.indexOf("bl") >=0) {
+      if (this.options.corners.indexOf("bl") >=0) {
          return "left";
-      } else if(this.options.corners.indexOf("br")>=0) {
+      } else if (this.options.corners.indexOf("br")>=0) {
          return "right";
       }
       return "";

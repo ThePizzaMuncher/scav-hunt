@@ -67,7 +67,7 @@ OpenLayers.Control.KeyboardClick = OpenLayers.Class(OpenLayers.Control, {
     },
 
     activate: function() {
-        if(!OpenLayers.Control.prototype.activate.apply(this, arguments)) {
+        if (!OpenLayers.Control.prototype.activate.apply(this, arguments)) {
             return false;
         }
         // deactivate any KeyboardDefaults control
@@ -80,7 +80,7 @@ OpenLayers.Control.KeyboardClick = OpenLayers.Class(OpenLayers.Control, {
     },
 
     deactivate: function() {
-        if(!OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
+        if (!OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
             return false;
         }
         // reactivate any KeyboardDefaults control
@@ -113,7 +113,7 @@ OpenLayers.Handler.KeyboardPoint = OpenLayers.Class(OpenLayers.Handler, {
     },
 
     activate: function() {
-        if(!OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
+        if (!OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
             return false;
         }
         this.layer = new OpenLayers.Layer.Vector(this.CLASS_NAME);
@@ -123,7 +123,7 @@ OpenLayers.Handler.KeyboardPoint = OpenLayers.Class(OpenLayers.Handler, {
             OpenLayers.Event.observe(
                 this.observeElement, this.KEY_EVENTS[i], this.eventListener);
         }
-        if(!this.point) {
+        if (!this.point) {
             this.createFeature();
         }
         return true;
@@ -166,7 +166,7 @@ OpenLayers.Handler.KeyboardPoint = OpenLayers.Class(OpenLayers.Handler, {
     },
 
     modifyFeature: function(lon, lat) {
-        if(!this.point) {
+        if (!this.point) {
             this.createFeature();
         }
         var resolution = this.map.getResolution();

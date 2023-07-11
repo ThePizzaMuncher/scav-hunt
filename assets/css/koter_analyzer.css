@@ -1,4 +1,7 @@
 #map {
-    width: 20vw;
+    width: 50vw;
     height: 20vw;
+}
+[class~="leaflet-control-attribution leaflet-control"] {
+    display: none;
 }

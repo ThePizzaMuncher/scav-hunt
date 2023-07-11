@@ -23,10 +23,10 @@
 
         function featuresEq(got, exp) {
             var eq = false;
-            if(got instanceof Array && exp instanceof Array) {
-                if(got.length === exp.length) {
+            if (got instanceof Array && exp instanceof Array) {
+                if (got.length === exp.length) {
                     for(var i=0; i<got.length; ++i) {
-                        if(got[i] !== exp[i]) {
+                        if (got[i] !== exp[i]) {
                             console.log(got[i], exp[i]);
                             break;
                         }

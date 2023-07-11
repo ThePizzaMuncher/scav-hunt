@@ -71,7 +71,7 @@ OpenLayers.Format.OWSContext = OpenLayers.Class(OpenLayers.Format.Context,{
      */
     toContext: function(obj) {
         var context = {};
-        if(obj.CLASS_NAME == "OpenLayers.Map") {
+        if (obj.CLASS_NAME == "OpenLayers.Map") {
             context.bounds = obj.getExtent();
             context.maxExtent = obj.maxExtent;
             context.projection = obj.projection;

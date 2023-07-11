@@ -57,7 +57,7 @@
                             setStyleMockProp(expectedPrefix, undefined);
                         }
                         
-                        if(!err) {
+                        if (!err) {
                             t.eq(prefixedProp, expectedPrefix, msg);
                         } else {
                             t.fail("Error when testing " + type.toUpperCase() + " vendor prefix: " + err.message);

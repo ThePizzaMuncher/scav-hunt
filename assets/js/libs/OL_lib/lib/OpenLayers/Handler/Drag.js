@@ -168,7 +168,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
             // prevent document dragging
             OpenLayers.Event.preventDefault(evt);
 
-            if(!this.oldOnselectstart) {
+            if (!this.oldOnselectstart) {
                 this.oldOnselectstart = document.onselectstart ?
                     document.onselectstart : OpenLayers.Function.True;
             }
@@ -197,8 +197,8 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
         this.lastMoveEvt = evt;
         if (this.started && !this.timeoutId && (evt.xy.x != this.last.x ||
                                                 evt.xy.y != this.last.y)) {
-            if(this.documentDrag === true && this.documentEvents) {
-                if(evt.element === document) {
+            if (this.documentDrag === true && this.documentEvents) {
+                if (evt.element === document) {
                     this.adjustXY(evt);
                     // do setEvent manually because the documentEvents are not
                     // registered with the map
@@ -216,7 +216,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
 
             this.move(evt);
             this.callback("move", [evt.xy]);
-            if(!this.oldOnselectstart) {
+            if (!this.oldOnselectstart) {
                 this.oldOnselectstart = document.onselectstart;
                 document.onselectstart = OpenLayers.Function.False;
             }
@@ -237,7 +237,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
      */
     dragend: function (evt) {
         if (this.started) {
-            if(this.documentDrag === true && this.documentEvents) {
+            if (this.documentDrag === true && this.documentEvents) {
                 this.adjustXY(evt);
                 this.removeDocumentEvents();
             }
@@ -249,7 +249,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
             );
             this.up(evt);
             this.callback("up", [evt.xy]);
-            if(dragged) {
+            if (dragged) {
                 this.callback("done", [evt.xy]);
             }
             document.onselectstart = this.oldOnselectstart;
@@ -379,7 +379,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
         // if timeout expires while we're still dragging (mouseup
         // hasn't occurred) then call mousemove to move to the
         // correct position
-        if(this.dragging) {
+        if (this.dragging) {
             this.mousemove(this.lastMoveEvt);
         }
     },
@@ -427,7 +427,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
      */
     mouseout: function (evt) {
         if (this.started && OpenLayers.Util.mouseLeft(evt, this.map.viewPortDiv)) {
-            if(this.documentDrag === true) {
+            if (this.documentDrag === true) {
                 this.addDocumentEvents();
             } else {
                 var dragged = (this.start != this.last);
@@ -438,10 +438,10 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
                 );
                 this.out(evt);
                 this.callback("out", []);
-                if(dragged) {
+                if (dragged) {
                     this.callback("done", [evt.xy]);
                 }
-                if(document.onselectstart) {
+                if (document.onselectstart) {
                     document.onselectstart = this.oldOnselectstart;
                 }
             }
@@ -475,7 +475,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
      */
     activate: function() {
         var activated = false;
-        if(OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
+        if (OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
             this.dragging = false;
             activated = true;
         }
@@ -491,7 +491,7 @@ OpenLayers.Handler.Drag = OpenLayers.Class(OpenLayers.Handler, {
      */
     deactivate: function() {
         var deactivated = false;
-        if(OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
+        if (OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
             this.started = false;
             this.dragging = false;
             this.start = null;

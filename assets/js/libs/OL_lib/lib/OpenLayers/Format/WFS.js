@@ -153,7 +153,7 @@ OpenLayers.Format.WFS = OpenLayers.Class(OpenLayers.Format.GML, {
         
         var geometryNode = this.buildGeometryNode(feature.geometry);
         
-        if(feature.layer){
+        if (feature.layer){
             geometryNode.setAttribute(
                 "srsName", feature.layer.projection.getCode()
             );

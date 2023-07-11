@@ -197,7 +197,7 @@
             var check = document.getElementById("snapping");
             check.checked = true;
             check.onclick = function() {
-                if(check.checked) {
+                if (check.checked) {
                     snap.activate();
                 } else {
                     snap.deactivate();
@@ -244,7 +244,7 @@
 
             // update the editable layer for the modify control (ugly)
             var modActive = modify.active;
-            if(modActive) {
+            if (modActive) {
                 modify.deactivate();
             }
             modify.layer = layer;
@@ -253,13 +253,13 @@
             modify.dragControl.layer = layer;
             modify.dragControl.handlers.drag.layer = layer;
             modify.dragControl.handlers.feature.layer = layer;
-            if(modActive) {
+            if (modActive) {
                 modify.activate();
             }
             
             // update the editable layer for the draw control (very ugly)
             var drawActive = draw.active;
-            if(drawActive) {
+            if (drawActive) {
                 draw.deactivate();
             }
             draw.layer = layer;
@@ -269,7 +269,7 @@
                 poly: OpenLayers.Handler.Polygon
             })[name];
             draw.handler = new handler(draw, draw.callbacks, draw.handlerOptions);
-            if(drawActive) {
+            if (drawActive) {
                 draw.activate();
             }
 

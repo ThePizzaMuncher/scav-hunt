@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Example</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        #mosaic_wrapper {
+            width: 480px;
+            /* (panel_height+panel_margin*2)*panels per row = (100px+(10px*2))*8 */
+        }
+
+        #mosaic_wrapper .panel {
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background: url('../../assets/img/123.jpg') no-repeat 0 0 fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mosaic_wrapper">
+        <div>
+            <div class="panel" style="visibility: hidden;"></div>
+            <div class="panel"></div>
+            <div class="panel"></div>
+            <div class="panel"></div>
+        </div>
+        <div>
+            <div class="panel"></div>
+            <div class="panel"></div>
+            <div class="panel"></div>
+            <div class="panel"></div>
+        </div>
+        <div>
+            <div class="panel"></div>
+            <div class="panel"></div>
+            <div class="panel"></div>
+            <div class="panel"></div>
+        </div>
+    </div>
+</body>
+
+</html>

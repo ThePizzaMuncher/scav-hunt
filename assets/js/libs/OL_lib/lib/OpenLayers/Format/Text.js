@@ -51,7 +51,7 @@ OpenLayers.Format.Text = OpenLayers.Class(OpenLayers.Format, {
     initialize: function(options) {
         options = options || {};
 
-        if(options.extractStyles !== false) {
+        if (options.extractStyles !== false) {
             options.defaultStyle = {
                 'externalGraphic': OpenLayers.Util.getImageLocation("marker.png"),
                 'graphicWidth': 21,

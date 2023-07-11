@@ -263,7 +263,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         this.unrenderedFeatures = {};
         
         // Allow for custom layer behavior
-        if(this.strategies){
+        if (this.strategies){
             for(var i=0, len=this.strategies.length; i<len; i++) {
                 this.strategies[i].setLayer(this);
             }
@@ -280,14 +280,14 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             var strategy, i, len;
             for(i=0, len=this.strategies.length; i<len; i++) {
                 strategy = this.strategies[i];
-                if(strategy.autoDestroy) {
+                if (strategy.autoDestroy) {
                     strategy.destroy();
                 }
             }
             this.strategies = null;
         }
         if (this.protocol) {
-            if(this.protocol.autoDestroy) {
+            if (this.protocol.autoDestroy) {
                 this.protocol.destroy();
             }
             this.protocol = null;
@@ -345,7 +345,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
      *     the refresh event.
      */
     refresh: function(obj) {
-        if(this.calculateInRange() && this.visibility) {
+        if (this.calculateInRange() && this.visibility) {
             this.events.triggerEvent("refresh", obj);
         }
     },
@@ -411,11 +411,11 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
      *     activated here.
      */
     afterAdd: function() {
-        if(this.strategies) {
+        if (this.strategies) {
             var strategy, i, len;
             for(i=0, len=this.strategies.length; i<len; i++) {
                 strategy = this.strategies[i];
-                if(strategy.autoActivate) {
+                if (strategy.autoActivate) {
                     strategy.activate();
                 }
             }
@@ -431,11 +431,11 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
      */
     removeMap: function(map) {
         this.drawn = false;
-        if(this.strategies) {
+        if (this.strategies) {
             var strategy, i, len;
             for(i=0, len=this.strategies.length; i<len; i++) {
                 strategy = this.strategies[i];
-                if(strategy.autoActivate) {
+                if (strategy.autoActivate) {
                     strategy.deactivate();
                 }
             }
@@ -533,7 +533,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         // we need to set the display style of the root in case it is attached
         // to a foreign layer
         var currentDisplay = this.div.style.display;
-        if(currentDisplay != this.renderer.root.style.display) {
+        if (currentDisplay != this.renderer.root.style.display) {
             this.renderer.root.style.display = currentDisplay;
         }
     },
@@ -552,10 +552,10 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         }
         
         var notify = !options || !options.silent;
-        if(notify) {
+        if (notify) {
             var event = {features: features};
             var ret = this.events.triggerEvent("beforefeaturesadded", event);
-            if(ret === false) {
+            if (ret === false) {
                 return;
             }
             features = event.features;
@@ -586,7 +586,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             }
 
             if (notify) {
-                if(this.events.triggerEvent("beforefeatureadded",
+                if (this.events.triggerEvent("beforefeatureadded",
                                             {feature: feature}) === false) {
                     continue;
                 }
@@ -605,7 +605,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             }
         }
         
-        if(notify) {
+        if (notify) {
             this.events.triggerEvent("featuresadded", {features: featuresAdded});
         }
     },
@@ -629,7 +629,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
      * silent - {Boolean} Supress event triggering.  Default is false.
      */
     removeFeatures: function(features, options) {
-        if(!features || features.length === 0) {
+        if (!features || features.length === 0) {
             return;
         }
         if (features === this.features) {
@@ -756,10 +756,10 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
     destroyFeatures: function(features, options) {
         var all = (features == undefined); // evaluates to true if
                                            // features is null
-        if(all) {
+        if (all) {
             features = this.features;
         }
-        if(features) {
+        if (features) {
             this.removeFeatures(features, options);
             for(var i=features.length-1; i>=0; i--) {
                 features[i].destroy();
@@ -792,7 +792,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             return;
         }
         if (typeof style != "object") {
-            if(!style && feature.state === OpenLayers.State.DELETE) {
+            if (!style && feature.state === OpenLayers.State.DELETE) {
                 style = "delete";
             }
             var renderIntent = style || feature.renderIntent;
@@ -868,7 +868,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
         //TBD - would it be more efficient to use a hash for this.features?
         var feature = null;
         for(var i=0, len=this.features.length; i<len; ++i) {
-            if(this.features[i][property] == value) {
+            if (this.features[i][property] == value) {
                 feature = this.features[i];
                 break;
             }
@@ -927,7 +927,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
             foundFeatures = [];
         for(i = 0; i < len; i++) {            
             feature = this.features[i];
-            if(feature && feature.attributes) {
+            if (feature && feature.attributes) {
                 if (feature.attributes[attrName] === attrValue) {
                     foundFeatures.push(feature);
                 }
@@ -988,7 +988,7 @@ OpenLayers.Layer.Vector = OpenLayers.Class(OpenLayers.Layer, {
     getDataExtent: function () {
         var maxExtent = null;
         var features = this.features;
-        if(features && (features.length > 0)) {
+        if (features && (features.length > 0)) {
             var geometry = null;
             for(var i=0, len=features.length; i<len; i++) {
                 geometry = features[i].geometry;

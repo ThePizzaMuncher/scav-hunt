@@ -88,7 +88,7 @@ OpenLayers.Util.isArray = function(a) {
  */
 OpenLayers.Util.removeItem = function(array, item) {
     for(var i = array.length - 1; i >= 0; i--) {
-        if(array[i] == item) {
+        if (array[i] == item) {
             array.splice(i,1);
             //break;more than once??
         }
@@ -375,7 +375,7 @@ OpenLayers.Util.modifyAlphaImageDiv = function(div, id, px, sz, imgURL,
                                      "relative", border);
     
     if (OpenLayers.Util.alphaHack()) {
-        if(div.style.display != "none") {
+        if (div.style.display != "none") {
             div.style.display = "inline-block";
         }
         if (sizing == null) {
@@ -489,7 +489,7 @@ OpenLayers.Util.applyDefaults = function (to, from) {
      * properties with the for(property in object) syntax.  Explicitly check if
      * the source has its own toString property.
      */
-    if(!fromIsEvt && from && from.hasOwnProperty
+    if (!fromIsEvt && from && from.hasOwnProperty
        && from.hasOwnProperty('toString') && !to.hasOwnProperty('toString')) {
         to.toString = from.toString;
     }
@@ -556,7 +556,7 @@ OpenLayers.Util.getParameterString = function(params) {
  */
 OpenLayers.Util.urlAppend = function(url, paramStr) {
     var newUrl = url;
-    if(paramStr) {
+    if (paramStr) {
         var parts = (url + " ").split(/[?&]/);
         newUrl += (parts.pop() === " " ?
             paramStr :
@@ -1316,8 +1316,8 @@ OpenLayers.Util.isEquivalentUrl = function(url1, url2, options) {
 
     //compare all keys except for "args" (treated below)
     for(var key in urlObj1) {
-        if(key !== "args") {
-            if(urlObj1[key] != urlObj2[key]) {
+        if (key !== "args") {
+            if (urlObj1[key] != urlObj2[key]) {
                 return false;
             }
         }
@@ -1325,7 +1325,7 @@ OpenLayers.Util.isEquivalentUrl = function(url1, url2, options) {
 
     // compare search args - irrespective of order
     for(var key in urlObj1.args) {
-        if(urlObj1.args[key] != urlObj2.args[key]) {
+        if (urlObj1.args[key] != urlObj2.args[key]) {
             return false;
         }
         delete urlObj2.args[key];
@@ -1360,11 +1360,11 @@ OpenLayers.Util.createUrlObject = function(url, options) {
     options = options || {};
 
     // deal with relative urls first
-    if(!(/^\w+:\/\//).test(url)) {
+    if (!(/^\w+:\/\//).test(url)) {
         var loc = window.location;
         var port = loc.port ? ":" + loc.port : "";
         var fullUrl = loc.protocol + "//" + loc.host.split(":").shift() + port;
-        if(url.indexOf("/") === 0) {
+        if (url.indexOf("/") === 0) {
             // full pathname
             url = fullUrl + url;
         } else {
@@ -1391,7 +1391,7 @@ OpenLayers.Util.createUrlObject = function(url, options) {
     urlObject.protocol = a.protocol;  
 
     //port (get uniform browser behavior with port 80 here)
-    if(options.ignorePort80) {
+    if (options.ignorePort80) {
         urlObject.port = (a.port == "80" || a.port == "0") ? "" : a.port;
     } else {
         urlObject.port = (a.port == "" || a.port == "0") ? "80" : a.port;
@@ -1555,7 +1555,7 @@ OpenLayers.Util.getRenderedDimensions = function(contentHTML, size, options) {
     var parent = containerElement;
     while (parent && parent.tagName.toLowerCase()!="body") {
         var parentPosition = OpenLayers.Element.getStyle(parent, "position");
-        if(parentPosition == "absolute") {
+        if (parentPosition == "absolute") {
             parentHasPositionAbsolute = true;
             break;
         } else if (parentPosition && parentPosition != "static") {
@@ -1563,7 +1563,7 @@ OpenLayers.Util.getRenderedDimensions = function(contentHTML, size, options) {
         }
         parent = parent.parentNode;
     }
-    if(parentHasPositionAbsolute && (containerElement.clientHeight === 0 || 
+    if (parentHasPositionAbsolute && (containerElement.clientHeight === 0 || 
                                      containerElement.clientWidth === 0) ){
         superContainer = document.createElement("div");
         superContainer.style.visibility = "hidden";
@@ -1735,28 +1735,28 @@ OpenLayers.Util.getFormattedLonLat = function(coordinate, axis, dmsOption) {
     coordinateseconds =  Math.round(coordinateseconds*10);
     coordinateseconds /= 10;
 
-    if( coordinateseconds >= 60) { 
+    if ( coordinateseconds >= 60) { 
         coordinateseconds -= 60; 
         coordinateminutes += 1; 
-        if( coordinateminutes >= 60) { 
+        if ( coordinateminutes >= 60) { 
             coordinateminutes -= 60; 
             coordinatedegrees += 1; 
         } 
     }
     
-    if( coordinatedegrees < 10 ) {
+    if ( coordinatedegrees < 10 ) {
         coordinatedegrees = "0" + coordinatedegrees;
     }
     var str = coordinatedegrees + "\u00B0";
 
     if (dmsOption.indexOf('dm') >= 0) {
-        if( coordinateminutes < 10 ) {
+        if ( coordinateminutes < 10 ) {
             coordinateminutes = "0" + coordinateminutes;
         }
         str += coordinateminutes + "'";
   
         if (dmsOption.indexOf('dms') >= 0) {
-            if( coordinateseconds < 10 ) {
+            if ( coordinateseconds < 10 ) {
                 coordinateseconds = "0" + coordinateseconds;
             }
             str += coordinateseconds + '"';

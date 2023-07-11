@@ -228,20 +228,20 @@
             f2 = wkt.read(testcase['wkt2']);
             intersect12 = f1.geometry.intersects(f2.geometry);
             intersect21 = f2.geometry.intersects(f1.geometry);
-            if(intersect12 != testcase.result) {
+            if (intersect12 != testcase.result) {
                 msg = "f1 should " + (testcase.result ? "" : "not ") +
                       "intersect f2: f1 = '" + testcase['wkt1'] + "' " +
                       "f2 = '" + testcase['wkt2'] + "'";
                 failures.push(msg);
             }
-            if(intersect21 != testcase.result) {
+            if (intersect21 != testcase.result) {
                 msg = "f2 should " + (testcase.result ? "" : "not ") +
                       "intersect f1: f1 = '" + testcase['wkt1'] + "' " +
                       "f2 = '" + testcase['wkt2'] + "'";
                 failures.push(msg);
             }
         }
-        if(failures.length == 0) {
+        if (failures.length == 0) {
             t.plan(1);
             t.ok(true, "all " + geos_test_data.length + " geos tests pass");
         } else {

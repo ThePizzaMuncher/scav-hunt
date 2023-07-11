@@ -112,7 +112,7 @@ OpenLayers.Events.buttonclick = OpenLayers.Class({
         var depth = 3, // limit the search depth
             button;
         do {
-            if(OpenLayers.Element.hasClass(element, "olButton")) {
+            if (OpenLayers.Element.hasClass(element, "olButton")) {
                 // hit!
                 button = element;
                 break;

@@ -19,7 +19,7 @@ OpenLayers.Format.CSWGetRecords = function(options) {
         options, OpenLayers.Format.CSWGetRecords.DEFAULTS
     );
     var cls = OpenLayers.Format.CSWGetRecords["v"+options.version.replace(/\./g, "_")];
-    if(!cls) {
+    if (!cls) {
         throw "Unsupported CSWGetRecords version: " + options.version;
     }
     return new cls(options);

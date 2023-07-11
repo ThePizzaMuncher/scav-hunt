@@ -486,11 +486,11 @@ OpenLayers.Layer.Grid = OpenLayers.Class(OpenLayers.Layer.HTTPRequest, {
                     // an ill-positioned image will be visible during the zoom
                     // transition.
 
-                    if(zoomChanged && this.transitionEffect !== 'resize') {
+                    if (zoomChanged && this.transitionEffect !== 'resize') {
                         this.removeBackBuffer();
                     }
 
-                    if(!zoomChanged || this.transitionEffect === 'resize') {
+                    if (!zoomChanged || this.transitionEffect === 'resize') {
                         this.applyBackBuffer(resolution);
                     }
 
@@ -510,8 +510,8 @@ OpenLayers.Layer.Grid = OpenLayers.Class(OpenLayers.Layer.HTTPRequest, {
                             this.map.getMaxExtent()
                     });
 
-                if(forceReTile) {
-                    if(zoomChanged && (this.transitionEffect === 'resize' ||
+                if (forceReTile) {
+                    if (zoomChanged && (this.transitionEffect === 'resize' ||
                                           this.gridResolution === resolution)) {
                         this.applyBackBuffer(resolution);
                     }
@@ -606,7 +606,7 @@ OpenLayers.Layer.Grid = OpenLayers.Class(OpenLayers.Layer.HTTPRequest, {
     getServerResolution: function(resolution) {
         var distance = Number.POSITIVE_INFINITY;
         resolution = resolution || this.map.getResolution();
-        if(this.serverResolutions &&
+        if (this.serverResolutions &&
            OpenLayers.Util.indexOf(this.serverResolutions, resolution) === -1) {
             var i, newDistance, newResolution, serverResolution;
             for(i=this.serverResolutions.length-1; i>= 0; i--) {
@@ -647,13 +647,13 @@ OpenLayers.Layer.Grid = OpenLayers.Class(OpenLayers.Layer.HTTPRequest, {
      * resolution - {Number} The resolution to transition to.
      */
     applyBackBuffer: function(resolution) {
-        if(this.backBufferTimerId !== null) {
+        if (this.backBufferTimerId !== null) {
             this.removeBackBuffer();
         }
         var backBuffer = this.backBuffer;
-        if(!backBuffer) {
+        if (!backBuffer) {
             backBuffer = this.createBackBuffer();
-            if(!backBuffer) {
+            if (!backBuffer) {
                 return;
             }
             if (resolution === this.gridResolution) {
@@ -705,7 +705,7 @@ OpenLayers.Layer.Grid = OpenLayers.Class(OpenLayers.Layer.HTTPRequest, {
      */
     createBackBuffer: function() {
         var backBuffer;
-        if(this.grid.length > 0) {
+        if (this.grid.length > 0) {
             backBuffer = document.createElement('div');
             backBuffer.id = this.div.id + '_bb';
             backBuffer.className = 'olBackBuffer';
@@ -746,13 +746,13 @@ OpenLayers.Layer.Grid = OpenLayers.Class(OpenLayers.Layer.HTTPRequest, {
             }
             delete this._transitionElement;
         }
-        if(this.backBuffer) {
+        if (this.backBuffer) {
             if (this.backBuffer.parentNode) {
                 this.backBuffer.parentNode.removeChild(this.backBuffer);
             }
             this.backBuffer = null;
             this.backBufferResolution = null;
-            if(this.backBufferTimerId !== null) {
+            if (this.backBufferTimerId !== null) {
                 window.clearTimeout(this.backBufferTimerId);
                 this.backBufferTimerId = null;
             }

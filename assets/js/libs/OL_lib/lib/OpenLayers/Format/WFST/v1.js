@@ -98,8 +98,8 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     getSrsName: function(feature, options) {
         var srsName = options && options.srsName;
-        if(!srsName) {
-            if(feature && feature.layer) {
+        if (!srsName) {
+            if (feature && feature.layer) {
                 srsName = feature.layer.projection.getCode();
             } else {
                 srsName = this.srsName;
@@ -134,17 +134,17 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
             output: "features"
         });
         
-        if(typeof data == "string") { 
+        if (typeof data == "string") { 
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
         var obj = {};
-        if(data) {
+        if (data) {
             this.readNode(data, obj, true);
         }
-        if(obj.features && options.output === "features") {
+        if (obj.features && options.output === "features") {
             obj = obj.features;
         }
         return obj;
@@ -205,7 +205,7 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
             options: options
         });
         var value = this.schemaLocationAttr();
-        if(value) {
+        if (value) {
             this.setAttributeNS(
                 node, this.namespaces["xsi"], "xsi:schemaLocation",  value
             );
@@ -254,7 +254,7 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 });
                 var i, len;
                 var features = obj.features;
-                if(features) {
+                if (features) {
                     // temporarily re-assigning geometry types
                     if (options.multi === true) {
                         OpenLayers.Util.extend(this.geometryTypes, {
@@ -267,7 +267,7 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                     for(i=0, len=features.length; i<len; ++i) {
                         feature = features[i];
                         name = this.stateName[feature.state];
-                        if(name) {
+                        if (name) {
                             this.writeNode(name, {
                                 feature: feature, 
                                 options: options
@@ -319,7 +319,7 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                             this.featureType
                     }
                 });
-                if(this.featureNS) {
+                if (this.featureNS) {
                     node.setAttribute("xmlns:" + this.featurePrefix, this.featureNS);
                 }
                 
@@ -334,7 +334,7 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         
                 // add in attributes
                 for(var key in feature.attributes) {
-                    if(feature.attributes[key] !== undefined &&
+                    if (feature.attributes[key] !== undefined &&
                                 (!modified || !modified.attributes ||
                                 (modified.attributes && modified.attributes[key] !== undefined))) {
                         this.writeNode(
@@ -353,7 +353,7 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
             "Property": function(obj) {
                 var node = this.createElementNSPlus("wfs:Property");
                 this.writeNode("Name", obj.name, node);
-                if(obj.value !== null) {
+                if (obj.value !== null) {
                     this.writeNode("Value", obj.value, node);
                 }
                 return node;
@@ -363,7 +363,7 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
             },
             "Value": function(obj) {
                 var node;
-                if(obj instanceof OpenLayers.Geometry) {
+                if (obj instanceof OpenLayers.Geometry) {
                     node = this.createElementNSPlus("wfs:Value");
                     var geom = this.writeNode("feature:_geometry", obj).firstChild;
                     node.appendChild(geom);
@@ -382,7 +382,7 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                             this.featureType
                     }
                 });
-                if(this.featureNS) {
+                if (this.featureNS) {
                     node.setAttribute("xmlns:" + this.featurePrefix, this.featureNS);
                 }
                 this.writeNode("ogc:Filter", new OpenLayers.Filter.FeatureId({
@@ -406,14 +406,14 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
             schema: this.schema
         }, options);
         var schemaLocations = OpenLayers.Util.extend({}, this.schemaLocations);
-        if(options.schema) {
+        if (options.schema) {
             schemaLocations[options.featurePrefix] = options.schema;
         }
         var parts = [];
         var uri;
         for(var key in schemaLocations) {
             uri = this.namespaces[key];
-            if(uri) {
+            if (uri) {
                 parts.push(uri + " " + schemaLocations[key]);
             }
         }
@@ -429,12 +429,12 @@ OpenLayers.Format.WFST.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      * filter - {<OpenLayers.Filter>}
      */
     setFilterProperty: function(filter) {
-        if(filter.filters) {
+        if (filter.filters) {
             for(var i=0, len=filter.filters.length; i<len; ++i) {
                 OpenLayers.Format.WFST.v1.prototype.setFilterProperty.call(this, filter.filters[i]);
             }
         } else {
-            if(filter instanceof OpenLayers.Filter.Spatial && !filter.property) {
+            if (filter instanceof OpenLayers.Filter.Spatial && !filter.property) {
                 // got a spatial filter without property, so set it
                 filter.property = this.geometryName;
             }

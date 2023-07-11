@@ -587,7 +587,7 @@ OpenLayers.Events = OpenLayers.Class({
         this.extensions = null;
         if (this.element) {
             OpenLayers.Event.stopObservingElement(this.element);
-            if(this.element.hasScrollEvent) {
+            if (this.element.hasScrollEvent) {
                 OpenLayers.Event.stopObserving(
                     window, "scroll", this.clearMouseListener
                 );
@@ -679,7 +679,7 @@ OpenLayers.Events = OpenLayers.Class({
      */
     on: function(object) {
         for(var type in object) {
-            if(type != "scope" && object.hasOwnProperty(type)) {
+            if (type != "scope" && object.hasOwnProperty(type)) {
                 this.register(type, object.scope, object[type]);
             }
         }
@@ -791,7 +791,7 @@ OpenLayers.Events = OpenLayers.Class({
      */
     un: function(object) {
         for(var type in object) {
-            if(type != "scope" && object.hasOwnProperty(type)) {
+            if (type != "scope" && object.hasOwnProperty(type)) {
                 this.unregister(type, object.scope, object[type]);
             }
         }
@@ -850,7 +850,7 @@ OpenLayers.Events = OpenLayers.Class({
         var listeners = this.listeners[type];
 
         // fast path
-        if(!listeners || listeners.length == 0) {
+        if (!listeners || listeners.length == 0) {
             return undefined;
         }
 
@@ -860,7 +860,7 @@ OpenLayers.Events = OpenLayers.Class({
         }
         evt.object = this.object;
         evt.element = this.element;
-        if(!evt.type) {
+        if (!evt.type) {
             evt.type = type;
         }
     
@@ -897,7 +897,7 @@ OpenLayers.Events = OpenLayers.Class({
      */
     handleBrowserEvent: function (evt) {
         var type = evt.type, listeners = this.listeners[type];
-        if(!listeners || listeners.length == 0) {
+        if (!listeners || listeners.length == 0) {
             // noone's listening, bail out
             return;
         }

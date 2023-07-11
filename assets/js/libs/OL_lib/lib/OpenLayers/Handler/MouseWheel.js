@@ -187,7 +187,7 @@ OpenLayers.Handler.MouseWheel = OpenLayers.Class(OpenLayers.Handler, {
                 this.delta += delta;
 
                 window.clearTimeout(this._timeoutId);
-                if(this.interval && Math.abs(this.delta) < this.maxDelta) {
+                if (this.interval && Math.abs(this.delta) < this.maxDelta) {
                     // store e because window.event might change during delay
                     var evt = OpenLayers.Util.extend({}, e);
                     this._timeoutId = window.setTimeout(

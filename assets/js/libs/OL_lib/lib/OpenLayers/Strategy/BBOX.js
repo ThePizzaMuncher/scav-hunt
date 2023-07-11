@@ -78,7 +78,7 @@ OpenLayers.Strategy.BBOX = OpenLayers.Class(OpenLayers.Strategy, {
      */
     activate: function() {
         var activated = OpenLayers.Strategy.prototype.activate.call(this);
-        if(activated) {
+        if (activated) {
             this.layer.events.on({
                 "moveend": this.update,
                 "refresh": this.update,
@@ -99,7 +99,7 @@ OpenLayers.Strategy.BBOX = OpenLayers.Class(OpenLayers.Strategy, {
      */
     deactivate: function() {
         var deactivated = OpenLayers.Strategy.prototype.deactivate.call(this);
-        if(deactivated) {
+        if (deactivated) {
             this.layer.events.un({
                 "moveend": this.update,
                 "refresh": this.update,
@@ -144,7 +144,7 @@ OpenLayers.Strategy.BBOX = OpenLayers.Class(OpenLayers.Strategy, {
             return null;
         }
         var bounds = this.layer.map.getExtent();
-        if(bounds && !this.layer.projection.equals(
+        if (bounds && !this.layer.projection.equals(
                 this.layer.map.getProjectionObject())) {
             bounds = bounds.clone().transform(
                 this.layer.map.getProjectionObject(), this.layer.projection
@@ -168,11 +168,11 @@ OpenLayers.Strategy.BBOX = OpenLayers.Class(OpenLayers.Strategy, {
      * {Boolean} 
      */
     invalidBounds: function(mapBounds) {
-        if(!mapBounds) {
+        if (!mapBounds) {
             mapBounds = this.getMapBounds();
         }
         var invalid = !this.bounds || !this.bounds.containsBounds(mapBounds);
-        if(!invalid && this.resFactor) {
+        if (!invalid && this.resFactor) {
             var ratio = this.resolution / this.layer.map.getResolution();
             invalid = (ratio >= this.resFactor || ratio <= (1 / this.resFactor));
         }
@@ -187,7 +187,7 @@ OpenLayers.Strategy.BBOX = OpenLayers.Class(OpenLayers.Strategy, {
      *      retrieved from the map object if not provided
      */
     calculateBounds: function(mapBounds) {
-        if(!mapBounds) {
+        if (!mapBounds) {
             mapBounds = this.getMapBounds();
         }
         var center = mapBounds.getCenterLonLat();
@@ -265,14 +265,14 @@ OpenLayers.Strategy.BBOX = OpenLayers.Class(OpenLayers.Strategy, {
         this.layer.destroyFeatures();
         if (resp.success()) {
             var features = resp.features;
-            if(features && features.length > 0) {
+            if (features && features.length > 0) {
                 var remote = this.layer.projection;
                 var local = this.layer.map.getProjectionObject();
-                if(!local.equals(remote)) {
+                if (!local.equals(remote)) {
                     var geom;
                     for(var i=0, len=features.length; i<len; ++i) {
                         geom = features[i].geometry;
-                        if(geom) {
+                        if (geom) {
                             geom.transform(remote, local);
                         }
                     }

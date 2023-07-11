@@ -174,11 +174,11 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
      */
     updateHandler: function(handler, options) {
         var active = this.active;
-        if(active) {
+        if (active) {
             this.deactivate();
         }
         this.handler = new handler(this, this.callbacks, options);
-        if(active) {
+        if (active) {
             this.activate();
         }
     },
@@ -258,7 +258,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
      */
     measure: function(geometry, eventType) {
         var stat, order;
-        if(geometry.CLASS_NAME.indexOf('LineString') > -1) {
+        if (geometry.CLASS_NAME.indexOf('LineString') > -1) {
             stat = this.getBestLength(geometry);
             order = 1;
         } else {
@@ -290,7 +290,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
         for(var i=0, len=units.length; i<len; ++i) {
             unit = units[i];
             area = this.getArea(geometry, unit);
-            if(area > 1) {
+            if (area > 1) {
                 break;
             }
         }
@@ -309,7 +309,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
      */
     getArea: function(geometry, units) {
         var area, geomUnits;
-        if(this.geodesic) {
+        if (this.geodesic) {
             area = geometry.getGeodesicArea(this.map.getProjectionObject());
             geomUnits = "m";
         } else {
@@ -317,7 +317,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
             geomUnits = this.map.getUnits();
         }
         var inPerDisplayUnit = OpenLayers.INCHES_PER_UNIT[units];
-        if(inPerDisplayUnit) {
+        if (inPerDisplayUnit) {
             var inPerMapUnit = OpenLayers.INCHES_PER_UNIT[geomUnits];
             area *= Math.pow((inPerMapUnit / inPerDisplayUnit), 2);
         }
@@ -341,7 +341,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
         for(var i=0, len=units.length; i<len; ++i) {
             unit = units[i];
             length = this.getLength(geometry, unit);
-            if(length > 1) {
+            if (length > 1) {
                 break;
             }
         }
@@ -360,7 +360,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
      */
     getLength: function(geometry, units) {
         var length, geomUnits;
-        if(this.geodesic) {
+        if (this.geodesic) {
             length = geometry.getGeodesicLength(this.map.getProjectionObject());
             geomUnits = "m";
         } else {
@@ -368,7 +368,7 @@ OpenLayers.Control.Measure = OpenLayers.Class(OpenLayers.Control, {
             geomUnits = this.map.getUnits();
         }
         var inPerDisplayUnit = OpenLayers.INCHES_PER_UNIT[units];
-        if(inPerDisplayUnit) {
+        if (inPerDisplayUnit) {
             var inPerMapUnit = OpenLayers.INCHES_PER_UNIT[geomUnits];
             length *= (inPerMapUnit / inPerDisplayUnit);
         }

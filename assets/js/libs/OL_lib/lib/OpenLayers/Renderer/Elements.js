@@ -447,7 +447,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
         this.rendererRoot.appendChild(this.root);
         this.container.appendChild(this.rendererRoot);
         
-        if(options && (options.zIndexing || options.yOrdering)) {
+        if (options && (options.zIndexing || options.yOrdering)) {
             this.indexer = new OpenLayers.ElementsIndexer(options.yOrdering);
         }
     },
@@ -628,7 +628,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
         node._style = style;
 
         var drawResult = this.drawGeometryNode(node, geometry, style);
-        if(drawResult === false) {
+        if (drawResult === false) {
             return false;
         }
          
@@ -733,7 +733,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
         var drawn;
         switch (geometry.CLASS_NAME) {
             case "OpenLayers.Geometry.Point":
-                if(style.graphic === false) {
+                if (style.graphic === false) {
                     options.isFilled = false;
                     options.isStroked = false;
                 }
@@ -1014,7 +1014,7 @@ OpenLayers.Renderer.Elements = OpenLayers.Class(OpenLayers.Renderer, {
      */
     moveRoot: function(renderer) {
         var root = this.root;
-        if(renderer.root.parentNode == this.rendererRoot) {
+        if (renderer.root.parentNode == this.rendererRoot) {
             root = renderer.root;
         }
         root.parentNode.removeChild(root);

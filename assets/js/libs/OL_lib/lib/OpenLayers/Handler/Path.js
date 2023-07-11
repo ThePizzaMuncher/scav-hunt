@@ -136,7 +136,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      */
     destroyPersistedFeature: function() {
         var layer = this.layer;
-        if(layer && layer.features.length > 2) {
+        if (layer && layer.features.length > 2) {
             this.layer.features[0].destroy();
         }
     },
@@ -146,7 +146,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      * Destroy the temporary point.
      */
     removePoint: function() {
-        if(this.point) {
+        if (this.point) {
             this.layer.removeFeatures([this.point]);
         }
     },
@@ -329,7 +329,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      * drawing - {Boolean} Indicate if we're currently drawing.
      */
     modifyFeature: function(pixel, drawing) {
-        if(!this.line) {
+        if (!this.line) {
             this.createFeature(pixel);
         }
         var lonlat = this.layer.getLonLatFromViewPortPx(pixel); 
@@ -370,7 +370,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      */
     getGeometry: function() {
         var geometry = this.line && this.line.geometry;
-        if(geometry && this.multi) {
+        if (geometry && this.multi) {
             geometry = new OpenLayers.Geometry.MultiLineString([geometry]);
         }
         return geometry;
@@ -421,7 +421,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      */
     down: function(evt) {
         var stopDown = this.stopDown;
-        if(this.freehandMode(evt)) {
+        if (this.freehandMode(evt)) {
             stopDown = true;
             if (this.touch) {
                 this.modifyFeature(evt.xy, !!this.lastUp);
@@ -451,11 +451,11 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      * {Boolean} Allow event propagation
      */
     move: function (evt) {
-        if(this.stoppedDown && this.freehandMode(evt)) {
-            if(this.persist) {
+        if (this.stoppedDown && this.freehandMode(evt)) {
+            if (this.persist) {
                 this.destroyPersistedFeature();
             }
-            if(this.maxVertices && this.line &&
+            if (this.maxVertices && this.line &&
                     this.line.geometry.components.length === this.maxVertices) {
                 this.removePoint();
                 this.finalize();
@@ -483,7 +483,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      */
     up: function (evt) {
         if (this.mouseDown && (!this.lastUp || !this.lastUp.equals(evt.xy))) {
-            if(this.stoppedDown && this.freehandMode(evt)) {
+            if (this.stoppedDown && this.freehandMode(evt)) {
                 if (this.persist) {
                     this.destroyPersistedFeature();
                 }
@@ -495,12 +495,12 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
                     if (this.touch) {
                         this.modifyFeature(evt.xy);
                     }
-                    if(this.lastUp == null && this.persist) {
+                    if (this.lastUp == null && this.persist) {
                         this.destroyPersistedFeature();
                     }
                     this.addPoint(evt.xy);
                     this.lastUp = evt.xy;
-                    if(this.line.geometry.components.length === this.maxVertices + 1) {
+                    if (this.line.geometry.components.length === this.maxVertices + 1) {
                         this.finishGeometry();
                     }
                 }
@@ -533,7 +533,7 @@ OpenLayers.Handler.Path = OpenLayers.Class(OpenLayers.Handler.Point, {
      * {Boolean} Allow event propagation
      */
     dblclick: function(evt) {
-        if(!this.freehandMode(evt)) {
+        if (!this.freehandMode(evt)) {
             this.finishGeometry();
         }
         return false;

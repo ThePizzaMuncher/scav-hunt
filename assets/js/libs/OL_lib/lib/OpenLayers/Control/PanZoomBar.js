@@ -284,7 +284,7 @@ OpenLayers.Control.PanZoomBar = OpenLayers.Class(OpenLayers.Control.PanZoom, {
         OpenLayers.Control.PanZoom.prototype.onButtonClick.apply(this, arguments);
         if (evt.buttonElement === this.zoombarDiv) {
             var levels = evt.buttonXY.y / this.zoomStopHeight;
-            if(this.forceFixedZoomLevel || !this.map.fractionalZoom) {
+            if (this.forceFixedZoomLevel || !this.map.fractionalZoom) {
                 levels = Math.floor(levels);
             }    
             var zoom = (this.map.getNumZoomLevels() - 1) - levels; 

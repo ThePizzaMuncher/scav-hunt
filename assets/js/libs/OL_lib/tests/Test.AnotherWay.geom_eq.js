@@ -19,17 +19,17 @@
      *     replaced with string representations of the above arguments.
      */
     function assertEqual(got, expected, msg) {
-        if(got === undefined) {
+        if (got === undefined) {
             got = "undefined";
         } else if (got === null) {
             got = "null";
         }
-        if(expected === undefined) {
+        if (expected === undefined) {
             expected = "undefined";
         } else if (expected === null) {
             expected = "null";
         }
-        if(got != expected) {
+        if (got != expected) {
             throw msg + ": got '" + got + "' but expected '" + expected + "'";
         }
     }
@@ -48,17 +48,17 @@
      */
     function assertFloatEqual(got, expected, msg) {
         var OpenLayers = Test.AnotherWay._g_test_iframe.OpenLayers;
-        if(got === undefined) {
+        if (got === undefined) {
             got = "undefined";
         } else if (got === null) {
             got = "null";
         }
-        if(expected === undefined) {
+        if (expected === undefined) {
             expected = "undefined";
         } else if (expected === null) {
             expected = "null";
         }
-        if(Math.abs(got - expected) > Math.pow(10, -OpenLayers.Util.DEFAULT_PRECISION)) {
+        if (Math.abs(got - expected) > Math.pow(10, -OpenLayers.Util.DEFAULT_PRECISION)) {
             throw msg + ": got '" + got + "' but expected '" + expected + "'";
         }
     }
@@ -85,7 +85,7 @@
         // compare classes
         assertEqual(got.CLASS_NAME, expected.CLASS_NAME, "Object class mismatch");
         
-        if(got instanceof OpenLayers.Geometry.Point) {
+        if (got instanceof OpenLayers.Geometry.Point) {
             // compare points
             assertFloatEqual(got.x, expected.x, "x mismatch");
             assertFloatEqual(got.y, expected.y, "y mismatch");

@@ -223,7 +223,7 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
         this.deleteCodes = [46, 68];
         this.mode = OpenLayers.Control.ModifyFeature.RESHAPE;
         OpenLayers.Control.prototype.initialize.apply(this, [options]);
-        if(!(OpenLayers.Util.isArray(this.deleteCodes))) {
+        if (!(OpenLayers.Util.isArray(this.deleteCodes))) {
             this.deleteCodes = [this.deleteCodes];
         }
         
@@ -318,7 +318,7 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
     deactivate: function() {
         var deactivated = false;
         // the return from the controls is unimportant in this case
-        if(OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
+        if (OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
             this.moveLayerBack();
             this.map.events.un({
                 "removelayer": this.handleMapEvents,
@@ -398,11 +398,11 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
         this.vertices = [];
         this.layer.destroyFeatures(this.virtualVertices, {silent: true});
         this.virtualVertices = [];
-        if(this.dragHandle) {
+        if (this.dragHandle) {
             this.layer.destroyFeatures([this.dragHandle], {silent: true});
             delete this.dragHandle;
         }
-        if(this.radiusHandle) {
+        if (this.radiusHandle) {
             this.layer.destroyFeatures([this.radiusHandle], {silent: true});
             delete this.radiusHandle;
         }
@@ -467,7 +467,7 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
          * 4) dragging a real vertex
          * 5) dragging a radius handle
          */
-        if(this.feature.geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
+        if (this.feature.geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
             // dragging a simple point
             this.layer.events.triggerEvent("vertexmodified", {
                 vertex: vertex.geometry,
@@ -475,7 +475,7 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
                 pixel: pixel
             });
         } else {
-            if(vertex._index) {
+            if (vertex._index) {
                 // dragging a virtual vertex
                 vertex.geometry.parent.addComponent(vertex.geometry,
                                                     vertex._index);
@@ -483,15 +483,15 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
                 delete vertex._index;
                 OpenLayers.Util.removeItem(this.virtualVertices, vertex);
                 this.vertices.push(vertex);
-            } else if(vertex == this.dragHandle) {
+            } else if (vertex == this.dragHandle) {
                 // dragging a drag handle
                 this.layer.removeFeatures(this.vertices, {silent: true});
                 this.vertices = [];
-                if(this.radiusHandle) {
+                if (this.radiusHandle) {
                     this.layer.destroyFeatures([this.radiusHandle], {silent: true});
                     this.radiusHandle = null;
                 }
-            } else if(vertex !== this.radiusHandle) {
+            } else if (vertex !== this.radiusHandle) {
                 // dragging a real vertex
                 this.layer.events.triggerEvent("vertexmodified", {
                     vertex: vertex.geometry,
@@ -500,7 +500,7 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
                 });
             }
             // dragging a radius handle - no special treatment
-            if(this.virtualVertices.length > 0) {
+            if (this.virtualVertices.length > 0) {
                 this.layer.destroyFeatures(this.virtualVertices, {silent: true});
                 this.virtualVertices = [];
             }
@@ -534,7 +534,7 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
      *     INSERT or DELETE, the state is set to UPDATE.
      */
     setFeatureState: function() {
-        if(this.feature.state != OpenLayers.State.INSERT &&
+        if (this.feature.state != OpenLayers.State.INSERT &&
            this.feature.state != OpenLayers.State.DELETE) {
             this.feature.state = OpenLayers.State.UPDATE;
             if (this.modified && this._originalGeometry) {
@@ -551,32 +551,32 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
      * Method: resetVertices
      */
     resetVertices: function() {
-        if(this.vertices.length > 0) {
+        if (this.vertices.length > 0) {
             this.layer.removeFeatures(this.vertices, {silent: true});
             this.vertices = [];
         }
-        if(this.virtualVertices.length > 0) {
+        if (this.virtualVertices.length > 0) {
             this.layer.removeFeatures(this.virtualVertices, {silent: true});
             this.virtualVertices = [];
         }
-        if(this.dragHandle) {
+        if (this.dragHandle) {
             this.layer.destroyFeatures([this.dragHandle], {silent: true});
             this.dragHandle = null;
         }
-        if(this.radiusHandle) {
+        if (this.radiusHandle) {
             this.layer.destroyFeatures([this.radiusHandle], {silent: true});
             this.radiusHandle = null;
         }
-        if(this.feature &&
+        if (this.feature &&
            this.feature.geometry.CLASS_NAME != "OpenLayers.Geometry.Point") {
-            if((this.mode & OpenLayers.Control.ModifyFeature.DRAG)) {
+            if ((this.mode & OpenLayers.Control.ModifyFeature.DRAG)) {
                 this.collectDragHandle();
             }
-            if((this.mode & (OpenLayers.Control.ModifyFeature.ROTATE |
+            if ((this.mode & (OpenLayers.Control.ModifyFeature.ROTATE |
                              OpenLayers.Control.ModifyFeature.RESIZE))) {
                 this.collectRadiusHandle();
             }
-            if(this.mode & OpenLayers.Control.ModifyFeature.RESHAPE){
+            if (this.mode & OpenLayers.Control.ModifyFeature.RESHAPE){
                 // Don't collect vertices when we're resizing
                 if (!(this.mode & OpenLayers.Control.ModifyFeature.RESIZE)){
                     this.collectVertices();
@@ -599,7 +599,7 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
         var code = evt.keyCode;
         
         // check for delete key
-        if(this.feature &&
+        if (this.feature &&
            OpenLayers.Util.indexOf(this.deleteCodes, code) != -1) {
             var vertex = this.layer.getFeatureFromEvent(this.handlers.drag.evt);
             if (vertex &&
@@ -635,19 +635,19 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
         var control = this;
         function collectComponentVertices(geometry) {
             var i, vertex, component, len;
-            if(geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
+            if (geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
                 vertex = new OpenLayers.Feature.Vector(geometry);
                 vertex._sketch = true;
                 vertex.renderIntent = control.vertexRenderIntent;
                 control.vertices.push(vertex);
             } else {
                 var numVert = geometry.components.length;
-                if(geometry.CLASS_NAME == "OpenLayers.Geometry.LinearRing") {
+                if (geometry.CLASS_NAME == "OpenLayers.Geometry.LinearRing") {
                     numVert -= 1;
                 }
                 for(i=0; i<numVert; ++i) {
                     component = geometry.components[i];
-                    if(component.CLASS_NAME == "OpenLayers.Geometry.Point") {
+                    if (component.CLASS_NAME == "OpenLayers.Geometry.Point") {
                         vertex = new OpenLayers.Feature.Vector(component);
                         vertex._sketch = true;
                         vertex.renderIntent = control.vertexRenderIntent;
@@ -662,7 +662,7 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
                     for(i=0, len=geometry.components.length; i<len-1; ++i) {
                         var prevVertex = geometry.components[i];
                         var nextVertex = geometry.components[i + 1];
-                        if(prevVertex.CLASS_NAME == "OpenLayers.Geometry.Point" &&
+                        if (prevVertex.CLASS_NAME == "OpenLayers.Geometry.Point" &&
                            nextVertex.CLASS_NAME == "OpenLayers.Geometry.Point") {
                             var x = (prevVertex.x + nextVertex.x) / 2;
                             var y = (prevVertex.y + nextVertex.y) / 2;
@@ -731,14 +731,14 @@ OpenLayers.Control.ModifyFeature = OpenLayers.Class(OpenLayers.Control, {
             var dy1 = this.y - originGeometry.y;
             var dx0 = dx1 - x;
             var dy0 = dy1 - y;
-            if(rotate) {
+            if (rotate) {
                 var a0 = Math.atan2(dy0, dx0);
                 var a1 = Math.atan2(dy1, dx1);
                 var angle = a1 - a0;
                 angle *= 180 / Math.PI;
                 geometry.rotate(angle, originGeometry);
             }
-            if(resize) {
+            if (resize) {
                 var scale, ratio;
                 // 'resize' together with 'reshape' implies that the aspect 
                 // ratio of the geometry will not be preserved whilst resizing 

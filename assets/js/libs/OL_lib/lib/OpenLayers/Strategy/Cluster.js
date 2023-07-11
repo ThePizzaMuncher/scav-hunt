@@ -76,7 +76,7 @@ OpenLayers.Strategy.Cluster = OpenLayers.Class(OpenLayers.Strategy, {
      */
     activate: function() {
         var activated = OpenLayers.Strategy.prototype.activate.call(this);
-        if(activated) {
+        if (activated) {
             this.layer.events.on({
                 "beforefeaturesadded": this.cacheFeatures,
                 "featuresremoved": this.clearCache,
@@ -97,7 +97,7 @@ OpenLayers.Strategy.Cluster = OpenLayers.Class(OpenLayers.Strategy, {
      */
     deactivate: function() {
         var deactivated = OpenLayers.Strategy.prototype.deactivate.call(this);
-        if(deactivated) {
+        if (deactivated) {
             this.clearCache();
             this.layer.events.un({
                 "beforefeaturesadded": this.cacheFeatures,
@@ -122,7 +122,7 @@ OpenLayers.Strategy.Cluster = OpenLayers.Class(OpenLayers.Strategy, {
      */
     cacheFeatures: function(event) {
         var propagate = true;
-        if(!this.clustering) {
+        if (!this.clustering) {
             this.clearCache();
             this.features = event.features;
             this.cluster();
@@ -136,7 +136,7 @@ OpenLayers.Strategy.Cluster = OpenLayers.Class(OpenLayers.Strategy, {
      * Clear out the cached features.
      */
     clearCache: function() {
-        if(!this.clustering) {
+        if (!this.clustering) {
             this.features = null;
         }
     },
@@ -150,25 +150,25 @@ OpenLayers.Strategy.Cluster = OpenLayers.Class(OpenLayers.Strategy, {
      *     result of a moveend event.
      */
     cluster: function(event) {
-        if((!event || event.zoomChanged) && this.features) {
+        if ((!event || event.zoomChanged) && this.features) {
             var resolution = this.layer.map.getResolution();
-            if(resolution != this.resolution || !this.clustersExist()) {
+            if (resolution != this.resolution || !this.clustersExist()) {
                 this.resolution = resolution;
                 var clusters = [];
                 var feature, clustered, cluster;
                 for(var i=0; i<this.features.length; ++i) {
                     feature = this.features[i];
-                    if(feature.geometry) {
+                    if (feature.geometry) {
                         clustered = false;
                         for(var j=clusters.length-1; j>=0; --j) {
                             cluster = clusters[j];
-                            if(this.shouldCluster(cluster, feature)) {
+                            if (this.shouldCluster(cluster, feature)) {
                                 this.addToCluster(cluster, feature);
                                 clustered = true;
                                 break;
                             }
                         }
-                        if(!clustered) {
+                        if (!clustered) {
                             clusters.push(this.createCluster(this.features[i]));
                         }
                     }
@@ -176,14 +176,14 @@ OpenLayers.Strategy.Cluster = OpenLayers.Class(OpenLayers.Strategy, {
                 this.clustering = true;
                 this.layer.removeAllFeatures();
                 this.clustering = false;
-                if(clusters.length > 0) {
-                    if(this.threshold > 1) {
+                if (clusters.length > 0) {
+                    if (this.threshold > 1) {
                         var clone = clusters.slice();
                         clusters = [];
                         var candidate;
                         for(var i=0, len=clone.length; i<len; ++i) {
                             candidate = clone[i];
-                            if(candidate.attributes.count < this.threshold) {
+                            if (candidate.attributes.count < this.threshold) {
                                 Array.prototype.push.apply(clusters, candidate.cluster);
                             } else {
                                 clusters.push(candidate);
@@ -211,11 +211,11 @@ OpenLayers.Strategy.Cluster = OpenLayers.Class(OpenLayers.Strategy, {
      */
     clustersExist: function() {
         var exist = false;
-        if(this.clusters && this.clusters.length > 0 &&
+        if (this.clusters && this.clusters.length > 0 &&
            this.clusters.length == this.layer.features.length) {
             exist = true;
             for(var i=0; i<this.clusters.length; ++i) {
-                if(this.clusters[i] != this.layer.features[i]) {
+                if (this.clusters[i] != this.layer.features[i]) {
                     exist = false;
                     break;
                 }

@@ -173,7 +173,7 @@ OpenLayers.Util.getArgs = function(url) {
  * OpenLayers.Util.getElement will eventually be removed. Do not depend on 
  * window.$ being defined by OpenLayers.
  */
-if(typeof window.$  === "undefined") {
+if (typeof window.$  === "undefined") {
     window.$ = OpenLayers.Util.getElement;
 }
 
@@ -218,7 +218,7 @@ OpenLayers.nullHandler = function(request) {
 OpenLayers.loadURL = function(uri, params, caller,
                                   onComplete, onFailure) {
     
-    if(typeof params == 'string') {
+    if (typeof params == 'string') {
         params = OpenLayers.Util.getParameters(params);
     }
     var success = (onComplete) ? onComplete : OpenLayers.nullHandler;
@@ -663,7 +663,7 @@ OpenLayers.Ajax.Request = OpenLayers.Class(OpenLayers.Ajax.Base, {
      */
     dispatchException: function(exception) {
         var handler = this.options.onException;
-        if(handler) {
+        if (handler) {
             // call options.onException and alert any other listeners
             handler(this, exception);
             OpenLayers.Ajax.Responders.dispatch('onException', this, exception);
@@ -672,12 +672,12 @@ OpenLayers.Ajax.Request = OpenLayers.Class(OpenLayers.Ajax.Base, {
             var listener = false;
             var responders = OpenLayers.Ajax.Responders.responders;
             for (var i = 0; i < responders.length; i++) {
-                if(responders[i].onException) {
+                if (responders[i].onException) {
                     listener = true;
                     break;
                 }
             }
-            if(listener) {
+            if (listener) {
                 // call all listeners
                 OpenLayers.Ajax.Responders.dispatch('onException', this, exception);
             } else {
@@ -735,7 +735,7 @@ OpenLayers.Ajax.Response = OpenLayers.Class({
                 '' : String(transport.responseText);
         }
         
-        if(readyState == 4) {
+        if (readyState == 4) {
             var xml = transport.responseXML;
             this.responseXML  = xml === undefined ? null : xml;
         }
@@ -1866,12 +1866,12 @@ OpenLayers.Util.extend(OpenLayers.Format.XML.prototype, {
         var childValue;
         while(child) {
             childValue = child.nodeValue;
-            if(childValue) {
+            if (childValue) {
                 value += childValue;
             }
             child = child.nextSibling;
         }
-        if(value == "" && def != undefined) {
+        if (value == "" && def != undefined) {
             value = def;
         }
         return value;
@@ -2154,7 +2154,7 @@ OpenLayers.Tile.WFS = OpenLayers.Class(OpenLayers.Tile, {
         this.destroyAllFeatures();
         this.features = null;
         this.url = null;
-        if(this.request) {
+        if (this.request) {
             this.request.abort();
             //this.request.destroy();
             this.request = null;
@@ -2198,7 +2198,7 @@ OpenLayers.Tile.WFS = OpenLayers.Class(OpenLayers.Tile, {
     * failure - {function}
     */
     loadFeaturesForRegion:function(success, failure) {
-        if(this.request) {
+        if (this.request) {
             this.request.abort();
         }
         this.request = OpenLayers.Request.GET({
@@ -2729,7 +2729,7 @@ OpenLayers.Layer.WFS = OpenLayers.Class(
      * Call the onMapResize method of the appropriate parent class.
      */
     onMapResize: function() {
-        if(this.vectorMode) {
+        if (this.vectorMode) {
             OpenLayers.Layer.Vector.prototype.onMapResize.apply(this,
                                                                 arguments);
         } else {
@@ -2743,7 +2743,7 @@ OpenLayers.Layer.WFS = OpenLayers.Class(
      * Call the display method of the appropriate parent class.
      */
     display: function() {
-        if(this.vectorMode) {
+        if (this.vectorMode) {
             OpenLayers.Layer.Vector.prototype.display.apply(this,
                                                                 arguments);
         } else {
@@ -3057,7 +3057,7 @@ OpenLayers.Layer.VirtualEarth = OpenLayers.Class(
         OpenLayers.Layer.EventPane.prototype.initialize.apply(this, arguments);
         OpenLayers.Layer.FixedZoomLevels.prototype.initialize.apply(this,
                                                                     arguments);
-        if(this.sphericalMercator) {
+        if (this.sphericalMercator) {
             OpenLayers.Util.extend(this, OpenLayers.Layer.SphericalMercator);
             this.initMercatorParameters();
         }
@@ -3091,7 +3091,7 @@ OpenLayers.Layer.VirtualEarth = OpenLayers.Class(
 
             } catch (e) { }
             this.mapObject.HideDashboard();
-            if(typeof this.mapObject.SetAnimationEnabled == "function") {
+            if (typeof this.mapObject.SetAnimationEnabled == "function") {
                 this.mapObject.SetAnimationEnabled(this.animationEnabled);
             }
         }
@@ -3266,7 +3266,7 @@ OpenLayers.Layer.VirtualEarth = OpenLayers.Class(
      */
     getMapObjectLonLatFromLonLat: function(lon, lat) {
         var veLatLong;
-        if(this.sphericalMercator) {
+        if (this.sphericalMercator) {
             var lonlat = this.inverseMercator(lon, lat);
             veLatLong = new VELatLong(lonlat.lat, lonlat.lon);
         } else {
@@ -4122,7 +4122,7 @@ OpenLayers.Layer.Yahoo = OpenLayers.Class(
         OpenLayers.Layer.EventPane.prototype.initialize.apply(this, arguments);
         OpenLayers.Layer.FixedZoomLevels.prototype.initialize.apply(this,
                                                                     arguments);
-        if(this.sphericalMercator) {
+        if (this.sphericalMercator) {
             OpenLayers.Util.extend(this, OpenLayers.Layer.SphericalMercator);
             this.initMercatorParameters();
         }
@@ -4391,7 +4391,7 @@ OpenLayers.Layer.Yahoo = OpenLayers.Class(
      */
     getMapObjectLonLatFromLonLat: function(lon, lat) {
         var yLatLong;
-        if(this.sphericalMercator) {
+        if (this.sphericalMercator) {
             var lonlat = this.inverseMercator(lon, lat);
             yLatLong = new YGeoPoint(lonlat.lat, lonlat.lon);
         } else {
@@ -4523,7 +4523,7 @@ OpenLayers.Layer.GML = OpenLayers.Class(OpenLayers.Layer.Vector, {
      */
     setVisibility: function(visibility, noEvent) {
         OpenLayers.Layer.Vector.prototype.setVisibility.apply(this, arguments);
-        if(this.visibility && !this.loaded){
+        if (this.visibility && !this.loaded){
             // Load the GML
             this.loadGML();
         }
@@ -4545,7 +4545,7 @@ OpenLayers.Layer.GML = OpenLayers.Class(OpenLayers.Layer.Vector, {
         // otherwise we can get a race condition where the root HTML DOM is
         // loaded after the GML is paited.
         // See http://trac.openlayers.org/ticket/404
-        if(this.visibility && !this.loaded){
+        if (this.visibility && !this.loaded){
             this.loadGML();
         }
     },
@@ -4785,12 +4785,12 @@ OpenLayers.Renderer.NG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      *     undefined if the feature had no geometry
      */
     drawFeature: function(feature, style) {
-        if(style == null) {
+        if (style == null) {
             style = feature.style;
         }
         if (feature.geometry) {
             var rendered = this.drawGeometry(feature.geometry, style, feature.id);
-            if(rendered !== false && style.label) {
+            if (rendered !== false && style.label) {
                 var location = feature.geometry.getCentroid();
                 this.drawText(feature.id, style, location);
             } else {
@@ -4825,14 +4825,14 @@ OpenLayers.Renderer.NG = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         label._style = style;
         label._x = location.x;
         label._y = location.y;
-        if(style.labelXOffset || style.labelYOffset) {
+        if (style.labelXOffset || style.labelYOffset) {
             var xOffset = isNaN(style.labelXOffset) ? 0 : style.labelXOffset;
             var yOffset = isNaN(style.labelYOffset) ? 0 : style.labelYOffset;
             var res = this.getResolution();
             location.move(xOffset*res, yOffset*res);
         }
 
-        if(label.parentNode !== this.textRoot) {
+        if (label.parentNode !== this.textRoot) {
             this.textRoot.appendChild(label);
         }
 
@@ -5092,7 +5092,7 @@ OpenLayers.Renderer.SVG2 = OpenLayers.Class(OpenLayers.Renderer.NG, {
                 // prevents various rendering issues in Safari and FF
                 var parent = node.parentNode;
                 var nextSibling = node.nextSibling;
-                if(parent) {
+                if (parent) {
                     parent.removeChild(node);
                 }
 
@@ -5113,9 +5113,9 @@ OpenLayers.Renderer.SVG2 = OpenLayers.Class(OpenLayers.Renderer.NG, {
 
                 // now that the node has all its new properties, insert it
                 // back into the dom where it was
-                if(nextSibling) {
+                if (nextSibling) {
                     parent.insertBefore(node, nextSibling);
-                } else if(parent) {
+                } else if (parent) {
                     parent.appendChild(node);
                 }
             } else {
@@ -5606,7 +5606,7 @@ OpenLayers.Renderer.SVG2 = OpenLayers.Class(OpenLayers.Renderer.NG, {
      */
     getFeatureIdFromEvent: function(evt) {
         var featureId = OpenLayers.Renderer.Elements.prototype.getFeatureIdFromEvent.apply(this, arguments);
-        if(!featureId) {
+        if (!featureId) {
             var target = evt.target;
             featureId = target.parentNode && target != this.rendererRoot ?
                 target.parentNode._featureId : undefined;

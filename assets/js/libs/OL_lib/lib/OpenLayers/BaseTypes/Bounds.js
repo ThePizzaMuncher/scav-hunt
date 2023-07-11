@@ -262,7 +262,7 @@ OpenLayers.Bounds = OpenLayers.Class({
      * {<OpenLayers.LonLat>} The center of the bounds in map space.
      */
     getCenterLonLat:function() {
-        if(!this.centerLonLat) {
+        if (!this.centerLonLat) {
             this.centerLonLat = new OpenLayers.LonLat(
                 (this.left + this.right) / 2, (this.bottom + this.top) / 2
             );
@@ -286,14 +286,14 @@ OpenLayers.Bounds = OpenLayers.Class({
      *                      from origin.
      */
     scale: function(ratio, origin){
-        if(origin == null){
+        if (origin == null){
             origin = this.getCenterLonLat();
         }
         
         var origx,origy;
 
         // get origin coordinates
-        if(origin.CLASS_NAME == "OpenLayers.LonLat"){
+        if (origin.CLASS_NAME == "OpenLayers.LonLat"){
             origx = origin.lon;
             origy = origin.lat;
         } else {

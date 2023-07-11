@@ -111,7 +111,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
      * {Array(<OpenLayers.Feature.Vector>)} An array of features.
      */
     read: function(data) {
-        if(typeof data == "string") { 
+        if (typeof data == "string") { 
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         var featureNodes = this.getElementsByTagNameNS(data.documentElement,
@@ -120,7 +120,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
         var features = [];
         for(var i=0; i<featureNodes.length; i++) {
             var feature = this.parseFeature(featureNodes[i]);
-            if(feature) {
+            if (feature) {
                 features.push(feature);
             }
         }
@@ -147,10 +147,10 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
         for(var i=0; i<order.length; ++i) {
             type = order[i];
             nodeList = this.getElementsByTagNameNS(node, this.gmlns, type);
-            if(nodeList.length > 0) {
+            if (nodeList.length > 0) {
                 // only deal with first geometry of this type
                 parser = this.parseGeometry[type.toLowerCase()];
-                if(parser) {
+                if (parser) {
                     geometry = parser.apply(this, [nodeList[0]]);
                     if (this.internalProjection && this.externalProjection) {
                         geometry.transform(this.externalProjection, 
@@ -172,7 +172,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             var parentNode = boxNode.parentNode;
             var parentName = parentNode.localName ||
                              parentNode.nodeName.split(":").pop();
-            if(parentName === "boundedBy") {
+            if (parentName === "boundedBy") {
                 bounds = box;
             } else {
                 geometry = box.toGeometry();
@@ -181,7 +181,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
         
         // construct feature (optionally with attributes)
         var attributes;
-        if(this.extractAttributes) {
+        if (this.extractAttributes) {
             attributes = this.parseAttributes(node);
         }
         var feature = new OpenLayers.Feature.Vector(geometry, attributes);
@@ -197,10 +197,10 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
         var childNode = node.firstChild;
         var fid;
         while(childNode) {
-            if(childNode.nodeType == 1) {
+            if (childNode.nodeType == 1) {
                 fid = childNode.getAttribute("fid") ||
                       childNode.getAttribute("id");
-                if(fid) {
+                if (fid) {
                     break;
                 }
             }
@@ -240,17 +240,17 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
 
             // look for <gml:pos>
             var nodeList = this.getElementsByTagNameNS(node, this.gmlns, "pos");
-            if(nodeList.length > 0) {
+            if (nodeList.length > 0) {
                 coordString = nodeList[0].firstChild.nodeValue;
                 coordString = coordString.replace(this.regExes.trimSpace, "");
                 coords = coordString.split(this.regExes.splitSpace);
             }
 
             // look for <gml:coordinates>
-            if(coords.length == 0) {
+            if (coords.length == 0) {
                 nodeList = this.getElementsByTagNameNS(node, this.gmlns,
                                                        "coordinates");
-                if(nodeList.length > 0) {
+                if (nodeList.length > 0) {
                     coordString = nodeList[0].firstChild.nodeValue;
                     coordString = coordString.replace(this.regExes.removeSpace,
                                                       "");
@@ -259,15 +259,15 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             }
 
             // look for <gml:coord>
-            if(coords.length == 0) {
+            if (coords.length == 0) {
                 nodeList = this.getElementsByTagNameNS(node, this.gmlns,
                                                        "coord");
-                if(nodeList.length > 0) {
+                if (nodeList.length > 0) {
                     var xList = this.getElementsByTagNameNS(nodeList[0],
                                                             this.gmlns, "X");
                     var yList = this.getElementsByTagNameNS(nodeList[0],
                                                             this.gmlns, "Y");
-                    if(xList.length > 0 && yList.length > 0) {
+                    if (xList.length > 0 && yList.length > 0) {
                         coords = [xList[0].firstChild.nodeValue,
                                   yList[0].firstChild.nodeValue];
                     }
@@ -275,7 +275,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             }
                 
             // preserve third dimension
-            if(coords.length == 2) {
+            if (coords.length == 2) {
                 coords[2] = null;
             }
             
@@ -304,11 +304,11 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             var nodeList = this.getElementsByTagNameNS(node, this.gmlns,
                                                        "Point");
             var components = [];
-            if(nodeList.length > 0) {
+            if (nodeList.length > 0) {
                 var point;
                 for(var i=0; i<nodeList.length; ++i) {
                     point = this.parseGeometry.point.apply(this, [nodeList[i]]);
-                    if(point) {
+                    if (point) {
                         components.push(point);
                     }
                 }
@@ -339,7 +339,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
 
             // look for <gml:posList>
             nodeList = this.getElementsByTagNameNS(node, this.gmlns, "posList");
-            if(nodeList.length > 0) {
+            if (nodeList.length > 0) {
                 coordString = this.getChildValue(nodeList[0]);
                 coordString = coordString.replace(this.regExes.trimSpace, "");
                 coords = coordString.split(this.regExes.splitSpace);
@@ -359,10 +359,10 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             }
 
             // look for <gml:coordinates>
-            if(coords.length == 0) {
+            if (coords.length == 0) {
                 nodeList = this.getElementsByTagNameNS(node, this.gmlns,
                                                        "coordinates");
-                if(nodeList.length > 0) {
+                if (nodeList.length > 0) {
                     coordString = this.getChildValue(nodeList[0]);
                     coordString = coordString.replace(this.regExes.trimSpace,
                                                       "");
@@ -371,7 +371,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
                     var pointList = coordString.split(this.regExes.splitSpace);
                     for(var i=0; i<pointList.length; ++i) {
                         coords = pointList[i].split(",");
-                        if(coords.length == 2) {
+                        if (coords.length == 2) {
                             coords[2] = null;
                         }
                         if (this.xy) {
@@ -388,8 +388,8 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             }
 
             var line = null;
-            if(points.length != 0) {
-                if(ring) {
+            if (points.length != 0) {
+                if (ring) {
                     line = new OpenLayers.Geometry.LinearRing(points);
                 } else {
                     line = new OpenLayers.Geometry.LineString(points);
@@ -413,12 +413,12 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             var nodeList = this.getElementsByTagNameNS(node, this.gmlns,
                                                        "LineString");
             var components = [];
-            if(nodeList.length > 0) {
+            if (nodeList.length > 0) {
                 var line;
                 for(var i=0; i<nodeList.length; ++i) {
                     line = this.parseGeometry.linestring.apply(this,
                                                                [nodeList[i]]);
-                    if(line) {
+                    if (line) {
                         components.push(line);
                     }
                 }
@@ -441,13 +441,13 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             var nodeList = this.getElementsByTagNameNS(node, this.gmlns,
                                                        "LinearRing");
             var components = [];
-            if(nodeList.length > 0) {
+            if (nodeList.length > 0) {
                 // this assumes exterior ring first, inner rings after
                 var ring;
                 for(var i=0; i<nodeList.length; ++i) {
                     ring = this.parseGeometry.linestring.apply(this,
                                                         [nodeList[i], true]);
-                    if(ring) {
+                    if (ring) {
                         components.push(ring);
                     }
                 }
@@ -470,12 +470,12 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             var nodeList = this.getElementsByTagNameNS(node, this.gmlns,
                                                        "Polygon");
             var components = [];
-            if(nodeList.length > 0) {
+            if (nodeList.length > 0) {
                 var polygon;
                 for(var i=0; i<nodeList.length; ++i) {
                     polygon = this.parseGeometry.polygon.apply(this,
                                                                [nodeList[i]]);
-                    if(polygon) {
+                    if (polygon) {
                         components.push(polygon);
                     }
                 }
@@ -492,13 +492,13 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             if (lpoint.length > 0) {
                 var coords = [];
                 
-                if(lpoint.length > 0) {
+                if (lpoint.length > 0) {
                     coordString = lpoint[0].firstChild.nodeValue;
                     coordString = coordString.replace(this.regExes.trimSpace, "");
                     coords = coordString.split(this.regExes.splitSpace);
                 }
                 
-                if(coords.length == 2) {
+                if (coords.length == 2) {
                     coords[2] = null;
                 }
                 if (this.xy) {
@@ -512,13 +512,13 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
             if (upoint.length > 0) {
                 var coords = [];
                 
-                if(upoint.length > 0) {
+                if (upoint.length > 0) {
                     coordString = upoint[0].firstChild.nodeValue;
                     coordString = coordString.replace(this.regExes.trimSpace, "");
                     coords = coordString.split(this.regExes.splitSpace);
                 }
                 
-                if(coords.length == 2) {
+                if (coords.length == 2) {
                     coords[2] = null;
                 }
                 if (this.xy) {
@@ -590,16 +590,16 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
         var childNode = node.firstChild;
         var children, i, child, grandchildren, grandchild, name, value;
         while(childNode) {
-            if(childNode.nodeType == 1) {
+            if (childNode.nodeType == 1) {
                 // attributes are type 1 children with one type 3 child
                 children = childNode.childNodes;
                 for(i=0; i<children.length; ++i) {
                     child = children[i];
-                    if(child.nodeType == 1) {
+                    if (child.nodeType == 1) {
                         grandchildren = child.childNodes;
-                        if(grandchildren.length == 1) {
+                        if (grandchildren.length == 1) {
                             grandchild = grandchildren[0];
-                            if(grandchild.nodeType == 3 ||
+                            if (grandchild.nodeType == 3 ||
                                grandchild.nodeType == 4) {
                                 name = (child.prefix) ?
                                         child.nodeName.split(":")[1] :
@@ -636,7 +636,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
      * {String} A string representing the GML document.
      */
     write: function(features) {
-        if(!(OpenLayers.Util.isArray(features))) {
+        if (!(OpenLayers.Util.isArray(features))) {
             features = [features];
         }
         var gml = this.createElementNS("http://www.opengis.net/wfs",
@@ -903,7 +903,7 @@ OpenLayers.Format.GML = OpenLayers.Class(OpenLayers.Format.XML, {
 
         var parts = [];
 
-        if(geometry instanceof OpenLayers.Bounds){
+        if (geometry instanceof OpenLayers.Bounds){
             parts.push(geometry.left + "," + geometry.bottom);
             parts.push(geometry.right + "," + geometry.top);
         } else {

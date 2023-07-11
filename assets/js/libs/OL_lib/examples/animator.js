@@ -318,7 +318,7 @@ ColorStyleSubject.prototype = {
 // return a properly formatted 6-digit hex colour spec, or false
 ColorStyleSubject.parseColor = function(string) {
 	var color = '#', match;
-	if(match = ColorStyleSubject.parseColor.rgbRe.exec(string)) {
+	if (match = ColorStyleSubject.parseColor.rgbRe.exec(string)) {
 		var part;
 		for (var i=1; i<=3; i++) {
 			part = Math.max(0, Math.min(255, parseInt(match[i])));
@@ -327,7 +327,7 @@ ColorStyleSubject.parseColor = function(string) {
 		return color;
 	}
 	if (match = ColorStyleSubject.parseColor.hexRe.exec(string)) {
-		if(match[1].length == 3) {
+		if (match[1].length == 3) {
 			for (var i=0; i<3; i++) {
 				color += match[1].charAt(i) + match[1].charAt(i);
 			}
@@ -486,14 +486,14 @@ CSSStyleSubject.prototype = {
 // get the current value of a css property, 
 CSSStyleSubject.getStyle = function(el, property){
 	var style;
-	if(document.defaultView && document.defaultView.getComputedStyle){
+	if (document.defaultView && document.defaultView.getComputedStyle){
 		style = document.defaultView.getComputedStyle(el, "").getPropertyValue(property);
 		if (style) {
 			return style;
 		}
 	}
 	property = Animator.camelize(property);
-	if(el.currentStyle){
+	if (el.currentStyle){
 		style = el.currentStyle[property];
 	}
 	return style || el.style[property]

@@ -554,7 +554,7 @@
         t.eq(layer.selectedFeatures, [], "Destroy features removes selected features");
         var allDestroyed = true;
         for (i = 0; i < 5; i++) {
-            if(features[i].geometry) {
+            if (features[i].geometry) {
                 allDestroyed = false;
             }
         }
@@ -763,10 +763,10 @@
                 layer.drawFeature(feature);
                 var fill = root.firstChild.getElementsByTagName("v:fill")[0];
                 var opacity;
-                if(fill) {
+                if (fill) {
                     opacity = fill.getAttribute('opacity');
                 }
-                if(opacity === undefined) {
+                if (opacity === undefined) {
                     fill = root.firstChild.getElementsByTagName("fill")[0];
                     opacity = fill.getAttribute('opacity');
                 }

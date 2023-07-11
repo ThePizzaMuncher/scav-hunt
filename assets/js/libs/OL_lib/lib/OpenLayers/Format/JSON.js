@@ -122,11 +122,11 @@ OpenLayers.Format.JSON = OpenLayers.Class(OpenLayers.Format, {
                  *     structure, passing each name/value pair to a filter
                  *     function for possible transformation.
                  */
-                if(typeof filter === 'function') {
+                if (typeof filter === 'function') {
                     function walk(k, v) {
-                        if(v && typeof v === 'object') {
+                        if (v && typeof v === 'object') {
                             for(var i in v) {
-                                if(v.hasOwnProperty(i)) {
+                                if (v.hasOwnProperty(i)) {
                                     v[i] = walk(i, v[i]);
                                 }
                             }
@@ -140,7 +140,7 @@ OpenLayers.Format.JSON = OpenLayers.Class(OpenLayers.Format, {
             // Fall through if the regexp test fails.
         }
 
-        if(this.keepData) {
+        if (this.keepData) {
             this.data = object;
         }
 
@@ -164,7 +164,7 @@ OpenLayers.Format.JSON = OpenLayers.Class(OpenLayers.Format, {
         this.pretty = !!pretty;
         var json = null;
         var type = typeof value;
-        if(this.serialize[type]) {
+        if (this.serialize[type]) {
             try {
                 json = (!this.pretty && this.nativeJSON) ?
                     JSON.stringify(value) :
@@ -185,7 +185,7 @@ OpenLayers.Format.JSON = OpenLayers.Class(OpenLayers.Format, {
      */
     writeIndent: function() {
         var pieces = [];
-        if(this.pretty) {
+        if (this.pretty) {
             for(var i=0; i<this.level; ++i) {
                 pieces.push(this.indent);
             }
@@ -233,13 +233,13 @@ OpenLayers.Format.JSON = OpenLayers.Class(OpenLayers.Format, {
          */
         'object': function(object) {
             // three special objects that we want to treat differently
-            if(object == null) {
+            if (object == null) {
                 return "null";
             }
-            if(object.constructor == Date) {
+            if (object.constructor == Date) {
                 return this.serialize.date.apply(this, [object]);
             }
-            if(object.constructor == Array) {
+            if (object.constructor == Array) {
                 return this.serialize.array.apply(this, [object]);
             }
             var pieces = ['{'];
@@ -248,14 +248,14 @@ OpenLayers.Format.JSON = OpenLayers.Class(OpenLayers.Format, {
             
             var addComma = false;
             for(key in object) {
-                if(object.hasOwnProperty(key)) {
+                if (object.hasOwnProperty(key)) {
                     // recursive calls need to allow for sub-classing
                     keyJSON = OpenLayers.Format.JSON.prototype.write.apply(this,
                                                     [key, this.pretty]);
                     valueJSON = OpenLayers.Format.JSON.prototype.write.apply(this,
                                                     [object[key], this.pretty]);
-                    if(keyJSON != null && valueJSON != null) {
-                        if(addComma) {
+                    if (keyJSON != null && valueJSON != null) {
+                        if (addComma) {
                             pieces.push(',');
                         }
                         pieces.push(this.writeNewline(), this.writeIndent(),
@@ -289,8 +289,8 @@ OpenLayers.Format.JSON = OpenLayers.Class(OpenLayers.Format, {
                 // recursive calls need to allow for sub-classing
                 json = OpenLayers.Format.JSON.prototype.write.apply(this,
                                                     [array[i], this.pretty]);
-                if(json != null) {
-                    if(i > 0) {
+                if (json != null) {
+                    if (i > 0) {
                         pieces.push(',');
                     }
                     pieces.push(this.writeNewline(), this.writeIndent(), json);
@@ -326,10 +326,10 @@ OpenLayers.Format.JSON = OpenLayers.Class(OpenLayers.Format, {
                 '"' : '\\"',
                 '\\': '\\\\'
             };
-            if(/["\\\x00-\x1f]/.test(string)) {
+            if (/["\\\x00-\x1f]/.test(string)) {
                 return '"' + string.replace(/([\x00-\x1f\\"])/g, function(a, b) {
                     var c = m[b];
-                    if(c) {
+                    if (c) {
                         return c;
                     }
                     c = b.charCodeAt();

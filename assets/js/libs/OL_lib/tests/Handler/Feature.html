@@ -293,12 +293,12 @@
                 listeners = map.events.listeners[eventType];
                 for(var j=0, jlen=listeners.length; j<jlen; j++) {
                     listener = listeners[j];
-                    if(listener.func === handler[eventType] && listener.obj === handler) {
+                    if (listener.func === handler[eventType] && listener.obj === handler) {
                         flag = true;
                         break;
                     }
                 }
-                if(!flag) {
+                if (!flag) {
                     return false;
                 }
             }
@@ -437,7 +437,7 @@
         // now destroy the feature and confirm that the callback is not called again
         feature.destroy();
         handler.handle({type: "click"});
-        if(count === 1) {
+        if (count === 1) {
             t.ok(true, "[click] callback not called after destroy");
         } else {
             t.fail("[click] callback called after destroy: " + lastType);
@@ -466,7 +466,7 @@
         layer.getFeatureFromEvent = function(evt) {return null};
         handler.handle({type: "click"});
         // confirm that callback does not get called
-        if(count === 1) {
+        if (count === 1) {
             t.ok(true, "[clickout] callback not called when clicking out of a destroyed feature");
         } else {
             t.fail("[clickout] callback called when clicking out of a destroyed feature: " + lastType);
@@ -491,7 +491,7 @@
         // now destroy the feature and confirm that the callback is not called again
         feature.destroy();
         handler.handle({type: "mousemove"});
-        if(count === 1) {
+        if (count === 1) {
             t.ok(true, "[over] callback not called after destroy");
         } else {
             t.fail("[over] callback called after destroy: " + lastType);
@@ -520,7 +520,7 @@
         layer.getFeatureFromEvent = function(evt) {return null};
         handler.handle({type: "mousemove"});
         // confirm that callback does not get called
-        if(count === 1) {
+        if (count === 1) {
             t.ok(true, "[out] callback not called when moving out of a destroyed feature");
         } else {
             t.fail("[out] callback called when moving out of a destroyed feature: " + lastType);

@@ -162,7 +162,7 @@ OpenLayers.Control.LayerSwitcher = OpenLayers.Class(OpenLayers.Control, {
         this.loadContents();
 
         // set mode to minimize
-        if(!this.outsideViewport) {
+        if (!this.outsideViewport) {
             this.minimizeControl();
         }
 

@@ -109,7 +109,7 @@ OpenLayers.Layer.Google = OpenLayers.Class(
      */
     initialize: function(name, options) {
         options = options || {};
-        if(!options.version) {
+        if (!options.version) {
             options.version = typeof GMap2 === "function" ? "2" : "3";
         }
         var mixin = OpenLayers.Layer.Google["v" +
@@ -569,13 +569,13 @@ OpenLayers.Layer.Google.v2 = {
         }
 
         //since v 2.93 getDragObject is now available.
-        if(typeof mapObject.getDragObject == "function") {
+        if (typeof mapObject.getDragObject == "function") {
             this.dragObject = mapObject.getDragObject();
         } else {
             this.dragPanMapObject = null;
         }
         
-        if(this.isBaseLayer === false) {
+        if (this.isBaseLayer === false) {
             this.setGMapVisibility(this.div.style.display !== "none");
         }
 
@@ -590,10 +590,10 @@ OpenLayers.Layer.Google.v2 = {
         // for the old div size, then checkResize(), and then call
         // layer.moveTo() to trigger GMap.setCenter() (which will finish
         // the GMap initialization).
-        if(this.visibility && this.mapObject.isLoaded()) {
+        if (this.visibility && this.mapObject.isLoaded()) {
             this.mapObject.checkResize();
         } else {
-            if(!this._resized) {
+            if (!this._resized) {
                 var layer = this;
                 var handle = GEvent.addListener(this.mapObject, "load", function() {
                     GEvent.removeListener(handle);
@@ -781,7 +781,7 @@ OpenLayers.Layer.Google.v2 = {
      */
     getMapObjectLonLatFromLonLat: function(lon, lat) {
         var gLatLng;
-        if(this.sphericalMercator) {
+        if (this.sphericalMercator) {
             var lonlat = this.inverseMercator(lon, lat);
             gLatLng = new GLatLng(lonlat.lat, lonlat.lon);
         } else {

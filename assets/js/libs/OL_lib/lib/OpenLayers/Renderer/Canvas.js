@@ -258,13 +258,13 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
         var opacity = style.graphicOpacity || style.fillOpacity;
         
         var onLoad = function() {
-            if(!this.features[featureId]) {
+            if (!this.features[featureId]) {
                 return;
             }
             var pt = this.getLocalXY(geometry);
             var p0 = pt[0];
             var p1 = pt[1];
-            if(!isNaN(p0) && !isNaN(p1)) {
+            if (!isNaN(p0) && !isNaN(p1)) {
                 var x = (p0 + xOffset) | 0;
                 var y = (p1 + yOffset) | 0;
                 var canvas = this.canvas;
@@ -515,8 +515,8 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
      * featureId - {String}
      */ 
     drawPoint: function(geometry, style, featureId) {
-        if(style.graphic !== false) {
-            if(style.externalGraphic) {
+        if (style.graphic !== false) {
+            if (style.externalGraphic) {
                 this.drawExternalGraphic(geometry, style, featureId);
             } else if (style.graphicName && (style.graphicName != "circle")) {
                 this.drawNamedSymbol(geometry, style, featureId);
@@ -524,10 +524,10 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
                 var pt = this.getLocalXY(geometry);
                 var p0 = pt[0];
                 var p1 = pt[1];
-                if(!isNaN(p0) && !isNaN(p1)) {
+                if (!isNaN(p0) && !isNaN(p1)) {
                     var twoPi = Math.PI*2;
                     var radius = style.pointRadius;
-                    if(style.fill !== false) {
+                    if (style.fill !== false) {
                         this.setCanvasStyle("fill", style);
                         this.canvas.beginPath();
                         this.canvas.arc(p0, p1, radius, 0, twoPi, true);
@@ -540,7 +540,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
                         }
                     }
 
-                    if(style.stroke !== false) {
+                    if (style.stroke !== false) {
                         this.setCanvasStyle("stroke", style);
                         this.canvas.beginPath();
                         this.canvas.arc(p0, p1, radius, 0, twoPi, true);
@@ -825,7 +825,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
      * features - {Array(<OpenLayers.Feature.Vector>)} 
      */
     eraseFeatures: function(features) {
-        if(!(OpenLayers.Util.isArray(features))) {
+        if (!(OpenLayers.Util.isArray(features))) {
             features = [features];
         }
         for(var i=0; i<features.length; ++i) {
@@ -860,7 +860,7 @@ OpenLayers.Renderer.Canvas = OpenLayers.Class(OpenLayers.Renderer, {
                 this.calculateFeatureDx(geometry.getBounds(), worldBounds);
                 style = this.features[id][1];
                 this.drawGeometry(geometry, style, feature.id);
-                if(style.label) {
+                if (style.label) {
                     labelMap.push([feature, style]);
                 }
             }

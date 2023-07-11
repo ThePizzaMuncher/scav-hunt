@@ -192,12 +192,12 @@ OpenLayers.Renderer = OpenLayers.Class({
      *     undefined if the feature had no geometry
      */
     drawFeature: function(feature, style) {
-        if(style == null) {
+        if (style == null) {
             style = feature.style;
         }
         if (feature.geometry) {
             var bounds = feature.geometry.getBounds();
-            if(bounds) {
+            if (bounds) {
                 var worldBounds;
                 if (this.map.baseLayer && this.map.baseLayer.wrapDateLine) {
                     worldBounds = this.map.getMaxExtent();
@@ -208,10 +208,10 @@ OpenLayers.Renderer = OpenLayers.Class({
                     this.calculateFeatureDx(bounds, worldBounds);
                 }
                 var rendered = this.drawGeometry(feature.geometry, style, feature.id);
-                if(style.display != "none" && style.label && rendered !== false) {
+                if (style.display != "none" && style.label && rendered !== false) {
 
                     var location = feature.geometry.getCentroid(); 
-                    if(style.labelXOffset || style.labelYOffset) {
+                    if (style.labelXOffset || style.labelYOffset) {
                         var xOffset = isNaN(style.labelXOffset) ? 0 : style.labelXOffset;
                         var yOffset = isNaN(style.labelYOffset) ? 0 : style.labelYOffset;
                         var res = this.getResolution();
@@ -316,7 +316,7 @@ OpenLayers.Renderer = OpenLayers.Class({
      * features - {Array(<OpenLayers.Feature.Vector>)} 
      */
     eraseFeatures: function(features) {
-        if(!(OpenLayers.Util.isArray(features))) {
+        if (!(OpenLayers.Util.isArray(features))) {
             features = [features];
         }
         for(var i=0, len=features.length; i<len; ++i) {
@@ -373,11 +373,11 @@ OpenLayers.Renderer = OpenLayers.Class({
     applyDefaultSymbolizer: function(symbolizer) {
         var result = OpenLayers.Util.extend({},
             OpenLayers.Renderer.defaultSymbolizer);
-        if(symbolizer.stroke === false) {
+        if (symbolizer.stroke === false) {
             delete result.strokeWidth;
             delete result.strokeColor;
         }
-        if(symbolizer.fill === false) {
+        if (symbolizer.fill === false) {
             delete result.fillColor;
         }
         OpenLayers.Util.extend(result, symbolizer);

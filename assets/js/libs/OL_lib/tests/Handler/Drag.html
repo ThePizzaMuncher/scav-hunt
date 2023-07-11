@@ -59,7 +59,7 @@
         var nonevents = ["dblclick", "resize", "focus", "blur"];
         map.events.registerPriority = function(type, obj, func) {
             var r = func();
-            if(typeof r == "string") {
+            if (typeof r == "string") {
                 // this is one of the mock handler methods
                 t.eq(OpenLayers.Util.indexOf(nonevents, type), -1,
                      "registered method is not one of the events " +
@@ -270,7 +270,7 @@
         function getProperties(obj) {
             var props = {};
             for(key in obj) {
-                if(typeof obj[key] != "function" && typeof obj[key] != "object") {
+                if (typeof obj[key] != "function" && typeof obj[key] != "object") {
                     props[key] = obj[key];
                 }
             }

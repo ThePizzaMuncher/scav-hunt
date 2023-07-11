@@ -61,13 +61,13 @@ OpenLayers.Format.Context = OpenLayers.Class(OpenLayers.Format.XML.VersionedOGC,
         var context = OpenLayers.Format.XML.VersionedOGC.prototype.read.apply(this, 
             arguments);
         var map;
-        if(options && options.map) {
+        if (options && options.map) {
             this.context = context;
-            if(options.map instanceof OpenLayers.Map) {
+            if (options.map instanceof OpenLayers.Map) {
                 map = this.mergeContextToMap(context, options.map);
             } else {
                 var mapOptions = options.map;
-                if(OpenLayers.Util.isElement(mapOptions) ||
+                if (OpenLayers.Util.isElement(mapOptions) ||
                    typeof mapOptions == "string") {
                     // we assume mapOptions references a div
                     // element
@@ -150,9 +150,9 @@ OpenLayers.Format.Context = OpenLayers.Class(OpenLayers.Format.XML.VersionedOGC,
                     // 1) linked SLD
                     // 2) inline SLD
                     // 3) named style
-                    if(style.href) {
+                    if (style.href) {
                         params.sld = style.href;
-                    } else if(style.body) {
+                    } else if (style.body) {
                         params.sld_body = style.body;
                     } else {
                         params.styles = style.name;

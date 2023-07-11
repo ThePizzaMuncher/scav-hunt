@@ -66,7 +66,7 @@ OpenLayers.inherit = function(C, P) {
    var i, l, o;
    for(i=2, l=arguments.length; i<l; i++) {
        o = arguments[i];
-       if(typeof o === "function") {
+       if (typeof o === "function") {
            o = o.prototype;
        }
        OpenLayers.Util.extend(C.prototype, o);

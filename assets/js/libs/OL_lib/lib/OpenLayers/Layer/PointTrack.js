@@ -74,11 +74,11 @@ OpenLayers.Layer.PointTrack = OpenLayers.Class(OpenLayers.Layer.Vector, {
             if (!endPoint) {
               var lonlat = pointFeature.lonlat;
               endPoint = new OpenLayers.Geometry.Point(lonlat.lon, lonlat.lat);
-            } else if(endPoint.CLASS_NAME != "OpenLayers.Geometry.Point") {
+            } else if (endPoint.CLASS_NAME != "OpenLayers.Geometry.Point") {
                 throw new TypeError("Only features with point geometries are supported.");
             }
             
-            if(i > 0) {
+            if (i > 0) {
                 var attributes = (this.dataFrom != null) ?
                         (pointFeatures[i+this.dataFrom].data ||
                                 pointFeatures[i+this.dataFrom].attributes) :

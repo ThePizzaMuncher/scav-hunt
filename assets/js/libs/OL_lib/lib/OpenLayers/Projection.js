@@ -206,7 +206,7 @@ OpenLayers.Projection.addTransform = function(from, to, method) {
             OpenLayers.Projection.defaults[to] = defaults;
         }
     }
-    if(!OpenLayers.Projection.transforms[from]) {
+    if (!OpenLayers.Projection.transforms[from]) {
         OpenLayers.Projection.transforms[from] = {};
     }
     OpenLayers.Projection.transforms[from][to] = method;

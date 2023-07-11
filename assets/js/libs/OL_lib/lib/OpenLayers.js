@@ -70,9 +70,9 @@
                 src, m, l = "";
             for(var i=0, len=s.length; i<len; i++) {
                 src = s[i].getAttribute('src');
-                if(src) {
+                if (src) {
                     m = src.match(r);
-                    if(m) {
+                    if (m) {
                         l = m[1];
                         break;
                     }
@@ -127,7 +127,7 @@
      * When we *are* part of a SFL build we do not dynamically include the 
      * OpenLayers library code as it will be appended at the end of this file.
      */
-    if(!singleFile) {
+    if (!singleFile) {
         if (!jsFiles) {
             jsFiles = [
                 "OpenLayers/BaseTypes/Class.js",

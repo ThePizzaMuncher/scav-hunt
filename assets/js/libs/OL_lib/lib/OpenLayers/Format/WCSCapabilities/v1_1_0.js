@@ -84,8 +84,8 @@ OpenLayers.Format.WCSCapabilities.v1_1_0 = OpenLayers.Class(
             },
             "SupportedCRS": function(node, coverageSummary) {
                 var crs = this.getChildValue(node);
-                if(crs) {
-                    if(!coverageSummary.supportedCRS) { 
+                if (crs) {
+                    if (!coverageSummary.supportedCRS) { 
                         coverageSummary.supportedCRS = [];
                     }
                     coverageSummary.supportedCRS.push(crs);
@@ -93,8 +93,8 @@ OpenLayers.Format.WCSCapabilities.v1_1_0 = OpenLayers.Class(
             },
             "SupportedFormat": function(node, coverageSummary) {
                 var format = this.getChildValue(node);
-                if(format) {
-                    if(!coverageSummary.supportedFormat) { 
+                if (format) {
+                    if (!coverageSummary.supportedFormat) { 
                         coverageSummary.supportedFormat = [];
                     }
                     coverageSummary.supportedFormat.push(format);

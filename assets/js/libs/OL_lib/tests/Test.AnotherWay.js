@@ -977,7 +977,7 @@ Test.AnotherWay._handle_exception = function(o, e, title){
         else {
             s += e.toString();
         }
-    //  if( e.location!=null ) {  // XXX figure out how to display exception location if it's present (like in mozilla)
+    //  if ( e.location!=null ) {  // XXX figure out how to display exception location if it's present (like in mozilla)
     //      s+=" location: "+e.location.toString();
     //  }
     o.exception = s;

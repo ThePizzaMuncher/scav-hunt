@@ -68,9 +68,9 @@ OpenLayers.Control.Scale = OpenLayers.Class(OpenLayers.Control, {
      */
     updateScale: function() {
         var scale;
-        if(this.geodesic === true) {
+        if (this.geodesic === true) {
             var units = this.map.getUnits();
-            if(!units) {
+            if (!units) {
                 return;
             }
             var inches = OpenLayers.INCHES_PER_UNIT;

@@ -84,7 +84,7 @@
         function toggleControl(element) {
             for(key in drawControls) {
                 var control = drawControls[key];
-                if(element.value == key && element.checked) {
+                if (element.value == key && element.checked) {
                     control.activate();
                 } else {
                     control.deactivate();
@@ -94,14 +94,14 @@
 
         function update() {
             var clickout = document.getElementById("clickout").checked;
-            if(clickout != drawControls.select.clickout) {
+            if (clickout != drawControls.select.clickout) {
                 drawControls.select.clickout = clickout;
             }
 
             var box = document.getElementById("box").checked;
-            if(box != drawControls.select.box) {
+            if (box != drawControls.select.box) {
                 drawControls.select.box = box;
-                if(drawControls.select.active) {
+                if (drawControls.select.active) {
                     drawControls.select.deactivate();
                     drawControls.select.activate();
                 }

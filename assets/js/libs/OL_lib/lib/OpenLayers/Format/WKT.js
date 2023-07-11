@@ -64,10 +64,10 @@ OpenLayers.Format.WKT = OpenLayers.Class(OpenLayers.Format, {
         var features, type, str;
         wkt = wkt.replace(/[\n\r]/g, " ");
         var matches = this.regExes.typeStr.exec(wkt);
-        if(matches) {
+        if (matches) {
             type = matches[1].toLowerCase();
             str = matches[2];
-            if(this.parse[type]) {
+            if (this.parse[type]) {
                 features = this.parse[type].apply(this, [str]);
             }
             if (this.internalProjection && this.externalProjection) {

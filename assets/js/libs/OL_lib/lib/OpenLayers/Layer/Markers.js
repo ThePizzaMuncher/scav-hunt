@@ -156,7 +156,7 @@ OpenLayers.Layer.Markers = OpenLayers.Class(OpenLayers.Layer, {
             if (!marker.isDrawn()) {
                 var markerImg = marker.draw(px);
                 this.div.appendChild(markerImg);
-            } else if(marker.icon) {
+            } else if (marker.icon) {
                 marker.icon.moveTo(px);
             }
         }

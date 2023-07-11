@@ -140,7 +140,7 @@ OpenLayers.Handler = OpenLayers.Class({
      * {Boolean} The keyMask matches the keys down on an event.
      */
     checkModifiers: function (evt) {
-        if(this.keyMask == null) {
+        if (this.keyMask == null) {
             return true;
         }
         /* calculate the keyboard modifier mask for this event */
@@ -163,7 +163,7 @@ OpenLayers.Handler = OpenLayers.Class({
      * {Boolean} The handler was activated.
      */
     activate: function() {
-        if(this.active) {
+        if (this.active) {
             return false;
         }
         // register for event handlers defined on this class.
@@ -185,7 +185,7 @@ OpenLayers.Handler = OpenLayers.Class({
      * {Boolean} The handler was deactivated.
      */
     deactivate: function() {
-        if(!this.active) {
+        if (!this.active) {
             return false;
         }
         // unregister event handlers defined on this class.

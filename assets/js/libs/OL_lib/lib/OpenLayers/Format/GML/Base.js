@@ -12,7 +12,7 @@
  * Though required in the full build, if the GML format is excluded, we set
  * the namespace here.
  */
-if(!OpenLayers.Format.GML) {
+if (!OpenLayers.Format.GML) {
     OpenLayers.Format.GML = {};
 }
 
@@ -146,7 +146,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
     initialize: function(options) {
         OpenLayers.Format.XML.prototype.initialize.apply(this, [options]);
         this.setGeometryTypes();
-        if(options && options.featureNS) {
+        if (options && options.featureNS) {
             this.setNamespace("feature", options.featureNS);
         }
         this.singleFeatureType = !options || (typeof options.featureType === "string");
@@ -163,20 +163,20 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
      * {Array(<OpenLayers.Feature.Vector>)} An array of features.
      */
     read: function(data) {
-        if(typeof data == "string") { 
+        if (typeof data == "string") { 
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
         var features = [];
         this.readNode(data, {features: features}, true);
-        if(features.length == 0) {
+        if (features.length == 0) {
             // look for gml:featureMember elements
             var elements = this.getElementsByTagNameNS(
                 data, this.namespaces.gml, "featureMember"
             );
-            if(elements.length) {
+            if (elements.length) {
                 for(var i=0, len=elements.length; i<len; ++i) {
                     this.readNode(elements[i], {features: features}, true);
                 }
@@ -185,7 +185,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 var elements = this.getElementsByTagNameNS(
                     data, this.namespaces.gml, "featureMembers"
                 );
-                if(elements.length) {
+                if (elements.length) {
                     // there can be only one
                     this.readNode(elements[0], {features: features}, true);
                 }
@@ -256,14 +256,14 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
             "boundedBy": function(node, obj) {
                 var container = {};
                 this.readChildNodes(node, container);
-                if(container.components && container.components.length > 0) {
+                if (container.components && container.components.length > 0) {
                     obj.bounds = container.components[0];
                 }
             },
             "Point": function(node, container) {
                 var obj = {points: []};
                 this.readChildNodes(node, obj);
-                if(!container.components) {
+                if (!container.components) {
                     container.components = [];
                 }
                 container.components.push(obj.points[0]);
@@ -294,7 +294,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
             "coord": function(node, obj) {
                 var coord = {};
                 this.readChildNodes(node, coord);
-                if(!obj.points) {
+                if (!obj.points) {
                     obj.points = [];
                 }
                 obj.points.push(new OpenLayers.Geometry.Point(
@@ -325,7 +325,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 var obj = {};
                 this.readers.gml._inherit.apply(this, [node, obj, container]);
                 this.readChildNodes(node, obj);
-                if(!container.components) {
+                if (!container.components) {
                     container.components = [];
                 }
                 container.components.push(
@@ -348,7 +348,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 this.readers.gml._inherit.apply(this, [node, obj, container]);
                 this.readChildNodes(node, obj);
                 obj.inner.unshift(obj.outer);
-                if(!container.components) {
+                if (!container.components) {
                     container.components = [];
                 }
                 container.components.push(
@@ -401,22 +401,22 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                     if (!this.singleFeatureType &&
                         (OpenLayers.Util.indexOf(this.featureType, local) !== -1)) {
                         name = "_typeName";
-                    } else if(local === this.featureType) {
+                    } else if (local === this.featureType) {
                         name = "_typeName";
                     }
                 } else {
                     // Assume attribute elements have one child node and that the child
                     // is a text node.  Otherwise assume it is a geometry node.
-                    if(node.childNodes.length == 0 ||
+                    if (node.childNodes.length == 0 ||
                        (node.childNodes.length == 1 && node.firstChild.nodeType == 3)) {
-                        if(this.extractAttributes) {
+                        if (this.extractAttributes) {
                             name = "_attribute";
                         }
                     } else {
                         name = "_geometry";
                     }
                 }
-                if(name) {
+                if (name) {
                     this.readers.feature[name].apply(this, [node, obj]);
                 }
             },
@@ -424,7 +424,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 var container = {components: [], attributes: {}};
                 this.readChildNodes(node, container);
                 // look for common gml namespaced elements
-                if(container.name) {
+                if (container.name) {
                     container.attributes.name = container.name;
                 }
                 var feature = new OpenLayers.Feature.Vector(
@@ -436,16 +436,16 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 }
                 var fid = node.getAttribute("fid") ||
                     this.getAttributeNS(node, this.namespaces["gml"], "id");
-                if(fid) {
+                if (fid) {
                     feature.fid = fid;
                 }
-                if(this.internalProjection && this.externalProjection &&
+                if (this.internalProjection && this.externalProjection &&
                    feature.geometry) {
                     feature.geometry.transform(
                         this.externalProjection, this.internalProjection
                     );
                 }
-                if(container.bounds) {
+                if (container.bounds) {
                     feature.bounds = container.bounds;
                 }
                 obj.features.push(feature);
@@ -483,7 +483,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     write: function(features) {
         var name;
-        if(OpenLayers.Util.isArray(features)) {
+        if (OpenLayers.Util.isArray(features)) {
             name = "featureMembers";
         } else {
             name = "featureMember";
@@ -570,12 +570,12 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 var node = this.createElementNSPlus("feature:" + this.featureType, {
                     attributes: {fid: feature.fid}
                 });
-                if(feature.geometry) {
+                if (feature.geometry) {
                     this.writeNode("feature:_geometry", feature.geometry, node);
                 }
                 for(var name in feature.attributes) {
                     var value = feature.attributes[name];
-                    if(value != null) {
+                    if (value != null) {
                         this.writeNode(
                             "feature:_attribute",
                             {name: name, value: value}, node
@@ -585,7 +585,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 return node;
             },
             "_geometry": function(geometry) {
-                if(this.externalProjection && this.internalProjection) {
+                if (this.externalProjection && this.internalProjection) {
                     geometry = geometry.clone().transform(
                         this.internalProjection, this.externalProjection
                     );
@@ -595,7 +595,7 @@ OpenLayers.Format.GML.Base = OpenLayers.Class(OpenLayers.Format.XML, {
                 );
                 var type = this.geometryTypes[geometry.CLASS_NAME];
                 var child = this.writeNode("gml:" + type, geometry, node);
-                if(this.srsName) {
+                if (this.srsName) {
                     child.setAttribute("srsName", this.srsName);
                 }
                 return node;

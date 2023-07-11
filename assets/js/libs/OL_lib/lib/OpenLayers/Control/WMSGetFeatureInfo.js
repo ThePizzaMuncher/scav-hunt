@@ -194,17 +194,17 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
 
         OpenLayers.Control.prototype.initialize.apply(this, [options]);
 
-        if(!this.format) {
+        if (!this.format) {
             this.format = new OpenLayers.Format.WMSGetFeatureInfo(
                 options.formatOptions
             );
         }
 
-        if(this.drillDown === true) {
+        if (this.drillDown === true) {
             this.hover = false;
         }
 
-        if(this.hover) {
+        if (this.hover) {
             this.handler = new OpenLayers.Handler.Hover(
                    this, {
                        'move': this.cancelHover,
@@ -271,15 +271,15 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
         var layer, url;
         for(var i = candidates.length - 1; i >= 0; --i) {
             layer = candidates[i];
-            if(layer instanceof OpenLayers.Layer.WMS &&
+            if (layer instanceof OpenLayers.Layer.WMS &&
                (!this.queryVisible || layer.getVisibility())) {
                 url = OpenLayers.Util.isArray(layer.url) ? layer.url[0] : layer.url;
                 // if the control was not configured with a url, set it
                 // to the first layer url
-                if(this.drillDown === false && !this.url) {
+                if (this.drillDown === false && !this.url) {
                     this.url = url;
                 }
-                if(this.drillDown === true || this.urlMatches(url)) {
+                if (this.drillDown === true || this.urlMatches(url)) {
                     layers.push(layer);
                 }
             }
@@ -301,9 +301,9 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
      */
     urlMatches: function(url) {
         var matches = OpenLayers.Util.isEquivalentUrl(this.url, url);
-        if(!matches && this.layerUrls) {
+        if (!matches && this.layerUrls) {
             for(var i=0, len=this.layerUrls.length; i<len; ++i) {
-                if(OpenLayers.Util.isEquivalentUrl(this.layerUrls[i], url)) {
+                if (OpenLayers.Util.isEquivalentUrl(this.layerUrls[i], url)) {
                     matches = true;
                     break;
                 }
@@ -424,7 +424,7 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
      */
     request: function(clickPosition, options) {
         var layers = this.findLayers();
-        if(layers.length == 0) {
+        if (layers.length == 0) {
             this.events.triggerEvent("nogetfeatureinfo");
             // Reset the cursor.
             OpenLayers.Element.removeClass(this.map.viewPortDiv, "olCursorWait");
@@ -432,7 +432,7 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
         }
 
         options = options || {};
-        if(this.drillDown === false) {
+        if (this.drillDown === false) {
             var wmsOptions = this.buildWMSOptions(this.url, layers,
                 clickPosition, layers[0].params.FORMAT);
             var request = OpenLayers.Request.GET(wmsOptions);
@@ -450,7 +450,7 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
                 var layer = layers[i];
                 var service, found = false;
                 url = OpenLayers.Util.isArray(layer.url) ? layer.url[0] : layer.url;
-                if(url in services) {
+                if (url in services) {
                     services[url].push(layer);
                 } else {
                     this._numRequests++;
@@ -504,7 +504,7 @@ OpenLayers.Control.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Control, {
     handleResponse: function(xy, request, url) {
 
         var doc = request.responseXML;
-        if(!doc || !doc.documentElement) {
+        if (!doc || !doc.documentElement) {
             doc = request.responseText;
         }
         var features = this.format.read(doc);

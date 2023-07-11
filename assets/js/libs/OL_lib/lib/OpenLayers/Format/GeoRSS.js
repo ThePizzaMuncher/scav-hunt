@@ -204,7 +204,7 @@ OpenLayers.Format.GeoRSS = OpenLayers.Class(OpenLayers.Format.XML, {
         /* If no link URL is found in the first child node, try the
            href attribute */
         var link = this._getChildValue(item, "*", "link");
-        if(!link) {
+        if (!link) {
             try {
                 link = this.getElementsByTagNameNS(item, "*", "link")[0].getAttribute("href");
             } catch(e) {
@@ -240,7 +240,7 @@ OpenLayers.Format.GeoRSS = OpenLayers.Class(OpenLayers.Format.XML, {
     _getChildValue: function(node, nsuri, name, def) {
         var value;
         var eles = this.getElementsByTagNameNS(node, nsuri, name);
-        if(eles && eles[0] && eles[0].firstChild
+        if (eles && eles[0] && eles[0].firstChild
             && eles[0].firstChild.nodeValue) {
             value = this.getChildValue(eles[0]);
         } else {
@@ -289,7 +289,7 @@ OpenLayers.Format.GeoRSS = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     write: function(features) {
         var georss;
-        if(OpenLayers.Util.isArray(features)) {
+        if (OpenLayers.Util.isArray(features)) {
             georss = this.createElementNS(this.rssns, "rss");
             for(var i=0, len=features.length; i<len; i++) {
                 georss.appendChild(this.createFeatureXML(features[i]));

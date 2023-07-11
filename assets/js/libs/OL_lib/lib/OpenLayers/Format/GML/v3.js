@@ -105,7 +105,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
                 var obj = {points: []};
                 this.readers.gml._inherit.apply(this, [node, obj, container]);
                 this.readChildNodes(node, obj);
-                if(!container.components) {
+                if (!container.components) {
                     container.components = [];
                 }
                 container.components.push(
@@ -118,7 +118,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
             "LineStringSegment": function(node, container) {
                 var obj = {};
                 this.readChildNodes(node, obj);
-                if(obj.points) {
+                if (obj.points) {
                     Array.prototype.push.apply(container.points, obj.points);
                 }
             },
@@ -128,7 +128,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
                 );
                 var coords = str.split(this.regExes.splitSpace);
                 var point;
-                if(this.xy) {
+                if (this.xy) {
                     point = new OpenLayers.Geometry.Point(
                         coords[0], coords[1], coords[2]
                     );
@@ -185,7 +185,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
                 var obj = {components: []};
                 this.readers.gml._inherit.apply(this, [node, obj, container]);
                 this.readChildNodes(node, obj);
-                if(obj.components.length > 0) {
+                if (obj.components.length > 0) {
                     container.components = [
                         new OpenLayers.Geometry.MultiLineString(obj.components)
                     ];
@@ -198,7 +198,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
                 var obj = {components: []};
                 this.readers.gml._inherit.apply(this, [node, obj, container]);
                 this.readChildNodes(node, obj);
-                if(obj.components.length > 0) {
+                if (obj.components.length > 0) {
                     container.components = [
                         new OpenLayers.Geometry.MultiPolygon(obj.components)
                     ];
@@ -225,7 +225,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
             "Envelope": function(node, container) {
                 var obj = {points: new Array(2)};
                 this.readChildNodes(node, obj);
-                if(!container.components) {
+                if (!container.components) {
                     container.components = [];
                 }
                 var min = obj.points[0];
@@ -263,7 +263,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
      */
     write: function(features) {
         var name;
-        if(OpenLayers.Util.isArray(features)) {
+        if (OpenLayers.Util.isArray(features)) {
             name = "featureMembers";
         } else {
             name = "featureMember";
@@ -332,7 +332,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
                 var point;
                 for(var i=0; i<len; ++i) {
                     point = points[i];
-                    if(this.xy) {
+                    if (this.xy) {
                         parts[i] = point.x + " " + point.y;
                     } else {
                         parts[i] = point.y + " " + point.x;
@@ -399,7 +399,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
             },
             "curveMember": function(geometry) {
                 var node = this.createElementNSPlus("gml:curveMember");
-                if(this.curve) {
+                if (this.curve) {
                     this.writeNode("Curve", geometry, node);
                 } else {
                     this.writeNode("LineString", geometry, node);
@@ -416,7 +416,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
             },
             "surfaceMember": function(polygon) {
                 var node = this.createElementNSPlus("gml:surfaceMember");
-                if(this.surface) {
+                if (this.surface) {
                     this.writeNode("Surface", polygon, node);
                 } else {
                     this.writeNode("Polygon", polygon, node);
@@ -428,7 +428,7 @@ OpenLayers.Format.GML.v3 = OpenLayers.Class(OpenLayers.Format.GML.Base, {
                 this.writeNode("lowerCorner", bounds, node);
                 this.writeNode("upperCorner", bounds, node);
                 // srsName attribute is required for gml:Envelope
-                if(this.srsName) {
+                if (this.srsName) {
                     node.setAttribute("srsName", this.srsName);
                 }
                 return node;

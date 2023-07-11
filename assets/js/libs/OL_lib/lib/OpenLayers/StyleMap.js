@@ -55,18 +55,18 @@ OpenLayers.StyleMap = OpenLayers.Class({
         
         // take whatever the user passed as style parameter and convert it
         // into parts of stylemap.
-        if(style instanceof OpenLayers.Style) {
+        if (style instanceof OpenLayers.Style) {
             // user passed a style object
             this.styles["default"] = style;
             this.styles["select"] = style;
             this.styles["temporary"] = style;
             this.styles["delete"] = style;
-        } else if(typeof style == "object") {
+        } else if (typeof style == "object") {
             for(var key in style) {
-                if(style[key] instanceof OpenLayers.Style) {
+                if (style[key] instanceof OpenLayers.Style) {
                     // user passed a hash of style objects
                     this.styles[key] = style[key];
-                } else if(typeof style[key] == "object") {
+                } else if (typeof style[key] == "object") {
                     // user passsed a hash of style hashes
                     this.styles[key] = new OpenLayers.Style(style[key]);
                 } else {
@@ -108,15 +108,15 @@ OpenLayers.StyleMap = OpenLayers.Class({
      * {Object} symbolizer hash
      */
     createSymbolizer: function(feature, intent) {
-        if(!feature) {
+        if (!feature) {
             feature = new OpenLayers.Feature.Vector();
         }
-        if(!this.styles[intent]) {
+        if (!this.styles[intent]) {
             intent = "default";
         }
         feature.renderIntent = intent;
         var defaultSymbolizer = {};
-        if(this.extendDefault && intent != "default") {
+        if (this.extendDefault && intent != "default") {
             defaultSymbolizer = this.styles["default"].createSymbolizer(feature);
         }
         return OpenLayers.Util.extend(defaultSymbolizer,

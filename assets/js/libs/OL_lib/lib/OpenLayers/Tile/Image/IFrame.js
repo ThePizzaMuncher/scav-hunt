@@ -43,7 +43,7 @@ OpenLayers.Tile.Image.IFrame = {
      */
     draw: function() {
         var draw = OpenLayers.Tile.Image.prototype.shouldDraw.call(this);
-        if(draw) {
+        if (draw) {
 
             // this.url isn't set to the currect value yet, so we call getURL
             // on the layer and store the result in a local variable
@@ -57,7 +57,7 @@ OpenLayers.Tile.Image.IFrame = {
             var fromIFrame = usedIFrame && !this.useIFrame;
             var toIFrame = !usedIFrame && this.useIFrame;
 
-            if(fromIFrame || toIFrame) {
+            if (fromIFrame || toIFrame) {
 
                 // Switching between GET (image) and POST (iframe).
 
@@ -65,14 +65,14 @@ OpenLayers.Tile.Image.IFrame = {
                 // from the frame and set it to null to make sure initImage
                 // will call getImage.
 
-                if(this.imgDiv && this.imgDiv.parentNode === this.frame) {
+                if (this.imgDiv && this.imgDiv.parentNode === this.frame) {
                     this.frame.removeChild(this.imgDiv);
                 }
                 this.imgDiv = null;
 
                 // And if we had an iframe we also remove the event pane.
 
-                if(fromIFrame) {
+                if (fromIFrame) {
                     this.frame.removeChild(this.frame.firstChild);
                 }
             }
@@ -225,7 +225,7 @@ OpenLayers.Tile.Image.IFrame = {
      */
     createBackBuffer: function() {
         var backBuffer;
-        if(this.useIFrame === false) {
+        if (this.useIFrame === false) {
             backBuffer = OpenLayers.Tile.Image.prototype.createBackBuffer.call(this);
         }
         return backBuffer;

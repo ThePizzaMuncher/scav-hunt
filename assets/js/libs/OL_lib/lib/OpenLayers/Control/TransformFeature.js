@@ -199,7 +199,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
 
         this.layer = layer;
 
-        if(!this.rotationHandleSymbolizer) {
+        if (!this.rotationHandleSymbolizer) {
             this.rotationHandleSymbolizer = {
                 stroke: false,
                 pointRadius: 10,
@@ -218,7 +218,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
      */
     activate: function() {
         var activated = false;
-        if(OpenLayers.Control.prototype.activate.apply(this, arguments)) {
+        if (OpenLayers.Control.prototype.activate.apply(this, arguments)) {
             this.dragControl.activate();
             this.layer.addFeatures([this.box]);
             this.rotate && this.layer.addFeatures(this.rotationHandles);
@@ -234,7 +234,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
      */
     deactivate: function() {
         var deactivated = false;
-        if(OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
+        if (OpenLayers.Control.prototype.deactivate.apply(this, arguments)) {
             this.layer.removeFeatures(this.handles);
             this.rotate && this.layer.removeFeatures(this.rotationHandles);
             this.layer.removeFeatures([this.box]);
@@ -297,7 +297,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
         this._angle = 0;
 
         var ll;
-        if(this.rotation) {
+        if (this.rotation) {
             var geom = feature.geometry.clone();
             geom.rotate(-this.rotation, this.center);
             var box = new OpenLayers.Feature.Vector(
@@ -390,7 +390,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
         var handleMoveFn = function(x, y) {
             var oldX = this.x, oldY = this.y;
             OpenLayers.Geometry.Point.prototype.move.call(this, x, y);
-            if(control._moving) {
+            if (control._moving) {
                 return;
             }
             var evt = control.dragControl.handlers.drag.evt;
@@ -444,7 +444,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
         var rotationHandleMoveFn = function(x, y){
             var oldX = this.x, oldY = this.y;
             OpenLayers.Geometry.Point.prototype.move.call(this, x, y);
-            if(control._moving) {
+            if (control._moving) {
                 return;
             }
             var evt = control.dragControl.handlers.drag.evt;
@@ -462,7 +462,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
             angle *= 180 / Math.PI;
             control._angle = (control._angle + angle) % 360;
             var diff = control.rotation % constrain;
-            if(Math.abs(control._angle) >= constrain || diff !== 0) {
+            if (Math.abs(control._angle) >= constrain || diff !== 0) {
                 angle = Math.round(control._angle / constrain) * constrain -
                     diff;
                 control._angle = 0;
@@ -481,7 +481,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
                 role: positions[i] + "-resize"
             }, typeof this.renderIntent == "string" ? null :
                 this.renderIntent);
-            if(i % 2 == 0) {
+            if (i % 2 == 0) {
                 rotationHandle = new OpenLayers.Feature.Vector(geom.clone(), {
                     role: positions[i] + "-rotate"
                 }, typeof this.rotationHandleSymbolizer == "string" ?
@@ -512,7 +512,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
             documentDrag: true,
             // avoid moving the feature itself - move the box instead
             moveFeature: function(pixel) {
-                if(this.feature === control.feature) {
+                if (this.feature === control.feature) {
                     this.feature = control.box;
                 }
                 OpenLayers.Control.DragFeature.prototype.moveFeature.apply(this,
@@ -520,7 +520,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
             },
             // transform while dragging
             onDrag: function(feature, pixel) {
-                if(feature === control.box) {
+                if (feature === control.box) {
                     control.transformFeature({center: control.center});
                 }
             },
@@ -532,7 +532,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
                 var i = OpenLayers.Util.indexOf(control.handles, feature);
                 i += OpenLayers.Util.indexOf(control.rotationHandles,
                     feature);
-                if(feature !== control.feature && feature !== control.box &&
+                if (feature !== control.feature && feature !== control.box &&
                                                         i == -2 && eligible) {
                     control.setFeature(feature);
                 }
@@ -551,7 +551,7 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
     drawHandles: function() {
         var layer = this.layer;
         for(var i=0; i<8; ++i) {
-            if(this.rotate && i % 2 === 0) {
+            if (this.rotate && i % 2 === 0) {
                 layer.drawFeature(this.rotationHandles[i/2],
                     this.rotationHandleSymbolizer);
             }
@@ -568,20 +568,20 @@ OpenLayers.Control.TransformFeature = OpenLayers.Class(OpenLayers.Control, {
      *     center properties.
      */
     transformFeature: function(mods) {
-        if(!this._setfeature) {
+        if (!this._setfeature) {
             this.scale *= (mods.scale || 1);
             this.ratio *= (mods.ratio || 1);
             var oldRotation = this.rotation;
             this.rotation = (this.rotation + (mods.rotation || 0)) % 360;
             
-            if(this.events.triggerEvent("beforetransform", mods) !== false) {
+            if (this.events.triggerEvent("beforetransform", mods) !== false) {
                 var feature = this.feature;
                 var geom = feature.geometry;
                 var center = this.center;
                 geom.rotate(-oldRotation, center);
-                if(mods.scale || mods.ratio) {
+                if (mods.scale || mods.ratio) {
                     geom.resize(mods.scale, center, mods.ratio);
-                } else if(mods.center) {
+                } else if (mods.center) {
                     feature.move(mods.center.getBounds().getCenterLonLat());
                 }
                 geom.rotate(this.rotation, center);

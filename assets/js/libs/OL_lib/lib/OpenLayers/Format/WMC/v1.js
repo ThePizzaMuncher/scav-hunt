@@ -44,11 +44,11 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     getNamespacePrefix: function(uri) {
         var prefix = null;
-        if(uri == null) {
+        if (uri == null) {
             prefix = this.namespaces[this.defaultPrefix];
         } else {
             for(prefix in this.namespaces) {
-                if(this.namespaces[prefix] == uri) {
+                if (this.namespaces[prefix] == uri) {
                     break;
                 }
             }
@@ -103,7 +103,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      * {Array} List of named layers.
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         var root = data.documentElement;
@@ -123,11 +123,11 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var childNode, processor, prefix, local;
         for(var i=0, len=children.length; i<len; ++i) {
             childNode = children[i];
-            if(childNode.nodeType == 1) {
+            if (childNode.nodeType == 1) {
                 prefix = this.getNamespacePrefix(childNode.namespaceURI);
                 local = childNode.nodeName.split(":").pop();
                 processor = this["read_" + prefix + "_" + local];
-                if(processor) {
+                if (processor) {
                     processor.apply(this, [obj, childNode]);
                 }
             }
@@ -276,7 +276,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var format = {
             value: this.getChildValue(node)
         };
-        if(node.getAttribute("current") == "1") {
+        if (node.getAttribute("current") == "1") {
             format.current = true;
         }
         layerContext.formats.push(format);
@@ -295,7 +295,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
     read_wmc_Style: function(layerContext, node) {
         var style = {};
         this.runChildNodes(style, node);
-        if(node.getAttribute("current") == "1") {
+        if (node.getAttribute("current") == "1") {
             style.current = true;
         }
         layerContext.styles.push(style);
@@ -339,7 +339,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     read_wmc_Name: function(obj, node) {
         var name = this.getChildValue(node);
-        if(name) {
+        if (name) {
             obj.name = name;
         }
     },
@@ -349,7 +349,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     read_wmc_Title: function(obj, node) {
         var title = this.getChildValue(node);
-        if(title) {
+        if (title) {
             obj.title = title;
         }
     },
@@ -381,7 +381,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     read_wmc_Abstract: function(obj, node) {
         var abst = this.getChildValue(node);
-        if(abst) {
+        if (abst) {
             obj["abstract"] = abst;
         }
     },
@@ -653,10 +653,10 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
             this.namespaces[this.defaultPrefix],
             name
         );
-        if(childValue) {
+        if (childValue) {
             node.appendChild(this.createTextNode(childValue));
         }
-        if(attributes) {
+        if (attributes) {
             this.setAttributes(node, attributes);
         }
         return node;
@@ -675,7 +675,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var value;
         for(var name in obj) {
             value = obj[name].toString();
-            if(value.match(/[A-Z]/)) {
+            if (value.match(/[A-Z]/)) {
                 // safari lowercases attributes with setAttribute
                 this.setAttributeNS(node, null, name, value);
             } else {
@@ -698,7 +698,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var node = this.createElementDefaultNS("General");
 
         // optional Window element
-        if(context.size) {
+        if (context.size) {
             node.appendChild(this.createElementDefaultNS(
                 "Window", null,
                 {
@@ -870,7 +870,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var node = this.createElementDefaultNS("Extension");
         
         var bounds = context.maxExtent;
-        if(bounds) {
+        if (bounds) {
             var maxExtent = this.createElementNS(
                 this.namespaces.ol, "ol:maxExtent"
             );
@@ -997,7 +997,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
         var child;
         for(var i=0, len=properties.length; i<len; ++i) {
             child = this.createOLPropertyNode(context, properties[i]);
-            if(child) {
+            if (child) {
                 node.appendChild(child);
             }
         }
@@ -1019,7 +1019,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     createOLPropertyNode: function(obj, prop) {
         var node = null;
-        if(obj[prop] != null) {
+        if (obj[prop] != null) {
             node = this.createElementNS(this.namespaces.ol, "ol:" + prop);
             node.appendChild(this.createTextNode(obj[prop].toString()));
         }
@@ -1168,7 +1168,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                     (s.current && s.current == true) ?
                     {current: "1"} : null
                 );
-                if(s.href) { // [1]
+                if (s.href) { // [1]
                     sld = this.createElementDefaultNS("SLD");
                      // Name is optional.
                      if (s.name) {
@@ -1186,7 +1186,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                      var link = this.write_wmc_OnlineResource(s.href);
                      sld.appendChild(link);
                     style.appendChild(sld);
-                } else if(s.body) { // [2]
+                } else if (s.body) { // [2]
                     sld = this.createElementDefaultNS("SLD");
                      // Name is optional.
                      if (s.name) {
@@ -1205,7 +1205,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
                     var doc = OpenLayers.Format.XML.prototype.read.apply(this, [s.body]);
                     // append to StyledLayerDescriptor node
                     var imported = doc.documentElement;
-                    if(sld.ownerDocument && sld.ownerDocument.importNode) {
+                    if (sld.ownerDocument && sld.ownerDocument.importNode) {
                         imported = sld.ownerDocument.importNode(imported, true);
                     }
                     sld.appendChild(imported);
@@ -1255,7 +1255,7 @@ OpenLayers.Format.WMC.v1 = OpenLayers.Class(OpenLayers.Format.XML, {
      getOnlineResource_href: function(node) {
          var object = {};
          var links = node.getElementsByTagName("OnlineResource");
-         if(links.length > 0) {
+         if (links.length > 0) {
              this.read_wmc_OnlineResource(object, links[0]);
          }
          return object.href;

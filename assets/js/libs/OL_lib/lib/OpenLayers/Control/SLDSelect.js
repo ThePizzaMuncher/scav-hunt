@@ -280,7 +280,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
     parseDescribeLayer: function(request) {
         var format = new OpenLayers.Format.WMSDescribeLayer();
         var doc = request.responseXML;
-        if(!doc || !doc.documentElement) {
+        if (!doc || !doc.documentElement) {
             doc = request.responseText;
         }
         var describeLayer = format.read(doc);
@@ -304,7 +304,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
             callback: function(request) {
                 var format = new OpenLayers.Format.WFSDescribeFeatureType();
                 var doc = request.responseXML;
-                if(!doc || !doc.documentElement) {
+                if (!doc || !doc.documentElement) {
                     doc = request.responseText;
                 }
                 var describeFeatureType = format.read(doc);
@@ -357,7 +357,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
      */
     activate: function() {
         var activated = OpenLayers.Control.prototype.activate.call(this);
-        if(activated) {
+        if (activated) {
             for (var i=0, len=this.layers.length; i<len; i++) {
                 var layer = this.layers[i];
                 if (layer && !this.wfsCache[layer.id]) {
@@ -386,7 +386,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
      */
     deactivate: function() {
         var deactivated = OpenLayers.Control.prototype.deactivate.call(this);
-        if(deactivated) {
+        if (deactivated) {
             for (var i=0, len=this.layers.length; i<len; i++) {
                 var layer = this.layers[i];
                 if (layer && this.clearOnDeactivate === true) {
@@ -418,7 +418,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
      *     the selection should be performed.
      */
     setLayers: function(layers) {
-        if(this.active) {
+        if (this.active) {
             this.deactivate();
             this.layers = layers;
             this.activate();
@@ -555,7 +555,7 @@ OpenLayers.Control.SLDSelect = OpenLayers.Class(OpenLayers.Control, {
     applySelection: function() {
         var canApply = true;
         for (var i=0, len=this.layers.length; i<len; i++) {
-            if(!this.wfsCache[this.layers[i].id]) {
+            if (!this.wfsCache[this.layers[i].id]) {
                 canApply = false;
                 break;
             }

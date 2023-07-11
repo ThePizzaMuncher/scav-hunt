@@ -76,11 +76,11 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
         } else { 
             obj = json;
         }    
-        if(!obj) {
+        if (!obj) {
             OpenLayers.Console.error("Bad JSON: " + json);
-        } else if(typeof(obj.type) != "string") {
+        } else if (typeof(obj.type) != "string") {
             OpenLayers.Console.error("Bad GeoJSON - no type: " + json);
-        } else if(this.isValidType(obj, type)) {
+        } else if (this.isValidType(obj, type)) {
             switch(type) {
                 case "Geometry":
                     try {
@@ -145,7 +145,7 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
         var valid = false;
         switch(type) {
             case "Geometry":
-                if(OpenLayers.Util.indexOf(
+                if (OpenLayers.Util.indexOf(
                     ["Point", "MultiPoint", "LineString", "MultiLineString",
                      "Polygon", "MultiPolygon", "Box", "GeometryCollection"],
                     obj.type) == -1) {
@@ -162,7 +162,7 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
                 break;
             default:
                 // for Feature types must match
-                if(obj.type == type) {
+                if (obj.type == type) {
                     valid = true;
                 } else {
                     OpenLayers.Console.error("Cannot convert types from " +
@@ -194,10 +194,10 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
             throw err;
         }
         feature = new OpenLayers.Feature.Vector(geometry, attributes);
-        if(bbox) {
+        if (bbox) {
             feature.bounds = OpenLayers.Bounds.fromArray(bbox);
         }
-        if(obj.id) {
+        if (obj.id) {
             feature.fid = obj.id;
         }
         return feature;
@@ -218,8 +218,8 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
             return null;
         }
         var geometry, collection = false;
-        if(obj.type == "GeometryCollection") {
-            if(!(OpenLayers.Util.isArray(obj.geometries))) {
+        if (obj.type == "GeometryCollection") {
+            if (!(OpenLayers.Util.isArray(obj.geometries))) {
                 throw "GeometryCollection must have geometries array: " + obj;
             }
             var numGeom = obj.geometries.length;
@@ -232,10 +232,10 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
             geometry = new OpenLayers.Geometry.Collection(components);
             collection = true;
         } else {
-            if(!(OpenLayers.Util.isArray(obj.coordinates))) {
+            if (!(OpenLayers.Util.isArray(obj.coordinates))) {
                 throw "Geometry must have coordinates array: " + obj;
             }
-            if(!this.parseCoords[obj.type.toLowerCase()]) {
+            if (!this.parseCoords[obj.type.toLowerCase()]) {
                 throw "Unsupported geometry type: " + obj.type;
             }
             try {
@@ -416,7 +416,7 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
          * {<OpenLayers.Geometry>} A geometry.
          */
         "box": function(array) {
-            if(array.length != 2) {
+            if (array.length != 2) {
                 throw "GeoJSON box coordinates must have 2 elements";
             }
             return new OpenLayers.Geometry.Polygon([
@@ -450,13 +450,13 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
         var geojson = {
             "type": null
         };
-        if(OpenLayers.Util.isArray(obj)) {
+        if (OpenLayers.Util.isArray(obj)) {
             geojson.type = "FeatureCollection";
             var numFeatures = obj.length;
             geojson.features = new Array(numFeatures);
             for(var i=0; i<numFeatures; ++i) {
                 var element = obj[i];
-                if(!element instanceof OpenLayers.Feature.Vector) {
+                if (!element instanceof OpenLayers.Feature.Vector) {
                     var msg = "FeatureCollection only supports collections " +
                               "of features: " + element;
                     throw msg;
@@ -469,7 +469,7 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
             geojson = this.extract.geometry.apply(this, [obj]);
         } else if (obj instanceof OpenLayers.Feature.Vector) {
             geojson = this.extract.feature.apply(this, [obj]);
-            if(obj.layer && obj.layer.projection) {
+            if (obj.layer && obj.layer.projection) {
                 geojson.crs = this.createCRSObject(obj);
             }
         }
@@ -563,7 +563,7 @@ OpenLayers.Format.GeoJSON = OpenLayers.Class(OpenLayers.Format.JSON, {
             var geometryType = geometry.CLASS_NAME.split('.')[2];
             var data = this.extract[geometryType.toLowerCase()].apply(this, [geometry]);
             var json;
-            if(geometryType == "Collection") {
+            if (geometryType == "Collection") {
                 json = {
                     "type": "GeometryCollection",
                     "geometries": data

@@ -97,7 +97,7 @@ OpenLayers.Element = {
      * {DOMElement} The element.
      */
     addClass: function(element, name) {
-        if(!OpenLayers.Element.hasClass(element, name)) {
+        if (!OpenLayers.Element.hasClass(element, name)) {
             element.className += (element.className ? " " : "") + name;
         }
         return element;
@@ -117,7 +117,7 @@ OpenLayers.Element = {
      */
     removeClass: function(element, name) {
         var names = element.className;
-        if(names) {
+        if (names) {
             element.className = OpenLayers.String.trim(
                 names.replace(
                     new RegExp("(^|\\s+)" + name + "(\\s+|$)"), " "
@@ -140,7 +140,7 @@ OpenLayers.Element = {
      * {DOMElement} The element.
      */
     toggleClass: function(element, name) {
-        if(OpenLayers.Element.hasClass(element, name)) {
+        if (OpenLayers.Element.hasClass(element, name)) {
             OpenLayers.Element.removeClass(element, name);
         } else {
             OpenLayers.Element.addClass(element, name);

@@ -80,9 +80,9 @@ OpenLayers.Strategy.Save = OpenLayers.Class(OpenLayers.Strategy, {
      */
     activate: function() {
         var activated = OpenLayers.Strategy.prototype.activate.call(this);
-        if(activated) {
-            if(this.auto) {
-                if(typeof this.auto === "number") {
+        if (activated) {
+            if (this.auto) {
+                if (typeof this.auto === "number") {
                     this.timer = window.setInterval(
                         OpenLayers.Function.bind(this.save, this),
                         this.auto * 1000
@@ -109,9 +109,9 @@ OpenLayers.Strategy.Save = OpenLayers.Class(OpenLayers.Strategy, {
      */
     deactivate: function() {
         var deactivated = OpenLayers.Strategy.prototype.deactivate.call(this);
-        if(deactivated) {
-            if(this.auto) {
-                if(typeof this.auto === "number") {
+        if (deactivated) {
+            if (this.auto) {
+                if (typeof this.auto === "number") {
                     window.clearInterval(this.timer);
                 } else {
                     this.layer.events.un({
@@ -135,7 +135,7 @@ OpenLayers.Strategy.Save = OpenLayers.Class(OpenLayers.Strategy, {
      */
     triggerSave: function(event) {
         var feature = event.feature;
-        if(feature.state === OpenLayers.State.INSERT ||
+        if (feature.state === OpenLayers.State.INSERT ||
            feature.state === OpenLayers.State.UPDATE ||
            feature.state === OpenLayers.State.DELETE) {
             this.save([event.feature]);
@@ -154,13 +154,13 @@ OpenLayers.Strategy.Save = OpenLayers.Class(OpenLayers.Strategy, {
      *     projection.
      */
     save: function(features) {
-        if(!features) {
+        if (!features) {
             features = this.layer.features;
         }
         this.events.triggerEvent("start", {features:features});
         var remote = this.layer.projection;
         var local = this.layer.map.getProjectionObject();
-        if(!local.equals(remote)) {
+        if (!local.equals(remote)) {
             var len = features.length;
             var clones = new Array(len);
             var orig, clone;
@@ -169,7 +169,7 @@ OpenLayers.Strategy.Save = OpenLayers.Class(OpenLayers.Strategy, {
                 clone = orig.clone();
                 clone.fid = orig.fid;
                 clone.state = orig.state;
-                if(orig.url) {
+                if (orig.url) {
                     clone.url = orig.url;
                 }
                 clone._original = orig;
@@ -193,7 +193,7 @@ OpenLayers.Strategy.Save = OpenLayers.Class(OpenLayers.Strategy, {
      */
     onCommit: function(response) {
         var evt = {"response": response};
-        if(response.success()) {
+        if (response.success()) {
             var features = response.reqFeatures;
             // deal with inserts, updates, and deletes
             var state, feature;
@@ -205,10 +205,10 @@ OpenLayers.Strategy.Save = OpenLayers.Class(OpenLayers.Strategy, {
                 // if projection was different, we may be dealing with clones
                 feature = feature._original || feature;
                 state = feature.state;
-                if(state) {
-                    if(state == OpenLayers.State.DELETE) {
+                if (state) {
+                    if (state == OpenLayers.State.DELETE) {
                         destroys.push(feature);
-                    } else if(state == OpenLayers.State.INSERT) {
+                    } else if (state == OpenLayers.State.INSERT) {
                         feature.fid = insertIds[j];
                         ++j;
                     }
@@ -216,7 +216,7 @@ OpenLayers.Strategy.Save = OpenLayers.Class(OpenLayers.Strategy, {
                 }
             }
 
-            if(destroys.length > 0) {
+            if (destroys.length > 0) {
                 this.layer.destroyFeatures(destroys);
             }
 

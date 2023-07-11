@@ -252,7 +252,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
 
         // Optionally add min/max buttons if the control will go in the
         // map viewport.
-        if(!this.outsideViewport) {
+        if (!this.outsideViewport) {
             this.div.className += " " + this.displayClass + 'Container';
             // maximize button div
             var img = OpenLayers.Util.getImageLocation('layer-switcher-maximize.png');
@@ -288,7 +288,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
             // show the overview map
             this.element.style.display = '';
         }
-        if(this.map.getExtent()) {
+        if (this.map.getExtent()) {
             this.update();
         }
         
@@ -323,7 +323,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
     rectDrag: function(px) {
         var deltaX = this.handlers.drag.last.x - px.x;
         var deltaY = this.handlers.drag.last.y - px.y;
-        if(deltaX != 0 || deltaY != 0) {
+        if (deltaX != 0 || deltaY != 0) {
             var rectTop = this.rectPxBounds.top;
             var rectLeft = this.rectPxBounds.left;
             var rectHeight = Math.abs(this.rectPxBounds.getHeight());
@@ -434,11 +434,11 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
      * Update the overview map after layers move.
      */
     update: function() {
-        if(this.ovmap == null) {
+        if (this.ovmap == null) {
             this.createMap();
         }
         
-        if(this.autoPan || !this.isSuitableOverview()) {
+        if (this.autoPan || !this.isSuitableOverview()) {
             this.updateOverview();
         }
         
@@ -480,10 +480,10 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
         var mapRes = this.map.getResolution();
         var targetRes = this.ovmap.getResolution();
         var resRatio = targetRes / mapRes;
-        if(resRatio > this.maxRatio) {
+        if (resRatio > this.maxRatio) {
             // zoom in overview map
             targetRes = this.minRatio * mapRes;            
-        } else if(resRatio <= this.minRatio) {
+        } else if (resRatio <= this.minRatio) {
             // zoom out overview map
             targetRes = this.maxRatio * mapRes;
         }
@@ -549,12 +549,12 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
         this.rectEvents = new OpenLayers.Events(this, this.extentRectangle,
                                                 null, true);
         this.rectEvents.register("mouseover", this, function(e) {
-            if(!this.handlers.drag.active && !this.map.dragging) {
+            if (!this.handlers.drag.active && !this.map.dragging) {
                 this.handlers.drag.activate();
             }
         });
         this.rectEvents.register("mouseout", this, function(e) {
-            if(!this.handlers.drag.dragging) {
+            if (!this.handlers.drag.dragging) {
                 this.handlers.drag.deactivate();
             }
         });
@@ -620,7 +620,7 @@ OpenLayers.Control.OverviewMap = OpenLayers.Class(OpenLayers.Control, {
                              this.ovmap.size.w - this.wComp);
         var width = Math.max(right - left, 0);
         var height = Math.max(bottom - top, 0);
-        if(width < this.minRectSize || height < this.minRectSize) {
+        if (width < this.minRectSize || height < this.minRectSize) {
             this.extentRectangle.className = this.displayClass +
                                              this.minRectDisplayClass;
             var rLeft = left + (width / 2) - (this.minRectSize / 2);

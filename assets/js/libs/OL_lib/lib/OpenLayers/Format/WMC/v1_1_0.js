@@ -103,7 +103,7 @@ OpenLayers.Format.WMC.v1_1_0 = OpenLayers.Class(
         );
         
         // min/max scale denominator elements go before the 4th element in v1
-        if(context.maxScale) {
+        if (context.maxScale) {
             var minSD = this.createElementNS(
                 this.namespaces.sld, "sld:MinScaleDenominator"
             );
@@ -111,7 +111,7 @@ OpenLayers.Format.WMC.v1_1_0 = OpenLayers.Class(
             node.appendChild(minSD);
         }
         
-        if(context.minScale) {
+        if (context.minScale) {
             var maxSD = this.createElementNS(
                 this.namespaces.sld, "sld:MaxScaleDenominator"
             );

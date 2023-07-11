@@ -230,8 +230,8 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean} Continue propagating this event.
      */
     rightclick: function(evt) {
-        if(this.passesTolerance(evt)) {
-           if(this.rightclickTimerId != null) {
+        if (this.passesTolerance(evt)) {
+           if (this.rightclickTimerId != null) {
                 //Second click received before timeout this must be 
                 // a double click
                 this.clearTimer();
@@ -491,7 +491,7 @@ OpenLayers.Handler.Click = OpenLayers.Class(OpenLayers.Handler, {
      */
     deactivate: function() {
         var deactivated = false;
-        if(OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
+        if (OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
             this.clearTimer();
             this.down = null;
             this.first = null;

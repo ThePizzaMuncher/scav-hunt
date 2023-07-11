@@ -1,31 +1,48 @@
 <!-- ======= Footer ======= -->
 <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Friends Company</span></strong>
-        <p>All Rights Maybe Reserved</p>
-      </div>
-      <div class="credits">
-        Made by <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">Valerii, Wieger, Jonathan, Dimitry </a>
-      </div>
+  <div class="container">
+    <div class="copyright">
+      <?php
+      echo '
+      &copy; Copyright <strong><span>Friends Company & Firda 2023-' . date("Y") . '</span></strong>
+    '; ?>
     </div>
-  </footer><!-- End  Footer -->
+    <div class="credits">
+      <p>All Rights Reserved</p>
+      <p>Made by <a href="https://mbo-portal.nl/~valerie/" target="_blank"><u>Valerii</u></a>, <a
+          href="https://mbo-portal.nl/~fp245787" target="_blank"><u>Wieger</u></a>, <a
+          href="https://mbo-portal.nl/~fp241754/" target="_blank"><u>Jonathan</u></a>, <a
+          href="https://mbo-portal.nl/~fp245573/"><u>Dimitry</u></a></p>
+      <p>*Special event hosted and organized by the ROC Friese Poort (Firda)</p>
+    </div>
+  </div>
+</footer><!-- End  Footer -->
 
-  <a href="#" class="back-to-top x align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top x align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+<?php
+echo '
+<!-- Vendor JS Files -->
+<script src="/' . $path . 'assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/' . $path . 'assets/vendor/aos/aos.js"></script>
+<script src="/' . $path . 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/' . $path . 'assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/' . $path . 'assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/' . $path . 'assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/' . $path . 'assets/vendor/typed.js/typed.min.js"></script>
+<script src="/' . $path . 'assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="/' . $path . 'assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+<!-- Template Main JS File -->
+<script src="/' . $path . 'assets/js/main.js"></script>
+';
+?>
+
+<style>
+  .credits p {
+    text-align: center;
+  }
+</style>
 
 </body>
 

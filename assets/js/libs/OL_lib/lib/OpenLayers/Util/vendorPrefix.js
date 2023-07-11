@@ -84,7 +84,7 @@ OpenLayers.Util.vendorPrefix = (function() {
             jsCache[property] = null;
             for(; i<l; i++) {
                 prefix = VENDOR_PREFIXES[i];
-                if(prefix) {
+                if (prefix) {
                     if (!isStyleObj) {
                         // js prefix should be lower-case, while style
                         // properties have upper case on first character
@@ -95,7 +95,7 @@ OpenLayers.Util.vendorPrefix = (function() {
                     tmpProp = property;
                 }
 
-                if(obj[tmpProp] !== undefined) {
+                if (obj[tmpProp] !== undefined) {
                     jsCache[property] = tmpProp;
                     break;
                 }

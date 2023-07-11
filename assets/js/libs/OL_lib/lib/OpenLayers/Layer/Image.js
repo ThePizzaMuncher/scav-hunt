@@ -107,7 +107,7 @@ OpenLayers.Layer.Image = OpenLayers.Class(OpenLayers.Layer, {
      */
     clone: function(obj) {
         
-        if(obj == null) {
+        if (obj == null) {
             obj = new OpenLayers.Layer.Image(this.name,
                                                this.url,
                                                this.extent,
@@ -136,7 +136,7 @@ OpenLayers.Layer.Image = OpenLayers.Class(OpenLayers.Layer, {
          * pixel aspect ratio different than one (as calculated above), the
          * image will be stretched in one dimension only.
          */
-        if( this.options.maxResolution == null ) {
+        if ( this.options.maxResolution == null ) {
             this.options.maxResolution = this.aspectRatio *
                                          this.extent.getWidth() /
                                          this.size.w;
@@ -158,7 +158,7 @@ OpenLayers.Layer.Image = OpenLayers.Class(OpenLayers.Layer, {
 
         var firstRendering = (this.tile == null);
 
-        if(zoomChanged || firstRendering) {
+        if (zoomChanged || firstRendering) {
 
             //determine new tile size
             this.setTileSize();
@@ -169,7 +169,7 @@ OpenLayers.Layer.Image = OpenLayers.Class(OpenLayers.Layer, {
                 lat: this.extent.top
             });
 
-            if(firstRendering) {
+            if (firstRendering) {
                 //create the new tile
                 this.tile = new OpenLayers.Tile.Image(this, ulPx, this.extent, 
                                                       null, this.tileSize);

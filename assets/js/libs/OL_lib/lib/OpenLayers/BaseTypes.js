@@ -108,7 +108,7 @@ OpenLayers.String = {
      * {String} A string with tokens replaced from the context object.
      */
     format: function(template, context, args) {
-        if(!context) {
+        if (!context) {
             context = window;
         }
 
@@ -133,7 +133,7 @@ OpenLayers.String = {
                 replacement = replacement[subs[i]];
             }
 
-            if(typeof replacement == "function") {
+            if (typeof replacement == "function") {
                 replacement = args ?
                     replacement.apply(null, args) :
                     replacement();

@@ -1,55 +1,69 @@
-<?php include 'assets/includes/header.php' ?>
+<?php
+$_SESSION["pagina"] = "home";
+require 'assets/includes/header.php';
+echo <<<meta
+<html id="page_home">
+meta;
+$filename = "about.txt";
+?>
 
 <main id="main">
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-content-center align-items-center">
+    <video id="myVideo" src="assets/mp4/Leeuwarden.mp4" autoplay loop muted></video>
 
-<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
-     <section id="about" class="section-50 d-flex flex-column align-items-center">
-       <div class="container">
-         <div class="row">
-           <div class="col-5">
-             <div class="block">
-                <div class="content d-flex flex-column justify-content-center align-items-center sticked-header-offset">
-                <h3>We are nice guys!!</h3>
-                <button>Here is the button</button>
+    <div class="hero-container">
+      <h1>Speurtocht</h1>
+      <div class="text-centered">
+        <p><span class="typed" data-typed-items="Adventure, Action, Leeuwarden, Team work, Firda"></span>
+        </p>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+    <div class="container" style="overflow: hidden;">
+        <div class="row">
+          <div class="col-lg-4 justify-content-center align-items-center sticked-header-offset">
+            <div class="section-title">
+            <h2>Over</h2>
+               <p>Hier vind je informatie over ons speurtochtspel!</p>
+               <div class="button"><a href="login/student_login.php">
+                   <p>Log in met de code <br> Daar kun je de reis beginnen! <br>  Easter egg!
+                    Congratulations!</p>
+                </a></div>
+              </p>
             </div>
-             </div>
-           </div>
-           <div class="col-7">
-             <div class="row">
-               <div class="col-4">
-                 <div class="block">
-                   <h2>Block 1</h2>
-                   <p>Block content 1</p>
-                 </div>
-               </div>
-               <div class="col-4">
-                 <div class="block">
-                   <h2>Block 2</h2>
-                   <p>Block content 2</p>
-                 </div>
-               </div>
-               <div class="col-4">
-                 <div class="block">
-                   <h2>Block 3</h2>
-                   <p>Block content 3</p>
-                 </div>
-               </div>
-             </div>
-             <div class="row">
-               <div class="col-12">
-                 <div class="full-width-block">
-                   <h2>Fullwidth block</h2>
-                   <p>Fullwidth block content</p>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-       <div class="container">
-       </div>
-     </section>
-   </section> <!-- End About Section -->
+            <div class="image">
+            </div>
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content">
+            <h2>Speurtocht</h2>
+            <ul>
+              <li><i class="bi bi-map"></i> <strong>Locatie:</strong> <span>Leeuwarden</span></li>
+            </ul>
 
-<?php include "assets/includes/footer.php"?>
+            <p>
+              <?php
+
+              echo convertMarkdownToHTML(file_get_contents($filename));
+              ?>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <?php
+    if (isset($_SESSION["stl_fb"]) && !empty($_SESSION["stl_fb"])) {
+      echo "<script defer>
+    setTimeout(() => {
+      window.alert('" . $_SESSION["stl_fb"] . "');
+    }, 200);
+    </script>";
+      $_SESSION["stl_fb"] = "0";
+    }
+    include "assets/includes/footer.php";
+    ?>

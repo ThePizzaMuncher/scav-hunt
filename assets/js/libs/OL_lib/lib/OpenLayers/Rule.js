@@ -164,9 +164,9 @@ OpenLayers.Rule = OpenLayers.Class({
         }
         
         // check if optional filter applies
-        if(applies && this.filter) {
+        if (applies && this.filter) {
             // feature id filters get the feature, others get the context
-            if(this.filter.CLASS_NAME == "OpenLayers.Filter.FeatureId") {
+            if (this.filter.CLASS_NAME == "OpenLayers.Filter.FeatureId") {
                 applies = this.filter.evaluate(feature);
             } else {
                 applies = this.filter.evaluate(context);
@@ -218,9 +218,9 @@ OpenLayers.Rule = OpenLayers.Class({
             for(var key in this.symbolizer) {
                 value = this.symbolizer[key];
                 type = typeof value;
-                if(type === "object") {
+                if (type === "object") {
                     options.symbolizer[key] = OpenLayers.Util.extend({}, value);
-                } else if(type === "string") {
+                } else if (type === "string") {
                     options.symbolizer[key] = value;
                 }
             }

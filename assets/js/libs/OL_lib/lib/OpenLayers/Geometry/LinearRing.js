@@ -68,7 +68,7 @@ OpenLayers.Geometry.LinearRing = OpenLayers.Class(
 
         // given an index, add the point
         // without an index only add non-duplicate points
-        if(index != null || !point.equals(lastPoint)) {
+        if (index != null || !point.equals(lastPoint)) {
             added = OpenLayers.Geometry.Collection.prototype.addComponent.apply(this, 
                                                                     arguments);
         }
@@ -269,15 +269,15 @@ OpenLayers.Geometry.LinearRing = OpenLayers.Class(
      */
     getGeodesicArea: function(projection) {
         var ring = this;  // so we can work with a clone if needed
-        if(projection) {
+        if (projection) {
             var gg = new OpenLayers.Projection("EPSG:4326");
-            if(!gg.equals(projection)) {
+            if (!gg.equals(projection)) {
                 ring = this.clone().transform(projection, gg);
             }
         }
         var area = 0.0;
         var len = ring.components && ring.components.length;
-        if(len > 2) {
+        if (len > 2) {
             var p1, p2;
             for(var i=0; i<len-1; i++) {
                 p1 = ring.components[i];
@@ -334,11 +334,11 @@ OpenLayers.Geometry.LinearRing = OpenLayers.Class(
              *    5. the edge-ray intersection point must be strictly right
              *    of the point P.
              */
-            if(y1 == y2) {
+            if (y1 == y2) {
                 // horizontal edge
-                if(py == y1) {
+                if (py == y1) {
                     // point on horizontal line
-                    if(x1 <= x2 && (px >= x1 && px <= x2) || // right or vert
+                    if (x1 <= x2 && (px >= x1 && px <= x2) || // right or vert
                        x1 >= x2 && (px <= x1 && px >= x2)) { // left or vert
                         // point on edge
                         crosses = -1;
@@ -349,24 +349,24 @@ OpenLayers.Geometry.LinearRing = OpenLayers.Class(
                 continue;
             }
             cx = approx(getX(py, x1, y1, x2, y2), digs);
-            if(cx == px) {
+            if (cx == px) {
                 // point on line
-                if(y1 < y2 && (py >= y1 && py <= y2) || // upward
+                if (y1 < y2 && (py >= y1 && py <= y2) || // upward
                    y1 > y2 && (py <= y1 && py >= y2)) { // downward
                     // point on edge
                     crosses = -1;
                     break;
                 }
             }
-            if(cx <= px) {
+            if (cx <= px) {
                 // no crossing to the right
                 continue;
             }
-            if(x1 != x2 && (cx < Math.min(x1, x2) || cx > Math.max(x1, x2))) {
+            if (x1 != x2 && (cx < Math.min(x1, x2) || cx > Math.max(x1, x2))) {
                 // no crossing
                 continue;
             }
-            if(y1 < y2 && (py >= y1 && py < y2) || // upward
+            if (y1 < y2 && (py >= y1 && py < y2) || // upward
                y1 > y2 && (py < y1 && py >= y2)) { // downward
                 ++crosses;
             }
@@ -392,11 +392,11 @@ OpenLayers.Geometry.LinearRing = OpenLayers.Class(
      */
     intersects: function(geometry) {
         var intersect = false;
-        if(geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
+        if (geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
             intersect = this.containsPoint(geometry);
-        } else if(geometry.CLASS_NAME == "OpenLayers.Geometry.LineString") {
+        } else if (geometry.CLASS_NAME == "OpenLayers.Geometry.LineString") {
             intersect = geometry.intersects(this);
-        } else if(geometry.CLASS_NAME == "OpenLayers.Geometry.LinearRing") {
+        } else if (geometry.CLASS_NAME == "OpenLayers.Geometry.LinearRing") {
             intersect = OpenLayers.Geometry.LineString.prototype.intersects.apply(
                 this, [geometry]
             );
@@ -404,7 +404,7 @@ OpenLayers.Geometry.LinearRing = OpenLayers.Class(
             // check for component intersections
             for(var i=0, len=geometry.components.length; i<len; ++ i) {
                 intersect = geometry.components[i].intersects(this);
-                if(intersect) {
+                if (intersect) {
                     break;
                 }
             }

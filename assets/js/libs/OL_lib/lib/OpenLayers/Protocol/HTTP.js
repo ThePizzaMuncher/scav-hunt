@@ -197,7 +197,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
         var readWithPOST = (options.readWithPOST !== undefined) ?
                            options.readWithPOST : this.readWithPOST;
         var resp = new OpenLayers.Protocol.Response({requestType: "read"});
-        if(readWithPOST) {
+        if (readWithPOST) {
             var headers = options.headers || {};
             headers["Content-Type"] = "application/x-www-form-urlencoded";
             resp.priv = OpenLayers.Request.POST({
@@ -400,10 +400,10 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
      */
     handleResponse: function(resp, options) {
         var request = resp.priv;
-        if(options.callback) {
-            if(request.status >= 200 && request.status < 300) {
+        if (options.callback) {
+            if (request.status >= 200 && request.status < 300) {
                 // success
-                if(resp.requestType != "delete") {
+                if (resp.requestType != "delete") {
                     resp.features = this.parseFeatures(request);
                 }
                 resp.code = OpenLayers.Protocol.Response.SUCCESS;
@@ -475,7 +475,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
         for(var i=0, len=features.length; i<len; ++i) {
             feature = features[i];
             list = types[feature.state];
-            if(list) {
+            if (list) {
                 list.push(feature);
                 requestFeatures.push(feature); 
             }
@@ -518,7 +518,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
 
         // start issuing requests
         var queue = types[OpenLayers.State.INSERT];
-        if(queue.length > 0) {
+        if (queue.length > 0) {
             resp.push(this.create(
                 queue, OpenLayers.Util.applyDefaults(
                     {callback: insertCallback, scope: this}, options.create
@@ -571,7 +571,7 @@ OpenLayers.Protocol.HTTP = OpenLayers.Class(OpenLayers.Protocol, {
      */
     callUserCallback: function(resp, options) {
         var opt = options[resp.requestType];
-        if(opt && opt.callback) {
+        if (opt && opt.callback) {
             opt.callback.call(opt.scope, resp);
         }
     },

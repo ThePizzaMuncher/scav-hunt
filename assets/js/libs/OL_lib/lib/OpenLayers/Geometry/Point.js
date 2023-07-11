@@ -101,7 +101,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
         var edge = !(options && options.edge === false);
         var details = edge && options && options.details;
         var distance, x0, y0, x1, y1, result;
-        if(geometry instanceof OpenLayers.Geometry.Point) {
+        if (geometry instanceof OpenLayers.Geometry.Point) {
             x0 = this.x;
             y0 = this.y;
             x1 = geometry.x;
@@ -111,7 +111,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
                 distance : {x0: x0, y0: y0, x1: x1, y1: y1, distance: distance};
         } else {
             result = geometry.distanceTo(this, options);
-            if(details) {
+            if (details) {
                 // switch coord order since this geom is target
                 result = {
                     x0: result.x1, y0: result.y1,
@@ -234,7 +234,7 @@ OpenLayers.Geometry.Point = OpenLayers.Class(OpenLayers.Geometry, {
      */
     intersects: function(geometry) {
         var intersect = false;
-        if(geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
+        if (geometry.CLASS_NAME == "OpenLayers.Geometry.Point") {
             intersect = this.equals(geometry);
         } else {
             intersect = geometry.intersects(this);

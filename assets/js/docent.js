@@ -1,3 +1,32 @@
+let x = 0;
+let y = 0;
+let z = 0;
+let schaal = 19;
+let map = L.map('map').setView([x, z], schaal);
+let delay = 2;//Update delay in seconden.
+
+//Copyright
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+//Initialisatie en definiering markers.
+
+
+//Input
+let marker1 = L.marker([ x , z ], {title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+//
+
+setInterval(() => {//Update de map voor de docent om de seconde. (Display update)
+    $.ajax({url:"access/php/reset_coords.php?/code=gi3yhk3rKNRLO73g_8", success: (result) => {
+
+    }});
+    map.removeLayer(marker1);
+    marker1 = L.marker([ x , z ], {title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+}, (delay * 1000));
+
+/*  Koter analyzer oud
 //Koter analyzer * begin
 let msg;
 let x;
@@ -45,3 +74,4 @@ ws.onmessage = (msg_) => {
 
 updateMap(53.199848, 5.764583, 16, false);
 //Koter analyzer * end
+*/

@@ -55,11 +55,11 @@ OpenLayers.Format.WMSCapabilities.v1 = OpenLayers.Class(
      * {Array} List of named layers.
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         var raw = data;
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
         var capabilities = {};
@@ -291,11 +291,11 @@ OpenLayers.Format.WMSCapabilities.v1 = OpenLayers.Class(
                 layer.capability = capability;
                 this.readChildNodes(node, layer);
                 delete layer.capability;
-                if(layer.name) {
+                if (layer.name) {
                     var parts = layer.name.split(":"),
                         request = capability.request,
                         gfi = request.getfeatureinfo;
-                    if(parts.length > 0) {
+                    if (parts.length > 0) {
                         layer.prefix = parts[0];
                     }
                     capability.layers.push(layer);

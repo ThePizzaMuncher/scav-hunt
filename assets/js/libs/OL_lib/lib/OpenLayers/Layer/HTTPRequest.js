@@ -123,7 +123,7 @@ OpenLayers.Layer.HTTPRequest = OpenLayers.Class(OpenLayers.Layer, {
     mergeNewParams:function(newParams) {
         this.params = OpenLayers.Util.extend(this.params, newParams);
         var ret = this.redraw();
-        if(this.map != null) {
+        if (this.map != null) {
             this.map.events.triggerEvent("changelayer", {
                 layer: this,
                 property: "params"
@@ -217,7 +217,7 @@ OpenLayers.Layer.HTTPRequest = OpenLayers.Class(OpenLayers.Layer, {
         var urlParams = 
             OpenLayers.Util.upperCaseObject(OpenLayers.Util.getParameters(url));
         for(var key in allParams) {
-            if(key.toUpperCase() in urlParams) {
+            if (key.toUpperCase() in urlParams) {
                 delete allParams[key];
             }
         }

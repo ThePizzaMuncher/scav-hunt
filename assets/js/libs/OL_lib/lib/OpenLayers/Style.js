@@ -118,7 +118,7 @@ OpenLayers.Style = OpenLayers.Class({
 
         OpenLayers.Util.extend(this, options);
         this.rules = [];
-        if(options && options.rules) {
+        if (options && options.rules) {
             this.addRules(options.rules);
         }
 
@@ -168,8 +168,8 @@ OpenLayers.Style = OpenLayers.Class({
             // does the rule apply?
             var applies = rule.evaluate(feature);
             
-            if(applies) {
-                if(rule instanceof OpenLayers.Rule && rule.elseFilter) {
+            if (applies) {
+                if (rule instanceof OpenLayers.Rule && rule.elseFilter) {
                     elseRules.push(rule);
                 } else {
                     appliedRules = true;
@@ -179,7 +179,7 @@ OpenLayers.Style = OpenLayers.Class({
         }
         
         // if no other rules apply, apply the rules with else filters
-        if(appliedRules == false && elseRules.length > 0) {
+        if (appliedRules == false && elseRules.length > 0) {
             appliedRules = true;
             for(var i=0, len=elseRules.length; i<len; i++) {
                 this.applySymbolizer(elseRules[i], style, feature);
@@ -187,7 +187,7 @@ OpenLayers.Style = OpenLayers.Class({
         }
 
         // don't display if there were rules but none applied
-        if(rules.length > 0 && appliedRules == false) {
+        if (rules.length > 0 && appliedRules == false) {
             style.display = "none";
         }
         
@@ -216,12 +216,12 @@ OpenLayers.Style = OpenLayers.Class({
 
         var symbolizer = rule.symbolizer[symbolizerPrefix] || rule.symbolizer;
         
-        if(this.defaultsPerSymbolizer === true) {
+        if (this.defaultsPerSymbolizer === true) {
             var defaults = this.defaultStyle;
             OpenLayers.Util.applyDefaults(symbolizer, {
                 pointRadius: defaults.pointRadius
             });
-            if(symbolizer.stroke === true || symbolizer.graphic === true) {
+            if (symbolizer.stroke === true || symbolizer.graphic === true) {
                 OpenLayers.Util.applyDefaults(symbolizer, {
                     strokeWidth: defaults.strokeWidth,
                     strokeColor: defaults.strokeColor,
@@ -230,13 +230,13 @@ OpenLayers.Style = OpenLayers.Class({
                     strokeLinecap: defaults.strokeLinecap
                 });
             }
-            if(symbolizer.fill === true || symbolizer.graphic === true) {
+            if (symbolizer.fill === true || symbolizer.graphic === true) {
                 OpenLayers.Util.applyDefaults(symbolizer, {
                     fillColor: defaults.fillColor,
                     fillOpacity: defaults.fillOpacity
                 });
             }
-            if(symbolizer.graphic === true) {
+            if (symbolizer.graphic === true) {
                 OpenLayers.Util.applyDefaults(symbolizer, {
                     pointRadius: this.defaultStyle.pointRadius,
                     externalGraphic: this.defaultStyle.externalGraphic,
@@ -392,7 +392,7 @@ OpenLayers.Style = OpenLayers.Class({
     clone: function() {
         var options = OpenLayers.Util.extend({}, this);
         // clone rules
-        if(this.rules) {
+        if (this.rules) {
             options.rules = [];
             for(var i=0, len=this.rules.length; i<len; ++i) {
                 options.rules.push(this.rules[i].clone());

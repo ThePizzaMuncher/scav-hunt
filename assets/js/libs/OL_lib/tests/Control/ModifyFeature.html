@@ -196,7 +196,7 @@
         // a feature
         control.selectFeature(feature);
         
-        if(modified) {
+        if (modified) {
             t.fail("selectFeature called, prepping feature for modification");
         } else {
             t.ok(true, "the beforefeaturemodified listener stopped feature modification");

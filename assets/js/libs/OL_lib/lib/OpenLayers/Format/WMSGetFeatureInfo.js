@@ -69,14 +69,14 @@ OpenLayers.Format.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Format.XML, {
      */
     read: function(data) {
         var result;
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         var root = data.documentElement;
-        if(root) {
+        if (root) {
             var scope = this;
             var read = this["read_" + root.nodeName];
-            if(read) {
+            if (read) {
                 result = read.call(this, root);
             } else {
                 // fall-back to GML since this is a common output format for WMS
@@ -212,7 +212,7 @@ OpenLayers.Format.WMSGetFeatureInfo = OpenLayers.Class(OpenLayers.Format.XML, {
                     matchNodes = this.getSiblingNodesByTagCriteria(
                         child, criteria);
 
-                    if(matchNodes.length > 0){
+                    if (matchNodes.length > 0){
                         (nodes.length == 0) ? 
                             nodes = matchNodes : nodes.push(matchNodes);
                     }

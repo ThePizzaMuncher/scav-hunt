@@ -71,7 +71,7 @@ OpenLayers.Layer.Vector.RootContainer = OpenLayers.Class(OpenLayers.Layer.Vector
         var feature;
         for(var i=0; i<layers.length; i++) {
             feature = layers[i].getFeatureFromEvent(evt);
-            if(feature) {
+            if (feature) {
                 return feature;
             }
         }
@@ -111,7 +111,7 @@ OpenLayers.Layer.Vector.RootContainer = OpenLayers.Class(OpenLayers.Layer.Vector
         // walk through all map layers, because we want to keep the order
         for(var i=0; i<this.map.layers.length; ++i) {
             layer = this.map.layers[i];
-            if(OpenLayers.Util.indexOf(this.layers, layer) != -1) {
+            if (OpenLayers.Util.indexOf(this.layers, layer) != -1) {
                 layer.renderer.moveRoot(this.renderer);
             }
         }
@@ -125,7 +125,7 @@ OpenLayers.Layer.Vector.RootContainer = OpenLayers.Class(OpenLayers.Layer.Vector
         var layer;
         for(var i=0; i<this.layers.length; ++i) {
             layer = this.layers[i];
-            if(this.renderer && layer.renderer.getRenderLayerId() == this.id) {
+            if (this.renderer && layer.renderer.getRenderLayerId() == this.id) {
                 this.renderer.moveRoot(layer.renderer);
             }
         }
@@ -143,7 +143,7 @@ OpenLayers.Layer.Vector.RootContainer = OpenLayers.Class(OpenLayers.Layer.Vector
      */
     handleChangeLayer: function(evt) {
         var layer = evt.layer;
-        if(evt.property == "order" &&
+        if (evt.property == "order" &&
                         OpenLayers.Util.indexOf(this.layers, layer) != -1) {
             this.resetRoots();
             this.collectRoots();

@@ -145,19 +145,19 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
      * 
      */
     setNestingPath : function(l){
-        if(l.layersContext){
+        if (l.layersContext){
             for (var i = 0, len = l.layersContext.length; i < len; i++) {
                 var layerContext = l.layersContext[i];
                 var nPath = [];
                 var nTitle = l.title || "";
-                if(l.metadata && l.metadata.nestingPath){
+                if (l.metadata && l.metadata.nestingPath){
                     nPath = l.metadata.nestingPath.slice();
                 }
                 if (nTitle != "") {
                     nPath.push(nTitle);
                 }
                 layerContext.metadata.nestingPath = nPath;
-                if(layerContext.layersContext){
+                if (layerContext.layersContext){
                     this.setNestingPath(layerContext);
                 }
             }
@@ -202,10 +202,10 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
      *     layersContext.
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
-        if(data && data.nodeType == 9) {
+        if (data && data.nodeType == 9) {
             data = data.documentElement;
         }
         var context = {};
@@ -490,12 +490,12 @@ OpenLayers.Format.OWSContext.v0_3_1 = OpenLayers.Class(OpenLayers.Format.XML, {
                 // subPaths is an array of an array
                 // recursively calling _Layer writer eats up subPaths, until a 
                 // real writer is called and nodes are returned.
-                if(subPaths.length > 0){
+                if (subPaths.length > 0){
                     var path = subPaths[0].join("/");
                     var index = path.lastIndexOf("/");
                     node = this.nestingLayerLookup[path];
                     title = (index > 0)?path.substring(index + 1, path.length):path;
-                    if(!node){
+                    if (!node){
                         // category layer
                         node = this.createElementNSPlus("Layer");
                         this.writeNode("ows:Title", title, node);

@@ -297,7 +297,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
                 // the fill, because this is part of the hack described
                 // in graphicRotate
                 fill.opacity = 0;
-            } else if(node._geometryClass === "OpenLayers.Geometry.Point") {
+            } else if (node._geometryClass === "OpenLayers.Geometry.Point") {
                 node.style.rotation = rotation || 0;
             }
         }
@@ -361,7 +361,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
             // load the image to determine its size
             var img = new Image();
             img.onreadystatechange = OpenLayers.Function.bind(function() {
-                if(img.readyState == "complete" ||
+                if (img.readyState == "complete" ||
                         img.readyState == "interactive") {
                     aspectRatio = img.width / img.height;
                     size = Math.max(style.pointRadius * 2, 
@@ -479,7 +479,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
     setNodeDimension: function(node, geometry) {
 
         var bbox = geometry.getBounds();
-        if(bbox) {
+        if (bbox) {
             var resolution = this.getResolution();
         
             var scaledBox = 
@@ -649,7 +649,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      * {DOMElement} or false if the circle could not ne drawn
      */
     drawCircle: function(node, geometry, radius) {
-        if(!isNaN(geometry.x)&& !isNaN(geometry.y)) {
+        if (!isNaN(geometry.x)&& !isNaN(geometry.y)) {
             var resolution = this.getResolution();
 
             node.style.left = ((((geometry.x - this.featureDx) /resolution - this.offset.x) | 0) - radius) + "px";
@@ -850,7 +850,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         if (style.fontStyle) {
             textbox.style.fontStyle = style.fontStyle;
         }
-        if(style.labelSelect === true) {
+        if (style.labelSelect === true) {
             label._featureId = featureId;
             textbox._featureId = featureId;
             textbox._geometry = location;
@@ -862,7 +862,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         // pixel later when we set label.style.left
         textbox.inset = "1px,0px,0px,0px";
 
-        if(!label.parentNode) {
+        if (!label.parentNode) {
             label.appendChild(textbox);
             this.textRoot.appendChild(label);
         }
@@ -895,7 +895,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
      */
     moveRoot: function(renderer) {
         var layer = this.map.getLayer(renderer.container.id);
-        if(layer instanceof OpenLayers.Layer.Vector.RootContainer) {
+        if (layer instanceof OpenLayers.Layer.Vector.RootContainer) {
             layer = this.map.getLayer(this.container.id);
         }
         layer && layer.renderer.clear();
@@ -949,7 +949,7 @@ OpenLayers.Renderer.VML = OpenLayers.Class(OpenLayers.Renderer.Elements, {
         var path = pathitems.join(" ");
 
         var diff = (symbolExtent.getWidth() - symbolExtent.getHeight()) / 2;
-        if(diff > 0) {
+        if (diff > 0) {
             symbolExtent.bottom = symbolExtent.bottom - diff;
             symbolExtent.top = symbolExtent.top + diff;
         } else {

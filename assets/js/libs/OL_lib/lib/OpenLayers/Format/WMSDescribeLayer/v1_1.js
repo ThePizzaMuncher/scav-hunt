@@ -53,7 +53,7 @@ OpenLayers.Format.WMSDescribeLayer.v1_1_1 = OpenLayers.Class(
      * - {String} layerName: the name of the WMS layer we did a lookup for
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         var root = data.documentElement;
@@ -84,7 +84,7 @@ OpenLayers.Format.WMSDescribeLayer.v1_1_1 = OpenLayers.Class(
                 }
                 // look for Query child
                 var query = childNode.getElementsByTagName('Query');
-                if(query.length > 0) {
+                if (query.length > 0) {
                     typeName = query[0].getAttribute('typeName');
                     if (!typeName) {
                         // because of Ionic bug

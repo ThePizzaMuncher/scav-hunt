@@ -131,7 +131,7 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
      * components - {Array(<OpenLayers.Geometry>)} An array of geometries to add
      */
     addComponents: function(components){
-        if(!(OpenLayers.Util.isArray(components))) {
+        if (!(OpenLayers.Util.isArray(components))) {
             components = [components];
         }
         for(var i=0, len=components.length; i<len; i++) {
@@ -155,12 +155,12 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
      */    
     addComponent: function(component, index) {
         var added = false;
-        if(component) {
-            if(this.componentTypes == null ||
+        if (component) {
+            if (this.componentTypes == null ||
                (OpenLayers.Util.indexOf(this.componentTypes,
                                         component.CLASS_NAME) > -1)) {
 
-                if(index != null && (index < this.components.length)) {
+                if (index != null && (index < this.components.length)) {
                     var components1 = this.components.slice(0, index);
                     var components2 = this.components.slice(index, 
                                                            this.components.length);
@@ -190,7 +190,7 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
     removeComponents: function(components) {
         var removed = false;
 
-        if(!(OpenLayers.Util.isArray(components))) {
+        if (!(OpenLayers.Util.isArray(components))) {
             components = [components];
         }
         for(var i=components.length-1; i>=0; --i) {
@@ -451,10 +451,10 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
         for(var i=0, len=this.components.length; i<len; ++i) {
             result = this.components[i].distanceTo(geometry, options);
             distance = details ? result.distance : result;
-            if(distance < min) {
+            if (distance < min) {
                 min = distance;
                 best = result;
-                if(min == 0) {
+                if (min == 0) {
                     break;
                 }
             }
@@ -475,15 +475,15 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
      */
     equals: function(geometry) {
         var equivalent = true;
-        if(!geometry || !geometry.CLASS_NAME ||
+        if (!geometry || !geometry.CLASS_NAME ||
            (this.CLASS_NAME != geometry.CLASS_NAME)) {
             equivalent = false;
-        } else if(!(OpenLayers.Util.isArray(geometry.components)) ||
+        } else if (!(OpenLayers.Util.isArray(geometry.components)) ||
                   (geometry.components.length != this.components.length)) {
             equivalent = false;
         } else {
             for(var i=0, len=this.components.length; i<len; ++i) {
-                if(!this.components[i].equals(geometry.components[i])) {
+                if (!this.components[i].equals(geometry.components[i])) {
                     equivalent = false;
                     break;
                 }
@@ -528,7 +528,7 @@ OpenLayers.Geometry.Collection = OpenLayers.Class(OpenLayers.Geometry, {
         var intersect = false;
         for(var i=0, len=this.components.length; i<len; ++ i) {
             intersect = geometry.intersects(this.components[i]);
-            if(intersect) {
+            if (intersect) {
                 break;
             }
         }

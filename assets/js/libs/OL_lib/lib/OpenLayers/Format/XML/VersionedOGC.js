@@ -108,9 +108,9 @@ OpenLayers.Format.XML.VersionedOGC = OpenLayers.Class(OpenLayers.Format.XML, {
         // read
         if (root) {
             version = this.version;
-            if(!version) {
+            if (!version) {
                 version = root.getAttribute("version");
-                if(!version) {
+                if (!version) {
                     version = this.defaultVersion;
                 }
             }
@@ -134,11 +134,11 @@ OpenLayers.Format.XML.VersionedOGC = OpenLayers.Class(OpenLayers.Format.XML, {
     getParser: function(version) {
         version = version || this.defaultVersion;
         var profile = this.profile ? "_" + this.profile : "";
-        if(!this.parser || this.parser.VERSION != version) {
+        if (!this.parser || this.parser.VERSION != version) {
             var format = OpenLayers.Format[this.name][
                 "v" + version.replace(/\./g, "_") + profile
             ];
-            if(!format) {
+            if (!format) {
                 if (profile !== "" && this.allowFallback) {
                     // fallback to the non-profiled version of the parser
                     profile = "";
@@ -190,7 +190,7 @@ OpenLayers.Format.XML.VersionedOGC = OpenLayers.Class(OpenLayers.Format.XML, {
      * {Object} An object representing the document.
      */
     read: function(data, options) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         var root = data.documentElement;

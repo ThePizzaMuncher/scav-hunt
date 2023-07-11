@@ -246,7 +246,7 @@ OpenLayers.Control.DragFeature = OpenLayers.Class(OpenLayers.Control, {
      */
     overFeature: function(feature) {
         var activated = false;
-        if(!this.handlers.drag.dragging) {
+        if (!this.handlers.drag.dragging) {
             this.feature = feature;
             this.handlers.drag.activate();
             activated = true;
@@ -254,7 +254,7 @@ OpenLayers.Control.DragFeature = OpenLayers.Class(OpenLayers.Control, {
             OpenLayers.Element.addClass(this.map.viewPortDiv, this.displayClass + "Over");
             this.onEnter(feature);
         } else {
-            if(this.feature.id == feature.id) {
+            if (this.feature.id == feature.id) {
                 this.over = true;
             } else {
                 this.over = false;
@@ -300,7 +300,7 @@ OpenLayers.Control.DragFeature = OpenLayers.Class(OpenLayers.Control, {
      * pixel - {<OpenLayers.Pixel>} Location of the mouse event.
      */
     upFeature: function(pixel) {
-        if(!this.over) {
+        if (!this.over) {
             this.handlers.drag.deactivate();
         }
     },
@@ -325,7 +325,7 @@ OpenLayers.Control.DragFeature = OpenLayers.Class(OpenLayers.Control, {
      * feature - {<OpenLayers.Feature.Vector>} The feature that the mouse left.
      */
     outFeature: function(feature) {
-        if(!this.handlers.drag.dragging) {
+        if (!this.handlers.drag.dragging) {
             this.over = false;
             this.handlers.drag.deactivate();
             OpenLayers.Element.removeClass(
@@ -334,7 +334,7 @@ OpenLayers.Control.DragFeature = OpenLayers.Class(OpenLayers.Control, {
             this.onLeave(feature);
             this.feature = null;
         } else {
-            if(this.feature.id == feature.id) {
+            if (this.feature.id == feature.id) {
                 this.over = false;
             }
         }

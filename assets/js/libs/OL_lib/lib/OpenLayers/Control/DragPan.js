@@ -80,7 +80,7 @@ OpenLayers.Control.DragPan = OpenLayers.Class(OpenLayers.Control, {
     draw: function() {
         if (this.enableKinetic && OpenLayers.Kinetic) {
             var config = {interval: this.kineticInterval};
-            if(typeof this.enableKinetic === "object") {
+            if (typeof this.enableKinetic === "object") {
                 config = OpenLayers.Util.extend(config, this.enableKinetic);
             }
             this.kinetic = new OpenLayers.Kinetic(config);
@@ -100,7 +100,7 @@ OpenLayers.Control.DragPan = OpenLayers.Class(OpenLayers.Control, {
      * Method: panMapStart
      */
     panMapStart: function() {
-        if(this.kinetic) {
+        if (this.kinetic) {
             this.kinetic.begin();
         }
     },
@@ -112,7 +112,7 @@ OpenLayers.Control.DragPan = OpenLayers.Class(OpenLayers.Control, {
     * xy - {<OpenLayers.Pixel>} Pixel of the mouse position
     */
     panMap: function(xy) {
-        if(this.kinetic) {
+        if (this.kinetic) {
             this.kinetic.update(xy);
         }
         this.panned = true;
@@ -132,7 +132,7 @@ OpenLayers.Control.DragPan = OpenLayers.Class(OpenLayers.Control, {
      * xy - {<OpenLayers.Pixel>} Pixel of the mouse position
      */
     panMapDone: function(xy) {
-        if(this.panned) {
+        if (this.panned) {
             var res = null;
             if (this.kinetic) {
                 res = this.kinetic.end(xy);

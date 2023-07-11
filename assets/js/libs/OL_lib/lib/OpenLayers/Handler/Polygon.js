@@ -96,7 +96,7 @@ OpenLayers.Handler.Polygon = OpenLayers.Class(OpenLayers.Handler.Path, {
      * pixel - {<OpenLayers.Pixel>} The pixel location for the new point.
      */
     addPoint: function(pixel) {
-        if(!this.drawingHole && this.holeModifier &&
+        if (!this.drawingHole && this.holeModifier &&
            this.evt && this.evt[this.holeModifier]) {
             var geometry = this.point.geometry;
             var features = this.control.layer.features;
@@ -295,7 +295,7 @@ OpenLayers.Handler.Polygon = OpenLayers.Class(OpenLayers.Handler.Path, {
      */
     getGeometry: function() {
         var geometry = this.polygon && this.polygon.geometry;
-        if(geometry && this.multi) {
+        if (geometry && this.multi) {
             geometry = new OpenLayers.Geometry.MultiPolygon([geometry]);
         }
         return geometry;

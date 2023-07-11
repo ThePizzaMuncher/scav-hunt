@@ -142,7 +142,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
      *     cancel callback will receive a geometry.
      */
     initialize: function(control, callbacks, options) {
-        if(!(options && options.layerOptions && options.layerOptions.styleMap)) {
+        if (!(options && options.layerOptions && options.layerOptions.styleMap)) {
             this.style = OpenLayers.Util.extend(OpenLayers.Feature.Vector.style['default'], {});
         }
 
@@ -154,7 +154,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
      * turn on the handler
      */
     activate: function() {
-        if(!OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
+        if (!OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
             return false;
         }
         // create temporary vector layer for rendering geometry sketch
@@ -196,7 +196,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
      * turn off the handler
      */
     deactivate: function() {
-        if(!OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
+        if (!OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
             return false;
         }
         this.cancel();
@@ -221,7 +221,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
      * force - {Boolean} Destroy even if persist is true.
      */
     destroyFeature: function(force) {
-        if(this.layer && (force || !this.persist)) {
+        if (this.layer && (force || !this.persist)) {
             this.layer.destroyFeatures();
         }
         this.point = null;
@@ -233,7 +233,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
      */
     destroyPersistedFeature: function() {
         var layer = this.layer;
-        if(layer && layer.features.length > 1) {
+        if (layer && layer.features.length > 1) {
             this.layer.features[0].destroy();
         }
     },
@@ -304,7 +304,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
      * pixel - {<OpenLayers.Pixel>} A pixel location on the map.
      */
     modifyFeature: function(pixel) {
-        if(!this.point) {
+        if (!this.point) {
             this.createFeature(pixel);
         }
         var lonlat = this.layer.getLonLatFromViewPortPx(pixel); 
@@ -333,7 +333,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
      */
     getGeometry: function() {
         var geometry = this.point && this.point.geometry;
-        if(geometry && this.multi) {
+        if (geometry && this.multi) {
             geometry = new OpenLayers.Geometry.MultiPoint([geometry]);
         }
         return geometry;
@@ -453,7 +453,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
     down: function(evt) {
         this.mouseDown = true;
         this.lastDown = evt.xy;
-        if(!this.touch) { // no point displayed until up on touch devices
+        if (!this.touch) { // no point displayed until up on touch devices
             this.modifyFeature(evt.xy);
         }
         this.stoppedDown = this.stopDown;
@@ -472,7 +472,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean} Allow event propagation
      */
     move: function (evt) {
-        if(!this.touch // no point displayed until up on touch devices
+        if (!this.touch // no point displayed until up on touch devices
            && (!this.mouseDown || this.stoppedDown)) {
             this.modifyFeature(evt.xy);
         }
@@ -495,7 +495,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
         this.stoppedDown = this.stopDown;
 
         // check keyboard modifiers
-        if(!this.checkModifiers(evt)) {
+        if (!this.checkModifiers(evt)) {
             return true;
         }
         // ignore double-clicks
@@ -507,7 +507,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
             if (this.touch) {
                 this.modifyFeature(evt.xy);
             }
-            if(this.persist) {
+            if (this.persist) {
                 this.destroyPersistedFeature();
             }
             this.lastUp = evt.xy;
@@ -527,7 +527,7 @@ OpenLayers.Handler.Point = OpenLayers.Class(OpenLayers.Handler, {
      * evt - {Event} The browser event
      */
     mouseout: function(evt) {
-        if(OpenLayers.Util.mouseLeft(evt, this.map.viewPortDiv)) {
+        if (OpenLayers.Util.mouseLeft(evt, this.map.viewPortDiv)) {
             this.stoppedDown = this.stopDown;
             this.mouseDown = false;
         }

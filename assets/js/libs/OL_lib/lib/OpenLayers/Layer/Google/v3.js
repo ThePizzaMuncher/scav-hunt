@@ -323,7 +323,7 @@ OpenLayers.Layer.Google.v3 = {
      */
     getMapObjectLonLatFromLonLat: function(lon, lat) {
         var gLatLng;
-        if(this.sphericalMercator) {
+        if (this.sphericalMercator) {
             var lonlat = this.inverseMercator(lon, lat);
             gLatLng = new google.maps.LatLng(lonlat.lat, lonlat.lon);
         } else {

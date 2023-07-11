@@ -48,7 +48,7 @@
 
         function loadSuccess(request) {
             updateStatus("loaded");
-            if(!request.responseXML.documentElement) {
+            if (!request.responseXML.documentElement) {
                 doc = format.read(request.responseText);
             } else {
                 doc = request.responseXML;

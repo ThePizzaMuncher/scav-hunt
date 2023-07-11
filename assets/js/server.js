@@ -11,7 +11,7 @@ server.on("connection", (socket) => {
         txt = txt.toString();
         console.log(txt); //Log
         sockets.forEach(r => {
-            if(r.readyState === ws.OPEN && r !== socket) {//Verstuurd data naar alle andere clients behalve degene die hem gestuurd had.
+            if (r.readyState === ws.OPEN && r !== socket) {//Verstuurd data naar alle andere clients behalve degene die hem gestuurd had.
                 r.send(txt);
             }
         });

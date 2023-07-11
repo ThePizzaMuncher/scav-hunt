@@ -84,7 +84,7 @@ OpenLayers.Format.WFSCapabilities.v1_0_0 = OpenLayers.Class(
                 var childNode;
                 for(var i=0; i<children.length; i++) {
                     childNode = children[i];
-                    if(childNode.nodeType == 1) {
+                    if (childNode.nodeType == 1) {
                         obj.formats.push(childNode.nodeName);
                     }
                 }

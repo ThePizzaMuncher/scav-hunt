@@ -110,12 +110,12 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
         }
         var features = [];
         
-        if(this.extractTracks) {
+        if (this.extractTracks) {
             var tracks = doc.getElementsByTagName("trk");
             for (var i=0, len=tracks.length; i<len; i++) {
                 // Attributes are only in trk nodes, not trkseg nodes
                 var attrs = {};
-                if(this.extractAttributes) {
+                if (this.extractAttributes) {
                     attrs = this.parseAttributes(tracks[i]);
                 }
                 
@@ -129,11 +129,11 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
             }
         }
         
-        if(this.extractRoutes) {
+        if (this.extractRoutes) {
             var routes = doc.getElementsByTagName("rte");
             for (var k=0, klen=routes.length; k<klen; k++) {
                 var attrs = {};
-                if(this.extractAttributes) {
+                if (this.extractAttributes) {
                     attrs = this.parseAttributes(routes[k]);
                 }
                 var route = this.extractSegment(routes[k], "rtept");
@@ -141,11 +141,11 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
             }
         }
         
-        if(this.extractWaypoints) {
+        if (this.extractWaypoints) {
             var waypoints = doc.getElementsByTagName("wpt");
             for (var l = 0, len = waypoints.length; l < len; l++) {
                 var attrs = {};
-                if(this.extractAttributes) {
+                if (this.extractAttributes) {
                     attrs = this.parseAttributes(waypoints[l]);
                 }
                 var wpt = new OpenLayers.Geometry.Point(waypoints[l].getAttribute("lon"), waypoints[l].getAttribute("lat"));
@@ -197,13 +197,13 @@ OpenLayers.Format.GPX = OpenLayers.Class(OpenLayers.Format.XML, {
         var attributes = {};
         var attrNode = node.firstChild, value, name;
         while(attrNode) {
-            if(attrNode.nodeType == 1 && attrNode.firstChild) {
+            if (attrNode.nodeType == 1 && attrNode.firstChild) {
                 value = attrNode.firstChild;
-                if(value.nodeType == 3 || value.nodeType == 4) {
+                if (value.nodeType == 3 || value.nodeType == 4) {
                     name = (attrNode.prefix) ?
                         attrNode.nodeName.split(":")[1] :
                         attrNode.nodeName;
-                    if(name != "trkseg" && name != "rtept") {
+                    if (name != "trkseg" && name != "rtept") {
                         attributes[name] = value.nodeValue;
                     }
                 }

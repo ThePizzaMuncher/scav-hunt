@@ -158,9 +158,9 @@ OpenLayers.Control.NavigationHistory = OpenLayers.Class(OpenLayers.Control, {
      *     be restored.
      */
     onPreviousChange: function(state, length) {
-        if(state && !this.previous.active) {
+        if (state && !this.previous.active) {
             this.previous.activate();
-        } else if(!state && this.previous.active) {
+        } else if (!state && this.previous.active) {
             this.previous.deactivate();
         }
     },
@@ -176,9 +176,9 @@ OpenLayers.Control.NavigationHistory = OpenLayers.Class(OpenLayers.Control, {
      *     be restored.
      */
     onNextChange: function(state, length) {
-        if(state && !this.next.active) {
+        if (state && !this.next.active) {
             this.next.activate();
-        } else if(!state && this.next.active) {
+        } else if (!state && this.next.active) {
             this.next.deactivate();
         }
     },
@@ -233,7 +233,7 @@ OpenLayers.Control.NavigationHistory = OpenLayers.Class(OpenLayers.Control, {
     previousTrigger: function() {
         var current = this.previousStack.shift();
         var state = this.previousStack.shift();
-        if(state != undefined) {
+        if (state != undefined) {
             this.nextStack.unshift(current);
             this.previousStack.unshift(state);
             this.restoring = true;
@@ -261,7 +261,7 @@ OpenLayers.Control.NavigationHistory = OpenLayers.Class(OpenLayers.Control, {
      */
     nextTrigger: function() {
         var state = this.nextStack.shift();
-        if(state != undefined) {
+        if (state != undefined) {
             this.previousStack.unshift(state);
             this.restoring = true;
             this.restore(state);
@@ -335,18 +335,18 @@ OpenLayers.Control.NavigationHistory = OpenLayers.Class(OpenLayers.Control, {
         this.listeners = {};
         for(var type in this.registry) {
             this.listeners[type] = OpenLayers.Function.bind(function() {
-                if(!this.restoring) {
+                if (!this.restoring) {
                     var state = this.registry[type].apply(this, arguments);
                     this.previousStack.unshift(state);
-                    if(this.previousStack.length > 1) {
+                    if (this.previousStack.length > 1) {
                         this.onPreviousChange(
                             this.previousStack[1], this.previousStack.length - 1
                         );
                     }
-                    if(this.previousStack.length > (this.limit + 1)) {
+                    if (this.previousStack.length > (this.limit + 1)) {
                         this.previousStack.pop();
                     }
-                    if(this.nextStack.length > 0) {
+                    if (this.nextStack.length > 0) {
                         this.nextStack = [];
                         this.onNextChange(null, 0);
                     }
@@ -365,16 +365,16 @@ OpenLayers.Control.NavigationHistory = OpenLayers.Class(OpenLayers.Control, {
      */
     activate: function() {
         var activated = false;
-        if(this.map) {
-            if(OpenLayers.Control.prototype.activate.apply(this)) {
-                if(this.listeners == null) {
+        if (this.map) {
+            if (OpenLayers.Control.prototype.activate.apply(this)) {
+                if (this.listeners == null) {
                     this.setListeners();
                 }
                 for(var type in this.listeners) {
                     this.map.events.register(type, this, this.listeners[type]);
                 }
                 activated = true;
-                if(this.previousStack.length == 0) {
+                if (this.previousStack.length == 0) {
                     this.initStack();
                 }
             }
@@ -388,7 +388,7 @@ OpenLayers.Control.NavigationHistory = OpenLayers.Class(OpenLayers.Control, {
      *     empty.
      */
     initStack: function() {
-        if(this.map.getCenter()) {
+        if (this.map.getCenter()) {
             this.listeners.moveend();
         }
     },
@@ -402,14 +402,14 @@ OpenLayers.Control.NavigationHistory = OpenLayers.Class(OpenLayers.Control, {
      */
     deactivate: function() {
         var deactivated = false;
-        if(this.map) {
-            if(OpenLayers.Control.prototype.deactivate.apply(this)) {
+        if (this.map) {
+            if (OpenLayers.Control.prototype.deactivate.apply(this)) {
                 for(var type in this.listeners) {
                     this.map.events.unregister(
                         type, this, this.listeners[type]
                     );
                 }
-                if(this.clearOnDeactivate) {
+                if (this.clearOnDeactivate) {
                     this.clear();
                 }
                 deactivated = true;

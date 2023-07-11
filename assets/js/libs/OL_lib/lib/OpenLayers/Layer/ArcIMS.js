@@ -250,11 +250,11 @@ OpenLayers.Layer.ArcIMS = OpenLayers.Class(OpenLayers.Layer.Grid, {
      */
     getUrlOrImage: function(output) {
         var ret = "";
-        if(output.url) {
+        if (output.url) {
             // If the image response output url is a string, then the image
             // data is not inline.
             ret = output.url;
-        } else if(output.data) {
+        } else if (output.data) {
             // The image data is inline and base64 encoded, create a data
             // url for the image.  This will only work for small images,
             // due to browser url length limits.

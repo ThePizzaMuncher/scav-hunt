@@ -73,7 +73,7 @@
         tile.url = layer.getURL(bounds);
         tile.initImage();
 
-        if(isMozilla) {
+        if (isMozilla) {
             t.ok( tile.imgDiv instanceof HTMLElement, "tile.iFrame successfully created.");
         }
         else {
@@ -99,7 +99,7 @@
                     tile.blankImageUrl),
              "backgroundImage of eventPane is set.");
         t.eq(parseInt(eventPane.style.zIndex, 10), 1, "zIndex of eventPane is set.");
-        if(isIElt9) {
+        if (isIElt9) {
             t.ok(iFrame != null, "IFrame successfully created.");
             t.eq(iFrame.style.backgroundColor, '#ffffff', "backgroundColor correctly set.");
             t.eq(iFrame.style.filter, 'chroma(color=#FFFFFF)', "filter correctly set.");
@@ -138,7 +138,7 @@
 
         tile.url = newLayer.getURL(bounds);
         var form = tile.createRequestForm();
-        if(isMozilla) {
+        if (isMozilla) {
             t.ok( form instanceof HTMLElement, "created html form successfully.");
         }
         else {

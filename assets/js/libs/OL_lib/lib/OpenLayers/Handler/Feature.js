@@ -257,7 +257,7 @@ OpenLayers.Handler.Feature = OpenLayers.Class(OpenLayers.Handler, {
      * {Boolean} The event occurred over a relevant feature.
      */
     handle: function(evt) {
-        if(this.feature && !this.feature.layer) {
+        if (this.feature && !this.feature.layer) {
             // feature has been destroyed
             this.feature = null;
         }
@@ -266,30 +266,30 @@ OpenLayers.Handler.Feature = OpenLayers.Class(OpenLayers.Handler, {
         var previouslyIn = !!(this.feature); // previously in a feature
         var click = (type == "click" || type == "dblclick" || type == "touchstart");
         this.feature = this.layer.getFeatureFromEvent(evt);
-        if(this.feature && !this.feature.layer) {
+        if (this.feature && !this.feature.layer) {
             // feature has been destroyed
             this.feature = null;
         }
-        if(this.lastFeature && !this.lastFeature.layer) {
+        if (this.lastFeature && !this.lastFeature.layer) {
             // last feature has been destroyed
             this.lastFeature = null;
         }
-        if(this.feature) {
-            if(type === "touchstart") {
+        if (this.feature) {
+            if (type === "touchstart") {
                 // stop the event to prevent Android Webkit from
                 // "flashing" the map div
                 OpenLayers.Event.preventDefault(evt);
             }
             var inNew = (this.feature != this.lastFeature);
-            if(this.geometryTypeMatches(this.feature)) {
+            if (this.geometryTypeMatches(this.feature)) {
                 // in to a feature
-                if(previouslyIn && inNew) {
+                if (previouslyIn && inNew) {
                     // out of last feature and in to another
-                    if(this.lastFeature) {
+                    if (this.lastFeature) {
                         this.triggerCallback(type, 'out', [this.lastFeature]);
                     }
                     this.triggerCallback(type, 'in', [this.feature]);
-                } else if(!previouslyIn || click) {
+                } else if (!previouslyIn || click) {
                     // in feature for the first time
                     this.triggerCallback(type, 'in', [this.feature]);
                 }
@@ -297,7 +297,7 @@ OpenLayers.Handler.Feature = OpenLayers.Class(OpenLayers.Handler, {
                 handled = true;
             } else {
                 // not in to a feature
-                if(this.lastFeature && (previouslyIn && inNew || click)) {
+                if (this.lastFeature && (previouslyIn && inNew || click)) {
                     // out of last feature for the first time
                     this.triggerCallback(type, 'out', [this.lastFeature]);
                 }
@@ -308,7 +308,7 @@ OpenLayers.Handler.Feature = OpenLayers.Class(OpenLayers.Handler, {
                 // we enter handle. Yes, a bit hackish...
                 this.feature = null;
             }
-        } else if(this.lastFeature && (previouslyIn || click)) {
+        } else if (this.lastFeature && (previouslyIn || click)) {
             this.triggerCallback(type, 'out', [this.lastFeature]);
         }
         return handled;
@@ -324,14 +324,14 @@ OpenLayers.Handler.Feature = OpenLayers.Class(OpenLayers.Handler, {
      */
     triggerCallback: function(type, mode, args) {
         var key = this.EVENTMAP[type][mode];
-        if(key) {
-            if(type == 'click' && this.up && this.down) {
+        if (key) {
+            if (type == 'click' && this.up && this.down) {
                 // for click/clickout, only trigger callback if tolerance is met
                 var dpx = Math.sqrt(
                     Math.pow(this.up.x - this.down.x, 2) +
                     Math.pow(this.up.y - this.down.y, 2)
                 );
-                if(dpx <= this.clickTolerance) {
+                if (dpx <= this.clickTolerance) {
                     this.callback(key, args);
                 }
                 // we're done with this set of events now: clear the cached
@@ -354,7 +354,7 @@ OpenLayers.Handler.Feature = OpenLayers.Class(OpenLayers.Handler, {
      */
     activate: function() {
         var activated = false;
-        if(OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
+        if (OpenLayers.Handler.prototype.activate.apply(this, arguments)) {
             this.moveLayerToTop();
             this.map.events.on({
                 "removelayer": this.handleMapEvents,
@@ -375,7 +375,7 @@ OpenLayers.Handler.Feature = OpenLayers.Class(OpenLayers.Handler, {
      */
     deactivate: function() {
         var deactivated = false;
-        if(OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
+        if (OpenLayers.Handler.prototype.deactivate.apply(this, arguments)) {
             this.moveLayerBack();
             this.feature = null;
             this.lastFeature = null;

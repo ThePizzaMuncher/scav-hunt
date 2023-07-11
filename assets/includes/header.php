@@ -1,76 +1,165 @@
+<p style="display: none">
+	<?php
+	session_start();
+	?>
+</p>
+<?php
+$path = "~speurtocht/";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Scav Hunt</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+	<title>Scav Hunt</title>
+	<meta content="" name="description">
+	<meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<!-- Favicons -->
+	<?php
+	echo '
+	<link href="/' . $path . 'assets/img/favicon_io/apple-touch-icon.png" rel="apple-touch-icon">
+	<link rel="apple-touch-icon" sizes="180x180" href="/' . $path . 'assets/img/favicon_io/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/' . $path . 'assets/img/favicon_io/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/' . $path . 'assets/img/favicon_io/favicon-16x16.png">
+	<link rel="manifest" href="/' . $path . 'assets/img/favicon_io/site.webmanifest">
+	<meta name="description" content="Speurtocht website. Speur je mee?">
+	';
+	?>
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	<!-- Vendor CSS Files -->
+	<?php
+	echo '
+	<link href="/' . $path . 'assets/vendor/aos/aos.css" rel="stylesheet">
+	<link href="/' . $path . 'assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/' . $path . 'assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="/' . $path . 'assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	<link href="/' . $path . 'assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="/' . $path . 'assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	';
+	?>
 
-  <script src="https://kit.fontawesome.com/51b9333b7a.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/51b9333b7a.js" crossorigin="anonymous"></script>
 
-  <!-- Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  
+	<!-- Main CSS File -->
+	<?php
+	echo '
+	<link href="/' . $path . 'assets/css/style.css" rel="stylesheet">
+	';
+
+	function convertMarkdownToHTML($text)
+{
+    $formattedText = htmlspecialchars($text);
+    $formattedText = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $formattedText);
+    $formattedText = preg_replace('/\*(.*?)\*/', '<em>$1</em>', $formattedText);
+    $formattedText = preg_replace('/__(.*?)__/', '<u>$1</u>', $formattedText);
+    $formattedText = preg_replace('/~(.*?)~/', '<s>$1</s>', $formattedText);
+    $formattedText = preg_replace_callback('/##(.*?)##/', function ($matches) {
+        $text = htmlspecialchars($matches[1]);
+        return '<h2>' . $text . '</h2>';
+    }, $formattedText);
+    $formattedText = preg_replace_callback('/###(.*?)###/', function ($matches) {
+        $text = htmlspecialchars($matches[1]);
+        return '<h3>' . $text . '</h3>';
+    }, $formattedText);
+    $formattedText = preg_replace('/#(.*?)#/', '<h1>$1</h1>', $formattedText);
+    $formattedText = preg_replace_callback('/\[([^]]+)\]\(([^)]+)\)/', function ($matches) {
+        $text = htmlspecialchars($matches[1]);
+        $url = htmlspecialchars($matches[2]);
+        return '<a href="' . $url . '" target="_blank">' . $text . '</a>';
+    }, $formattedText);
+    // $formattedText = nl2br($formattedText);
+
+    return $formattedText;
+}
+
+
+
+
+	?>
+</head>
+
 <body>
-  <div id="box"></div>
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
-  <div class="header-box"></div>
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="container">
-      <div class="row">
-        <div class="col-0">
-          <a href="index.php"><img src="assets/img/5787-minecraft.png" alt="" class="img-fluid rounded-circle"></a>
-        </div>
+	<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
-        <div class="col-1">
-          <div class="profile">
+	<div class="header-box"></div>
 
-            <h1 class="text-light"><a href="index.php">| Scav Hunt |</a></h1>
-            <div class="social-links mt-3 text-center">
-              <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-              <a href="" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-              <a href="" target="_blank"><i class="fa-brands fa-artstation"></i></a>
-            </div>
-          </div>
-        </div>
+	<header id="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-1">
+					<?php
+					echo '
+					<div class="image-container">
+					<a href="/' . $path . '"><img src="/' . $path . 'assets/img/1234.png" alt="" class="img-fluid rounded-circle"></a>
+					</div>
+					';
+					?>
+				</div>
 
-        <div class="col-2">
-        <div class="col-lg-6">
-        <h4><?php 
-        // require_once("connection.php");
-        session_start() ?></h4>
-        </div>
-        <div class="col-lg-6">
-        <nav id="navbar" class="nav-menu navbar">
-            <a href="index.php#" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a>
-            <a href="index.php#about" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a>
-          </nav><!-- .nav-menu -->
-        </div>
+				<div class="col-md-2">
+					<div class="profile">
+						<?php
+						echo '
+						<h1 class="text-light"><a href="/' . $path . '">Scav Hunt</a></h1>
+						'; ?>
+						<div class="social-links mt-3 text-center">
+							<?php
+							echo '
+							<a href="/' . $path . '#about"><i class="fa fa-info" aria-hidden="true"></i></a>
+							<a href="/' . $path . 'docent/groepen.php"><i
+									class="fa fa-address-book" aria-hidden="true"></i></a>
+							<a href="/' . $path . 'docent/koter_analyzer.php"><i class="fa fa-map"
+									aria-hidden="true"></i></a>
+									'; ?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9 vert">
+					<nav id="navbar" class="nav-menu navbar">
+						<ul class="nav-menu">
+							<?php
+							echo '
+							<li><a href="/' . $path . '" class="nav-link scrollto hover-sound"><i class="bx bx-home"></i> Home</a></li>
+							'; ?>
+							<?php
+							if (isset($_SESSION['docent'])) {
+								// echo <<< bar
+								echo '<li><a href="/' . $path . 'docent/"><i class="bx bx-user"></i> Docent</a></li>';
+								echo '<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
+								echo '<ul>';
+								echo '<li><a href="/' . $path . 'docent/groepen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
+								echo '<li><a href="/' . $path . 'docent/blender.php"><i class="bx bx-group"></i> Groepjes genereren</a></li>';
+								echo '<li><a href="/' . $path . 'vragen/tussenstand"><i class="bx bx-group"></i> Groepjes tussenstand</a></li>';
+								echo '<li><a href="/' . $path . 'docent/koter_analyzer.php"><i class="bx bx-map"></i> Locatie groepjes</a></li>';
+								echo '<li><a href="/' . $path . 'docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
+								echo '<li><a href="/' . $path . 'docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
+								echo '<li><a href="/' . $path . 'docent/unieke_code_generatie.php"><i class="bx bx-code"></i> Code genereren</a></li>';
+								if (isset($_SESSION['admin']))
+									echo '<li><a href="/' . $path . 'admin/docent_toevoegen.php"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
+								echo '</ul>';
+								echo '</li>';
+								// echo '<li><a href="' . $path . 'login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
+								// bar;
+							} else if (isset($_SESSION["student_login"]) && $_SESSION["student_login"]) {
+								echo '<li><a href="/' . $path . 'vragen/tussenstand" class="nav-link scrollto hover-sound"><i class="bx bx-group"></i> Tussenstand</a></li>';
+							}
+							else if (!isset($_SESSION['pagina'])) {
+								echo '<li><a href="/' . $path . 'login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>';
+								echo '<li><a href="/' . $path . 'login/student_login.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>';
+							}
+							?>
 
-        </div>
-      </div>
-    </div>
-  </header><!-- End Header -->
+							<!-- <li><a href="/' . $path . 'about.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> About</a></li> -->
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>

@@ -100,7 +100,7 @@ OpenLayers.Control.DrawFeature = OpenLayers.Class(OpenLayers.Control, {
             this.handlerOptions.multi = this.multi;
         }
         var sketchStyle = this.layer.styleMap && this.layer.styleMap.styles.temporary;
-        if(sketchStyle) {
+        if (sketchStyle) {
             this.handlerOptions.layerOptions = OpenLayers.Util.applyDefaults(
                 this.handlerOptions.layerOptions,
                 {styleMap: new OpenLayers.StyleMap({"default": sketchStyle})}
@@ -117,7 +117,7 @@ OpenLayers.Control.DrawFeature = OpenLayers.Class(OpenLayers.Control, {
         var proceed = this.layer.events.triggerEvent(
             "sketchcomplete", {feature: feature}
         );
-        if(proceed !== false) {
+        if (proceed !== false) {
             feature.state = OpenLayers.State.INSERT;
             this.layer.addFeatures([feature]);
             this.featureAdded(feature);

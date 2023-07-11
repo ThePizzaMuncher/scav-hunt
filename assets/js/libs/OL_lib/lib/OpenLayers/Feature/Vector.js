@@ -192,9 +192,9 @@ OpenLayers.Feature.Vector = OpenLayers.Class(OpenLayers.Feature, {
      */
     onScreen:function(boundsOnly) {
         var onScreen = false;
-        if(this.layer && this.layer.map) {
+        if (this.layer && this.layer.map) {
             var screenBounds = this.layer.map.getExtent();
-            if(boundsOnly) {
+            if (boundsOnly) {
                 var featureBounds = this.geometry.getBounds();
                 onScreen = screenBounds.intersectsBounds(featureBounds);
             } else {
@@ -277,7 +277,7 @@ OpenLayers.Feature.Vector = OpenLayers.Class(OpenLayers.Feature, {
      */
     atPoint: function(lonlat, toleranceLon, toleranceLat) {
         var atPoint = false;
-        if(this.geometry) {
+        if (this.geometry) {
             atPoint = this.geometry.atPoint(lonlat, toleranceLon, 
                                                     toleranceLat);
         }
@@ -303,7 +303,7 @@ OpenLayers.Feature.Vector = OpenLayers.Class(OpenLayers.Feature, {
      */
     move: function(location) {
 
-        if(!this.layer || !this.geometry.move){
+        if (!this.layer || !this.geometry.move){
             //do nothing if no layer or immoveable geometry
             return undefined;
         }

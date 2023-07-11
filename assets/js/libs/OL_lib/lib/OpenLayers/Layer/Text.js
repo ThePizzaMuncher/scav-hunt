@@ -133,7 +133,7 @@ OpenLayers.Layer.Text = OpenLayers.Class(OpenLayers.Layer.Markers, {
      */
     moveTo:function(bounds, zoomChanged, minor) {
         OpenLayers.Layer.Markers.prototype.moveTo.apply(this, arguments);
-        if(this.visibility && !this.loaded){
+        if (this.visibility && !this.loaded){
             this.loadText();
         }
     },

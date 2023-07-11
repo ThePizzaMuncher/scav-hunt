@@ -119,7 +119,7 @@ OpenLayers.Filter.Comparison = OpenLayers.Class(OpenLayers.Filter, {
         switch(this.type) {
             case OpenLayers.Filter.Comparison.EQUAL_TO:
                 exp = this.value;
-                if(!this.matchCase &&
+                if (!this.matchCase &&
                    typeof got == "string" && typeof exp == "string") {
                     result = (got.toUpperCase() == exp.toUpperCase());
                 } else {
@@ -128,7 +128,7 @@ OpenLayers.Filter.Comparison = OpenLayers.Class(OpenLayers.Filter, {
                 break;
             case OpenLayers.Filter.Comparison.NOT_EQUAL_TO:
                 exp = this.value;
-                if(!this.matchCase &&
+                if (!this.matchCase &&
                    typeof got == "string" && typeof exp == "string") {
                     result = (got.toUpperCase() != exp.toUpperCase());
                 } else {

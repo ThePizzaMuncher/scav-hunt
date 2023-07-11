@@ -91,7 +91,7 @@ OpenLayers.Control.TouchNavigation = OpenLayers.Class(OpenLayers.Control, {
      */
     destroy: function() {
         this.deactivate();
-        if(this.dragPan) {
+        if (this.dragPan) {
             this.dragPan.destroy();
         }
         this.dragPan = null;
@@ -106,7 +106,7 @@ OpenLayers.Control.TouchNavigation = OpenLayers.Class(OpenLayers.Control, {
      * Method: activate
      */
     activate: function() {
-        if(OpenLayers.Control.prototype.activate.apply(this,arguments)) {
+        if (OpenLayers.Control.prototype.activate.apply(this,arguments)) {
             this.dragPan.activate();
             this.handlers.click.activate();
             this.pinchZoom.activate();
@@ -119,7 +119,7 @@ OpenLayers.Control.TouchNavigation = OpenLayers.Class(OpenLayers.Control, {
      * Method: deactivate
      */
     deactivate: function() {
-        if(OpenLayers.Control.prototype.deactivate.apply(this,arguments)) {
+        if (OpenLayers.Control.prototype.deactivate.apply(this,arguments)) {
             this.dragPan.deactivate();
             this.handlers.click.deactivate();
             this.pinchZoom.deactivate();
@@ -163,7 +163,7 @@ OpenLayers.Control.TouchNavigation = OpenLayers.Class(OpenLayers.Control, {
      * evt - {Event}
      */
     defaultClick: function (evt) {
-        if(evt.lastTouches && evt.lastTouches.length == 2) {
+        if (evt.lastTouches && evt.lastTouches.length == 2) {
             this.map.zoomOut();
         }
     },

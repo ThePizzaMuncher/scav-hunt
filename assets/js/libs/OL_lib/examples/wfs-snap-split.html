@@ -79,7 +79,7 @@
             },
             clickFeature: function(feature) {
                 // if feature doesn't have a fid, destroy it
-                if(feature.fid == undefined) {
+                if (feature.fid == undefined) {
                     this.layer.destroyFeatures([feature]);
                 } else {
                     feature.state = OpenLayers.State.DELETE;
@@ -225,7 +225,7 @@
             var save = new OpenLayers.Control.Button({
                 title: "Save Changes",
                 trigger: function() {
-                    if(modify.feature) {
+                    if (modify.feature) {
                         modify.selectControl.unselectAll();
                     }
                     saveStrategy.save();
@@ -244,19 +244,19 @@
         }
 
         function flashFeatures(features, index) {
-            if(!index) {
+            if (!index) {
                 index = 0;
             }
             var current = features[index];
-            if(current && current.layer === wfs) {
+            if (current && current.layer === wfs) {
                 wfs.drawFeature(features[index], "select");
             }
             var prev = features[index-1];
-            if(prev && prev.layer === wfs) {
+            if (prev && prev.layer === wfs) {
                 wfs.drawFeature(prev, "default");
             }
             ++index;
-            if(index <= features.length) {
+            if (index <= features.length) {
                 window.setTimeout(function() {flashFeatures(features, index)}, 100);
             }
         }

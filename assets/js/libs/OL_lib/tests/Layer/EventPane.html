@@ -95,7 +95,7 @@
             var evObj = document.createEvent('MouseEvents');
             evObj.initEvent('mousemove', true, false);
             map.viewPortDiv.dispatchEvent(evObj);
-        } else if(document.createEventObject) { // IE
+        } else if (document.createEventObject) { // IE
             map.viewPortDiv.fireEvent('onmousemove');
         }
         

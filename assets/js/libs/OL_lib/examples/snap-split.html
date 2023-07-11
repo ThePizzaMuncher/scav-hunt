@@ -158,19 +158,19 @@
         }
 
         function flashFeatures(features, index) {
-            if(!index) {
+            if (!index) {
                 index = 0;
             }
             var current = features[index];
-            if(current && current.layer === vectors) {
+            if (current && current.layer === vectors) {
                 vectors.drawFeature(features[index], "select");
             }
             var prev = features[index-1];
-            if(prev && prev.layer === vectors) {
+            if (prev && prev.layer === vectors) {
                 vectors.drawFeature(prev, "default");
             }
             ++index;
-            if(index <= features.length) {
+            if (index <= features.length) {
                 window.setTimeout(function() {flashFeatures(features, index)}, 75);
             }
         }
@@ -187,7 +187,7 @@
             var snapCheck = document.getElementById("snap_toggle");
             snapCheck.checked = true;
             snapCheck.onclick = function() {
-                if(snapCheck.checked) {
+                if (snapCheck.checked) {
                     snap.activate();
                     document.getElementById("snap_options").style.display = "block";
                 } else {
@@ -218,7 +218,7 @@
             var splitCheck = document.getElementById("split_toggle");
             splitCheck.checked = true;
             splitCheck.onclick = function() {
-                if(splitCheck.checked) {
+                if (splitCheck.checked) {
                     split.activate();
                     document.getElementById("split_options").style.display = "block";
                 } else {

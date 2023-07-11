@@ -187,7 +187,7 @@ OpenLayers.Control = OpenLayers.Class({
         OpenLayers.Util.extend(this, options);
         
         this.events = new OpenLayers.Events(this);
-        if(this.eventListeners instanceof Object) {
+        if (this.eventListeners instanceof Object) {
             this.events.on(this.eventListeners);
         }
         if (this.id == null) {
@@ -202,8 +202,8 @@ OpenLayers.Control = OpenLayers.Class({
      * to prevent memory leaks.
      */
     destroy: function () {
-        if(this.events) {
-            if(this.eventListeners) {
+        if (this.events) {
+            if (this.eventListeners) {
                 this.events.un(this.eventListeners);
             }
             this.events.destroy();
@@ -216,9 +216,9 @@ OpenLayers.Control = OpenLayers.Class({
             this.handler.destroy();
             this.handler = null;
         }
-        if(this.handlers) {
+        if (this.handlers) {
             for(var key in this.handlers) {
-                if(this.handlers.hasOwnProperty(key) &&
+                if (this.handlers.hasOwnProperty(key) &&
                    typeof this.handlers[key].destroy == "function") {
                     this.handlers[key].destroy();
                 }
@@ -315,7 +315,7 @@ OpenLayers.Control = OpenLayers.Class({
             this.handler.activate();
         }
         this.active = true;
-        if(this.map) {
+        if (this.map) {
             OpenLayers.Element.addClass(
                 this.map.viewPortDiv,
                 this.displayClass.replace(/ /g, "") + "Active"
@@ -340,7 +340,7 @@ OpenLayers.Control = OpenLayers.Class({
                 this.handler.deactivate();
             }
             this.active = false;
-            if(this.map) {
+            if (this.map) {
                 OpenLayers.Element.removeClass(
                     this.map.viewPortDiv,
                     this.displayClass.replace(/ /g, "") + "Active"

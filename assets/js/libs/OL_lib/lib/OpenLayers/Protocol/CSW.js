@@ -16,7 +16,7 @@ OpenLayers.Protocol.CSW = function(options) {
         options, OpenLayers.Protocol.CSW.DEFAULTS
     );
     var cls = OpenLayers.Protocol.CSW["v"+options.version.replace(/\./g, "_")];
-    if(!cls) {
+    if (!cls) {
         throw "Unsupported CSW version: " + options.version;
     }
     return new cls(options);

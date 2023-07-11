@@ -104,7 +104,7 @@ OpenLayers.Rico.Color = OpenLayers.Class({
 });
 
 OpenLayers.Rico.Color.createFromHex = function(hexCode) {
-  if(hexCode.length==4) {
+  if (hexCode.length==4) {
     var shortHexCode = hexCode; 
     var hexCode = '#';
     for(var i=1;i<4;i++) { 

@@ -174,11 +174,11 @@
             var g2 = wkt(c.g2);
             var got = g1.split(g2, c.opt);
             var exp = c.exp;
-            if(got instanceof Array) {
+            if (got instanceof Array) {
                 parts = [];
                 for(var j=0; j<got.length; ++j) {
                     part = got[j];
-                    if(part instanceof Array) {
+                    if (part instanceof Array) {
                         midparts = [];
                         for(var k=0; k<part.length; ++k) {
                             midparts.push(part[k].toString());
@@ -190,11 +190,11 @@
                 }
                 got = parts.join(", ");
             }
-            if(exp instanceof Array) {
+            if (exp instanceof Array) {
                 parts = [];
                 for(var j=0; j<exp.length; ++j) {
                     part = exp[j];
-                    if(part instanceof Array) {
+                    if (part instanceof Array) {
                         midparts = [];
                         for(var k=0; k<part.length; ++k) {
                             midparts.push(wkt(part[k]).toString());

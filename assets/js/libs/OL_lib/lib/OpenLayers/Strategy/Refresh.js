@@ -55,8 +55,8 @@ OpenLayers.Strategy.Refresh = OpenLayers.Class(OpenLayers.Strategy, {
      */
     activate: function() {
         var activated = OpenLayers.Strategy.prototype.activate.call(this);
-        if(activated) {
-            if(this.layer.visibility === true) {
+        if (activated) {
+            if (this.layer.visibility === true) {
                 this.start();
             } 
             this.layer.events.on({
@@ -77,7 +77,7 @@ OpenLayers.Strategy.Refresh = OpenLayers.Class(OpenLayers.Strategy, {
      */
     deactivate: function() {
         var deactivated = OpenLayers.Strategy.prototype.deactivate.call(this);
-        if(deactivated) {
+        if (deactivated) {
             this.stop();
             this.layer.events.un({
                 "visibilitychanged": this.reset,
@@ -93,7 +93,7 @@ OpenLayers.Strategy.Refresh = OpenLayers.Class(OpenLayers.Strategy, {
      *     the layer.
      */
     reset: function() {
-        if(this.layer.visibility === true) {
+        if (this.layer.visibility === true) {
             this.start();
         } else {
             this.stop();
@@ -105,7 +105,7 @@ OpenLayers.Strategy.Refresh = OpenLayers.Class(OpenLayers.Strategy, {
      * Start the refresh interval. 
      */
     start: function() {
-        if(this.interval && typeof this.interval === "number" && 
+        if (this.interval && typeof this.interval === "number" && 
             this.interval > 0) {
 
             this.timer = window.setInterval(
@@ -131,7 +131,7 @@ OpenLayers.Strategy.Refresh = OpenLayers.Class(OpenLayers.Strategy, {
      * Cancels the refresh interval. 
      */
     stop: function() {
-        if(this.timer !== null) {
+        if (this.timer !== null) {
             window.clearInterval(this.timer);
             this.timer = null;
         }

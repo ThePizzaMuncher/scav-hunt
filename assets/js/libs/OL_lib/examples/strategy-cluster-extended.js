@@ -119,7 +119,7 @@ var map, vectorlayer, features, stylemap, select;
             var color = '#aaaaaa';
             if (feature.attributes.clazz && feature.attributes.clazz === 4) {
                 color = '#ee0000';
-            } else if(feature.cluster) {
+            } else if (feature.cluster) {
                 var onlyFour = true;
                 for (var i = 0; i < feature.cluster.length; i++) {
                     if (onlyFour && feature.cluster[i].attributes.clazz !== 4) {

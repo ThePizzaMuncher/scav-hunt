@@ -209,13 +209,13 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
      *     data may change in the future. 
      */
     read: function(data) {
-        if(typeof data == "string") {
+        if (typeof data == "string") {
             data = OpenLayers.Format.XML.prototype.read.apply(this, [data]);
         }
         
         var arcNode = null;
         if (data && data.documentElement) {
-            if(data.documentElement.nodeName == "ARCXML") {
+            if (data.documentElement.nodeName == "ARCXML") {
                 arcNode = data.documentElement;
             } else {
                 arcNode = data.documentElement.getElementsByTagName("ARCXML")[0];
@@ -467,7 +467,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
                         envElem.setAttribute("maxx", fquery.spatialfilter.envelope.maxx);
                         envElem.setAttribute("maxy", fquery.spatialfilter.envelope.maxy);
                         spfElem.appendChild(envElem);
-                    } else if(typeof fquery.spatialfilter.polygon == "object") {
+                    } else if (typeof fquery.spatialfilter.polygon == "object") {
                         spfElem.appendChild(this.writePolygonGeometry(fquery.spatialfilter.polygon));                
                     }
                 }
@@ -732,7 +732,7 @@ OpenLayers.Format.ArcXML = OpenLayers.Class(OpenLayers.Format.XML, {
      * top level DOMElement of the response.
      */
     parseResponse: function(data) {
-        if(typeof data == "string") { 
+        if (typeof data == "string") { 
             var newData = new OpenLayers.Format.XML();
             data = newData.read(data);
         }

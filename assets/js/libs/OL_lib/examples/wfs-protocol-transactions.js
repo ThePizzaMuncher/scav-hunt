@@ -11,7 +11,7 @@ var DeleteFeature = OpenLayers.Class(OpenLayers.Control, {
     },
     clickFeature: function(feature) {
         // if feature doesn't have a fid, destroy it
-        if(feature.fid == undefined) {
+        if (feature.fid == undefined) {
             this.layer.destroyFeatures([feature]);
         } else {
             feature.state = OpenLayers.State.DELETE;
@@ -91,7 +91,7 @@ function init() {
     var save = new OpenLayers.Control.Button({
         title: "Save Changes",
         trigger: function() {
-            if(edit.feature) {
+            if (edit.feature) {
                 edit.selectControl.unselectAll();
             }
             saveStrategy.save();

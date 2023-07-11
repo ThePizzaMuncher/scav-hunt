@@ -63,14 +63,14 @@ OpenLayers.Geometry.Curve = OpenLayers.Class(OpenLayers.Geometry.MultiPoint, {
      */
     getGeodesicLength: function(projection) {
         var geom = this;  // so we can work with a clone if needed
-        if(projection) {
+        if (projection) {
             var gg = new OpenLayers.Projection("EPSG:4326");
-            if(!gg.equals(projection)) {
+            if (!gg.equals(projection)) {
                 geom = this.clone().transform(projection, gg);
             }
         }
         var length = 0.0;
-        if(geom.components && (geom.components.length > 1)) {
+        if (geom.components && (geom.components.length > 1)) {
             var p1, p2;
             for(var i=1, len=geom.components.length; i<len; i++) {
                 p1 = geom.components[i-1];
