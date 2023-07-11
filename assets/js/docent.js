@@ -41,8 +41,10 @@ let marker20 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("
 setInterval(() => {//Update de map voor de docent om de seconde. (Display update)
     $output = "";
     $.ajax({url:"../assets/php/koter_API.php/?code=gi3yhk3rKNRLO73g_8", success: (result) => {
-        console.log(result);
+        $output = result;
     }});
+    $dataArr = $output.split("(_)");
+    $dataInnerArr = $dataArr.split(",");
     map.removeLayer(marker1);
     marker1 = L.marker([ x , z ], {title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
 }, (delay * 1000));
