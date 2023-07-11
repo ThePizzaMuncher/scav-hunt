@@ -63,10 +63,8 @@ function clearMap() {
 
 setInterval(() => {//Update de map voor de docent om de aangegeven seconden.
     clearMap();
-    var output;
     $.ajax({url:"../assets/php/koter_API.php/?code=gi3yhk3rKNRLO73g_8", success: (result) => {
-        output = result;
-    }});
+        let output = result;
     let dataArr = output.split("(_)");
     console.log(output);
     dataArr.forEach((s) => {//Voor elk groepje doe...
@@ -203,6 +201,7 @@ setInterval(() => {//Update de map voor de docent om de aangegeven seconden.
         }
     });
     //marker1 = L.marker([ x , z ], {title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+}});
 }, (delay * 1000));
 
 /*  Koter analyzer oud
