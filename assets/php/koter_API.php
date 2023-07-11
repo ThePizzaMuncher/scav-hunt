@@ -20,7 +20,7 @@ if (isset($_GET["code"]) && $_GET["code"] == "gi3yhk3rKNRLO73g_8" && isset($_SES
         if ($row["ID"] == 0) {//Standaart groep willen we niet.
             continue;//Sla deze over.
         }
-        if ($counter2 == 1) {//Begin
+        if ($counter2 != 1) {//Begin
             $output .= "(_)";
         }
         $output .= $row["groepsnaam"] . ",";
