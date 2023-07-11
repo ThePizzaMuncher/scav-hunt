@@ -78,7 +78,7 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
         die();
     }
     else {
-        header("location: ../tip");
+        header("location: ../vragen/tip");
         die();
     }
 } else {

@@ -14,7 +14,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"] == true && i
     if ($check == 0) {
         $conn->query("UPDATE groep SET groepsnaam = '" . $groepsnaam . "' WHERE ID = " . $_SESSION["student_groepID"] . "");
         $_SESSION["stl_fb"] = "Je hebt '" . $groepsnaam . "' successvol aangemaakt!";
-        header("location: ../");
+        header("location: ../vragen/tip");
         die();
     }
     else {
