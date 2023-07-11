@@ -54,7 +54,7 @@ $naam = "";
 while ($row = $pull->fetch_assoc()) {
     $naam = $row["naam"];
 }
-$pull = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT ID FROM docent WHERE opleiding_ID = $opleidingID AND groepsnaam = '$naam')");
+$pull = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT * FROM docent WHERE opleiding_ID = $opleidingID AND naam = '$naam')");
 echo "<div class='gordel' style='margin-top: -5vw;'><p class='txt'>Tussenstand groepjes</p></div>";
 echo "<div class='gordel'>";
 while ($row = $pull->fetch_assoc()) {
