@@ -21,6 +21,7 @@ echo "
     justify-content: center;
     text-align: center;
     margin-bottom: 0.5vw;
+    flex-direction: column;
 }
 .naam, .txt {
     color: white;
