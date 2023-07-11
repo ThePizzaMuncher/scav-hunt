@@ -60,7 +60,7 @@ function clearMap() {
     map.removeLayer(marker19);
     map.removeLayer(marker20);
 }
-
+update();//Prefire zodat laden niet in intervaltimer zit.
 function update() {
     clearMap();
     $.ajax({url:"../assets/php/koter_API.php/?code=gi3yhk3rKNRLO73g_8", success: (result) => {
