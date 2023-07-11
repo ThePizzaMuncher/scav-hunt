@@ -137,64 +137,64 @@ function update() {
         console.log("x:" + Ix + ", z=" + Iz);
         switch (ID) {//Maak markers op map van groepen met desbetreffende data.
             case 1:
-                marker1 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker1 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 2:
-                marker2 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker2 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 3:
-                marker3 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker3 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 4:
-                marker4 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker4 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 5:
-                marker5 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker5 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 6:
-                marker6 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker6 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 7:
-                marker7 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker7 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 8:
-                marker8 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker8 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 9:
-                marker9 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker9 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 10:
-                marker10 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker10 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 11:
-                marker11 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker11 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 12:
-                marker12 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker12 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 13:
-                marker13 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker13 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 14:
-                marker14 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker14 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 15:
-                marker15 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker15 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 16:
-                marker16 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker16 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 17:
-                marker17 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker17 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 18:
-                marker18 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker18 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 19:
-                marker19 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker19 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             case 20:
-                marker20 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
+                marker20 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(naam + "<br>score:" + score + "<br>vraag:" + current_vraag).openPopup();
             break;
             default:
                 window.alert("Teveel groepen!")//Omdat het hardcoded is tot 20.
