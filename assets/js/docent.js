@@ -23,7 +23,7 @@ setInterval(() => {//Update de map voor de docent om de seconde. (Display update
 
     }});
     map.removeLayer(marker1);
-    marker1 = L.marker([ x , z ], {title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+    marker1.addTo(map);
 }, (delay * 1000));
 
 /*  Koter analyzer oud
