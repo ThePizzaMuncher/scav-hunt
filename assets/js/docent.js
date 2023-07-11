@@ -82,7 +82,7 @@ function update() {
         let current_vraag = parseInt(innerOutput[1]);
         let score = parseInt(innerOutput[2]);
         let ID = parseInt(innerOutput[3]);
-        let popupData = "<h1><a href='ll_ig.php/?groep=" + ID + "'>" + naam + "</a></h1><br>score:" + score + "<br>vraag:" + current_vraag;
+        let popupData = "<h5><a href='ll_ig.php/?groep=" + ID + "'>" + naam + "</a></h5><br>score:" + score + "<br>vraag:" + current_vraag;
         switch (current_vraag) {//Pak coordinaten bij passende qr-code.
             case 0:
                 Ix = xD;
