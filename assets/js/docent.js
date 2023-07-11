@@ -134,6 +134,7 @@ setInterval(() => {//Update de map voor de docent om de aangegeven seconden.
                 Iy = 5.7746288;
             break;
         }
+        console.log("x:" + Ix + ", z=" + Iz);
         switch (ID) {//Maak markers op map van groepen met desbetreffende data.
             case 1:
                 marker1 = L.marker([ Ix , Ix ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
