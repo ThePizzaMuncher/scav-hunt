@@ -63,6 +63,7 @@ while ($row = $pull->fetch_assoc()) {
         $gna .= $gn[1];
         $gna .= $gn[2];
         $gna .= $gn[3];
+        $gna .= "...";
         $gebr = $gna;
     }
     //
