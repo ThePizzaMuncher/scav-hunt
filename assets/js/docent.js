@@ -68,7 +68,7 @@ setInterval(() => {//Update de map voor de docent om de aangegeven seconden.
         output = result;
     }});
     let dataArr = output.split("(_)");
-    console.log(dataArr);
+    console.log(output);
     dataArr.forEach((s) => {//Voor elk groepje doe...
         let Ix = 0;
         let Iy = 0;
