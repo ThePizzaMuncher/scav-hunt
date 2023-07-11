@@ -61,7 +61,24 @@ switch ($current_vraag) {
 }
 require_once("../../assets/includes/header.php");
 echo '
-<p>' . $tipTxt . '</p>
+<style>
+    .gordel {
+        width: 100%;
+        height: 3vw;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        text-align: center;
+    }
+    .txt {
+        color: white;
+        text-shadow: 0.2vw 0.2vw 0.2vw black;
+        font-size: 2vw;
+    }
+</style>
+<div class="gordel">
+<p class="txt">' . $tipTxt . '</p>
+</div>
 ';
 require_once("../../assets/includes/footer.php");
 ?>
