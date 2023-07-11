@@ -69,6 +69,7 @@ setInterval(() => {//Update de map voor de docent om de aangegeven seconden.
     }});
     let dataArr = output.split("(_)");
     dataArr.forEach((s) => {//Voor elk groepje doe...
+        console.log(s);
         let Ix = 0;
         let Iy = 0;
         let Iz = 0;
@@ -77,7 +78,6 @@ setInterval(() => {//Update de map voor de docent om de aangegeven seconden.
         let current_vraag = innerOutput[1];
         let score = innerOutput[2];
         let ID = innerOutput[3];
-        console.log(ID);
         switch (current_vraag) {//Pak coordinaten bij passende qr-code.
             case 0:
                 Ix = xD;
