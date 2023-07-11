@@ -147,7 +147,10 @@ $path = "~speurtocht/";
 								echo '</li>';
 								// echo '<li><a href="' . $path . 'login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
 								// bar;
-							} else if (!isset($_SESSION['pagina'])) {
+							} else if (isset($_SESSION["student_login"]) && $_SESSION["student_login"]) {
+								echo '<li><a href="/' . $path . 'vragen/tussenstand" class="nav-link scrollto hover-sound"><i class="bx bx-group"></i> Tussenstand</a></li>';
+							}
+							else if (!isset($_SESSION['pagina'])) {
 								echo '<li><a href="/' . $path . 'login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>';
 								echo '<li><a href="/' . $path . 'login/student_login.php" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Student login</a></li>';
 							}
