@@ -48,7 +48,7 @@ body {
 </head>
 <body>
 ";
-$opleidingID = $_SESSION["opleiding_ID"];
+$opleidingID = $_SESSION["student_opleidingID"];
 $pull = $conn->query("SELECT naam FROM docent WHERE opleiding_ID = $opleidingID");
 $naam = "";
 while ($row = $pull->fetch_assoc()) {
