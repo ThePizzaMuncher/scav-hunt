@@ -34,6 +34,6 @@ if (isset($_GET["code"]) && $_GET["code"] == "gi3yhk3rKNRLO73g_8" && isset($_SES
     echo $output;
 }
 else {
-    die("Geen toegang");
+    echo "geen toegang";
 }
 ?>
