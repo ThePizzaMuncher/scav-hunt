@@ -71,8 +71,8 @@ echo '
         text-align: center;
     }
     .txt {
-        color: white;
-        text-shadow: 0.2vw 0.2vw 0.2vw black;
+        color: black;
+        text-shadow: 0.2vw 0.2vw 0.2vw white;
         font-size: 2vw;
     }
 </style>
