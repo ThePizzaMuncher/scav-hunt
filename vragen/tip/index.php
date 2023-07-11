@@ -32,9 +32,36 @@ switch ($current_vraag) {
         $tipTxt = "Vervolg de weg langs het water (En blijf aan dezelfde kant van het water) totdat je uitkomt bij het standbeeld 'Ús mem' Zoek daar voor de volgende qr-code.";
     break;
     case 5:
-        $tipTxt = "Als je goed hebt gekeken, dan heb je de scheve toren al gezien (De oldehove.) Rondom deze toren zit de volgende qr-code";
+        $tipTxt = "Als je goed hebt gekeken, dan heb je de scheve toren al gezien (De oldehove.) Rondom deze toren zit de volgende qr-code.";
     break;
     case 6:
-        $tipTxt = 
+        $tipTxt = "Loop nu terug naar de recentste kruising die je bent tegengekomen. Volg vervolgens de weg 'Westerplantage' en daarna 'Ruiterskwartier' totdat je Pathé ziet. Daar kan je de volgende qr-code vinden.";
+    break;
+    case 7:
+        $tipTxt = "Vervolg dezelfde weg en sla de eerste rechts af. Steek niet over waneer je het water weer tegenkomt. ga bij de kade linksaf en zoek lopend naar de volgende qr-code.";
+    break;
+    case 8:
+        $tipTxt = "Vervolg dezelfde weg en sla de eerste links af. loop dan rechtdoor totdat je bij het Fries Museum komt. Hier kan je de volgende qr-code vinden.";
+    break;
+    case 9:
+        $tipTxt = "Vervolg dezelfde weg en sla bij de eerste links af. ga daarna de eerste rechts en loop over het water. Er is iets lekkers te eten bij De Dikke van Dale";
+    break;
+    case 10:
+        $tipTxt = "Je hebt de grote zwarte toren vast al gezien. Loop naar de Achmea toren, hier is een nieuwe qr-code te vinden.";
+    break;
+    case 11:
+        $tipTxt = "Volg de rechterkant van de kade. Bij Monkey Town is een nieuwe qr-code te vinden.";
+    break;
+    case 12:
+        $tipTxt = "Blijf rechtdoor lopen aan dezelfde kant van de kade, totdat je een brug tegenkomt. Steek nu het water over en loop rechtdoor. Loop nu weer terug naar school en scan de laatste code om de speurtocht af te ronden.";
+    break;
+    case 13:
+        $tipTxt = "Je hebt de speurtocht afgerond! Vraag de desbetreffende docent voor de winnaars.";
+    break;
 }
+require_once("../../assets/includes/header.php");
+echo '
+<p>' . $tipTxt . '</p>
+';
+require_once("../../assets/includes/footer.php");
 ?>
