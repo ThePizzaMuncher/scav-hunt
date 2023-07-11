@@ -81,17 +81,20 @@ require_once("../../assets/includes/header.php");
 </div>
 ';*/
 echo '
-<section id="about" class="about">
-    <div class="container" style="overflow: hidden;">
-        <div class="row">
-          <div class="col-lg-4 justify-content-center align-items-center sticked-header-offset">
-            <div class="section-title justify-content-center align-items-center">
-            <p>' . $tipTxt . '</p>
-            </div>
-          </div>
-        </div>
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <form class="col-12">
+      <div class="form-group">
+        <label for="formGroupExampleInput">Example label</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
       </div>
-    </section>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Another label</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+      </div>
+    </form>   
+  </div>
+</div>
 ';
 /*
 <section id="about" class="about">
