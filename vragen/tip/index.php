@@ -60,7 +60,7 @@ switch ($current_vraag) {
     break;
 }
 require_once("../../assets/includes/header.php");
-echo '
+/*echo '
 <style>
     .gordel {
         width: 100%;
@@ -79,6 +79,25 @@ echo '
 <div class="gordel">
 <p class="txt">' . $tipTxt . '</p>
 </div>
+';*/
+echo '
+<section id="about" class="about">
+    <div class="container" style="overflow: hidden;">
+        <div class="row">
+          <div class="col-lg-4 justify-content-center align-items-center sticked-header-offset">
+            <div class="section-title">
+            </div>
+            <div class="image">
+            </div>
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content">
+            <p>
+            ' . $tipTxt . '
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 ';
 require_once("../../assets/includes/footer.php");
 ?>
