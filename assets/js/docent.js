@@ -197,7 +197,7 @@ setInterval(() => {//Update de map voor de docent om de aangegeven seconden.
                 marker20 = L.marker([ Ix , Ix ], {title: score}).addTo(map).bindPopup("<b>" + naam + "</b>").openPopup();
             break;
             default:
-                console.log("Error: teveel groepen!");//Omdat het hardcoded is tot 20.
+                console.log("Error: teveel groepen! (" + ID + ")");//Omdat het hardcoded is tot 20.
             break;
         }
     });
