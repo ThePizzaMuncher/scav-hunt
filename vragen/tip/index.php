@@ -85,7 +85,7 @@ echo '
     <div class="container" style="overflow: hidden;">
         <div class="row">
           <div class="col-lg-4 justify-content-center align-items-center sticked-header-offset">
-            <div class="section-title">
+            <div class="section-title justify-content-center align-items-center">
             <p>' . $tipTxt . '</p>
             </div>
           </div>
