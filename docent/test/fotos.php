@@ -1,3 +1,22 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+
+if (!isset($_SESSION['docent'])) {
+	header('location:../login');
+	die();
+}
+if ($_SESSION['docent'] != 1) {
+	header('location:../login');
+	die();
+}
+
+
+require_once("../../assets/includes/conn.php");
+?>
 <html>
 
 <head>
@@ -17,7 +36,7 @@
             width: 100px;
             height: 100px;
             margin: 10px;
-            background: url('../../assets/img/123.jpg') no-repeat 0 0 fixed;
+            background: url('../../assets/img/ijshal.jpg') no-repeat 0 0 fixed;
         }
     </style>
 </head>
