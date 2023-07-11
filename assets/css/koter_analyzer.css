@@ -5,3 +5,9 @@
 [class~="leaflet-control-attribution leaflet-control"] {
     display: none;
 }
+.mapvoorkoters {
+    border-top-right-radius: 1vw;
+    border-top-left-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+    border-bottom-left-radius: 1vw;
+  }
