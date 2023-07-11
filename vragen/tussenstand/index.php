@@ -48,7 +48,13 @@ body {
 </head>
 <body>
 ";
-$opleidingID = $_SESSION["student_opleidingID"];
+$pull;
+if (isset($_SESSION["student_login"]) && $_SESSION["student_login"]) {//Student pull
+    $opleidingID = $_SESSION["student_opleidingID"];
+}
+else if (isset($_SESSION['docent'])) {
+    $opleidingID = $_SESSION['opleiding_ID'];
+}
 $pull = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT opleiding_ID FROM docent WHERE opleiding_ID = $opleidingID)");
 echo "<div class='gordel' style='margin-top: -5vw;'><p class='txt'>Tussenstand groepjes</p></div>";
 echo "<div class='gordel'>";
