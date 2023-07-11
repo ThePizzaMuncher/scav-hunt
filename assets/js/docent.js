@@ -2,7 +2,7 @@ let x = 0;
 let y = 0;
 let z = 0;
 let xD = 53.19954; let yD = 0; let zD = 5.764912;//Default coords
-let schaal = 10;
+let schaal = 15;
 let map = L.map('map').setView([x, z], schaal);
 let delay = 2;//Update delay in seconden.
 
