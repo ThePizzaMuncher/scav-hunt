@@ -73,10 +73,9 @@ setInterval(() => {//Update de map voor de docent om de aangegeven seconden.
         let Iz = 0;
         let innerOutput = s.split(",");
         let naam = innerOutput[0];
-        let current_vraag = innerOutput[1];
-        let score = innerOutput[2];
-        let ID = innerOutput[3];
-        console.log(ID);
+        let current_vraag = parseInt(innerOutput[1]);
+        let score = parseInt(innerOutput[2]);
+        let ID = parseInt(innerOutput[3]);
         switch (current_vraag) {//Pak coordinaten bij passende qr-code.
             case 0:
                 Ix = xD;
