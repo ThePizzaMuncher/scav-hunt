@@ -11,11 +11,17 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+//
 
-//Initialisatie en definiering markers.
+//Copyright scav-hunt. (Functional credits to http://www.openstreetmap.org/copyrigh)
+let elements = document.getElementsByClassName("leaflet-control-attribution leaflet-control");
+for (let i = 0; i < elements.length; i++) {
+  elements[i].style.display = "none";
+}
+//
 
 
-//Prefire
+//Prefire Initialisatie en definiering markers.
 let marker1 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
 let marker2 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
 let marker3 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();

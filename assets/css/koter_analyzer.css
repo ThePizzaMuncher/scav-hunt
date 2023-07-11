@@ -6,6 +6,3 @@
     border-bottom-right-radius: 1vw;
     border-bottom-left-radius: 1vw;
 }
-[class~="leaflet-control-attribution leaflet-control"] {
-    display: none;
-}
