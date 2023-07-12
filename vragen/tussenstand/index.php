@@ -101,7 +101,7 @@ $pull = $conn->query($query);
             echo "
             <style>
             .naam, .naam2 {
-                font-size: " . (24 - $counter)/10 . "vw;
+                font-size: " . (24 - $counter) / 10 . "vw;
             }
             </style> ";
 
@@ -135,10 +135,10 @@ $pull = $conn->query($query);
                 $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
                 if ($isMobile) {
-                echo "<div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>";
+                    echo "<div id='$row[ID]' style='height:" . (90 / $counter) . "%; width: " . $heightPercentage . "%;' class='balk'>";
                 } else {
-                echo "<div id='$row[ID]' style='height:". (90 / $counter) ."%; width: " . $heightPercentage . "%;' class='balk'>";        
-                    }
+                    echo "<div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>";
+                }
 
                 echo " <p class='naam2'>$gebr</p>
                     <p class='naam2'>score:$row[score]</p>
