@@ -105,6 +105,12 @@ $pull = $conn->query($query);
             }
             </style> ";
 
+            $isMobile = isMobileDevice(); // Check if the device is mobile
+
+            if ($isMobile) {
+                echo "<div class='vertical-list'>"; // Start vertical list container
+            }
+
             while ($row = $pull->fetch_assoc()) {
                 //Als groepsnaam lang is, verkort deze dan voor de display.
                 $gn = $row["groepsnaam"];
@@ -136,11 +142,14 @@ $pull = $conn->query($query);
                 </div>
                 ";
             }
+
+            if ($isMobile) {
+                echo "</div>"; // End vertical list container
+            }
             ?>
 
         </div> <!-- Afsluiten van gordel tag -->
         <?php
-        $isMobile = isMobileDevice(); // Check if the device is mobile
         if ($isMobile) {
             echo "<p style='margin-top: 50px;'>Zet je apparaat in de horizontale stand voor een betere weergave.</p>";
         }
