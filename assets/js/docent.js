@@ -108,6 +108,13 @@ let markerArr = [
     L.latLng(53.20238056748853, 5.789096269107065),//Weg naar oldehove
     L.latLng(53.203002323853454, 5.789179417586173),//Weg naar oldehove
     L.latLng(53.2032373, 5.789344),//QR-code boom oldehove
+    L.latLng(53.203090206713306, 5.789497709411632),//Weg naar Paté
+    L.latLng(53.20241199075361, 5.7895432280095),//Weg naar Paté
+    L.latLng(53.20176785181649, 5.789616159006642),//Weg naar Paté
+    L.latLng(53.20166995550118, 5.789609081042085),//Weg naar Paté
+    L.latLng(53.20069383887126, 5.789075339862327),//Weg naar Paté
+    L.latLng(53.20051030615906, 5.789282604192586),//Weg naar Paté
+    L.latLng(53.20029547280754, 5.7898169093660625),//Weg naar Paté
     L.latLng(53.2001074, 5.7914455),//QR-code boom Paté Ruiterskwartier
     L.latLng(53.1985783, 5.7936149),//QR-code boom Nuances web design
     L.latLng(53.1994306, 5.7950412),//QR-code prullenbak Fries museum
