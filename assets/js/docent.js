@@ -102,6 +102,11 @@ let markerArr = [
     L.latLng(53.20264501673216, 5.786864277111795),//Kade
     L.latLng(53.20312378305234, 5.787886198745272),//Kade
     L.latLng(53.2042041, 5.7874331),//QR-code boom ús mem
+    L.latLng(53.20312378305234, 5.787886198745272),//Kade
+    L.latLng(53.20216849349061, 5.7886295647400745),//Weg naar oldehove
+    L.latLng(53.202210265722655, 5.788997027374332),//Weg naar oldehove
+    L.latLng(53.20238056748853, 5.789096269107065),//Weg naar oldehove
+    L.latLng(53.203002323853454, 5.789179417586173),//Weg naar oldehove
     L.latLng(53.2032373, 5.789344),//QR-code boom oldehove
     L.latLng(53.2001074, 5.7914455),//QR-code boom Paté Ruiterskwartier
     L.latLng(53.1985783, 5.7936149),//QR-code boom Nuances web design
