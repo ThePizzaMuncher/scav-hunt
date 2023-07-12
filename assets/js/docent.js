@@ -78,6 +78,8 @@ function clearMap() {
     //   --color-secondary-light: #7cd3ff;
 let markerArr = [
     L.latLng(53.19953936450951, 5.764675396916245),//School
+    L.latLng(53.199917695212385, 5.7658890505930875),//Weg naar elfstedenhal
+    L.latLng(53.202727269378656, 5.766858310900259),//Weg naar elfstedenhal
     L.latLng(53.2025419, 5.768891),//QR-code lantarenpaal elfstedenhal
     L.latLng(53.2019744, 5.7752356),//QR-code boom heliconweg
     L.latLng(53.2018883, 5.7780158),//QR-code boom speeltuin
