@@ -109,8 +109,8 @@ $pull = $conn->query($query);
                 echo "
 
                 <style>
-                .naam, .txt, .naam2 {
-                    font-size:" . 30 - $counter . "px;
+                .naam, .naam2 {
+                    font-size:" . 24 - $counter . "px;
                 }
                 </style>
 
