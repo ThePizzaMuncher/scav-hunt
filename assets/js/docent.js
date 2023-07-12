@@ -85,6 +85,7 @@ let markerArr = [
     L.latLng(53.1976139, 5.7746288)
 ];
 var walkingRoute = L.polyline(waypoints, { color: 'red', weight: 2 }).addTo(map);
+map.fitBounds(walkingRoute.getBounds());
 //
 marker1.openPopup();//Zodat de camera van de map goed zit.
 update();//Prefire zodat laden niet in intervaltimer zit.
