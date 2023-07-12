@@ -68,7 +68,7 @@ function isMobileDevice()
         background-color: white;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
     }
 
     body {
@@ -145,7 +145,7 @@ $pull = $conn->query($query);
 
                         $maxHeight = 13; // Maximum height
                         $minHeight = 0; // Minimum Height
-                        $heightPercentage = ($row["score"] / $maxHeight) * 100;
+                        $heightPercentage = ($row["score"] / $maxHeight) * 90;
                         $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
                         if ($isMobile) {
