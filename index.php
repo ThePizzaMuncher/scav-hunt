@@ -3,6 +3,9 @@ $_SESSION["pagina"] = "home";
 require 'assets/includes/header.php';
 echo <<<meta
 <html id="page_home">
+<meta name="description" content="Speurtocht website. Speur je mee?">
+<meta name="keywords" content="Speurtocht ROC Friese poort, Firda speurtocht, scav-hunt, Scav-Hunt">
+<meta name="authors" content="wwwqr, Valerii, Dimitry, Jonathan">
 meta;
 $filename = "about.txt";
 ?>
