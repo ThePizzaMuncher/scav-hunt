@@ -51,6 +51,8 @@ function isMobileDevice()
 
     .naam,
     .naam2 {
+        position: relative;
+        left: 20px;
         margin-bottom: 0;
     }
 
