@@ -368,6 +368,7 @@ h6 {
 }
 
 .nav-menu li ul {
+  top: 40px;
   width: 100%;
   display: block;
   height: 0px;
