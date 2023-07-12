@@ -40,4 +40,5 @@ if (!empty($_GET['status'])) {
         </form>
         </section>
     </section>
-<?php include_once '../assets/includes/header.php'; ?>
+
+<?php include_once '../assets/includes/footer.php'; ?>

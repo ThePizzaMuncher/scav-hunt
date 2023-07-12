@@ -136,13 +136,15 @@ $pull = $conn->query($query);
                 </div>
                 ";
             }
-            $isMobile = isMobileDevice(); // Check if the device is mobile
-            if ($isMobile) {
-                echo "<p style='margin-top: 20px;'>Flip your device to landscape mode for better viewing.</p>";
-            }
             ?>
 
         </div> <!-- Afsluiten van gordel tag -->
+        <?php 
+        $isMobile = isMobileDevice(); // Check if the device is mobile
+        if ($isMobile) {
+            echo "<p style='margin-top: 20px;'>Flip your device to landscape mode for better viewing.</p>";
+        }
+        ?>
     </section>
 </section>
 <?php
