@@ -914,8 +914,9 @@ td {
 }
 
 .scrollable {
+  max-width: 80vw;
   background-color: white;
-  max-height: 30vw;
+  max-height: 50vh;
   overflow-y: scroll;
   box-shadow: 0 0 10px var(--color-secondary-light);
   border-radius: 15px;

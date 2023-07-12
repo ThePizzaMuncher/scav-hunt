@@ -107,7 +107,6 @@ var control = L.Routing.control({
           {color: 'gray', opacity: 0.8, weight: 2, dashArray: '7,12'}
        ]
     },
-    router: new L.Routing.mapbox({ profile: 'foot' }),
     show: true,
     addWaypoints: false,
     autoRoute: true,
