@@ -100,6 +100,7 @@ $pull = $conn->query($query);
         <div class='gordel'>
 
             <?php
+            $isMobile = isMobileDevice(); // Check if the device is mobile
             echo '
             <style>
             .naam, .naam2 {
@@ -107,7 +108,7 @@ $pull = $conn->query($query);
             }
             </style>';
 
-            $isMobile = isMobileDevice(); // Check if the device is mobile
+
 
             if ($isMobile) {
                 echo "<div class='vertical-list' style='width: 100%;'>"; // Start vertical list container
