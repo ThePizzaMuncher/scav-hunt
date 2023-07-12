@@ -148,7 +148,7 @@ $path = "~speurtocht/";
 									echo '<li><a href="/' . $path . 'admin/docent_toevoegen.php"class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
 								echo '</ul>';
 								echo '</li>';
-								echo '<li><a href="/' . $path . 'vragen/tussenstand"class="nav-link scrollto hover-sound"><i class='bx bx-bar-chart'></i> Groepjes tussenstand</a></li>';
+								echo '<li><a href="/' . $path . 'vragen/tussenstand"class="nav-link scrollto hover-sound"><i class="bx bx-bar-chart"></i> Groepjes tussenstand</a></li>';
 								echo '<li><a href="/' . $path . 'docent/winnaar-tonen.php"class="nav-link scrollto hover-sound"><i class="bx bx-trophy"></i> Winnaar</a></li>';
 								// echo '<li><a href="' . $path . 'login/logout.php"class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Uitloggen</a></li>';
 								// bar;
