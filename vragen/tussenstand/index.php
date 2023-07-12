@@ -22,7 +22,7 @@ require_once("../../assets/includes/header.php"); ?>
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
         border-bottom: solid 2px var(--color-secondary);
-        box-shadow: 0 5px 10px var(--color-secondary-light);
+        /* box-shadow: 0 5px 10px var(--color-secondary-light); */
     }
 
     .naam, .txt, .naam2 {

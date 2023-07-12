@@ -74,7 +74,7 @@ require_once("../assets/includes/conn.php");
 		}
 
 		echo "</table></div>";
-		echo "<a href='vragen_toevoegen.php'><button>Toevoegen</button></a>";
+		//echo "<a href='vragen_toevoegen.php'><button>Toevoegen</button></a>";
 		?>
 
 	</section>
