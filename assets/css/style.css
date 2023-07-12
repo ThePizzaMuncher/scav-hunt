@@ -824,6 +824,7 @@ input[type="number"],
 # Footer
 --------------------------------------------------------------*/
 #footer {
+  height: 250px;
   padding: 30px;
   color: var(--color-grey);
   font-size: 14px;

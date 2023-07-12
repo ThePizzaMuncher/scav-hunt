@@ -25,7 +25,7 @@ if (!$_SESSION['docent']) {
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
     <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
 </head>
-<section class="about d-flex flex-column align-items-center sticked-header-offset" style="height: 100%; padding: 0;">
+<section class="about d-flex flex-column align-items-center sticked-header-offset" style="height: calc(100%-250px); padding: 0;">
     <div class="docent-information">
         <div id="map" class="mapvoorkoters"></div>
     </div>
