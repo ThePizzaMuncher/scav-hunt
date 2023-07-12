@@ -100,6 +100,7 @@ let markerArr = [
     L.latLng(53.20197896605593, 5.7866772764397885),//Kade
     L.latLng(53.20242193920472, 5.7867474042785325),//Kade
     L.latLng(53.20264501673216, 5.786864277111795),//Kade
+    L.latLng(53.20312378305234, 5.787886198745272),//Kade
     L.latLng(53.2042041, 5.7874331),//QR-code boom ús mem
     L.latLng(53.2032373, 5.789344),//QR-code boom oldehove
     L.latLng(53.2001074, 5.7914455),//QR-code boom Paté Ruiterskwartier
