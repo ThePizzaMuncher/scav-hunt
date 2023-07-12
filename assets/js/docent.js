@@ -99,7 +99,7 @@ let markerArr = [
     L.latLng(53.1976139, 5.7746288),//QR-code Brug snekertrekweg
     L.latLng(53.19953936450951, 5.764675396916245)//QR-code school (einde)
 ];
-var walkingRoute = L.polyline(markerArr, { color: '#3561ff', weight: 2 }).addTo(map);
+var walkingRoute = L.polyline(markerArr, { color: '#3561ff', weight: 3 }).addTo(map);
 map.fitBounds(walkingRoute.getBounds());
 //
 update();//Prefire zodat laden niet in intervaltimer zit.
