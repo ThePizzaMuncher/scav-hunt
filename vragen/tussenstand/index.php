@@ -11,6 +11,7 @@ require_once("../../assets/includes/header.php"); ?>
     .about {
         background-color: var(--color-grey-ultra-light);
     }
+
     .balk {
         background-color: var(--color-secondary-light);
         display: flex;
@@ -25,12 +26,17 @@ require_once("../../assets/includes/header.php"); ?>
         /* box-shadow: 0 5px 10px var(--color-secondary-light); */
     }
 
-    .naam, .txt, .naam2 {
+    .naam,
+    .txt,
+    .naam2 {
         color: var(--color-primary);
         font-size: 20px;
+
     }
+
+    .naam,
     .naam2 {
-        margin-bottom: 0vw;
+        margin-bottom: 0;
     }
 
     .txt {
@@ -49,7 +55,7 @@ require_once("../../assets/includes/header.php"); ?>
     }
 
     body {
-        margin: 0vw;
+        margin: 0;
     }
 </style>
 
@@ -101,6 +107,13 @@ $pull = $conn->query($query);
                 $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
                 echo "
+
+                <style>
+                .naam, .txt, .naam2 {
+                    font-size:" . 30 - $counter . "px;
+                }
+                </style>
+
                 <div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>
                     <p class='naam2'>$gebr</p>
                     <p class='naam2'>score:$row[score]</p>
