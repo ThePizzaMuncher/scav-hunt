@@ -83,7 +83,7 @@ let markerArr = [
     L.latLng(53.1980566, 5.7923676),
     L.latLng(53.1971942, 5.7805127),
     L.latLng(53.1976139, 5.7746288),
-    L.latLng(53.2025419, 5.768891)
+    L.latLng(53.19953936450951, 5.764675396916245)
 ];
 var walkingRoute = L.polyline(markerArr, { color: 'red', weight: 2 }).addTo(map);
 map.fitBounds(walkingRoute.getBounds());

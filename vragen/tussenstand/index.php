@@ -27,20 +27,6 @@ function isMobileDevice()
         width: 90%;
     }
 
-    .balk {
-        background-color: var(--color-secondary-light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        margin-bottom: 0.5vw;
-        flex-direction: column;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-        border-bottom: solid 2px var(--color-secondary);
-        /* box-shadow: 0 5px 10px var(--color-secondary-light); */
-    }
-
     .naam,
     .txt,
     .naam2 {
@@ -109,48 +95,64 @@ $pull = $conn->query($query);
 
             if ($isMobile) {
                 echo "<div class='vertical-list'>"; // Start vertical list container
-            }
+            ?><style>
+                    .balk {
+                        background-color: var(--color-secondary-light);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        margin-bottom: 0.5vw;
+                        flex-direction: column;
+                        border-top-left-radius: 15px;
+                        border-top-right-radius: 15px;
+                        border-bottom: solid 2px var(--color-secondary);
+                        /* box-shadow: 0 5px 10px var(--color-secondary-light); */
+                    }
+                </style><?php
 
-            while ($row = $pull->fetch_assoc()) {
-                //Als groepsnaam lang is, verkort deze dan voor de display.
-                $gn = $row["groepsnaam"];
-                $gna = "";
-                $gnc = strlen($gn);
-                $gebr = $gn;
-                if ($gnc > 6) {
-                    $gna .= $gn[0];
-                    $gna .= $gn[1];
-                    $gna .= $gn[2];
-                    $gna .= $gn[3];
-                    $gna .= $gn[4];
-                    $gna .= $gn[5];
-                    $gna .= $gn[6];
-                    $gna .= "...";
-                    $gebr = $gna;
-                }
+                    }
 
-                $maxHeight = 13; // Maximum height
-                $minHeight = 0; // Minimum Height
-                $heightPercentage = ($row["score"] / $maxHeight) * 100;
-                $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
+                    while ($row = $pull->fetch_assoc()) {
+                        //Als groepsnaam lang is, verkort deze dan voor de display.
+                        $gn = $row["groepsnaam"];
+                        $gna = "";
+                        $gnc = strlen($gn);
+                        $gebr = $gn;
+                        if ($gnc > 6) {
+                            $gna .= $gn[0];
+                            $gna .= $gn[1];
+                            $gna .= $gn[2];
+                            $gna .= $gn[3];
+                            $gna .= $gn[4];
+                            $gna .= $gn[5];
+                            $gna .= $gn[6];
+                            $gna .= "...";
+                            $gebr = $gna;
+                        }
 
-                if ($isMobile) {
-                    echo "<div id='$row[ID]' style='height:" . (90 / $counter) . "%; width: " . $heightPercentage . "%;' class='balk'>";
-                } else {
-                    echo "<div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>";
-                }
+                        $maxHeight = 13; // Maximum height
+                        $minHeight = 0; // Minimum Height
+                        $heightPercentage = ($row["score"] / $maxHeight) * 100;
+                        $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
-                echo " <p class='naam2'>$gebr</p>
+                        if ($isMobile) {
+                            echo "<div id='$row[ID]' style='height:" . (90 / $counter) . "%; width: " . $heightPercentage . "%;' class='balk'>";
+                        } else {
+                            echo "<div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>";
+                        }
+
+                        echo " <p class='naam2'>$gebr</p>
                     <p class='naam2'>score:$row[score]</p>
                     <p class='naam'>Vraag:$row[current_vraag]</p>
                 </div>
                 ";
-            }
+                    }
 
-            if ($isMobile) {
-                echo "</div>"; // End vertical list container
-            }
-            ?>
+                    if ($isMobile) {
+                        echo "</div>"; // End vertical list container
+                    }
+                        ?>
 
         </div> <!-- Afsluiten van gordel tag -->
         <?php
