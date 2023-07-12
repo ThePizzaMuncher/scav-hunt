@@ -77,23 +77,24 @@ function clearMap() {
     //   --color-secondary: #3561ff;
     //   --color-secondary-light: #7cd3ff;
 let markerArr = [
-    L.latLng(53.19953936450951, 5.764675396916245),
-    L.latLng(53.2025419, 5.768891),
-    L.latLng(53.2019744, 5.7752356),
-    L.latLng(53.2018883, 5.7780158),
+    L.latLng(53.19953936450951, 5.764675396916245),//School
+    L.latLng(53.2025419, 5.768891),//QR-code lantarenpaal elfstedenhal
+    L.latLng(53.2019744, 5.7752356),//QR-code boom heliconweg
+    L.latLng(53.2018883, 5.7780158),//QR-code boom speeltuin
     L.latLng(53.20191417168954, 5.777668488031906),//Recht stuk speeltuin --> water
     L.latLng(53.197968028128926, 5.776634618536363),//Water
-    L.latLng(53.1977613, 5.7790154),
-    L.latLng(53.2042041, 5.7874331),
-    L.latLng(53.2032373, 5.789344),
-    L.latLng(53.2001074, 5.7914455),
-    L.latLng(53.1985783, 5.7936149),
-    L.latLng(53.1994306, 5.7950412),
-    L.latLng(53.2012202, 5.7929217),
-    L.latLng(53.1980566, 5.7923676),
-    L.latLng(53.1971942, 5.7805127),
-    L.latLng(53.1976139, 5.7746288),
-    L.latLng(53.19953936450951, 5.764675396916245)
+    L.latLng(53.1973603806172, 5.78606385187805),//Kade
+    L.latLng(53.1977613, 5.7790154),//QR-code boom Harlingertrekweg zorgkantoor
+    L.latLng(53.2042041, 5.7874331),//QR-code boom ús mem
+    L.latLng(53.2032373, 5.789344),//QR-code boom oldehove
+    L.latLng(53.2001074, 5.7914455),//QR-code boom Paté Ruiterskwartier
+    L.latLng(53.1985783, 5.7936149),//QR-code boom Nuances web design
+    L.latLng(53.1994306, 5.7950412),//QR-code prullenbak Fries museum
+    L.latLng(53.2012202, 5.7929217),//QR-code De Dikke van Dale
+    L.latLng(53.1980566, 5.7923676),//QR-code Achmea toren
+    L.latLng(53.1971942, 5.7805127),//QR-code Monkey town
+    L.latLng(53.1976139, 5.7746288),//QR-code Brug snekertrekweg
+    L.latLng(53.19953936450951, 5.764675396916245)//QR-code school (einde)
 ];
 var walkingRoute = L.polyline(markerArr, { color: '#3561ff', weight: 2 }).addTo(map);
 map.fitBounds(walkingRoute.getBounds());
