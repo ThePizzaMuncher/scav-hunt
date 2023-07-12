@@ -90,7 +90,7 @@ $pull = $conn->query($query);
                 $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
                 echo "
-                <div id='$row[ID]' style='height: $heightPercentage%; width: " . (100 / $counter) . "%;' class='balk'>
+                <div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>
                     <p class='naam'>$gebr</p>
                     <p class='points'>$row[score] points</p>
                 </div>
