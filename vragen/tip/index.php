@@ -17,7 +17,7 @@ while ($row = $pull->fetch_assoc()) {
 $tipTxt = "";
 switch ($current_vraag) {
     case 0:
-        $tipTxt = "Ga vanaf school naar de elfstedenhal en kijk rond het parkeerterrein voor een volgende qr-code.";
+        $tipTxt = "Ga vanaf school naar de elfstedenhal en kijk rond het parkeerterrein voor de eerste qr-code.";
     break;
     case 1:
         $tipTxt = "Loop nu langs de elfstedenhal in de righting van de Jumbo. Loop langs de weg die links van de jumbo loopt. Bij het kruispunt kan je de volgende qr-code vinden.";
