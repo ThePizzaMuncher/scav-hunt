@@ -66,6 +66,10 @@ function clearMap() {
     map.removeLayer(marker19);
     map.removeLayer(marker20);
 }
+function popup() {
+    marker1.openPopup();
+}
+popup();//Zodat de camera van de map goed zit.
 update();//Prefire zodat laden niet in intervaltimer zit.
 function update() {
     clearMap();
