@@ -22,11 +22,11 @@ require_once("../../assets/includes/header.php"); ?>
     .txt {
         color: white;
         text-shadow: 0.2vw 0.2vw 0.2vw black;
-        font-size: 1.2vw;
+        font-size: 20px;
     }
 
     .txt {
-        font-size: 2vw;
+        font-size: 30px;
     }
 
     .gordel {
@@ -79,7 +79,7 @@ $pull = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT opleiding_ID
                 }
                 //
                 echo "
-    <div id='$row[ID]' style='height: " . ($row["score"] + $row["current_vraag"]) / 2 + 0.5 . "vw; width: 4vw;' class='balk'>
+    <div id='$row[ID]' style='height: " . ($row["score"] + $row["current_vraag"]) / 2 + 0.5 . "vw; width: 20%;' class='balk'>
     <p class='naam'>$gebr</p>
     </div>
     ";
