@@ -1,6 +1,6 @@
 <?php
 // Load the database configuration file
-include_once '../../assets/includes/conn.php';
+include_once '../assets/includes/conn.php';
 
 // Get status message
 if(!empty($_GET['status'])){
