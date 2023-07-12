@@ -26,7 +26,7 @@ require_once("../../assets/includes/header.php"); ?>
         font-size: 20px;
     }
     .naam2 {
-        margin-bottom: -2vw;
+        margin-bottom: 0vw;
     }
 
     .txt {
