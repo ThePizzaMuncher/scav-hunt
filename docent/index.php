@@ -45,12 +45,12 @@ require_once("../assets/includes/conn.php");
 				echo "<thead>     
 			<tr>    
 				<th>ID</th>
-				<th>Voornaam</th>
-				<th>Leerjaar</th>
-				<th>Groeps_ID</th>
+				<th>Naam</th>
+				<th>Leer jaar</th>
+				<th>Groep ID</th>
 				<th>Opleiding</th>
-				<th>Bewerken</th>
-				<th>Verwijderen</th>
+				<th>Bewerk</th>
+				<th>Verwijder</th>
 			</tr>
 		</thead>";
 				echo '</div>';
