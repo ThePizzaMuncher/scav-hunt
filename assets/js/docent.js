@@ -13,7 +13,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 //
 
-//Copyright scav-hunt. (Functional credits to http://www.openstreetmap.org/copyrigh. All map code belongs to leaflet and openstreetmap)
+//Functional credits to http://www.openstreetmap.org/copyrigh. All map code belongs to leaflet and openstreetmap.
 let elements = document.getElementsByClassName("leaflet-control-attribution leaflet-control");
 for (let i = 0; i < elements.length; i++) {
   elements[i].style.display = "none";
@@ -22,26 +22,26 @@ for (let i = 0; i < elements.length; i++) {
 
 
 //Prefire Initialisatie en definiering markers.
-let marker1 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker2 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker3 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker4 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker5 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker6 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker7 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker8 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker9 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker10 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker11 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker12 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker13 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker14 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker15 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker16 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker17 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker18 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker19 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
-let marker20 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>").openPopup();
+let marker1 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker2 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker3 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker4 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker5 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker6 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker7 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker8 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker9 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker10 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker11 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker12 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker13 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker14 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker15 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker16 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker17 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker18 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker19 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
+let marker20 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
 //
 
 function clearMap() {
@@ -147,71 +147,71 @@ function update() {
         console.log("x:" + Ix + ", z=" + Iz);
         switch (ID) {//Maak markers op map van groepen met desbetreffende data.
             case 1:
-                marker1 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker1 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 2:
-                marker2 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker2 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 3:
-                marker3 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker3 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 4:
-                marker4 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker4 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 5:
-                marker5 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker5 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 6:
-                marker6 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker6 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 7:
-                marker7 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker7 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 8:
-                marker8 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker8 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 9:
-                marker9 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker9 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 10:
-                marker10 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker10 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 11:
-                marker11 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker11 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 12:
-                marker12 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker12 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 13:
-                marker13 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker13 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 14:
-                marker14 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker14 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 15:
-                marker15 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker15 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 16:
-                marker16 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker16 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 17:
-                marker17 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker17 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 18:
-                marker18 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker18 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 19:
-                marker19 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker19 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             case 20:
-                marker20 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData).openPopup();
+                marker20 = L.marker([ Ix , Iz ], {title: score}).addTo(map).bindPopup(popupData);
             break;
             default:
                 window.alert("Teveel groepen!")//Omdat het hardcoded is tot 20.
             break;
         }
     });
-    //marker1 = L.marker([ x , z ], {title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>").openPopup();
+    //marker1 = L.marker([ x , z ], {title: 'score: 6'}).addTo(map).bindPopup("<b>groep_1</b>");
 }});
 }
 
