@@ -85,7 +85,7 @@ $pull = $conn->query($query);
                 }
                 //
                 echo "
-    <div id='$row[ID]' style='height: " . ($row["score"] + $row["current_vraag"]) / 2 + 0.5 . "vw; width: 20%;' class='balk'>
+    <div id='$row[ID]' style='height: " . ($row["score"] + $row["current_vraag"]) / 2 + 0.5 . "vw; width: " . (100 / $counter) . "%;' class='balk'>
     <p class='naam'>$gebr</p>
     </div>
     ";
