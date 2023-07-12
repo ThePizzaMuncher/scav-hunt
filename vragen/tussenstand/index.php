@@ -55,7 +55,7 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"]) { //Student
 $query = "SELECT * FROM groep WHERE docent_ID = (SELECT opleiding_ID FROM docent WHERE opleiding_ID = $opleidingID)";
 $pull = $conn->query($query);
 $counter = 0;
-while ($row = $pull->fetch_assoc()) {//Counter of groups
+while ($row = $pull->fetch_assoc()) { //Counter of groups
     ++$counter;
 }
 $pull = $conn->query($query);
@@ -83,12 +83,18 @@ $pull = $conn->query($query);
                     $gna .= "...";
                     $gebr = $gna;
                 }
-                //
+
+                $maxHeight = 13; // Maximum height
+                $minHeight = 0; // Minimum Height
+                $heightPercentage = ($row["score"] / $maxHeight) * 100;
+                $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
+
                 echo "
-    <div id='$row[ID]' style='height: " . ($row["score"] + $row["current_vraag"]) / 2 + 0.5 . "vw; width: " . (100 / $counter) . "%;' class='balk'>
-    <p class='naam'>$gebr</p>
-    </div>
-    ";
+                <div id='$row[ID]' style='height: $heightPercentage%; width: " . (100 / $counter) . "%;' class='balk'>
+                    <p class='naam'>$gebr</p>
+                    <p class='points'>$row[score] points</p>
+                </div>
+                ";
             }
             ?>
 
