@@ -103,18 +103,21 @@ $pull = $conn->query($query);
         <div class='gordel'>
 
             <?php
-            $isVertical = isMobileDevice(); // Check if the device is mobile
-
             echo '
             <style>
             .naam, .naam2 {
-                font-size: ' . (24 - $counter) / 10 . ($isVertical ? 'vw' : 'vh') . ';
+                font-size: ' . (24 - $counter) / 10 . 'vh;
+            }
+            @media (max-width: 900px) {
+                .naam, .naam2 {
+                    font-size: ' . (24 - $counter) / 10 . 'vw;
+                }
             }
             </style>';
 
             if ($isVertical) {
                 echo "<div class='vertical-list' style='width: 100%;'>"; // Start vertical list container
-            ?><style>
+                echo "<style>
                     .balk {
                         height: 5vh;
                         border: 0;
@@ -123,49 +126,48 @@ $pull = $conn->query($query);
                         border-bottom-right-radius: 15px;
                         border-left: solid 2px var(--color-secondary);
                     }
-                </style><?php
-                    }
+                </style>";
+            }
 
-                    while ($row = $pull->fetch_assoc()) {
-                        //Als groepsnaam lang is, verkort deze dan voor de display.
-                        $gn = $row["groepsnaam"];
-                        $gna = "";
-                        $gnc = strlen($gn);
-                        $gebr = $gn;
-                        if ($gnc > 6) {
-                            $gna .= $gn[0];
-                            $gna .= $gn[1];
-                            $gna .= $gn[2];
-                            $gna .= $gn[3];
-                            $gna .= $gn[4];
-                            $gna .= $gn[5];
-                            $gna .= $gn[6];
-                            $gna .= "...";
-                            $gebr = $gna;
-                        }
+            while ($row = $pull->fetch_assoc()) {
+                //Als groepsnaam lang is, verkort deze dan voor de display.
+                $gn = $row["groepsnaam"];
+                $gna = "";
+                $gnc = strlen($gn);
+                $gebr = $gn;
+                if ($gnc > 6) {
+                    $gna .= $gn[0];
+                    $gna .= $gn[1];
+                    $gna .= $gn[2];
+                    $gna .= $gn[3];
+                    $gna .= $gn[4];
+                    $gna .= $gn[5];
+                    $gna .= $gn[6];
+                    $gna .= "...";
+                    $gebr = $gna;
+                }
 
-                        $maxHeight = 13; // Maximum height
-                        $minHeight = 0; // Minimum Height
-                        $heightPercentage = ($row["score"] / $maxHeight) * 100;
-                        $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
+                $maxHeight = 13; // Maximum height
+                $minHeight = 0; // Minimum Height
+                $heightPercentage = ($row["score"] / $maxHeight) * 100;
+                $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
-                        if ($isVertical) {
-                            echo "<div id='$row[ID]' style='width: " . $heightPercentage / 10 * 9 . "vw;' class='balk'>";
-                        } else {
-                            echo "<div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>";
-                        }
+                if ($isVertical) {
+                    echo "<div id='$row[ID]' style='width: " . $heightPercentage / 10 * 9 . "vw;' class='balk'>";
+                } else {
+                    echo "<div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>";
+                }
 
-                        echo " <p class='naam2'>$gebr</p>
+                echo " <p class='naam2'>$gebr</p>
                     <p class='naam2'>score:$row[score]</p>
                     <p class='naam'>Vraag:$row[current_vraag]</p>
-                </div>
-                ";
-                    }
+                </div>";
+            }
 
-                    if ($isVertical) {
-                        echo "</div>"; // End vertical list container
-                    }
-                        ?>
+            if ($isVertical) {
+                echo "</div>"; // End vertical list container
+            }
+            ?>
 
         </div> <!-- Afsluiten van gordel tag -->
         <?php
