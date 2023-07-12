@@ -160,7 +160,7 @@ $pull = $conn->query($query);
                             echo "<div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>";
                         }
 
-                        echo " <p class='naam2'>$gebr</p>
+                        echo " <b class='naam2'>$gebr</b>
                     <p class='naam2'>score:$row[score]</p>
                     <p class='naam'>Vraag:$row[current_vraag]</p>
                 </div>
