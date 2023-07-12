@@ -28,10 +28,9 @@ function isMobileDevice()
     }
 
     .balk {
-        display: block;
         height: 5vh;
         background-color: var(--color-secondary-light);
-        /* display: flex; */
+        display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
@@ -168,9 +167,9 @@ $pull = $conn->query($query);
 
         </div> <!-- Afsluiten van gordel tag -->
         <?php
-        if ($isMobile) {
-            echo "<p style='margin-top: 50px;'>Zet je apparaat in de horizontale stand voor een betere weergave.</p>";
-        }
+        // if ($isMobile) {
+        //     echo "<p style='margin-top: 50px;'>Zet je apparaat in de horizontale stand voor een betere weergave.</p>";
+        // }
         ?>
     </section>
 </section>
