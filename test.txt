@@ -2,3 +2,4 @@ test
 Dimitry
 Valerii
 test2.0
+replace icon
