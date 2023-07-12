@@ -4,6 +4,7 @@ require 'assets/includes/header.php';
 $filename = "about.txt";
 ?>
 
+
 <main id="main">
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">

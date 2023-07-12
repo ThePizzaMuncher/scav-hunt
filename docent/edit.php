@@ -9,7 +9,7 @@ if (!isset($_SESSION['docent'])) {
 }*/
 require_once("../assets/includes/header.php");
 require_once("../assets/includes/conn.php");
-
+// Nice
 ?>
 
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">

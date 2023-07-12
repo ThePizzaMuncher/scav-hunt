@@ -18,8 +18,7 @@ require_once("../assets/includes/conn.php");
 $ophalen = $conn->query("SELECT * FROM vraag");
 ?>
 
-<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset"
-	style="height: 100%;">
+<section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
 	<section id="about" class="section-50 d-flex flex-column align-items-center">
 
 		<?php
@@ -28,56 +27,54 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 																							   */
 		function renderForm($id, $vraag, $antwoord, $vragenlijst_ID, $opties)
 		{
-			?>
+		?>
 			<form action="" method="post">
 				<input type="hidden" name="id" value="<?php echo $id; ?>" />
 
 				<div>
-					<table border='1' cellpadding='10' width='100%'>
-						<tr>
-							<td><strong>Wat is de vraag: </strong></td>
-							<td><input type='text' name='vraag' value='<?php echo $vraag; ?>' /></td>
-						</tr>
-						<tr>
-							<td><strong>Goede Antwoord op de vraag: </strong></td>
-							<td><input type='text' name='antwoord' value='<?php echo $antwoord; ?>' /></td>
-						</tr>
-						<tr>
-							<td><strong>Keuzeantwoorden op de vraag: </strong></td>
-							<td><input type='text' name='opties' value='<?php echo $opties; ?>' /></td>
-						</tr>
-						<?php
-						require('../assets/includes/conn.php');
 
-						// Get all the categories from category table
-						$docent_ID = "SELECT ID,naam FROM `docent`";
-						$docent_pull = mysqli_query($conn, $docent_ID);
+
+					<strong>Wat is de vraag: </strong>
+					<input type='text' name='vraag' value='<?php echo $vraag; ?>' />
+
+
+					<strong>Goede Antwoord op de vraag: </strong>
+					<input type='text' name='antwoord' value='<?php echo $antwoord; ?>' />
+
+
+					<strong>Keuzeantwoorden op de vraag: </strong>
+					<input type='text' name='opties' value='<?php echo $opties; ?>' />
+
+					<?php
+					require('../assets/includes/conn.php');
+
+					// Get all the categories from category table
+					$docent_ID = "SELECT ID,naam FROM `docent`";
+					$docent_pull = mysqli_query($conn, $docent_ID);
+					?>
+					<select name="vragenlijst_ID">
+						<?php
+						// use a while loop to fetch data
+						// from the $all_categories variable
+						// and individually display as an option
+						while (
+							$docent = mysqli_fetch_array(
+								$docent_pull
+							)
+						) :;
 						?>
-						<select name="vragenlijst_ID">
-							<?php
-							// use a while loop to fetch data
-							// from the $all_categories variable
-							// and individually display as an option
-							while (
-								$docent = mysqli_fetch_array(
-									$docent_pull
-								)
-							):
-								;
+							<option value="<?php echo $docent["ID"];
+											// The value we usually set is the primary key
+											?>">
+								<?php echo $docent["naam"];
+								// To show the category name to the user
 								?>
-								<option value="<?php echo $docent["ID"];
-								// The value we usually set is the primary key
-								?>">
-									<?php echo $docent["naam"];
-									// To show the category name to the user
-									?>
-								</option>
-								<?php
-							endwhile;
-							// While loop must be terminated
-							?>
-						</select>
-					</table>
+							</option>
+						<?php
+						endwhile;
+						// While loop must be terminated
+						?>
+					</select>
 					<p>Everything is Required</p>
 
 					<input type="submit" name="submit" value="Wijzigen" />
@@ -89,7 +86,7 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 
 
 
-			<?php
+		<?php
 		}
 
 		// connect to the database
@@ -128,7 +125,7 @@ $ophalen = $conn->query("SELECT * FROM vraag");
 						die('Could not enter data: ');
 					}
 					// once saved, redirect back to the view page
-					echo "<script defer>window.open('./vragen-aanpassen.php', '_self')</script>";//Geen header gebruiken, omdat echo de header al uitschakeld. Gebruik JS open ~wwwqr
+					echo "<script defer>window.open('./vragen-aanpassen.php', '_self')</script>"; //Geen header gebruiken, omdat echo de header al uitschakeld. Gebruik JS open ~wwwqr
 				}
 			} else {
 				// if the 'id' isn't valid, display an error
