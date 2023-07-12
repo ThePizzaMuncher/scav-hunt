@@ -110,7 +110,7 @@ $pull = $conn->query($query);
 
                 <style>
                 .naam, .naam2 {
-                    font-size:" . 24 - $counter . "px;
+                    font-size:" . (24 - $counter) / 10 . "vw;
                 }
                 </style>
 
