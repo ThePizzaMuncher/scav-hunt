@@ -51,8 +51,6 @@ function isMobileDevice()
 
     .naam,
     .naam2 {
-        position: relative;
-        left: 20px;
         margin-bottom: 0;
     }
 
@@ -115,6 +113,12 @@ $pull = $conn->query($query);
             if ($isMobile) {
                 echo "<div class='vertical-list' style='width: 100%;'>"; // Start vertical list container
             ?><style>
+                    .naam,
+                    .naam2 {
+                        position: relative;
+                        left: 20px;
+                    }
+
                     .balk {
                         height: 10vh;
                         border: 0;
