@@ -84,7 +84,7 @@ let markerArr = [
     L.latLng(53.1971942, 5.7805127),
     L.latLng(53.1976139, 5.7746288)
 ];
-var walkingRoute = L.polyline(waypoints, { color: 'red', weight: 2 }).addTo(map);
+var walkingRoute = L.polyline(markerArr, { color: 'red', weight: 2 }).addTo(map);
 map.fitBounds(walkingRoute.getBounds());
 //
 marker1.openPopup();//Zodat de camera van de map goed zit.
