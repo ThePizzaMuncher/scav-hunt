@@ -12,6 +12,11 @@ require_once("../../assets/includes/header.php"); ?>
         background-color: var(--color-grey-ultra-light);
     }
 
+    .section-50 {
+        background-color: white;
+        width: 90%;
+    }
+
     .balk {
         background-color: var(--color-secondary-light);
         display: flex;

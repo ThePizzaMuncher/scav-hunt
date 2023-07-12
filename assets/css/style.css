@@ -847,7 +847,6 @@ input[type="number"],
   text-align: center;
   align-items: center;
   background-color: var(--color-grey-ultra-light);
-  border-radius: 5vh;
 }
 
 .block,
