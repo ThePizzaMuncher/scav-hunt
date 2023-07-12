@@ -1,6 +1,15 @@
 <?php
 session_start();
 require_once("../../assets/includes/conn.php");
+
+// Function to check if the user agent indicates a mobile device
+function isMobileDevice()
+{
+    $userAgent = $_SERVER['HTTP_USER_AGENT'];
+    $mobileKeywords = array('Mobile', 'Android', 'iPhone', 'iPad', 'Windows Phone');
+    return preg_match('/' . implode('|', $mobileKeywords) . '/i', $userAgent);
+}
+
 if (!isset($_SESSION["student_login"]) && !isset($_SESSION["docent"])) {
     header("location: ../../login/student_login.php");
     die();
@@ -28,7 +37,6 @@ require_once("../../assets/includes/header.php"); ?>
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
         border-bottom: solid 2px var(--color-secondary);
-        /* box-shadow: 0 5px 10px var(--color-secondary-light); */
     }
 
     .naam,
@@ -36,7 +44,6 @@ require_once("../../assets/includes/header.php"); ?>
     .naam2 {
         color: var(--color-primary);
         font-size: 20px;
-
     }
 
     .naam,
@@ -78,6 +85,10 @@ while ($row = $pull->fetch_assoc()) { //Counter of groups
     ++$counter;
 }
 $pull = $conn->query($query);
+
+$isMobile = isMobileDevice(); // Check if the device is mobile
+
+$_SESSION['is_mobile'] = $isMobile; // Store the result in a session variable
 ?>
 
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
@@ -112,19 +123,16 @@ $pull = $conn->query($query);
                 $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
                 echo "
-
-                <style>
-                .naam, .naam2 {
-                    font-size:" . 24 - $counter . "px;
-                }
-                </style>
-
                 <div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>
                     <p class='naam2'>$gebr</p>
                     <p class='naam2'>score:$row[score]</p>
                     <p class='naam'>Vraag:$row[current_vraag]</p>
                 </div>
                 ";
+            }
+
+            if ($isMobile) {
+                echo "<p style='margin-top: 20px;'>Flip your device to landscape mode for better viewing.</p>";
             }
             ?>
 
