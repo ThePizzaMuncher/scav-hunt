@@ -66,6 +66,36 @@ function clearMap() {
     map.removeLayer(marker19);
     map.removeLayer(marker20);
 }
+
+//Route lijn
+var control = L.Routing.control({
+    "type": "LineString",
+    waypoints: [
+       L.latLng(51.532493, -0.111371),
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.45834, -0.127736)
+    ],
+    lineOptions : {
+       styles: [
+          {color: 'black', opacity: 0.15, weight: 9}, 
+          {color: 'white', opacity: 0.8, weight: 6}, 
+          {color: 'red', opacity: 1, weight: 2}
+       ],
+       missingRouteStyles: [
+          {color: 'black', opacity: 0.5, weight: 7},
+          {color: 'white', opacity: 0.6, weight: 4},
+          {color: 'gray', opacity: 0.8, weight: 2, dashArray: '7,12'}
+       ]
+    },
+    show: true,
+    addWaypoints: false,
+    autoRoute: true,
+    routeWhileDragging: false,
+    draggableWaypoints: false,
+    useZoomParameter: false,
+    showAlternatives: true,
+ }).addTo(map);
+//
 marker1.openPopup();//Zodat de camera van de map goed zit.
 update();//Prefire zodat laden niet in intervaltimer zit.
 function update() {

@@ -51,7 +51,7 @@ function renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID)
 							</div>
 							<div class="col-lg-6">
 								<strong>Leerjaar: </strong>
-								<input type='text' name='leerjaar' type="number" min="0" max="10" value='<?php echo $leerjaar; ?>' />
+								<input name='leerjaar' type="number" min="0" max="10" value='<?php echo $leerjaar; ?>' />
 							</div>
 
 						</div>
