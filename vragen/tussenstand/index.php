@@ -103,7 +103,7 @@ $pull = $conn->query($query);
             echo '
             <style>
             .naam, .naam2 {
-                font-size: ' . (24 - $counter) / 10 . ($isVertical ? 'vw' : 'vh') . ';
+                font-size: ' . (24 - $counter) / 10 . ($isMobile ? 'vw' : 'vh') . ';
             }
             </style>';
 

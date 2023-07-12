@@ -56,3 +56,4 @@ require_once("../assets/includes/conn.php");
 
     </section>
 </section>
+<?php require_once("../assets/includes/footer.php"); ?>
