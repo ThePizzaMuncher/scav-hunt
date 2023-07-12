@@ -44,6 +44,8 @@ let marker19 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("
 let marker20 = L.marker([ xD , zD ], {title: 'score: ?'}).addTo(map).bindPopup("<b>Loading</b>");
 //
 
+marker1.openPopup();//Zodat de camera van de map goed zit.
+
 function clearMap() {
     map.removeLayer(marker1);
     map.removeLayer(marker2);
@@ -88,7 +90,6 @@ let markerArr = [
 var walkingRoute = L.polyline(markerArr, { color: 'red', weight: 2 }).addTo(map);
 map.fitBounds(walkingRoute.getBounds());
 //
-marker1.openPopup();//Zodat de camera van de map goed zit.
 update();//Prefire zodat laden niet in intervaltimer zit.
 function update() {
     clearMap();
