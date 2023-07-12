@@ -59,15 +59,18 @@ $path = "~speurtocht/";
     $formattedText = preg_replace('/\*(.*?)\*/', '<em>$1</em>', $formattedText);
     $formattedText = preg_replace('/__(.*?)__/', '<u>$1</u>', $formattedText);
     $formattedText = preg_replace('/~(.*?)~/', '<s>$1</s>', $formattedText);
-    $formattedText = preg_replace_callback('/##(.*?)##/', function ($matches) {
-        $text = htmlspecialchars($matches[1]);
-        return '<h2>' . $text . '</h2>';
-    }, $formattedText);
-    $formattedText = preg_replace_callback('/###(.*?)###/', function ($matches) {
-        $text = htmlspecialchars($matches[1]);
-        return '<h3>' . $text . '</h3>';
-    }, $formattedText);
-    $formattedText = preg_replace('/#(.*?)#/', '<h1>$1</h1>', $formattedText);
+	$formattedText = preg_replace('/#h1 (.*?)#/', '<h1>$1</h1>', $formattedText);
+	$formattedText = preg_replace('/#h2 (.*?)#/', '<h2>$1</h2>', $formattedText);
+	$formattedText = preg_replace('/#h3 (.*?)#/', '<h3>$1</h3>', $formattedText);
+    // $formattedText = preg_replace_callback('/#h2(.*?)#/', function ($matches) {
+    //     $text = htmlspecialchars($matches[1]);
+    //     return '<h2>' . $text . '</h2>';
+    // }, $formattedText);
+    // $formattedText = preg_replace_callback('/#h3 (.*?)#/', function ($matches) {
+    //     $text = htmlspecialchars($matches[1]);
+    //     return '<h3>' . $text . '</h3>';
+    // }, $formattedText);
+   
     $formattedText = preg_replace_callback('/\[([^]]+)\]\(([^)]+)\)/', function ($matches) {
         $text = htmlspecialchars($matches[1]);
         $url = htmlspecialchars($matches[2]);

@@ -89,8 +89,8 @@ function update() {
         let popupData = "<a href='ll_ig.php/?groep=" + ID + "'>" + naam + "</a><br>score:" + score + "<br>vraag:" + current_vraag;
         switch (current_vraag) {//Pak coordinaten bij passende qr-code.
             case 0:
-                Ix = xD;
-                Iz = zD;
+                Ix = 53.19953936450951;
+                Iz = 5.764675396916245;
             break;
             case 1:
                 Ix = 53.2025419;

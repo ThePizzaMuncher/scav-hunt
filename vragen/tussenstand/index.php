@@ -8,8 +8,11 @@ if (!isset($_SESSION["student_login"]) && !isset($_SESSION["docent"])) {
 require_once("../../assets/includes/header.php"); ?>
 <title>Tussenstand groepjes</title>
 <style>
+    .about {
+        background-color: var(--color-grey-ultra-light);
+    }
     .balk {
-        background-color: blue;
+        background-color: var(--color-secondary-light);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -20,8 +23,7 @@ require_once("../../assets/includes/header.php"); ?>
 
     .naam,
     .txt {
-        color: white;
-        text-shadow: 1px 1px 3px black;
+        color: var(--color-primary);
         font-size: 20px;
     }
 
@@ -37,7 +39,7 @@ require_once("../../assets/includes/header.php"); ?>
         justify-content: space-around;
         text-align: center;
         flex-direction: row;
-        background-color: #737373;
+        background-color: white;
     }
 
     body {
