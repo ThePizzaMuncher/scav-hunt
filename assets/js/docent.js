@@ -129,6 +129,8 @@ let markerArr = [
     L.latLng(53.19721550900875, 5.780341370355722),//Weg naar Monkey town
     L.latLng(53.1971942, 5.7805127),//QR-code Monkey town
     L.latLng(53.1976139, 5.7746288),//QR-code Brug snekertrekweg
+    L.latLng(53.1981372854509, 5.774603173208624),//Weg naar school
+    L.latLng(53.19884985525324, 5.765448072454216),//Weg naar school
     L.latLng(53.19953936450951, 5.764675396916245)//QR-code school (einde)
 ];
 var walkingRoute = L.polyline(markerArr, { color: '#3561ff', weight: 3 }).addTo(map);
