@@ -122,6 +122,7 @@ let markerArr = [
     L.latLng(53.1994306, 5.7950412),//QR-code prullenbak Fries museum
     L.latLng(53.2012202, 5.7929217),//QR-code De Dikke van Dale
     L.latLng(53.1980566, 5.7923676),//QR-code Achmea toren
+    L.latLng(53.19825332123832, 5.792180290259803),//Weg naar Monkey town
     L.latLng(53.1971942, 5.7805127),//QR-code Monkey town
     L.latLng(53.1976139, 5.7746288),//QR-code Brug snekertrekweg
     L.latLng(53.19953936450951, 5.764675396916245)//QR-code school (einde)
