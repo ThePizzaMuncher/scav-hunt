@@ -798,6 +798,7 @@ input[type="number"],
 	input[type="text"]:hover,
 	select:hover {
 		background-color: var(--color-grey-ultra-light);
+    border: solid 2px var(--color-secondary-light);
 	}
 
 	.custom-button {

@@ -72,20 +72,29 @@ var control = L.Routing.control({
     "type": "LineString",
     waypoints: [
        L.latLng(53.19953936450951, 5.764675396916245),
-       L.latLng(51.4902237, -0.1209),
-       L.latLng(51.4902237, -0.1209),
-       L.latLng(51.4902237, -0.1209),
-       L.latLng(51.4902237, -0.1209),
-       L.latLng(51.4902237, -0.1209),
-       L.latLng(51.4902237, -0.1209),
-       L.latLng(51.4902237, -0.1209),
-       L.latLng(51.4902237, -0.1209),
-       L.latLng(51.4902237, -0.1209),
+       L.latLng(53.2025419, 5.768891),
+       L.latLng(53.2019744, 5.7752356),
+       L.latLng(53.2018883, 5.7780158),
+       L.latLng(53.1977613, 5.7790154),
+       L.latLng(53.2042041, 5.7874331),
+       L.latLng(53.2032373, 5.789344),
+       L.latLng(53.2001074, 5.7914455),
+       L.latLng(53.1985783, 5.7936149),
+       L.latLng(53.1994306, 5.7950412),
        L.latLng(51.4902237, -0.1209),
        L.latLng(51.4902237, -0.1209),
        L.latLng(51.4902237, -0.1209),
        L.latLng(51.4902237, -0.1209),
     ],
+
+    // Color for the line - #7cd3ff
+    // Or #3561ff or #001483
+    // Here is just our css variables for colors:
+    //   --color-primary: #001483;
+    //   --color-secondary: #3561ff;
+    //   --color-secondary-light: #7cd3ff;
+    // You can try them, and decide which one is better :)
+
     lineOptions : {
        styles: [
           {color: 'black', opacity: 0.15, weight: 9}, 
