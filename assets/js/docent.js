@@ -8,7 +8,7 @@ let delay = 10;//Update delay in seconden.
 
 //Copyright
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: 18,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 //
@@ -69,8 +69,8 @@ function clearMap() {
 function popup() {
     marker1.openPopup();
 }
-update();//Prefire zodat laden niet in intervaltimer zit.
 popup();//Zodat de camera van de map goed zit.
+update();//Prefire zodat laden niet in intervaltimer zit.
 function update() {
     clearMap();
     $.ajax({url:"../assets/php/koter_API.php/?code=gi3yhk3rKNRLO73g_8", success: (result) => {
