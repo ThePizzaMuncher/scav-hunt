@@ -134,9 +134,13 @@ $pull = $conn->query($query);
                 $heightPercentage = ($row["score"] / $maxHeight) * 100;
                 $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
-                echo "
-                <div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>
-                    <p class='naam2'>$gebr</p>
+                if ($isMobile) {
+                echo "<div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>";
+                } else {
+                echo "<div id='$row[ID]' style='height:". (90 / $counter) ."%; width: " . $heightPercentage . "%;' class='balk'>";        
+                    }
+
+                echo " <p class='naam2'>$gebr</p>
                     <p class='naam2'>score:$row[score]</p>
                     <p class='naam'>Vraag:$row[current_vraag]</p>
                 </div>
