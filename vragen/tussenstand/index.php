@@ -92,7 +92,7 @@ $pull = $conn->query($query);
                 echo "
                 <div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>
                     <p class='naam'>$gebr</p>
-                    <p class='points'>$row[score] points</p>
+                    <p class='naam'>$row[score]</p>
                 </div>
                 ";
             }
