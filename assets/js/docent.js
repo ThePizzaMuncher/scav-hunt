@@ -109,7 +109,7 @@ var control = L.Routing.control({
     },
     show: true,
     addWaypoints: false,
-    autoRoute: true,
+    walkRoute: true,
     routeWhileDragging: false,
     draggableWaypoints: false,
     useZoomParameter: false,
