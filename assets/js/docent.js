@@ -76,7 +76,7 @@ function clearMap() {
     //   --color-primary: #001483;
     //   --color-secondary: #3561ff;
     //   --color-secondary-light: #7cd3ff;
-let markerArr = [
+let markerArr = [//Ik heb dit gehardcoded, omdat de automatische route AI alleen op autowegen gebaseerd was. (Niet praktiesch)
     L.latLng(53.19953936450951, 5.764675396916245),//School
     L.latLng(53.199917695212385, 5.7658890505930875),//Weg naar elfstedenhal
     L.latLng(53.202727269378656, 5.766858310900259),//Weg naar elfstedenhal
