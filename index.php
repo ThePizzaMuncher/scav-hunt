@@ -26,7 +26,7 @@ $filename = "about.txt";
     <section id="about" class="about">
     <div class="container" style="overflow: hidden;">
         <div class="row">
-          <div class="col-lg-4 justify-content-center align-items-center sticked-header-offset">
+          <div class="col-lg-4 justify-content-center align-items-center sticked-header-offset" style="margin-bottom: 120px;">
             <div class="section-title">
             <h2>Over</h2>
                <p>Hier vind je informatie over ons speurtochtspel!</p>

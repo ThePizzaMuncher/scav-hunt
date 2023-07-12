@@ -19,6 +19,9 @@ require_once("../../assets/includes/header.php"); ?>
         text-align: center;
         margin-bottom: 0.5vw;
         flex-direction: column;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        border-bottom: solid 2px var(--color-secondary);
     }
 
     .naam, .txt, .naam2 {
@@ -100,6 +103,7 @@ $pull = $conn->query($query);
                 <div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>
                     <p class='naam2'>$gebr</p>
                     <p class='naam'>score:$row[score]</p>
+                    <p class='naam'>Vraag:$row[current_vraag]</p>
                 </div>
                 ";
             }
