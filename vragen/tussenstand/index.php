@@ -52,7 +52,13 @@ if (isset($_SESSION["student_login"]) && $_SESSION["student_login"]) { //Student
 } else if (isset($_SESSION['docent'])) {
     $opleidingID = $_SESSION['opleiding_ID'];
 }
-$pull = $conn->query("SELECT * FROM groep WHERE docent_ID = (SELECT opleiding_ID FROM docent WHERE opleiding_ID = $opleidingID)");
+$query = "SELECT * FROM groep WHERE docent_ID = (SELECT opleiding_ID FROM docent WHERE opleiding_ID = $opleidingID)";
+$pull = $conn->query($query);
+$counter = 0;
+while ($row = $pull->fetch_assoc()) {//Counter of groups
+    ++$counter;
+}
+$pull = $conn->query($query);
 ?>
 
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
