@@ -116,6 +116,8 @@ let markerArr = [
     L.latLng(53.20051030615906, 5.789282604192586),//Weg naar Paté
     L.latLng(53.20029547280754, 5.7898169093660625),//Weg naar Paté
     L.latLng(53.2001074, 5.7914455),//QR-code boom Paté Ruiterskwartier
+    L.latLng(53.20007949834585, 5.79251234710569),//Weg naar Nuances web design
+    L.latLng(53.19866903684469, 5.792221410909712),//Weg naar Nuances web design
     L.latLng(53.1985783, 5.7936149),//QR-code boom Nuances web design
     L.latLng(53.1994306, 5.7950412),//QR-code prullenbak Fries museum
     L.latLng(53.2012202, 5.7929217),//QR-code De Dikke van Dale
