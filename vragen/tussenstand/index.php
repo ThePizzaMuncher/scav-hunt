@@ -102,10 +102,11 @@ $pull = $conn->query($query);
             $isMobile = isMobileDevice(); // Check if the device is mobile
             echo '
             <style>
-            .naam, .naam2 {
-                font-size: ' . (24 - $counter) / 10 . ($isMobile ? 'vw' : 'vh') . ';
-            }
+                .naam, .naam2 {
+                    font-size: calc(' . (24 - $counter) / 20 . 'vw + ' . (24 - $counter) / 20 . 'vh);
+                }
             </style>';
+
 
 
 
