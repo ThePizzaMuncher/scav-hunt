@@ -5,7 +5,7 @@ if (!isset($_SESSION["student_login"]) && !isset($_SESSION["docent"])) {
     header("location: ../../login/student_login.php");
     die();
 }
-require_once("../../assets/includes/header.php"); 
+require_once("../../assets/includes/header.php");
 
 // Function to check if the user agent indicates a mobile device
 function isMobileDevice()
@@ -135,6 +135,10 @@ $pull = $conn->query($query);
                     <p class='naam'>Vraag:$row[current_vraag]</p>
                 </div>
                 ";
+            }
+            $isMobile = isMobileDevice(); // Check if the device is mobile
+            if ($isMobile) {
+                echo "<p style='margin-top: 20px;'>Flip your device to landscape mode for better viewing.</p>";
             }
             ?>
 
