@@ -1,8 +1,4 @@
 #map {
-    width: 50vw;
-    height: 20vw;
-    border-top-right-radius: 1vw;
-    border-top-left-radius: 1vw;
-    border-bottom-right-radius: 1vw;
-    border-bottom-left-radius: 1vw;
+    width: 80vw;
+    height: 50vh;
 }

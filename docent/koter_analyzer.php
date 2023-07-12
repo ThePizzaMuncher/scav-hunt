@@ -25,6 +25,7 @@ if (!isset($_SESSION['docent'])) {
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
     <section id="about" class="section-50 d-flex flex-column align-items-center">
         <div class="docent-information">
+            <strong>Map:</strong>
             <div id="map" class="mapvoorkoters"></div>
         </div>
     </section>
