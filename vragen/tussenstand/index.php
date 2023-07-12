@@ -142,7 +142,7 @@ $pull = $conn->query($query);
         <?php 
         $isMobile = isMobileDevice(); // Check if the device is mobile
         if ($isMobile) {
-            echo "<p style='margin-top: 50px;'>Omdrijen uw telefoon naar landschape modus voor betere kijken</p>";
+            echo "<p style='margin-top: 50px;'>Zet je apparaat in de horizontale stand voor een betere weergave.</p>";
         }
         ?>
     </section>
