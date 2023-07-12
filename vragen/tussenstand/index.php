@@ -149,7 +149,7 @@ $pull = $conn->query($query);
                         $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
                         if ($isMobile) {
-                            echo "<div id='$row[ID]' style='width: " . $heightPercentage . "vw;' class='balk'>";
+                            echo "<div id='$row[ID]' style='width: " . $heightPercentage . "%;' class='balk'>";
                         } else {
                             echo "<div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>";
                         }
