@@ -70,6 +70,12 @@ function clearMap() {
 }
 
 //Route lijn
+    // Color for the line - #7cd3ff
+    // Or #3561ff or #001483
+    // Here is just our css variables for colors:
+    //   --color-primary: #001483;
+    //   --color-secondary: #3561ff;
+    //   --color-secondary-light: #7cd3ff;
 let markerArr = [
     L.latLng(53.19953936450951, 5.764675396916245),
     L.latLng(53.2025419, 5.768891),
@@ -87,7 +93,7 @@ let markerArr = [
     L.latLng(53.1976139, 5.7746288),
     L.latLng(53.19953936450951, 5.764675396916245)
 ];
-var walkingRoute = L.polyline(markerArr, { color: 'red', weight: 2 }).addTo(map);
+var walkingRoute = L.polyline(markerArr, { color: '#7cd3ff', weight: 2 }).addTo(map);
 map.fitBounds(walkingRoute.getBounds());
 //
 update();//Prefire zodat laden niet in intervaltimer zit.

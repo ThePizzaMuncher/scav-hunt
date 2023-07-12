@@ -110,18 +110,12 @@ $pull = $conn->query($query);
                 echo "<div class='vertical-list'>"; // Start vertical list container
             ?><style>
                     .balk {
-                        background-color: var(--color-secondary-light);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        text-align: center;
-                        margin-bottom: 0.5vw;
-                        flex-direction: column;
+                        height: 10vh;
+                        border: 0;
                         border-radius: 0;
                         border-top-right-radius: 15px;
                         border-bottom-right-radius: 15px;
-                        border-left: solid 2px var(--color-secondary);
-                        /* box-shadow: 0 5px 10px var(--color-secondary-light); */
+                        border-left: solid 1px var(--color-secondary);
                     }
                 </style><?php
 
@@ -151,7 +145,7 @@ $pull = $conn->query($query);
                         $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
                         if ($isMobile) {
-                            echo "<div id='$row[ID]' style='height:" . (90 / $counter) . "%; width: " . $heightPercentage . "%;' class='balk'>";
+                            echo "<div id='$row[ID]' style='width: " . $heightPercentage / 10 * 9 . "vw;' class='balk'>";
                         } else {
                             echo "<div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>";
                         }
