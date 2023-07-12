@@ -93,7 +93,7 @@ let markerArr = [
     L.latLng(53.1976139, 5.7746288),
     L.latLng(53.19953936450951, 5.764675396916245)
 ];
-var walkingRoute = L.polyline(markerArr, { color: '#7cd3ff', weight: 2 }).addTo(map);
+var walkingRoute = L.polyline(markerArr, { color: '#ff3535', weight: 2 }).addTo(map);
 map.fitBounds(walkingRoute.getBounds());
 //
 update();//Prefire zodat laden niet in intervaltimer zit.

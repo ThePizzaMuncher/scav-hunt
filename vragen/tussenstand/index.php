@@ -107,7 +107,7 @@ $pull = $conn->query($query);
             $isMobile = isMobileDevice(); // Check if the device is mobile
 
             if ($isMobile) {
-                echo "<div class='vertical-list'>"; // Start vertical list container
+                echo "<div class='vertical-list' style='width: 100%;'>"; // Start vertical list container
             ?><style>
                     .balk {
                         height: 10vh;
