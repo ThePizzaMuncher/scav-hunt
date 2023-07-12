@@ -83,8 +83,8 @@ let markerArr = [
     L.latLng(53.2018883, 5.7780158),//QR-code boom speeltuin
     L.latLng(53.20191417168954, 5.777668488031906),//Recht stuk speeltuin --> water
     L.latLng(53.197968028128926, 5.776634618536363),//Water
-    L.latLng(53.1973603806172, 5.78606385187805),//Kade
     L.latLng(53.1977613, 5.7790154),//QR-code boom Harlingertrekweg zorgkantoor
+    L.latLng(53.1973603806172, 5.78606385187805),//Kade
     L.latLng(53.2042041, 5.7874331),//QR-code boom ús mem
     L.latLng(53.2032373, 5.789344),//QR-code boom oldehove
     L.latLng(53.2001074, 5.7914455),//QR-code boom Paté Ruiterskwartier
