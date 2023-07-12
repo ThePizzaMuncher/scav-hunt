@@ -27,12 +27,25 @@ function isMobileDevice()
         width: 90%;
     }
 
+    .balk {
+        background-color: var(--color-secondary-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 0.5vw;
+        flex-direction: column;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        border-bottom: solid 2px var(--color-secondary);
+        /* box-shadow: 0 5px 10px var(--color-secondary-light); */
+    }
+
     .naam,
     .txt,
     .naam2 {
         color: var(--color-primary);
         font-size: 20px;
-
     }
 
     .naam,
@@ -104,9 +117,10 @@ $pull = $conn->query($query);
                         text-align: center;
                         margin-bottom: 0.5vw;
                         flex-direction: column;
-                        border-top-left-radius: 15px;
+                        border-radius: 0;
                         border-top-right-radius: 15px;
-                        border-bottom: solid 2px var(--color-secondary);
+                        border-bottom-right-radius: 15px;
+                        border-left: solid 2px var(--color-secondary);
                         /* box-shadow: 0 5px 10px var(--color-secondary-light); */
                     }
                 </style><?php
