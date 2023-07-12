@@ -101,7 +101,7 @@ $pull = $conn->query($query);
             echo "
             <style>
             .naam, .naam2 {
-                font-size: " . (20 - $counter)/10 . "vw);
+                font-size: " . (24 - $counter)/10 . "vw;
             }
             </style> ";
 
