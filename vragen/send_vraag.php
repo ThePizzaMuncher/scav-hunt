@@ -12,13 +12,16 @@ if (isset($_POST["submit"]) && isset($_SESSION['vstd_1']) && isset($_SESSION['vs
     if (isset($_POST["a"])) {
         $ia = "a";
         ++$counter;
-    } else if (isset($_POST["b"])) {
+    }
+    if (isset($_POST["b"])) {
         $ia = "b";
         ++$counter;
-    } else if (isset($_POST["c"])) {
+    }
+    if (isset($_POST["c"])) {
         $ia = "c";
         ++$counter;
-    } else if (isset($_POST["d"])) {
+    }
+    if (isset($_POST["d"])) {
         $ia = "d";
         ++$counter;
     }
