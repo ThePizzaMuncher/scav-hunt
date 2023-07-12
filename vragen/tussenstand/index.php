@@ -66,7 +66,7 @@ function isMobileDevice()
         flex-direction: row;
         background-color: white;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: flex-end;
     }
 
