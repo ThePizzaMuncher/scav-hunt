@@ -31,7 +31,7 @@ if(!empty($_GET['status'])){
 </div>
 <?php } ?>
     <!-- CSV file upload form -->
-        <form action="test3.php" method="post" enctype="multipart/form-data">
+        <form action="UPLOADEN.php" method="post" enctype="multipart/form-data">
             <input type="file" name="file" />
             <input type="submit" name="importSubmit" value="IMPORT">
         </form>

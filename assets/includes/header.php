@@ -100,7 +100,7 @@ $path = "~speurtocht/";
 					<?php
 					echo '
 					<div class="image-container">
-					<a href="/' . $path . '"><img src="/' . $path . 'assets/img/1234.png" alt="" class="img-fluid rounded-circle"></a>
+					<a href="/' . $path . '"class="nav-link scrollto hover-sound"><img src="/' . $path . 'assets/img/1234.png" alt="" class="img-fluid rounded-circle"></a>
 					</div>
 					';
 					?>
@@ -115,10 +115,10 @@ $path = "~speurtocht/";
 						<div class="social-links mt-3 text-center">
 							<?php
 							echo '
-							<a href="/' . $path . '#about"><i class="fa fa-info" aria-hidden="true"></i></a>
-							<a href="/' . $path . 'docent/groepen.php"><i
+							<a href="/' . $path . '#about"class="nav-link scrollto hover-sound"><i class="fa fa-info" aria-hidden="true"></i></a>
+							<a href="/' . $path . 'docent/groepen.php"class="nav-link scrollto hover-sound"><i
 									class="fa fa-address-book" aria-hidden="true"></i></a>
-							<a href="/' . $path . 'docent/koter_analyzer.php"><i class="fa fa-map"
+							<a href="/' . $path . 'docent/koter_analyzer.php"class="nav-link scrollto hover-sound"><i class="fa fa-map"
 									aria-hidden="true"></i></a>
 									'; ?>
 						</div>
@@ -134,21 +134,21 @@ $path = "~speurtocht/";
 							<?php
 							if (isset($_SESSION['docent'])) {
 								// echo <<< bar
-								echo '<li><a href="/' . $path . 'docent/"><i class="bx bx-user"></i> Docent</a></li>';
-								echo '<li class="dropdown"><a href="#"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
+								echo '<li><a href="/' . $path . 'docent/"class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent</a></li>';
+								echo '<li class="dropdown"><a href="#"class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Beheren <i class="bx bx-chevron-down"></i></a>';
 								echo '<ul>';
-								echo '<li><a href="/' . $path . 'docent/groepen.php"><i class="bx bx-group"></i> Groepjes</a></li>';
-								echo '<li><a href="/' . $path . 'docent/blender.php"><i class="bx bx-group"></i> Groepjes genereren</a></li>';
-								echo '<li><a href="/' . $path . 'vragen/tussenstand"><i class="fa fa-bar-chart" aria-hidden="true"></i> Groepjes tussenstand</a></li>';
-								echo '<li><a href="/' . $path . 'docent/koter_analyzer.php"><i class="bx bx-map"></i> Locatie groepjes</a></li>';
-								echo '<li><a href="/' . $path . 'docent/winnaar-tonen.php"><i class="bx bx-trophy"></i> Winnaar</a></li>';
-								echo '<li><a href="/' . $path . 'docent/vragen-aanpassen.php"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
-								echo '<li><a href="/' . $path . 'docent/unieke_code_generatie.php"><i class="bx bx-code"></i> Code genereren</a></li>';
+								echo '<li><a href="/' . $path . 'docent/groepen.php"class="nav-link scrollto hover-sound"><i class="bx bx-group"></i> Groepjes</a></li>';
+								echo '<li><a href="/' . $path . 'docent/blender.php"class="nav-link scrollto hover-sound"><i class="bx bx-group"></i> Groepjes genereren</a></li>';
+								echo '<li><a href="/' . $path . 'docent/koter_analyzer.php"class="nav-link scrollto hover-sound"><i class="bx bx-map"></i> Locatie groepjes</a></li>';
+								echo '<li><a href="/' . $path . 'docent/vragen-aanpassen.php"class="nav-link scrollto hover-sound"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
+								echo '<li><a href="/' . $path . 'docent/unieke_code_generatie.php"class="nav-link scrollto hover-sound"><i class="bx bx-code"></i> Code genereren</a></li>';
 								if (isset($_SESSION['admin']))
-									echo '<li><a href="/' . $path . 'admin/docent_toevoegen.php"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
+									echo '<li><a href="/' . $path . 'admin/docent_toevoegen.php"class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
 								echo '</ul>';
 								echo '</li>';
-								// echo '<li><a href="' . $path . 'login/logout.php"><i class="bx bx-user"></i> Uitloggen</a></li>';
+								echo '<li><a href="/' . $path . 'vragen/tussenstand"class="nav-link scrollto hover-sound"><i class="fa fa-bar-chart" aria-hidden="true"></i> Groepjes tussenstand</a></li>';
+								echo '<li><a href="/' . $path . 'docent/winnaar-tonen.php"class="nav-link scrollto hover-sound"><i class="bx bx-trophy"></i> Winnaar</a></li>';
+								// echo '<li><a href="' . $path . 'login/logout.php"class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Uitloggen</a></li>';
 								// bar;
 							} else if (isset($_SESSION["student_login"]) && $_SESSION["student_login"]) {
 								echo '<li><a href="/' . $path . 'login" class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent login</a></li>';

@@ -40,7 +40,6 @@ if(isset($_POST['importSubmit'])){
                 $leerjaar  = str_replace(';', '',$line[1]);
                 $groep_ID  = str_replace(';', '',$line[2]);
                 $opleiding  = str_replace(';', '',$line[3]);
-                echo $naam . $leerjaar . $opleiding . "Hier staan de naam leerjaar en opleiding";
                 // Check whether member already exists in the database with the same email
                 $conn->query("INSERT INTO leerling (naam, leerjaar,groep_ID,opleiding_ID) VALUES ('$naam', $leerjaar,$groep_ID,$opleiding)");
               //  }
