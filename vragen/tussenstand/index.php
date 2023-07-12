@@ -10,10 +10,14 @@ require_once("../../assets/includes/header.php");
 // Function to check if the user agent indicates a mobile device
 function isMobileDevice()
 {
-    $userAgent = $_SERVER['HTTP_USER_AGENT'];
-    $mobileKeywords = array('Mobile', 'Android', 'iPhone', 'iPad', 'Windows Phone');
-    return preg_match('/' . implode('|', $mobileKeywords) . '/i', $userAgent);
+    $screenWidth = $_SERVER['HTTP_SCREEN_WIDTH'];
+    if (intval($screenWidth) < 900) {
+        return true;
+    } else {
+        return false;
+    }
 }
+
 ?>
 
 <title>Tussenstand groepjes</title>
@@ -28,6 +32,7 @@ function isMobileDevice()
     }
 
     .balk {
+        display: block;
         background-color: var(--color-secondary-light);
         display: flex;
         align-items: center;
@@ -61,11 +66,12 @@ function isMobileDevice()
         width: 100%;
         min-height: 15vh;
         display: flex;
-        align-items: end;
-        justify-content: space-around;
         text-align: center;
         flex-direction: row;
         background-color: white;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
 
     body {
@@ -91,34 +97,33 @@ $pull = $conn->query($query);
 
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
     <section id="about" class="section-50 d-flex flex-column align-items-center">
-        <div class='gordel' style='margin-top: -5vw;'>
+        <div class='gordel'>
             <p class='txt'>Tussenstand groepjes</p>
         </div>
         <div class='gordel'>
 
             <?php
-            echo "
+            $isVertical = isMobileDevice(); // Check if the device is mobile
+
+            echo '
             <style>
             .naam, .naam2 {
-                font-size: " . (24 - $counter) / 10 . "vw;
+                font-size: ' . (24 - $counter) / 10 . ($isVertical ? 'vw' : 'vh') . ';
             }
-            </style> ";
+            </style>';
 
-            $isMobile = isMobileDevice(); // Check if the device is mobile
-
-            if ($isMobile) {
+            if ($isVertical) {
                 echo "<div class='vertical-list' style='width: 100%;'>"; // Start vertical list container
             ?><style>
                     .balk {
-                        height: 10vh;
+                        height: 5vh;
                         border: 0;
                         border-radius: 0;
                         border-top-right-radius: 15px;
                         border-bottom-right-radius: 15px;
-                        border-left: solid 1px var(--color-secondary);
+                        border-left: solid 2px var(--color-secondary);
                     }
                 </style><?php
-
                     }
 
                     while ($row = $pull->fetch_assoc()) {
@@ -144,7 +149,7 @@ $pull = $conn->query($query);
                         $heightPercentage = ($row["score"] / $maxHeight) * 100;
                         $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
-                        if ($isMobile) {
+                        if ($isVertical) {
                             echo "<div id='$row[ID]' style='width: " . $heightPercentage / 10 * 9 . "vw;' class='balk'>";
                         } else {
                             echo "<div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>";
@@ -157,14 +162,14 @@ $pull = $conn->query($query);
                 ";
                     }
 
-                    if ($isMobile) {
+                    if ($isVertical) {
                         echo "</div>"; // End vertical list container
                     }
                         ?>
 
         </div> <!-- Afsluiten van gordel tag -->
         <?php
-        if ($isMobile) {
+        if ($isVertical) {
             echo "<p style='margin-top: 50px;'>Zet je apparaat in de horizontale stand voor een betere weergave.</p>";
         }
         ?>
