@@ -21,10 +21,12 @@ require_once("../../assets/includes/header.php"); ?>
         flex-direction: column;
     }
 
-    .naam,
-    .txt {
+    .naam, .txt, .naam2 {
         color: var(--color-primary);
         font-size: 20px;
+    }
+    .naam2 {
+        margin-bottom: -2vw;
     }
 
     .txt {
@@ -96,7 +98,7 @@ $pull = $conn->query($query);
 
                 echo "
                 <div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>
-                    <p class='naam'>$gebr</p>
+                    <p class='naam2'>$gebr</p>
                     <p class='naam'>$row[score]</p>
                 </div>
                 ";
