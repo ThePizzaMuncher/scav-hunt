@@ -123,8 +123,11 @@ let markerArr = [
     L.latLng(53.2012202, 5.7929217),//QR-code De Dikke van Dale
     L.latLng(53.1980566, 5.7923676),//QR-code Achmea toren
     L.latLng(53.19825332123832, 5.792180290259803),//Weg naar Monkey town
+    L.latLng(53.19844930851762, 5.788581143421005),//Weg naar Monkey town
+    L.latLng(53.19716529010439, 5.787085638404203),//Weg naar Monkey town
+    L.latLng(53.19701375743795, 5.786380044041571),//Weg naar Monkey town
+    L.latLng(53.19721550900875, 5.780341370355722),//Weg naar Monkey town
     L.latLng(53.1971942, 5.7805127),//QR-code Monkey town
-    L.latLng(53.1976139, 5.7746288),//QR-code Brug snekertrekweg
     L.latLng(53.19953936450951, 5.764675396916245)//QR-code school (einde)
 ];
 var walkingRoute = L.polyline(markerArr, { color: '#3561ff', weight: 3 }).addTo(map);
