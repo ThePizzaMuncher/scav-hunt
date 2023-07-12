@@ -780,6 +780,7 @@ section {
 
 
 input[type="text"],
+input[type="number"],
 	select {
 		display: block;
 		width: 100%;
@@ -793,9 +794,10 @@ input[type="text"],
     text-align: center;
 	}
 
+  input[type="number"]:hover,
 	input[type="text"]:hover,
 	select:hover {
-		background-color: #e0e0e0;
+		background-color: var(--color-grey-ultra-light);
 	}
 
 	.custom-button {

@@ -71,9 +71,20 @@ function clearMap() {
 var control = L.Routing.control({
     "type": "LineString",
     waypoints: [
-       L.latLng(51.532493, -0.111371),
+       L.latLng(53.19953936450951, 5.764675396916245),
        L.latLng(51.4902237, -0.1209),
-       L.latLng(51.45834, -0.127736)
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.4902237, -0.1209),
+       L.latLng(51.4902237, -0.1209),
     ],
     lineOptions : {
        styles: [
