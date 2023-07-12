@@ -36,7 +36,7 @@ function renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID)
 
 
 					<strong>Voornaam: </strong>
-					<input type='text' name='naam' value='<?php echo $naam; ?>' />*
+					<input type='text' name='naam' value='<?php echo $naam; ?>' />
 
 
 					<?php
@@ -46,6 +46,7 @@ function renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID)
 					$opleiding_ID = "SELECT ID,opleiding_naam FROM `opleiding`";
 					$opleiding_pull = mysqli_query($conn, $opleiding_ID);
 					?>
+					<strong>Opleiding: </strong>
 					<select name="opleiding_ID">
 						<?php
 						// use a while loop to fetch data
@@ -72,11 +73,10 @@ function renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID)
 
 
 					<strong>Leerjaar: </strong>
-					<input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>' />*
+					<input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>' />
 
 					<input hidden readonly type='text' name='groep_ID' value='0' />
 
-					<p>* required</p>
 					<input class="custom-button" type='submit' name='submit' value='submit'>
 				</div>
 			</form>
