@@ -98,6 +98,13 @@ $pull = $conn->query($query);
         <div class='gordel'>
 
             <?php
+            echo "
+            <style>
+            .naam, .naam2 {
+                font-size: " . (24 - $counter)/10 . "vw);
+            }
+            </style> ";
+
             while ($row = $pull->fetch_assoc()) {
                 //Als groepsnaam lang is, verkort deze dan voor de display.
                 $gn = $row["groepsnaam"];
@@ -122,13 +129,6 @@ $pull = $conn->query($query);
                 $heightPercentage = max($heightPercentage, 5); // Display Height At Least 5 Percent
 
                 echo "
-
-                <style>
-                .naam, .naam2 {
-                    font-size: calc(0.5vw + 0.5vh +" . 24 - $counter * 2 . "px);
-                }
-                </style>
-
                 <div id='$row[ID]' style='height: $heightPercentage%; width: " . (90 / $counter) . "%;' class='balk'>
                     <p class='naam2'>$gebr</p>
                     <p class='naam2'>score:$row[score]</p>
