@@ -60,7 +60,7 @@ function isMobileDevice()
 
     .gordel {
         width: 100%;
-        height: 14vw;
+        min-height: 15vh;
         display: flex;
         align-items: end;
         justify-content: space-around;
