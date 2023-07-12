@@ -139,7 +139,7 @@ $path = "~speurtocht/";
 								echo '<ul>';
 								echo '<li><a href="/' . $path . 'docent/groepen.php"class="nav-link scrollto hover-sound"><i class="bx bx-group"></i> Groepjes</a></li>';
 								echo '<li><a href="/' . $path . 'docent/blender.php"class="nav-link scrollto hover-sound"><i class="bx bx-group"></i> Groepjes genereren</a></li>';
-								echo '<li><a href="/' . $path . 'docent/INPORT.php"class="nav-link scrollto hover-sound"><i class="bx bx-group"></i> Leerlingen importeren</a></li>';
+								echo '<li><a href="/' . $path . 'docent/IMPORT.php"class="nav-link scrollto hover-sound"><i class="bx bx-group"></i> Leerlingen importeren</a></li>';
 								echo '<li><a href="/' . $path . 'docent"class="nav-link scrollto hover-sound"><i class="bx bx-group"></i> Leerlingenlijst</a></li>';
 								echo '<li><a href="/' . $path . 'docent/koter_analyzer.php"class="nav-link scrollto hover-sound"><i class="bx bx-map"></i> Locatie groepjes</a></li>';
 								echo '<li><a href="/' . $path . 'docent/vragen-aanpassen.php"class="nav-link scrollto hover-sound"><i class="bx bx-edit"></i> Vragen bijwerken</a></li>';
