@@ -33,19 +33,30 @@ function renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID)
 
 			<form action='' method='post'>
 				<div>
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-6">
+
+								<strong>Voornaam: </strong>
+								<input type='text' name='naam' value='<?php echo $naam; ?>' />
 
 
-					<strong>Voornaam: </strong>
-					<input type='text' name='naam' value='<?php echo $naam; ?>' />
+								<?php
+								require('../assets/includes/conn.php');
 
+								// Get all the categories from category table
+								$opleiding_ID = "SELECT ID,opleiding_naam FROM `opleiding`";
+								$opleiding_pull = mysqli_query($conn, $opleiding_ID);
+								?>
+							</div>
+							<div class="col-lg-6">
+								<strong>Leerjaar: </strong>
+								<input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>' />
+							</div>
 
-					<?php
-					require('../assets/includes/conn.php');
+						</div>
+					</div>
 
-					// Get all the categories from category table
-					$opleiding_ID = "SELECT ID,opleiding_naam FROM `opleiding`";
-					$opleiding_pull = mysqli_query($conn, $opleiding_ID);
-					?>
 					<strong>Opleiding: </strong>
 					<select name="opleiding_ID">
 						<?php
@@ -70,10 +81,6 @@ function renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID)
 						// While loop must be terminated
 						?>
 					</select>
-
-
-					<strong>Leerjaar: </strong>
-					<input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>' />
 
 					<input hidden readonly type='text' name='groep_ID' value='0' />
 
