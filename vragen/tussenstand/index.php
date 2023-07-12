@@ -21,7 +21,7 @@ require_once("../../assets/includes/header.php"); ?>
     .naam,
     .txt {
         color: white;
-        text-shadow: 0.2vw 0.2vw 0.2vw black;
+        text-shadow: 1px 1px 2px black;
         font-size: 20px;
     }
 
@@ -81,6 +81,8 @@ $pull = $conn->query($query);
                     $gna .= $gn[2];
                     $gna .= $gn[3];
                     $gna .= $gn[4];
+                    $gna .= $gn[5];
+                    $gna .= $gn[6];
                     $gna .= "...";
                     $gebr = $gna;
                 }
