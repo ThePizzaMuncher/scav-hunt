@@ -736,6 +736,10 @@ section {
 }
 
 
+/*--------------------------------------------------------------
+# Custom buttons, unputs, checks and more
+--------------------------------------------------------------*/
+
 .custom-button,
 .custom-button-red {
   width: 120px;
@@ -773,6 +777,42 @@ section {
   background-color: var(--color-secondary-red);
   box-shadow: 0 2px 4px var(--color-secondary-light-red);
 }
+
+
+input[type="text"],
+	select {
+		display: block;
+		width: 100%;
+		padding: 10px;
+		font-size: 16px;
+		border-radius: 5px;
+		border: none;
+		background-color: white;
+		margin-bottom: 10px;
+		transition: background-color 0.3s ease;
+	}
+
+	input[type="text"]:hover,
+	select:hover {
+		background-color: #e0e0e0;
+	}
+
+	.custom-button {
+		display: inline-block;
+		padding: 10px 20px;
+		font-size: 16px;
+		text-align: center;
+		text-decoration: none;
+		border-radius: 5px;
+		border: none;
+		background-color: #4CAF50;
+		color: white;
+		transition: background-color 0.3s ease;
+	}
+
+	.custom-button:hover {
+		background-color: #45a049;
+	}
 
 
 /*--------------------------------------------------------------
