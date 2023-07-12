@@ -125,7 +125,7 @@ $pull = $conn->query($query);
 
                 <style>
                 .naam, .naam2 {
-                    font-size:" . 24 - $counter . "px;
+                    font-size: calc(0.5vw + 0.5vh +" . 24 - $counter * 2 . "px);
                 }
                 </style>
 
@@ -139,7 +139,7 @@ $pull = $conn->query($query);
             ?>
 
         </div> <!-- Afsluiten van gordel tag -->
-        <?php 
+        <?php
         $isMobile = isMobileDevice(); // Check if the device is mobile
         if ($isMobile) {
             echo "<p style='margin-top: 50px;'>Zet je apparaat in de horizontale stand voor een betere weergave.</p>";
