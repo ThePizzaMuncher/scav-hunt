@@ -51,40 +51,41 @@ function renderForm($id, $naam, $opleiding_ID, $leerjaar, $groep_ID)
 							</div>
 							<div class="col-lg-6">
 								<strong>Leerjaar: </strong>
-								<input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>' />
+								<input type='text' name='leerjaar' type="number" min="0" max="10" value='<?php echo $leerjaar; ?>' />
 							</div>
 
 						</div>
+
+
+						<strong>Opleiding: </strong>
+						<select name="opleiding_ID">
+							<?php
+							// use a while loop to fetch data
+							// from the $all_categories variable
+							// and individually display as an option
+							while (
+								$opleiding = mysqli_fetch_array(
+									$opleiding_pull
+								)
+							) :;
+							?>
+								<option value="<?php echo $opleiding["ID"];
+												// The value we usually set is the primary key
+												?>">
+									<?php echo $opleiding["opleiding_naam"];
+									// To show the category name to the user
+									?>
+								</option>
+							<?php
+							endwhile;
+							// While loop must be terminated
+							?>
+						</select>
+
+						<input hidden readonly type='text' name='groep_ID' value='0' />
+
+						<input class="custom-button" type='submit' name='submit' value='Toevoegen'>
 					</div>
-
-					<strong>Opleiding: </strong>
-					<select name="opleiding_ID">
-						<?php
-						// use a while loop to fetch data
-						// from the $all_categories variable
-						// and individually display as an option
-						while (
-							$opleiding = mysqli_fetch_array(
-								$opleiding_pull
-							)
-						) :;
-						?>
-							<option value="<?php echo $opleiding["ID"];
-											// The value we usually set is the primary key
-											?>">
-								<?php echo $opleiding["opleiding_naam"];
-								// To show the category name to the user
-								?>
-							</option>
-						<?php
-						endwhile;
-						// While loop must be terminated
-						?>
-					</select>
-
-					<input hidden readonly type='text' name='groep_ID' value='0' />
-
-					<input class="custom-button" type='submit' name='submit' value='submit'>
 				</div>
 			</form>
 		</section>

@@ -12,43 +12,6 @@ require_once("../assets/includes/conn.php");
 
 ?>
 
-<style>
-	input[type="text"],
-	select {
-		display: block;
-		width: 100%;
-		padding: 10px;
-		font-size: 16px;
-		border-radius: 5px;
-		border: none;
-		background-color: white;
-		margin-bottom: 10px;
-		transition: background-color 0.3s ease;
-	}
-
-	input[type="text"]:hover,
-	select:hover {
-		background-color: #e0e0e0;
-	}
-
-	.custom-button {
-		display: inline-block;
-		padding: 10px 20px;
-		font-size: 16px;
-		text-align: center;
-		text-decoration: none;
-		border-radius: 5px;
-		border: none;
-		background-color: #4CAF50;
-		color: white;
-		transition: background-color 0.3s ease;
-	}
-
-	.custom-button:hover {
-		background-color: #45a049;
-	}
-</style>
-
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
 	<section id="about" class="section-50 d-flex flex-column align-items-center">
 
@@ -70,7 +33,7 @@ require_once("../assets/includes/conn.php");
 						</div>
 						<div class="col-lg-6">
 							<strong>Leerjaar:</strong>
-							<input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>' />
+							<input type='text' name='leerjaar' type="number" min="0" max="10" value='<?php echo $leerjaar; ?>' />
 						</div>
 					</div>
 					<div class="row">
