@@ -69,8 +69,8 @@ function clearMap() {
 function popup() {
     marker1.openPopup();
 }
-popup();//Zodat de camera van de map goed zit.
 update();//Prefire zodat laden niet in intervaltimer zit.
+popup();//Zodat de camera van de map goed zit.
 function update() {
     clearMap();
     $.ajax({url:"../assets/php/koter_API.php/?code=gi3yhk3rKNRLO73g_8", success: (result) => {
