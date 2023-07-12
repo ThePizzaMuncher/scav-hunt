@@ -24,6 +24,8 @@ $path = "~speurtocht/";
 	<link rel="icon" type="image/png" sizes="16x16" href="/' . $path . 'assets/img/favicon_io/favicon-16x16.png">
 	<link rel="manifest" href="/' . $path . 'assets/img/favicon_io/site.webmanifest">
 	<meta name="description" content="Speurtocht website. Speur je mee?">
+	<meta name="keywords" content="Speurtocht ROC Friese poort, Firda speurtocht, scav-hunt, Scav-Hunt">
+	<meta name="authors" content="wwwqr, Valerii, Dimitry, Jonathan">
 	';
 	?>
 
