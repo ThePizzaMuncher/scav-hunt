@@ -14,7 +14,7 @@
           href="https://mbo-portal.nl/~fp241754/" target="_blank"><u>Jonathan</u></a>, <a
           href="https://mbo-portal.nl/~fp245573/"><u>Dimitry</u></a></p>
       <p>*Special event hosted and organized by the ROC Friese Poort (Firda)</p>
-      <p><a href="https://github.com/thePizzaMuncher/scav-hunt/tree/Docentenpagina"><u>Check hier de github van het project</u></a></p>
+      <p><a href="https://github.com/thePizzaMuncher/scav-hunt/tree/Docentenpagina" target="_blank"><u>Check hier de github van het project</u></a></p>
     </div>
   </div>
 </footer><!-- End  Footer -->
