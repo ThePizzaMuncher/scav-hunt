@@ -80,6 +80,7 @@ $pull = $conn->query($query);
                     $gna .= $gn[1];
                     $gna .= $gn[2];
                     $gna .= $gn[3];
+                    $gna .= $gn[4];
                     $gna .= "...";
                     $gebr = $gna;
                 }
