@@ -61,85 +61,84 @@ require_once("../assets/includes/conn.php");
 		?>
 			<form action="" method="post">
 				<input type="hidden" name="id" value="<?php echo $id; ?>" />
-				<table border='1' cellpadding='10' width='100%'>
-					<tr>
-						<td><strong>Naam: </strong></td>
-						<td><input type='text' name='leerlingnummer' value='<?php echo $naam; ?>' /></td>
-					</tr>
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-6">
-								<tr>
-									<?php
-									require('../assets/includes/conn.php');
 
-									// Get all the categories from category table
-									$sql_opleiding_ID = "SELECT * FROM `opleiding`";
-									$opleidingID = mysqli_query($conn, $sql_opleiding_ID);
-									?>
 
-									<select name="opleiding">
-										<?php
-										// use a while loop to fetch data
-										// from the $all_categories variable
-										// and individually display as an option
-										while ($opleiding_ID = mysqli_fetch_array(
-											$opleidingID
-										)) :;
-										?>
-											<option value="<?php echo $opleiding_ID["ID"];
-															// The value we usually set is the primary key
-															?>">
-												<?php echo $opleiding_ID["opleiding_naam"];
-												// To show the category name to the user
-												?>
-											</option>
-										<?php
-										endwhile;
-										// While loop must be terminated
-										?>
-									</select>
-								</tr>
-							</div>
-							<div class="col-lg-6">
-								<tr>
-									<td><strong>Leerjaar: </strong></td>
-									<td><input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>' /></td>
-								</tr>
-								<tr>
-									<?php
-									require('../assets/includes/conn.php');
+				<strong>Naam: </strong>
+				<input type='text' name='leerlingnummer' value='<?php echo $naam; ?>' />
 
-									// Get all the categories from category table
-									$sql_groep_ID = "SELECT * FROM `groep`";
-									$groepID = mysqli_query($conn, $sql_groep_ID);
-									?>
-									<select name="groepid">
-										<?php
-										// use a while loop to fetch data
-										// from the $all_categories variable
-										// and individually display as an option
-										while ($groep_ID = mysqli_fetch_array(
-											$groepID
-										)) :;
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+
+							<?php
+							require('../assets/includes/conn.php');
+
+							// Get all the categories from category table
+							$sql_opleiding_ID = "SELECT * FROM `opleiding`";
+							$opleidingID = mysqli_query($conn, $sql_opleiding_ID);
+							?>
+
+							<select name="opleiding">
+								<?php
+								// use a while loop to fetch data
+								// from the $all_categories variable
+								// and individually display as an option
+								while ($opleiding_ID = mysqli_fetch_array(
+									$opleidingID
+								)) :;
+								?>
+									<option value="<?php echo $opleiding_ID["ID"];
+													// The value we usually set is the primary key
+													?>">
+										<?php echo $opleiding_ID["opleiding_naam"];
+										// To show the category name to the user
 										?>
-											<option value="<?php echo $groep_ID["ID"];
-															// The value we usually set is the primary key
-															?>">
-												<?php echo $groep_ID["groepsnaam"];
-												// To show the category name to the user
-												?>
-											</option>
-										<?php
-										endwhile;
-										// While loop must be terminated
+									</option>
+								<?php
+								endwhile;
+								// While loop must be terminated
+								?>
+							</select>
+
+						</div>
+						<div class="col-lg-6">
+
+							<strong>Leerjaar: </strong>
+							<input type='text' name='leerjaar' value='<?php echo $leerjaar; ?>' />
+
+
+							<?php
+							require('../assets/includes/conn.php');
+
+							// Get all the categories from category table
+							$sql_groep_ID = "SELECT * FROM `groep`";
+							$groepID = mysqli_query($conn, $sql_groep_ID);
+							?>
+							<select name="groepid">
+								<?php
+								// use a while loop to fetch data
+								// from the $all_categories variable
+								// and individually display as an option
+								while ($groep_ID = mysqli_fetch_array(
+									$groepID
+								)) :;
+								?>
+									<option value="<?php echo $groep_ID["ID"];
+													// The value we usually set is the primary key
+													?>">
+										<?php echo $groep_ID["groepsnaam"];
+										// To show the category name to the user
 										?>
-									</select>
-								</tr>
-							</div>
+									</option>
+								<?php
+								endwhile;
+								// While loop must be terminated
+								?>
+							</select>
+
 						</div>
 					</div>
-				</table>
+				</div>
 				<p>Everything is Required</p>
 
 				<input class="custom-button" type="submit" name="submit" value="Wijzigen">
