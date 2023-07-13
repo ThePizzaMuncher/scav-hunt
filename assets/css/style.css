@@ -779,7 +779,7 @@ section {
   box-shadow: 0 2px 4px var(--color-secondary-light-red);
 }
 
-
+input[type="password"],
 input[type="text"],
 input[type="number"],
 	select {
@@ -795,6 +795,7 @@ input[type="number"],
     text-align: center;
 	}
 
+  input[type="password"]:hover,
   input[type="number"]:hover,
 	input[type="text"]:hover,
 	select:hover {
@@ -810,13 +811,13 @@ input[type="number"],
 		text-decoration: none;
 		border-radius: 5px;
 		border: none;
-		background-color: #4CAF50;
+		background-color: var(--color-secondary);
 		color: white;
 		transition: background-color 0.3s ease;
 	}
 
 	.custom-button:hover {
-		background-color: #45a049;
+		background-color: var(--color-secondary-light);
 	}
 
 

@@ -115,7 +115,7 @@ $path = "~speurtocht/";
 						<div class="social-links mt-3 text-center">
 							<?php
 							echo '
-							<a href="/' . $path . '#about"class="nav-link scrollto hover-sound"><i class="fa fa-info" aria-hidden="true"></i></a>
+							<a href="/' . $path . 'index#about"class="nav-link scrollto hover-sound"><i class="fa fa-info" aria-hidden="true"></i></a>
 							<a href="/' . $path . 'docent/groepen.php"class="nav-link scrollto hover-sound"><i
 									class="fa fa-address-book" aria-hidden="true"></i></a>
 							<a href="/' . $path . 'docent/koter_analyzer.php"class="nav-link scrollto hover-sound"><i class="fa fa-map"

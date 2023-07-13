@@ -70,6 +70,20 @@ require_once("../assets/includes/conn.php");
 						window.open(document.URL + 'delete.php?id=' + id, '_self');
 					}
 					</script>";
+					if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {//Admin verweidert alle leerlingen van alle opleidingen.
+						$padNaarDel = "test1";
+					}
+					else {
+						$padNaarDel = "test2";
+					}
+					echo "<script>
+					function vraag() {
+						let vr = window.confirm('Weet u zeker dat u alle leerlingen van alle opleidingen wilt verwijderen?');
+						if (vr) {
+							window.open('../" . $padNaarDel . "', '_self');
+						}
+					}
+					</script>";
 				while ($row = $pull->fetch_assoc()) {
 					echo "<tr>";
 					echo "<td>$row[ID]</td>";
@@ -89,6 +103,7 @@ require_once("../assets/includes/conn.php");
 			<div class="col-lg-2">
 				<h4 class="panel-title">Buttons:</h4>
 				<button class="custom-button"><a href="leerling_toevoegen.php">Leerling toevoegen</a></button>
+				<button class="custom-button-red"><a onclick="">Alle leerlingen verwijderen</a></button>
 <button class="custom-button-red"><a href="../login/logout.php">Uitloggen</a></button>
 
 			</div>
