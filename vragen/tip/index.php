@@ -53,7 +53,7 @@ switch ($current_vraag) {
         $tipTxt = "Volg de rechterkant van de kade. Bij Monkey Town is een nieuwe qr-code te vinden.";
     break;
     case 12:
-        $tipTxt = "Blijf rechtdoor lopen aan dezelfde kant van de kade, totdat je een brug tegenkomt. scan hier de code";
+        $tipTxt = "Blijf rechtdoor lopen aan dezelfde kant van de kade, totdat je een brug tegenkomt. scan hier de code en loop vervolgens terug naar school.";
     break;
     case 13:
         $tipTxt = "Je hebt de speurtocht afgerond! Vraag de desbetreffende docent voor de winnaars.";
