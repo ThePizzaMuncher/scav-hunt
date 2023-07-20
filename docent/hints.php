@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once("../includes/conn.php");
 if (!isset($_SESSION['docent']) || $_SESSION['docent'] != 1) {
     echo "<script>
     window.alert('Error. geen toegang!');
