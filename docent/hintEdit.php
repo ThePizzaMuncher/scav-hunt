@@ -7,4 +7,5 @@ if (!isset($_GET["id"]) && empty($_GET["id"])) {
     die();
 }
 require_once("../assets/includes/conn.php");
+die("W.I.P");
 ?>
