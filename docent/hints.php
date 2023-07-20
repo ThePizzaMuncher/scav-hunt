@@ -13,9 +13,10 @@ $dop = $_SESSION['opleiding_ID'];//Docent Opleiding ID
 $pull = $conn->query("SELECT * FROM hint WHERE opleidingID = $dop");
 echo "<table>";
 while ($row = $pull->fetch_assoc()) {
-    echo "<td>";
-    echo "<tr><p>" . $row["tip"] . "</p>" . " <a href='hintEdit.php/?id=" . $row["hintID"] . "'>Bewerk</a></tr>";
-    echo "</td>";
+    echo "<tr>";
+    echo "<td>" . $row["tip"] . "</td>";
+    echo "<td><a href='hintEdit.php/?id=" . $row["hintID"] . "'>Bewerk</a></td>";
+    echo "</tr>";
 }
 echo "</table>";
 require_once("../assets/includes/footer.php");
