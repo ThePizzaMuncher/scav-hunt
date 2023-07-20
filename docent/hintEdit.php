@@ -10,7 +10,7 @@ session_start();
 require_once("../assets/includes/conn.php");
 require_once("../assets/includes/header.php");
 $hintID = $_GET["id"];
-$pull = $conn->query("SELECT hintID FROM hint WHERE hintID = $hintID AND opleidingID = " . $_SESSION['opleiding_ID']);
+$pull = $conn->query("SELECT * FROM hint WHERE hintID = $hintID AND opleidingID = " . $_SESSION['opleiding_ID']);
 $output = $pull->fetch_assoc();
 if (!isset($output["hintID"])) {
     echo "<script>
@@ -19,6 +19,13 @@ if (!isset($output["hintID"])) {
     </script>";
     die();
 }
+echo '
+<form method="post" action="hintUpdate.php">
+    <input type="number" name="id" value="' . $output["hintID"] . '" style="display: none;">
+    <input type="text" name="hint" value="' . $output["tip"] . '">
+    <input type="submit" name="submit" value="Update">
+</form>
+';
 $pull;
 require_once("../assets/includes/footer.php");
 ?>
