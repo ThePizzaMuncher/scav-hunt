@@ -17,5 +17,6 @@ while ($row = $pull->fetch_assoc()) {
     echo "<tr><p>" . $row["tip"] . "</p>" . " <a href='hintEdit.php/?id=" . $row["hintID"] . "'>Bewerk</a></tr>";
     echo "</td>";
 }
+echo "</table>";
 require_once("../assets/includes/footer.php");
 ?>
