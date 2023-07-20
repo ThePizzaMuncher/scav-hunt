@@ -6,6 +6,11 @@ if (!isset($_GET["id"]) && empty($_GET["id"])) {
     </script>";
     die();
 }
+$hintID = $_GET["id"];
+$pull = $conn->query("SELECT hintID FROM hint WHERE hintID = $hintID");
+echo $pull->fetch_assoc();
 require_once("../assets/includes/conn.php");
-die("W.I.P");
+require_once("../assets/includes/header.php");
+$pull;
+require_once("../assets/includes/footer.php");
 ?>
