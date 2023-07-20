@@ -17,6 +17,7 @@ while ($row = $pull->fetch_assoc()) {
 $tipTxt = "";
 $studentOpID = $_SESSION["student_opleidingID"];
 function setTipTxt() {
+    require_once("../../assets/includes/conn.php");
     $pull = $conn->query("SELECT tip FROM hint WHERE opleidingID = $studentOpID AND hintID = $current_vraag");
     $tmpTipTxt = $pull->fetch_assoc();
     $tipTxt = $tmpTipTxt["tip"];
