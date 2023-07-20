@@ -15,7 +15,7 @@ $output = $pull->fetch_assoc();
 if (!isset($output["hintID"])) {
     echo "<script>
     window.alert('Error: geen tip bij opgegeven ID.');
-    window.open('../', '_self');
+    window.open('./hints.php', '_self');
     </script>";
     die();
 }
