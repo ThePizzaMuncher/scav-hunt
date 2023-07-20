@@ -13,7 +13,11 @@ $hintID = $_GET["id"];
 $pull = $conn->query("SELECT hintID FROM hint WHERE hintID = $hintID AND opleidingID = " . $_SESSION['opleiding_ID']);
 $output = $pull->fetch_assoc();
 if (!isset($output["hintID"])) {
-    echo "Error: geen hint of tip bij dit ID.";
+    echo "<script>
+    window.alert('Error: geen tip bij opgegeven ID.');
+    window.open('../', '_self');
+    </script>";
+    die();
 }
 $pull;
 require_once("../assets/includes/footer.php");
