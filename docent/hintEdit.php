@@ -12,11 +12,9 @@ require_once("../assets/includes/header.php");
 $hintID = $_GET["id"];
 $pull = $conn->query("SELECT hintID FROM hint WHERE hintID = $hintID AND opleidingID = " . $_SESSION['opleiding_ID']);
 $output = $pull->fetch_assoc();
-if ($output["hintID"] != $hintID) {
-    echo "error!";
-    die();
+if (!isset($output["hintID"])) {
+    echo "Error: geen hint of tip bij dit ID.";
 }
-echo "success!";
 $pull;
 require_once("../assets/includes/footer.php");
 ?>
