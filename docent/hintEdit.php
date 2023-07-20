@@ -20,7 +20,7 @@ if (!isset($output["hintID"])) {
     die();
 }
 echo '
-<form method="post" action="hintUpdate.php">
+<form method="post" action="../hintUpdate.php">
     <input type="number" name="id" value="' . $output["hintID"] . '" style="display: none;">
     <input type="text" name="hint" value="' . $output["tip"] . '">
     <input type="submit" name="submit" value="Update">
