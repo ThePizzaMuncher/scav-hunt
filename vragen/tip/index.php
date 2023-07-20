@@ -16,56 +16,57 @@ while ($row = $pull->fetch_assoc()) {
 }
 $tipTxt = "";
 $studentOpID = $_SESSION["student_opleidingID"];
-$pull = $conn->query("SELECT * FROM hint WHERE opleidingID = $studentOpID");
-while ($current_vraag_row = $pull->fetch_assoc()) {
-    echo $current_vraag_row["hintID"];
-switch ($current_vraag_row["hintID"]) {
+function setTipTxt() {
+    $pull = $conn->query("SELECT tip FROM hint WHERE opleidingID = $studentOpID AND hintID = $current_vraag");
+    $tmpTipTxt = $pull->fetch_assoc();
+    $tipTxt = $tmpTipTxt["tip"];
+}
+switch ($current_vraag) {
     case 0:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 1:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 2:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 3:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 4:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 5:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 6:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 7:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 8:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 9:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 10:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 11:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 12:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     case 13:
-        $tipTxt = $current_vraag_row["tip"];
+        setTipTxt();
     break;
     default:
         $tipTxt = "Error: geen tip of hint gevonden bij dit ID.";
     break;
-}
 }
 require_once("../../assets/includes/header.php"); ?>
 <section class="about d-flex flex-column justify-content-center align-items-center sticked-header-offset" style="height: 100%;">
