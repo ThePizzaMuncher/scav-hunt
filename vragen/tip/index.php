@@ -18,6 +18,7 @@ $tipTxt = "";
 $studentOpID = $_SESSION["student_opleidingID"];
 $pull = $conn->query("SELECT * FROM hint WHERE opleidingID = $studentOpID");
 while ($current_vraag_row = $pull->fetch_assoc()) {
+    echo $current_vraag_row["hintID"];
 switch ($current_vraag_row["hintID"]) {
     case 0:
         $tipTxt = $current_vraag_row["tip"];
