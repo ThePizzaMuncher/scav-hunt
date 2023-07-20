@@ -11,7 +11,7 @@ if (!isset($_SESSION['docent']) || $_SESSION['docent'] != 1) {
 require_once("../assets/includes/header.php");
 $dop = $_SESSION['opleiding_ID'];//Docent Opleiding ID
 $pull = $conn->query("SELECT * FROM hint WHERE opleidingID = $dop");
-echo "<table>";
+echo "<table><tr><td>ID</td><td>Tip</td><td>Bewerk</td></tr>";
 while ($row = $pull->fetch_assoc()) {
     echo "<tr>";
     echo "<td>" . $row["hintID"] . "</td>";
