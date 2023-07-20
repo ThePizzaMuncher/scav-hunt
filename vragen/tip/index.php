@@ -23,46 +23,46 @@ function setTipTxt($conn) {
 }
 switch ($current_vraag) {
     case 0:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 1:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 2:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 3:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 4:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 5:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 6:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 7:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 8:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 9:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 10:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 11:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 12:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     case 13:
-        setTipTxt();
+        setTipTxt($conn);
     break;
     default:
         $tipTxt = "Error: geen tip of hint gevonden bij dit ID.";
