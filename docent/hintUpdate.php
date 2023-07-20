@@ -18,6 +18,6 @@ require_once("../assets/includes/conn.php");
 $hintID = $_POST["id"];
 $hintNew = $_POST["hint"];
 echo $hintID . $hintNew;
-$conn->query("UPDATE hint SET tip = " . $hintNew . " WHERE hintID = '" . $hintID . "'");
+$conn->query("UPDATE hint SET tip = '" . $hintNew . "' WHERE hintID = " . $hintID);
 header("location: ./hints.php");
 ?>
