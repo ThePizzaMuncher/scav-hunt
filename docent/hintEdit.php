@@ -12,7 +12,11 @@ require_once("../assets/includes/header.php");
 $hintID = $_GET["id"];
 $pull = $conn->query("SELECT hintID FROM hint WHERE hintID = $hintID AND opleidingID = " . $_SESSION['opleiding_ID']);
 $output = $pull->fetch_assoc();
-echo $output["hintID"];
+if ($output["hintID"] != $hintID) {
+    echo "error!";
+    die();
+}
+echo "success!";
 $pull;
 require_once("../assets/includes/footer.php");
 ?>
