@@ -70,7 +70,7 @@ require_once("../assets/includes/conn.php");
 						window.open(document.URL + 'delete.php?id=' + id, '_self');
 					}
 					</script>";
-					if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {//Admin verweidert alle leerlingen van alle opleidingen.
+					/*if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {//Admin verweidert alle leerlingen van alle opleidingen.
 						$padNaarDel = "test1";
 					}
 					else {
@@ -82,7 +82,7 @@ require_once("../assets/includes/conn.php");
 						if (vr) {
 							window.open('../" . $padNaarDel . "', '_self');
 						}
-					}
+					}*/
 					</script>";
 				while ($row = $pull->fetch_assoc()) {
 					echo "<tr>";
