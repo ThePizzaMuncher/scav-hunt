@@ -143,7 +143,7 @@ $path = "~speurtocht/";
 								echo '<li><a href="/' . $path . 'docent"class="nav-link scrollto hover-sound"><i class="bx bx-group"></i> Leerlingenlijst</a></li>';
 								echo '<li><a href="/' . $path . 'docent/koter_analyzer.php"class="nav-link scrollto hover-sound"><i class="bx bx-map"></i> Locatie groepjes</a></li>';
 								echo '<li><a href="/' . $path . 'docent/vragen-aanpassen.php"class="nav-link scrollto hover-sound"><i class="bx bx-edit"></i> Vragen</a></li>';
-								echo '<li><a href="/' . $path . 'docent/hints.php"class="nav-link scrollto hover-sound"><i class="bx bx-edit"></i> Tips/Hints aanpassen (wip)</a></li>';
+								echo '<li><a href="/' . $path . 'docent/hints.php"class="nav-link scrollto hover-sound"><i class="bx bx-edit"></i> Tips/Hints aanpassen</a></li>';
 								echo '<li><a href="/' . $path . 'docent/unieke_code_generatie.php"class="nav-link scrollto hover-sound"><i class="bx bx-code"></i> Code genereren</a></li>';
 								if (isset($_SESSION['admin']))
 									echo '<li><a href="/' . $path . 'admin/docent_toevoegen.php"class="nav-link scrollto hover-sound"><i class="bx bx-user"></i> Docent toevoegen</a></li>';
