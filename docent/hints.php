@@ -14,6 +14,7 @@ $pull = $conn->query("SELECT * FROM hint WHERE opleidingID = $dop");
 echo "<table>";
 while ($row = $pull->fetch_assoc()) {
     echo "<tr>";
+    echo "<td>" . $row["hintID"] . "</td>";
     echo "<td>" . $row["tip"] . "</td>";
     echo "<td><a href='hintEdit.php/?id=" . $row["hintID"] . "'>Bewerk</a></td>";
     echo "</tr>";
