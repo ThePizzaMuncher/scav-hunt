@@ -15,54 +15,48 @@ while ($row = $pull->fetch_assoc()) {
     $current_vraag = $row["current_vraag"];
 }
 $tipTxt = "";
-$studentOpID = $_SESSION["student_opleidingID"];
-function setTipTxt($conn) {
-    $pull = $conn->query("SELECT tip FROM hint WHERE opleidingID = $studentOpID AND hintID = $current_vraag");
-    $tmpTipTxt = $pull->fetch_assoc();
-    $tipTxt = $tmpTipTxt["tip"];
-}
 switch ($current_vraag) {
     case 0:
-        setTipTxt($conn);
+        $tipTxt = "Ga vanaf school naar de elfstedenhal en kijk rond het parkeerterrein voor de eerste qr-code.";
     break;
     case 1:
-        setTipTxt($conn);
+        $tipTxt = "Loop nu langs de elfstedenhal in de righting van de Jumbo. Loop langs de weg die links van de jumbo loopt. Bij het kruispunt kan je de volgende qr-code vinden.";
     break;
     case 2:
-        setTipTxt($conn);
+        $tipTxt = "Steek over en volg de weg rechtdoor. Zoek voor een speeltuin, hier kan je de volgende qr-code vinden.";
     break;
     case 3:
-        setTipTxt($conn);
+        $tipTxt = "Pak de eerste weg rechts toen jullie vanaf het kruispunt naar de speeltuin liepen. Vervolg deze weg totdat je bij het water uitkomt (Ga niet over het water), sla dan links af en zoek voor de volgende qr-code.";
     break;
     case 4:
-        setTipTxt($conn);
+        $tipTxt = "Vervolg de weg langs het water (En blijf aan dezelfde kant van het water) totdat je uitkomt bij het standbeeld 'Ús mem' Zoek daar voor de volgende qr-code.";
     break;
     case 5:
-        setTipTxt($conn);
+        $tipTxt = "Als je goed hebt gekeken, dan heb je de scheve toren al gezien (De oldehove.) Rondom deze toren zit de volgende qr-code.";
     break;
     case 6:
-        setTipTxt($conn);
+        $tipTxt = "Loop nu terug naar de recentste kruising die je bent tegengekomen. Volg vervolgens de weg 'Westerplantage' en daarna 'Ruiterskwartier' totdat je Pathé ziet. Daar kan je de volgende qr-code vinden.";
     break;
     case 7:
-        setTipTxt($conn);
+        $tipTxt = "Vervolg dezelfde weg en sla de eerste rechts af. Steek niet over waneer je het water weer tegenkomt. ga bij de kade linksaf en zoek lopend naar de volgende qr-code.";
     break;
     case 8:
-        setTipTxt($conn);
+        $tipTxt = "Vervolg dezelfde weg en sla de eerste links af. loop dan rechtdoor totdat je bij het Fries Museum komt. Hier kan je de volgende qr-code vinden.";
     break;
     case 9:
-        setTipTxt($conn);
+        $tipTxt = "Vervolg dezelfde weg en sla bij de eerste links af. ga daarna de eerste rechts en loop over het water. Er is iets lekkers te eten bij De Dikke van Dale";
     break;
     case 10:
-        setTipTxt($conn);
+        $tipTxt = "Je hebt de grote zwarte toren vast al gezien. Loop naar de Achmea toren, hier is een nieuwe qr-code te vinden.";
     break;
     case 11:
-        setTipTxt($conn);
+        $tipTxt = "Volg de rechterkant van de kade. Bij Monkey Town is een nieuwe qr-code te vinden.";
     break;
     case 12:
-        setTipTxt($conn);
+        $tipTxt = "Blijf rechtdoor lopen aan dezelfde kant van de kade, totdat je een brug tegenkomt. scan hier de code en loop vervolgens terug naar school.";
     break;
     case 13:
-        setTipTxt($conn);
+        $tipTxt = "Je hebt de speurtocht afgerond! Vraag de desbetreffende docent voor de winnaars.";
     break;
     default:
         $tipTxt = "Error: geen tip of hint gevonden bij dit ID.";
