@@ -16,7 +16,7 @@ while ($row = $pull->fetch_assoc()) {
 }
 $tipTxt = "";
 $studentOpID = $_SESSION["student_opleidingID"];
-$pull = $conn->query("SELECT tip FROM hint WHERE opleidingID = $studentOpID");
+$pull = $conn->query("SELECT * FROM hint WHERE opleidingID = $studentOpID");
 while ($current_vraag_row = $pull->fetch_assoc()) {
 switch ($current_vraag_row["hintID"]) {
     case 0:
